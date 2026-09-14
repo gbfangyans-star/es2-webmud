@@ -415,8 +415,13 @@ function renderWelcomeIfPresent(s){
   const clean=cleanText(welcomeBuffer);
   const connected=/\[ES2 connected\]/i.test(clean);
   const prompt=/使用者代號|您的使用者代號|請輸入密碼/.exec(clean);
+  const statusLines=clean.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).filter(line=>
+    /已經執行了|現在時間|目前共有/.test(line)
+  ).map(line=>line.replace(/^東方故事(?:Ⅱ|II)?/, '東方故事'));
+  const statusPanel=statusLines.length?`<div class="login-server-status" aria-label="伺服器狀態">${statusLines.map(line=>`<div>${escContext(line)}</div>`).join('')}</div>`:'';
   const card=`<div class="login-welcome login-welcome-art" aria-label="東方故事 II 天朝帝國 Celestial Empire">
     <img src="/login_title_v3185.png" alt="東方故事 II 天朝帝國 Celestial Empire" class="login-title-art">
+    ${statusPanel}
   </div>`;
 
   // Browser presentation only. The canonical Neolith bytes are still received,
@@ -475,7 +480,9 @@ function renderObserved(){
     const v=parsePairFromState(key);if(!v)continue;
     const pct=v.max>0?Math.max(0,Math.min(100,Math.round(v.current*100/v.max))):0;
     const colors={hp:'#ef6262',jing:'#70c7ff',qi:'#70d99b',shen:'#b89cff',food:'#e9a45f',water:'#68b9e8',fatigue:'#8b9690'};
-    rows.push(`<div class="hudstat hud-${key}" style="--hud-color:${colors[key]}"><div><span>${labels[key]}</span><b>${v.current}/${v.max}</b></div><progress max="100" value="${pct}"></progress></div>`);
+    const filled=Math.max(0,Math.min(10,Math.round(pct/10)));
+    const segments=Array.from({length:10},(_,i)=>`<i class="hud-segment${i<filled?' filled':''}" aria-hidden="true"></i>`).join('');
+    rows.push(`<div class="hudstat hud-${key}" style="--hud-color:${colors[key]}"><div><span>${labels[key]}</span><b>${v.current}/${v.max}</b></div><div class="hud-segments" role="img" aria-label="${labels[key]} ${pct}%">${segments}</div></div>`);
   }
   const hud=document.querySelector('#scoreHud');if(hud&&rows.length){hud.innerHTML=rows.join('');hud.classList.remove('muted');}
   const level=observer.state.scoreDetail?.level ?? observer.state.score?.level;
