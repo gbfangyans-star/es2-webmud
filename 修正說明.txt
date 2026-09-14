@@ -1,0 +1,1 @@
+﻿FIX4：將 PowerShell 啟動腳本改為 UTF-8 BOM，避免 Windows PowerShell 5.1 將中文 UTF-8 腳本誤判為 ANSI，造成 ParserError / UnexpectedToken。
