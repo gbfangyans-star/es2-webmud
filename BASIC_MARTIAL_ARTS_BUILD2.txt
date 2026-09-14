@@ -1,0 +1,40 @@
+ES2 WebMUD v3.20.77 - 基本武學補完 Build 2
+
+本次只補「基本武學」戰鬥 daemon 與招式敘述，不修改門派武學。
+基準：FORMAL_UI_REDESIGN_BUILD1。
+
+原本已有完整基本招式：
+- unarmed 徒手搏鬥
+- sword 劍術
+
+本次新增：
+- axe
+- secondhand axe
+- twohanded axe
+- blade
+- secondhand blade
+- twohanded blade
+- blunt
+- secondhand blunt
+- twohanded blunt
+- dagger
+- secondhand dagger
+- needle
+- secondhand needle
+- pike
+- secondhand pike
+- twohanded pike
+- staff
+- secondhand staff
+- twohanded staff
+- secondhand sword
+- twohanded sword
+- whip
+
+處理原則：
+- 每種技能 8 組基本攻擊敘述。
+- 依武器性質使用刺傷、割傷、瘀傷。
+- 保留原 COMBAT_D->fight() 核心，不改命中、防禦、傷害核心公式。
+- secondhand / twohanded 使用各自技能 ID，避免武器裝備後找不到 skill daemon。
+- 更新 source/upstream/mudlib/data/daemon.o 註冊表。
+- 未修改 tiger-blade / sanmeendo / tiger-force / tiger-steps 等門派武學。

@@ -1,0 +1,6 @@
+【WebMUD】
+
+WebMUD 是 ES2 的瀏覽器用戶端；實際角色、房間、NPC、戰鬥與指令仍由 Neolith / LPC
+MUD Server 執行。右側狀態與周邊地圖屬 Web 顯示層。
+
+因此瀏覽器斷線、畫面更新與 Server 世界狀態是不同層次的問題。

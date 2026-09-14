@@ -1,0 +1,37 @@
+{
+  "kind": "source-level acceptance model",
+  "live_telnet": false,
+  "players": [
+    {
+      "player": 1,
+      "laps": 3,
+      "checks": 30,
+      "ok": true
+    },
+    {
+      "player": 2,
+      "laps": 3,
+      "checks": 30,
+      "ok": true
+    },
+    {
+      "player": 3,
+      "laps": 3,
+      "checks": 30,
+      "ok": true
+    },
+    {
+      "player": 4,
+      "laps": 3,
+      "checks": 30,
+      "ok": true
+    },
+    {
+      "player": 5,
+      "laps": 3,
+      "checks": 30,
+      "ok": true
+    }
+  ],
+  "ok": true
+}

@@ -1,0 +1,71 @@
+{
+  "kind": "formula acceptance simulation",
+  "players": [
+    {
+      "player": 1,
+      "player_level": 1,
+      "npc_level": 1,
+      "D": 2,
+      "dodge_parry": 6,
+      "unarmed": 113,
+      "blade": 21,
+      "force_tick": 48,
+      "tiger_force": 7,
+      "tiger_blade": 60,
+      "ok": true
+    },
+    {
+      "player": 2,
+      "player_level": 10,
+      "npc_level": 5,
+      "D": 2,
+      "dodge_parry": 4,
+      "unarmed": 64,
+      "blade": 52,
+      "force_tick": 82,
+      "tiger_force": 101,
+      "tiger_blade": 50,
+      "ok": true
+    },
+    {
+      "player": 3,
+      "player_level": 20,
+      "npc_level": 25,
+      "D": 5,
+      "dodge_parry": 50,
+      "unarmed": 399,
+      "blade": 35,
+      "force_tick": 91,
+      "tiger_force": 144,
+      "tiger_blade": 101,
+      "ok": true
+    },
+    {
+      "player": 4,
+      "player_level": 40,
+      "npc_level": 50,
+      "D": 10,
+      "dodge_parry": 24,
+      "unarmed": 30,
+      "blade": 228,
+      "force_tick": 163,
+      "tiger_force": 260,
+      "tiger_blade": 173,
+      "ok": true
+    },
+    {
+      "player": 5,
+      "player_level": 80,
+      "npc_level": 120,
+      "D": 10,
+      "dodge_parry": 168,
+      "unarmed": 1015,
+      "blade": 120,
+      "force_tick": 81,
+      "tiger_force": 39,
+      "tiger_blade": 38,
+      "ok": true
+    }
+  ],
+  "ok": true
+}

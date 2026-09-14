@@ -1,0 +1,16 @@
+ES2 WebMUD v3.20.77 Build 4 - persistent topology / instant map movement
+
+Changes
+1. Browser stores discovered room labels, map metadata and exits in localStorage.
+2. Known topology is restored immediately when the page loads, instead of waiting to rebuild from HUD every session.
+3. Directional movement uses the already-known exit graph to move the player marker immediately when the command is sent.
+4. The later WebHUD ROOM/EXIT response remains authoritative and corrects the map if the optimistic move was wrong.
+5. Existing Build 3 rules remain: ordinary roads have no labels; important locations use short labels; no '未命名'.
+6. Existing HELP pager changes and Build 2 basic martial arts are preserved.
+
+Validation
+- node --check web/app.js: PASS
+- selected UI/HUD tests: 9 PASS, 2 FAIL. The two failures are existing legacy expectations in test_v32048_oldpine_interaction_ui.py and are not introduced by this map patch.
+
+Note
+The map cache is per browser. A new browser/profile learns rooms as they are discovered; subsequent visits can render known topology immediately.

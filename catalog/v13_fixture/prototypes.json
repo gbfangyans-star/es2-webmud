@@ -1,0 +1,23 @@
+[
+  {
+    "file": "std/char.c",
+    "path": "/std/char",
+    "type": "prototype",
+    "sha256": "1604990be2f3900aa86f590aac157899e9260726294843d8ffe741062fca02a9",
+    "inherits": [
+      "F_COMBAT"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_COMBAT",
+        "target": "F_COMBAT",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  }
+]

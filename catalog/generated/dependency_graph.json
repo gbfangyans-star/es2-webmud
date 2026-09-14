@@ -1,0 +1,2902 @@
+{
+  "skill_registry": {
+    "dragon force": [
+      "/d/snow/skill/dragon_force"
+    ],
+    "sword": [
+      "/daemon/skill/sword"
+    ],
+    "unarmed": [
+      "/daemon/skill/unarmed"
+    ],
+    "fonxansword": [
+      "/obj/example/skill/fonxansword"
+    ]
+  },
+  "edges": [
+    {
+      "from": "/d/snow/npc/alchemist",
+      "to": "/d/snow/skill/dragon_force",
+      "kind": "skill_map",
+      "detail": {
+        "base": "force",
+        "name": "dragon force"
+      }
+    },
+    {
+      "from": "/d/snow/npc/obj/broadsword",
+      "to": "/daemon/skill/sword",
+      "kind": "weapon_wield_skill",
+      "detail": {
+        "name": "sword"
+      }
+    },
+    {
+      "from": "/d/snow/npc/obj/silversword",
+      "to": "/daemon/skill/sword",
+      "kind": "weapon_wield_skill",
+      "detail": {
+        "name": "sword"
+      }
+    },
+    {
+      "from": "/d/snow/npc/obj/slasher_sword",
+      "to": "/daemon/skill/sword",
+      "kind": "weapon_wield_skill",
+      "detail": {
+        "name": "sword"
+      }
+    },
+    {
+      "from": "/d/snow/npc/obj/woodsword",
+      "to": "/daemon/skill/sword",
+      "kind": "weapon_wield_skill",
+      "detail": {
+        "name": "sword"
+      }
+    },
+    {
+      "from": "/feature/weapon/sword",
+      "to": "/daemon/skill/sword",
+      "kind": "weapon_damage_skill",
+      "detail": {
+        "name": "sword"
+      }
+    },
+    {
+      "from": "/obj/area/obj/bastardsword",
+      "to": "/daemon/skill/sword",
+      "kind": "weapon_wield_skill",
+      "detail": {
+        "name": "sword"
+      }
+    },
+    {
+      "from": "/obj/area/obj/broadsword",
+      "to": "/daemon/skill/sword",
+      "kind": "weapon_wield_skill",
+      "detail": {
+        "name": "sword"
+      }
+    },
+    {
+      "from": "/obj/area/obj/longsword",
+      "to": "/daemon/skill/sword",
+      "kind": "weapon_wield_skill",
+      "detail": {
+        "name": "sword"
+      }
+    },
+    {
+      "from": "/obj/area/obj/shortsword",
+      "to": "/daemon/skill/sword",
+      "kind": "weapon_wield_skill",
+      "detail": {
+        "name": "sword"
+      }
+    },
+    {
+      "from": "/obj/area/obj/woodsword",
+      "to": "/daemon/skill/sword",
+      "kind": "weapon_wield_skill",
+      "detail": {
+        "name": "sword"
+      }
+    },
+    {
+      "from": "/obj/example/weapon/longsword",
+      "to": "/daemon/skill/sword",
+      "kind": "weapon_wield_skill",
+      "detail": {
+        "name": "sword"
+      }
+    },
+    {
+      "from": "/obj/example/weapon/shortsword",
+      "to": "/daemon/skill/sword",
+      "kind": "weapon_wield_skill",
+      "detail": {
+        "name": "sword"
+      }
+    }
+  ],
+  "unresolved": [
+    {
+      "from": "/cmds/std/acupuncture",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "cauterization",
+      "method": "acupuncture_cauterization"
+    },
+    {
+      "from": "/cmds/std/cast",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "spells",
+      "method": "cast_spell"
+    },
+    {
+      "from": "/cmds/std/conjure",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "magic",
+      "method": "conjure_magic"
+    },
+    {
+      "from": "/cmds/std/team",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "arg",
+      "method": "form_array"
+    },
+    {
+      "from": "/cmds/usr/enable",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "map_to",
+      "method": "valid_enable"
+    },
+    {
+      "from": "/cmds/usr/skills",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "s",
+      "method": "type"
+    },
+    {
+      "from": "/cmds/usr/skills",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "s",
+      "method": "type"
+    },
+    {
+      "from": "/d/snow/npc/child",
+      "kind": "skill_map",
+      "name": "lightswift",
+      "matches": []
+    },
+    {
+      "from": "/d/snow/npc/gammer",
+      "kind": "skill_map",
+      "name": "regular force",
+      "matches": []
+    },
+    {
+      "from": "/d/snow/npc/girl",
+      "kind": "skill_map",
+      "name": "celestial force",
+      "matches": []
+    },
+    {
+      "from": "/d/snow/npc/obj/broadsword",
+      "kind": "weapon_wield_skill",
+      "name": "twohanded sword",
+      "matches": []
+    },
+    {
+      "from": "/d/snow/npc/obj/broadsword",
+      "kind": "weapon_wield_skill",
+      "name": "blade",
+      "matches": []
+    },
+    {
+      "from": "/d/snow/npc/obj/cane",
+      "kind": "weapon_wield_skill",
+      "name": "staff",
+      "matches": []
+    },
+    {
+      "from": "/d/snow/npc/obj/cane",
+      "kind": "weapon_wield_skill",
+      "name": "twohanded staff",
+      "matches": []
+    },
+    {
+      "from": "/d/snow/npc/obj/hoe",
+      "kind": "weapon_wield_skill",
+      "name": "twohanded pike",
+      "matches": []
+    },
+    {
+      "from": "/d/snow/npc/obj/shovel",
+      "kind": "weapon_wield_skill",
+      "name": "twohanded pike",
+      "matches": []
+    },
+    {
+      "from": "/d/snow/npc/obj/syndicator",
+      "kind": "weapon_wield_skill",
+      "name": "dagger",
+      "matches": []
+    },
+    {
+      "from": "/d/snow/npc/obj/syndicator",
+      "kind": "weapon_wield_skill",
+      "name": "secondhand dagger",
+      "matches": []
+    },
+    {
+      "from": "/d/snow/npc/obj/woodblade",
+      "kind": "weapon_wield_skill",
+      "name": "blade",
+      "matches": []
+    },
+    {
+      "from": "/feature/char/attack",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "skill",
+      "method": "attack_using"
+    },
+    {
+      "from": "/feature/char/combat",
+      "kind": "skill_daemon_call",
+      "name": "force",
+      "method": "inflict_damage",
+      "matches": []
+    },
+    {
+      "from": "/feature/char/combat",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "sk",
+      "method": "dodge_using"
+    },
+    {
+      "from": "/feature/char/combat",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "sk",
+      "method": "parry_using"
+    },
+    {
+      "from": "/feature/char/combat",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "force_sk",
+      "method": "inflict_damage"
+    },
+    {
+      "from": "/feature/char/skill",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "skill",
+      "method": "skill_improved"
+    },
+    {
+      "from": "/feature/char/skill",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "skill",
+      "method": "skill_advanced"
+    },
+    {
+      "from": "/feature/equip",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "skill_type",
+      "method": "attack_using"
+    },
+    {
+      "from": "/feature/weapon/axe",
+      "kind": "weapon_damage_skill",
+      "name": "axe",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/axe",
+      "kind": "weapon_damage_skill",
+      "name": "secondhand axe",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/axe",
+      "kind": "weapon_damage_skill",
+      "name": "twohanded axe",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/blade",
+      "kind": "weapon_damage_skill",
+      "name": "blade",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/blade",
+      "kind": "weapon_damage_skill",
+      "name": "secondhand blade",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/blade",
+      "kind": "weapon_damage_skill",
+      "name": "twohanded blade",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/blunt",
+      "kind": "weapon_damage_skill",
+      "name": "blunt",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/blunt",
+      "kind": "weapon_damage_skill",
+      "name": "secondhand blunt",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/blunt",
+      "kind": "weapon_damage_skill",
+      "name": "twohanded blunt",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/dagger",
+      "kind": "weapon_damage_skill",
+      "name": "dagger",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/dagger",
+      "kind": "weapon_damage_skill",
+      "name": "secondhand dagger",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/needle",
+      "kind": "weapon_damage_skill",
+      "name": "needle",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/needle",
+      "kind": "weapon_damage_skill",
+      "name": "secondhand needle",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/pike",
+      "kind": "weapon_damage_skill",
+      "name": "pike",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/pike",
+      "kind": "weapon_damage_skill",
+      "name": "secondhand pike",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/pike",
+      "kind": "weapon_damage_skill",
+      "name": "twohanded pike",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/staff",
+      "kind": "weapon_damage_skill",
+      "name": "secondhand staff",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/staff",
+      "kind": "weapon_damage_skill",
+      "name": "staff",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/staff",
+      "kind": "weapon_damage_skill",
+      "name": "twohanded staff",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/sword",
+      "kind": "weapon_damage_skill",
+      "name": "secondhand sword",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/sword",
+      "kind": "weapon_damage_skill",
+      "name": "twohanded sword",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/whip",
+      "kind": "weapon_damage_skill",
+      "name": "whip",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/axe",
+      "kind": "weapon_wield_skill",
+      "name": "axe",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/axe",
+      "kind": "weapon_wield_skill",
+      "name": "twohanded axe",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/bastardsword",
+      "kind": "weapon_wield_skill",
+      "name": "twohanded sword",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/blade",
+      "kind": "weapon_wield_skill",
+      "name": "blade",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/broadaxe",
+      "kind": "weapon_wield_skill",
+      "name": "axe",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/broadaxe",
+      "kind": "weapon_wield_skill",
+      "name": "twohanded axe",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/broadsword",
+      "kind": "weapon_wield_skill",
+      "name": "twohanded sword",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/curved_blade",
+      "kind": "weapon_wield_skill",
+      "name": "blade",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/dagger",
+      "kind": "weapon_wield_skill",
+      "name": "dagger",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/dagger",
+      "kind": "weapon_wield_skill",
+      "name": "secondhand dagger",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/glaive",
+      "kind": "weapon_wield_skill",
+      "name": "blade",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/glaive",
+      "kind": "weapon_wield_skill",
+      "name": "twohanded blade",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/greatsword",
+      "kind": "weapon_wield_skill",
+      "name": "twohanded sword",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/knife",
+      "kind": "weapon_wield_skill",
+      "name": "dagger",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/knife",
+      "kind": "weapon_wield_skill",
+      "name": "secondhand dagger",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/kris",
+      "kind": "weapon_wield_skill",
+      "name": "blade",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/kris",
+      "kind": "weapon_wield_skill",
+      "name": "secondhand blade",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/leather_whip",
+      "kind": "weapon_wield_skill",
+      "name": "whip",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/pen",
+      "kind": "weapon_wield_skill",
+      "name": "dagger",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/pen",
+      "kind": "weapon_wield_skill",
+      "name": "secondhand dagger",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/pike",
+      "kind": "weapon_wield_skill",
+      "name": "twohanded pike",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/pike",
+      "kind": "weapon_wield_skill",
+      "name": "pike",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/rod",
+      "kind": "weapon_wield_skill",
+      "name": "blunt",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/shortsword",
+      "kind": "weapon_wield_skill",
+      "name": "secondhand sword",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/weirblade",
+      "kind": "weapon_wield_skill",
+      "name": "blade",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/weirblade",
+      "kind": "weapon_wield_skill",
+      "name": "twohanded blade",
+      "matches": []
+    },
+    {
+      "from": "/obj/area/obj/whip",
+      "kind": "weapon_wield_skill",
+      "name": "whip",
+      "matches": []
+    },
+    {
+      "from": "/obj/example/weapon/shortsword",
+      "kind": "weapon_wield_skill",
+      "name": "secondhand sword",
+      "matches": []
+    },
+    {
+      "from": "/std/char/npc",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "spell_skill",
+      "method": "cast_spell"
+    },
+    {
+      "from": "/std/char/npc",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "magic_skill",
+      "method": "conjure_magic"
+    },
+    {
+      "from": "/std/char/npc",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "cauterization_skill",
+      "method": "acupuncture_cauterization"
+    },
+    {
+      "from": "/std/char/npc",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "force_skill",
+      "method": "exert_function"
+    },
+    {
+      "from": "/std/char/npc",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "skill",
+      "method": "perform_action"
+    }
+  ],
+  "entities": {
+    "/adm/daemons/aliasd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/channeld": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/chard": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/chinesed": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/cmd_d": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/combatd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/daemond": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/emoted": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/enhanced": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/enterd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/fingerd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/httpd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/logind": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/natured": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/profiled": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/securityd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/smtpd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/userid": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/virtuald": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/guild/academy": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/guild/guildhall": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/guild/meetingroom": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/guild/portal": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/intermud/_gchannel": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/intermud/_mudlist": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/intermud/_ping": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/intermud/i2d": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/obj/mailbox": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/obj/master": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/obj/simul_efun": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/atoi": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/chinese": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/cursor": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/file": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/gender": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/message": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/object": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/path": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/utf8": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/wizard": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/chpass": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/disassemble": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/dump": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/halt": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/profile": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/renew": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/resurrect": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/shutdown": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/socket": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/callouts": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/chinese": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/cleanup": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/force": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/heal": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/overview": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/possess": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/promote": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/purge": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/reboot": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/reclaim": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/rehash": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/reset_okip": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/restore": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/wizlock": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/cd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/edemote": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/goto": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/ls": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/mem": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/more": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/pwd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/status": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/where": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/which": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/acquire": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/acupuncture": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/apprentice": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/ask": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/backstab": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/berserk": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/buy": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/cast": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/ccmd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/cestablish": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/charge": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/close": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/conjure": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/drink": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/drop": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/eat": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/emote": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/enter": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/exert": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/fight": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/fill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/follow": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/get": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/give": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/go": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/guard": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/halt": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/identify": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/ignore": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/kill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/lock": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/look": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/open": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/perform": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/put": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/remove": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/reply": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/say": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/search": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/shout": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/sneak": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/steal": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/study": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/suicide": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/team": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/tell": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/unlock": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/unwield": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/wear": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/whisper": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/wield": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/abandon": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/alias": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/backup": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/chfn": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/describe": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/disable": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/enable": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/estimate": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/finger": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/gain": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/help": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/hp": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/id": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/inventory": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/keep": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/localtime": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/nick": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/okip": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/option": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/order": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/passwd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/praise": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/quit": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/save": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/score": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/semote": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/skills": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/time": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/to": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/tune": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/undescribe": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/uptime": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/version": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/visitor": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/who": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/wimpy": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/wizlist": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/analyze": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/arrest": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/call": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/cat": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/clone": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/cost": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/cp": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/daemon": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/dest": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/edit": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/ff": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/home": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/ilist": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/info": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/invis": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/localcmds": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/log": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/mkdir": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/mudlist": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/mv": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/ping": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/qload": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/quiet": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/rm": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/rmdir": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/snoop": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/summon": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/tail": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/ulist": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/update": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/userid": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/whoami": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/bazar": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/bug_room": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/court": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/ebridge": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/egate": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/epath": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/fireplace": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/herb_shop": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/inn_hall": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/inn_kitchen": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/inn_staff_room": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/kitchen": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/lane1": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/lane2": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/mill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/ngate": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npath1": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npath2": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npath3": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/alchemist": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/alchemist",
+          "to": "/d/snow/skill/dragon_force",
+          "kind": "skill_map",
+          "detail": {
+            "base": "force",
+            "name": "dragon force"
+          }
+        }
+      ]
+    },
+    "/d/snow/npc/child": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/child1": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/child2": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/child3": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/child4": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/foreman": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/gammer": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/garrison": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/girl": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/guard": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/herbalist": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/innkeeper": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/junkman": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/lieutenant": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/miller": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/arrow": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/blue_cloth": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/blue_jacket": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/broadsword": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/obj/broadsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        }
+      ]
+    },
+    "/d/snow/npc/obj/cane": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/clothboot": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/coin": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/comb": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/crate": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/fur_hat": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/hairpin": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/helmet": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/hoe": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/invitation": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/leather_armor": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/note": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/pot": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/roast_chicken": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/shovel": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/silversword": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/obj/silversword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        }
+      ]
+    },
+    "/d/snow/npc/obj/slasher_sword": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/obj/slasher_sword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        }
+      ]
+    },
+    "/d/snow/npc/obj/smock": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/syndicator": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/tummy_cover": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/wagon": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/white_dress": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/wine_pot": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/woodblade": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/woodsword": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/obj/woodsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        }
+      ]
+    },
+    "/d/snow/npc/oldman": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/patrol": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/smith": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/teacher": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/waiter": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/woman": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/yu": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/nstreet1": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/nstreet2": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/obj/basic_book": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/obj/literate_book": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/obj/stone": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/post_office": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/river1": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/riverbank": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/ruin1": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/ruin2": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/school": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/sgate": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/skill/dragon_force": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/alchemist",
+          "to": "/d/snow/skill/dragon_force",
+          "kind": "skill_map",
+          "detail": {
+            "base": "force",
+            "name": "dragon force"
+          }
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/small_temple": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/smithy": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/square": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/square_e": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/square_n": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/square_s": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/square_sw": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/square_w": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/sstreet1": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/store": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/tree": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/wgate": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/wstreet1": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/wstreet2": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/wstreet3": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/board/bug_board": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/class/commoner": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/class/fighter": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/condition/drunk": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/condition/poison": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/misc/traveler": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/race/avatar": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/race/human": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/skill/sword": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/obj/broadsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        },
+        {
+          "from": "/d/snow/npc/obj/silversword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        },
+        {
+          "from": "/d/snow/npc/obj/slasher_sword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        },
+        {
+          "from": "/d/snow/npc/obj/woodsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        },
+        {
+          "from": "/feature/weapon/sword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_damage_skill",
+          "detail": {
+            "name": "sword"
+          }
+        },
+        {
+          "from": "/obj/area/obj/bastardsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        },
+        {
+          "from": "/obj/area/obj/broadsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        },
+        {
+          "from": "/obj/area/obj/longsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        },
+        {
+          "from": "/obj/area/obj/shortsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        },
+        {
+          "from": "/obj/area/obj/woodsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        },
+        {
+          "from": "/obj/example/weapon/longsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        },
+        {
+          "from": "/obj/example/weapon/shortsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        }
+      ],
+      "outgoing": []
+    },
+    "/daemon/skill/unarmed": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/virtual/field": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/armor": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/cloth": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/feet_eq": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/finger_eq": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/hand_eq": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/head_eq": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/leg_eq": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/neck_eq": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/waist_eq": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/attribute": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/action": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/attack": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/combat": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/command": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/condition": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/finance": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/message": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/relation": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/score": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/skill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/team": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/clean_up": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/dbase": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/drink": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/equip": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/food": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/move": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/name": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/bandit": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/currency": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/fighter": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/scholar": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/soldier": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/traveler": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/vendor": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/villager": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/save": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/statistic": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/study": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/unique": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/user/alias": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/user/autoload": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/user/edit": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/user/flag": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/user/input": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/user/more": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/axe": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/blade": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/blunt": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/dagger": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/needle": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/pike": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/staff": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/sword": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/feature/weapon/sword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_damage_skill",
+          "detail": {
+            "name": "sword"
+          }
+        }
+      ]
+    },
+    "/feature/weapon/whip": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/action.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/ansi.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/armor.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/attack.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/attribute.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/char.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/combat.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/command.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/condition.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/daemon.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/dbase.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/dbase_security.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/explore.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/function.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/globals.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/help.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/html.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/http.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/intermud.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/localtime.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/login.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/move.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/mudlib.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/name.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/npc.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/obj.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/origin.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/race.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/reboot.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/room.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/runtime_config.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/score.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/skill.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/socket_err.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/statistic.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/team.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/type.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/user.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/weapon.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/man": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/axe": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/bag": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/bastardsword": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/obj/area/obj/bastardsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        }
+      ]
+    },
+    "/obj/area/obj/belt": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/blade": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/broadaxe": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/broadsword": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/obj/area/obj/broadsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        }
+      ]
+    },
+    "/obj/area/obj/cloth": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/curved_blade": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/dagger": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/dice": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/glaive": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/greatsword": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/knife": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/kris": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/leather_boot": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/leather_whip": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/longsword": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/obj/area/obj/longsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        }
+      ]
+    },
+    "/obj/area/obj/pen": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/pike": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/robe": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/rod": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/shortsword": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/obj/area/obj/shortsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        }
+      ]
+    },
+    "/obj/area/obj/weirblade": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/whip": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/woodsword": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/obj/area/obj/woodsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        }
+      ]
+    },
+    "/obj/area/traveller": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/vagabond": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/armor/cloth": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/armor/fur_hat": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/bankbond": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/block": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/block_robot": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/bottle": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/clan_symbol": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/cloth": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/corpse": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/drug/black_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/drug/boar_berry": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/drug/dragon_saliva": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/drug/flower_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/drug/gray_mushroom": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/drug/wild_ginseng": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/dust": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/example/army": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/example/es2_bottle": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/example/infantry": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/example/skill/fonxansword": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/example/weapon/longsword": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/obj/example/weapon/longsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        }
+      ]
+    },
+    "/obj/example/weapon/shortsword": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/obj/example/weapon/shortsword",
+          "to": "/daemon/skill/sword",
+          "kind": "weapon_wield_skill",
+          "detail": {
+            "name": "sword"
+          }
+        }
+      ]
+    },
+    "/obj/food/dumpling": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/food/manto": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/food/mooncake": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/food/pork": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/food/ricedough": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/http": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/login": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/magic": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/map": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/aquapill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/black_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/green_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/major_heal_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/minor_heal_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/mix_recipe": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/mjp_1": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/mjp_2": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/mjp_3": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/refresh_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/black_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/boar_berry": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/dragon_saliva": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/flower_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/gray_mushroom": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/wild_ginseng": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/money/coin": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/money/gold": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/money/silver": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/npc/death_black": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/npc/death_white": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/npc/demogorgon": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/npc/garrison": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/obj/firework": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/obj/ghostbaby": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/reagent/cinnabar": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/reagent/crane_dye": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/reagent/medlar": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/reagent/strychin": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/roommaker": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/spirit": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/user": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/void": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/water": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/bboard": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/char": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/char/npc": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/condition": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/item": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/item/combined": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/item/container": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/item/liquid": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/item/pharmacy": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/item/reagent": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/money": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/race/humanoid": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room/bank": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room/hockshop": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room/hockshop_storage": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room/inn": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room/journey": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room/obj/pawn_stamp": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room/temple": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/skill": {
+      "incoming": [],
+      "outgoing": []
+    }
+  },
+  "stats": {
+    "registered_names": 4,
+    "edges": 13,
+    "unresolved": 82
+  }
+}

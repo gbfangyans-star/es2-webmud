@@ -1,0 +1,17 @@
+# mudlib runtime files
+/mudlib/log
+/mudlib/bin
+/mudlib/static
+/mudlib/data/board
+/mudlib/data/login
+/mudlib/data/user
+/mudlib/data/daemon
+/mudlib/data/daemon.o
+/mudlib/adm/etc/visitor.cnt
+/mudlib/adm/etc/wizlist
+
+# vim
+*.swp
+
+# local configuration files
+neolith.local.conf

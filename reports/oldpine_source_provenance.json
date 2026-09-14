@@ -1,0 +1,11 @@
+{
+  "status": "archaeological_version_diff_only",
+  "current_project_canonical": "https://github.com/taedlar/es2_mudlib",
+  "early_archive": "https://github.com/mudchina/es2/tree/master/d/oldpine",
+  "room_files_confirmed": 41,
+  "npc_code_files_confirmed": 14,
+  "object_code_files_confirmed": 11,
+  "current_gao_shen_route": "custom/oldpine/room/path01..path10",
+  "merge_state": "not_merged",
+  "preferred_future_branch": "near path08, pending full version diff"
+}

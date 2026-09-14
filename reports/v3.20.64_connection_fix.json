@@ -1,0 +1,12 @@
+{
+  "version": "3.20.64",
+  "finding": "v3.20.63 bridge evidence showed the backend accepted a real player TCP session, returned 614 bytes, then received exactly 16 browser bytes before the backend reset. The Web client preserved currentRoomId across reconnects, so its internal HUD telemetry could become eligible during a fresh Neolith login session.",
+  "fixes": [
+    "Clear currentRoomId/runtimeSnapshot/tail and stop HUD polling on every new WebSocket open.",
+    "Clear room identity again on socket close.",
+    "Keep HUD polling gated on a freshly recognized room.",
+    "Record only WS-to-MUD packet byte lengths/timing in bridge_runtime.log; never payload contents or passwords."
+  ],
+  "tests": "28 focused tests passed; Node syntax checks passed.",
+  "live_limit": "Windows Neolith crash behavior cannot be reproduced in this Linux tool environment; v3.20.64 is a targeted reconnect/login-path fix plus safer diagnostics."
+}

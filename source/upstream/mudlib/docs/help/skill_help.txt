@@ -1,0 +1,9 @@
+【技能與學習】
+
+  skills               查看自己的技能
+  skills <人物>        查詢可提供技能資訊的人物
+  apprentice <人物>    拜師
+  acquire ...           取得／學習師父可傳授的技能
+
+不同師父、技能有各自條件與上限，實際判定由 Server 上的師父與技能程式決定。
+相關：help skills、help apprentice、help acquire、help master

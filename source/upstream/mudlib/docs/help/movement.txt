@@ -1,0 +1,11 @@
+【移動與觀察】
+
+  look                 查看目前環境
+  look <目標>          仔細查看人物或物件
+  go <方向>            往出口方向移動
+  enter <目標>         進入可進入的地方
+
+WebMUD 右側周邊地圖會依 Server 回報的房間與出口更新；遊戲實際可走方向仍以
+Server 房間出口為準。
+
+相關：help look、help go、help world

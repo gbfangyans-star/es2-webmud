@@ -1,0 +1,10 @@
+【角色資訊】
+
+  score                角色主要資訊
+  hp                   精、氣、神等目前狀態
+  skills               已學技能
+  inventory            隨身物品
+  who                  線上玩家
+  finger <玩家>        玩家資料
+
+相關：help score、help hp、help skills、help skill_help

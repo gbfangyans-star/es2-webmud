@@ -1,0 +1,20 @@
+{
+  "version": "3.17.0",
+  "host": "127.0.0.1",
+  "port": 4000,
+  "clientsPerWave": 50,
+  "waves": 5,
+  "attempted": 250,
+  "acceptedWithBanner": 250,
+  "failed": [],
+  "debugErrors": [],
+  "started": "2026-09-08T15:20:31",
+  "postStormProbe": {
+    "client": 0,
+    "ok": true,
+    "bytes": 12,
+    "error": ""
+  },
+  "finished": "2026-09-08T15:20:33",
+  "ok": true
+}

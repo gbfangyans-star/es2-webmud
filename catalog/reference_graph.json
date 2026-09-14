@@ -1,0 +1,5657 @@
+{
+  "references": [
+    {
+      "from": "/adm/guild/academy",
+      "kind": "exit",
+      "to": "/adm/guild/guildhall",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/adm/guild/guildhall",
+      "kind": "exit",
+      "to": "/adm/guild/academy",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/adm/guild/guildhall",
+      "kind": "exit",
+      "to": "/adm/guild/portal",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/adm/guild/guildhall",
+      "kind": "exit",
+      "to": "/adm/guild/meetingroom",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/adm/guild/meetingroom",
+      "kind": "exit",
+      "to": "/adm/guild/guildhall",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/adm/guild/portal",
+      "kind": "exit",
+      "to": "/adm/guild/guildhall",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/adm/guild/portal",
+      "kind": "exit",
+      "to": "/d/snow/inn_hall",
+      "resolved": true,
+      "direction": "inn"
+    },
+    {
+      "from": "/d/snow/bazar",
+      "kind": "exit",
+      "to": "/d/snow/sstreet1",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/bazar",
+      "kind": "object",
+      "to": "/d/snow/npc/yu",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/bug_room",
+      "kind": "exit",
+      "to": "/d/snow/square_w",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/court",
+      "kind": "exit",
+      "to": "/d/snow/wstreet3",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/court",
+      "kind": "object",
+      "to": "/d/snow/npc/oldman",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/ebridge",
+      "kind": "exit",
+      "to": "/d/snow/npath3",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/ebridge",
+      "kind": "exit",
+      "to": "/d/snowkeep/entrance",
+      "resolved": false,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/ebridge",
+      "kind": "object",
+      "to": "/d/snow/npc/guard",
+      "resolved": true,
+      "count": 2
+    },
+    {
+      "from": "/d/snow/egate",
+      "kind": "exit",
+      "to": "/d/snow/ruin1",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/egate",
+      "kind": "exit",
+      "to": "/d/lee/r1",
+      "resolved": false,
+      "direction": "northeast"
+    },
+    {
+      "from": "/d/snow/epath",
+      "kind": "exit",
+      "to": "/d/snow/lane1",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/epath",
+      "kind": "exit",
+      "to": "/d/snow/square_e",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/epath",
+      "kind": "exit",
+      "to": "/d/snow/herb_shop",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/fireplace",
+      "kind": "exit",
+      "to": "/d/snow/inn_kitchen",
+      "resolved": true,
+      "direction": "out"
+    },
+    {
+      "from": "/d/snow/fireplace",
+      "kind": "object",
+      "to": "/d/snow/npc/obj/woodsword",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/fireplace",
+      "kind": "object",
+      "to": "/d/snow/npc/obj/woodblade",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/herb_shop",
+      "kind": "exit",
+      "to": "/d/snow/epath",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/herb_shop",
+      "kind": "object",
+      "to": "/d/snow/npc/herbalist",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/inn_hall",
+      "kind": "exit",
+      "to": "/d/snow/inn_kitchen",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/inn_hall",
+      "kind": "exit",
+      "to": "/d/snow/square_w",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/inn_hall",
+      "kind": "object",
+      "to": "/d/snow/npc/waiter",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/inn_hall",
+      "kind": "object",
+      "to": "/d/snow/npc/innkeeper",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/inn_kitchen",
+      "kind": "exit",
+      "to": "/d/snow/inn_hall",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/kitchen",
+      "kind": "object",
+      "to": "/obj/food/dumpling",
+      "resolved": true,
+      "count": 2
+    },
+    {
+      "from": "/d/snow/lane1",
+      "kind": "exit",
+      "to": "/d/snow/lane2",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/lane1",
+      "kind": "exit",
+      "to": "/d/snow/epath",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/lane1",
+      "kind": "exit",
+      "to": "/d/snow/ruin1",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/lane2",
+      "kind": "exit",
+      "to": "/d/snow/lane1",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/lane2",
+      "kind": "exit",
+      "to": "/d/snow/npath3",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/mill",
+      "kind": "exit",
+      "to": "/d/snow/lane2",
+      "resolved": true,
+      "direction": "out"
+    },
+    {
+      "from": "/d/snow/mill",
+      "kind": "object",
+      "to": "/d/snow/npc/miller",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/ngate",
+      "kind": "exit",
+      "to": "/d/snow/nstreet2",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/ngate",
+      "kind": "exit",
+      "to": "/d/goat/sroad1",
+      "resolved": false,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/ngate",
+      "kind": "object",
+      "to": "/d/snow/npc/garrison",
+      "resolved": true,
+      "count": 4
+    },
+    {
+      "from": "/d/snow/ngate",
+      "kind": "object",
+      "to": "/d/snow/npc/lieutenant",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/npath1",
+      "kind": "exit",
+      "to": "/d/snow/npath2",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/npath1",
+      "kind": "exit",
+      "to": "/d/snow/nstreet2",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/npath2",
+      "kind": "exit",
+      "to": "/d/snow/npath3",
+      "resolved": true,
+      "direction": "southeast"
+    },
+    {
+      "from": "/d/snow/npath2",
+      "kind": "exit",
+      "to": "/d/snow/npath1",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/npath2",
+      "kind": "exit",
+      "to": "/d/month/a1",
+      "resolved": false,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/npath2",
+      "kind": "object",
+      "to": "/d/snow/npc/woman",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/npath3",
+      "kind": "exit",
+      "to": "/d/snow/river1",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/npath3",
+      "kind": "exit",
+      "to": "/d/snow/lane2",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/npath3",
+      "kind": "exit",
+      "to": "/d/snow/npath2",
+      "resolved": true,
+      "direction": "northwest"
+    },
+    {
+      "from": "/d/snow/npath3",
+      "kind": "exit",
+      "to": "/d/snow/ebridge",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/npc/alchemist",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/silversword",
+      "resolved": true,
+      "action": "wield"
+    },
+    {
+      "from": "/d/snow/npc/alchemist",
+      "kind": "equipment",
+      "to": "/obj/area/obj/cloth",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/alchemist",
+      "kind": "skill_map",
+      "to": "dragon force",
+      "resolved": false,
+      "base": "force"
+    },
+    {
+      "from": "/d/snow/npc/child",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/blue_cloth",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/child",
+      "kind": "equipment",
+      "to": "/obj/area/obj/dagger",
+      "resolved": true,
+      "action": "wield"
+    },
+    {
+      "from": "/d/snow/npc/child",
+      "kind": "skill_map",
+      "to": "lightswift",
+      "resolved": false,
+      "base": "dodge"
+    },
+    {
+      "from": "/d/snow/npc/child1",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/tummy_cover",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/child2",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/woodsword",
+      "resolved": true,
+      "action": "wield"
+    },
+    {
+      "from": "/d/snow/npc/child3",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/tummy_cover",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/child4",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/tummy_cover",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/gammer",
+      "kind": "equipment",
+      "to": "/obj/area/obj/cloth",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/gammer",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/cane",
+      "resolved": true,
+      "action": "wield"
+    },
+    {
+      "from": "/d/snow/npc/gammer",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/syndicator",
+      "resolved": true,
+      "action": "wield"
+    },
+    {
+      "from": "/d/snow/npc/gammer",
+      "kind": "skill_map",
+      "to": "regular force",
+      "resolved": false,
+      "base": "force"
+    },
+    {
+      "from": "/d/snow/npc/girl",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/white_dress",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/girl",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/slasher_sword",
+      "resolved": true,
+      "action": "wield"
+    },
+    {
+      "from": "/d/snow/npc/girl",
+      "kind": "skill_map",
+      "to": "celestial force",
+      "resolved": false,
+      "base": "force"
+    },
+    {
+      "from": "/d/snow/npc/herbalist",
+      "kind": "equipment",
+      "to": "/obj/area/obj/cloth",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/herbalist",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/fur_hat",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/lieutenant",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/leather_armor",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/lieutenant",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/helmet",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/lieutenant",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/clothboot",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/miller",
+      "kind": "equipment",
+      "to": "/obj/area/obj/cloth",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/oldman",
+      "kind": "equipment",
+      "to": "/obj/area/obj/cloth",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/oldman",
+      "kind": "equipment",
+      "to": "/obj/area/obj/shortsword",
+      "resolved": true,
+      "action": "wield"
+    },
+    {
+      "from": "/d/snow/npc/smith",
+      "kind": "merchandise",
+      "to": "/d/snow/npc/obj/hoe",
+      "resolved": true,
+      "stock": 3
+    },
+    {
+      "from": "/d/snow/npc/smith",
+      "kind": "merchandise",
+      "to": "/d/snow/npc/obj/shovel",
+      "resolved": true,
+      "stock": 5
+    },
+    {
+      "from": "/d/snow/npc/smith",
+      "kind": "merchandise",
+      "to": "/obj/area/obj/dagger",
+      "resolved": true,
+      "stock": 10
+    },
+    {
+      "from": "/d/snow/npc/smith",
+      "kind": "merchandise",
+      "to": "/obj/area/obj/shortsword",
+      "resolved": true,
+      "stock": 5
+    },
+    {
+      "from": "/d/snow/npc/smith",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/smock",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/waiter",
+      "kind": "merchandise",
+      "to": "/obj/food/dumpling",
+      "resolved": true,
+      "stock": 50
+    },
+    {
+      "from": "/d/snow/npc/waiter",
+      "kind": "merchandise",
+      "to": "/obj/food/manto",
+      "resolved": true,
+      "stock": 50
+    },
+    {
+      "from": "/d/snow/npc/waiter",
+      "kind": "merchandise",
+      "to": "/obj/food/pork",
+      "resolved": true,
+      "stock": 30
+    },
+    {
+      "from": "/d/snow/npc/waiter",
+      "kind": "merchandise",
+      "to": "/d/snow/npc/obj/roast_chicken",
+      "resolved": true,
+      "stock": 30
+    },
+    {
+      "from": "/d/snow/npc/woman",
+      "kind": "equipment",
+      "to": "/obj/area/obj/cloth",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/npc/yu",
+      "kind": "merchandise",
+      "to": "/d/snow/npc/obj/blue_jacket",
+      "resolved": true,
+      "stock": 5
+    },
+    {
+      "from": "/d/snow/npc/yu",
+      "kind": "merchandise",
+      "to": "/obj/armor/fur_hat",
+      "resolved": true,
+      "stock": 5
+    },
+    {
+      "from": "/d/snow/npc/yu",
+      "kind": "merchandise",
+      "to": "/obj/bottle",
+      "resolved": true,
+      "stock": 5
+    },
+    {
+      "from": "/d/snow/npc/yu",
+      "kind": "equipment",
+      "to": "/d/snow/npc/obj/blue_jacket",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/d/snow/nstreet1",
+      "kind": "exit",
+      "to": "/d/snow/square_n",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/nstreet1",
+      "kind": "exit",
+      "to": "/d/snow/nstreet2",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/nstreet1",
+      "kind": "exit",
+      "to": "/d/snow/small_temple",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/nstreet2",
+      "kind": "exit",
+      "to": "/d/snow/post_office",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/nstreet2",
+      "kind": "exit",
+      "to": "/d/snow/npath1",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/nstreet2",
+      "kind": "exit",
+      "to": "/d/snow/nstreet1",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/nstreet2",
+      "kind": "exit",
+      "to": "/d/snow/ngate",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/nstreet2",
+      "kind": "object",
+      "to": "/obj/area/man",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/post_office",
+      "kind": "exit",
+      "to": "/d/snow/nstreet2",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/river1",
+      "kind": "exit",
+      "to": "/d/snow/npath3",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/river1",
+      "kind": "exit",
+      "to": "/d/chixiao/river2",
+      "resolved": false,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/riverbank",
+      "kind": "exit",
+      "to": "/d/snow/ruin2",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/ruin1",
+      "kind": "exit",
+      "to": "/d/snow/lane1",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/ruin1",
+      "kind": "exit",
+      "to": "/d/snow/egate",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/ruin2",
+      "kind": "exit",
+      "to": "/d/snow/riverbank",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/ruin2",
+      "kind": "object",
+      "to": "/d/snow/npc/girl",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/school",
+      "kind": "exit",
+      "to": "/d/snow/wstreet1",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/school",
+      "kind": "object",
+      "to": "/d/snow/npc/teacher",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/school",
+      "kind": "object",
+      "to": "/d/snow/npc/alchemist",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/school",
+      "kind": "object",
+      "to": "/d/snow/npc/child3.c",
+      "resolved": false,
+      "count": 2
+    },
+    {
+      "from": "/d/snow/sgate",
+      "kind": "exit",
+      "to": "/d/snow/sstreet1",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/sgate",
+      "kind": "exit",
+      "to": "/d/oldpine/road1",
+      "resolved": false,
+      "direction": "southeast"
+    },
+    {
+      "from": "/d/snow/sgate",
+      "kind": "exit",
+      "to": "/d/newcamp/gate",
+      "resolved": false,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/small_temple",
+      "kind": "exit",
+      "to": "/d/snow/nstreet1",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/smithy",
+      "kind": "exit",
+      "to": "/d/snow/square_s",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/smithy",
+      "kind": "object",
+      "to": "/d/snow/npc/smith",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/square",
+      "kind": "exit",
+      "to": "/d/snow/square_e",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/square",
+      "kind": "exit",
+      "to": "/d/snow/square_n",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/square",
+      "kind": "exit",
+      "to": "/d/snow/square_w",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/square",
+      "kind": "exit",
+      "to": "/d/snow/square_s",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/square",
+      "kind": "object",
+      "to": "/d/snow/npc/obj/pot",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/square",
+      "kind": "object",
+      "to": "/d/snow/npc/gammer",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/square",
+      "kind": "object",
+      "to": "/d/snow/npc/junkman",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/square_e",
+      "kind": "exit",
+      "to": "/d/snow/epath",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/square_e",
+      "kind": "exit",
+      "to": "/d/snow/square",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/square_n",
+      "kind": "exit",
+      "to": "/d/snow/nstreet1",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/square_n",
+      "kind": "exit",
+      "to": "/d/snow/square",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/square_n",
+      "kind": "object",
+      "to": "/d/snow/npc/child1",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/square_n",
+      "kind": "object",
+      "to": "/d/snow/npc/child2",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/square_s",
+      "kind": "exit",
+      "to": "/d/snow/square_sw",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/square_s",
+      "kind": "exit",
+      "to": "/d/snow/smithy",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/square_s",
+      "kind": "exit",
+      "to": "/d/snow/square",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/square_s",
+      "kind": "exit",
+      "to": "/d/snow/sstreet1",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/square_sw",
+      "kind": "exit",
+      "to": "/d/snow/wstreet1",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/square_sw",
+      "kind": "exit",
+      "to": "/d/snow/square_s",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/square_sw",
+      "kind": "exit",
+      "to": "/d/snow/square_w",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/square_w",
+      "kind": "exit",
+      "to": "/d/snow/square_sw",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/square_w",
+      "kind": "exit",
+      "to": "/d/snow/inn_hall",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/square_w",
+      "kind": "exit",
+      "to": "/d/snow/square",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/square_w",
+      "kind": "exit",
+      "to": "/d/snow/bug_room",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/square_w",
+      "kind": "object",
+      "to": "/d/snow/obj/stone",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/sstreet1",
+      "kind": "exit",
+      "to": "/d/snow/sgate",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/sstreet1",
+      "kind": "exit",
+      "to": "/d/snow/square_s",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/sstreet1",
+      "kind": "exit",
+      "to": "/d/snow/store",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/sstreet1",
+      "kind": "exit",
+      "to": "/d/snow/bazar",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/store",
+      "kind": "exit",
+      "to": "/d/snow/sstreet1",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/store",
+      "kind": "object",
+      "to": "/d/snow/npc/foreman",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/store",
+      "kind": "object",
+      "to": "/d/snow/npc/obj/wagon",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/store",
+      "kind": "object",
+      "to": "/d/snow/npc/obj/crate",
+      "resolved": true,
+      "count": 3
+    },
+    {
+      "from": "/d/snow/tree",
+      "kind": "exit",
+      "to": "/d/snow/square",
+      "resolved": true,
+      "direction": "down"
+    },
+    {
+      "from": "/d/snow/tree",
+      "kind": "object",
+      "to": "/d/snow/npc/child",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/wgate",
+      "kind": "exit",
+      "to": "/d/snow/wstreet3",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/wgate",
+      "kind": "exit",
+      "to": "/d/graveyard/grave1",
+      "resolved": false,
+      "direction": "northwest"
+    },
+    {
+      "from": "/d/snow/wstreet1",
+      "kind": "exit",
+      "to": "/d/snow/school",
+      "resolved": true,
+      "direction": "south"
+    },
+    {
+      "from": "/d/snow/wstreet1",
+      "kind": "exit",
+      "to": "/d/snow/square_sw",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/wstreet1",
+      "kind": "exit",
+      "to": "/d/snow/wstreet2",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/wstreet2",
+      "kind": "exit",
+      "to": "/d/snow/wstreet1",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/wstreet2",
+      "kind": "exit",
+      "to": "/d/snow/wstreet3",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/wstreet3",
+      "kind": "exit",
+      "to": "/d/snow/court",
+      "resolved": true,
+      "direction": "north"
+    },
+    {
+      "from": "/d/snow/wstreet3",
+      "kind": "exit",
+      "to": "/d/snow/wstreet2",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/wstreet3",
+      "kind": "exit",
+      "to": "/d/snow/wgate",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/obj/area/man",
+      "kind": "equipment",
+      "to": "/obj/area/obj/cloth",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/obj/area/man",
+      "kind": "equipment",
+      "to": "/obj/area/obj/shortsword",
+      "resolved": true,
+      "action": "wield"
+    },
+    {
+      "from": "/obj/area/traveller",
+      "kind": "equipment",
+      "to": "/obj/area/obj/cloth",
+      "resolved": true,
+      "action": "wear"
+    },
+    {
+      "from": "/obj/area/traveller",
+      "kind": "equipment",
+      "to": "/obj/area/obj/whip",
+      "resolved": true,
+      "action": "wield"
+    },
+    {
+      "from": "/obj/area/vagabond",
+      "kind": "equipment",
+      "to": "/obj/area/obj/knife",
+      "resolved": true,
+      "action": "wield"
+    },
+    {
+      "from": "/obj/block_robot",
+      "kind": "object",
+      "to": "/obj/spirit",
+      "resolved": true,
+      "count": 1
+    }
+  ],
+  "entities": {
+    "/adm/daemons/aliasd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/channeld": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/chard": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/chinesed": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/cmd_d": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/combatd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/daemond": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/emoted": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/enhanced": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/enterd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/fingerd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/httpd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/logind": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/natured": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/profiled": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/securityd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/smtpd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/userid": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/daemons/virtuald": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/guild/academy": {
+      "incoming": [
+        {
+          "from": "/adm/guild/guildhall",
+          "kind": "exit",
+          "to": "/adm/guild/academy",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/adm/guild/academy",
+          "kind": "exit",
+          "to": "/adm/guild/guildhall",
+          "resolved": true,
+          "direction": "west"
+        }
+      ]
+    },
+    "/adm/guild/guildhall": {
+      "incoming": [
+        {
+          "from": "/adm/guild/academy",
+          "kind": "exit",
+          "to": "/adm/guild/guildhall",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/adm/guild/meetingroom",
+          "kind": "exit",
+          "to": "/adm/guild/guildhall",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/adm/guild/portal",
+          "kind": "exit",
+          "to": "/adm/guild/guildhall",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/adm/guild/guildhall",
+          "kind": "exit",
+          "to": "/adm/guild/academy",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/adm/guild/guildhall",
+          "kind": "exit",
+          "to": "/adm/guild/portal",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/adm/guild/guildhall",
+          "kind": "exit",
+          "to": "/adm/guild/meetingroom",
+          "resolved": true,
+          "direction": "north"
+        }
+      ]
+    },
+    "/adm/guild/meetingroom": {
+      "incoming": [
+        {
+          "from": "/adm/guild/guildhall",
+          "kind": "exit",
+          "to": "/adm/guild/meetingroom",
+          "resolved": true,
+          "direction": "north"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/adm/guild/meetingroom",
+          "kind": "exit",
+          "to": "/adm/guild/guildhall",
+          "resolved": true,
+          "direction": "south"
+        }
+      ]
+    },
+    "/adm/guild/portal": {
+      "incoming": [
+        {
+          "from": "/adm/guild/guildhall",
+          "kind": "exit",
+          "to": "/adm/guild/portal",
+          "resolved": true,
+          "direction": "west"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/adm/guild/portal",
+          "kind": "exit",
+          "to": "/adm/guild/guildhall",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/adm/guild/portal",
+          "kind": "exit",
+          "to": "/d/snow/inn_hall",
+          "resolved": true,
+          "direction": "inn"
+        }
+      ]
+    },
+    "/adm/intermud/_gchannel": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/intermud/_mudlist": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/intermud/_ping": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/intermud/i2d": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/obj/mailbox": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/obj/master": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/obj/simul_efun": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/atoi": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/chinese": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/cursor": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/file": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/gender": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/message": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/object": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/path": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/utf8": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/adm/simul_efun/wizard": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/chpass": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/disassemble": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/dump": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/halt": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/profile": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/renew": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/resurrect": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/shutdown": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/adm/socket": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/callouts": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/chinese": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/cleanup": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/force": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/heal": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/overview": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/possess": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/promote": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/purge": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/reboot": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/reclaim": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/rehash": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/reset_okip": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/restore": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/arch/wizlock": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/cd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/edemote": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/goto": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/ls": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/mem": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/more": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/pwd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/status": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/where": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/imm/which": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/acquire": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/acupuncture": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/apprentice": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/ask": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/backstab": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/berserk": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/buy": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/cast": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/ccmd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/cestablish": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/charge": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/close": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/conjure": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/drink": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/drop": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/eat": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/emote": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/enter": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/exert": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/fight": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/fill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/follow": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/get": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/give": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/go": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/guard": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/halt": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/identify": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/ignore": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/kill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/lock": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/look": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/open": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/perform": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/put": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/remove": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/reply": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/say": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/search": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/shout": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/sneak": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/steal": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/study": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/suicide": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/team": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/tell": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/unlock": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/unwield": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/wear": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/whisper": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/std/wield": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/abandon": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/alias": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/backup": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/chfn": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/describe": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/disable": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/enable": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/estimate": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/finger": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/gain": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/help": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/hp": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/id": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/inventory": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/keep": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/localtime": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/nick": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/okip": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/option": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/order": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/passwd": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/praise": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/quit": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/save": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/score": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/semote": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/skills": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/time": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/to": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/tune": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/undescribe": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/uptime": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/version": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/visitor": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/who": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/wimpy": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/usr/wizlist": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/analyze": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/arrest": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/call": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/cat": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/clone": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/cost": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/cp": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/daemon": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/dest": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/edit": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/ff": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/home": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/ilist": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/info": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/invis": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/localcmds": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/log": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/mkdir": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/mudlist": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/mv": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/ping": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/qload": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/quiet": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/rm": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/rmdir": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/snoop": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/summon": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/tail": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/ulist": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/update": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/userid": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/cmds/wiz/whoami": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/bazar": {
+      "incoming": [
+        {
+          "from": "/d/snow/sstreet1",
+          "kind": "exit",
+          "to": "/d/snow/bazar",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/bazar",
+          "kind": "exit",
+          "to": "/d/snow/sstreet1",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/bazar",
+          "kind": "object",
+          "to": "/d/snow/npc/yu",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/bug_room": {
+      "incoming": [
+        {
+          "from": "/d/snow/square_w",
+          "kind": "exit",
+          "to": "/d/snow/bug_room",
+          "resolved": true,
+          "direction": "north"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/bug_room",
+          "kind": "exit",
+          "to": "/d/snow/square_w",
+          "resolved": true,
+          "direction": "south"
+        }
+      ]
+    },
+    "/d/snow/court": {
+      "incoming": [
+        {
+          "from": "/d/snow/wstreet3",
+          "kind": "exit",
+          "to": "/d/snow/court",
+          "resolved": true,
+          "direction": "north"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/court",
+          "kind": "exit",
+          "to": "/d/snow/wstreet3",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/court",
+          "kind": "object",
+          "to": "/d/snow/npc/oldman",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/ebridge": {
+      "incoming": [
+        {
+          "from": "/d/snow/npath3",
+          "kind": "exit",
+          "to": "/d/snow/ebridge",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/ebridge",
+          "kind": "exit",
+          "to": "/d/snow/npath3",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/ebridge",
+          "kind": "exit",
+          "to": "/d/snowkeep/entrance",
+          "resolved": false,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/ebridge",
+          "kind": "object",
+          "to": "/d/snow/npc/guard",
+          "resolved": true,
+          "count": 2
+        }
+      ]
+    },
+    "/d/snow/egate": {
+      "incoming": [
+        {
+          "from": "/d/snow/ruin1",
+          "kind": "exit",
+          "to": "/d/snow/egate",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/egate",
+          "kind": "exit",
+          "to": "/d/snow/ruin1",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/egate",
+          "kind": "exit",
+          "to": "/d/lee/r1",
+          "resolved": false,
+          "direction": "northeast"
+        }
+      ]
+    },
+    "/d/snow/epath": {
+      "incoming": [
+        {
+          "from": "/d/snow/herb_shop",
+          "kind": "exit",
+          "to": "/d/snow/epath",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/lane1",
+          "kind": "exit",
+          "to": "/d/snow/epath",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/square_e",
+          "kind": "exit",
+          "to": "/d/snow/epath",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/epath",
+          "kind": "exit",
+          "to": "/d/snow/lane1",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/epath",
+          "kind": "exit",
+          "to": "/d/snow/square_e",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/epath",
+          "kind": "exit",
+          "to": "/d/snow/herb_shop",
+          "resolved": true,
+          "direction": "south"
+        }
+      ]
+    },
+    "/d/snow/fireplace": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/d/snow/fireplace",
+          "kind": "exit",
+          "to": "/d/snow/inn_kitchen",
+          "resolved": true,
+          "direction": "out"
+        },
+        {
+          "from": "/d/snow/fireplace",
+          "kind": "object",
+          "to": "/d/snow/npc/obj/woodsword",
+          "resolved": true,
+          "count": 1
+        },
+        {
+          "from": "/d/snow/fireplace",
+          "kind": "object",
+          "to": "/d/snow/npc/obj/woodblade",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/herb_shop": {
+      "incoming": [
+        {
+          "from": "/d/snow/epath",
+          "kind": "exit",
+          "to": "/d/snow/herb_shop",
+          "resolved": true,
+          "direction": "south"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/herb_shop",
+          "kind": "exit",
+          "to": "/d/snow/epath",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/herb_shop",
+          "kind": "object",
+          "to": "/d/snow/npc/herbalist",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/inn_hall": {
+      "incoming": [
+        {
+          "from": "/adm/guild/portal",
+          "kind": "exit",
+          "to": "/d/snow/inn_hall",
+          "resolved": true,
+          "direction": "inn"
+        },
+        {
+          "from": "/d/snow/inn_kitchen",
+          "kind": "exit",
+          "to": "/d/snow/inn_hall",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/square_w",
+          "kind": "exit",
+          "to": "/d/snow/inn_hall",
+          "resolved": true,
+          "direction": "west"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/inn_hall",
+          "kind": "exit",
+          "to": "/d/snow/inn_kitchen",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/inn_hall",
+          "kind": "exit",
+          "to": "/d/snow/square_w",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/inn_hall",
+          "kind": "object",
+          "to": "/d/snow/npc/waiter",
+          "resolved": true,
+          "count": 1
+        },
+        {
+          "from": "/d/snow/inn_hall",
+          "kind": "object",
+          "to": "/d/snow/npc/innkeeper",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/inn_kitchen": {
+      "incoming": [
+        {
+          "from": "/d/snow/fireplace",
+          "kind": "exit",
+          "to": "/d/snow/inn_kitchen",
+          "resolved": true,
+          "direction": "out"
+        },
+        {
+          "from": "/d/snow/inn_hall",
+          "kind": "exit",
+          "to": "/d/snow/inn_kitchen",
+          "resolved": true,
+          "direction": "west"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/inn_kitchen",
+          "kind": "exit",
+          "to": "/d/snow/inn_hall",
+          "resolved": true,
+          "direction": "east"
+        }
+      ]
+    },
+    "/d/snow/inn_staff_room": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/kitchen": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/d/snow/kitchen",
+          "kind": "object",
+          "to": "/obj/food/dumpling",
+          "resolved": true,
+          "count": 2
+        }
+      ]
+    },
+    "/d/snow/lane1": {
+      "incoming": [
+        {
+          "from": "/d/snow/epath",
+          "kind": "exit",
+          "to": "/d/snow/lane1",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/lane2",
+          "kind": "exit",
+          "to": "/d/snow/lane1",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/ruin1",
+          "kind": "exit",
+          "to": "/d/snow/lane1",
+          "resolved": true,
+          "direction": "west"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/lane1",
+          "kind": "exit",
+          "to": "/d/snow/lane2",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/lane1",
+          "kind": "exit",
+          "to": "/d/snow/epath",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/lane1",
+          "kind": "exit",
+          "to": "/d/snow/ruin1",
+          "resolved": true,
+          "direction": "east"
+        }
+      ]
+    },
+    "/d/snow/lane2": {
+      "incoming": [
+        {
+          "from": "/d/snow/lane1",
+          "kind": "exit",
+          "to": "/d/snow/lane2",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/mill",
+          "kind": "exit",
+          "to": "/d/snow/lane2",
+          "resolved": true,
+          "direction": "out"
+        },
+        {
+          "from": "/d/snow/npath3",
+          "kind": "exit",
+          "to": "/d/snow/lane2",
+          "resolved": true,
+          "direction": "south"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/lane2",
+          "kind": "exit",
+          "to": "/d/snow/lane1",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/lane2",
+          "kind": "exit",
+          "to": "/d/snow/npath3",
+          "resolved": true,
+          "direction": "north"
+        }
+      ]
+    },
+    "/d/snow/mill": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/d/snow/mill",
+          "kind": "exit",
+          "to": "/d/snow/lane2",
+          "resolved": true,
+          "direction": "out"
+        },
+        {
+          "from": "/d/snow/mill",
+          "kind": "object",
+          "to": "/d/snow/npc/miller",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/ngate": {
+      "incoming": [
+        {
+          "from": "/d/snow/nstreet2",
+          "kind": "exit",
+          "to": "/d/snow/ngate",
+          "resolved": true,
+          "direction": "north"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/ngate",
+          "kind": "exit",
+          "to": "/d/snow/nstreet2",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/ngate",
+          "kind": "exit",
+          "to": "/d/goat/sroad1",
+          "resolved": false,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/ngate",
+          "kind": "object",
+          "to": "/d/snow/npc/garrison",
+          "resolved": true,
+          "count": 4
+        },
+        {
+          "from": "/d/snow/ngate",
+          "kind": "object",
+          "to": "/d/snow/npc/lieutenant",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/npath1": {
+      "incoming": [
+        {
+          "from": "/d/snow/npath2",
+          "kind": "exit",
+          "to": "/d/snow/npath1",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/nstreet2",
+          "kind": "exit",
+          "to": "/d/snow/npath1",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npath1",
+          "kind": "exit",
+          "to": "/d/snow/npath2",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/npath1",
+          "kind": "exit",
+          "to": "/d/snow/nstreet2",
+          "resolved": true,
+          "direction": "west"
+        }
+      ]
+    },
+    "/d/snow/npath2": {
+      "incoming": [
+        {
+          "from": "/d/snow/npath1",
+          "kind": "exit",
+          "to": "/d/snow/npath2",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/npath3",
+          "kind": "exit",
+          "to": "/d/snow/npath2",
+          "resolved": true,
+          "direction": "northwest"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npath2",
+          "kind": "exit",
+          "to": "/d/snow/npath3",
+          "resolved": true,
+          "direction": "southeast"
+        },
+        {
+          "from": "/d/snow/npath2",
+          "kind": "exit",
+          "to": "/d/snow/npath1",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/npath2",
+          "kind": "exit",
+          "to": "/d/month/a1",
+          "resolved": false,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/npath2",
+          "kind": "object",
+          "to": "/d/snow/npc/woman",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/npath3": {
+      "incoming": [
+        {
+          "from": "/d/snow/ebridge",
+          "kind": "exit",
+          "to": "/d/snow/npath3",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/lane2",
+          "kind": "exit",
+          "to": "/d/snow/npath3",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/npath2",
+          "kind": "exit",
+          "to": "/d/snow/npath3",
+          "resolved": true,
+          "direction": "southeast"
+        },
+        {
+          "from": "/d/snow/river1",
+          "kind": "exit",
+          "to": "/d/snow/npath3",
+          "resolved": true,
+          "direction": "south"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npath3",
+          "kind": "exit",
+          "to": "/d/snow/river1",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/npath3",
+          "kind": "exit",
+          "to": "/d/snow/lane2",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/npath3",
+          "kind": "exit",
+          "to": "/d/snow/npath2",
+          "resolved": true,
+          "direction": "northwest"
+        },
+        {
+          "from": "/d/snow/npath3",
+          "kind": "exit",
+          "to": "/d/snow/ebridge",
+          "resolved": true,
+          "direction": "east"
+        }
+      ]
+    },
+    "/d/snow/npc/alchemist": {
+      "incoming": [
+        {
+          "from": "/d/snow/school",
+          "kind": "object",
+          "to": "/d/snow/npc/alchemist",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/alchemist",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/silversword",
+          "resolved": true,
+          "action": "wield"
+        },
+        {
+          "from": "/d/snow/npc/alchemist",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/d/snow/npc/alchemist",
+          "kind": "skill_map",
+          "to": "dragon force",
+          "resolved": false,
+          "base": "force"
+        }
+      ]
+    },
+    "/d/snow/npc/child": {
+      "incoming": [
+        {
+          "from": "/d/snow/tree",
+          "kind": "object",
+          "to": "/d/snow/npc/child",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/child",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/blue_cloth",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/d/snow/npc/child",
+          "kind": "equipment",
+          "to": "/obj/area/obj/dagger",
+          "resolved": true,
+          "action": "wield"
+        },
+        {
+          "from": "/d/snow/npc/child",
+          "kind": "skill_map",
+          "to": "lightswift",
+          "resolved": false,
+          "base": "dodge"
+        }
+      ]
+    },
+    "/d/snow/npc/child1": {
+      "incoming": [
+        {
+          "from": "/d/snow/square_n",
+          "kind": "object",
+          "to": "/d/snow/npc/child1",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/child1",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/tummy_cover",
+          "resolved": true,
+          "action": "wear"
+        }
+      ]
+    },
+    "/d/snow/npc/child2": {
+      "incoming": [
+        {
+          "from": "/d/snow/square_n",
+          "kind": "object",
+          "to": "/d/snow/npc/child2",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/child2",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/woodsword",
+          "resolved": true,
+          "action": "wield"
+        }
+      ]
+    },
+    "/d/snow/npc/child3": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/child3",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/tummy_cover",
+          "resolved": true,
+          "action": "wear"
+        }
+      ]
+    },
+    "/d/snow/npc/child4": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/child4",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/tummy_cover",
+          "resolved": true,
+          "action": "wear"
+        }
+      ]
+    },
+    "/d/snow/npc/foreman": {
+      "incoming": [
+        {
+          "from": "/d/snow/store",
+          "kind": "object",
+          "to": "/d/snow/npc/foreman",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/gammer": {
+      "incoming": [
+        {
+          "from": "/d/snow/square",
+          "kind": "object",
+          "to": "/d/snow/npc/gammer",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/gammer",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/d/snow/npc/gammer",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/cane",
+          "resolved": true,
+          "action": "wield"
+        },
+        {
+          "from": "/d/snow/npc/gammer",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/syndicator",
+          "resolved": true,
+          "action": "wield"
+        },
+        {
+          "from": "/d/snow/npc/gammer",
+          "kind": "skill_map",
+          "to": "regular force",
+          "resolved": false,
+          "base": "force"
+        }
+      ]
+    },
+    "/d/snow/npc/garrison": {
+      "incoming": [
+        {
+          "from": "/d/snow/ngate",
+          "kind": "object",
+          "to": "/d/snow/npc/garrison",
+          "resolved": true,
+          "count": 4
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/girl": {
+      "incoming": [
+        {
+          "from": "/d/snow/ruin2",
+          "kind": "object",
+          "to": "/d/snow/npc/girl",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/girl",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/white_dress",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/d/snow/npc/girl",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/slasher_sword",
+          "resolved": true,
+          "action": "wield"
+        },
+        {
+          "from": "/d/snow/npc/girl",
+          "kind": "skill_map",
+          "to": "celestial force",
+          "resolved": false,
+          "base": "force"
+        }
+      ]
+    },
+    "/d/snow/npc/guard": {
+      "incoming": [
+        {
+          "from": "/d/snow/ebridge",
+          "kind": "object",
+          "to": "/d/snow/npc/guard",
+          "resolved": true,
+          "count": 2
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/herbalist": {
+      "incoming": [
+        {
+          "from": "/d/snow/herb_shop",
+          "kind": "object",
+          "to": "/d/snow/npc/herbalist",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/herbalist",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/d/snow/npc/herbalist",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/fur_hat",
+          "resolved": true,
+          "action": "wear"
+        }
+      ]
+    },
+    "/d/snow/npc/innkeeper": {
+      "incoming": [
+        {
+          "from": "/d/snow/inn_hall",
+          "kind": "object",
+          "to": "/d/snow/npc/innkeeper",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/junkman": {
+      "incoming": [
+        {
+          "from": "/d/snow/square",
+          "kind": "object",
+          "to": "/d/snow/npc/junkman",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/lieutenant": {
+      "incoming": [
+        {
+          "from": "/d/snow/ngate",
+          "kind": "object",
+          "to": "/d/snow/npc/lieutenant",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/lieutenant",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/leather_armor",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/d/snow/npc/lieutenant",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/helmet",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/d/snow/npc/lieutenant",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/clothboot",
+          "resolved": true,
+          "action": "wear"
+        }
+      ]
+    },
+    "/d/snow/npc/miller": {
+      "incoming": [
+        {
+          "from": "/d/snow/mill",
+          "kind": "object",
+          "to": "/d/snow/npc/miller",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/miller",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        }
+      ]
+    },
+    "/d/snow/npc/obj/arrow": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/blue_cloth": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/child",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/blue_cloth",
+          "resolved": true,
+          "action": "wear"
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/blue_jacket": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/yu",
+          "kind": "merchandise",
+          "to": "/d/snow/npc/obj/blue_jacket",
+          "resolved": true,
+          "stock": 5
+        },
+        {
+          "from": "/d/snow/npc/yu",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/blue_jacket",
+          "resolved": true,
+          "action": "wear"
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/broadsword": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/cane": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/gammer",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/cane",
+          "resolved": true,
+          "action": "wield"
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/clothboot": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/lieutenant",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/clothboot",
+          "resolved": true,
+          "action": "wear"
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/coin": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/comb": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/crate": {
+      "incoming": [
+        {
+          "from": "/d/snow/store",
+          "kind": "object",
+          "to": "/d/snow/npc/obj/crate",
+          "resolved": true,
+          "count": 3
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/fur_hat": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/herbalist",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/fur_hat",
+          "resolved": true,
+          "action": "wear"
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/hairpin": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/helmet": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/lieutenant",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/helmet",
+          "resolved": true,
+          "action": "wear"
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/hoe": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/smith",
+          "kind": "merchandise",
+          "to": "/d/snow/npc/obj/hoe",
+          "resolved": true,
+          "stock": 3
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/invitation": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/leather_armor": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/lieutenant",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/leather_armor",
+          "resolved": true,
+          "action": "wear"
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/note": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/pot": {
+      "incoming": [
+        {
+          "from": "/d/snow/square",
+          "kind": "object",
+          "to": "/d/snow/npc/obj/pot",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/roast_chicken": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/waiter",
+          "kind": "merchandise",
+          "to": "/d/snow/npc/obj/roast_chicken",
+          "resolved": true,
+          "stock": 30
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/shovel": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/smith",
+          "kind": "merchandise",
+          "to": "/d/snow/npc/obj/shovel",
+          "resolved": true,
+          "stock": 5
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/silversword": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/alchemist",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/silversword",
+          "resolved": true,
+          "action": "wield"
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/slasher_sword": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/girl",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/slasher_sword",
+          "resolved": true,
+          "action": "wield"
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/smock": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/smith",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/smock",
+          "resolved": true,
+          "action": "wear"
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/syndicator": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/gammer",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/syndicator",
+          "resolved": true,
+          "action": "wield"
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/tummy_cover": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/child1",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/tummy_cover",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/d/snow/npc/child3",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/tummy_cover",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/d/snow/npc/child4",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/tummy_cover",
+          "resolved": true,
+          "action": "wear"
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/wagon": {
+      "incoming": [
+        {
+          "from": "/d/snow/store",
+          "kind": "object",
+          "to": "/d/snow/npc/obj/wagon",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/white_dress": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/girl",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/white_dress",
+          "resolved": true,
+          "action": "wear"
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/wine_pot": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/woodblade": {
+      "incoming": [
+        {
+          "from": "/d/snow/fireplace",
+          "kind": "object",
+          "to": "/d/snow/npc/obj/woodblade",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/obj/woodsword": {
+      "incoming": [
+        {
+          "from": "/d/snow/fireplace",
+          "kind": "object",
+          "to": "/d/snow/npc/obj/woodsword",
+          "resolved": true,
+          "count": 1
+        },
+        {
+          "from": "/d/snow/npc/child2",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/woodsword",
+          "resolved": true,
+          "action": "wield"
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/oldman": {
+      "incoming": [
+        {
+          "from": "/d/snow/court",
+          "kind": "object",
+          "to": "/d/snow/npc/oldman",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/oldman",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/d/snow/npc/oldman",
+          "kind": "equipment",
+          "to": "/obj/area/obj/shortsword",
+          "resolved": true,
+          "action": "wield"
+        }
+      ]
+    },
+    "/d/snow/npc/patrol": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/smith": {
+      "incoming": [
+        {
+          "from": "/d/snow/smithy",
+          "kind": "object",
+          "to": "/d/snow/npc/smith",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/smith",
+          "kind": "merchandise",
+          "to": "/d/snow/npc/obj/hoe",
+          "resolved": true,
+          "stock": 3
+        },
+        {
+          "from": "/d/snow/npc/smith",
+          "kind": "merchandise",
+          "to": "/d/snow/npc/obj/shovel",
+          "resolved": true,
+          "stock": 5
+        },
+        {
+          "from": "/d/snow/npc/smith",
+          "kind": "merchandise",
+          "to": "/obj/area/obj/dagger",
+          "resolved": true,
+          "stock": 10
+        },
+        {
+          "from": "/d/snow/npc/smith",
+          "kind": "merchandise",
+          "to": "/obj/area/obj/shortsword",
+          "resolved": true,
+          "stock": 5
+        },
+        {
+          "from": "/d/snow/npc/smith",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/smock",
+          "resolved": true,
+          "action": "wear"
+        }
+      ]
+    },
+    "/d/snow/npc/teacher": {
+      "incoming": [
+        {
+          "from": "/d/snow/school",
+          "kind": "object",
+          "to": "/d/snow/npc/teacher",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/npc/waiter": {
+      "incoming": [
+        {
+          "from": "/d/snow/inn_hall",
+          "kind": "object",
+          "to": "/d/snow/npc/waiter",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/waiter",
+          "kind": "merchandise",
+          "to": "/obj/food/dumpling",
+          "resolved": true,
+          "stock": 50
+        },
+        {
+          "from": "/d/snow/npc/waiter",
+          "kind": "merchandise",
+          "to": "/obj/food/manto",
+          "resolved": true,
+          "stock": 50
+        },
+        {
+          "from": "/d/snow/npc/waiter",
+          "kind": "merchandise",
+          "to": "/obj/food/pork",
+          "resolved": true,
+          "stock": 30
+        },
+        {
+          "from": "/d/snow/npc/waiter",
+          "kind": "merchandise",
+          "to": "/d/snow/npc/obj/roast_chicken",
+          "resolved": true,
+          "stock": 30
+        }
+      ]
+    },
+    "/d/snow/npc/woman": {
+      "incoming": [
+        {
+          "from": "/d/snow/npath2",
+          "kind": "object",
+          "to": "/d/snow/npc/woman",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/woman",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        }
+      ]
+    },
+    "/d/snow/npc/yu": {
+      "incoming": [
+        {
+          "from": "/d/snow/bazar",
+          "kind": "object",
+          "to": "/d/snow/npc/yu",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/yu",
+          "kind": "merchandise",
+          "to": "/d/snow/npc/obj/blue_jacket",
+          "resolved": true,
+          "stock": 5
+        },
+        {
+          "from": "/d/snow/npc/yu",
+          "kind": "merchandise",
+          "to": "/obj/armor/fur_hat",
+          "resolved": true,
+          "stock": 5
+        },
+        {
+          "from": "/d/snow/npc/yu",
+          "kind": "merchandise",
+          "to": "/obj/bottle",
+          "resolved": true,
+          "stock": 5
+        },
+        {
+          "from": "/d/snow/npc/yu",
+          "kind": "equipment",
+          "to": "/d/snow/npc/obj/blue_jacket",
+          "resolved": true,
+          "action": "wear"
+        }
+      ]
+    },
+    "/d/snow/nstreet1": {
+      "incoming": [
+        {
+          "from": "/d/snow/nstreet2",
+          "kind": "exit",
+          "to": "/d/snow/nstreet1",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/small_temple",
+          "kind": "exit",
+          "to": "/d/snow/nstreet1",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/square_n",
+          "kind": "exit",
+          "to": "/d/snow/nstreet1",
+          "resolved": true,
+          "direction": "north"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/nstreet1",
+          "kind": "exit",
+          "to": "/d/snow/square_n",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/nstreet1",
+          "kind": "exit",
+          "to": "/d/snow/nstreet2",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/nstreet1",
+          "kind": "exit",
+          "to": "/d/snow/small_temple",
+          "resolved": true,
+          "direction": "east"
+        }
+      ]
+    },
+    "/d/snow/nstreet2": {
+      "incoming": [
+        {
+          "from": "/d/snow/ngate",
+          "kind": "exit",
+          "to": "/d/snow/nstreet2",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/npath1",
+          "kind": "exit",
+          "to": "/d/snow/nstreet2",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/nstreet1",
+          "kind": "exit",
+          "to": "/d/snow/nstreet2",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/post_office",
+          "kind": "exit",
+          "to": "/d/snow/nstreet2",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/nstreet2",
+          "kind": "exit",
+          "to": "/d/snow/post_office",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/nstreet2",
+          "kind": "exit",
+          "to": "/d/snow/npath1",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/nstreet2",
+          "kind": "exit",
+          "to": "/d/snow/nstreet1",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/nstreet2",
+          "kind": "exit",
+          "to": "/d/snow/ngate",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/nstreet2",
+          "kind": "object",
+          "to": "/obj/area/man",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/obj/basic_book": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/obj/literate_book": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/obj/stone": {
+      "incoming": [
+        {
+          "from": "/d/snow/square_w",
+          "kind": "object",
+          "to": "/d/snow/obj/stone",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/post_office": {
+      "incoming": [
+        {
+          "from": "/d/snow/nstreet2",
+          "kind": "exit",
+          "to": "/d/snow/post_office",
+          "resolved": true,
+          "direction": "west"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/post_office",
+          "kind": "exit",
+          "to": "/d/snow/nstreet2",
+          "resolved": true,
+          "direction": "east"
+        }
+      ]
+    },
+    "/d/snow/river1": {
+      "incoming": [
+        {
+          "from": "/d/snow/npath3",
+          "kind": "exit",
+          "to": "/d/snow/river1",
+          "resolved": true,
+          "direction": "north"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/river1",
+          "kind": "exit",
+          "to": "/d/snow/npath3",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/river1",
+          "kind": "exit",
+          "to": "/d/chixiao/river2",
+          "resolved": false,
+          "direction": "north"
+        }
+      ]
+    },
+    "/d/snow/riverbank": {
+      "incoming": [
+        {
+          "from": "/d/snow/ruin2",
+          "kind": "exit",
+          "to": "/d/snow/riverbank",
+          "resolved": true,
+          "direction": "north"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/riverbank",
+          "kind": "exit",
+          "to": "/d/snow/ruin2",
+          "resolved": true,
+          "direction": "south"
+        }
+      ]
+    },
+    "/d/snow/ruin1": {
+      "incoming": [
+        {
+          "from": "/d/snow/egate",
+          "kind": "exit",
+          "to": "/d/snow/ruin1",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/lane1",
+          "kind": "exit",
+          "to": "/d/snow/ruin1",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/ruin1",
+          "kind": "exit",
+          "to": "/d/snow/lane1",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/ruin1",
+          "kind": "exit",
+          "to": "/d/snow/egate",
+          "resolved": true,
+          "direction": "east"
+        }
+      ]
+    },
+    "/d/snow/ruin2": {
+      "incoming": [
+        {
+          "from": "/d/snow/riverbank",
+          "kind": "exit",
+          "to": "/d/snow/ruin2",
+          "resolved": true,
+          "direction": "south"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/ruin2",
+          "kind": "exit",
+          "to": "/d/snow/riverbank",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/ruin2",
+          "kind": "object",
+          "to": "/d/snow/npc/girl",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/school": {
+      "incoming": [
+        {
+          "from": "/d/snow/wstreet1",
+          "kind": "exit",
+          "to": "/d/snow/school",
+          "resolved": true,
+          "direction": "south"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/school",
+          "kind": "exit",
+          "to": "/d/snow/wstreet1",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/school",
+          "kind": "object",
+          "to": "/d/snow/npc/teacher",
+          "resolved": true,
+          "count": 1
+        },
+        {
+          "from": "/d/snow/school",
+          "kind": "object",
+          "to": "/d/snow/npc/alchemist",
+          "resolved": true,
+          "count": 1
+        },
+        {
+          "from": "/d/snow/school",
+          "kind": "object",
+          "to": "/d/snow/npc/child3.c",
+          "resolved": false,
+          "count": 2
+        }
+      ]
+    },
+    "/d/snow/sgate": {
+      "incoming": [
+        {
+          "from": "/d/snow/sstreet1",
+          "kind": "exit",
+          "to": "/d/snow/sgate",
+          "resolved": true,
+          "direction": "south"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/sgate",
+          "kind": "exit",
+          "to": "/d/snow/sstreet1",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/sgate",
+          "kind": "exit",
+          "to": "/d/oldpine/road1",
+          "resolved": false,
+          "direction": "southeast"
+        },
+        {
+          "from": "/d/snow/sgate",
+          "kind": "exit",
+          "to": "/d/newcamp/gate",
+          "resolved": false,
+          "direction": "west"
+        }
+      ]
+    },
+    "/d/snow/skill/dragon_force": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/small_temple": {
+      "incoming": [
+        {
+          "from": "/d/snow/nstreet1",
+          "kind": "exit",
+          "to": "/d/snow/small_temple",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/small_temple",
+          "kind": "exit",
+          "to": "/d/snow/nstreet1",
+          "resolved": true,
+          "direction": "west"
+        }
+      ]
+    },
+    "/d/snow/smithy": {
+      "incoming": [
+        {
+          "from": "/d/snow/square_s",
+          "kind": "exit",
+          "to": "/d/snow/smithy",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/smithy",
+          "kind": "exit",
+          "to": "/d/snow/square_s",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/smithy",
+          "kind": "object",
+          "to": "/d/snow/npc/smith",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/square": {
+      "incoming": [
+        {
+          "from": "/d/snow/square_e",
+          "kind": "exit",
+          "to": "/d/snow/square",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/square_n",
+          "kind": "exit",
+          "to": "/d/snow/square",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/square_s",
+          "kind": "exit",
+          "to": "/d/snow/square",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/square_w",
+          "kind": "exit",
+          "to": "/d/snow/square",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/tree",
+          "kind": "exit",
+          "to": "/d/snow/square",
+          "resolved": true,
+          "direction": "down"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/square",
+          "kind": "exit",
+          "to": "/d/snow/square_e",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/square",
+          "kind": "exit",
+          "to": "/d/snow/square_n",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/square",
+          "kind": "exit",
+          "to": "/d/snow/square_w",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/square",
+          "kind": "exit",
+          "to": "/d/snow/square_s",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/square",
+          "kind": "object",
+          "to": "/d/snow/npc/obj/pot",
+          "resolved": true,
+          "count": 1
+        },
+        {
+          "from": "/d/snow/square",
+          "kind": "object",
+          "to": "/d/snow/npc/gammer",
+          "resolved": true,
+          "count": 1
+        },
+        {
+          "from": "/d/snow/square",
+          "kind": "object",
+          "to": "/d/snow/npc/junkman",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/square_e": {
+      "incoming": [
+        {
+          "from": "/d/snow/epath",
+          "kind": "exit",
+          "to": "/d/snow/square_e",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/square",
+          "kind": "exit",
+          "to": "/d/snow/square_e",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/square_e",
+          "kind": "exit",
+          "to": "/d/snow/epath",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/square_e",
+          "kind": "exit",
+          "to": "/d/snow/square",
+          "resolved": true,
+          "direction": "west"
+        }
+      ]
+    },
+    "/d/snow/square_n": {
+      "incoming": [
+        {
+          "from": "/d/snow/nstreet1",
+          "kind": "exit",
+          "to": "/d/snow/square_n",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/square",
+          "kind": "exit",
+          "to": "/d/snow/square_n",
+          "resolved": true,
+          "direction": "north"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/square_n",
+          "kind": "exit",
+          "to": "/d/snow/nstreet1",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/square_n",
+          "kind": "exit",
+          "to": "/d/snow/square",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/square_n",
+          "kind": "object",
+          "to": "/d/snow/npc/child1",
+          "resolved": true,
+          "count": 1
+        },
+        {
+          "from": "/d/snow/square_n",
+          "kind": "object",
+          "to": "/d/snow/npc/child2",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/square_s": {
+      "incoming": [
+        {
+          "from": "/d/snow/smithy",
+          "kind": "exit",
+          "to": "/d/snow/square_s",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/square",
+          "kind": "exit",
+          "to": "/d/snow/square_s",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/square_sw",
+          "kind": "exit",
+          "to": "/d/snow/square_s",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/sstreet1",
+          "kind": "exit",
+          "to": "/d/snow/square_s",
+          "resolved": true,
+          "direction": "north"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/square_s",
+          "kind": "exit",
+          "to": "/d/snow/square_sw",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/square_s",
+          "kind": "exit",
+          "to": "/d/snow/smithy",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/square_s",
+          "kind": "exit",
+          "to": "/d/snow/square",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/square_s",
+          "kind": "exit",
+          "to": "/d/snow/sstreet1",
+          "resolved": true,
+          "direction": "south"
+        }
+      ]
+    },
+    "/d/snow/square_sw": {
+      "incoming": [
+        {
+          "from": "/d/snow/square_s",
+          "kind": "exit",
+          "to": "/d/snow/square_sw",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/square_w",
+          "kind": "exit",
+          "to": "/d/snow/square_sw",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/wstreet1",
+          "kind": "exit",
+          "to": "/d/snow/square_sw",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/square_sw",
+          "kind": "exit",
+          "to": "/d/snow/wstreet1",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/square_sw",
+          "kind": "exit",
+          "to": "/d/snow/square_s",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/square_sw",
+          "kind": "exit",
+          "to": "/d/snow/square_w",
+          "resolved": true,
+          "direction": "north"
+        }
+      ]
+    },
+    "/d/snow/square_w": {
+      "incoming": [
+        {
+          "from": "/d/snow/bug_room",
+          "kind": "exit",
+          "to": "/d/snow/square_w",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/inn_hall",
+          "kind": "exit",
+          "to": "/d/snow/square_w",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/square",
+          "kind": "exit",
+          "to": "/d/snow/square_w",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/square_sw",
+          "kind": "exit",
+          "to": "/d/snow/square_w",
+          "resolved": true,
+          "direction": "north"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/square_w",
+          "kind": "exit",
+          "to": "/d/snow/square_sw",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/square_w",
+          "kind": "exit",
+          "to": "/d/snow/inn_hall",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/square_w",
+          "kind": "exit",
+          "to": "/d/snow/square",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/square_w",
+          "kind": "exit",
+          "to": "/d/snow/bug_room",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/square_w",
+          "kind": "object",
+          "to": "/d/snow/obj/stone",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/sstreet1": {
+      "incoming": [
+        {
+          "from": "/d/snow/bazar",
+          "kind": "exit",
+          "to": "/d/snow/sstreet1",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/sgate",
+          "kind": "exit",
+          "to": "/d/snow/sstreet1",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/square_s",
+          "kind": "exit",
+          "to": "/d/snow/sstreet1",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/store",
+          "kind": "exit",
+          "to": "/d/snow/sstreet1",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/sstreet1",
+          "kind": "exit",
+          "to": "/d/snow/sgate",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/sstreet1",
+          "kind": "exit",
+          "to": "/d/snow/square_s",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/sstreet1",
+          "kind": "exit",
+          "to": "/d/snow/store",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/sstreet1",
+          "kind": "exit",
+          "to": "/d/snow/bazar",
+          "resolved": true,
+          "direction": "east"
+        }
+      ]
+    },
+    "/d/snow/store": {
+      "incoming": [
+        {
+          "from": "/d/snow/sstreet1",
+          "kind": "exit",
+          "to": "/d/snow/store",
+          "resolved": true,
+          "direction": "west"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/store",
+          "kind": "exit",
+          "to": "/d/snow/sstreet1",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/store",
+          "kind": "object",
+          "to": "/d/snow/npc/foreman",
+          "resolved": true,
+          "count": 1
+        },
+        {
+          "from": "/d/snow/store",
+          "kind": "object",
+          "to": "/d/snow/npc/obj/wagon",
+          "resolved": true,
+          "count": 1
+        },
+        {
+          "from": "/d/snow/store",
+          "kind": "object",
+          "to": "/d/snow/npc/obj/crate",
+          "resolved": true,
+          "count": 3
+        }
+      ]
+    },
+    "/d/snow/tree": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/d/snow/tree",
+          "kind": "exit",
+          "to": "/d/snow/square",
+          "resolved": true,
+          "direction": "down"
+        },
+        {
+          "from": "/d/snow/tree",
+          "kind": "object",
+          "to": "/d/snow/npc/child",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/wgate": {
+      "incoming": [
+        {
+          "from": "/d/snow/wstreet3",
+          "kind": "exit",
+          "to": "/d/snow/wgate",
+          "resolved": true,
+          "direction": "west"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/wgate",
+          "kind": "exit",
+          "to": "/d/snow/wstreet3",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/wgate",
+          "kind": "exit",
+          "to": "/d/graveyard/grave1",
+          "resolved": false,
+          "direction": "northwest"
+        }
+      ]
+    },
+    "/d/snow/wstreet1": {
+      "incoming": [
+        {
+          "from": "/d/snow/school",
+          "kind": "exit",
+          "to": "/d/snow/wstreet1",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/square_sw",
+          "kind": "exit",
+          "to": "/d/snow/wstreet1",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/wstreet2",
+          "kind": "exit",
+          "to": "/d/snow/wstreet1",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/wstreet1",
+          "kind": "exit",
+          "to": "/d/snow/school",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/wstreet1",
+          "kind": "exit",
+          "to": "/d/snow/square_sw",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/wstreet1",
+          "kind": "exit",
+          "to": "/d/snow/wstreet2",
+          "resolved": true,
+          "direction": "west"
+        }
+      ]
+    },
+    "/d/snow/wstreet2": {
+      "incoming": [
+        {
+          "from": "/d/snow/wstreet1",
+          "kind": "exit",
+          "to": "/d/snow/wstreet2",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/wstreet3",
+          "kind": "exit",
+          "to": "/d/snow/wstreet2",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/wstreet2",
+          "kind": "exit",
+          "to": "/d/snow/wstreet1",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/wstreet2",
+          "kind": "exit",
+          "to": "/d/snow/wstreet3",
+          "resolved": true,
+          "direction": "west"
+        }
+      ]
+    },
+    "/d/snow/wstreet3": {
+      "incoming": [
+        {
+          "from": "/d/snow/court",
+          "kind": "exit",
+          "to": "/d/snow/wstreet3",
+          "resolved": true,
+          "direction": "south"
+        },
+        {
+          "from": "/d/snow/wgate",
+          "kind": "exit",
+          "to": "/d/snow/wstreet3",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/wstreet2",
+          "kind": "exit",
+          "to": "/d/snow/wstreet3",
+          "resolved": true,
+          "direction": "west"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/wstreet3",
+          "kind": "exit",
+          "to": "/d/snow/court",
+          "resolved": true,
+          "direction": "north"
+        },
+        {
+          "from": "/d/snow/wstreet3",
+          "kind": "exit",
+          "to": "/d/snow/wstreet2",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/wstreet3",
+          "kind": "exit",
+          "to": "/d/snow/wgate",
+          "resolved": true,
+          "direction": "west"
+        }
+      ]
+    },
+    "/daemon/board/bug_board": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/class/commoner": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/class/fighter": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/condition/drunk": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/condition/poison": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/misc/traveler": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/race/avatar": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/race/human": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/skill/sword": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/skill/unarmed": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/daemon/virtual/field": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/armor": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/cloth": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/feet_eq": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/finger_eq": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/hand_eq": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/head_eq": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/leg_eq": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/neck_eq": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/armor/waist_eq": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/attribute": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/action": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/attack": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/combat": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/command": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/condition": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/finance": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/message": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/relation": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/score": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/skill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/team": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/clean_up": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/dbase": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/drink": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/equip": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/food": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/move": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/name": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/bandit": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/currency": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/fighter": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/scholar": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/soldier": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/traveler": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/vendor": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/villager": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/save": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/statistic": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/study": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/unique": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/user/alias": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/user/autoload": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/user/edit": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/user/flag": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/user/input": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/user/more": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/axe": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/blade": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/blunt": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/dagger": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/needle": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/pike": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/staff": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/sword": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/whip": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/action.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/ansi.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/armor.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/attack.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/attribute.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/char.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/combat.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/command.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/condition.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/daemon.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/dbase.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/dbase_security.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/explore.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/function.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/globals.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/help.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/html.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/http.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/intermud.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/localtime.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/login.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/move.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/mudlib.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/name.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/npc.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/obj.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/origin.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/race.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/reboot.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/room.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/runtime_config.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/score.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/skill.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/socket_err.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/statistic.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/team.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/type.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/user.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/include/weapon.h": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/man": {
+      "incoming": [
+        {
+          "from": "/d/snow/nstreet2",
+          "kind": "object",
+          "to": "/obj/area/man",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/obj/area/man",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/obj/area/man",
+          "kind": "equipment",
+          "to": "/obj/area/obj/shortsword",
+          "resolved": true,
+          "action": "wield"
+        }
+      ]
+    },
+    "/obj/area/obj/axe": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/bag": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/bastardsword": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/belt": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/blade": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/broadaxe": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/broadsword": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/cloth": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/alchemist",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/d/snow/npc/gammer",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/d/snow/npc/herbalist",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/d/snow/npc/miller",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/d/snow/npc/oldman",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/d/snow/npc/woman",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/obj/area/man",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/obj/area/traveller",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        }
+      ],
+      "outgoing": []
+    },
+    "/obj/area/obj/curved_blade": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/dagger": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/child",
+          "kind": "equipment",
+          "to": "/obj/area/obj/dagger",
+          "resolved": true,
+          "action": "wield"
+        },
+        {
+          "from": "/d/snow/npc/smith",
+          "kind": "merchandise",
+          "to": "/obj/area/obj/dagger",
+          "resolved": true,
+          "stock": 10
+        }
+      ],
+      "outgoing": []
+    },
+    "/obj/area/obj/dice": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/glaive": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/greatsword": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/knife": {
+      "incoming": [
+        {
+          "from": "/obj/area/vagabond",
+          "kind": "equipment",
+          "to": "/obj/area/obj/knife",
+          "resolved": true,
+          "action": "wield"
+        }
+      ],
+      "outgoing": []
+    },
+    "/obj/area/obj/kris": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/leather_boot": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/leather_whip": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/longsword": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/pen": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/pike": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/robe": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/rod": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/shortsword": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/oldman",
+          "kind": "equipment",
+          "to": "/obj/area/obj/shortsword",
+          "resolved": true,
+          "action": "wield"
+        },
+        {
+          "from": "/d/snow/npc/smith",
+          "kind": "merchandise",
+          "to": "/obj/area/obj/shortsword",
+          "resolved": true,
+          "stock": 5
+        },
+        {
+          "from": "/obj/area/man",
+          "kind": "equipment",
+          "to": "/obj/area/obj/shortsword",
+          "resolved": true,
+          "action": "wield"
+        }
+      ],
+      "outgoing": []
+    },
+    "/obj/area/obj/weirblade": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/obj/whip": {
+      "incoming": [
+        {
+          "from": "/obj/area/traveller",
+          "kind": "equipment",
+          "to": "/obj/area/obj/whip",
+          "resolved": true,
+          "action": "wield"
+        }
+      ],
+      "outgoing": []
+    },
+    "/obj/area/obj/woodsword": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/area/traveller": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/obj/area/traveller",
+          "kind": "equipment",
+          "to": "/obj/area/obj/cloth",
+          "resolved": true,
+          "action": "wear"
+        },
+        {
+          "from": "/obj/area/traveller",
+          "kind": "equipment",
+          "to": "/obj/area/obj/whip",
+          "resolved": true,
+          "action": "wield"
+        }
+      ]
+    },
+    "/obj/area/vagabond": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/obj/area/vagabond",
+          "kind": "equipment",
+          "to": "/obj/area/obj/knife",
+          "resolved": true,
+          "action": "wield"
+        }
+      ]
+    },
+    "/obj/armor/cloth": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/armor/fur_hat": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/yu",
+          "kind": "merchandise",
+          "to": "/obj/armor/fur_hat",
+          "resolved": true,
+          "stock": 5
+        }
+      ],
+      "outgoing": []
+    },
+    "/obj/bankbond": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/block": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/block_robot": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/obj/block_robot",
+          "kind": "object",
+          "to": "/obj/spirit",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/obj/bottle": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/yu",
+          "kind": "merchandise",
+          "to": "/obj/bottle",
+          "resolved": true,
+          "stock": 5
+        }
+      ],
+      "outgoing": []
+    },
+    "/obj/clan_symbol": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/cloth": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/corpse": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/drug/black_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/drug/boar_berry": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/drug/dragon_saliva": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/drug/flower_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/drug/gray_mushroom": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/drug/wild_ginseng": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/dust": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/example/army": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/example/es2_bottle": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/example/infantry": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/example/skill/fonxansword": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/example/weapon/longsword": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/example/weapon/shortsword": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/food/dumpling": {
+      "incoming": [
+        {
+          "from": "/d/snow/kitchen",
+          "kind": "object",
+          "to": "/obj/food/dumpling",
+          "resolved": true,
+          "count": 2
+        },
+        {
+          "from": "/d/snow/npc/waiter",
+          "kind": "merchandise",
+          "to": "/obj/food/dumpling",
+          "resolved": true,
+          "stock": 50
+        }
+      ],
+      "outgoing": []
+    },
+    "/obj/food/manto": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/waiter",
+          "kind": "merchandise",
+          "to": "/obj/food/manto",
+          "resolved": true,
+          "stock": 50
+        }
+      ],
+      "outgoing": []
+    },
+    "/obj/food/mooncake": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/food/pork": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/waiter",
+          "kind": "merchandise",
+          "to": "/obj/food/pork",
+          "resolved": true,
+          "stock": 30
+        }
+      ],
+      "outgoing": []
+    },
+    "/obj/food/ricedough": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/http": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/login": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/magic": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/map": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/aquapill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/black_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/green_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/major_heal_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/minor_heal_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/mix_recipe": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/mjp_1": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/mjp_2": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/mjp_3": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/alchemist/refresh_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/black_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/boar_berry": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/dragon_saliva": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/flower_pill": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/gray_mushroom": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/medication/wild_ginseng": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/money/coin": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/money/gold": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/money/silver": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/npc/death_black": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/npc/death_white": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/npc/demogorgon": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/npc/garrison": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/obj/firework": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/obj/ghostbaby": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/reagent/cinnabar": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/reagent/crane_dye": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/reagent/medlar": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/reagent/strychin": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/roommaker": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/spirit": {
+      "incoming": [
+        {
+          "from": "/obj/block_robot",
+          "kind": "object",
+          "to": "/obj/spirit",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": []
+    },
+    "/obj/user": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/void": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/water": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/bboard": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/char": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/char/npc": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/condition": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/item": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/item/combined": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/item/container": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/item/liquid": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/item/pharmacy": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/item/reagent": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/money": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/race/humanoid": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room/bank": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room/hockshop": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room/hockshop_storage": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room/inn": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room/journey": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room/obj/pawn_stamp": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/room/temple": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/skill": {
+      "incoming": [],
+      "outgoing": []
+    }
+  }
+}

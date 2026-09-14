@@ -1,0 +1,51 @@
+{
+  "nodes": [
+    {
+      "id": "/d/snow/a",
+      "label": "A",
+      "manual_review": [],
+      "doors": []
+    },
+    {
+      "id": "/d/snow/b",
+      "label": "B",
+      "manual_review": [],
+      "doors": []
+    },
+    {
+      "id": "/d/snow/doorroom",
+      "label": "門房",
+      "manual_review": [
+        "door"
+      ],
+      "doors": [
+        {
+          "direction": "west",
+          "name": "木門",
+          "other_side": "east",
+          "state": "DOOR_CLOSED"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "from": "/d/snow/a",
+      "to": "/d/snow/b",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/b",
+      "to": "/d/snow/a",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/doorroom",
+      "to": "/d/snow/a",
+      "direction": "west",
+      "resolved": true
+    }
+  ]
+}

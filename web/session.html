@@ -1,0 +1,8 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ES2 Session Capture</title><link rel="stylesheet" href="/styles.css"></head><body>
+<header><h1>ES2 WebMUD · Session Capture</h1><div><a href="/">遊戲</a> · <a href="/replay.html">Replay</a> · <a href="/evidence.html">Evidence</a></div> · <a href="/acceptance.html">Acceptance</a> · <a href="/multiplayer.html">Multiplayer</a></header>
+<main>
+<div class="card"><b>本機 Session Recorder</b><p>瀏覽器連線時會把 command 與其後原生 response 配對保存。資料只留在目前頁面記憶體，除非你主動匯出。</p>
+<p><button id="exportJsonl">匯出 JSONL</button> <button id="exportManifest">匯出 Manifest</button> <button id="clear">清空本頁紀錄</button></p>
+<pre id="summary"></pre></div>
+<div class="card"><b>Coverage</b><div id="coverage"></div></div>
+</main><script type="module" src="/session_page.js"></script></body></html>

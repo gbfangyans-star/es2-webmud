@@ -1,0 +1,28 @@
+# tests/test_efuns/CMakeLists.txt
+
+add_executable(test_efuns
+    test_c_str.cpp
+    test_efuns.cpp
+    test_curl.cpp
+    test_envsubst.cpp
+    test_file.cpp
+    test_json.cpp
+    test_replace_string.cpp
+    test_sscanf.cpp
+    test_strsrch.cpp
+)
+target_link_libraries(test_efuns PRIVATE stem GTest::gtest_main)
+
+# setup testing data
+# (the default working directory is ${CMAKE_CURRENT_BINARY_DIR} when running tests)
+add_custom_command(TARGET test_efuns POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/examples/m3_mudlib ${CMAKE_CURRENT_BINARY_DIR}/m3_mudlib
+    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/examples/m3.conf ${CMAKE_CURRENT_BINARY_DIR}
+)
+
+gtest_discover_tests(test_efuns
+    PROPERTIES
+        LABELS "EFUNS"
+    DISCOVERY_TIMEOUT 20
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+)

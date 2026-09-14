@@ -1,0 +1,119 @@
+{
+  "schema": 1,
+  "version": "3.20.76",
+  "generated": "2026-09-11T14:43:29",
+  "livePassed": [
+    "two real accounts simultaneously logged in",
+    "bidirectional tell resilience",
+    "concurrent per-character save integrity",
+    "abrupt disconnect and reconnect",
+    "same-room mutual visibility",
+    "same-room say broadcast",
+    "team handshake and team list",
+    "team-scoped chat",
+    "follow through operator-selected canonical exit",
+    "shared-room broadcast after interaction",
+    "canonical no-fight room rule consistently applied to two players addressing the same NPC"
+  ],
+  "freshness": {
+    "transport/session-isolation": {
+      "fresh": false,
+      "liveEvidenceRecorded": true,
+      "implementationUnchanged": false,
+      "recorded": "4285235bb4d5c91f28c75359745bdeb0690b338076d3d166a9118b24dd479818",
+      "current": "cb51eea576757d11a43eb34641831e4fcc8c4f7c8d39c0f043dcb697dd094413",
+      "sourceComplete": true
+    },
+    "login/tell/save/reconnect": {
+      "fresh": false,
+      "liveEvidenceRecorded": true,
+      "implementationUnchanged": false,
+      "recorded": "e35911c7fbde3bc97ff677bffd425cc6d1ff308063032f2af11f5754165fc5ef",
+      "current": "7936c97713fa4e8f0f3831e0e6e7e591be11f0e2ed49de358b5ea7018db9b59b",
+      "sourceComplete": true
+    },
+    "same-room/say/team/follow": {
+      "fresh": false,
+      "liveEvidenceRecorded": true,
+      "implementationUnchanged": false,
+      "recorded": "0dd34d02491f38cc79bebc15fb96a0e6c4ac85e02ebc535a7854c9418b4ab757",
+      "current": "69d65f2656b667bfac0e11523ac5feeda1c5894aebed2078b5b0f7e635f5833a",
+      "sourceComplete": true
+    },
+    "shared-world/object-ownership": {
+      "fresh": false,
+      "liveEvidenceRecorded": false,
+      "implementationUnchanged": true,
+      "recorded": "7c3e4eb14786ed4d00e63fb1318a45e76a1b7d9ba8450aba1936504624802aa5",
+      "current": "7c3e4eb14786ed4d00e63fb1318a45e76a1b7d9ba8450aba1936504624802aa5",
+      "sourceComplete": true
+    },
+    "mutual-player-fight": {
+      "fresh": false,
+      "liveEvidenceRecorded": false,
+      "implementationUnchanged": false,
+      "recorded": "4ef05b1037b8a78e094fbe8d1e4f4ff7ba62dc9ad1e2174801dbcb873e2398d3",
+      "current": "33fa9b5e53b2b4c7a74b0dd6b74eb1897c07a051158168d5cb5b0bec863a8262",
+      "sourceComplete": true
+    },
+    "death/corpse/revival": {
+      "fresh": false,
+      "liveEvidenceRecorded": false,
+      "implementationUnchanged": false,
+      "recorded": "8ae4403573a6c61148fda4224554d3d00f8803918ba9c35d03539a2c53f30b94",
+      "current": "2d0d0561659bd5659b9d8551aa23273662a9fdbfc14501ca583eb1a2d926372e",
+      "sourceComplete": true
+    }
+  },
+  "nextSteps": [
+    {
+      "priority": 1,
+      "gate": "mutual player fight in a canonical combat-allowed room",
+      "mode": "ASSISTED LIVE",
+      "launcher": "CHECK_MULTIPLAYER_PVP_FIGHT_LIVE.bat",
+      "risk": "LOW",
+      "reason": "Uses canonical mutual-consent fight only; never kill."
+    },
+    {
+      "priority": 2,
+      "gate": "single-owner ground-item contention using a real visible item",
+      "mode": "ASSISTED LIVE",
+      "launcher": "CHECK_MULTIPLAYER_SHARED_WORLD.bat",
+      "risk": "LOW",
+      "reason": "Uses one already-present canonical ground item; no spawning."
+    },
+    {
+      "priority": 3,
+      "gate": "server restart persistence with both test characters offline before snapshot",
+      "mode": "ASSISTED LIVE",
+      "launcher": "CHECK_RESTART_BEFORE.bat -> restart -> CHECK_RESTART_AFTER.bat",
+      "risk": "LOW",
+      "reason": "Read-only hash comparison after explicit save/logout."
+    },
+    {
+      "priority": 4,
+      "gate": "guard relation when canonical level requirement is met",
+      "mode": "ASSISTED LIVE",
+      "launcher": "CHECK_MULTIPLAYER_ROOM.bat",
+      "risk": "LOW",
+      "reason": "Conditional only; never levels a character for testing."
+    },
+    {
+      "priority": 90,
+      "gate": "live death/corpse/revival",
+      "mode": "WITHHELD",
+      "launcher": null,
+      "risk": "DESTRUCTIVE",
+      "reason": "Requires explicitly approved disposable scenario."
+    },
+    {
+      "priority": 100,
+      "gate": "live kill/PK",
+      "mode": "WITHHELD",
+      "launcher": null,
+      "risk": "DESTRUCTIVE",
+      "reason": "Not required for low-risk multiplayer certification."
+    }
+  ],
+  "rule": "A static audit or fresh fingerprint never creates a live PASS; only prior real Windows/Neolith evidence can do that."
+}

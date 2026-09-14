@@ -1,0 +1,17 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ES2 Runtime Acceptance</title><link rel="stylesheet" href="/styles.css"></head><body>
+<header><h1>ES2 WebMUD · Runtime Acceptance</h1><div><a href="/">遊戲</a> · <a href="/session.html">Session</a> · <a href="/replay.html">Replay</a> · <a href="/evidence.html">Evidence</a></div> · <a href="/multiplayer.html">Multiplayer</a></header>
+<main>
+<div class="card"><b>最終實機驗收矩陣</b><p>正式完成前，除了 score/hp/skills/inventory/look/movement coverage，還要求真正觀測到 combat、昏迷、甦醒、死亡與重新連線。</p>
+<pre>score
+hp
+skills
+inventory
+look
+movement
+combat
+unconscious
+revive
+death
+reconnect</pre></div>
+<div class="card"><b>判定邊界</b><p class="muted">movement coverage 不代表移動成功；combat/lifecycle/reconnect 只有 canonical 原生訊息被捕獲才會 PASS。</p></div>
+</main></body></html>

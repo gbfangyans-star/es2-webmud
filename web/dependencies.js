@@ -1,0 +1,4 @@
+const $=s=>document.querySelector(s);let graph={edges:[],unresolved:[]};
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function init(){graph=await fetch('/api/dependency').then(r=>r.json());render();$('#unresolved').textContent=JSON.stringify(graph.unresolved,null,2)}
+function render(){const q=$('#q').value.toLowerCase();$('#list').innerHTML='';for(const e of graph.edges.filter(x=>!q||JSON.stringify(x).toLowerCase().includes(q)).slice(0,3000)){const b=document.createElement('button');b.className='roomitem';b.innerHTML='<b>'+esc(e.kind)+'</b><br><small>'+esc(e.from)+' → '+esc(e.to)+'</small>';b.onclick=()=>{$('#title').textContent=e.kind;$('#detail').textContent=JSON.stringify(e,null,2)};$('#list').appendChild(b)}}$('#q').oninput=render;init();

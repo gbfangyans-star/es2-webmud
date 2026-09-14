@@ -1,0 +1,84 @@
+{
+  "domains": [
+    {
+      "domain": "(core)",
+      "total": 7,
+      "counts": {
+        "feature": 2,
+        "item": 3,
+        "npc": 1,
+        "prototype": 1
+      },
+      "manual_review": 1,
+      "interactive_hooks": 0
+    },
+    {
+      "domain": "snow",
+      "total": 9,
+      "counts": {
+        "item": 1,
+        "npc": 3,
+        "room": 3,
+        "skill": 2
+      },
+      "manual_review": 3,
+      "interactive_hooks": 4
+    }
+  ],
+  "orphans": {
+    "npc": [
+      "/d/snow/npc/fighter_test",
+      "/d/snow/npc/vendor_test",
+      "/feature/npc/vendor"
+    ],
+    "item": [
+      "/obj/armor/cloth",
+      "/obj/armor/fur_hat",
+      "/std/item/container"
+    ],
+    "skill": []
+  },
+  "interaction_hotspots": [
+    {
+      "path": "/d/snow/npc/vendor_test",
+      "type": "npc",
+      "name": "商人",
+      "score": 2,
+      "actions": 1,
+      "callouts": 1,
+      "doors": 0,
+      "accept_hooks": 0,
+      "manual_review": true
+    },
+    {
+      "path": "/d/snow/doorroom",
+      "type": "room",
+      "name": "門房",
+      "score": 1,
+      "actions": 0,
+      "callouts": 0,
+      "doors": 1,
+      "accept_hooks": 0,
+      "manual_review": true
+    },
+    {
+      "path": "/d/snow/npc/x",
+      "type": "npc",
+      "name": "測試者",
+      "score": 1,
+      "actions": 1,
+      "callouts": 0,
+      "doors": 0,
+      "accept_hooks": 0,
+      "manual_review": true
+    }
+  ],
+  "stats": {
+    "domains": 2,
+    "orphan_npcs": 3,
+    "orphan_items": 3,
+    "orphan_skills": 0,
+    "interactive_entities": 3
+  },
+  "note": "Orphan results are structural hints only. Dynamic clone/load/inheritance references may not be statically visible."
+}

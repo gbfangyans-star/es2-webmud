@@ -1,0 +1,137 @@
+{
+  "version": "3.19.5",
+  "scope": "remaining multiplayer live-test design audit",
+  "ok": true,
+  "checks": [
+    {
+      "name": "launcher:CHECK_MULTIPLAYER_COMBAT.bat",
+      "ok": true,
+      "detail": "static-only; expects audit_multiplayer_v310.py"
+    },
+    {
+      "name": "launcher:CHECK_MULTIPLAYER_DEATH.bat",
+      "ok": true,
+      "detail": "static-only; expects audit_multiplayer_v311.py"
+    },
+    {
+      "name": "launcher:CHECK_MULTIPLAYER_ROOM.bat",
+      "ok": true,
+      "detail": "live; expects live_multiplayer_room_acceptance.py"
+    },
+    {
+      "name": "launcher:CHECK_MULTIPLAYER_SHARED_WORLD.bat",
+      "ok": true,
+      "detail": "live; expects live_multiplayer_sharedworld.py"
+    },
+    {
+      "name": "launcher:CHECK_MULTIPLAYER_RESILIENCE.bat",
+      "ok": true,
+      "detail": "live; expects live_multiplayer_resilience.py"
+    },
+    {
+      "name": "launcher:CHECK_RESTART_BEFORE.bat",
+      "ok": true,
+      "detail": "assisted; expects restart_recovery_snapshot.py before"
+    },
+    {
+      "name": "launcher:CHECK_RESTART_AFTER.bat",
+      "ok": true,
+      "detail": "assisted; expects restart_recovery_snapshot.py after"
+    },
+    {
+      "name": "launcher:CHECK_MULTIPLAYER_COMBAT_LIVE.bat",
+      "ok": true,
+      "detail": "assisted; expects live_multiplayer_combat_acceptance.py"
+    },
+    {
+      "name": "launcher:CHECK_MULTIPLAYER_PVP_FIGHT_LIVE.bat",
+      "ok": true,
+      "detail": "assisted; expects live_multiplayer_pvp_fight.py"
+    },
+    {
+      "name": "launcher:CHECK_MULTIPLAYER_OFFLINE.bat",
+      "ok": true,
+      "detail": "offline; expects multiplayer_offline_gate.py"
+    },
+    {
+      "name": "non_destructive:tools/live_multiplayer_room_acceptance.py",
+      "ok": true,
+      "detail": "no automated kill/spawn/teleport/destruct commands"
+    },
+    {
+      "name": "non_destructive:tools/live_multiplayer_sharedworld.py",
+      "ok": true,
+      "detail": "no automated kill/spawn/teleport/destruct commands"
+    },
+    {
+      "name": "non_destructive:tools/live_multiplayer_resilience.py",
+      "ok": true,
+      "detail": "no automated kill/spawn/teleport/destruct commands"
+    },
+    {
+      "name": "sharedworld_optional_item",
+      "ok": true,
+      "detail": "ground item probe is operator-optional"
+    },
+    {
+      "name": "sharedworld_optional_npc",
+      "ok": true,
+      "detail": "NPC probe is operator-optional"
+    },
+    {
+      "name": "guard_is_conditional",
+      "ok": true,
+      "detail": "low-level guard rejection cannot fail room acceptance"
+    },
+    {
+      "name": "timeouts:tools/live_multiplayer_room_acceptance.py",
+      "ok": true,
+      "detail": "finite connection/wait timeout present"
+    },
+    {
+      "name": "timeouts:tools/live_multiplayer_sharedworld.py",
+      "ok": true,
+      "detail": "finite connection/wait timeout present"
+    },
+    {
+      "name": "timeouts:tools/live_multiplayer_resilience.py",
+      "ok": true,
+      "detail": "finite connection/wait timeout present"
+    },
+    {
+      "name": "timeouts:tools/live_multiplayer_combat_acceptance.py",
+      "ok": true,
+      "detail": "finite connection/wait timeout present"
+    },
+    {
+      "name": "timeouts:tools/live_multiplayer_pvp_fight.py",
+      "ok": true,
+      "detail": "finite connection/wait timeout present"
+    },
+    {
+      "name": "restart_version_dynamic",
+      "ok": true,
+      "detail": "restart reports use current VERSION file"
+    },
+    {
+      "name": "combat_requires_confirmation",
+      "ok": true,
+      "detail": "risky NPC fight requires explicit operator confirmation; tool-issued kill is absent"
+    },
+    {
+      "name": "combat_cleanup_halt",
+      "ok": true,
+      "detail": "both test characters are halted after probe"
+    },
+    {
+      "name": "pvp_requires_mutual_consent",
+      "ok": true,
+      "detail": "preferred live combat gate uses mutual player fight and never kill"
+    },
+    {
+      "name": "offline_gate_no_live_claim",
+      "ok": true,
+      "detail": "offline gate cannot masquerade as real Windows/Neolith acceptance"
+    }
+  ]
+}

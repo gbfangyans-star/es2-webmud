@@ -1,0 +1,14 @@
+{
+  "version": "v3.20.45",
+  "milestone": "Old Pine source-level content freeze",
+  "status": "PASS",
+  "rooms": "41/41",
+  "five_walkers": "PASS",
+  "live_neolith_telnet": "PENDING",
+  "compatibility_backlog": [
+    "spy:black_cloth",
+    "maniac:necromancy",
+    "venomsnake:snake_poison",
+    "parrybook:F_STUDY_adapter"
+  ]
+}

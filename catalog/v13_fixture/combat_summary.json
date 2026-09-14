@@ -1,0 +1,9 @@
+{
+  "equipment": 2,
+  "combat_npcs": 3,
+  "combat_core_files": 4,
+  "wear_slots": {
+    "cloth": 1,
+    "head_eq": 1
+  }
+}

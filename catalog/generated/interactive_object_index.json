@@ -1,0 +1,1277 @@
+[
+  {
+    "path": "/adm/daemons/userid",
+    "type": "daemon",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [],
+    "callouts": [
+      {
+        "function": "timeout",
+        "delay": 60
+      }
+    ],
+    "doors": [],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/adm/intermud/i2d",
+    "type": "other",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [],
+    "callouts": [
+      {
+        "function": "startup",
+        "delay": 1
+      }
+    ],
+    "doors": [],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/adm/obj/mailbox",
+    "type": "item",
+    "name": "信札",
+    "actions": [
+      {
+        "handler": "do_mail",
+        "verb": "mail"
+      },
+      {
+        "handler": "do_forward",
+        "verb": "forward"
+      },
+      {
+        "handler": "do_from",
+        "verb": "from"
+      },
+      {
+        "handler": "do_read",
+        "verb": "read"
+      },
+      {
+        "handler": "do_discard",
+        "verb": "discard"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [
+      {
+        "function": "retire",
+        "delay": 0
+      }
+    ],
+    "doors": [],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/cmds/std/fight",
+    "type": "command",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/std/fill",
+    "type": "command",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/std/give",
+    "type": "command",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/std/kill",
+    "type": "command",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [
+      "accept_kill"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/std/put",
+    "type": "command",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/std/steal",
+    "type": "command",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [
+      "accept_kill"
+    ],
+    "callouts": [
+      {
+        "function": "compelete_steal",
+        "delay": 3
+      }
+    ],
+    "doors": [],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/epath",
+    "type": "room",
+    "name": "僻靜小巷",
+    "actions": [
+      {
+        "handler": "do_climb",
+        "verb": "climb"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/inn_hall",
+    "type": "room",
+    "name": "客棧大堂",
+    "actions": [],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [
+      {
+        "direction": "east",
+        "name": "客棧大門",
+        "other_side": "west",
+        "state": "DOOR_CLOSED"
+      }
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/kitchen",
+    "type": "room",
+    "name": "廚房",
+    "actions": [
+      {
+        "handler": "do_climb",
+        "verb": "climb"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/lane2",
+    "type": "room",
+    "name": "溪邊小路",
+    "actions": [
+      {
+        "handler": "do_enter",
+        "verb": "enter"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/child",
+    "type": "npc",
+    "name": "阿寶",
+    "actions": [],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/child1",
+    "type": "npc",
+    "name": "小孩",
+    "actions": [],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child2",
+    "type": "npc",
+    "name": "小孩",
+    "actions": [],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child3",
+    "type": "npc",
+    "name": "小孩",
+    "actions": [],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child4",
+    "type": "npc",
+    "name": "小孩",
+    "actions": [],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/foreman",
+    "type": "npc",
+    "name": "工頭",
+    "actions": [],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/gammer",
+    "type": "npc",
+    "name": "瞎眼老太婆",
+    "actions": [],
+    "accept_hooks": [
+      "accept_object",
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/garrison",
+    "type": "npc",
+    "name": "官兵",
+    "actions": [
+      {
+        "handler": "intercept",
+        "verb": "go"
+      }
+    ],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/girl",
+    "type": "npc",
+    "name": "白衣女子",
+    "actions": [],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/guard",
+    "type": "npc",
+    "name": "青衣漢子",
+    "actions": [
+      {
+        "handler": "do_go",
+        "verb": "go"
+      }
+    ],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/herbalist",
+    "type": "npc",
+    "name": "藥鋪掌櫃",
+    "actions": [
+      {
+        "handler": "do_vendor_list",
+        "verb": "list"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/innkeeper",
+    "type": "npc",
+    "name": "掌櫃",
+    "actions": [],
+    "accept_hooks": [
+      "accept_fight",
+      "accept_kill"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/junkman",
+    "type": "npc",
+    "name": "拾荒老頭",
+    "actions": [],
+    "accept_hooks": [
+      "accept_object",
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/lieutenant",
+    "type": "npc",
+    "name": "武官",
+    "actions": [
+      {
+        "handler": "intercept",
+        "verb": "go"
+      }
+    ],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/obj/crate",
+    "type": "npc",
+    "name": "大木箱",
+    "actions": [
+      {
+        "handler": "do_get",
+        "verb": "get"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/obj/pot",
+    "type": "npc",
+    "name": "大水缸",
+    "actions": [],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/wagon",
+    "type": "npc",
+    "name": "運貨驢車",
+    "actions": [
+      {
+        "handler": "do_load",
+        "verb": "load"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/obj/wine_pot",
+    "type": "npc",
+    "name": "大酒缸",
+    "actions": [],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/patrol",
+    "type": "npc",
+    "name": "巡邏官兵",
+    "actions": [],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/smith",
+    "type": "npc",
+    "name": "鐵匠",
+    "actions": [
+      {
+        "handler": "do_vendor_list",
+        "verb": "list"
+      }
+    ],
+    "accept_hooks": [
+      "accept_object",
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/teacher",
+    "type": "npc",
+    "name": "王懷芝",
+    "actions": [
+      {
+        "handler": "do_sit",
+        "verb": "sit"
+      }
+    ],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/waiter",
+    "type": "npc",
+    "name": "店小二",
+    "actions": [
+      {
+        "handler": "do_vendor_list",
+        "verb": "list"
+      }
+    ],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/yu",
+    "type": "npc",
+    "name": "魚天",
+    "actions": [
+      {
+        "handler": "do_vendor_list",
+        "verb": "list"
+      }
+    ],
+    "accept_hooks": [
+      "accept_object",
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/obj/stone",
+    "type": "item",
+    "name": null,
+    "actions": [
+      {
+        "handler": "do_touch",
+        "verb": "touch"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/post_office",
+    "type": "room",
+    "name": "雪亭驛",
+    "actions": [
+      {
+        "handler": "do_request",
+        "verb": "request"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/ruin1",
+    "type": "room",
+    "name": "破舊大宅",
+    "actions": [
+      {
+        "handler": "do_climb",
+        "verb": "climb"
+      },
+      {
+        "handler": "do_search",
+        "verb": "search"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/ruin2",
+    "type": "room",
+    "name": "破舊大宅正廳",
+    "actions": [
+      {
+        "handler": "do_climb",
+        "verb": "climb"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/square",
+    "type": "room",
+    "name": "廣場中央",
+    "actions": [
+      {
+        "handler": "do_climb",
+        "verb": "climb"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/square_w",
+    "type": "room",
+    "name": "廣場",
+    "actions": [],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [
+      {
+        "direction": "west",
+        "name": "客棧大門",
+        "other_side": "east",
+        "state": "DOOR_CLOSED"
+      }
+    ],
+    "manual_review": [
+      "door"
+    ]
+  },
+  {
+    "path": "/feature/char/combat",
+    "type": "feature",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [],
+    "callouts": [
+      {
+        "function": "lose_fight",
+        "delay": 0
+      }
+    ],
+    "doors": [],
+    "manual_review": [
+      "damage_logic",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/feature/char/command",
+    "type": "feature",
+    "name": null,
+    "actions": [
+      {
+        "handler": "cmd_quit",
+        "verb": "quit"
+      },
+      {
+        "handler": "cmd_update",
+        "verb": "update"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/feature/npc/bandit",
+    "type": "npc",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [
+      "accept_fight",
+      "accept_kill"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/fighter",
+    "type": "npc",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [
+      "accept_fight",
+      "accept_kill"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/scholar",
+    "type": "npc",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [
+      "accept_fight",
+      "accept_kill"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/soldier",
+    "type": "npc",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [
+      "accept_fight",
+      "accept_kill"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/villager",
+    "type": "npc",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [
+      "accept_fight",
+      "accept_kill"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/bag",
+    "type": "item",
+    "name": "麻布袋",
+    "actions": [],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/traveller",
+    "type": "item",
+    "name": "過路客",
+    "actions": [],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/block",
+    "type": "item",
+    "name": "綠島",
+    "actions": [],
+    "accept_hooks": [],
+    "callouts": [
+      {
+        "function": "green",
+        "delay": 2
+      }
+    ],
+    "doors": [],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/obj/block_robot",
+    "type": "item",
+    "name": "機器人島",
+    "actions": [
+      {
+        "handler": "do_quit",
+        "verb": "quit"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/obj/bottle",
+    "type": "item",
+    "name": "玻璃瓶",
+    "actions": [],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/clan_symbol",
+    "type": "item",
+    "name": null,
+    "actions": [
+      {
+        "handler": "help",
+        "verb": "help"
+      },
+      {
+        "handler": "info",
+        "verb": "info"
+      },
+      {
+        "handler": "do_members",
+        "verb": "clans"
+      },
+      {
+        "handler": "do_chat",
+        "verb": "clan"
+      },
+      {
+        "handler": "do_chat_emote",
+        "verb": "clan*"
+      },
+      {
+        "handler": "do_clan_set",
+        "verb": "clan_set"
+      },
+      {
+        "handler": "do_clan_reset",
+        "verb": "clan_reset"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/obj/dust",
+    "type": "item",
+    "name": "化屍粉",
+    "actions": [
+      {
+        "handler": "do_dissolve",
+        "verb": "dissolve"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/obj/example/es2_bottle",
+    "type": "item",
+    "name": "精緻玻璃瓶",
+    "actions": [],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/map",
+    "type": "item",
+    "name": "地圖",
+    "actions": [
+      {
+        "handler": "do_read",
+        "verb": "read"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/obj/npc/demogorgon",
+    "type": "npc",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [],
+    "callouts": [
+      {
+        "function": "countdown",
+        "delay": 240
+      },
+      {
+        "function": "countdown",
+        "delay": 49
+      },
+      {
+        "function": "countdown",
+        "delay": 1
+      },
+      {
+        "function": "do_shutdown",
+        "delay": 2
+      }
+    ],
+    "doors": [],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/obj/npc/garrison",
+    "type": "npc",
+    "name": "官兵",
+    "actions": [],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/obj/firework",
+    "type": "item",
+    "name": "煙火",
+    "actions": [
+      {
+        "handler": "do_light",
+        "verb": "light_firework"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/obj/roommaker",
+    "type": "item",
+    "name": "空房間",
+    "actions": [
+      {
+        "handler": "do_mkroom",
+        "verb": "mkroom"
+      },
+      {
+        "handler": "do_rset",
+        "verb": "rset"
+      },
+      {
+        "handler": "do_connect",
+        "verb": "connect"
+      },
+      {
+        "handler": "do_saveroom",
+        "verb": "saveroom"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/obj/spirit",
+    "type": "item",
+    "name": "小精靈",
+    "actions": [
+      {
+        "handler": "set_question",
+        "verb": "setq"
+      },
+      {
+        "handler": "set_answer",
+        "verb": "seta"
+      },
+      {
+        "handler": "about_robot",
+        "verb": "about"
+      },
+      {
+        "handler": "robot_help",
+        "verb": "help"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/std/bboard",
+    "type": "item",
+    "name": null,
+    "actions": [
+      {
+        "handler": "do_help",
+        "verb": "help"
+      },
+      {
+        "handler": "do_post",
+        "verb": "post"
+      },
+      {
+        "handler": "do_read",
+        "verb": "read"
+      },
+      {
+        "handler": "do_discard",
+        "verb": "discard"
+      },
+      {
+        "handler": "do_save_article",
+        "verb": "save"
+      },
+      {
+        "handler": "do_followup",
+        "verb": "followup"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/std/char",
+    "type": "skill",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [],
+    "callouts": [
+      {
+        "function": "revive",
+        "delay": 60
+      }
+    ],
+    "doors": [],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/std/item/combined",
+    "type": "item",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [],
+    "callouts": [
+      {
+        "function": "destruct_me",
+        "delay": 0
+      }
+    ],
+    "doors": [],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/std/item/container",
+    "type": "item",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  },
+  {
+    "path": "/std/room",
+    "type": "prototype",
+    "name": null,
+    "actions": [],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [
+      {
+        "direction": "north",
+        "name": "木門",
+        "other_side": "south",
+        "state": "DOOR_CLOSED"
+      }
+    ],
+    "manual_review": [
+      "door"
+    ]
+  },
+  {
+    "path": "/std/room/bank",
+    "type": "prototype",
+    "name": null,
+    "actions": [
+      {
+        "handler": "do_convert",
+        "verb": "convert"
+      },
+      {
+        "handler": "do_deposit",
+        "verb": "deposit"
+      },
+      {
+        "handler": "do_withdraw",
+        "verb": "withdraw"
+      },
+      {
+        "handler": "do_new_account",
+        "verb": "open"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/std/room/hockshop",
+    "type": "prototype",
+    "name": null,
+    "actions": [
+      {
+        "handler": "do_value",
+        "verb": "value"
+      },
+      {
+        "handler": "do_pawn",
+        "verb": "pawn"
+      },
+      {
+        "handler": "do_sell",
+        "verb": "sell"
+      },
+      {
+        "handler": "do_retrieve",
+        "verb": "retrieve"
+      },
+      {
+        "handler": "do_list",
+        "verb": "list"
+      },
+      {
+        "handler": "do_buy",
+        "verb": "buy"
+      },
+      {
+        "handler": "do_store",
+        "verb": "store"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/std/room/journey",
+    "type": "prototype",
+    "name": null,
+    "actions": [
+      {
+        "handler": "do_return",
+        "verb": "return"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [
+      {
+        "function": "arrive_destination",
+        "delay": 5
+      }
+    ],
+    "doors": [],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/std/room/temple",
+    "type": "prototype",
+    "name": null,
+    "actions": [
+      {
+        "handler": "do_enter",
+        "verb": "enter"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": []
+  }
+]

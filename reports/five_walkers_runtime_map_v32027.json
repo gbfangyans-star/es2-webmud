@@ -1,0 +1,7 @@
+{
+  "kind": "source-derived virtual walker; NOT live Neolith/TELNET",
+  "walkers": 5,
+  "laps_each": 3,
+  "directional_transitions": 270,
+  "passed": true
+}

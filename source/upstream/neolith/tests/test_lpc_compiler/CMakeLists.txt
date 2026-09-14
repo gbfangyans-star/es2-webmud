@@ -1,0 +1,23 @@
+# tests/test_lpc_compiler/CMakeLists.txt
+
+add_executable(test_lpc_compiler
+    test_lpc_compiler.cpp
+    test_save_binary.cpp
+    fixtures.hpp
+    test_dot_call.cpp
+)
+target_link_libraries(test_lpc_compiler PRIVATE stem GTest::gtest_main)
+
+# setup testing data
+# (the default working directory is ${CMAKE_CURRENT_BINARY_DIR} when running tests)
+add_custom_command(TARGET test_lpc_compiler POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory ${CMAKE_SOURCE_DIR}/examples/m3_mudlib ${CMAKE_CURRENT_BINARY_DIR}/m3_mudlib
+    COMMAND ${CMAKE_COMMAND} -E copy ${CMAKE_SOURCE_DIR}/examples/m3.conf ${CMAKE_CURRENT_BINARY_DIR}
+)
+
+gtest_discover_tests(test_lpc_compiler
+    PROPERTIES
+        LABELS "LPC"
+    DISCOVERY_TIMEOUT 20
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+)

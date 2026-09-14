@@ -1,0 +1,19 @@
+#/obj/user.c
+attribute (["wis":50,"dex":50,"int":50,"spi":50,"str":50,"cor":50,"cps":50,"con":50,])
+conditions ([])
+dbase (["score":([]),"time_aged":0,"class":"commoner","gender":"male","id":"testadmin","name":"單機測試管理者","level":1,"race":"avatar","birthday":1789000000,"age":18,"startroom":"/d/snow/inn_hall",])
+masters ([])
+apprentices ([])
+skills ([])
+learned ([])
+skill_map ([])
+skill_flag ([])
+best_skill ""
+stats_max (["food":300,"sen":500,"gin":500,"HP":500,"water":300,"fatigue":100,"kee":500,])
+stats_heal (["food":300,"sen":500,"gin":500,"HP":500,"water":300,"fatigue":100,"kee":500,])
+stats_current (["food":300,"sen":500,"gin":500,"HP":500,"water":300,"fatigue":0,"kee":500,])
+stats_notify ([])
+tick 0
+autoload ({})
+explore_flags ""
+last_age_set 1789000000

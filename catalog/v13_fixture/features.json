@@ -1,0 +1,66 @@
+[
+  {
+    "file": "feature/char/combat.c",
+    "path": "/feature/char/combat",
+    "type": "feature",
+    "sha256": "70d6d196b7ae3b3ef558d8c99dedbc8526164692554d1094729cb05ce8825fb8",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "query_strength"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "damage_contract": [
+      "query_strength"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/weapon/sword.c",
+    "path": "/feature/weapon/sword",
+    "type": "feature",
+    "sha256": "33159d4bede451b4df1bbddf3ee9008b7523948a0a780e51f5aed7c9674927ba",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "attack_with",
+      "init_damage"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "skill_contract": {
+      "functions": [
+        "attack_using"
+      ],
+      "contracts": []
+    },
+    "equipment_hooks": [
+      "wield"
+    ],
+    "skill_daemon_calls": [
+      {
+        "expression": "skill_type",
+        "method": "attack_using",
+        "dynamic": true
+      }
+    ],
+    "weapon_dispatch": {
+      "attack_with": true
+    },
+    "function_calls": [
+      "attack_using",
+      "unequip",
+      "wield"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "damage_text"
+    ],
+    "manual_review": []
+  }
+]

@@ -1,0 +1,12 @@
+{
+  "equipment": 8,
+  "combat_npcs": 27,
+  "combat_core_files": 94,
+  "wear_slots": {
+    "waist_eq": 1,
+    "cloth": 4,
+    "feet_eq": 1,
+    "head_eq": 1,
+    "finger_eq": 1
+  }
+}

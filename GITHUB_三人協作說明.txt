@@ -1,0 +1,16 @@
+ES2 三人 GitHub 協作最簡流程
+============================
+
+開始工作前：Pull
+修改自己的工作區域
+雙擊「啟動單機測試版.bat」自己測
+測試正常：Commit
+傳回 GitHub：Push
+
+建議三個人盡量不要同時修改同一個檔案的同一段。
+朋友單機測過不代表正式完成；最後仍由主機端多人測試驗收。
+
+重要：
+- 不要把 source/upstream/mudlib/data/user 與 data/login 的正式玩家存檔 Push 到公開 GitHub。
+- 不要把 .local-test Push。
+- testadmin / test 只是公開的本機測試管理者帳號。

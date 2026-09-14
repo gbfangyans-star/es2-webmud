@@ -1,0 +1,244 @@
+[
+  {
+    "path": "/cmds/std/exert",
+    "type": "command",
+    "name": null,
+    "registered_skill_daemon": null,
+    "skill_contract": {
+      "functions": [
+        "exert_function"
+      ],
+      "contracts": []
+    },
+    "required_skills": {},
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/std/perform",
+    "type": "command",
+    "name": null,
+    "registered_skill_daemon": null,
+    "skill_contract": {
+      "functions": [
+        "perform_action"
+      ],
+      "contracts": []
+    },
+    "required_skills": {},
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/usr/enable",
+    "type": "command",
+    "name": null,
+    "registered_skill_daemon": null,
+    "skill_contract": {
+      "functions": [
+        "valid_enable"
+      ],
+      "contracts": [
+        "valid_enable"
+      ]
+    },
+    "required_skills": {},
+    "runtime_traits": [
+      "skill_mapping"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/skill/dragon_force",
+    "type": "skill",
+    "name": null,
+    "registered_skill_daemon": "dragon force",
+    "skill_contract": {
+      "functions": [
+        "valid_enable",
+        "skill_improved",
+        "skill_advanced",
+        "exert_function"
+      ],
+      "contracts": [
+        "valid_enable"
+      ]
+    },
+    "required_skills": {},
+    "runtime_traits": [
+      "teaching"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/daemon/skill/sword",
+    "type": "skill",
+    "name": null,
+    "registered_skill_daemon": "sword",
+    "skill_contract": {
+      "functions": [
+        "valid_enable",
+        "attack_using"
+      ],
+      "contracts": [
+        "valid_enable"
+      ]
+    },
+    "required_skills": {},
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/daemon/skill/unarmed",
+    "type": "skill",
+    "name": null,
+    "registered_skill_daemon": "unarmed",
+    "skill_contract": {
+      "functions": [
+        "valid_enable",
+        "attack_using"
+      ],
+      "contracts": [
+        "valid_enable"
+      ]
+    },
+    "required_skills": {},
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/char/attack",
+    "type": "feature",
+    "name": null,
+    "registered_skill_daemon": null,
+    "skill_contract": {
+      "functions": [
+        "attack_using"
+      ],
+      "contracts": []
+    },
+    "required_skills": {},
+    "runtime_traits": [
+      "combat",
+      "heart_beat",
+      "init"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/char/combat",
+    "type": "feature",
+    "name": null,
+    "registered_skill_daemon": null,
+    "skill_contract": {
+      "functions": [
+        "dodge_using",
+        "parry_using"
+      ],
+      "contracts": []
+    },
+    "required_skills": {},
+    "runtime_traits": [
+      "damage",
+      "timed"
+    ],
+    "manual_review": [
+      "damage_logic",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/feature/char/skill",
+    "type": "feature",
+    "name": null,
+    "registered_skill_daemon": null,
+    "skill_contract": {
+      "functions": [
+        "skill_improved",
+        "skill_advanced"
+      ],
+      "contracts": []
+    },
+    "required_skills": {},
+    "runtime_traits": [
+      "skill_mapping",
+      "teaching"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/equip",
+    "type": "feature",
+    "name": null,
+    "registered_skill_daemon": null,
+    "skill_contract": {
+      "functions": [
+        "attack_using"
+      ],
+      "contracts": []
+    },
+    "required_skills": {},
+    "runtime_traits": [
+      "damage",
+      "teaching"
+    ],
+    "manual_review": [
+      "damage_logic",
+      "weapon_runtime"
+    ]
+  },
+  {
+    "path": "/obj/example/skill/fonxansword",
+    "type": "skill",
+    "name": null,
+    "registered_skill_daemon": "fonxansword",
+    "skill_contract": {
+      "functions": [
+        "valid_enable",
+        "attack_using"
+      ],
+      "contracts": [
+        "valid_enable"
+      ]
+    },
+    "required_skills": {},
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/std/char/npc",
+    "type": "prototype",
+    "name": null,
+    "registered_skill_daemon": null,
+    "skill_contract": {
+      "functions": [
+        "exert_function",
+        "perform_action"
+      ],
+      "contracts": []
+    },
+    "required_skills": {},
+    "runtime_traits": [
+      "heart_beat",
+      "inventory",
+      "movement",
+      "teaching"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/std/race/humanoid",
+    "type": "prototype",
+    "name": null,
+    "registered_skill_daemon": null,
+    "skill_contract": {
+      "functions": [
+        "query_action"
+      ],
+      "contracts": []
+    },
+    "required_skills": {},
+    "runtime_traits": [],
+    "manual_review": []
+  }
+]

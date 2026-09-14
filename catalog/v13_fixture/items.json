@@ -1,0 +1,173 @@
+[
+  {
+    "file": "d/snow/obj/thing.c",
+    "path": "/d/snow/obj/thing",
+    "type": "item",
+    "sha256": "dff7d3ae0fdca507be3dea24ba26be8e0bd45883582664b84ef0613bfaab34b6",
+    "inherits": [
+      "ITEM",
+      "F_STUDY"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_STUDY",
+        "target": "F_STUDY",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "測試書",
+    "ids": [
+      "test book",
+      "book"
+    ],
+    "weight": 1000,
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "required_skills": {
+      "literate": 1
+    },
+    "study_content": {
+      "literate": 10
+    },
+    "manual_review": []
+  },
+  {
+    "file": "obj/armor/cloth.c",
+    "path": "/obj/armor/cloth",
+    "type": "item",
+    "sha256": "97a53b75b02ce14254ec69487b810e481e976cf21d481f050a817ac3dd6903f2",
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLOTH",
+        "target": "F_CLOTH",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "布衣",
+    "ids": [
+      "cloth"
+    ],
+    "weight": 1000,
+    "wear_as": "cloth",
+    "setup_kinds": [
+      "cloth"
+    ],
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "unit": "件",
+    "value": 0,
+    "manual_review": []
+  },
+  {
+    "file": "obj/armor/fur_hat.c",
+    "path": "/obj/armor/fur_hat",
+    "type": "item",
+    "sha256": "3b9e72cccc3b1c4e73ea4b3d80976610c567448421bf26f5cfce2eb45f546373",
+    "inherits": [
+      "F_HEAD_EQ"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_HEAD_EQ",
+        "target": "F_HEAD_EQ",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "毛皮帽",
+    "ids": [
+      "fur hat",
+      "hat"
+    ],
+    "weight": 1000,
+    "wear_as": "head_eq",
+    "setup_kinds": [
+      "head_eq"
+    ],
+    "armor_apply": [
+      {
+        "slot": "head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "value": 50,
+    "manual_review": []
+  },
+  {
+    "file": "std/item/container.c",
+    "path": "/std/item/container",
+    "type": "item",
+    "sha256": "fb85c12852459edeaa7a904af484e4687a82a872ff65ec2188829222ad780437",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  }
+]

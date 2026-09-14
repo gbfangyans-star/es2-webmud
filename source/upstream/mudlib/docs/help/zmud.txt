@@ -1,0 +1,4 @@
+【zMUD】
+
+本專案可透過 Big5/CP950 轉碼橋接讓舊版 zMUD 連線；MUD Server 本身仍維持 UTF-8。
+WebMUD 與 zMUD 可連到同一個遊戲世界，不需要把整個 mudlib 轉成 Big5。

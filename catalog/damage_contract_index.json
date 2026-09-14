@@ -1,0 +1,259 @@
+[
+  {
+    "path": "/adm/daemons/combatd",
+    "type": "daemon",
+    "damage_contract": [
+      "absorb",
+      "attack",
+      "defend",
+      "fight_ob",
+      "inflict_damage",
+      "query_ability",
+      "query_strength"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "damage",
+      "defense",
+      "skill"
+    ],
+    "manual_review": [
+      "damage_logic",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/cmds/std/backstab",
+    "type": "command",
+    "damage_contract": [
+      "attack",
+      "query_ability"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "skill"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/std/berserk",
+    "type": "command",
+    "damage_contract": [
+      "attack"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "skill"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/std/fight",
+    "type": "command",
+    "damage_contract": [
+      "fight_ob"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/std/go",
+    "type": "command",
+    "damage_contract": [
+      "query_ability"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/std/kill",
+    "type": "command",
+    "damage_contract": [
+      "fight_ob"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/std/steal",
+    "type": "command",
+    "damage_contract": [
+      "fight_ob"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "skill"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/cmds/usr/estimate",
+    "type": "command",
+    "damage_contract": [
+      "query_ability",
+      "query_strength"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/usr/inventory",
+    "type": "command",
+    "damage_contract": [
+      "query_strength"
+    ],
+    "combat_surface": [],
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/wiz/analyze",
+    "type": "command",
+    "damage_contract": [
+      "query_ability",
+      "query_strength"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/girl",
+    "type": "npc",
+    "damage_contract": [
+      "fight_ob"
+    ],
+    "combat_surface": [
+      "armor",
+      "attack",
+      "skill",
+      "weapon"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/obj/syndicator",
+    "type": "npc",
+    "damage_contract": [
+      "inflict_damage"
+    ],
+    "combat_surface": [
+      "damage"
+    ],
+    "manual_review": [
+      "damage_logic"
+    ]
+  },
+  {
+    "path": "/feature/char/action",
+    "type": "feature",
+    "damage_contract": [
+      "attack"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/char/attack",
+    "type": "feature",
+    "damage_contract": [
+      "attack",
+      "fight_ob",
+      "query_ability",
+      "select_opponent"
+    ],
+    "combat_surface": [
+      "attack"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/char/combat",
+    "type": "feature",
+    "damage_contract": [
+      "absorb",
+      "defend",
+      "inflict_damage",
+      "query_ability",
+      "query_strength",
+      "receive_damage"
+    ],
+    "combat_surface": [
+      "damage",
+      "defense",
+      "skill"
+    ],
+    "manual_review": [
+      "damage_logic",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/feature/equip",
+    "type": "feature",
+    "damage_contract": [
+      "inflict_damage",
+      "receive_damage"
+    ],
+    "combat_surface": [
+      "armor",
+      "damage",
+      "skill",
+      "weapon"
+    ],
+    "manual_review": [
+      "damage_logic",
+      "weapon_runtime"
+    ]
+  },
+  {
+    "path": "/feature/npc/soldier",
+    "type": "npc",
+    "damage_contract": [
+      "fight_ob"
+    ],
+    "combat_surface": [
+      "attack"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/std/char",
+    "type": "skill",
+    "damage_contract": [
+      "attack",
+      "query_ability",
+      "query_strength"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "condition",
+      "death"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  }
+]

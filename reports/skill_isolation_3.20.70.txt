@@ -1,0 +1,15 @@
+
+/* DIAGNOSTIC ROUND 1 */
+void improve_skill_exact(string skill, int amount)
+{
+    if( skill_flag[skill] & SKILL_FLAG_ABANDONED ) return;
+    if( amount <= 0 ) return;
+    if( undefinedp(learned[skill]) ) learned[skill] = amount; else learned[skill] += amount;
+    if( undefinedp(skill_gain[skill]) ) skill_gain[skill] = amount; else skill_gain[skill] += amount;
+    if( undefinedp(skills[skill]) ) skills[skill] = 0;
+}
+
+int restored_force_tick_exp()
+{
+    int con, cps, ib;
+    con = query_attr("con

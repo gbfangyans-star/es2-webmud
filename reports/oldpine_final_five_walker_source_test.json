@@ -1,0 +1,139 @@
+{
+  "mode": "source_level_fallback_NOT_live_neolith",
+  "scenario": "whole recovered Old Pine source coverage",
+  "players": [
+    {
+      "player": 1,
+      "laps": [
+        {
+          "lap": 1,
+          "rooms_covered": 41,
+          "critical_checks": 7,
+          "passed": true
+        },
+        {
+          "lap": 2,
+          "rooms_covered": 41,
+          "critical_checks": 7,
+          "passed": true
+        },
+        {
+          "lap": 3,
+          "rooms_covered": 41,
+          "critical_checks": 7,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "player": 2,
+      "laps": [
+        {
+          "lap": 1,
+          "rooms_covered": 41,
+          "critical_checks": 7,
+          "passed": true
+        },
+        {
+          "lap": 2,
+          "rooms_covered": 41,
+          "critical_checks": 7,
+          "passed": true
+        },
+        {
+          "lap": 3,
+          "rooms_covered": 41,
+          "critical_checks": 7,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "player": 3,
+      "laps": [
+        {
+          "lap": 1,
+          "rooms_covered": 41,
+          "critical_checks": 7,
+          "passed": true
+        },
+        {
+          "lap": 2,
+          "rooms_covered": 41,
+          "critical_checks": 7,
+          "passed": true
+        },
+        {
+          "lap": 3,
+          "rooms_covered": 41,
+          "critical_checks": 7,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "player": 4,
+      "laps": [
+        {
+          "lap": 1,
+          "rooms_covered": 41,
+          "critical_checks": 7,
+          "passed": true
+        },
+        {
+          "lap": 2,
+          "rooms_covered": 41,
+          "critical_checks": 7,
+          "passed": true
+        },
+        {
+          "lap": 3,
+          "rooms_covered": 41,
+          "critical_checks": 7,
+          "passed": true
+        }
+      ],
+      "passed": true
+    },
+    {
+      "player": 5,
+      "laps": [
+        {
+          "lap": 1,
+          "rooms_covered": 41,
+          "critical_checks": 7,
+          "passed": true
+        },
+        {
+          "lap": 2,
+          "rooms_covered": 41,
+          "critical_checks": 7,
+          "passed": true
+        },
+        {
+          "lap": 3,
+          "rooms_covered": 41,
+          "critical_checks": 7,
+          "passed": true
+        }
+      ],
+      "passed": true
+    }
+  ],
+  "rooms": 41,
+  "reachable_rooms": 41,
+  "critical": {
+    "cave_dynamic": true,
+    "pine_dynamic": true,
+    "bury_reward": true,
+    "vine_fall": true,
+    "keep_ambush": true,
+    "pipe_callback": true,
+    "tree_layer": true
+  },
+  "total_room_coverage_checks": 615,
+  "all_passed": true
+}

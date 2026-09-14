@@ -1,0 +1,23 @@
+# Test executable
+add_executable(test_console_worker
+    test_console_worker_lifecycle.cpp
+    test_console_worker_detection.cpp
+    test_async_runtime_console.cpp
+    test_console_worker_queue_drain.cpp
+)
+
+# Link to the stem library and GoogleTest main entry point
+target_link_libraries(test_console_worker PRIVATE stem GTest::gtest_main)
+
+# Windows needs ws2_32 for socket functions
+if(WIN32)
+    target_link_libraries(test_console_worker PRIVATE ws2_32)
+endif()
+
+# Test discovery
+gtest_discover_tests(test_console_worker
+    PROPERTIES
+        LABELS "STEM"
+    DISCOVERY_TIMEOUT 20
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+)

@@ -1,0 +1,72 @@
+{
+  "version": "v3.20.45",
+  "passed": 13,
+  "total": 13,
+  "checks": [
+    {
+      "name": "41 recovered room LPC files",
+      "ok": true,
+      "detail": "41"
+    },
+    {
+      "name": "path08 recovered branch retained",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "path08 Gao Shen branch retained",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "black_cloth absent from canonical",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "necromancy absent from canonical",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "snake_poison absent from canonical",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "parrybook legacy contract frozen",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dynamic cave reset",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "dynamic pine maze",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "cave5 burial",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "keep ambush",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "tree vertical route",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "vine branch",
+      "ok": true,
+      "detail": ""
+    }
+  ]
+}

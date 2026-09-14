@@ -1,0 +1,170 @@
+{
+  "schema": 1,
+  "version": "3.19.5",
+  "generated": "2026-09-08T11:53:34",
+  "gates": {
+    "transport/session-isolation": {
+      "fingerprint": "4285235bb4d5c91f28c75359745bdeb0690b338076d3d166a9118b24dd479818",
+      "files": [
+        {
+          "path": "server/index.js",
+          "sha256": "b219ae4c723e0574d0cc172c5b2e9a559a34252c237603752d0bda98c104da17",
+          "bytes": 17203
+        },
+        {
+          "path": "server/telnet.js",
+          "sha256": "84b904ba4a76999498ce478d7eba6ba3c59e71858ec78a2a2f58799a8df00778",
+          "bytes": 1595
+        }
+      ],
+      "ok": true
+    },
+    "login/tell/save/reconnect": {
+      "fingerprint": "e35911c7fbde3bc97ff677bffd425cc6d1ff308063032f2af11f5754165fc5ef",
+      "files": [
+        {
+          "path": "server/index.js",
+          "sha256": "b219ae4c723e0574d0cc172c5b2e9a559a34252c237603752d0bda98c104da17",
+          "bytes": 17203
+        },
+        {
+          "path": "server/telnet.js",
+          "sha256": "84b904ba4a76999498ce478d7eba6ba3c59e71858ec78a2a2f58799a8df00778",
+          "bytes": 1595
+        },
+        {
+          "path": "source/upstream/mudlib/adm/daemons/logind.c",
+          "sha256": "6a0d3fb4d50123fc344be4f104757e4171b14fe4af57e547d04c76978c3cd45e",
+          "bytes": 25047
+        },
+        {
+          "path": "source/upstream/mudlib/obj/user.c",
+          "sha256": "6971629b3ab5d93f481fe7db04323434c9f41cc1845e18eab0613f6019e7c50f",
+          "bytes": 8059
+        },
+        {
+          "path": "source/upstream/mudlib/cmds/std/tell.c",
+          "sha256": "22630d94665aeea9bf5b3ce404a3482809a5fece72390185af09ea885a8b8ab2",
+          "bytes": 3471
+        },
+        {
+          "path": "source/upstream/mudlib/cmds/usr/save.c",
+          "sha256": "83fbabceac20213c909513710631059a013d98f948a74f60c16296bf51bc29e0",
+          "bytes": 1372
+        },
+        {
+          "path": "source/upstream/mudlib/feature/statistic.c",
+          "sha256": "40a941da7c276d64ec0bbbd391d6a9a30ac0bd43fadc500056019d11a4c3bd4b",
+          "bytes": 12925
+        }
+      ],
+      "ok": true
+    },
+    "same-room/say/team/follow": {
+      "fingerprint": "0dd34d02491f38cc79bebc15fb96a0e6c4ac85e02ebc535a7854c9418b4ab757",
+      "files": [
+        {
+          "path": "source/upstream/mudlib/cmds/std/say.c",
+          "sha256": "e2c77f374bb1a93610555bfa36e4e1b543ed3263c42d55ad92ea0f3601c14b42",
+          "bytes": 643
+        },
+        {
+          "path": "source/upstream/mudlib/cmds/std/team.c",
+          "sha256": "ab8e6103d0e16169cc6a995a3cc7f1fc92df27d27f9e4bc94df8e188b8222a32",
+          "bytes": 3608
+        },
+        {
+          "path": "source/upstream/mudlib/cmds/std/go.c",
+          "sha256": "5462cb726698f1b2e7507590d92d93f3d94c8a5d0ce892e4a19a32cf5884dcec",
+          "bytes": 3433
+        },
+        {
+          "path": "source/upstream/mudlib/feature/char/team.c",
+          "sha256": "980c66f4b4b3f1309bf889bfd7f508d6c6f1fba576d47707fad1d9e060a9792d",
+          "bytes": 1691
+        },
+        {
+          "path": "source/upstream/mudlib/feature/char/attack.c",
+          "sha256": "35ccdb7048346e05d583a36ec38c1a4e937d04ddc3d9916fdfac56ff8054c873",
+          "bytes": 9551
+        }
+      ],
+      "ok": true
+    },
+    "shared-world/object-ownership": {
+      "fingerprint": "7c3e4eb14786ed4d00e63fb1318a45e76a1b7d9ba8450aba1936504624802aa5",
+      "files": [
+        {
+          "path": "source/upstream/mudlib/cmds/std/get.c",
+          "sha256": "af000871b9e25242a2b155fea86a40f40e3d7b844ce8eddeadc33c02870749b7",
+          "bytes": 4515
+        },
+        {
+          "path": "source/upstream/mudlib/cmds/std/drop.c",
+          "sha256": "4ea7987e3ba3d396f8fa4f2e3e82f703e7e827319bf6e6915a053f1a0878c355",
+          "bytes": 3218
+        },
+        {
+          "path": "source/upstream/mudlib/cmds/std/give.c",
+          "sha256": "9600e7f933a22400351098f552ae0d3e53abae083603cb511082aa3c8f19a1c0",
+          "bytes": 3683
+        },
+        {
+          "path": "source/upstream/mudlib/adm/simul_efun/object.c",
+          "sha256": "8494153793fe0e1f01e23dcba1ddf19ad4c1616ecb870ee9cf44b6aa98f18c11",
+          "bytes": 931
+        }
+      ],
+      "ok": true
+    },
+    "mutual-player-fight": {
+      "fingerprint": "4ef05b1037b8a78e094fbe8d1e4f4ff7ba62dc9ad1e2174801dbcb873e2398d3",
+      "files": [
+        {
+          "path": "source/upstream/mudlib/cmds/std/fight.c",
+          "sha256": "be1a2837cd5a478c88efeced4ecd96d24ac409512a4915b6c180335aaa1a86e5",
+          "bytes": 3586
+        },
+        {
+          "path": "source/upstream/mudlib/cmds/std/halt.c",
+          "sha256": "14f0944a2eb99459770948acbd15e8aad9fb586b2459b50f5a0afc17ec8a6bde",
+          "bytes": 1164
+        },
+        {
+          "path": "source/upstream/mudlib/feature/char/attack.c",
+          "sha256": "35ccdb7048346e05d583a36ec38c1a4e937d04ddc3d9916fdfac56ff8054c873",
+          "bytes": 9551
+        },
+        {
+          "path": "source/upstream/mudlib/feature/char/combat.c",
+          "sha256": "c4687322959daebca80d740b42e33320d7eeda2905a352bf965b4d071569587f",
+          "bytes": 11212
+        }
+      ],
+      "ok": true
+    },
+    "death/corpse/revival": {
+      "fingerprint": "8ae4403573a6c61148fda4224554d3d00f8803918ba9c35d03539a2c53f30b94",
+      "files": [
+        {
+          "path": "source/upstream/mudlib/feature/char/attack.c",
+          "sha256": "35ccdb7048346e05d583a36ec38c1a4e937d04ddc3d9916fdfac56ff8054c873",
+          "bytes": 9551
+        },
+        {
+          "path": "source/upstream/mudlib/feature/char/combat.c",
+          "sha256": "c4687322959daebca80d740b42e33320d7eeda2905a352bf965b4d071569587f",
+          "bytes": 11212
+        },
+        {
+          "path": "source/upstream/mudlib/obj/corpse.c",
+          "sha256": "31955b213a156181c17938795dc2e23c1bf43c71022959d74017141652413638",
+          "bytes": 1931
+        }
+      ],
+      "ok": true
+    }
+  },
+  "missing": [],
+  "ok": true
+}

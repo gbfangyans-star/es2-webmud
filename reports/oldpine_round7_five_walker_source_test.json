@@ -1,0 +1,37 @@
+{
+  "mode": "source_level_fallback_NOT_live_neolith",
+  "scenario": "oldpine dynamic cave + pine maze + cave5 anchors",
+  "players": [
+    {
+      "player": 1,
+      "laps": 3,
+      "checks": 156,
+      "passed": true
+    },
+    {
+      "player": 2,
+      "laps": 3,
+      "checks": 156,
+      "passed": true
+    },
+    {
+      "player": 3,
+      "laps": 3,
+      "checks": 156,
+      "passed": true
+    },
+    {
+      "player": 4,
+      "laps": 3,
+      "checks": 156,
+      "passed": true
+    },
+    {
+      "player": 5,
+      "laps": 3,
+      "checks": 156,
+      "passed": true
+    }
+  ],
+  "all_passed": true
+}

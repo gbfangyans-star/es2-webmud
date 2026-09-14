@@ -1,0 +1,14 @@
+# tests/test_stralloc/CMakeLists.txt
+
+add_executable(test_stralloc
+    test_stralloc.cpp
+    test_stralloc_type_safety.cpp
+)
+target_link_libraries(test_stralloc PRIVATE stem GTest::gtest_main)
+
+gtest_discover_tests(test_stralloc
+    PROPERTIES
+        LABELS "STEM"
+    DISCOVERY_TIMEOUT 20
+    WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+)

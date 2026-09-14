@@ -1,0 +1,28 @@
+{
+  "version": "v3.20.20",
+  "checks": {
+    "all_seven_races_selectable": true,
+    "avatar_named_human_clan": true,
+    "dingling_chinese": true,
+    "human_birth_stats_35": true,
+    "human_attr_12_random7": true,
+    "avatar_karma5": true,
+    "avatar_attr_15_random6": true,
+    "passive_defense_dynamic": true,
+    "action_move_standard": true,
+    "hide_highest_awareness": true,
+    "replete_heals_bars_not_current": true,
+    "replete_water_cost": true,
+    "replete_busy1_no_cd": true,
+    "woochan_food_only_exempt": true,
+    "gnaw_min_one_integer": true,
+    "breathe_formula": true,
+    "two_tick_is_four_seconds": true,
+    "resurge_quarter_es2_day": true,
+    "class_caps_present": true,
+    "class_caps_enforced": true,
+    "race_hints_present": true
+  },
+  "failures": [],
+  "passed": true
+}

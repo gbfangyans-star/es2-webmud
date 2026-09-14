@@ -1,0 +1,130 @@
+{
+  "schema": 1,
+  "version": "3.19.5",
+  "generated": "2026-09-08T11:53:31.875Z",
+  "scope": "OFFLINE fake-MUD fault injection only; no live gameplay claim",
+  "ok": true,
+  "scenarios": [
+    {
+      "name": "backend-unavailable-cleanup",
+      "ok": true,
+      "closed": true,
+      "bridgeMessageSeen": true,
+      "health": {
+        "ok": true,
+        "uptimeSeconds": 0,
+        "sessions": {
+          "active": 0,
+          "connected": 0,
+          "connecting": 0,
+          "capacity": 200,
+          "peak": 1
+        },
+        "totals": {
+          "accepted": 1,
+          "rejectedCapacity": 0,
+          "tcpErrors": 1,
+          "wsErrors": 0
+        },
+        "limits": {
+          "websocketPayloadBytes": 65536,
+          "slowClientBufferedBytes": 1048576,
+          "heartbeatMs": 5000
+        }
+      }
+    },
+    {
+      "name": "backend-disconnect-propagates",
+      "ok": true,
+      "closed": true,
+      "backendByeSeen": true,
+      "health": {
+        "ok": true,
+        "uptimeSeconds": 0,
+        "sessions": {
+          "active": 0,
+          "connected": 0,
+          "connecting": 0,
+          "capacity": 200,
+          "peak": 1
+        },
+        "totals": {
+          "accepted": 1,
+          "rejectedCapacity": 0,
+          "tcpErrors": 0,
+          "wsErrors": 0
+        },
+        "limits": {
+          "websocketPayloadBytes": 65536,
+          "slowClientBufferedBytes": 1048576,
+          "heartbeatMs": 5000
+        }
+      }
+    },
+    {
+      "name": "abrupt-client-disconnect-cleanup",
+      "ok": true,
+      "acceptedBackendSockets": 1,
+      "closedBackendSockets": 1,
+      "health": {
+        "ok": true,
+        "uptimeSeconds": 0,
+        "sessions": {
+          "active": 0,
+          "connected": 0,
+          "connecting": 0,
+          "capacity": 200,
+          "peak": 1
+        },
+        "totals": {
+          "accepted": 1,
+          "rejectedCapacity": 0,
+          "tcpErrors": 0,
+          "wsErrors": 0
+        },
+        "limits": {
+          "websocketPayloadBytes": 65536,
+          "slowClientBufferedBytes": 1048576,
+          "heartbeatMs": 5000
+        }
+      }
+    },
+    {
+      "name": "one-backend-failure-does-not-cross-kill",
+      "ok": true,
+      "tcpA": 1,
+      "tcpB": 2,
+      "secondSessionSurvived": true,
+      "activeAfterFirstDrop": 1
+    },
+    {
+      "name": "oversize-websocket-is-contained",
+      "ok": true,
+      "oversizeCloseCode": 1009,
+      "healthySessionAfterward": true,
+      "health": {
+        "ok": true,
+        "uptimeSeconds": 0,
+        "sessions": {
+          "active": 1,
+          "connected": 1,
+          "connecting": 0,
+          "capacity": 200,
+          "peak": 1
+        },
+        "totals": {
+          "accepted": 2,
+          "rejectedCapacity": 0,
+          "tcpErrors": 0,
+          "wsErrors": 1
+        },
+        "limits": {
+          "websocketPayloadBytes": 4096,
+          "slowClientBufferedBytes": 1048576,
+          "heartbeatMs": 5000
+        }
+      }
+    }
+  ],
+  "liveAcceptanceClaimed": false
+}

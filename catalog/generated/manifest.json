@@ -1,0 +1,24 @@
+{
+  "source": "https://github.com/taedlar/es2_mudlib",
+  "source_policy": "SOURCE-ONLY / no external augmentation",
+  "git": {
+    "repository": "https://github.com/taedlar/es2_mudlib",
+    "origin": "https://github.com/taedlar/es2_mudlib.git",
+    "commit": "cc45c06af4852380e5148dad3c9d53ff06854f2c",
+    "branch": "main"
+  },
+  "total_files": 513,
+  "counts": {
+    "command": 154,
+    "daemon": 28,
+    "feature": 47,
+    "include": 37,
+    "item": 103,
+    "npc": 64,
+    "other": 18,
+    "prototype": 11,
+    "room": 43,
+    "runtime": 2,
+    "skill": 6
+  }
+}

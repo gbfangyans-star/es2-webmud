@@ -1,0 +1,47 @@
+# ===== ES2 WebMUD：不要上傳到 GitHub 的資料 =====
+
+# Node 套件，可重新安裝
+node_modules/
+
+# Log / 執行紀錄
+*.log
+logs/
+log/
+
+# 暫存檔
+*.tmp
+*.temp
+*.bak
+*.swp
+*.swo
+*~
+
+# Windows 雜項
+Thumbs.db
+Desktop.ini
+
+# macOS 雜項
+.DS_Store
+
+# 編輯器設定
+.vscode/
+.idea/
+
+# 壓縮備份檔
+*.zip
+*.7z
+*.rar
+
+# Python 暫存
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# ===== ES2 玩家／登入資料 =====
+# 公開 GitHub 時不要把玩家角色資料一起公開
+source/upstream/mudlib/data/user/
+source/upstream/mudlib/data/login/
+
+# ===== 執行時產生的資料 =====
+source/upstream/mudlib/log/
+source/upstream/mudlib/logs/

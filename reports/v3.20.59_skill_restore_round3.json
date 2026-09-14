@@ -1,0 +1,37 @@
+{
+  "version": "3.20.59",
+  "scope": "skill learned restoration round 3",
+  "live_telnet": false,
+  "changes": [
+    "shared restored basic-force tick formula in feature/char/skill.c",
+    "tiger-force exercise routes basic force learned through shared exact formula",
+    "dragon-force keeps canonical dragon-force gain but routes accompanying basic force learned through shared formula",
+    "tiger-force persistent growth markers verified as saved dbase keys",
+    "outdated tiger-force regression assertions updated to latest user-confirmed Lv100/Lv140/Lv141 rules"
+  ],
+  "relevant_regression": {
+    "passed": 43,
+    "failed": 0
+  },
+  "post_rename_release_checks": {
+    "passed": 27,
+    "failed": 0
+  },
+  "full_test_chunks": {
+    "passed": 182,
+    "failed": 10
+  },
+  "known_full_suite_failures": [
+    "content-change guard/baseline intentionally stale versus accumulated authorized project changes",
+    "multiplayer acceptance ledger/fingerprints stale and not refreshed without new live evidence",
+    "two bank regression assertions still expect older implementation strings",
+    "one HUD regression assertion still expects retired 2500 ms polling constant"
+  ],
+  "static_checks": [
+    "balanced LPC braces/brackets/parentheses for all touched combat/skill files",
+    "Python compile check for v3.20.59 tests",
+    "five save/reload growth-marker model paths",
+    "D boundary and exact learned formula tests"
+  ],
+  "timestamp_utc": "2026-09-11T05:02:52.289317+00:00"
+}

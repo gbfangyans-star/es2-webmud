@@ -1,0 +1,19 @@
+# lib/misc/CMakeLists.txt
+
+set(adt_SOURCES
+    avltree.c
+    crc32.c
+    envsubst.c
+    filepath.cpp
+    hash.c
+    qsort.c
+    scratchpad.c
+)
+add_library(misc STATIC ${adt_SOURCES})
+target_include_directories(misc PRIVATE
+    ${CMAKE_SOURCE_DIR}
+)
+target_compile_definitions(misc PRIVATE NO_OPCODES)
+
+# each misc. header is part of the public interface
+target_include_directories(misc INTERFACE ${CMAKE_CURRENT_SOURCE_DIR})

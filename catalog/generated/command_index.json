@@ -1,0 +1,1695 @@
+[
+  {
+    "command": "chpass",
+    "group": "adm",
+    "path": "/cmds/adm/chpass",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "disassemble",
+    "group": "adm",
+    "path": "/cmds/adm/disassemble",
+    "functions": [
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "dump",
+    "group": "adm",
+    "path": "/cmds/adm/dump",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "halt",
+    "group": "adm",
+    "path": "/cmds/adm/halt",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "profile",
+    "group": "adm",
+    "path": "/cmds/adm/profile",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "renew",
+    "group": "adm",
+    "path": "/cmds/adm/renew",
+    "functions": [
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "resurrect",
+    "group": "adm",
+    "path": "/cmds/adm/resurrect",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "shutdown",
+    "group": "adm",
+    "path": "/cmds/adm/shutdown",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "socket",
+    "group": "adm",
+    "path": "/cmds/adm/socket",
+    "functions": [
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "callouts",
+    "group": "arch",
+    "path": "/cmds/arch/callouts",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "chinese",
+    "group": "arch",
+    "path": "/cmds/arch/chinese",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "cleanup",
+    "group": "arch",
+    "path": "/cmds/arch/cleanup",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "force",
+    "group": "arch",
+    "path": "/cmds/arch/force",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "heal",
+    "group": "arch",
+    "path": "/cmds/arch/heal",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "overview",
+    "group": "arch",
+    "path": "/cmds/arch/overview",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "possess",
+    "group": "arch",
+    "path": "/cmds/arch/possess",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "promote",
+    "group": "arch",
+    "path": "/cmds/arch/promote",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "purge",
+    "group": "arch",
+    "path": "/cmds/arch/purge",
+    "functions": [
+      "do_purge_players",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "reboot",
+    "group": "arch",
+    "path": "/cmds/arch/reboot",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ]
+  },
+  {
+    "command": "reclaim",
+    "group": "arch",
+    "path": "/cmds/arch/reclaim",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "rehash",
+    "group": "arch",
+    "path": "/cmds/arch/rehash",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "reset_okip",
+    "group": "arch",
+    "path": "/cmds/arch/reset_okip",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "restore",
+    "group": "arch",
+    "path": "/cmds/arch/restore",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "wizlock",
+    "group": "arch",
+    "path": "/cmds/arch/wizlock",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "cd",
+    "group": "imm",
+    "path": "/cmds/imm/cd",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "edemote",
+    "group": "imm",
+    "path": "/cmds/imm/edemote",
+    "functions": [
+      "get_msg_myself",
+      "get_msg_myself_self",
+      "get_msg_myself_target",
+      "get_msg_others",
+      "get_msg_others_self",
+      "get_msg_others_target",
+      "get_msg_target",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "interactive"
+    ]
+  },
+  {
+    "command": "goto",
+    "group": "imm",
+    "path": "/cmds/imm/goto",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ]
+  },
+  {
+    "command": "ls",
+    "group": "imm",
+    "path": "/cmds/imm/ls",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "mem",
+    "group": "imm",
+    "path": "/cmds/imm/mem",
+    "functions": [
+      "help",
+      "main",
+      "memory_expression"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "more",
+    "group": "imm",
+    "path": "/cmds/imm/more",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "pwd",
+    "group": "imm",
+    "path": "/cmds/imm/pwd",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "status",
+    "group": "imm",
+    "path": "/cmds/imm/status",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "where",
+    "group": "imm",
+    "path": "/cmds/imm/where",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "which",
+    "group": "imm",
+    "path": "/cmds/imm/which",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "acquire",
+    "group": "std",
+    "path": "/cmds/std/acquire",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "acupuncture",
+    "group": "std",
+    "path": "/cmds/std/acupuncture",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "apprentice",
+    "group": "std",
+    "path": "/cmds/std/apprentice",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "ask",
+    "group": "std",
+    "path": "/cmds/std/ask",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "backstab",
+    "group": "std",
+    "path": "/cmds/std/backstab",
+    "functions": [
+      "create",
+      "do_backstab",
+      "halt_backstab",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "combat",
+      "teaching"
+    ]
+  },
+  {
+    "command": "berserk",
+    "group": "std",
+    "path": "/cmds/std/berserk",
+    "functions": [
+      "create",
+      "do_berserk",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "combat",
+      "teaching"
+    ]
+  },
+  {
+    "command": "buy",
+    "group": "std",
+    "path": "/cmds/std/buy",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "vendor"
+    ]
+  },
+  {
+    "command": "cast",
+    "group": "std",
+    "path": "/cmds/std/cast",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "ccmd",
+    "group": "std",
+    "path": "/cmds/std/ccmd",
+    "functions": [
+      "clan_line",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ]
+  },
+  {
+    "command": "cestablish",
+    "group": "std",
+    "path": "/cmds/std/cestablish",
+    "functions": [
+      "confirm_name",
+      "confirm_rank",
+      "get_clan_name",
+      "get_clan_rank",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "interactive",
+      "movement"
+    ]
+  },
+  {
+    "command": "charge",
+    "group": "std",
+    "path": "/cmds/std/charge",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "close",
+    "group": "std",
+    "path": "/cmds/std/close",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "conjure",
+    "group": "std",
+    "path": "/cmds/std/conjure",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "drink",
+    "group": "std",
+    "path": "/cmds/std/drink",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "drop",
+    "group": "std",
+    "path": "/cmds/std/drop",
+    "functions": [
+      "create",
+      "do_drop",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ]
+  },
+  {
+    "command": "eat",
+    "group": "std",
+    "path": "/cmds/std/eat",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "emote",
+    "group": "std",
+    "path": "/cmds/std/emote",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "enter",
+    "group": "std",
+    "path": "/cmds/std/enter",
+    "functions": [
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "exert",
+    "group": "std",
+    "path": "/cmds/std/exert",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "fight",
+    "group": "std",
+    "path": "/cmds/std/fight",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "fill",
+    "group": "std",
+    "path": "/cmds/std/fill",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ]
+  },
+  {
+    "command": "follow",
+    "group": "std",
+    "path": "/cmds/std/follow",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "get",
+    "group": "std",
+    "path": "/cmds/std/get",
+    "functions": [
+      "create",
+      "do_get",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ]
+  },
+  {
+    "command": "give",
+    "group": "std",
+    "path": "/cmds/std/give",
+    "functions": [
+      "create",
+      "do_give",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ]
+  },
+  {
+    "command": "go",
+    "group": "std",
+    "path": "/cmds/std/go",
+    "functions": [
+      "create",
+      "do_go",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ]
+  },
+  {
+    "command": "guard",
+    "group": "std",
+    "path": "/cmds/std/guard",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "halt",
+    "group": "std",
+    "path": "/cmds/std/halt",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "identify",
+    "group": "std",
+    "path": "/cmds/std/identify",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "ignore",
+    "group": "std",
+    "path": "/cmds/std/ignore",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "kill",
+    "group": "std",
+    "path": "/cmds/std/kill",
+    "functions": [
+      "do_kill",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "lock",
+    "group": "std",
+    "path": "/cmds/std/lock",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "look",
+    "group": "std",
+    "path": "/cmds/std/look",
+    "functions": [
+      "create",
+      "help",
+      "inventory_look",
+      "look_item",
+      "look_living",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "open",
+    "group": "std",
+    "path": "/cmds/std/open",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "perform",
+    "group": "std",
+    "path": "/cmds/std/perform",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "put",
+    "group": "std",
+    "path": "/cmds/std/put",
+    "functions": [
+      "create",
+      "do_put",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ]
+  },
+  {
+    "command": "remove",
+    "group": "std",
+    "path": "/cmds/std/remove",
+    "functions": [
+      "do_remove",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ]
+  },
+  {
+    "command": "reply",
+    "group": "std",
+    "path": "/cmds/std/reply",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "say",
+    "group": "std",
+    "path": "/cmds/std/say",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "search",
+    "group": "std",
+    "path": "/cmds/std/search",
+    "functions": [
+      "find_drug",
+      "help",
+      "main",
+      "searching"
+    ],
+    "runtime_traits": [
+      "movement"
+    ]
+  },
+  {
+    "command": "shout",
+    "group": "std",
+    "path": "/cmds/std/shout",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "sneak",
+    "group": "std",
+    "path": "/cmds/std/sneak",
+    "functions": [
+      "create",
+      "do_sneak",
+      "halt_sneak",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement",
+      "teaching"
+    ]
+  },
+  {
+    "command": "steal",
+    "group": "std",
+    "path": "/cmds/std/steal",
+    "functions": [
+      "compelete_steal",
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement",
+      "teaching",
+      "timed"
+    ]
+  },
+  {
+    "command": "study",
+    "group": "std",
+    "path": "/cmds/std/study",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "suicide",
+    "group": "std",
+    "path": "/cmds/std/suicide",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "team",
+    "group": "std",
+    "path": "/cmds/std/team",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "tell",
+    "group": "std",
+    "path": "/cmds/std/tell",
+    "functions": [
+      "create",
+      "help",
+      "main",
+      "remote_tell"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "unlock",
+    "group": "std",
+    "path": "/cmds/std/unlock",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "unwield",
+    "group": "std",
+    "path": "/cmds/std/unwield",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "wear",
+    "group": "std",
+    "path": "/cmds/std/wear",
+    "functions": [
+      "do_wear",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "whisper",
+    "group": "std",
+    "path": "/cmds/std/whisper",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "wield",
+    "group": "std",
+    "path": "/cmds/std/wield",
+    "functions": [
+      "do_wield",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "abandon",
+    "group": "usr",
+    "path": "/cmds/usr/abandon",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "alias",
+    "group": "usr",
+    "path": "/cmds/usr/alias",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "backup",
+    "group": "usr",
+    "path": "/cmds/usr/backup",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "chfn",
+    "group": "usr",
+    "path": "/cmds/usr/chfn",
+    "functions": [
+      "create",
+      "get_email",
+      "get_profile",
+      "get_signature",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "interactive"
+    ]
+  },
+  {
+    "command": "describe",
+    "group": "usr",
+    "path": "/cmds/usr/describe",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "disable",
+    "group": "usr",
+    "path": "/cmds/usr/disable",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "skill_mapping"
+    ]
+  },
+  {
+    "command": "enable",
+    "group": "usr",
+    "path": "/cmds/usr/enable",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "skill_mapping"
+    ]
+  },
+  {
+    "command": "estimate",
+    "group": "usr",
+    "path": "/cmds/usr/estimate",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "finger",
+    "group": "usr",
+    "path": "/cmds/usr/finger",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "gain",
+    "group": "usr",
+    "path": "/cmds/usr/gain",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "help",
+    "group": "usr",
+    "path": "/cmds/usr/help",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "hp",
+    "group": "usr",
+    "path": "/cmds/usr/hp",
+    "functions": [
+      "help",
+      "main",
+      "status_color"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "id",
+    "group": "usr",
+    "path": "/cmds/usr/id",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "inventory",
+    "group": "usr",
+    "path": "/cmds/usr/inventory",
+    "functions": [
+      "help",
+      "inventory_desc",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "keep",
+    "group": "usr",
+    "path": "/cmds/usr/keep",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "localtime",
+    "group": "usr",
+    "path": "/cmds/usr/localtime",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "nick",
+    "group": "usr",
+    "path": "/cmds/usr/nick",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "okip",
+    "group": "usr",
+    "path": "/cmds/usr/okip",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "reset"
+    ]
+  },
+  {
+    "command": "option",
+    "group": "usr",
+    "path": "/cmds/usr/option",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "order",
+    "group": "usr",
+    "path": "/cmds/usr/order",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "passwd",
+    "group": "usr",
+    "path": "/cmds/usr/passwd",
+    "functions": [
+      "confirm_new_pass",
+      "get_new_pass",
+      "get_old_pass",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "interactive"
+    ]
+  },
+  {
+    "command": "praise",
+    "group": "usr",
+    "path": "/cmds/usr/praise",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "quit",
+    "group": "usr",
+    "path": "/cmds/usr/quit",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "save",
+    "group": "usr",
+    "path": "/cmds/usr/save",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "score",
+    "group": "usr",
+    "path": "/cmds/usr/score",
+    "functions": [
+      "create",
+      "display_attr",
+      "help",
+      "main",
+      "status_color",
+      "tribar_graph"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "semote",
+    "group": "usr",
+    "path": "/cmds/usr/semote",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "skills",
+    "group": "usr",
+    "path": "/cmds/usr/skills",
+    "functions": [
+      "help",
+      "main",
+      "skill_level"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "time",
+    "group": "usr",
+    "path": "/cmds/usr/time",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "to",
+    "group": "usr",
+    "path": "/cmds/usr/to",
+    "functions": [
+      "do_to",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "tune",
+    "group": "usr",
+    "path": "/cmds/usr/tune",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "undescribe",
+    "group": "usr",
+    "path": "/cmds/usr/undescribe",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "uptime",
+    "group": "usr",
+    "path": "/cmds/usr/uptime",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "version",
+    "group": "usr",
+    "path": "/cmds/usr/version",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "visitor",
+    "group": "usr",
+    "path": "/cmds/usr/visitor",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "who",
+    "group": "usr",
+    "path": "/cmds/usr/who",
+    "functions": [
+      "create",
+      "help",
+      "main",
+      "msg_format",
+      "sort_user"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "wimpy",
+    "group": "usr",
+    "path": "/cmds/usr/wimpy",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "wizlist",
+    "group": "usr",
+    "path": "/cmds/usr/wizlist",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "analyze",
+    "group": "wiz",
+    "path": "/cmds/wiz/analyze",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "arrest",
+    "group": "wiz",
+    "path": "/cmds/wiz/arrest",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "call",
+    "group": "wiz",
+    "path": "/cmds/wiz/call",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "cat",
+    "group": "wiz",
+    "path": "/cmds/wiz/cat",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "clone",
+    "group": "wiz",
+    "path": "/cmds/wiz/clone",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ]
+  },
+  {
+    "command": "cost",
+    "group": "wiz",
+    "path": "/cmds/wiz/cost",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "cp",
+    "group": "wiz",
+    "path": "/cmds/wiz/cp",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "daemon",
+    "group": "wiz",
+    "path": "/cmds/wiz/daemon",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "dest",
+    "group": "wiz",
+    "path": "/cmds/wiz/dest",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "edit",
+    "group": "wiz",
+    "path": "/cmds/wiz/edit",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "ff",
+    "group": "wiz",
+    "path": "/cmds/wiz/ff",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "home",
+    "group": "wiz",
+    "path": "/cmds/wiz/home",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ]
+  },
+  {
+    "command": "ilist",
+    "group": "wiz",
+    "path": "/cmds/wiz/ilist",
+    "functions": [
+      "format_inherit_list",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "info",
+    "group": "wiz",
+    "path": "/cmds/wiz/info",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "heart_beat"
+    ]
+  },
+  {
+    "command": "invis",
+    "group": "wiz",
+    "path": "/cmds/wiz/invis",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "localcmds",
+    "group": "wiz",
+    "path": "/cmds/wiz/localcmds",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "log",
+    "group": "wiz",
+    "path": "/cmds/wiz/log",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "mkdir",
+    "group": "wiz",
+    "path": "/cmds/wiz/mkdir",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "mudlist",
+    "group": "wiz",
+    "path": "/cmds/wiz/mudlist",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "mv",
+    "group": "wiz",
+    "path": "/cmds/wiz/mv",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "ping",
+    "group": "wiz",
+    "path": "/cmds/wiz/ping",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "qload",
+    "group": "wiz",
+    "path": "/cmds/wiz/qload",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "quiet",
+    "group": "wiz",
+    "path": "/cmds/wiz/quiet",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "rm",
+    "group": "wiz",
+    "path": "/cmds/wiz/rm",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "rmdir",
+    "group": "wiz",
+    "path": "/cmds/wiz/rmdir",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "snoop",
+    "group": "wiz",
+    "path": "/cmds/wiz/snoop",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "summon",
+    "group": "wiz",
+    "path": "/cmds/wiz/summon",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ]
+  },
+  {
+    "command": "tail",
+    "group": "wiz",
+    "path": "/cmds/wiz/tail",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "ulist",
+    "group": "wiz",
+    "path": "/cmds/wiz/ulist",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "update",
+    "group": "wiz",
+    "path": "/cmds/wiz/update",
+    "functions": [
+      "help",
+      "main",
+      "update_player"
+    ],
+    "runtime_traits": [
+      "movement"
+    ]
+  },
+  {
+    "command": "userid",
+    "group": "wiz",
+    "path": "/cmds/wiz/userid",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  },
+  {
+    "command": "whoami",
+    "group": "wiz",
+    "path": "/cmds/wiz/whoami",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": []
+  }
+]

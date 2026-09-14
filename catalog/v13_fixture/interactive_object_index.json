@@ -1,0 +1,63 @@
+[
+  {
+    "path": "/d/snow/doorroom",
+    "type": "room",
+    "name": "門房",
+    "actions": [],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [
+      {
+        "direction": "west",
+        "name": "木門",
+        "other_side": "east",
+        "state": "DOOR_CLOSED"
+      }
+    ],
+    "manual_review": [
+      "door"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/vendor_test",
+    "type": "npc",
+    "name": "商人",
+    "actions": [
+      {
+        "handler": "do_talk",
+        "verb": "talk"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [
+      {
+        "function": "hello",
+        "delay": 2
+      }
+    ],
+    "doors": [],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/x",
+    "type": "npc",
+    "name": "測試者",
+    "actions": [
+      {
+        "handler": "do_go",
+        "verb": "go"
+      }
+    ],
+    "accept_hooks": [],
+    "callouts": [],
+    "doors": [],
+    "manual_review": [
+      "custom_action",
+      "vendor_logic"
+    ]
+  }
+]

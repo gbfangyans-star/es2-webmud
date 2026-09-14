@@ -1,0 +1,462 @@
+[
+  {
+    "file": "adm/guild/academy.c",
+    "path": "/adm/guild/academy",
+    "type": "other",
+    "sha256": "773eda3de934e4d84bc93bd48144c97299eed0df4f73b29484acb59d554b8de4",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "short": "巫師學院",
+    "long": "你來到一片平坦的草地，幾株大樹和樹下的大理石桌與舒適木椅提供了舒適的閱讀環境。\n草地外是看不見邊際的雲海，以及雲海上燦爛的星空。\n這裡是巫師們研究魔法與世界萬物的地方﹐如果你是新手巫師﹐歡迎來到這裡和其他人互相討論﹐如果你是老手﹐也請不吝回答新手的問題。",
+    "exits": {
+      "west": {
+        "target": "guildhall",
+        "relative": true
+      }
+    },
+    "manual_review": []
+  },
+  {
+    "file": "adm/guild/guildhall.c",
+    "path": "/adm/guild/guildhall",
+    "type": "other",
+    "sha256": "833881dab4bc7c327891c2375d83d4f5f017f58c1be936a04ba52bb581812666",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "short": "巫師公會",
+    "long": "這裡就是巫師公會了﹐一個半球型的大浮島漂浮在七彩的雲間，平坦的地面鋪著一層碧綠草皮。\n草地北端盡頭是一棟純白的大型建築﹐希臘式的圓柱跟波斯風格的圓頂﹐營造出一種莊嚴的氣氛。\n你的東邊是露天的巫師學院﹐往西則是通往世界各地的傳送魔法陣。",
+    "exits": {
+      "east": {
+        "target": "academy",
+        "relative": true
+      },
+      "west": {
+        "target": "portal",
+        "relative": true
+      },
+      "north": {
+        "target": "meetingroom",
+        "relative": true
+      }
+    },
+    "manual_review": []
+  },
+  {
+    "file": "adm/guild/meetingroom.c",
+    "path": "/adm/guild/meetingroom",
+    "type": "other",
+    "sha256": "9904858489817cca146d606761b417ec6468834b817dcf10f7452ac9fd62f530",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "short": "會議廳",
+    "long": "這裡是巫師公會的會議廳，圓形的明亮大廳被一圈高大的圓柱包圍著，從地面一直延伸到半空中，彷彿支撐著整個天空。\n高聳的圓頂浮現出明亮的星星，但顯現的似乎是古老的星空並且以極快的速度演化中，你意識到這個大廳本身就是一個時空的紀錄儀器。\n巫師們商討重要事情時都會在這裡進行。",
+    "exits": {
+      "south": {
+        "target": "/adm/guild/guildhall",
+        "relative": false
+      }
+    },
+    "manual_review": []
+  },
+  {
+    "file": "adm/guild/portal.c",
+    "path": "/adm/guild/portal",
+    "type": "other",
+    "sha256": "c1005acfb0ca7e5fa6a773b39947ced8e93503ed4cc47f5acbd3f796c7c32ea9",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "short": "傳送門",
+    "long": "這裡是巫師公會的傳送門，平坦的草地上有一片鋪著地磚的空地。\n空地中央有一個巨大的綠色魔法陣，正發出閃爍不定的微弱光芒。",
+    "exits": {
+      "east": {
+        "target": "guildhall",
+        "relative": true
+      },
+      "inn": {
+        "target": "/d/snow/inn_hall",
+        "relative": false
+      }
+    },
+    "manual_review": []
+  },
+  {
+    "file": "adm/intermud/_gchannel.c",
+    "path": "/adm/intermud/_gchannel",
+    "type": "other",
+    "sha256": "4971bcb793280b4ab95a75c30970c59bd1fb5a181d8a3e242b1949302720174f",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "query",
+      "receive",
+      "send"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/intermud/_mudlist.c",
+    "path": "/adm/intermud/_mudlist",
+    "type": "other",
+    "sha256": "65c036d05b8b0f3f9cf9d7e8cb10ab573185e2b4033fd8e9580e1859df03413b",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "receive_answer",
+      "receive_request",
+      "send_request"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/intermud/_ping.c",
+    "path": "/adm/intermud/_ping",
+    "type": "other",
+    "sha256": "b6af4666a2e4eb7613abfbf1a4ee6d7ceecde26a86787a35bfce872abda46976",
+    "inherits": [
+      "F_CLEAN_UP",
+      "F_DBASE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_DBASE",
+        "target": "F_DBASE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "receive_answer",
+      "receive_request",
+      "send_request"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/intermud/i2d.c",
+    "path": "/adm/intermud/i2d",
+    "type": "other",
+    "sha256": "d09bb15915ddc24752118897aae40416d520a269409edb59e82dfb728d8c7f72",
+    "inherits": [
+      "F_DBASE",
+      "F_SAVE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_DBASE",
+        "target": "F_DBASE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_SAVE",
+        "target": "F_SAVE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "query_address",
+      "query_mudinfo",
+      "query_mudlist",
+      "query_save_file",
+      "query_udp_port",
+      "read_callback",
+      "remove",
+      "resolve_callback",
+      "send_event",
+      "set_mud_alias",
+      "set_mudinfo",
+      "startup",
+      "update"
+    ],
+    "runtime_traits": [
+      "movement",
+      "timed"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "equipment_hooks": [
+      "remove"
+    ],
+    "callouts": [
+      {
+        "function": "startup",
+        "delay": 1
+      }
+    ],
+    "combat_message_traits": [
+      "miss_text"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "adm/simul_efun/atoi.c",
+    "path": "/adm/simul_efun/atoi",
+    "type": "other",
+    "sha256": "6cb8e6e07d31362637518d98f5d17ee159a07c56a77531843d10cc49ffb7e4b8",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "atoi"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/simul_efun/chinese.c",
+    "path": "/adm/simul_efun/chinese",
+    "type": "other",
+    "sha256": "1b23ce2b3e0f9edbe8471db6851947c4dc4d175b174bd2ec215b50752d7ce42b",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "chinese_number",
+      "chinese_period",
+      "currency_string",
+      "to_chinese"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/simul_efun/cursor.c",
+    "path": "/adm/simul_efun/cursor",
+    "type": "other",
+    "sha256": "7e0c45064e7fca180feac7ced099d194895369a94502b8355434dc4a7f6e76b7",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "cursor_translate",
+      "option_value"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/simul_efun/file.c",
+    "path": "/adm/simul_efun/file",
+    "type": "other",
+    "sha256": "84a7df0ccfec7e2d44b5f834b0c7f66ed1f03fb6a912a76304b1f1936664a97f",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "assure_file",
+      "base_name",
+      "cat",
+      "log_file"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/simul_efun/gender.c",
+    "path": "/adm/simul_efun/gender",
+    "type": "other",
+    "sha256": "a12830b759a44124538138e08bfc81a143c85d1a5f42ef92729e232e50a1b589",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "gender_pronoun",
+      "gender_self"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/simul_efun/message.c",
+    "path": "/adm/simul_efun/message",
+    "type": "other",
+    "sha256": "7abd6d49c6ac6f0ba44a7cca9f4fa1fcc9ef9f3ea8baa39c10c113843c158a52",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "message_vision",
+      "say",
+      "shout",
+      "tell_object",
+      "tell_room",
+      "write"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/simul_efun/object.c",
+    "path": "/adm/simul_efun/object",
+    "type": "other",
+    "sha256": "8494153793fe0e1f01e23dcba1ddf19ad4c1616ecb870ee9cf44b6aa98f18c11",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "destruct",
+      "file_owner",
+      "getoid"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "equipment_hooks": [
+      "remove"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "adm/simul_efun/path.c",
+    "path": "/adm/simul_efun/path",
+    "type": "other",
+    "sha256": "02bfed9852b85b541924bdd149af9bde82cbec7541dc684457c0302fd5fe4d19",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "login_data",
+      "mail_data",
+      "resolve_path",
+      "user_cwd",
+      "user_data",
+      "user_home",
+      "user_path"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/simul_efun/utf8.c",
+    "path": "/adm/simul_efun/utf8",
+    "type": "other",
+    "sha256": "a2294e5b0f85c97cccab4a4c4ea5da25f7f7d7acfe680b52e4b085e9e7bd1129",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "cjk_wrap"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/simul_efun/wizard.c",
+    "path": "/adm/simul_efun/wizard",
+    "type": "other",
+    "sha256": "af7c2f4b70673354a64a602b74421ea18b4970cd5ec0e7daf6b2011d696ca4ae",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "wiz_level",
+      "wizhood"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  }
+]

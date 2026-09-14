@@ -1,0 +1,127 @@
+[
+  {
+    "path": "/cmds/std/buy",
+    "name": null,
+    "merchandise": [],
+    "runtime_traits": [
+      "vendor"
+    ],
+    "manual_review": [
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/smith",
+    "name": "鐵匠",
+    "merchandise": [
+      {
+        "target": "obj/hoe",
+        "relative": true,
+        "stock": 3
+      },
+      {
+        "target": "obj/shovel",
+        "relative": true,
+        "stock": 5
+      },
+      {
+        "target": "/obj/area/obj/dagger",
+        "relative": false,
+        "stock": 10
+      },
+      {
+        "target": "/obj/area/obj/shortsword",
+        "relative": false,
+        "stock": 5
+      }
+    ],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "movement",
+      "timed"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/waiter",
+    "name": "店小二",
+    "merchandise": [
+      {
+        "target": "/obj/food/dumpling",
+        "relative": false,
+        "stock": 50
+      },
+      {
+        "target": "/obj/food/manto",
+        "relative": false,
+        "stock": 50
+      },
+      {
+        "target": "/obj/food/pork",
+        "relative": false,
+        "stock": 30
+      },
+      {
+        "target": "obj/roast_chicken",
+        "relative": true,
+        "stock": 30
+      }
+    ],
+    "runtime_traits": [
+      "init"
+    ],
+    "manual_review": [
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/yu",
+    "name": "魚天",
+    "merchandise": [
+      {
+        "target": "/d/snow/npc/obj/blue_jacket",
+        "relative": false,
+        "stock": 5
+      },
+      {
+        "target": "/obj/armor/fur_hat",
+        "relative": false,
+        "stock": 5
+      },
+      {
+        "target": "/obj/bottle",
+        "relative": false,
+        "stock": 5
+      }
+    ],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "movement",
+      "timed"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/feature/npc/vendor",
+    "name": null,
+    "merchandise": [],
+    "runtime_traits": [
+      "movement",
+      "reset",
+      "vendor"
+    ],
+    "manual_review": [
+      "vendor_logic"
+    ]
+  }
+]

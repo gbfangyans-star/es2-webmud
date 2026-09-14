@@ -1,0 +1,7 @@
+李家村 V2 世界接壤修正
+
+已依玩家提供之既有世界地圖確認正式接點：
+/d/snow/egate (河邊) -- northeast --> /d/lee/entrance_s (村口)
+/d/lee/entrance_s (村口) -- southwest --> /d/snow/egate (河邊)
+
+未新增前端地圖特例；WebHUD 應由實際 room exits 自動取得此拓樸。

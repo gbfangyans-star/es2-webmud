@@ -1,0 +1,51 @@
+[
+  {
+    "path": "/d/snow/skill/sword-art",
+    "type": "skill",
+    "name": null,
+    "registered_skill_daemon": "sword-art",
+    "skill_contract": {
+      "functions": [
+        "valid_enable",
+        "attack_using",
+        "parry_using"
+      ],
+      "contracts": [
+        "valid_enable"
+      ]
+    },
+    "required_skills": {},
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/skill/test-art",
+    "type": "skill",
+    "name": null,
+    "registered_skill_daemon": null,
+    "skill_contract": {
+      "functions": [
+        "attack_using"
+      ],
+      "contracts": []
+    },
+    "required_skills": {},
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/weapon/sword",
+    "type": "feature",
+    "name": null,
+    "registered_skill_daemon": null,
+    "skill_contract": {
+      "functions": [
+        "attack_using"
+      ],
+      "contracts": []
+    },
+    "required_skills": {},
+    "runtime_traits": [],
+    "manual_review": []
+  }
+]

@@ -1,0 +1,11 @@
+ES2 WebMUD v3.20.77 re-applied changes onto user-uploaded v3.20.76_ARCH6(1) base
+
+Re-applied only the previously agreed changes:
+1. Event-triggered immediate map HUD refresh after movement, with polling as fallback.
+2. Runtime room path/name/exits authoritative over stale seed graph labels.
+3. Regenerated custom_map_graph.json from this uploaded base.
+4. Old-Neolith trailing-comma compatibility fixes in who/hp/where.
+5. Reorganized HELP index and 22 ES2-only help topics.
+6. Added /docs/help to normal help search path.
+
+Friend/server changes in the uploaded base were retained, including custom/wizroom and the current oldpine NPC/path files.

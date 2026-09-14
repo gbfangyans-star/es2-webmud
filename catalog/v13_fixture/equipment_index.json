@@ -1,0 +1,77 @@
+[
+  {
+    "path": "/obj/armor/cloth",
+    "name": "布衣",
+    "ids": [
+      "cloth"
+    ],
+    "wear_as": "cloth",
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "weapon_type": null,
+    "damage": null,
+    "armor": null,
+    "value": 0,
+    "weight": 1000,
+    "material": null,
+    "setup_kinds": [
+      "cloth"
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/armor/fur_hat",
+    "name": "毛皮帽",
+    "ids": [
+      "fur hat",
+      "hat"
+    ],
+    "wear_as": "head_eq",
+    "armor_apply": [
+      {
+        "slot": "head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "weapon_type": null,
+    "damage": null,
+    "armor": null,
+    "value": 50,
+    "weight": 1000,
+    "material": null,
+    "setup_kinds": [
+      "head_eq"
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "inherits": [
+      "F_HEAD_EQ"
+    ],
+    "manual_review": []
+  }
+]

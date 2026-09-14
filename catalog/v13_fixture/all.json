@@ -1,0 +1,736 @@
+[
+  {
+    "file": "d/snow/a.c",
+    "path": "/d/snow/a",
+    "type": "room",
+    "sha256": "449348e3b147e6281e22525e15eb09cb4f1d984993c40e9c02609ab769a7d8c8",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "short": "A",
+    "exits": {
+      "east": {
+        "target": "b",
+        "relative": true
+      }
+    },
+    "objects": [
+      {
+        "target": "npc/x",
+        "relative": true,
+        "count": 1
+      }
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/b.c",
+    "path": "/d/snow/b",
+    "type": "room",
+    "sha256": "37311e6215acec560231e194ac7e38af01989a5e929ae26b6fcbb70048ae8d52",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "short": "B",
+    "exits": {
+      "west": {
+        "target": "a",
+        "relative": true
+      }
+    },
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/doorroom.c",
+    "path": "/d/snow/doorroom",
+    "type": "room",
+    "sha256": "8e948af1773b9514d873d1fa4ba1e7a26b7ca57ec593d9af226c8404a8b53d1b",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "short": "門房",
+    "exits": {
+      "west": {
+        "target": "a",
+        "relative": true
+      }
+    },
+    "doors": [
+      {
+        "direction": "west",
+        "name": "木門",
+        "other_side": "east",
+        "state": "DOOR_CLOSED"
+      }
+    ],
+    "manual_review": [
+      "door"
+    ]
+  },
+  {
+    "file": "d/snow/npc/fighter_test.c",
+    "path": "/d/snow/npc/fighter_test",
+    "type": "npc",
+    "sha256": "7a67d52551e57a9e748d8b6691adde2b0b1b757bece33fc3d5f7bcf5bf8bb72f",
+    "inherits": [
+      "NPC"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "NPC",
+        "target": "NPC",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [
+      "skill_mapping",
+      "teaching"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "劍客",
+    "ids": [
+      "fighter"
+    ],
+    "level": 9,
+    "numeric_calls": {
+      "set_level": 9
+    },
+    "function_calls": [
+      "map_skill"
+    ],
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 40
+      },
+      {
+        "skill": "parry",
+        "level": 25
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "sword",
+        "mapped_to": "sword-art"
+      },
+      {
+        "base": "parry",
+        "mapped_to": "sword-art"
+      }
+    ],
+    "combat_message_traits": [
+      "parry_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/vendor_test.c",
+    "path": "/d/snow/npc/vendor_test",
+    "type": "npc",
+    "sha256": "c6bf2045a1b0918c9327ddae715e118cf61552dcc412df66fb08780cc40a73d3",
+    "inherits": [
+      "NPC",
+      "F_VENDOR"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "NPC",
+        "target": "NPC",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_VENDOR",
+        "target": "F_VENDOR",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "init"
+    ],
+    "runtime_traits": [
+      "init",
+      "skill_mapping",
+      "teaching",
+      "timed"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "商人",
+    "ids": [
+      "vendor",
+      "merchant"
+    ],
+    "race": "human",
+    "gender": "male",
+    "level": 7,
+    "numeric_calls": {
+      "set_level": 7
+    },
+    "function_calls": [
+      "map_skill"
+    ],
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 20
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "unarmed",
+        "mapped_to": "test-art"
+      }
+    ],
+    "merchandise": [
+      {
+        "target": "../obj/thing",
+        "relative": true,
+        "stock": 3
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_talk",
+        "verb": "talk"
+      }
+    ],
+    "callouts": [
+      {
+        "function": "hello",
+        "delay": 2
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_talk",
+        "verb": "talk"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "file": "d/snow/npc/x.c",
+    "path": "/d/snow/npc/x",
+    "type": "npc",
+    "sha256": "00ded63c4d75b2b5b0a50903bf8a666f5bd7c60fea147dc692b2cfcc2a171d3d",
+    "inherits": [
+      "NPC",
+      "F_VENDOR"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "NPC",
+        "target": "NPC",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_VENDOR",
+        "target": "F_VENDOR",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "init"
+    ],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "skill_mapping",
+      "teaching"
+    ],
+    "combat_surface": [
+      "skill",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "測試者",
+    "ids": [
+      "tester"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "level": 20,
+    "attributes": {
+      "str": 20
+    },
+    "stat_maximums": {
+      "kee": 80
+    },
+    "numeric_calls": {
+      "set_level": 20
+    },
+    "equipment_hooks": [
+      "wield"
+    ],
+    "function_calls": [
+      "map_skill",
+      "wield"
+    ],
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 12
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "unarmed",
+        "mapped_to": "test-art"
+      }
+    ],
+    "merchandise": [
+      {
+        "target": "../obj/thing",
+        "relative": true,
+        "stock": 3
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_go",
+        "verb": "go"
+      }
+    ],
+    "equipment": [
+      {
+        "stock_type": "weapon",
+        "name": "longsword",
+        "action": "wield"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_go",
+        "verb": "go"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "manual_review": [
+      "custom_action",
+      "vendor_logic"
+    ]
+  },
+  {
+    "file": "d/snow/obj/thing.c",
+    "path": "/d/snow/obj/thing",
+    "type": "item",
+    "sha256": "dff7d3ae0fdca507be3dea24ba26be8e0bd45883582664b84ef0613bfaab34b6",
+    "inherits": [
+      "ITEM",
+      "F_STUDY"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_STUDY",
+        "target": "F_STUDY",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "測試書",
+    "ids": [
+      "test book",
+      "book"
+    ],
+    "weight": 1000,
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "required_skills": {
+      "literate": 1
+    },
+    "study_content": {
+      "literate": 10
+    },
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/skill/sword-art.c",
+    "path": "/d/snow/skill/sword-art",
+    "type": "skill",
+    "sha256": "fb22d820e5606b2cf7c38ad005719e3aa213b9be0d3e6117a9833feb1624152e",
+    "inherits": [
+      "SKILL"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "SKILL",
+        "target": "SKILL",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "attack_using",
+      "create",
+      "parry_using",
+      "valid_enable"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "skill_contract": {
+      "functions": [
+        "valid_enable",
+        "attack_using",
+        "parry_using"
+      ],
+      "contracts": [
+        "valid_enable"
+      ]
+    },
+    "valid_enable_literals": [
+      "parry",
+      "sword"
+    ],
+    "function_calls": [
+      "attack_using",
+      "parry_using"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "parry_text"
+    ],
+    "registered_skill_daemon": "sword-art",
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/skill/test-art.c",
+    "path": "/d/snow/skill/test-art",
+    "type": "skill",
+    "sha256": "562c35ee9050703be278a77e89025c858edafc872a7a4ea1f4e685fcc14d50fd",
+    "inherits": [
+      "SKILL"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "SKILL",
+        "target": "SKILL",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "attack_using"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "skill_contract": {
+      "functions": [
+        "attack_using"
+      ],
+      "contracts": []
+    },
+    "function_calls": [
+      "attack_using"
+    ],
+    "combat_message_traits": [
+      "attack_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/char/combat.c",
+    "path": "/feature/char/combat",
+    "type": "feature",
+    "sha256": "70d6d196b7ae3b3ef558d8c99dedbc8526164692554d1094729cb05ce8825fb8",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "query_strength"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "damage_contract": [
+      "query_strength"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/npc/vendor.c",
+    "path": "/feature/npc/vendor",
+    "type": "npc",
+    "sha256": "1fcfe53efc38ec1d5a25604de6beff020b9bdb3a3447fb7822b7992c4623d32d",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "affirm_merchandise",
+      "deliver_merchandise",
+      "query_trading_price",
+      "reset"
+    ],
+    "runtime_traits": [
+      "reset",
+      "vendor"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": [
+      "vendor_logic"
+    ]
+  },
+  {
+    "file": "feature/weapon/sword.c",
+    "path": "/feature/weapon/sword",
+    "type": "feature",
+    "sha256": "33159d4bede451b4df1bbddf3ee9008b7523948a0a780e51f5aed7c9674927ba",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "attack_with",
+      "init_damage"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "skill_contract": {
+      "functions": [
+        "attack_using"
+      ],
+      "contracts": []
+    },
+    "equipment_hooks": [
+      "wield"
+    ],
+    "skill_daemon_calls": [
+      {
+        "expression": "skill_type",
+        "method": "attack_using",
+        "dynamic": true
+      }
+    ],
+    "weapon_dispatch": {
+      "attack_with": true
+    },
+    "function_calls": [
+      "attack_using",
+      "unequip",
+      "wield"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/armor/cloth.c",
+    "path": "/obj/armor/cloth",
+    "type": "item",
+    "sha256": "97a53b75b02ce14254ec69487b810e481e976cf21d481f050a817ac3dd6903f2",
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLOTH",
+        "target": "F_CLOTH",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "布衣",
+    "ids": [
+      "cloth"
+    ],
+    "weight": 1000,
+    "wear_as": "cloth",
+    "setup_kinds": [
+      "cloth"
+    ],
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "unit": "件",
+    "value": 0,
+    "manual_review": []
+  },
+  {
+    "file": "obj/armor/fur_hat.c",
+    "path": "/obj/armor/fur_hat",
+    "type": "item",
+    "sha256": "3b9e72cccc3b1c4e73ea4b3d80976610c567448421bf26f5cfce2eb45f546373",
+    "inherits": [
+      "F_HEAD_EQ"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_HEAD_EQ",
+        "target": "F_HEAD_EQ",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "毛皮帽",
+    "ids": [
+      "fur hat",
+      "hat"
+    ],
+    "weight": 1000,
+    "wear_as": "head_eq",
+    "setup_kinds": [
+      "head_eq"
+    ],
+    "armor_apply": [
+      {
+        "slot": "head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "value": 50,
+    "manual_review": []
+  },
+  {
+    "file": "std/char.c",
+    "path": "/std/char",
+    "type": "prototype",
+    "sha256": "1604990be2f3900aa86f590aac157899e9260726294843d8ffe741062fca02a9",
+    "inherits": [
+      "F_COMBAT"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_COMBAT",
+        "target": "F_COMBAT",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "std/item/container.c",
+    "path": "/std/item/container",
+    "type": "item",
+    "sha256": "fb85c12852459edeaa7a904af484e4687a82a872ff65ec2188829222ad780437",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  }
+]

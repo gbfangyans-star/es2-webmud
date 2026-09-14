@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>東方故事二 · 天朝帝國</title>
+  <link rel="stylesheet" href="/styles.css?v=mapv8-focus-bootstrap">
+</head>
+<body class="game-body">
+  <section id="landing" class="landing" aria-label="東方故事二登入首頁">
+    <div class="landing-art">
+      <button id="enterGame" class="landing-enter-target" type="button" aria-label="進入遊戲"><span>進入遊戲</span></button>
+    </div>
+  </section>
+
+  <div id="gameApp" class="game-app" hidden>
+    <div class="game-shell">
+      <aside class="game-nav" aria-label="遊戲功能選單">
+        <div class="nav-art"></div>
+        <div class="nav-shade"></div>
+        <div class="nav-content">
+          <div class="nav-brand">
+            <strong>東方故事 II</strong>
+            <span>天朝帝國</span>
+            <small>CELESTIAL EMPIRE</small>
+          </div>
+          <nav class="nav-menu">
+            <button type="button" class="nav-item active" data-cmd="score"><span class="nav-icon">◈</span><span>狀態</span></button>
+            <button type="button" class="nav-item" data-cmd="inventory"><span class="nav-icon">▣</span><span>背包</span></button>
+            <button type="button" class="nav-item" data-cmd="skills"><span class="nav-icon">卷</span><span>技能</span></button>
+            <button type="button" class="nav-item" data-ui-focus="map"><span class="nav-icon">圖</span><span>地圖</span></button>
+            <button type="button" class="nav-item" data-ui-focus="chat"><span class="nav-icon">言</span><span>聊天</span></button>
+            <button type="button" class="nav-item" data-cmd="help"><span class="nav-icon">?</span><span>說明</span></button>
+            <button type="button" class="nav-item" data-ui-settings><span class="nav-icon">⚙</span><span>設定</span></button>
+          </nav>
+          <div class="nav-footer">
+            <span id="conn" class="conn-dot">CONNECTING</span>
+            <small>WEBMUD TEST UI</small>
+          </div>
+        </div>
+      </aside>
+
+      <div class="center-stack">
+        <main class="console-panel">
+          <div class="console-heading">
+            <div><small>江湖紀錄</small><strong id="consoleRoomTitle">東方故事 II</strong></div>
+            <span>原生 ES2 指令輸出</span>
+          </div>
+          <div id="terminal" aria-live="polite"></div>
+          <form class="commandbar" id="form">
+            <span class="command-prompt">›</span>
+            <span id="inputMode" class="input-mode">指令輸入</span>
+            <input id="command" autocomplete="off" spellcheck="false" placeholder="請輸入指令...">
+            <button type="submit">送出</button>
+          </form>
+        </main>
+
+        <section class="context-panel" id="contextPanel" aria-label="情境資訊">
+          <div class="context-card">
+            <div class="context-kicker">SCENE / INTERACTION</div>
+            <h2 id="contextTitle">目前場景</h2>
+            <div id="contextBody" class="context-body">
+              <div class="context-sigil">東方故事 II</div>
+              <p>等待遊戲場景資訊。</p>
+              <small>此面板整理原生 ES2 輸出中的人物、物件與戰鬥資訊。</small>
+            </div>
+          </div>
+          <div class="context-chat-card" id="chatPanel" aria-label="聊天訊息">
+            <div class="context-chat-head">
+              <div>
+                <div class="context-kicker">MESSAGES</div>
+                <strong>江湖傳訊</strong>
+              </div>
+              <div class="context-chat-tabs" role="tablist" aria-label="聊天類型">
+                <button type="button" class="context-chat-tab active" data-chat-tab="chat" role="tab" aria-selected="true">CHAT</button>
+                <button type="button" class="context-chat-tab" data-chat-tab="tell" role="tab" aria-selected="false">TELL</button>
+              </div>
+            </div>
+            <div id="contextChatLog" class="context-chat-log" aria-live="polite">
+              <div class="context-chat-empty">尚無 CHAT 訊息。</div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="game-side">
+        <section class="side-card status-card" id="statusPanel">
+          <div class="side-title"><span>角色狀態</span><b id="levelHud">Lv.--</b></div>
+          <div id="scoreHud" class="hud-grid muted">等待 score / hp 輸出</div>
+        </section>
+
+        <section class="side-card map-card" id="mapPanel">
+          <div class="side-title map-title-row">
+            <div><span>周邊地圖</span><small id="mapLayerHud">MAP V7 唯讀全圖｜等待定位</small></div>
+            <div class="map-compass" aria-label="方向"><b>北</b><span>西 ┼ 東</span><em>南</em></div>
+          </div>
+          <div id="localMap" class="local-map topology-map" aria-label="周邊房間地圖">
+            <div class="map-empty">等待辨識所在房間</div>
+          </div>
+          <div class="map-toolbar" aria-label="地圖控制">
+            <button type="button" data-map-action="out" title="縮小">−</button>
+            <span id="mapZoomLabel">100%</span>
+            <button type="button" data-map-action="in" title="放大">＋</button>
+            <button type="button" data-map-action="center">置中</button>
+          </div>
+          <div class="map-legend">
+            <span><i class="legend-current"></i>你的位置</span>
+            <span><i class="legend-known"></i>已探索</span>
+            <span><i class="legend-special"></i>重要地點</span>
+          </div>
+          <div id="mapTransitions" class="map-transitions" hidden></div>
+        </section>
+
+        <section class="side-card quick-card">
+          <div class="side-title"><span>快捷操作</span><small>仍送出原生 ES2 指令</small></div>
+          <div class="quick-grid">
+            <button data-cmd="look">觀察</button>
+            <button data-cmd="who">在線</button>
+            <button data-cmd="hp">即時狀態</button>
+            <button data-cmd="inventory">物品</button>
+            <button data-cmd="inventory">裝備欄</button>
+          </div>
+        </section>
+
+        <section class="reserved-grid" aria-label="保留欄位">
+          <div class="reserved-slot"><span>+</span><small>空白欄位</small></div>
+          <div class="reserved-slot"><span>+</span><small>空白欄位</small></div>
+          <div class="reserved-slot"><span>+</span><small>空白欄位</small></div>
+        </section>
+      </aside>
+    </div>
+
+    <dialog id="uiSettings" class="ui-settings">
+      <form method="dialog">
+        <div class="settings-head"><strong>介面設定</strong><button value="cancel" aria-label="關閉">×</button></div>
+        <label>文字大小 <input id="terminalFontSize" type="range" min="13" max="20" value="15"><span id="terminalFontValue">15px</span></label>
+        <label class="toggle-line"><input id="compactContext" type="checkbox"> 精簡下方情境區</label>
+        <p>這些設定只影響瀏覽器顯示，不修改 MUD Server。</p>
+      </form>
+    </dialog>
+  </div>
+
+  <script type="module" src="/app.js?v=mapv8-focus-bootstrap"></script>
+</body>
+</html>

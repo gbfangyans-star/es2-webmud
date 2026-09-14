@@ -1,0 +1,13 @@
+【巫師說明】
+
+巫師工具會直接操作 MUD Server。修改 .c 原始碼並存檔後，硬碟檔案已改變，但已載入
+記憶體的物件不一定立刻採用新版。
+
+常見工作流程：
+  1. edit 目標檔案並存檔
+  2. 依物件類型判斷是否需要 update / reset / 重新產生
+  3. 重新進房、look、info、where 或實際觸發功能驗證
+
+update 可能影響目前已載入物件，不應當成每做一個指令都要按的存檔鍵。
+
+可直接查：help edit、help update、help clone、help where、help goto、help who

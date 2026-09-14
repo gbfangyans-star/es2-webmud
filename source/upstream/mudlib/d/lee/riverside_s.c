@@ -1,0 +1,25 @@
+// /d/lee/riverside_s.c
+// 李家村復原版。RECONSTRUCTED
+// Topology follows the user-provided Li Village map; generated prose is intentionally replaceable.
+
+inherit ROOM;
+
+void create()
+{
+    set("short", "溪邊小路");
+    set("long", @LONG
+溪邊小路到了村東門附近，西面可回村口大門，南北則沿著溪岸延伸。水聲在這一帶十分清楚。
+LONG
+    );
+    set("objects", ([
+        "/d/lee/npc/woman" : 2
+    ]));
+    set("exits", ([
+        "west" : __DIR__"gate_e",
+        "north" : __DIR__"riverside_n1",
+        "south" : __DIR__"creek",
+        "southwest" : __DIR__"watermelon_n3"
+    ]));
+    setup();
+    replace_program(ROOM);
+}

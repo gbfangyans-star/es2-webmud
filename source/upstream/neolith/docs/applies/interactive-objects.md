@@ -1,0 +1,12 @@
+# Apply Functions Called In Interactive Objects
+- [catch_tell](/docs/applies/interactive/catch_tell.md)
+- [logon](/docs/applies/interactive/logon.md)
+- [net_dead](/docs/applies/interactive/net_dead.md)
+- [input_prompt](/docs/applies/interactive/input_prompt.md)
+- [process_input](/docs/applies/interactive/process_input.md)
+- [receive_message](/docs/applies/interactive/receive_message.md)
+- [receive_snoop](/docs/applies/interactive/receive_snoop.md)
+- [telnet_suboption](/docs/applies/interactive/telnet_suboption.md)
+- [set_terminal_type](/docs/applies/interactive/set_terminal_type.md)
+- [set_window_size](/docs/applies/interactive/set_window_size.md)
+- [write_prompt](/docs/applies/interactive/write_prompt.md)

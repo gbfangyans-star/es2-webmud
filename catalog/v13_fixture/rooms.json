@@ -1,0 +1,109 @@
+[
+  {
+    "file": "d/snow/a.c",
+    "path": "/d/snow/a",
+    "type": "room",
+    "sha256": "449348e3b147e6281e22525e15eb09cb4f1d984993c40e9c02609ab769a7d8c8",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "short": "A",
+    "exits": {
+      "east": {
+        "target": "b",
+        "relative": true
+      }
+    },
+    "objects": [
+      {
+        "target": "npc/x",
+        "relative": true,
+        "count": 1
+      }
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/b.c",
+    "path": "/d/snow/b",
+    "type": "room",
+    "sha256": "37311e6215acec560231e194ac7e38af01989a5e929ae26b6fcbb70048ae8d52",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "short": "B",
+    "exits": {
+      "west": {
+        "target": "a",
+        "relative": true
+      }
+    },
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/doorroom.c",
+    "path": "/d/snow/doorroom",
+    "type": "room",
+    "sha256": "8e948af1773b9514d873d1fa4ba1e7a26b7ca57ec593d9af226c8404a8b53d1b",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "short": "門房",
+    "exits": {
+      "west": {
+        "target": "a",
+        "relative": true
+      }
+    },
+    "doors": [
+      {
+        "direction": "west",
+        "name": "木門",
+        "other_side": "east",
+        "state": "DOOR_CLOSED"
+      }
+    ],
+    "manual_review": [
+      "door"
+    ]
+  }
+]

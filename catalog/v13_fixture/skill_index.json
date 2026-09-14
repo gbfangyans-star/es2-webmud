@@ -1,0 +1,117 @@
+[
+  {
+    "path": "/d/snow/npc/fighter_test",
+    "name": "劍客",
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 40
+      },
+      {
+        "skill": "parry",
+        "level": 25
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "sword",
+        "mapped_to": "sword-art"
+      },
+      {
+        "base": "parry",
+        "mapped_to": "sword-art"
+      }
+    ],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "create"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/vendor_test",
+    "name": "商人",
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 20
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "unarmed",
+        "mapped_to": "test-art"
+      }
+    ],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "create",
+      "init"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/x",
+    "name": "測試者",
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 12
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "unarmed",
+        "mapped_to": "test-art"
+      }
+    ],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "create",
+      "init"
+    ],
+    "manual_review": [
+      "custom_action",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/skill/sword-art",
+    "name": null,
+    "type": "skill",
+    "skills": [],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": "sword-art",
+    "functions": [
+      "attack_using",
+      "create",
+      "parry_using",
+      "valid_enable"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/skill/test-art",
+    "name": null,
+    "type": "skill",
+    "skills": [],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "attack_using"
+    ],
+    "manual_review": []
+  }
+]

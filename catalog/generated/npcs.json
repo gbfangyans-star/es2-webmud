@@ -1,0 +1,4045 @@
+[
+  {
+    "file": "d/snow/npc/alchemist.c",
+    "path": "/d/snow/npc/alchemist",
+    "type": "npc",
+    "sha256": "dd5c1a5eaae7171f944acd4a3d89ee4a312a9728666c4f219b661dba99cc7472",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_apprentice",
+      "acquire_skill",
+      "create",
+      "init_apprentice",
+      "set_flag"
+    ],
+    "runtime_traits": [
+      "inventory",
+      "skill_mapping",
+      "teaching"
+    ],
+    "combat_surface": [
+      "armor",
+      "skill",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "陳維俠",
+    "ids": [
+      "chen weisha",
+      "weisha",
+      "chen"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "level": 30,
+    "attributes": {
+      "dex": 18,
+      "int": 24,
+      "wis": 25,
+      "spi": 22,
+      "cps": 19,
+      "con": 20
+    },
+    "numeric_calls": {
+      "set_level": 30
+    },
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "function_calls": [
+      "improve_skill",
+      "map_skill",
+      "wear",
+      "wield"
+    ],
+    "age": 55,
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 60
+      },
+      {
+        "skill": "sword",
+        "level": 60
+      },
+      {
+        "skill": "parry",
+        "level": 80
+      },
+      {
+        "skill": "dodge",
+        "level": 70
+      },
+      {
+        "skill": "force",
+        "level": 70
+      },
+      {
+        "skill": "kee anatomy",
+        "level": 100
+      },
+      {
+        "skill": "dragon force",
+        "level": 60
+      },
+      {
+        "skill": "alchemy-medication",
+        "level": 140
+      },
+      {
+        "skill": "alchemy-wealth",
+        "level": 40
+      },
+      {
+        "skill": "alchemy-magic",
+        "level": 80
+      },
+      {
+        "skill": "alchemy-immortality",
+        "level": 30
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "force",
+        "mapped_to": "dragon force"
+      }
+    ],
+    "equipment": [
+      {
+        "target": "obj/silversword",
+        "relative": true,
+        "action": "wield"
+      },
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      }
+    ],
+    "temp_values": {
+      "pending/alchemist": 1
+    },
+    "combat_message_traits": [
+      "dodge_text",
+      "message_vision",
+      "parry_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/child.c",
+    "path": "/d/snow/npc/child",
+    "type": "npc",
+    "sha256": "0312ef8deb474ec5d2f2f0675702f6b040f85b86c3dae6a98ef61c8d2d3983d8",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_object",
+      "create",
+      "do_follow",
+      "exchange",
+      "give_comb",
+      "init",
+      "relay_say",
+      "set_fon_temp",
+      "timeto_eat"
+    ],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "movement",
+      "skill_mapping",
+      "teaching",
+      "timed"
+    ],
+    "combat_surface": [
+      "armor",
+      "skill",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "阿寶",
+    "ids": [
+      "arbao",
+      "__ID_ARBAO__"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "level": 10,
+    "attributes": {
+      "spi": 18,
+      "int": 19,
+      "dex": 19,
+      "con": 17
+    },
+    "numeric_calls": {
+      "set_level": 10
+    },
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "function_calls": [
+      "map_skill",
+      "wear",
+      "wield"
+    ],
+    "gender": "female",
+    "age": 16,
+    "skills": [
+      {
+        "skill": "stealing",
+        "level": 40
+      },
+      {
+        "skill": "dodge",
+        "level": 35
+      },
+      {
+        "skill": "lightswift",
+        "level": 45
+      },
+      {
+        "skill": "dagger",
+        "level": 40
+      },
+      {
+        "skill": "sword",
+        "level": 30
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "dodge",
+        "mapped_to": "lightswift"
+      }
+    ],
+    "equipment": [
+      {
+        "target": "obj/blue_cloth",
+        "relative": true,
+        "action": "wear"
+      },
+      {
+        "target": "/obj/area/obj/dagger",
+        "relative": false,
+        "action": "wield"
+      }
+    ],
+    "temp_values": {
+      "try/fon": 50
+    },
+    "command_hooks": [
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "dodge_text",
+      "message_vision"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "d/snow/npc/child1.c",
+    "path": "/d/snow/npc/child1",
+    "type": "npc",
+    "sha256": "7039c70c4502288ecd7dfaf61fe1e570f89784265f18241a309d89e13a5e8a5e",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "create",
+      "notify_stat"
+    ],
+    "runtime_traits": [
+      "inventory"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "小孩",
+    "ids": [
+      "child"
+    ],
+    "race": "human",
+    "level": 1,
+    "stat_maximums": {
+      "gin": 20,
+      "kee": 20,
+      "sen": 20
+    },
+    "numeric_calls": {
+      "set_level": 1
+    },
+    "equipment_hooks": [
+      "wear"
+    ],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "function_calls": [
+      "wear"
+    ],
+    "long": "一個流著鼻涕的小孩﹐睜著一雙無邪的眼睛望著你。\n",
+    "age": 6,
+    "equipment": [
+      {
+        "target": "obj/tummy_cover",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/child2.c",
+    "path": "/d/snow/npc/child2",
+    "type": "npc",
+    "sha256": "77aab059593475441082b628e2b03478044b7b84249ddce24d0855f0c0c8ede4",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "create",
+      "notify_stat"
+    ],
+    "runtime_traits": [
+      "inventory"
+    ],
+    "combat_surface": [
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "小孩",
+    "ids": [
+      "child"
+    ],
+    "race": "human",
+    "level": 1,
+    "numeric_calls": {
+      "set_level": 1
+    },
+    "equipment_hooks": [
+      "wield"
+    ],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "function_calls": [
+      "wield"
+    ],
+    "long": "一個約七、八歲大的男孩﹐笑瞇瞇地望著你。\n",
+    "equipment": [
+      {
+        "target": "obj/woodsword",
+        "relative": true,
+        "action": "wield"
+      }
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/child3.c",
+    "path": "/d/snow/npc/child3",
+    "type": "npc",
+    "sha256": "19d616f81580fabfb6bc99cdfc6add20e8e5f73a3272cb62303964f034284399",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "create",
+      "notify_stat"
+    ],
+    "runtime_traits": [
+      "inventory"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "小孩",
+    "ids": [
+      "child"
+    ],
+    "race": "human",
+    "level": 1,
+    "stat_maximums": {
+      "gin": 20,
+      "kee": 20,
+      "sen": 20
+    },
+    "numeric_calls": {
+      "set_level": 1
+    },
+    "equipment_hooks": [
+      "wear"
+    ],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "function_calls": [
+      "wear"
+    ],
+    "long": "一個流著鼻涕的小孩﹐睜著一雙無邪的眼睛望著你。\n",
+    "age": 6,
+    "equipment": [
+      {
+        "target": "obj/tummy_cover",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "temp_values": {
+      "pending/sit_learning_literate": 1
+    },
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/child4.c",
+    "path": "/d/snow/npc/child4",
+    "type": "npc",
+    "sha256": "6da5f79ab4a126ab51fa78a798ce10a1db11632ad690410c140b61841812a7a6",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "create",
+      "notify_stat"
+    ],
+    "runtime_traits": [
+      "inventory"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "小孩",
+    "ids": [
+      "child"
+    ],
+    "race": "human",
+    "level": 1,
+    "stat_maximums": {
+      "gin": 20,
+      "kee": 20,
+      "sen": 20
+    },
+    "numeric_calls": {
+      "set_level": 1
+    },
+    "equipment_hooks": [
+      "wear"
+    ],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "function_calls": [
+      "wear"
+    ],
+    "long": "一個流著鼻涕的小孩﹐睜著一雙無邪的眼睛望著你。\n",
+    "age": 6,
+    "equipment": [
+      {
+        "target": "obj/tummy_cover",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/foreman.c",
+    "path": "/d/snow/npc/foreman",
+    "type": "npc",
+    "sha256": "8950404376fe2f00611188c0fdf1d3c0b020dbfb2c360412733e186c5e5d9812",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "create",
+      "new_crate",
+      "relay_say"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "工頭",
+    "ids": [
+      "foreman"
+    ],
+    "race": "human",
+    "level": 8,
+    "attributes": {
+      "str": 18,
+      "cor": 19,
+      "cps": 15,
+      "dex": 16
+    },
+    "stat_maximums": {
+      "kee": 60
+    },
+    "numeric_calls": {
+      "set_level": 8
+    },
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "age": 48,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/gammer.c",
+    "path": "/d/snow/npc/gammer",
+    "type": "npc",
+    "sha256": "048ee5e9a2b11beddc52ef00e23625f48dd052ad2f2b823aef26c0bc39d4fbf9",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "accept_object",
+      "ask_join",
+      "create",
+      "give_coin",
+      "init",
+      "relay_say"
+    ],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "movement",
+      "skill_mapping",
+      "teaching",
+      "timed"
+    ],
+    "combat_surface": [
+      "armor",
+      "skill",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "瞎眼老太婆",
+    "ids": [
+      "blind gammer",
+      "gammer",
+      "__ID_GAMMER__"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "level": 44,
+    "attributes": {
+      "dex": 29,
+      "con": 21,
+      "cor": 22,
+      "str": 19
+    },
+    "numeric_calls": {
+      "set_level": 44
+    },
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "accept_hooks": [
+      "accept_object",
+      "accept_fight"
+    ],
+    "function_calls": [
+      "improve_skill",
+      "map_skill",
+      "wear",
+      "wield"
+    ],
+    "gender": "female",
+    "long": "一個瞎了眼睛的老太婆﹐滿臉皺紋﹐但是卻給人一種親切的感覺。\n",
+    "age": 66,
+    "skills": [
+      {
+        "skill": "staff",
+        "level": 40
+      },
+      {
+        "skill": "stealing",
+        "level": 70
+      },
+      {
+        "skill": "dodge",
+        "level": 90
+      },
+      {
+        "skill": "blade",
+        "level": 30
+      },
+      {
+        "skill": "sword",
+        "level": 30
+      },
+      {
+        "skill": "unarmed",
+        "level": 50
+      },
+      {
+        "skill": "dagger",
+        "level": 70
+      },
+      {
+        "skill": "secondhand dagger",
+        "level": 70
+      },
+      {
+        "skill": "killerhood",
+        "level": 60
+      },
+      {
+        "skill": "force",
+        "level": 90
+      },
+      {
+        "skill": "regular force",
+        "level": 100
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "force",
+        "mapped_to": "regular force"
+      }
+    ],
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      },
+      {
+        "target": "obj/cane",
+        "relative": true,
+        "action": "wield"
+      },
+      {
+        "target": "obj/syndicator",
+        "relative": true,
+        "action": "wield"
+      }
+    ],
+    "temp_values": {
+      "try/fon": 45,
+      "thief_qualified": 1
+    },
+    "command_hooks": [
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "dodge_text",
+      "message_vision",
+      "tell_object"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "d/snow/npc/garrison.c",
+    "path": "/d/snow/npc/garrison",
+    "type": "npc",
+    "sha256": "89a76db549dcc1eb95e71b7b6b36d37128260538247c5dcdd56919f0817cef8b",
+    "inherits": [
+      "F_SOLDIER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SOLDIER",
+        "target": "F_SOLDIER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "create",
+      "init",
+      "intercept"
+    ],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "teaching"
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "官兵",
+    "ids": [
+      "garrison"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "level": 17,
+    "attributes": {
+      "con": 19,
+      "str": 20
+    },
+    "numeric_calls": {
+      "set_level": 17
+    },
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "function_calls": [
+      "wear",
+      "wield"
+    ],
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 60
+      },
+      {
+        "skill": "parry",
+        "level": 60
+      },
+      {
+        "skill": "unarmed",
+        "level": 50
+      },
+      {
+        "skill": "dodge",
+        "level": 50
+      },
+      {
+        "skill": "blade",
+        "level": 50
+      }
+    ],
+    "actions": [
+      {
+        "handler": "intercept",
+        "verb": "go"
+      }
+    ],
+    "equipment": [
+      {
+        "stock_type": "armor",
+        "name": "cloth",
+        "action": "wear"
+      },
+      {
+        "stock_type": "weapon",
+        "name": "broadsword",
+        "action": "wield"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "intercept",
+        "verb": "go"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "dodge_text",
+      "parry_text"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "d/snow/npc/girl.c",
+    "path": "/d/snow/npc/girl",
+    "type": "npc",
+    "sha256": "c5607192da05b671f2fe76bbf5f62a1fbcb78481eb5e808b6ad43851260aa4c5",
+    "inherits": [
+      "F_FIGHTER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_FIGHTER",
+        "target": "F_FIGHTER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_object",
+      "attack_intruder",
+      "create",
+      "drop_invitation",
+      "init",
+      "listen_request",
+      "relay_emote",
+      "relay_say"
+    ],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "movement",
+      "skill_mapping",
+      "teaching",
+      "timed"
+    ],
+    "combat_surface": [
+      "armor",
+      "attack",
+      "skill",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "白衣女子",
+    "ids": [
+      "girl"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "level": 55,
+    "attributes": {
+      "con": 23,
+      "str": 23,
+      "spi": 27,
+      "int": 22,
+      "dex": 26
+    },
+    "numeric_calls": {
+      "set_level": 55
+    },
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "damage_contract": [
+      "fight_ob"
+    ],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "function_calls": [
+      "map_skill",
+      "wear",
+      "wield"
+    ],
+    "gender": "female",
+    "age": 19,
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 140
+      },
+      {
+        "skill": "dodge",
+        "level": 120
+      },
+      {
+        "skill": "parry",
+        "level": 120
+      },
+      {
+        "skill": "blade",
+        "level": 70
+      },
+      {
+        "skill": "dagger",
+        "level": 70
+      },
+      {
+        "skill": "unarmed",
+        "level": 90
+      },
+      {
+        "skill": "force",
+        "level": 80
+      },
+      {
+        "skill": "celestial force",
+        "level": 80
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "force",
+        "mapped_to": "celestial force"
+      }
+    ],
+    "equipment": [
+      {
+        "target": "obj/white_dress",
+        "relative": true,
+        "action": "wear"
+      },
+      {
+        "target": "obj/slasher_sword",
+        "relative": true,
+        "action": "wield"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "init"
+      }
+    ],
+    "death_hooks": [
+      "kill_ob"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "dodge_text",
+      "parry_text"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "d/snow/npc/guard.c",
+    "path": "/d/snow/npc/guard",
+    "type": "npc",
+    "sha256": "7ef02a4d754ef33adff86676bb565d83fcec37c13ea1e209ddd60ba1094c9128",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_object",
+      "create",
+      "do_go",
+      "greet_visitor",
+      "init"
+    ],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "movement",
+      "teaching"
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "青衣漢子",
+    "ids": [
+      "guard"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "level": 20,
+    "attributes": {
+      "str": 20,
+      "con": 20
+    },
+    "numeric_calls": {
+      "set_level": 20
+    },
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "function_calls": [
+      "wear",
+      "wield"
+    ],
+    "long": "一個身穿藏青勁裝的漢子﹐雙目炯炯有神地盯著你。\n",
+    "age": 26,
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 70
+      },
+      {
+        "skill": "blade",
+        "level": 50
+      },
+      {
+        "skill": "parry",
+        "level": 50
+      },
+      {
+        "skill": "unarmed",
+        "level": 40
+      },
+      {
+        "skill": "dodge",
+        "level": 70
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_go",
+        "verb": "go"
+      }
+    ],
+    "equipment": [
+      {
+        "stock_type": "armor",
+        "name": "cloth",
+        "action": "wear"
+      },
+      {
+        "stock_type": "weapon",
+        "name": "longsword",
+        "action": "wield"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_go",
+        "verb": "go"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "dodge_text",
+      "message_vision",
+      "parry_text"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "d/snow/npc/herbalist.c",
+    "path": "/d/snow/npc/herbalist",
+    "type": "npc",
+    "sha256": "0b7f0688a31f32f303983debed7c99b7876b4f91bdb245804996bce5354ea657",
+    "inherits": [
+      "F_VILLAGER",
+      "F_VENDOR"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_VENDOR",
+        "target": "F_VENDOR",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "init"
+    ],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "teaching"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "藥鋪掌櫃",
+    "ids": [
+      "herbalist"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "level": 3,
+    "numeric_calls": {
+      "set_level": 3
+    },
+    "equipment_hooks": [
+      "wear"
+    ],
+    "function_calls": [
+      "wear"
+    ],
+    "age": 44,
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 5
+      },
+      {
+        "skill": "parry",
+        "level": 5
+      },
+      {
+        "skill": "dodge",
+        "level": 5
+      },
+      {
+        "skill": "dagger",
+        "level": 5
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_vendor_list",
+        "verb": "list"
+      }
+    ],
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      },
+      {
+        "target": "obj/fur_hat",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_vendor_list",
+        "verb": "list"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "dodge_text",
+      "parry_text"
+    ],
+    "manual_review": [
+      "custom_action",
+      "vendor_logic"
+    ]
+  },
+  {
+    "file": "d/snow/npc/innkeeper.c",
+    "path": "/d/snow/npc/innkeeper",
+    "type": "npc",
+    "sha256": "2de22458798edb81731a514ca3360cf4e6a5793d28b56ada291ce6739fa274c8",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "accept_kill",
+      "close_inn",
+      "create",
+      "init",
+      "open_inn",
+      "relay_emote"
+    ],
+    "runtime_traits": [
+      "init",
+      "movement"
+    ],
+    "combat_surface": [
+      "attack"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "掌櫃",
+    "ids": [
+      "innkeeper",
+      "keeper"
+    ],
+    "race": "human",
+    "level": 4,
+    "numeric_calls": {
+      "set_level": 4
+    },
+    "accept_hooks": [
+      "accept_fight",
+      "accept_kill"
+    ],
+    "long": "這位便是這家客棧的掌櫃﹐看起來福福泰泰像是個老好人。\n",
+    "age": 52,
+    "command_hooks": [
+      {
+        "kind": "init"
+      }
+    ],
+    "death_hooks": [
+      "kill_ob"
+    ],
+    "combat_message_traits": [
+      "tell_room"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/junkman.c",
+    "path": "/d/snow/npc/junkman",
+    "type": "npc",
+    "sha256": "bdc21740d9fb46de5f09a8dca312e50ece902eb9f309bfe6e5cde0e45b079aea",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "accept_object",
+      "create",
+      "junk_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "拾荒老頭",
+    "ids": [
+      "junkman"
+    ],
+    "race": "human",
+    "level": 2,
+    "numeric_calls": {
+      "set_level": 2
+    },
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "accept_hooks": [
+      "accept_object",
+      "accept_fight"
+    ],
+    "function_calls": [
+      "wear",
+      "wield"
+    ],
+    "age": 66,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/lieutenant.c",
+    "path": "/d/snow/npc/lieutenant",
+    "type": "npc",
+    "sha256": "7efcef79bf276cdda8efa8dac9e7b02466788f217e6a1ddfad03552e5116282f",
+    "inherits": [
+      "F_SOLDIER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SOLDIER",
+        "target": "F_SOLDIER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "create",
+      "init",
+      "intercept"
+    ],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "teaching"
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "武官",
+    "ids": [
+      "lieutenant"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "level": 24,
+    "attributes": {
+      "con": 21,
+      "str": 22
+    },
+    "numeric_calls": {
+      "set_level": 24
+    },
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "function_calls": [
+      "wear",
+      "wield"
+    ],
+    "long": "這是一名指揮官兵的武官﹐他們通常是軍人中出類拔萃的佼佼者。\n",
+    "age": 36,
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 80
+      },
+      {
+        "skill": "blade",
+        "level": 60
+      },
+      {
+        "skill": "unarmed",
+        "level": 65
+      },
+      {
+        "skill": "parry",
+        "level": 60
+      },
+      {
+        "skill": "dodge",
+        "level": 70
+      }
+    ],
+    "actions": [
+      {
+        "handler": "intercept",
+        "verb": "go"
+      }
+    ],
+    "equipment": [
+      {
+        "stock_type": "armor",
+        "name": "cloth",
+        "action": "wear"
+      },
+      {
+        "stock_type": "weapon",
+        "name": "broadsword",
+        "action": "wield"
+      },
+      {
+        "target": "obj/leather_armor",
+        "relative": true,
+        "action": "wear"
+      },
+      {
+        "target": "obj/helmet",
+        "relative": true,
+        "action": "wear"
+      },
+      {
+        "target": "obj/clothboot",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "intercept",
+        "verb": "go"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "dodge_text",
+      "parry_text"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "d/snow/npc/miller.c",
+    "path": "/d/snow/npc/miller",
+    "type": "npc",
+    "sha256": "2f58594660a923c026318fd38a6853dc075b8b0aeacbbc473f54e321cf6b367b",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [
+      "inventory"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "楊大嬸",
+    "ids": [
+      "miller"
+    ],
+    "race": "human",
+    "level": 2,
+    "numeric_calls": {
+      "set_level": 2
+    },
+    "equipment_hooks": [
+      "wear"
+    ],
+    "function_calls": [
+      "wear"
+    ],
+    "gender": "female",
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      }
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/arrow.c",
+    "path": "/d/snow/npc/obj/arrow",
+    "type": "npc",
+    "sha256": "671cec39bb86022e5c70e2d812e4546d7a848e67e17e561eaaabf2603e187a44",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "洛鐵箭",
+    "ids": [
+      "iron arrow",
+      "arrow"
+    ],
+    "weight": 300,
+    "numeric_calls": {
+      "set_weight": 300
+    },
+    "unit": "根",
+    "long": "一根洛鐵製成的箭, 手工精細.\n",
+    "value": 4000,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/blue_cloth.c",
+    "path": "/d/snow/npc/obj/blue_cloth",
+    "type": "npc",
+    "sha256": "4044bc1cc9ccede015a55119d5d5f6a2c1d58e6e6aef6e501fa9c8172fd94ef6",
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLOTH",
+        "target": "F_CLOTH",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "藍布長衫",
+    "ids": [
+      "blue cloth",
+      "cloth"
+    ],
+    "weight": 2000,
+    "wear_as": "cloth",
+    "setup_kinds": [
+      "cloth"
+    ],
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 2
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 2
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 2000
+    },
+    "unit": "件",
+    "long": "一件粗布縫製的布衣﹐看起來像是鄉下姑娘的衣服。\n",
+    "value": 600,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/blue_jacket.c",
+    "path": "/d/snow/npc/obj/blue_jacket",
+    "type": "npc",
+    "sha256": "49a7af6cf99b6de24f9df8c985cf3da2b2930425e2c45b08acb25acb500fb138",
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLOTH",
+        "target": "F_CLOTH",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "藍衣套",
+    "ids": [
+      "blue jacket",
+      "jacket"
+    ],
+    "weight": 2000,
+    "wear_as": "cloth",
+    "setup_kinds": [
+      "cloth"
+    ],
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 2
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 2
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 2000
+    },
+    "unit": "件",
+    "long": "一件深藍色的大衣﹐上面繡了老大一個\"魚\"字。\n",
+    "value": 500,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/broadsword.c",
+    "path": "/d/snow/npc/obj/broadsword",
+    "type": "npc",
+    "sha256": "17212eceac444cc8b71520e62dabccaf21a001e755ac64670e855a04b738ef34",
+    "inherits": [
+      "F_SWORD",
+      "F_BLADE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SWORD",
+        "target": "F_SWORD",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_BLADE",
+        "target": "F_BLADE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "闊劍",
+    "ids": [
+      "broadsword",
+      "sword"
+    ],
+    "weight": 12000,
+    "numeric_calls": {
+      "set_weight": 12000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "sword",
+        "twohanded sword",
+        "blade"
+      ]
+    },
+    "unit": "把",
+    "long": "一把精鋼鑄成的雙股鐵劍﹐這是官府軍士常用的武器。\n",
+    "value": 4000,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/cane.c",
+    "path": "/d/snow/npc/obj/cane",
+    "type": "npc",
+    "sha256": "8c186e7beb596f84555a9afcf720d1bec47ac3fbf7f3d0bd78ad969da2dfdb36",
+    "inherits": [
+      "F_STAFF"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_STAFF",
+        "target": "F_STAFF",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "拐杖",
+    "ids": [
+      "cane"
+    ],
+    "weight": 2400,
+    "numeric_calls": {
+      "set_weight": 2400
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "staff",
+        "twohanded staff"
+      ]
+    },
+    "unit": "根",
+    "long": "一根硬木拐杖﹐因為經年使用而顯得光滑。\n",
+    "value": 600,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/clothboot.c",
+    "path": "/d/snow/npc/obj/clothboot",
+    "type": "npc",
+    "sha256": "0bc8cb2a4d13a476708524e92eb41883607faf43191d7c5087495c28e58559f5",
+    "inherits": [
+      "F_FEET_EQ"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_FEET_EQ",
+        "target": "F_FEET_EQ",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "皂步靴",
+    "ids": [
+      "black boots",
+      "boots"
+    ],
+    "weight": 1000,
+    "wear_as": "feet_eq",
+    "setup_kinds": [
+      "feet_eq"
+    ],
+    "armor_apply": [
+      {
+        "slot": "feet_eq",
+        "values": {
+          "armor": 1,
+          "dodge": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/feet_eq",
+        "values": {
+          "armor": 1,
+          "dodge": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "unit": "雙",
+    "long": "這是軍隊中的步兵武官常穿的靴子﹐輕便耐用。\n",
+    "value": 1000,
+    "combat_message_traits": [
+      "dodge_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/coin.c",
+    "path": "/d/snow/npc/obj/coin",
+    "type": "npc",
+    "sha256": "d05332cde85b1b56b5fe7686a059b3bbede4c6984ad0040c8f3e84c3086ce010",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "古錢",
+    "ids": [
+      "ancient coin",
+      "coin"
+    ],
+    "weight": 3,
+    "numeric_calls": {
+      "set_weight": 3
+    },
+    "unit": "枚",
+    "long": "一枚黑黝黝的古錢，看不出有什麼特別。\n",
+    "value": 60,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/comb.c",
+    "path": "/d/snow/npc/obj/comb",
+    "type": "npc",
+    "sha256": "25f9d602c7a1185a35befd95afa14e6b1adb60b91c90d8ac76578f7e3ff8ac32",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "紅木梳子",
+    "ids": [
+      "annatto comb",
+      "comb"
+    ],
+    "weight": 300,
+    "numeric_calls": {
+      "set_weight": 300
+    },
+    "unit": "把",
+    "long": "一把質地相當細緻的紅木梳子。\n",
+    "value": 170,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/crate.c",
+    "path": "/d/snow/npc/obj/crate",
+    "type": "npc",
+    "sha256": "e849d78c55e432c0741d191d20b4133c516e0a4ba4eb35165d1f6bafe631cc2d",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_get",
+      "init"
+    ],
+    "runtime_traits": [
+      "init",
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "你的力氣不夠了﹐休息一下再說吧。\\n"
+    ],
+    "name": "大木箱",
+    "ids": [
+      "big crate",
+      "crate"
+    ],
+    "weight": 40000,
+    "numeric_calls": {
+      "set_weight": 40000
+    },
+    "unit": "個",
+    "long": "這是一個用來裝貨物的大木箱﹐看起來相當沈重。\n",
+    "value": 1,
+    "actions": [
+      {
+        "handler": "do_get",
+        "verb": "get"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_get",
+        "verb": "get"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "d/snow/npc/obj/fur_hat.c",
+    "path": "/d/snow/npc/obj/fur_hat",
+    "type": "npc",
+    "sha256": "a7621e3c6123755692da49cd1ced8592e09d81dcfb896b2423d89b5d5baa4594",
+    "inherits": [
+      "F_HEAD_EQ"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_HEAD_EQ",
+        "target": "F_HEAD_EQ",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "毛皮帽",
+    "ids": [
+      "fur hat",
+      "hat"
+    ],
+    "weight": 1000,
+    "wear_as": "head_eq",
+    "setup_kinds": [
+      "head_eq"
+    ],
+    "armor_apply": [
+      {
+        "slot": "head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "unit": "頂",
+    "long": "一頂不知是鹿皮還是麈皮縫製的小帽。\n",
+    "value": 500,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/hairpin.c",
+    "path": "/d/snow/npc/obj/hairpin",
+    "type": "npc",
+    "sha256": "8160e65ad1c9d65db6f970a186503922c827b61d454d0c3472f5aaa52b007ad6",
+    "inherits": [
+      "F_HEAD_EQ"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_HEAD_EQ",
+        "target": "F_HEAD_EQ",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "古銅髮簪",
+    "ids": [
+      "bronze hairpin",
+      "hairpin"
+    ],
+    "weight": 400,
+    "wear_as": "head_eq",
+    "setup_kinds": [
+      "head_eq"
+    ],
+    "numeric_calls": {
+      "set_weight": 400
+    },
+    "unit": "支",
+    "long": "一支生滿銅綠﹐老舊不堪的髮簪。\n",
+    "value": 100,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/helmet.c",
+    "path": "/d/snow/npc/obj/helmet",
+    "type": "npc",
+    "sha256": "313ece07edecd284bf0f48e3eeebd4566314cf057b9dc56338b33763d5f9ecb5",
+    "inherits": [
+      "F_HEAD_EQ"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_HEAD_EQ",
+        "target": "F_HEAD_EQ",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "銅盔",
+    "ids": [
+      "brass helmet",
+      "helmet"
+    ],
+    "weight": 4000,
+    "wear_as": "head_eq",
+    "setup_kinds": [
+      "head_eq"
+    ],
+    "armor_apply": [
+      {
+        "slot": "head_eq",
+        "values": {
+          "armor": 3,
+          "dodge": -3
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/head_eq",
+        "values": {
+          "armor": 3,
+          "dodge": -3
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 4000
+    },
+    "unit": "頂",
+    "long": "這是一頂銅製的頭盔﹐屬於軍隊中的低級武官頂戴。\n",
+    "value": 900,
+    "combat_message_traits": [
+      "dodge_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/hoe.c",
+    "path": "/d/snow/npc/obj/hoe",
+    "type": "npc",
+    "sha256": "086f95d35659084f03df15569b4f0a313a07a9741b2cedd50af980d1d8d5e69d",
+    "inherits": [
+      "F_PIKE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_PIKE",
+        "target": "F_PIKE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "鋤頭",
+    "ids": [
+      "hoe"
+    ],
+    "weight": 6000,
+    "numeric_calls": {
+      "set_weight": 6000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "twohanded pike"
+      ]
+    },
+    "unit": "把",
+    "long": "一把重甸甸的鋤頭。\n",
+    "value": 800,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/invitation.c",
+    "path": "/d/snow/npc/obj/invitation",
+    "type": "npc",
+    "sha256": "fd7e363e1e3e930da09723c9366ff3c9f901d3b40de1bcfc521e350d9b763674",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "英雄帖",
+    "ids": [
+      "invitation"
+    ],
+    "weight": 20,
+    "numeric_calls": {
+      "set_weight": 20
+    },
+    "unit": "張",
+    "value": 1,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/leather_armor.c",
+    "path": "/d/snow/npc/obj/leather_armor",
+    "type": "npc",
+    "sha256": "6db7bdd19082fdd32134867d5ff0edcee8a4813b93d16df9c24d5779326cb9eb",
+    "inherits": [
+      "F_ARMOR"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_ARMOR",
+        "target": "F_ARMOR",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "硬皮甲冑",
+    "ids": [
+      "leather armor",
+      "armor"
+    ],
+    "weight": 10000,
+    "wear_as": "armor",
+    "setup_kinds": [
+      "armor"
+    ],
+    "armor_apply": [
+      {
+        "slot": "armor",
+        "values": {
+          "armor": 6
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/armor",
+        "values": {
+          "armor": 6
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 10000
+    },
+    "equipment_hooks": [
+      "setup_armor"
+    ],
+    "unit": "件",
+    "value": 1400,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/note.c",
+    "path": "/d/snow/npc/obj/note",
+    "type": "npc",
+    "sha256": "0a6749bb66d4e259786e29ecd81e8790ca59a9e1fe43dc15bdfe7462da9ff9d1",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "雪亭小鎮見聞",
+    "ids": [
+      "snow note",
+      "note",
+      "map"
+    ],
+    "weight": 50,
+    "numeric_calls": {
+      "set_weight": 50
+    },
+    "unit": "張",
+    "long": "一張粗糙的羊皮革﹐上面蒼勁的筆跡簡要地畫了些圖與筆記。\n\n最近貨棧裡很缺人手﹐正四                          ︴︴\n處招攬臨時工。              「野羊山」           ﹌﹌\n                                ↑      『水月村』﹌﹌\n僻靜的小巷子裡經常飄出肉       山路         │     ﹌﹌\n包子的香味來﹐聽說有些好  雪    │         溪邊     ﹌﹌\n吃的野孩子常常翻牆去偷吃 亭驛─街道─小路─小路  溪邊 ﹌﹌\n喔。                            │             ＼ │   ﹌﹌\n                                │               溪邊  ﹌﹌\n有些頑皮的小孩子常躲在客       街道              小路─木橋→『雪吟莊』\n棧廚房裡及廣場中央的大榕        │                │   ﹌﹌\n樹上面玩捉迷藏﹐每每讓他        │               溪邊  ﹌﹌\n們的父母找不到人。             廣場              小路   ﹌﹌\n                  ╭  ╮        │                │     ﹌﹌﹌「李家村」\n                    小         廣場        僻靜  僻靜  破舊  ﹌↗﹌﹌﹌﹌\n             廚房─客棧─廣場─中央─廣場─小巷─小巷─大宅─河邊 ﹌﹌﹌\n                  ╰  ╯  │    │          │\n             鄉校         │    │          小\n   「亂葬崗」 │          │    │         藥鋪\n            ↖雪          │    │   打鐵\n\t     亭鎮─街道─街道─廣場─鋪子   在廣場的中央有口大水缸(pot)免費\n                    │          │          供水給過路客飲用。\n                    │          │   魚記\n                   私塾  貨棧─街道─小鋪   魚記小鋪除了賣些日用雜貨外﹐也\n                                │          經營錢莊的事務。\n                 「振武軍營」←草棚\n                                 ↘         雪亭驛提供信件的轉遞服務。\n                                  「老松林」",
+    "value": 1,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/pot.c",
+    "path": "/d/snow/npc/obj/pot",
+    "type": "npc",
+    "sha256": "891ad396da1720db213df464adadcb0001cf41da80993937513019b21bd02d7a",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_object",
+      "create",
+      "reset"
+    ],
+    "runtime_traits": [
+      "movement",
+      "reset"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "大水缸",
+    "ids": [
+      "pot"
+    ],
+    "numeric_calls": {
+      "set_max_encumbrance": 180000
+    },
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "long": "一個裝滿清水的大水缸﹐如果你口渴﹐可以舀水來喝(drink)。\n",
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/roast_chicken.c",
+    "path": "/d/snow/npc/obj/roast_chicken",
+    "type": "npc",
+    "sha256": "aa5b032590a0b4bb79bc7af3a84ec27a2be2d207c83616691a457b1484365e05",
+    "inherits": [
+      "COMBINED_ITEM",
+      "F_FOOD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_FOOD",
+        "target": "F_FOOD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "紅燒雞",
+    "ids": [
+      "roast chicken",
+      "chicken"
+    ],
+    "unit": "堆",
+    "long": "一隻香噴噴的紅燒雞﹐哇﹐你的口水都快流出來了。\n",
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/shovel.c",
+    "path": "/d/snow/npc/obj/shovel",
+    "type": "npc",
+    "sha256": "dfe8ece2c9a7c5cf1851dcbf98c98ea96ca52739e42fd58f25cc547bdea90859",
+    "inherits": [
+      "F_PIKE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_PIKE",
+        "target": "F_PIKE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "鐵鏟",
+    "ids": [
+      "shovel"
+    ],
+    "weight": 6000,
+    "numeric_calls": {
+      "set_weight": 6000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "twohanded pike"
+      ]
+    },
+    "unit": "把",
+    "long": "一把挖土用的鐵鏟。\n",
+    "value": 700,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/silversword.c",
+    "path": "/d/snow/npc/obj/silversword",
+    "type": "npc",
+    "sha256": "44ee4cf8305ab23916d7ff009690620e26f39020121ba7f096280de0f6ab1cad",
+    "inherits": [
+      "F_SWORD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SWORD",
+        "target": "F_SWORD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "洗銀劍",
+    "ids": [
+      "silver sword",
+      "sword"
+    ],
+    "weight": 7000,
+    "numeric_calls": {
+      "set_weight": 7000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "sword"
+      ]
+    },
+    "unit": "把",
+    "long": "一把銀製的短劍﹐鑄造得十分精美。\n",
+    "value": 19000,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/slasher_sword.c",
+    "path": "/d/snow/npc/obj/slasher_sword",
+    "type": "npc",
+    "sha256": "386d2ac161ae5269dc62d700706ef50ad647ff4f3be1602db41bb9b95b0b223a",
+    "inherits": [
+      "F_UNIQUE",
+      "F_SWORD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_UNIQUE",
+        "target": "F_UNIQUE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_SWORD",
+        "target": "F_SWORD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "weight": 2000,
+    "apply_mappings": [
+      {
+        "key": "apply_weapon/sword",
+        "values": {
+          "dex": 2,
+          "attack": 20,
+          "intimidate": 20,
+          "parry": -10
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 2000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "sword"
+      ]
+    },
+    "unit": "把",
+    "value": 26000,
+    "combat_message_traits": [
+      "attack_text",
+      "parry_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/smock.c",
+    "path": "/d/snow/npc/obj/smock",
+    "type": "npc",
+    "sha256": "e8bfc6c0bf9b525e21af6806c5272668feb697140464b9b20a6ae8d885be794d",
+    "inherits": [
+      "F_ARMOR"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_ARMOR",
+        "target": "F_ARMOR",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "打鐵褂子",
+    "ids": [
+      "work smock",
+      "smock"
+    ],
+    "weight": 5500,
+    "wear_as": "armor",
+    "setup_kinds": [
+      "armor"
+    ],
+    "armor_apply": [
+      {
+        "slot": "armor",
+        "values": {
+          "armor": 2,
+          "armor_vs_fire": 5
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/armor",
+        "values": {
+          "armor": 2,
+          "armor_vs_fire": 5
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 5500
+    },
+    "equipment_hooks": [
+      "setup_armor"
+    ],
+    "unit": "件",
+    "long": "這是一件鐵匠工作時用來遮擋火星飛濺的工作服。\n",
+    "value": 720,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/syndicator.c",
+    "path": "/d/snow/npc/obj/syndicator",
+    "type": "npc",
+    "sha256": "a91c6ff8f34ce9058adf9560a9db1ad799cb7236a6510ffb3f729aace794c047",
+    "inherits": [
+      "F_DAGGER",
+      "F_UNIQUE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_DAGGER",
+        "target": "F_DAGGER",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_UNIQUE",
+        "target": "F_UNIQUE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "inflict_damage"
+    ],
+    "runtime_traits": [
+      "damage"
+    ],
+    "combat_surface": [
+      "damage"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "「尺娘」",
+    "ids": [
+      "syndicator"
+    ],
+    "weight": 3000,
+    "numeric_calls": {
+      "set_weight": 3000
+    },
+    "damage_contract": [
+      "inflict_damage"
+    ],
+    "weapon_dispatch": {
+      "inflict_damage": true,
+      "wield_as": [
+        "dagger",
+        "secondhand dagger"
+      ]
+    },
+    "function_calls": [
+      "inflict_damage"
+    ],
+    "unit": "把",
+    "value": 32000,
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": [
+      "damage_logic"
+    ]
+  },
+  {
+    "file": "d/snow/npc/obj/tummy_cover.c",
+    "path": "/d/snow/npc/obj/tummy_cover",
+    "type": "npc",
+    "sha256": "0fbff4f89c75164b8405d5136a1c3753c0593ad425e5da379938cb0c4a3da50e",
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLOTH",
+        "target": "F_CLOTH",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "肚兜",
+    "ids": [
+      "tummy cover",
+      "tummy",
+      "cover"
+    ],
+    "weight": 1000,
+    "wear_as": "cloth",
+    "setup_kinds": [
+      "cloth"
+    ],
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "unit": "件",
+    "long": "一塊兩尺見方的粗布﹐繫上兩條繩兒用來給小孩穿的衣物。\n",
+    "value": 400,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/wagon.c",
+    "path": "/d/snow/npc/obj/wagon",
+    "type": "npc",
+    "sha256": "ff552180c6699ba6ee7c4011d77911322e945ac8928c7be1a66a8a62b16f325d",
+    "inherits": [
+      "CONTAINER_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "CONTAINER_ITEM",
+        "target": "CONTAINER_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_load",
+      "hold_object",
+      "init"
+    ],
+    "runtime_traits": [
+      "init",
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "趕驢車的車夫鞭子一揚﹐趕著驢車送貨去了。\\n"
+    ],
+    "name": "運貨驢車",
+    "ids": [
+      "wagon"
+    ],
+    "numeric_calls": {
+      "set_max_encumbrance": 1000000
+    },
+    "unit": "輛",
+    "long": "一輛運貨的四輪驢車﹐停在這裡等著載貨(load)。\n",
+    "actions": [
+      {
+        "handler": "do_load",
+        "verb": "load"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_load",
+        "verb": "load"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "message_vision",
+      "tell_object"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "d/snow/npc/obj/white_dress.c",
+    "path": "/d/snow/npc/obj/white_dress",
+    "type": "npc",
+    "sha256": "7ab460974583b078961426265bab6a3cc49adc8ecb3ee9ee6c64368b54204b6d",
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLOTH",
+        "target": "F_CLOTH",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "白綢羽衫",
+    "ids": [
+      "white dress",
+      "dress"
+    ],
+    "weight": 2000,
+    "wear_as": "cloth",
+    "setup_kinds": [
+      "cloth"
+    ],
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 3,
+          "spi": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 3,
+          "spi": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 2000
+    },
+    "unit": "件",
+    "long": "一件白色的絲綢女子衣衫﹐摸起來輕柔無比。\n",
+    "value": 3200,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/wine_pot.c",
+    "path": "/d/snow/npc/obj/wine_pot",
+    "type": "npc",
+    "sha256": "2fbe1f9c138979518e0ad0ed8137757b0b0d0aca59dcb6de9856bb651db3881f",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_object",
+      "create",
+      "reset"
+    ],
+    "runtime_traits": [
+      "movement",
+      "reset"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "大酒缸",
+    "ids": [
+      "wine pot",
+      "pot"
+    ],
+    "numeric_calls": {
+      "set_max_encumbrance": 180000
+    },
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "long": "一個裝滿酒的大酒缸﹐如果你不怕醉死的話﹐儘管舀來喝(drink)。\n",
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/woodblade.c",
+    "path": "/d/snow/npc/obj/woodblade",
+    "type": "npc",
+    "sha256": "ad6c3b0748f5150a8e0c3c577cc74024bac2732c0646b45a67a62e7ac2368f1c",
+    "inherits": [
+      "F_BLADE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_BLADE",
+        "target": "F_BLADE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "木刀",
+    "ids": [
+      "wooden blade",
+      "blade"
+    ],
+    "weight": 2000,
+    "numeric_calls": {
+      "set_weight": 2000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "blade"
+      ]
+    },
+    "unit": "把",
+    "long": "一把用硬木削成的單刀﹐被炭火燻得黑黑的。\n",
+    "value": 400,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/obj/woodsword.c",
+    "path": "/d/snow/npc/obj/woodsword",
+    "type": "npc",
+    "sha256": "12d2bab11a150cc2a7a79fbc5cf013b1b8e0507b0956cf96120ffd0ff15af2a7",
+    "inherits": [
+      "F_SWORD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SWORD",
+        "target": "F_SWORD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "木劍",
+    "ids": [
+      "wooden sword",
+      "sword"
+    ],
+    "weight": 2000,
+    "numeric_calls": {
+      "set_weight": 2000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "sword"
+      ]
+    },
+    "unit": "把",
+    "long": "一把用硬木削成的長劍﹐被炭火燻得黑黑的。\n",
+    "value": 400,
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/oldman.c",
+    "path": "/d/snow/npc/oldman",
+    "type": "npc",
+    "sha256": "66783117e791e18d1c0d0b2d0a144e22df6b21baab647b2c4ce2d0f9e06e71bb",
+    "inherits": [
+      "F_BANDIT"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_BANDIT",
+        "target": "F_BANDIT",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "notify_stat"
+    ],
+    "runtime_traits": [
+      "inventory",
+      "teaching"
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "黑衣老人",
+    "ids": [
+      "oldman"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "level": 7,
+    "stat_maximums": {
+      "gin": 70,
+      "sen": 50
+    },
+    "numeric_calls": {
+      "set_level": 7
+    },
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "function_calls": [
+      "wear",
+      "wield"
+    ],
+    "long": "一個身穿黑衣的老人﹐雖然年紀很大了﹐卻臉色紅潤﹐眼睛炯炯有神。\n",
+    "age": 65,
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 25
+      },
+      {
+        "skill": "parry",
+        "level": 15
+      },
+      {
+        "skill": "dodge",
+        "level": 20
+      },
+      {
+        "skill": "dagger",
+        "level": 40
+      },
+      {
+        "skill": "stealing",
+        "level": 35
+      }
+    ],
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      },
+      {
+        "target": "/obj/area/obj/shortsword",
+        "relative": false,
+        "action": "wield"
+      }
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "dodge_text",
+      "parry_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/patrol.c",
+    "path": "/d/snow/npc/patrol",
+    "type": "npc",
+    "sha256": "e46dcc2d66c399bc21e173c2f4834b37240b7e75ff2e3a0b3e7ea5fbf51b5af0",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "create",
+      "protect"
+    ],
+    "runtime_traits": [
+      "inventory",
+      "teaching"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "巡邏官兵",
+    "ids": [
+      "patrol garrison",
+      "patrol",
+      "garrison"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "level": 15,
+    "stat_maximums": {
+      "gin": 150,
+      "kee": 150
+    },
+    "numeric_calls": {
+      "set_level": 15
+    },
+    "equipment_hooks": [
+      "wear"
+    ],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "function_calls": [
+      "wear"
+    ],
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 60
+      },
+      {
+        "skill": "parry",
+        "level": 60
+      }
+    ],
+    "equipment": [
+      {
+        "stock_type": "armor",
+        "name": "cloth",
+        "action": "wear"
+      }
+    ],
+    "combat_message_traits": [
+      "parry_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/smith.c",
+    "path": "/d/snow/npc/smith",
+    "type": "npc",
+    "sha256": "6c3b65d6e9e683855245f8d529d014a48b0ae95005068cabdf97ab33ca549247",
+    "inherits": [
+      "F_VILLAGER",
+      "F_VENDOR"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_VENDOR",
+        "target": "F_VENDOR",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "accept_object",
+      "create",
+      "init"
+    ],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "movement",
+      "timed"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "鐵匠",
+    "ids": [
+      "smith"
+    ],
+    "race": "human",
+    "level": 13,
+    "attributes": {
+      "str": 19,
+      "cor": 17,
+      "cps": 15,
+      "dex": 18
+    },
+    "stat_maximums": {
+      "kee": 80
+    },
+    "numeric_calls": {
+      "set_level": 13
+    },
+    "equipment_hooks": [
+      "wear"
+    ],
+    "accept_hooks": [
+      "accept_object",
+      "accept_fight"
+    ],
+    "function_calls": [
+      "wear"
+    ],
+    "merchandise": [
+      {
+        "target": "obj/hoe",
+        "relative": true,
+        "stock": 3
+      },
+      {
+        "target": "obj/shovel",
+        "relative": true,
+        "stock": 5
+      },
+      {
+        "target": "/obj/area/obj/dagger",
+        "relative": false,
+        "stock": 10
+      },
+      {
+        "target": "/obj/area/obj/shortsword",
+        "relative": false,
+        "stock": 5
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_vendor_list",
+        "verb": "list"
+      }
+    ],
+    "equipment": [
+      {
+        "target": "obj/smock",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_vendor_list",
+        "verb": "list"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "file": "d/snow/npc/teacher.c",
+    "path": "/d/snow/npc/teacher",
+    "type": "npc",
+    "sha256": "80c4d030263e36db3166875fd978cf8cc76a334e9042ad8338b0a2c1f5085148",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "accept_info",
+      "acquire_skill",
+      "cancel_pick",
+      "create",
+      "do_sit",
+      "init",
+      "make_new_scholar",
+      "pick_student",
+      "rank",
+      "relay_say",
+      "teach_literate"
+    ],
+    "runtime_traits": [
+      "init",
+      "teaching",
+      "timed"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "王懷芝",
+    "ids": [
+      "wang whaiz",
+      "wang",
+      "whaiz"
+    ],
+    "race": "human",
+    "class": "scholar",
+    "level": 5,
+    "stat_maximums": {
+      "sen": 50
+    },
+    "numeric_calls": {
+      "set_level": 5
+    },
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "function_calls": [
+      "improve_skill",
+      "query_skill"
+    ],
+    "skills": [
+      {
+        "skill": "literate",
+        "level": 60
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_sit",
+        "verb": "sit"
+      }
+    ],
+    "temp_values": {
+      "pending/sit_learning_literate": 1,
+      "pending/picked_by_whaiz": 1
+    },
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_sit",
+        "verb": "sit"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "message_vision",
+      "tell_object"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "d/snow/npc/waiter.c",
+    "path": "/d/snow/npc/waiter",
+    "type": "npc",
+    "sha256": "93d4fc4ddf279b2f3127734550f581ea6768203fa029678f0554090dba7d90c8",
+    "inherits": [
+      "F_VILLAGER",
+      "F_VENDOR"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_VENDOR",
+        "target": "F_VENDOR",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "affirm_merchandise",
+      "create",
+      "deliver_merchandise",
+      "handover",
+      "init"
+    ],
+    "runtime_traits": [
+      "init"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "店小二",
+    "ids": [
+      "waiter",
+      "snow_inn_waiter"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "level": 2,
+    "numeric_calls": {
+      "set_level": 2
+    },
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "age": 21,
+    "merchandise": [
+      {
+        "target": "/obj/food/dumpling",
+        "relative": false,
+        "stock": 50
+      },
+      {
+        "target": "/obj/food/manto",
+        "relative": false,
+        "stock": 50
+      },
+      {
+        "target": "/obj/food/pork",
+        "relative": false,
+        "stock": 30
+      },
+      {
+        "target": "obj/roast_chicken",
+        "relative": true,
+        "stock": 30
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_vendor_list",
+        "verb": "list"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_vendor_list",
+        "verb": "list"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "manual_review": [
+      "vendor_logic"
+    ]
+  },
+  {
+    "file": "d/snow/npc/woman.c",
+    "path": "/d/snow/npc/woman",
+    "type": "npc",
+    "sha256": "821abfe0e0d0c1d68903156d32bb5e948f66c02ef3f5430f9858c7aabf694a01",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [
+      "inventory"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "少婦",
+    "ids": [
+      "woman"
+    ],
+    "race": "human",
+    "level": 2,
+    "numeric_calls": {
+      "set_level": 2
+    },
+    "equipment_hooks": [
+      "wear"
+    ],
+    "function_calls": [
+      "wear"
+    ],
+    "gender": "female",
+    "long": "一個容色秀麗的少婦﹐穿著十分樸素。\n",
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      }
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/yu.c",
+    "path": "/d/snow/npc/yu",
+    "type": "npc",
+    "sha256": "cf13d3b7053607aac1d4528c9d85468392d8fa4422b18ba2af1bbb1cd017e2d4",
+    "inherits": [
+      "F_VILLAGER",
+      "F_VENDOR"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_VENDOR",
+        "target": "F_VENDOR",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "accept_object",
+      "create",
+      "init"
+    ],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "movement",
+      "timed"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "魚天",
+    "ids": [
+      "yu tan",
+      "yu",
+      "tan"
+    ],
+    "race": "human",
+    "level": 1,
+    "numeric_calls": {
+      "set_level": 1
+    },
+    "equipment_hooks": [
+      "wear"
+    ],
+    "accept_hooks": [
+      "accept_object",
+      "accept_fight"
+    ],
+    "function_calls": [
+      "wear"
+    ],
+    "gender": "male",
+    "age": 25,
+    "merchandise": [
+      {
+        "target": "/d/snow/npc/obj/blue_jacket",
+        "relative": false,
+        "stock": 5
+      },
+      {
+        "target": "/obj/armor/fur_hat",
+        "relative": false,
+        "stock": 5
+      },
+      {
+        "target": "/obj/bottle",
+        "relative": false,
+        "stock": 5
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_vendor_list",
+        "verb": "list"
+      }
+    ],
+    "equipment": [
+      {
+        "target": "obj/blue_jacket",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_vendor_list",
+        "verb": "list"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "file": "feature/npc/bandit.c",
+    "path": "/feature/npc/bandit",
+    "type": "npc",
+    "sha256": "2264a0df14519f5ba859b08242d879282c8dd9160628bf3ba1f0f4076edd411a",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "accept_fight",
+      "accept_kill",
+      "do_chat",
+      "is_fighting",
+      "kill_ob",
+      "name"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "attack"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "accept_hooks": [
+      "accept_fight",
+      "accept_kill"
+    ],
+    "death_hooks": [
+      "kill_ob"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/npc/currency.c",
+    "path": "/feature/npc/currency",
+    "type": "npc",
+    "sha256": "2de660a68230ee5c29d7792fc30b1cdd304ec168df3d6940a8ca67d8704fbb88",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "price_string"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "feature/npc/fighter.c",
+    "path": "/feature/npc/fighter",
+    "type": "npc",
+    "sha256": "56e92d984a1e3ef77f925ec8e1c76f575527edd594a4dc11436c06748bd0e32b",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "accept_fight",
+      "accept_kill",
+      "accept_negotiation",
+      "do_chat",
+      "is_fighting",
+      "kill_ob",
+      "name",
+      "query_level",
+      "rank"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "attack"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "accept_hooks": [
+      "accept_fight",
+      "accept_kill"
+    ],
+    "death_hooks": [
+      "kill_ob"
+    ],
+    "combat_message_traits": [
+      "attack_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/npc/scholar.c",
+    "path": "/feature/npc/scholar",
+    "type": "npc",
+    "sha256": "c6ec2155dc2df061961dd8c202d6d4f81d7586a5554b56342068af1b6bd9ccc5",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "accept_fight",
+      "accept_kill",
+      "accept_negotiation",
+      "do_chat",
+      "is_fighting",
+      "kill_ob",
+      "name",
+      "query_level",
+      "rank",
+      "win_fight"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "attack"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "accept_hooks": [
+      "accept_fight",
+      "accept_kill"
+    ],
+    "death_hooks": [
+      "kill_ob"
+    ],
+    "combat_message_traits": [
+      "attack_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/npc/soldier.c",
+    "path": "/feature/npc/soldier",
+    "type": "npc",
+    "sha256": "b8ee39f272c807d6fe99c50b78bdf3a3507edba0c96a372dd4c7190fe4922f7f",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "accept_fight",
+      "accept_kill",
+      "do_chat",
+      "is_fighting",
+      "kill_ob",
+      "name",
+      "soldier_assist"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "attack"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "damage_contract": [
+      "fight_ob"
+    ],
+    "accept_hooks": [
+      "accept_fight",
+      "accept_kill"
+    ],
+    "death_hooks": [
+      "kill_ob"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/npc/traveler.c",
+    "path": "/feature/npc/traveler",
+    "type": "npc",
+    "sha256": "61810d8923876b9ad068e8b87a3df799cb62f787cd421cc84b5d9575e1238943",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "do_travel",
+      "reset"
+    ],
+    "runtime_traits": [
+      "movement",
+      "reset"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "attack_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/npc/vendor.c",
+    "path": "/feature/npc/vendor",
+    "type": "npc",
+    "sha256": "1c4a9e7176dcc7376fad6f8ea23e0f9559a9882ceb7ad96d518aa4104412d40c",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "affirm_merchandise",
+      "deliver_merchandise",
+      "do_vendor_list",
+      "price_string",
+      "query_trading_price",
+      "reset"
+    ],
+    "runtime_traits": [
+      "movement",
+      "reset",
+      "vendor"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": [
+      "vendor_logic"
+    ]
+  },
+  {
+    "file": "feature/npc/villager.c",
+    "path": "/feature/npc/villager",
+    "type": "npc",
+    "sha256": "167b1b7f9603b099163baa757432b15de3dc14415bd05742899e394be29c54d9",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "accept_fight",
+      "accept_kill",
+      "do_chat",
+      "name"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "accept_hooks": [
+      "accept_fight",
+      "accept_kill"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/npc/death_black.c",
+    "path": "/obj/npc/death_black",
+    "type": "npc",
+    "sha256": "decbf05891b2c1bf350f000cbebf6426778e0c862a6cf5b1b2b1bf0b89c15d63",
+    "inherits": [
+      "F_SOLDIER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SOLDIER",
+        "target": "F_SOLDIER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [
+      "teaching"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "race": "human",
+    "class": "soldier",
+    "level": 70,
+    "attributes": {
+      "str": 45,
+      "con": 40,
+      "dex": 40,
+      "cor": 35,
+      "cps": 45,
+      "spi": 40,
+      "wis": 35,
+      "int": 30
+    },
+    "numeric_calls": {
+      "set_level": 70
+    },
+    "long": "你看到一個又矮又胖的黑臉將軍，頭大如甕，兩眼突出，對你怒目而視。",
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 170
+      },
+      {
+        "skill": "sword",
+        "level": 140
+      },
+      {
+        "skill": "blade",
+        "level": 120
+      },
+      {
+        "skill": "parry",
+        "level": 150
+      },
+      {
+        "skill": "unarmed",
+        "level": 130
+      },
+      {
+        "skill": "dodge",
+        "level": 110
+      },
+      {
+        "skill": "berserk",
+        "level": 180
+      }
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "damage_text",
+      "dodge_text",
+      "parry_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/npc/death_white.c",
+    "path": "/obj/npc/death_white",
+    "type": "npc",
+    "sha256": "c281b3b2a06b76ef0b812124200ad33c03a42e3818357806360ff2e68b56d9e9",
+    "inherits": [
+      "F_SOLDIER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SOLDIER",
+        "target": "F_SOLDIER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [
+      "teaching"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "race": "human",
+    "class": "soldier",
+    "level": 70,
+    "attributes": {
+      "str": 45,
+      "con": 40,
+      "dex": 40,
+      "cor": 35,
+      "cps": 45,
+      "spi": 40,
+      "wis": 35,
+      "int": 30
+    },
+    "numeric_calls": {
+      "set_level": 70
+    },
+    "long": "你看到一個又高又瘦的白臉將軍，一根長長的舌頭直吐到胸前，兩隻細眼瞇著往你\n這邊直瞧。",
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 60
+      },
+      {
+        "skill": "blunt",
+        "level": 100
+      },
+      {
+        "skill": "sword",
+        "level": 100
+      },
+      {
+        "skill": "parry",
+        "level": 90
+      },
+      {
+        "skill": "unarmed",
+        "level": 80
+      },
+      {
+        "skill": "dodge",
+        "level": 90
+      },
+      {
+        "skill": "blade",
+        "level": 70
+      },
+      {
+        "skill": "berserk",
+        "level": 150
+      }
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "damage_text",
+      "dodge_text",
+      "parry_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/npc/demogorgon.c",
+    "path": "/obj/npc/demogorgon",
+    "type": "npc",
+    "sha256": "0b847d8dd75e66ade7ab7bdf65782725ff114d4cc3f4758404a4a7adf71a765a",
+    "inherits": [
+      "NPC"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "NPC",
+        "target": "NPC",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "countdown",
+      "create",
+      "die",
+      "do_shutdown",
+      "start_shutdown"
+    ],
+    "runtime_traits": [
+      "timed"
+    ],
+    "combat_surface": [
+      "death"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "race": "human",
+    "level": 100,
+    "attributes": {
+      "str": 35,
+      "dex": 42,
+      "con": 35,
+      "spi": 45,
+      "cor": 45
+    },
+    "numeric_calls": {
+      "set_level": 100
+    },
+    "age": 500,
+    "callouts": [
+      {
+        "function": "countdown",
+        "delay": 240
+      },
+      {
+        "function": "countdown",
+        "delay": 49
+      },
+      {
+        "function": "countdown",
+        "delay": 1
+      },
+      {
+        "function": "do_shutdown",
+        "delay": 2
+      }
+    ],
+    "death_hooks": [
+      "die"
+    ],
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "obj/npc/garrison.c",
+    "path": "/obj/npc/garrison",
+    "type": "npc",
+    "sha256": "06f8d6d2ee5582c7943be0a7666254413a02c8869d22c522540e7675be5ba1ad",
+    "inherits": [
+      "F_SOLDIER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SOLDIER",
+        "target": "F_SOLDIER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "create"
+    ],
+    "runtime_traits": [
+      "inventory",
+      "teaching"
+    ],
+    "combat_surface": [
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "官兵",
+    "ids": [
+      "garrison",
+      "guard"
+    ],
+    "race": "human",
+    "class": "fighter",
+    "level": 25,
+    "attributes": {
+      "con": 22,
+      "str": 24,
+      "dex": 18,
+      "cor": 18
+    },
+    "numeric_calls": {
+      "set_level": 25
+    },
+    "equipment_hooks": [
+      "wield"
+    ],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "function_calls": [
+      "wield"
+    ],
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 60
+      },
+      {
+        "skill": "blunt",
+        "level": 100
+      },
+      {
+        "skill": "sword",
+        "level": 100
+      },
+      {
+        "skill": "parry",
+        "level": 90
+      },
+      {
+        "skill": "unarmed",
+        "level": 80
+      },
+      {
+        "skill": "dodge",
+        "level": 90
+      },
+      {
+        "skill": "blade",
+        "level": 70
+      },
+      {
+        "skill": "berserk",
+        "level": 150
+      }
+    ],
+    "equipment": [
+      {
+        "stock_type": "weapon",
+        "name": "rod",
+        "action": "wield"
+      }
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "dodge_text",
+      "parry_text"
+    ],
+    "manual_review": []
+  }
+]

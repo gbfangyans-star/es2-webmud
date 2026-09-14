@@ -1,0 +1,4 @@
+#/obj/login.c
+dbase (["name":"單機測試管理者","karma":5,"creation_time":1789000000,"id":"testadmin","body":"/obj/user","channels":({"chat","rumor",}),])
+password "$1$es2test$LEf3.yfJYnSRUPIwqEZm/0"
+email "none"

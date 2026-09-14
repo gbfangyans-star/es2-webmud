@@ -1,0 +1,49 @@
+{
+  "version": "3.20.50",
+  "evidenceDate": "2026-09-08",
+  "principle": "Only real Windows/Neolith execution may mark a LIVE gate PASS. Static audits never substitute for live acceptance.",
+  "livePassed": [
+    "two real accounts simultaneously logged in",
+    "bidirectional tell resilience",
+    "concurrent per-character save integrity",
+    "abrupt disconnect and reconnect",
+    "same-room mutual visibility",
+    "same-room say broadcast",
+    "team handshake and team list",
+    "team-scoped chat",
+    "follow through operator-selected canonical exit",
+    "shared-room broadcast after interaction",
+    "canonical no-fight room rule consistently applied to two players addressing the same NPC"
+  ],
+  "pendingLive": [
+    "mutual player fight in a canonical combat-allowed room",
+    "single-owner ground-item contention using a real visible item",
+    "server restart persistence with both test characters offline before snapshot",
+    "guard relation when canonical level requirement is met"
+  ],
+  "withheldDestructive": [
+    "live death/corpse/revival",
+    "live kill/PK"
+  ],
+  "notes": [
+    "The earlier NPC fight attempt in the inn proved room no_fight behavior, not actual combat start.",
+    "Arbitrary NPC `fight` is not assumed non-lethal because canonical fight.c may call kill_ob() for non-civilized NPCs."
+  ],
+  "evidenceBaselineVersion": "3.18.9",
+  "currentReleaseNote": "v3.19.3 adds a read-only content workbench, manual-review queue, dependency/triage views, and readiness-report fixes only; canonical gameplay and bridge implementation files are unchanged from the live-evidence baseline.",
+  "evidenceFingerprints": {
+    "transport/session-isolation": "4285235bb4d5c91f28c75359745bdeb0690b338076d3d166a9118b24dd479818",
+    "login/tell/save/reconnect": "e35911c7fbde3bc97ff677bffd425cc6d1ff308063032f2af11f5754165fc5ef",
+    "same-room/say/team/follow": "0dd34d02491f38cc79bebc15fb96a0e6c4ac85e02ebc535a7854c9418b4ab757",
+    "shared-world/object-ownership": "7c3e4eb14786ed4d00e63fb1318a45e76a1b7d9ba8450aba1936504624802aa5",
+    "mutual-player-fight": "4ef05b1037b8a78e094fbe8d1e4f4ff7ba62dc9ad1e2174801dbcb873e2398d3",
+    "death/corpse/revival": "8ae4403573a6c61148fda4224554d3d00f8803918ba9c35d03539a2c53f30b94"
+  },
+  "fingerprintNote": "Fingerprints were captured from the implementing-code baseline that produced the recorded 2026-09-08 Windows/Neolith live evidence. Future tooling may mark evidence stale if an implementing file changes; freshness never creates a new PASS.",
+  "coveredGateFingerprints": [
+    "transport/session-isolation",
+    "login/tell/save/reconnect",
+    "same-room/say/team/follow"
+  ],
+  "coverageNote": "A stored fingerprint may exist for pending gates to establish a baseline, but only gates listed in coveredGateFingerprints have prior live evidence eligible to remain fresh."
+}

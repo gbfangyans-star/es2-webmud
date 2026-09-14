@@ -1,0 +1,21 @@
+{
+  "count": 3,
+  "issues": [
+    {
+      "severity": "advisory",
+      "kind": "attack_skill_without_visible_enable_contract",
+      "path": "/d/snow/skill/test-art"
+    },
+    {
+      "severity": "advisory",
+      "kind": "attack_skill_without_visible_enable_contract",
+      "path": "/feature/weapon/sword"
+    },
+    {
+      "severity": "advisory",
+      "kind": "wield_without_visible_unwield",
+      "path": "/feature/weapon/sword"
+    }
+  ],
+  "note": "Advisory source-shape checks only. Inheritance may provide missing contracts."
+}

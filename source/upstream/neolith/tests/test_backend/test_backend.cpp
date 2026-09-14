@@ -1,0 +1,89 @@
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif /* HAVE_CONFIG_H */
+
+#include "std.h"
+#include "rc.h"
+#include "addr_resolver.h"
+#include "lpc/compiler.h"
+#include <gtest/gtest.h>
+#include <filesystem>
+
+using namespace testing;
+
+class BackendTest: public Test {
+private:
+    std::filesystem::path previous_cwd;
+
+protected:
+    void SetUp() override {
+        namespace fs = std::filesystem;
+        debug_set_log_with_date (false);
+        setlocale(LC_ALL, PLATFORM_UTF8_LOCALE); // force UTF-8 locale for consistent string handling
+
+        // setup stem
+        previous_cwd = fs::current_path();
+        fs::path config_dir = fs::current_path();
+        if (!fs::exists(config_dir / "m3.conf"))
+            fs::current_path (config_dir.parent_path()); // change to parent if config not found in current dir
+        init_stem(3, (unsigned long)-1, "m3.conf"); // use highest debug level and enable all trace logs
+        MAIN_OPTION(pedantic) = true; // enable pedantic mode for stricter checks
+
+        // setup runtime / simulate
+        init_config(MAIN_OPTION(config_file));
+        debug_message("[ SETUP    ] CTEST_FULL_OUTPUT");
+        init_strings (8192, 1000000); // LPC compiler needs this since prolog()
+        init_lpc_compiler(CONFIG_INT (__MAX_LOCAL_VARIABLES__), CONFIG_STR (__INCLUDE_DIRS__));
+        setup_simulate();
+    }
+
+    void TearDown() override {
+        namespace fs = std::filesystem;
+        tear_down_simulate();
+        deinit_lpc_compiler();
+        deinit_strings();
+
+        deinit_config();
+        fs::current_path(previous_cwd);
+    }
+};
+
+TEST_F(BackendTest, preload) {
+    ASSERT_EQ(mud_state(), MS_PRE_MUDLIB);
+    init_master ("/master.c", NULL);
+    // any error during preload_objects() will be caught.
+    EXPECT_NO_THROW(preload_objects (0)) << "preload_objects() threw an exception";
+    destruct_object(master_ob);
+}
+
+TEST_F(BackendTest, setHeartBeat) {
+    ASSERT_EQ(mud_state(), MS_PRE_MUDLIB);
+    init_master ("/master.c", NULL);
+
+    object_t* ob = master_ob;
+    EXPECT_EQ(query_heart_beat(ob), 0); // master_ob has no heart beat initially
+
+    // Enable heart beat
+    EXPECT_EQ(set_heart_beat(ob, 1), 1);
+    EXPECT_GT(query_heart_beat(ob), 0);
+
+    // Disable heart beat
+    EXPECT_EQ(set_heart_beat(ob, 0), 1);
+    EXPECT_EQ(query_heart_beat(ob), 0);
+}
+
+TEST_F(BackendTest, resolverRuntimeConfigDefaults) {
+    addr_resolver_config_t resolver_config;
+
+    EXPECT_EQ(CONFIG_INT(__RESOLVER_FORWARD_CACHE_TTL__), 300);
+    EXPECT_EQ(CONFIG_INT(__RESOLVER_REVERSE_CACHE_TTL__), 900);
+    EXPECT_EQ(CONFIG_INT(__RESOLVER_NEGATIVE_CACHE_TTL__), 30);
+    EXPECT_EQ(CONFIG_INT(__RESOLVER_STALE_REFRESH_WINDOW__), 30);
+
+    stem_get_addr_resolver_config(&resolver_config);
+
+    EXPECT_EQ(resolver_config.forward_cache_ttl, 300);
+    EXPECT_EQ(resolver_config.reverse_cache_ttl, 900);
+    EXPECT_EQ(resolver_config.negative_cache_ttl, 30);
+    EXPECT_EQ(resolver_config.stale_refresh_window, 30);
+}

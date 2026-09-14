@@ -1,0 +1,18 @@
+v3.20.24 three-round batch
+
+Round 1: universal local-map runtime topology foundation
+- WebHUD emits exact room path plus each current LPC exit.
+- Browser creates unknown runtime rooms instead of rejecting rooms absent from static JSON.
+- Runtime exits are merged by exact LPC path and direction.
+- Current room remains the center anchor.
+
+Round 2: Old Pine recovery inventory / provenance gate
+- 41 early room files inventoried.
+- 14 NPC code files inventoried.
+- 11 object code files inventoried.
+- Confirmed bamboo pipe -> room pipe_notify mechanism and keep/maze recovery targets.
+- Early archive remains archaeology/version-diff input; current Gao Shen 10-room route is not silently overwritten.
+
+Round 3: regression / walker harness
+- 5 source-level virtual walkers each traversed current Gao Shen path forward/back for 3 laps (270 directional transitions total).
+- IMPORTANT: this is NOT live Neolith/TELNET evidence. No runnable Neolith driver is present in this container, so the newly required live 5-player gate remains BLOCKED here and must be run in an environment with the driver/server available.

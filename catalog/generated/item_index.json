@@ -1,0 +1,1989 @@
+[
+  {
+    "path": "/adm/obj/mailbox",
+    "name": "信札",
+    "ids": [
+      "mail folder",
+      "mail",
+      "folder"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM",
+      "F_SAVE"
+    ],
+    "runtime_traits": [
+      "init",
+      "interactive",
+      "timed"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/adm/obj/master",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [],
+    "runtime_traits": [
+      "movement"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/adm/obj/simul_efun",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/obj/basic_book",
+    "name": "【幼學輯要】",
+    "ids": [
+      "book of elementary",
+      "book"
+    ],
+    "value": 200,
+    "weight": 1000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {
+      "literate": 1
+    },
+    "study_content": {
+      "literate": 10
+    },
+    "inherits": [
+      "ITEM",
+      "F_STUDY"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/obj/literate_book",
+    "name": "【幼學輯要】",
+    "ids": [
+      "book of elementary",
+      "book"
+    ],
+    "value": 200,
+    "weight": 1000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {
+      "literate": 1
+    },
+    "study_content": {
+      "literate": 10
+    },
+    "inherits": [
+      "ITEM",
+      "F_STUDY"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/obj/stone",
+    "name": null,
+    "ids": [],
+    "value": 1,
+    "weight": 100000000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [],
+    "runtime_traits": [
+      "init",
+      "timed"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/include/armor.h",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM",
+      "F_ATTRIBUTE",
+      "F_EQUIP",
+      "F_STATISTIC"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/include/weapon.h",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM",
+      "F_ATTRIBUTE",
+      "F_EQUIP",
+      "F_STATISTIC"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/man",
+    "name": "路人",
+    "ids": [
+      "man"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "runtime_traits": [
+      "inventory"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/axe",
+    "name": "斧頭",
+    "ids": [
+      "axe"
+    ],
+    "value": 2700,
+    "weight": 10000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_AXE"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/bag",
+    "name": "麻布袋",
+    "ids": [
+      "bag"
+    ],
+    "value": 130,
+    "weight": 700,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/bastardsword",
+    "name": "大劍",
+    "ids": [
+      "bastardsword",
+      "sword"
+    ],
+    "value": 8500,
+    "weight": 16000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_SWORD"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/belt",
+    "name": "腰帶",
+    "ids": [
+      "belt"
+    ],
+    "value": 200,
+    "weight": 100,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_WAIST_EQ"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/blade",
+    "name": "單刀",
+    "ids": [
+      "blade"
+    ],
+    "value": 3500,
+    "weight": 8000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_BLADE"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/broadaxe",
+    "name": "板斧",
+    "ids": [
+      "broadaxe",
+      "axe"
+    ],
+    "value": 5000,
+    "weight": 10000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_AXE"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/broadsword",
+    "name": "闊劍",
+    "ids": [
+      "broadsword",
+      "sword"
+    ],
+    "value": 5500,
+    "weight": 10000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_SWORD"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/cloth",
+    "name": "布衣",
+    "ids": [
+      "cloth"
+    ],
+    "value": 0,
+    "weight": 1000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/curved_blade",
+    "name": "彎刀",
+    "ids": [
+      "curved blade",
+      "blade"
+    ],
+    "value": 4200,
+    "weight": 9000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_BLADE"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/dagger",
+    "name": "匕首",
+    "ids": [
+      "dagger"
+    ],
+    "value": 500,
+    "weight": 3000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_DAGGER"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/dice",
+    "name": "骰子",
+    "ids": [
+      "dice"
+    ],
+    "value": 5,
+    "weight": 3,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [
+      "init"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/obj/area/obj/glaive",
+    "name": "鬼頭刀",
+    "ids": [
+      "glaive",
+      "blade"
+    ],
+    "value": 6000,
+    "weight": 9000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_BLADE"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/greatsword",
+    "name": "大劍",
+    "ids": [
+      "great sword",
+      "sword"
+    ],
+    "value": 11000,
+    "weight": 24000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_SWORD"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/knife",
+    "name": "小刀",
+    "ids": [
+      "knife"
+    ],
+    "value": 70,
+    "weight": 900,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_DAGGER"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/kris",
+    "name": "短刀",
+    "ids": [
+      "kris"
+    ],
+    "value": 600,
+    "weight": 4000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_BLADE"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/leather_boot",
+    "name": "皮短靴",
+    "ids": [
+      "leather boots",
+      "boots"
+    ],
+    "value": 400,
+    "weight": 1000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_FEET_EQ"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/leather_whip",
+    "name": "皮鞭",
+    "ids": [
+      "leather whip",
+      "whip"
+    ],
+    "value": 1800,
+    "weight": 2000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_WHIP"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/longsword",
+    "name": "長劍",
+    "ids": [
+      "long sword",
+      "sword"
+    ],
+    "value": 4000,
+    "weight": 7500,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_SWORD"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/pen",
+    "name": "判官筆",
+    "ids": [
+      "pen"
+    ],
+    "value": 3000,
+    "weight": 3000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_DAGGER"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/pike",
+    "name": "長槍",
+    "ids": [
+      "long pike",
+      "pike"
+    ],
+    "value": 6000,
+    "weight": 11000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_PIKE"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/robe",
+    "name": "布袍",
+    "ids": [
+      "robe"
+    ],
+    "value": 600,
+    "weight": 1000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/rod",
+    "name": "鐵鞭",
+    "ids": [
+      "rod",
+      "rod"
+    ],
+    "value": 5200,
+    "weight": 12000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_BLUNT"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/shortsword",
+    "name": "短劍",
+    "ids": [
+      "short sword",
+      "sword"
+    ],
+    "value": 900,
+    "weight": 4000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_SWORD"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/weirblade",
+    "name": "大刀",
+    "ids": [
+      "weirblade",
+      "blade"
+    ],
+    "value": 6500,
+    "weight": 15000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_BLADE"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/whip",
+    "name": "馬鞭",
+    "ids": [
+      "horse whip",
+      "whip"
+    ],
+    "value": 2000,
+    "weight": 8000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_WHIP"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/woodsword",
+    "name": "木劍",
+    "ids": [
+      "wooden sword",
+      "sword"
+    ],
+    "value": 400,
+    "weight": 2000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_SWORD"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/traveller",
+    "name": "過路客",
+    "ids": [
+      "traveller"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "runtime_traits": [
+      "inventory",
+      "teaching"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/vagabond",
+    "name": "市井無賴",
+    "ids": [
+      "vagabond"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_BANDIT"
+    ],
+    "runtime_traits": [
+      "inventory",
+      "teaching"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/armor/cloth",
+    "name": "布衣",
+    "ids": [
+      "cloth"
+    ],
+    "value": 0,
+    "weight": 1000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/armor/fur_hat",
+    "name": "毛皮帽",
+    "ids": [
+      "fur hat",
+      "hat"
+    ],
+    "value": 50,
+    "weight": 1000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_HEAD_EQ"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/bankbond",
+    "name": "錢莊金契",
+    "ids": [
+      "bankbond"
+    ],
+    "value": 1,
+    "weight": 1,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/block",
+    "name": "綠島",
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ROOM"
+    ],
+    "runtime_traits": [
+      "init",
+      "timed"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/obj/block_robot",
+    "name": "機器人島",
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ROOM"
+    ],
+    "runtime_traits": [
+      "init"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/obj/bottle",
+    "name": "玻璃瓶",
+    "ids": [
+      "glass bottle",
+      "bottle"
+    ],
+    "value": 100,
+    "weight": 700,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/clan_symbol",
+    "name": null,
+    "ids": [],
+    "value": 1,
+    "weight": 1,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_FINGER_EQ"
+    ],
+    "runtime_traits": [
+      "init",
+      "reset"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/obj/cloth",
+    "name": "布衣",
+    "ids": [
+      "cloth"
+    ],
+    "value": 60,
+    "weight": 2000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/corpse",
+    "name": "無名屍體",
+    "ids": [
+      "corpse"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [
+      "timed"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/obj/drug/black_pill",
+    "name": "烏心丹",
+    "ids": [
+      "black pill",
+      "pill"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/drug/boar_berry",
+    "name": "山豬果",
+    "ids": [
+      "boar berry",
+      "berry"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/drug/dragon_saliva",
+    "name": "龍涎草",
+    "ids": [
+      "dragon-saliva herb",
+      "dragon-saliva",
+      "herb"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/drug/flower_pill",
+    "name": "紅花丸",
+    "ids": [
+      "flower pill",
+      "pill"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/drug/gray_mushroom",
+    "name": "灰草菇",
+    "ids": [
+      "gray mushroom",
+      "mushroom"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/drug/wild_ginseng",
+    "name": "野山蔘",
+    "ids": [
+      "wild ginseng",
+      "ginseng"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/dust",
+    "name": "化屍粉",
+    "ids": [
+      "dust"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [
+      "init"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/obj/example/army",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_NAME",
+      "F_MOVE",
+      "F_DBASE",
+      "F_ATTRIBUTE",
+      "F_STATISTIC"
+    ],
+    "runtime_traits": [
+      "heart_beat"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/example/es2_bottle",
+    "name": "精緻玻璃瓶",
+    "ids": [
+      "bottle"
+    ],
+    "value": 0,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/example/infantry",
+    "name": "步兵隊",
+    "ids": [
+      "infantry"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "\"/obj/example/army.c\""
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/example/weapon/longsword",
+    "name": "長劍",
+    "ids": [
+      "longsword",
+      "sword"
+    ],
+    "value": 4000,
+    "weight": 5000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_SWORD"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/example/weapon/shortsword",
+    "name": "短劍",
+    "ids": [
+      "shortsword",
+      "sword"
+    ],
+    "value": 900,
+    "weight": 3000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_SWORD"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/food/dumpling",
+    "name": "牛肉包子",
+    "ids": [
+      "beef dumpling",
+      "dumpling"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM",
+      "F_FOOD"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/food/manto",
+    "name": "饅頭",
+    "ids": [
+      "manto"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM",
+      "F_FOOD"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/food/mooncake",
+    "name": "月餅",
+    "ids": [
+      "mooncake",
+      "cake"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM",
+      "F_FOOD"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/food/pork",
+    "name": "白切肉",
+    "ids": [
+      "pork"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM",
+      "F_FOOD"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/food/ricedough",
+    "name": "飯糰",
+    "ids": [
+      "rice dough",
+      "dough",
+      "rice"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM",
+      "F_FOOD"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/http",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [],
+    "runtime_traits": [
+      "movement",
+      "timed"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/obj/magic",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [
+      "combat"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/map",
+    "name": "地圖",
+    "ids": [
+      "map"
+    ],
+    "value": 300,
+    "weight": 10,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [
+      "init"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/obj/medication/alchemist/aquapill",
+    "name": "金液丹",
+    "ids": [
+      "aquapill",
+      "pill"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/medication/alchemist/black_pill",
+    "name": "烏心丹",
+    "ids": [
+      "black pill",
+      "pill"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/medication/alchemist/green_pill",
+    "name": "甘靈清毒丹",
+    "ids": [
+      "green pill",
+      "pill"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/medication/alchemist/major_heal_pill",
+    "name": "大還丹",
+    "ids": [
+      "major heal pill",
+      "major",
+      "pill"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/medication/alchemist/minor_heal_pill",
+    "name": "小還丹",
+    "ids": [
+      "minor heal pill",
+      "minor",
+      "pill"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/medication/alchemist/mix_recipe",
+    "name": "混合藥丹",
+    "ids": [
+      "mixed pill",
+      "mixed",
+      "pill"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/medication/alchemist/mjp_1",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/medication/alchemist/mjp_2",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/medication/alchemist/mjp_3",
+    "name": "大還丹",
+    "ids": [
+      "major heal pill",
+      "major",
+      "pill"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/medication/alchemist/refresh_pill",
+    "name": "金鎖固精丸",
+    "ids": [
+      "refresh pill",
+      "pill"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/medication/black_pill",
+    "name": "烏心丹",
+    "ids": [
+      "black pill",
+      "pill"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/medication/boar_berry",
+    "name": "山豬果",
+    "ids": [
+      "boar berry",
+      "berry"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/medication/dragon_saliva",
+    "name": "龍涎草",
+    "ids": [
+      "dragon-saliva herb",
+      "dragon-saliva",
+      "herb"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/medication/flower_pill",
+    "name": "紅花丸",
+    "ids": [
+      "flower pill",
+      "pill"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/medication/gray_mushroom",
+    "name": "灰草菇",
+    "ids": [
+      "gray mushroom",
+      "mushroom"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/medication/wild_ginseng",
+    "name": "野山蔘",
+    "ids": [
+      "wild ginseng",
+      "ginseng"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/money/coin",
+    "name": "錢",
+    "ids": [
+      "coin",
+      "coins",
+      "coin_money"
+    ],
+    "value": null,
+    "weight": null,
+    "material": "copper",
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "MONEY"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/money/gold",
+    "name": "黃金",
+    "ids": [
+      "gold",
+      "ingot",
+      "gold_money"
+    ],
+    "value": null,
+    "weight": null,
+    "material": "gold",
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "MONEY"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/money/silver",
+    "name": "碎銀",
+    "ids": [
+      "silver",
+      "silver_money"
+    ],
+    "value": null,
+    "weight": null,
+    "material": "silver",
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "MONEY"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/obj/firework",
+    "name": "煙火",
+    "ids": [
+      "firework"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [
+      "init"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/obj/obj/ghostbaby",
+    "name": "鬼娃娃",
+    "ids": [
+      "ghostbaby"
+    ],
+    "value": 1000000000,
+    "weight": 1,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/reagent/cinnabar",
+    "name": "辰砂",
+    "ids": [
+      "cinnabar"
+    ],
+    "value": null,
+    "weight": 500,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "REAGENT_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/reagent/crane_dye",
+    "name": "鶴頂紅",
+    "ids": [
+      "crane dye",
+      "dye"
+    ],
+    "value": null,
+    "weight": 200,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "REAGENT_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/reagent/medlar",
+    "name": "枸杞",
+    "ids": [
+      "medlar"
+    ],
+    "value": null,
+    "weight": 100,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "REAGENT_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/reagent/strychin",
+    "name": "番木鱉",
+    "ids": [
+      "strychin"
+    ],
+    "value": null,
+    "weight": 30,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "REAGENT_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/roommaker",
+    "name": "空房間",
+    "ids": [],
+    "value": null,
+    "weight": 100,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM",
+      "ROOM",
+      "ROOM"
+    ],
+    "runtime_traits": [
+      "init",
+      "interactive"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/obj/spirit",
+    "name": "小精靈",
+    "ids": [
+      "spirit",
+      "robot"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [],
+    "runtime_traits": [
+      "init",
+      "movement",
+      "timed"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/obj/void",
+    "name": "最後樂園",
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_DBASE"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/water",
+    "name": "清水",
+    "ids": [
+      "water"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "LIQUID_ITEM",
+      "F_DRINK"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/std/bboard",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM",
+      "F_SAVE"
+    ],
+    "runtime_traits": [
+      "init",
+      "movement"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/std/item/combined",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [
+      "movement",
+      "timed"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/std/item/container",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/std/item/liquid",
+    "name": "不明液體",
+    "ids": [
+      "unknown liquid",
+      "liquid"
+    ],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/std/item/pharmacy",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/std/item/reagent",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/std/money",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/std/room/obj/pawn_stamp",
+    "name": "當票",
+    "ids": [
+      "pawn stamp",
+      "stamp"
+    ],
+    "value": null,
+    "weight": 5,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  }
+]

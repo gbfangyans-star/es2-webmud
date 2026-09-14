@@ -1,0 +1,2190 @@
+{
+  "ranked": [
+    {
+      "path": "/feature/char/combat",
+      "score": 24,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 2
+        },
+        {
+          "kind": "callouts",
+          "count": 1
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/char/combat",
+            "kind": "skill_daemon_call",
+            "name": "force",
+            "method": "inflict_damage",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/char/combat",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "sk",
+            "method": "dodge_using"
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/char/combat",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "sk",
+            "method": "parry_using"
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/char/combat",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "force_sk",
+            "method": "inflict_damage"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/std/char/npc",
+      "score": 20,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/std/char/npc",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "spell_skill",
+            "method": "cast_spell"
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/std/char/npc",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "magic_skill",
+            "method": "conjure_magic"
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/std/char/npc",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "cauterization_skill",
+            "method": "acupuncture_cauterization"
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/std/char/npc",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "force_skill",
+            "method": "exert_function"
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/std/char/npc",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "skill",
+            "method": "perform_action"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/smith",
+      "score": 14,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 3
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        },
+        {
+          "kind": "accept_hooks",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/yu",
+      "score": 14,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 3
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        },
+        {
+          "kind": "accept_hooks",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "/adm/obj/mailbox",
+      "score": 13,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 2
+        },
+        {
+          "kind": "actions",
+          "count": 5
+        },
+        {
+          "kind": "callouts",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/feature/weapon/axe",
+      "score": 12,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/axe",
+            "kind": "weapon_damage_skill",
+            "name": "axe",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/axe",
+            "kind": "weapon_damage_skill",
+            "name": "secondhand axe",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/axe",
+            "kind": "weapon_damage_skill",
+            "name": "twohanded axe",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/feature/weapon/blade",
+      "score": 12,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/blade",
+            "kind": "weapon_damage_skill",
+            "name": "blade",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/blade",
+            "kind": "weapon_damage_skill",
+            "name": "secondhand blade",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/blade",
+            "kind": "weapon_damage_skill",
+            "name": "twohanded blade",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/feature/weapon/blunt",
+      "score": 12,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/blunt",
+            "kind": "weapon_damage_skill",
+            "name": "blunt",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/blunt",
+            "kind": "weapon_damage_skill",
+            "name": "secondhand blunt",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/blunt",
+            "kind": "weapon_damage_skill",
+            "name": "twohanded blunt",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/feature/weapon/pike",
+      "score": 12,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/pike",
+            "kind": "weapon_damage_skill",
+            "name": "pike",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/pike",
+            "kind": "weapon_damage_skill",
+            "name": "secondhand pike",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/pike",
+            "kind": "weapon_damage_skill",
+            "name": "twohanded pike",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/feature/weapon/staff",
+      "score": 12,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/staff",
+            "kind": "weapon_damage_skill",
+            "name": "secondhand staff",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/staff",
+            "kind": "weapon_damage_skill",
+            "name": "staff",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/staff",
+            "kind": "weapon_damage_skill",
+            "name": "twohanded staff",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/gammer",
+      "score": 11,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "accept_hooks",
+          "count": 2
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/d/snow/npc/gammer",
+            "kind": "skill_map",
+            "name": "regular force",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/obj/syndicator",
+      "score": 11,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/d/snow/npc/obj/syndicator",
+            "kind": "weapon_wield_skill",
+            "name": "dagger",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/d/snow/npc/obj/syndicator",
+            "kind": "weapon_wield_skill",
+            "name": "secondhand dagger",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/npc/demogorgon",
+      "score": 11,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "callouts",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "path": "/feature/equip",
+      "score": 10,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 2
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/equip",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "skill_type",
+            "method": "attack_using"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/clan_symbol",
+      "score": 10,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "path": "/obj/spirit",
+      "score": 10,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 2
+        },
+        {
+          "kind": "actions",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "path": "/std/room/hockshop",
+      "score": 10,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 7
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/sgate",
+      "score": 10,
+      "reasons": [
+        {
+          "kind": "audit_issue",
+          "detail": {
+            "kind": "dangling_exit",
+            "file": "d/snow/sgate.c",
+            "direction": "southeast",
+            "target": "d/oldpine/road1.c"
+          }
+        },
+        {
+          "kind": "audit_issue",
+          "detail": {
+            "kind": "dangling_exit",
+            "file": "d/snow/sgate.c",
+            "direction": "west",
+            "target": "d/newcamp/gate.c"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/child",
+      "score": 9,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/d/snow/npc/child",
+            "kind": "skill_map",
+            "name": "lightswift",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/girl",
+      "score": 9,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/d/snow/npc/girl",
+            "kind": "skill_map",
+            "name": "celestial force",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/teacher",
+      "score": 9,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 2
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        },
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/std/bboard",
+      "score": 9,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 6
+        }
+      ]
+    },
+    {
+      "path": "/std/room/journey",
+      "score": 9,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 2
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        },
+        {
+          "kind": "callouts",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/obj/block",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 2
+        },
+        {
+          "kind": "callouts",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/std/room",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "audit_issue",
+          "detail": {
+            "kind": "door_without_exit",
+            "file": "std/room.c",
+            "direction": "north",
+            "name": "木門"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/cmds/usr/skills",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/cmds/usr/skills",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "s",
+            "method": "type"
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/cmds/usr/skills",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "s",
+            "method": "type"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/obj/broadsword",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/d/snow/npc/obj/broadsword",
+            "kind": "weapon_wield_skill",
+            "name": "twohanded sword",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/d/snow/npc/obj/broadsword",
+            "kind": "weapon_wield_skill",
+            "name": "blade",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/obj/cane",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/d/snow/npc/obj/cane",
+            "kind": "weapon_wield_skill",
+            "name": "staff",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/d/snow/npc/obj/cane",
+            "kind": "weapon_wield_skill",
+            "name": "twohanded staff",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/feature/char/skill",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/char/skill",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "skill",
+            "method": "skill_improved"
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/char/skill",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "skill",
+            "method": "skill_advanced"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/feature/weapon/dagger",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/dagger",
+            "kind": "weapon_damage_skill",
+            "name": "dagger",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/dagger",
+            "kind": "weapon_damage_skill",
+            "name": "secondhand dagger",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/feature/weapon/needle",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/needle",
+            "kind": "weapon_damage_skill",
+            "name": "needle",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/needle",
+            "kind": "weapon_damage_skill",
+            "name": "secondhand needle",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/feature/weapon/sword",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/sword",
+            "kind": "weapon_damage_skill",
+            "name": "secondhand sword",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/sword",
+            "kind": "weapon_damage_skill",
+            "name": "twohanded sword",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/axe",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/axe",
+            "kind": "weapon_wield_skill",
+            "name": "axe",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/axe",
+            "kind": "weapon_wield_skill",
+            "name": "twohanded axe",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/broadaxe",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/broadaxe",
+            "kind": "weapon_wield_skill",
+            "name": "axe",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/broadaxe",
+            "kind": "weapon_wield_skill",
+            "name": "twohanded axe",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/dagger",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/dagger",
+            "kind": "weapon_wield_skill",
+            "name": "dagger",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/dagger",
+            "kind": "weapon_wield_skill",
+            "name": "secondhand dagger",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/glaive",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/glaive",
+            "kind": "weapon_wield_skill",
+            "name": "blade",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/glaive",
+            "kind": "weapon_wield_skill",
+            "name": "twohanded blade",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/knife",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/knife",
+            "kind": "weapon_wield_skill",
+            "name": "dagger",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/knife",
+            "kind": "weapon_wield_skill",
+            "name": "secondhand dagger",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/kris",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/kris",
+            "kind": "weapon_wield_skill",
+            "name": "blade",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/kris",
+            "kind": "weapon_wield_skill",
+            "name": "secondhand blade",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/pen",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/pen",
+            "kind": "weapon_wield_skill",
+            "name": "dagger",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/pen",
+            "kind": "weapon_wield_skill",
+            "name": "secondhand dagger",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/pike",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/pike",
+            "kind": "weapon_wield_skill",
+            "name": "twohanded pike",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/pike",
+            "kind": "weapon_wield_skill",
+            "name": "pike",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/weirblade",
+      "score": 8,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/weirblade",
+            "kind": "weapon_wield_skill",
+            "name": "blade",
+            "matches": []
+          }
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/weirblade",
+            "kind": "weapon_wield_skill",
+            "name": "twohanded blade",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/cmds/std/steal",
+      "score": 7,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "callouts",
+          "count": 1
+        },
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/herbalist",
+      "score": 7,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 2
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/obj/stone",
+      "score": 7,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 2
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/obj/roommaker",
+      "score": 7,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "path": "/std/room/bank",
+      "score": 7,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 4
+        }
+      ]
+    },
+    {
+      "path": "/adm/daemons/combatd",
+      "score": 6,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/inn_kitchen",
+      "score": 6,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/garrison",
+      "score": 6,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        },
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/guard",
+      "score": 6,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        },
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/lieutenant",
+      "score": 6,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        },
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/waiter",
+      "score": 6,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        },
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/adm/daemons/userid",
+      "score": 5,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "callouts",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/adm/intermud/i2d",
+      "score": 5,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "callouts",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/ruin1",
+      "score": 5,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "/feature/char/command",
+      "score": 5,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "/std/char",
+      "score": 5,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "callouts",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/std/item/combined",
+      "score": 5,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "callouts",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/ebridge",
+      "score": 5,
+      "reasons": [
+        {
+          "kind": "audit_issue",
+          "detail": {
+            "kind": "dangling_exit",
+            "file": "d/snow/ebridge.c",
+            "direction": "east",
+            "target": "d/snowkeep/entrance.c"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/egate",
+      "score": 5,
+      "reasons": [
+        {
+          "kind": "audit_issue",
+          "detail": {
+            "kind": "dangling_exit",
+            "file": "d/snow/egate.c",
+            "direction": "northeast",
+            "target": "d/lee/r1.c"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/ngate",
+      "score": 5,
+      "reasons": [
+        {
+          "kind": "audit_issue",
+          "detail": {
+            "kind": "dangling_exit",
+            "file": "d/snow/ngate.c",
+            "direction": "north",
+            "target": "d/goat/sroad1.c"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npath2",
+      "score": 5,
+      "reasons": [
+        {
+          "kind": "audit_issue",
+          "detail": {
+            "kind": "dangling_exit",
+            "file": "d/snow/npath2.c",
+            "direction": "north",
+            "target": "d/month/a1.c"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/river1",
+      "score": 5,
+      "reasons": [
+        {
+          "kind": "audit_issue",
+          "detail": {
+            "kind": "dangling_exit",
+            "file": "d/snow/river1.c",
+            "direction": "north",
+            "target": "d/chixiao/river2.c"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/wgate",
+      "score": 5,
+      "reasons": [
+        {
+          "kind": "audit_issue",
+          "detail": {
+            "kind": "dangling_exit",
+            "file": "d/snow/wgate.c",
+            "direction": "northwest",
+            "target": "d/graveyard/grave1.c"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/epath",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/kitchen",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/lane2",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/innkeeper",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/junkman",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/obj/crate",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/obj/wagon",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/post_office",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/ruin2",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/square",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/feature/npc/bandit",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "/feature/npc/fighter",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "/feature/npc/scholar",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "/feature/npc/soldier",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "/feature/npc/villager",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 2
+        }
+      ]
+    },
+    {
+      "path": "/obj/block_robot",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/obj/dust",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/obj/map",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/obj/obj/firework",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/cmds/std/acupuncture",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/cmds/std/acupuncture",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "cauterization",
+            "method": "acupuncture_cauterization"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/cmds/std/cast",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/cmds/std/cast",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "spells",
+            "method": "cast_spell"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/cmds/std/conjure",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/cmds/std/conjure",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "magic",
+            "method": "conjure_magic"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/cmds/std/team",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/cmds/std/team",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "arg",
+            "method": "form_array"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/cmds/usr/enable",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/cmds/usr/enable",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "map_to",
+            "method": "valid_enable"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/obj/hoe",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/d/snow/npc/obj/hoe",
+            "kind": "weapon_wield_skill",
+            "name": "twohanded pike",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/obj/shovel",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/d/snow/npc/obj/shovel",
+            "kind": "weapon_wield_skill",
+            "name": "twohanded pike",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/obj/woodblade",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/d/snow/npc/obj/woodblade",
+            "kind": "weapon_wield_skill",
+            "name": "blade",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/feature/char/attack",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/char/attack",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "skill",
+            "method": "attack_using"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/feature/weapon/whip",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/whip",
+            "kind": "weapon_damage_skill",
+            "name": "whip",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/bastardsword",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/bastardsword",
+            "kind": "weapon_wield_skill",
+            "name": "twohanded sword",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/blade",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/blade",
+            "kind": "weapon_wield_skill",
+            "name": "blade",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/broadsword",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/broadsword",
+            "kind": "weapon_wield_skill",
+            "name": "twohanded sword",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/curved_blade",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/curved_blade",
+            "kind": "weapon_wield_skill",
+            "name": "blade",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/greatsword",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/greatsword",
+            "kind": "weapon_wield_skill",
+            "name": "twohanded sword",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/leather_whip",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/leather_whip",
+            "kind": "weapon_wield_skill",
+            "name": "whip",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/rod",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/rod",
+            "kind": "weapon_wield_skill",
+            "name": "blunt",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/shortsword",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/shortsword",
+            "kind": "weapon_wield_skill",
+            "name": "secondhand sword",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/whip",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/area/obj/whip",
+            "kind": "weapon_wield_skill",
+            "name": "whip",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/obj/example/weapon/shortsword",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/obj/example/weapon/shortsword",
+            "kind": "weapon_wield_skill",
+            "name": "secondhand sword",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/adm/daemons/natured",
+      "score": 3,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/cmds/std/buy",
+      "score": 3,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/cmds/std/follow",
+      "score": 3,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/cmds/std/sneak",
+      "score": 3,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/square_w",
+      "score": 3,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/feature/char/team",
+      "score": 3,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/feature/move",
+      "score": 3,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/feature/npc/vendor",
+      "score": 3,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/dice",
+      "score": 3,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/obj/corpse",
+      "score": 3,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/obj/http",
+      "score": 3,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/obj/user",
+      "score": 3,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/cmds/std/fight",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/cmds/std/fill",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/cmds/std/give",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/cmds/std/kill",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/cmds/std/put",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/child1",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/child2",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/child3",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/child4",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/foreman",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/obj/pot",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/obj/wine_pot",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/patrol",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/obj/bag",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/obj/area/traveller",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/obj/bottle",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/obj/example/es2_bottle",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/obj/npc/garrison",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/std/item/container",
+      "score": 2,
+      "reasons": [
+        {
+          "kind": "accept_hooks",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/std/room/temple",
+      "score": 1,
+      "reasons": [
+        {
+          "kind": "actions",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "entities": 135,
+    "max_score": 24
+  }
+}

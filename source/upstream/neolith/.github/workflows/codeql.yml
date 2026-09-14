@@ -1,0 +1,82 @@
+name: "CodeQL"
+
+on:
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - '**.c'
+      - '**.cpp'
+      - '**.cmake'
+      - '**.h'
+      - '**.hpp'
+      - '**.y'
+      - 'CMakeLists.txt'
+
+jobs:
+  analyze:
+    name: Analyze (${{ matrix.language }} on ${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    permissions:
+      # required for all workflows
+      security-events: write
+
+      # required to fetch internal or private CodeQL packs
+      packages: read
+
+      # only required for workflows in private repositories
+      actions: read
+      contents: read
+
+    strategy:
+      fail-fast: true
+      # We only do quick build on github-hosted runners.
+      # See https://docs.github.com/en/actions/reference/runners/github-hosted-runners
+      matrix:
+        include:
+        - language: c-cpp
+          os: ubuntu-latest
+        # There is no github-hosted Windows runner with BISON installed.
+        # - language: c-cpp
+        #   os: windows-latest
+        - language: c-cpp
+          os: macos-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v6
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v4
+      with:
+        languages: ${{ matrix.language }}
+        build-mode: manual
+        config: |
+          paths-ignore:
+            - out/
+
+    - name: Run manual build steps (Ubuntu)
+      if: runner.os == 'Linux'
+      shell: bash
+      run: |
+        cmake --preset linux
+        cmake --build --preset ci-linux
+
+    # - name: Run manual build steps (Windows)
+    #   if: runner.os == 'Windows'
+    #   shell: bash
+    #   run: |
+    #     cmake --preset vs16-x64
+    #     cmake --build --preset ci-vs16-x64
+
+    - name: Run manual build steps (macOS)
+      if: runner.os == 'macOS'
+      shell: bash
+      run: |
+        cmake --preset macos -DCMAKE_OSX_ARCHITECTURES=arm64
+        cmake --build --preset ci-macos
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v4
+      env:
+        CODEQL_ACTION_FILE_COVERAGE_ON_PRS: true
+      with:
+        category: "/language:${{matrix.language}}"

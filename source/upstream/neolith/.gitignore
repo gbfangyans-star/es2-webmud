@@ -1,0 +1,13 @@
+# vim
+*.swp
+*~
+
+# vscode
+/.vscode/
+
+# cmake
+/out/
+/Testing/
+
+# venv
+/.venv/

@@ -1,0 +1,61 @@
+{
+  "status": "archaeological-version-diff-only",
+  "playable_merge": false,
+  "dynamic_groups": {
+    "cave_maze": {
+      "rooms": ["cave1", "cave2", "cave3", "cave4"],
+      "dynamic": true,
+      "notes": [
+        "reset-time random exits",
+        "cave1 north fixed to cave2",
+        "cave2 east fixed to cave4"
+      ]
+    },
+    "pine_maze": {
+      "rooms": ["pine1", "pine2", "pine3", "pine4", "pine5", "pine6", "pine7"],
+      "dynamic": true,
+      "fixed_edges": [
+        ["pine2", "east", "keep1"],
+        ["pine4", "north", "pine5"],
+        ["pine5", "north", "pine6"],
+        ["pine6", "west", "pine7"],
+        ["pine7", "southwest", "cliffdown"]
+      ]
+    }
+  },
+  "special_actions": [
+    {"room":"clearing","verb":"climb pine","destination":"tree1"},
+    {"room":"epath2","verb":"hold/grab vine","success_destination":"passage","failure_destination":"waterfall","check":"dodge random threshold"},
+    {"room":"path3","verb":"climb up","destination":"stone"},
+    {"room":"cliff1","verb":"climb up","destination":"cliffside"},
+    {"room":"cliff1","verb":"climb down","destination":"riverbank1"},
+    {"room":"cliff2","verb":"climb up","destination":"cliffdown"},
+    {"room":"cliff2","verb":"climb down","destination":"epath3"},
+    {"room":"cliffdown","verb":"climb down","destination":"cliff2"},
+    {"room":"riverbank1","verb":"climb cliff","destination":"cliff1"},
+    {"room":"cave5","verb":"bury","destination":null,"status":"dependency extraction pending"}
+  ],
+  "fixed_chains": {
+    "surface_hub": ["npath3", "clearing", "epath1", "epath2", "epath3"],
+    "secret_route": ["epath2", "passage", "secrectpath1", "path3", "stone"],
+    "water_route": ["waterfall", "riverbank2", "riverbank1", "lake"],
+    "keep_route": ["pine2", "keep1", "keep2", "keep3"]
+  },
+  "event_callbacks": [
+    {
+      "room": "keep2",
+      "trigger": "valid_leave east while west exit exists",
+      "effect": "remove keep2 west and keep1 east; spawn 5 bandit_guard and attack player"
+    },
+    {
+      "room": "keep2",
+      "callback": "pipe_notify",
+      "effect": "restore keep2 west and keep1 east"
+    },
+    {
+      "object": "bamboo_pipe",
+      "verb": "play/blow",
+      "effect": "call environment(player)->pipe_notify()"
+    }
+  ]
+}

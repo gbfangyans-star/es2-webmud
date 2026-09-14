@@ -1,0 +1,37 @@
+{
+  "status": "archaeological-only",
+  "playable_merge": false,
+  "evidence_groups": {
+    "room_inventory": {
+      "confidence": 0.99,
+      "note": "41 early room files enumerated"
+    },
+    "topology_and_special_movement": {
+      "confidence": 0.96,
+      "note": "major fixed/dynamic/special chains extracted; later-version reconciliation pending"
+    },
+    "tree_layer": {
+      "confidence": 1.0,
+      "note": "clearing-tree1-tree2-tree3 closed"
+    },
+    "cave5_bury": {
+      "confidence": 1.0,
+      "note": "logic extracted; reward dependency remains blocked"
+    },
+    "keep_event_chain": {
+      "confidence": 0.98,
+      "note": "ambush, blocking, pipe callback traced"
+    },
+    "npc_object_portability": {
+      "confidence": 0.72,
+      "note": "legacy dependencies prevent faithful direct port of all actors/items"
+    }
+  },
+  "blockers": [
+    "parrybook dependency/API",
+    "black_cloth missing",
+    "necromancy missing"
+  ],
+  "recommended_action": "finish NPC/object/API compatibility and dependency closure, then connect recovered full Old Pine as a separate branch; no lineage reconciliation required",
+  "integration_policy": "Do not reconcile early full Old Pine room-by-room with Gao Shen path01..path10. Keep Gao Shen route unchanged; integrate recovered full Old Pine later as a separate branch once compatibility blockers are cleared."
+}

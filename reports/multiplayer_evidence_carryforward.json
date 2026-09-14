@@ -1,0 +1,31 @@
+{
+  "schema": 1,
+  "version": "3.19.6",
+  "generated": "2026-09-08T12:08:24",
+  "ok": true,
+  "coveredLiveEvidence": [
+    {
+      "gate": "transport/session-isolation",
+      "fresh": true,
+      "recorded": "4285235bb4d5c91f28c75359745bdeb0690b338076d3d166a9118b24dd479818",
+      "current": "4285235bb4d5c91f28c75359745bdeb0690b338076d3d166a9118b24dd479818",
+      "sourceComplete": true
+    },
+    {
+      "gate": "login/tell/save/reconnect",
+      "fresh": true,
+      "recorded": "e35911c7fbde3bc97ff677bffd425cc6d1ff308063032f2af11f5754165fc5ef",
+      "current": "e35911c7fbde3bc97ff677bffd425cc6d1ff308063032f2af11f5754165fc5ef",
+      "sourceComplete": true
+    },
+    {
+      "gate": "same-room/say/team/follow",
+      "fresh": true,
+      "recorded": "0dd34d02491f38cc79bebc15fb96a0e6c4ac85e02ebc535a7854c9418b4ab757",
+      "current": "0dd34d02491f38cc79bebc15fb96a0e6c4ac85e02ebc535a7854c9418b4ab757",
+      "sourceComplete": true
+    }
+  ],
+  "staleGates": [],
+  "rule": "Only previously recorded live gates are checked. Pending gates are never promoted to PASS."
+}

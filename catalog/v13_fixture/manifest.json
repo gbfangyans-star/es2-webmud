@@ -1,0 +1,19 @@
+{
+  "source": "https://github.com/taedlar/es2_mudlib",
+  "source_policy": "SOURCE-ONLY / no external augmentation",
+  "git": {
+    "repository": "https://github.com/taedlar/es2_mudlib",
+    "origin": null,
+    "commit": null,
+    "branch": null
+  },
+  "total_files": 16,
+  "counts": {
+    "feature": 2,
+    "item": 4,
+    "npc": 4,
+    "prototype": 1,
+    "room": 3,
+    "skill": 2
+  }
+}

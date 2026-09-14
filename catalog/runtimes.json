@@ -1,0 +1,171 @@
+[
+  {
+    "file": "obj/login.c",
+    "path": "/obj/login",
+    "type": "runtime",
+    "sha256": "60a4168b7b4e6f2d2a1747647fa417ea7957c1864d25ba8466b6b1e9695f243f",
+    "inherits": [
+      "F_ALIAS",
+      "F_DBASE",
+      "F_INPUT",
+      "F_SAVE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_ALIAS",
+        "target": "F_ALIAS",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_DBASE",
+        "target": "F_DBASE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_INPUT",
+        "target": "F_INPUT",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_SAVE",
+        "target": "F_SAVE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "add",
+      "body",
+      "clean_up",
+      "delete",
+      "logon",
+      "net_dead",
+      "query",
+      "query_save_file",
+      "receive_message",
+      "restore",
+      "set",
+      "set_body",
+      "terminal_type",
+      "time_out",
+      "update_age"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "您花在連線進入手續的時間太久了﹐下次想好再來吧。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/user.c",
+    "path": "/obj/user",
+    "type": "runtime",
+    "sha256": "7d67d35bde2ee48b5821bac6298ef71baa9bc073347d39b9e725a8d70722dcf7",
+    "inherits": [
+      "CHARACTER",
+      "F_AUTOLOAD",
+      "F_EDIT",
+      "F_FLAG",
+      "F_INPUT",
+      "F_MORE",
+      "F_SAVE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "CHARACTER",
+        "target": "CHARACTER",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_AUTOLOAD",
+        "target": "F_AUTOLOAD",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_EDIT",
+        "target": "F_EDIT",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_FLAG",
+        "target": "F_FLAG",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_INPUT",
+        "target": "F_INPUT",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_MORE",
+        "target": "F_MORE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_SAVE",
+        "target": "F_SAVE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "add",
+      "advance_skill",
+      "create",
+      "delete",
+      "heart_beat",
+      "improve_skill",
+      "link",
+      "lose_fight",
+      "move_or_destruct",
+      "net_dead",
+      "process_input",
+      "query",
+      "query_save_file",
+      "reconnect",
+      "reset",
+      "save",
+      "set",
+      "set_attr",
+      "set_learn",
+      "set_link",
+      "set_skill",
+      "set_stat_maximum",
+      "set_terminal_type",
+      "setup",
+      "user_dump",
+      "win_fight"
+    ],
+    "runtime_traits": [
+      "heart_beat",
+      "movement",
+      "reset",
+      "teaching",
+      "timed"
+    ],
+    "combat_surface": [
+      "busy",
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "\\r你下指令的速度太快了，你所控制的人物無法執行這麼多命令。\\n"
+    ],
+    "name": "無名氏",
+    "ids": [
+      "noname"
+    ],
+    "function_calls": [
+      "improve_skill"
+    ],
+    "combat_message_traits": [
+      "damage_text",
+      "miss_text",
+      "tell_object",
+      "tell_room"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  }
+]

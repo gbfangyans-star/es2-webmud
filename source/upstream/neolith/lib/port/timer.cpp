@@ -1,0 +1,221 @@
+/**
+ * @file timer.cpp
+ * @brief Portable C++11 timer implementation using chrono and thread
+ * 
+ * This replaces platform-specific implementations (win32_timer.c, posix_timer.c, fallback_timer.c)
+ * with a single portable implementation using C++11 standard library.
+ */
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include "timer.h"
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+#include <chrono>
+#include <atomic>
+
+/**
+ * @brief Internal timer state structure
+ * 
+ * Uses C++11 primitives for thread-safe periodic timer execution.
+ * The timer thread waits on a condition variable with a timeout,
+ * providing precise timing without busy-waiting.
+ */
+struct platform_timer_internal {
+    std::thread timer_thread;
+    std::mutex mutex;
+    std::condition_variable cv;
+    std::chrono::microseconds interval;
+    timer_callback_t callback;
+    std::atomic<bool> active;
+    std::atomic<bool> stop_requested;
+    
+    platform_timer_internal() : callback(nullptr), active(false), stop_requested(false) {}
+};
+
+/**
+ * @brief Timer thread function
+ * 
+ * Executes the callback at regular intervals using condition_variable::wait_until
+ * for precise timing. Stops when stop_requested is set.
+ * 
+ * @param internal Pointer to internal timer state
+ */
+static void timer_thread_func(platform_timer_internal* internal) {
+    auto next_tick = std::chrono::steady_clock::now() + internal->interval;
+    
+    for (;;) {
+        // Predicate-based wait_until: atomically checks stop_requested on entry and
+        // on every wakeup, eliminating the lost-notify window between the loop
+        // condition check and entering the wait.
+        // Returns true if predicate triggered (stop), false if timeout.
+        bool stop;
+        {
+            std::unique_lock<std::mutex> lock(internal->mutex);
+            stop = internal->cv.wait_until(lock, next_tick,
+                [internal]{ return internal->stop_requested.load(); });
+        }
+        
+        if (stop) {
+            break;
+        }
+        
+        // Execute callback on timeout (without holding the lock)
+        if (internal->active.load() && internal->callback) {
+            internal->callback();
+        }
+        
+        // Calculate next tick (drift correction)
+        next_tick += internal->interval;
+        
+        // If we're running behind, reset to current time
+        auto now = std::chrono::steady_clock::now();
+        if (next_tick < now) {
+            next_tick = now + internal->interval;
+        }
+    }
+}
+
+/**
+ * @brief Initialize timer system
+ */
+extern "C" timer_error_t platform_timer_init(platform_timer_t* timer) {
+    if (!timer) {
+        return TIMER_ERR_NULL_PARAM;
+    }
+    
+    try {
+        timer->internal = new platform_timer_internal();
+        return TIMER_OK;
+    } catch (...) {
+        return TIMER_ERR_SYSTEM;
+    }
+}
+
+/**
+ * @brief Start the periodic timer
+ */
+extern "C" timer_error_t platform_timer_start(platform_timer_t* timer, unsigned long interval_us, timer_callback_t callback) {
+    if (!timer || !timer->internal || !callback) {
+        return TIMER_ERR_NULL_PARAM;
+    }
+    
+    if (interval_us == 0) {
+        return TIMER_ERR_INVALID_INTERVAL;
+    }
+    
+    platform_timer_internal* internal = static_cast<platform_timer_internal*>(timer->internal);
+    
+    // Check if already active
+    if (internal->active.load()) {
+        return TIMER_ERR_ALREADY_ACTIVE;
+    }
+    
+    try {
+        // Configure timer
+        internal->interval = std::chrono::microseconds(interval_us);
+        internal->callback = callback;
+        internal->stop_requested.store(false);
+        internal->active.store(true);
+        
+        // Start timer thread
+        internal->timer_thread = std::thread(timer_thread_func, internal);
+        
+        return TIMER_OK;
+    } catch (...) {
+        internal->active.store(false);
+        return TIMER_ERR_THREAD;
+    }
+}
+
+/**
+ * @brief Stop the timer
+ */
+extern "C" timer_error_t platform_timer_stop(platform_timer_t* timer) {
+    if (!timer || !timer->internal) {
+        return TIMER_ERR_NULL_PARAM;
+    }
+    
+    platform_timer_internal* internal = static_cast<platform_timer_internal*>(timer->internal);
+    
+    if (!internal->active.load()) {
+        return TIMER_OK;  // Already stopped
+    }
+    
+    // Signal thread to stop
+    internal->active.store(false);
+    internal->stop_requested.store(true);
+    
+    // Wake up thread if waiting
+    {
+        std::lock_guard<std::mutex> lock(internal->mutex);
+        internal->cv.notify_all();
+    }
+    
+    // Wait for thread to finish
+    if (internal->timer_thread.joinable()) {
+        internal->timer_thread.join();
+    }
+    
+    // Clear callback
+    internal->callback = nullptr;
+    
+    return TIMER_OK;
+}
+
+/**
+ * @brief Cleanup timer resources
+ */
+extern "C" void platform_timer_cleanup(platform_timer_t* timer) {
+    if (!timer || !timer->internal) {
+        return;
+    }
+    
+    platform_timer_internal* internal = static_cast<platform_timer_internal*>(timer->internal);
+    
+    // Stop timer if running
+    platform_timer_stop(timer);
+    
+    // Delete internal structure
+    delete internal;
+    timer->internal = nullptr;
+}
+
+/**
+ * @brief Check if timer is active
+ */
+extern "C" int platform_timer_is_active(const platform_timer_t* timer) {
+    if (!timer || !timer->internal) {
+        return 0;
+    }
+    
+    const platform_timer_internal* internal = static_cast<const platform_timer_internal*>(timer->internal);
+    return internal->active.load() ? 1 : 0;
+}
+
+/**
+ * @brief Convert timer error code to string
+ */
+extern "C" const char* timer_error_string(timer_error_t error) {
+    switch (error) {
+        case TIMER_OK:
+            return "Success";
+        case TIMER_ERR_NULL_PARAM:
+            return "NULL parameter";
+        case TIMER_ERR_ALREADY_ACTIVE:
+            return "Timer already active";
+        case TIMER_ERR_NOT_ACTIVE:
+            return "Timer not active";
+        case TIMER_ERR_SYSTEM:
+            return "System error";
+        case TIMER_ERR_THREAD:
+            return "Thread creation failed";
+        case TIMER_ERR_INVALID_INTERVAL:
+            return "Invalid interval";
+        default:
+            return "Unknown error";
+    }
+}

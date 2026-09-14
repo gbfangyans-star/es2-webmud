@@ -1,0 +1,278 @@
+#ifdef	HAVE_CONFIG_H
+#include <config.h>
+#endif /* HAVE_CONFIG_H */
+
+#include "src/std.h"
+#include "types.h"
+#include "object.h"
+#include "otable.h"
+#include "hash.h"
+
+#include "lpc/include/runtime_config.h"
+
+/*
+ * Object name hash table.  Object names are unique, so no special
+ * problems - like stralloc.c.  For non-unique hashed names, we need
+ * a better package (if we want to be able to get at them all) - we
+ * cant move them to the head of the hash chain, for example.
+ *
+ * Note: if you change an object name, you must remove it and reenter it.
+ */
+
+static int otable_size;
+static int otable_size_minus_one;
+
+static int user_obj_lookups = 0, user_obj_found = 0;
+
+static object_t *find_obj_n (const char *, int*);
+
+/**
+ * @brief Strip leading slashes and trailing .c extensions from a file name.
+ * In some cases, (for example, object loading) this currently gets
+ * run twice, once in find_object, and once in load object.  The
+ * net effect of this is:
+ * /foo.c -> /foo [no such exists, try to load] -> /foo created
+ * /foo.c.c -> /foo.c [no such exists, try to load] -> /foo created
+ *
+ * causing a duplicate object crash.  There are two ways to fix this:
+ * (1) strip multiple .c's so that the output of this routine is something
+ *     that doesn't change if this is run again.
+ * (2) make sure this routine is only called once on any name.
+ *
+ * The first solution is the one currently in use.
+ *
+ * @returns true on success, false on failure.
+ */
+bool make_otable_name (const char *src, char *dest, size_t size) {
+  char last_c = 0;
+  char *p = dest;
+  char *end = dest + size - 1;
+
+  while (*src == '/')
+    src++;
+
+  while (*src && p < end)
+    {
+      if (last_c == '/' && *src == '/')
+        return false; /* double slash */
+      last_c = (*p++ = *src++);
+    }
+
+  while ((p - dest > 2) && (p[-1] == 'c') && (p[-2] == '.'))
+    p -= 2;
+
+  *p = 0;
+  return true;
+}
+
+/**
+ * @brief Add a leading slash to a file name.
+ * The string is allocated with new_string().
+ * @param str The file name.
+ * @return A new string with a leading slash.
+ */
+malloc_str_t add_slash (const char *str) {
+  malloc_str_t tmp = new_string (strlen (str) + 1, "add_slash");
+  *tmp = '/';
+  strcpy (tmp + 1, str);
+  return tmp;
+}
+
+/*
+ * Object hash function, ripped off from stralloc.c.
+ */
+#define ObjHash(s) whashstr((s), NULL, 40) & otable_size_minus_one
+
+/*
+ * hash table - list of pointers to heads of object chains.
+ * Each object in chain has a pointer, next_hash, to the next object.
+ */
+
+static object_t **obj_table = 0;
+static int objs_in_table = 0;
+
+/**
+ * @brief Initialize the object name hash table.
+ * @param sz Desired size of the hash table; will be rounded up to the next power of two.
+ */
+void init_otable (size_t sz) {
+  int x;
+
+  /* ensure that otable_size is a power of 2 */
+  for (otable_size = 1; otable_size < (int)sz; otable_size *= 2)
+    ;
+  opt_trace (TT_COMPILE|1, "Object name hash table size: %d\n", otable_size);
+  otable_size_minus_one = otable_size - 1;
+  obj_table = CALLOCATE (otable_size, object_t *, TAG_OBJ_TBL, "init_otable");
+
+  for (x = 0; x < otable_size; x++)
+    obj_table[x] = 0;
+}
+
+void deinit_otable () {
+  if (obj_table) {
+    if (objs_in_table > 0)
+      debug_message ("Warning: deinit_otable with %d objects still in table.\n", objs_in_table);
+    FREE (obj_table);
+    obj_table = NULL;
+  }
+}
+
+/*
+ * Looks for obj in table, moves it to head.
+ */
+
+static int obj_searches = 0, obj_probes = 0, objs_found = 0;
+
+/**
+ * @brief Find an object in the hash table.
+ * 
+ * If found, the object is moved to the head of the hash chain.
+ * @param s The name of the object to find.
+ * @param hash If not NULL, the hash index is stored here.
+ * @return Pointer to the object if found, NULL otherwise.
+ */
+static object_t *find_obj_n (const char *s, int* hash)
+{
+  int h;
+  object_t *curr, *prev;
+
+  h = ObjHash (s);
+  curr = obj_table[h];
+  prev = 0;
+
+  if (hash) *hash = h;
+
+  obj_searches++;
+
+  while (curr)
+    {
+      obj_probes++;
+      if (!strcmp (curr->name, s))
+        {			/* found it */
+          if (prev)
+            {			/* not at head of list */
+              prev->next_hash = curr->next_hash;
+              curr->next_hash = obj_table[h];
+              obj_table[h] = curr;
+            }
+          objs_found++;
+          return (curr);	/* pointer to object */
+        }
+      prev = curr;
+      curr = curr->next_hash;
+    }
+
+  return (0);			/* not found */
+}
+
+/**
+ * @brief Add an object to the table - can't have duplicate names.
+ * 
+ * Exception: Precompiled objects have a dummy entry here, but it is
+ * guaranteed to be behind the real entry if a real entry exists.
+ */
+void enter_object_hash (object_t * ob) {
+  int h;
+  if (!obj_table)
+    fatal ("enter_object_hash: object table not initialized.\n");
+
+  object_t* found = find_obj_n (ob->name, &h);
+  if (!found)
+    {
+      ob->next_hash = obj_table[h];
+      obj_table[h] = ob;
+      objs_in_table++;
+    }
+}
+
+/**
+ * @brief Add an object to the end of the hash chain.
+ * 
+ * This is for adding a precompiled entry (dynamic loading) since it is possible
+ * that the real object exists.
+ */
+void enter_object_hash_at_end (object_t * ob) {
+  int h;
+  object_t **op;
+
+  (void)find_obj_n (ob->name, &h);
+
+  ob->next_hash = 0;
+
+  op = &obj_table[h];
+  while (*op)
+    op = &((*op)->next_hash);
+  *op = ob;
+  objs_in_table++;
+  return;
+}
+
+/**
+ * @brief Remove an object from the table - generally called when it
+ * is removed from the next_all list - i.e. in destruct.
+ */
+void remove_object_hash (object_t * ob) {
+  int h;
+  object_t *s;
+
+  s = find_obj_n (ob->name, &h);	/* cycles the ob to the front */
+
+  DEBUG_CHECK1 (s != ob, "Remove object \"/%s\": found a different object!", ob->name);
+
+  obj_table[h] = ob->next_hash;
+  ob->next_hash = 0;
+  objs_in_table--;
+}
+
+/*
+ * Lookup an object in the hash table; if it isn't there, return null.
+ * This is only different to find_object_n in that it collects different
+ * stats; more finds are actually done than the user ever asks for.
+ */
+
+object_t *lookup_object_hash (const char *s) {
+
+  object_t *ob = find_obj_n (s, 0);
+
+  user_obj_lookups++;
+  if (ob)
+    user_obj_found++;
+  return (ob);
+}
+
+/*
+ * Print stats, returns the total size of the object table.  All objects
+ * are in table, so their size is included as well.
+ */
+
+static char sbuf[100];
+
+int
+show_otable_status (outbuffer_t * out, int verbose)
+{
+  int starts;
+
+  if (verbose == 1)
+    {
+      outbuf_add (out, "Object name hash table status:\n");
+      outbuf_add (out, "------------------------------\n");
+      snprintf (sbuf, sizeof (sbuf), "%10.2f", objs_in_table / (float) otable_size);
+      outbuf_addv (out, "Average hash chain length:       %s\n", sbuf);
+      snprintf (sbuf, sizeof (sbuf), "%10.2f", (float) obj_probes / obj_searches);
+      outbuf_addv (out, "Average search length:           %s\n", sbuf);
+      outbuf_addv (out, "Internal lookups (succeeded):    %u (%u)\n",
+                   obj_searches - user_obj_lookups,
+                   objs_found - user_obj_found);
+      outbuf_addv (out, "External lookups (succeeded):    %u (%u)\n",
+                   user_obj_lookups, user_obj_found);
+    }
+  starts = otable_size * sizeof (object_t *) + objs_in_table * sizeof (object_t);
+
+  if (!verbose)
+    {
+      outbuf_addv (out, "Otable and overheads:\t\t%8ld + %8d\n",
+                   otable_size * sizeof (object_t *), starts);
+    }
+  return starts;
+}

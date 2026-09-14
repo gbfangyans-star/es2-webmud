@@ -1,0 +1,400 @@
+[
+  {
+    "file": "d/snow/skill/dragon_force.c",
+    "path": "/d/snow/skill/dragon_force",
+    "type": "skill",
+    "sha256": "5e35527c1b683e3abbf7c3eae1ed8018130352d855cb906b08c3b2f300c6eba4",
+    "inherits": [
+      "SKILL"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "SKILL",
+        "target": "SKILL",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_exercise",
+      "exert_function",
+      "halt_exercise",
+      "skill_advanced",
+      "skill_improved",
+      "valid_enable"
+    ],
+    "runtime_traits": [
+      "teaching"
+    ],
+    "combat_surface": [
+      "busy",
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "skill_contract": {
+      "functions": [
+        "valid_enable",
+        "skill_improved",
+        "skill_advanced",
+        "exert_function"
+      ],
+      "contracts": [
+        "valid_enable"
+      ]
+    },
+    "valid_enable_literals": [
+      "force"
+    ],
+    "function_calls": [
+      "exert_function",
+      "improve_skill",
+      "query_skill"
+    ],
+    "combat_message_traits": [
+      "damage_text",
+      "message_vision",
+      "tell_object"
+    ],
+    "registered_skill_daemon": "dragon force",
+    "manual_review": []
+  },
+  {
+    "file": "daemon/skill/sword.c",
+    "path": "/daemon/skill/sword",
+    "type": "skill",
+    "sha256": "a49d3c731511b80d5c9ef549a00a8c5375f4edb5dc8fa2ace65df086608b576e",
+    "inherits": [
+      "SKILL"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "SKILL",
+        "target": "SKILL",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "attack_using",
+      "create",
+      "valid_enable"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "skill_contract": {
+      "functions": [
+        "valid_enable",
+        "attack_using"
+      ],
+      "contracts": [
+        "valid_enable"
+      ]
+    },
+    "function_calls": [
+      "attack_using"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "combat_daemon",
+      "damage_text",
+      "dodge_text"
+    ],
+    "registered_skill_daemon": "sword",
+    "manual_review": []
+  },
+  {
+    "file": "daemon/skill/unarmed.c",
+    "path": "/daemon/skill/unarmed",
+    "type": "skill",
+    "sha256": "1e1388e1d3774f44c5876818af4a604d96550718022b183df220ae507506ad8d",
+    "inherits": [
+      "SKILL"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "SKILL",
+        "target": "SKILL",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "attack_using",
+      "create",
+      "valid_enable"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "skill_contract": {
+      "functions": [
+        "valid_enable",
+        "attack_using"
+      ],
+      "contracts": [
+        "valid_enable"
+      ]
+    },
+    "function_calls": [
+      "attack_using"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "combat_daemon",
+      "damage_text",
+      "dodge_text"
+    ],
+    "registered_skill_daemon": "unarmed",
+    "manual_review": []
+  },
+  {
+    "file": "obj/example/skill/fonxansword.c",
+    "path": "/obj/example/skill/fonxansword",
+    "type": "skill",
+    "sha256": "8ce7942fc80c15c7e4d6b4c2cd9ffec848feb0e6dca0a9e2dcefb092a3b8bd7c",
+    "inherits": [
+      "SKILL"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "SKILL",
+        "target": "SKILL",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "attack_using",
+      "create",
+      "valid_enable"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "skill_contract": {
+      "functions": [
+        "valid_enable",
+        "attack_using"
+      ],
+      "contracts": [
+        "valid_enable"
+      ]
+    },
+    "valid_enable_literals": [
+      "parry",
+      "sword"
+    ],
+    "function_calls": [
+      "attack_using"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "combat_daemon",
+      "damage_text",
+      "dodge_text",
+      "message_vision",
+      "parry_text"
+    ],
+    "registered_skill_daemon": "fonxansword",
+    "manual_review": []
+  },
+  {
+    "file": "std/char.c",
+    "path": "/std/char",
+    "type": "skill",
+    "sha256": "0a73b86125a42882dc2b7b43bdc83fa90fa01659ee59c3d87b96f91703046685",
+    "inherits": [
+      "F_ACTION",
+      "F_ATTACK",
+      "F_ATTRIBUTE",
+      "F_COMBAT",
+      "F_COMMAND",
+      "F_CONDITION",
+      "F_DBASE",
+      "F_FINANCE",
+      "F_MESSAGE",
+      "F_RELATION",
+      "F_MOVE",
+      "F_NAME",
+      "F_SCORE",
+      "F_SKILL",
+      "F_STATISTIC",
+      "F_TEAM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_ACTION",
+        "target": "F_ACTION",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_ATTACK",
+        "target": "F_ATTACK",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_ATTRIBUTE",
+        "target": "F_ATTRIBUTE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_COMBAT",
+        "target": "F_COMBAT",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_COMMAND",
+        "target": "F_COMMAND",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_CONDITION",
+        "target": "F_CONDITION",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_DBASE",
+        "target": "F_DBASE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_FINANCE",
+        "target": "F_FINANCE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_MESSAGE",
+        "target": "F_MESSAGE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_RELATION",
+        "target": "F_RELATION",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_MOVE",
+        "target": "F_MOVE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_NAME",
+        "target": "F_NAME",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_SCORE",
+        "target": "F_SCORE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_SKILL",
+        "target": "F_SKILL",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_STATISTIC",
+        "target": "F_STATISTIC",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_TEAM",
+        "target": "F_TEAM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "die",
+      "heart_beat",
+      "id",
+      "is_character",
+      "long",
+      "lose_fight",
+      "move",
+      "name",
+      "notify_stat",
+      "query_id",
+      "rank",
+      "receive_object",
+      "revive",
+      "setup",
+      "short",
+      "unconcious",
+      "visible"
+    ],
+    "runtime_traits": [
+      "combat",
+      "heart_beat",
+      "movement",
+      "timed"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "condition",
+      "death"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "damage_contract": [
+      "attack",
+      "query_ability",
+      "query_strength"
+    ],
+    "function_calls": [
+      "update_condition"
+    ],
+    "temp_values": {
+      "block_msg/all": 1
+    },
+    "callouts": [
+      {
+        "function": "revive",
+        "delay": 60
+      }
+    ],
+    "condition_hooks": [
+      {
+        "hook": "update_condition"
+      },
+      {
+        "hook": "clear_condition"
+      }
+    ],
+    "death_hooks": [
+      "corpse",
+      "die",
+      "revive"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "combat_daemon",
+      "miss_text",
+      "tell_object"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "std/skill.c",
+    "path": "/std/skill",
+    "type": "skill",
+    "sha256": "828feff718e330861f4490326fcd3fa0498a775e83f37472e1f38edfab159a03",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "setup",
+      "type"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  }
+]

@@ -1,0 +1,278 @@
+{
+  "version": "3.20.76",
+  "sourceBoundary": "taedlar/es2_mudlib only",
+  "canonicalMudlibPresent": true,
+  "criticalCore": {
+    "std/char.c": true,
+    "obj/login.c": true,
+    "obj/user.c": true,
+    "adm/daemons/logind.c": true,
+    "adm/daemons/combatd.c": true,
+    "feature/char/attack.c": true,
+    "feature/char/combat.c": true,
+    "feature/statistic.c": true
+  },
+  "criticalCoreOK": true,
+  "catalog": {
+    "ready": true,
+    "entities": 513,
+    "byType": {
+      "command": 154,
+      "daemon": 28,
+      "feature": 47,
+      "include": 37,
+      "item": 103,
+      "npc": 64,
+      "other": 18,
+      "prototype": 11,
+      "room": 43,
+      "runtime": 2,
+      "skill": 6
+    },
+    "manualReviewCount": 59
+  },
+  "multiplayerLedger": {
+    "version": "3.20.50",
+    "livePassed": [
+      "two real accounts simultaneously logged in",
+      "bidirectional tell resilience",
+      "concurrent per-character save integrity",
+      "abrupt disconnect and reconnect",
+      "same-room mutual visibility",
+      "same-room say broadcast",
+      "team handshake and team list",
+      "team-scoped chat",
+      "follow through operator-selected canonical exit",
+      "shared-room broadcast after interaction",
+      "canonical no-fight room rule consistently applied to two players addressing the same NPC"
+    ],
+    "pendingLive": [
+      "mutual player fight in a canonical combat-allowed room",
+      "single-owner ground-item contention using a real visible item",
+      "server restart persistence with both test characters offline before snapshot",
+      "guard relation when canonical level requirement is met"
+    ],
+    "withheldDestructive": [
+      "live death/corpse/revival",
+      "live kill/PK"
+    ],
+    "coveredGateFingerprints": [
+      "transport/session-isolation",
+      "login/tell/save/reconnect",
+      "same-room/say/team/follow"
+    ]
+  },
+  "reports": {
+    "reports/multiplayer_offline_gate.json": {
+      "present": true,
+      "ok": true
+    },
+    "reports/multiplayer_fault_matrix_report.json": {
+      "present": true,
+      "ok": true
+    },
+    "reports/multiplayer_evidence_carryforward.json": {
+      "present": true,
+      "ok": true
+    },
+    "TEST_REPORT.json": {
+      "present": true,
+      "ok": null
+    }
+  },
+  "nextContentPrerequisites": {
+    "canonicalSourcePresent": true,
+    "catalogReady": true,
+    "criticalCoreOK": true,
+    "manualReviewIsExplicit": true
+  },
+  "workbench": {
+    "present": true,
+    "path": "catalog/generated/content_workbench.json"
+  },
+  "manualReviewSample": [
+    {
+      "path": "/adm/daemons/combatd",
+      "file": "adm/daemons/combatd.c",
+      "reasons": [
+        "damage_logic",
+        "timed_logic"
+      ]
+    },
+    {
+      "path": "/adm/daemons/natured",
+      "file": "adm/daemons/natured.c",
+      "reasons": [
+        "timed_logic"
+      ]
+    },
+    {
+      "path": "/adm/daemons/userid",
+      "file": "adm/daemons/userid.c",
+      "reasons": [
+        "timed_logic"
+      ]
+    },
+    {
+      "path": "/adm/intermud/i2d",
+      "file": "adm/intermud/i2d.c",
+      "reasons": [
+        "timed_logic"
+      ]
+    },
+    {
+      "path": "/adm/obj/mailbox",
+      "file": "adm/obj/mailbox.c",
+      "reasons": [
+        "custom_action",
+        "timed_logic"
+      ]
+    },
+    {
+      "path": "/cmds/std/buy",
+      "file": "cmds/std/buy.c",
+      "reasons": [
+        "vendor_logic"
+      ]
+    },
+    {
+      "path": "/cmds/std/follow",
+      "file": "cmds/std/follow.c",
+      "reasons": [
+        "leader_ai"
+      ]
+    },
+    {
+      "path": "/cmds/std/sneak",
+      "file": "cmds/std/sneak.c",
+      "reasons": [
+        "custom_action"
+      ]
+    },
+    {
+      "path": "/cmds/std/steal",
+      "file": "cmds/std/steal.c",
+      "reasons": [
+        "timed_logic"
+      ]
+    },
+    {
+      "path": "/d/snow/epath",
+      "file": "d/snow/epath.c",
+      "reasons": [
+        "custom_action"
+      ]
+    },
+    {
+      "path": "/d/snow/inn_kitchen",
+      "file": "d/snow/inn_kitchen.c",
+      "reasons": [
+        "custom_action",
+        "door"
+      ]
+    },
+    {
+      "path": "/d/snow/kitchen",
+      "file": "d/snow/kitchen.c",
+      "reasons": [
+        "custom_action"
+      ]
+    },
+    {
+      "path": "/d/snow/lane2",
+      "file": "d/snow/lane2.c",
+      "reasons": [
+        "custom_action"
+      ]
+    },
+    {
+      "path": "/d/snow/npc/child",
+      "file": "d/snow/npc/child.c",
+      "reasons": [
+        "timed_logic"
+      ]
+    },
+    {
+      "path": "/d/snow/npc/gammer",
+      "file": "d/snow/npc/gammer.c",
+      "reasons": [
+        "timed_logic"
+      ]
+    },
+    {
+      "path": "/d/snow/npc/garrison",
+      "file": "d/snow/npc/garrison.c",
+      "reasons": [
+        "custom_action"
+      ]
+    },
+    {
+      "path": "/d/snow/npc/girl",
+      "file": "d/snow/npc/girl.c",
+      "reasons": [
+        "timed_logic"
+      ]
+    },
+    {
+      "path": "/d/snow/npc/guard",
+      "file": "d/snow/npc/guard.c",
+      "reasons": [
+        "custom_action"
+      ]
+    },
+    {
+      "path": "/d/snow/npc/herbalist",
+      "file": "d/snow/npc/herbalist.c",
+      "reasons": [
+        "custom_action",
+        "vendor_logic"
+      ]
+    },
+    {
+      "path": "/d/snow/npc/lieutenant",
+      "file": "d/snow/npc/lieutenant.c",
+      "reasons": [
+        "custom_action"
+      ]
+    },
+    {
+      "path": "/d/snow/npc/obj/crate",
+      "file": "d/snow/npc/obj/crate.c",
+      "reasons": [
+        "custom_action"
+      ]
+    },
+    {
+      "path": "/d/snow/npc/obj/syndicator",
+      "file": "d/snow/npc/obj/syndicator.c",
+      "reasons": [
+        "damage_logic"
+      ]
+    },
+    {
+      "path": "/d/snow/npc/obj/wagon",
+      "file": "d/snow/npc/obj/wagon.c",
+      "reasons": [
+        "custom_action"
+      ]
+    },
+    {
+      "path": "/d/snow/npc/smith",
+      "file": "d/snow/npc/smith.c",
+      "reasons": [
+        "custom_action",
+        "timed_logic",
+        "vendor_logic"
+      ]
+    },
+    {
+      "path": "/d/snow/npc/teacher",
+      "file": "d/snow/npc/teacher.c",
+      "reasons": [
+        "custom_action",
+        "timed_logic"
+      ]
+    }
+  ],
+  "ok": true
+}

@@ -1,0 +1,18 @@
+{
+  "version": "3.20.65",
+  "purpose": "connection regression isolation against last known pre-skill-restoration baseline",
+  "finding": [
+    "v3.20.59 and v3.20.60 have identical server/index.js, web/app.js, START_ES2_INTERNET.bat, and Neolith executable.",
+    "v3.20.59->v3.20.60 gameplay change is only custom/zhenwu/npc/target_stake.c plus VERSION.",
+    "v3.20.58->v3.20.59 changes include feature/char/skill.c, feature/char/combat.c, adm/daemons/combatd.c and three Tiger/Dragon/Gao files.",
+    "std/char.c inherits F_SKILL and F_COMBAT, so player object compilation/loading necessarily pulls the two feature files."
+  ],
+  "diagnostic_change": [
+    "Temporarily restored feature/char/skill.c to v3.20.58 baseline.",
+    "Temporarily restored feature/char/combat.c to v3.20.58 baseline.",
+    "Temporarily restored adm/daemons/combatd.c to v3.20.58 baseline.",
+    "Kept v3.20.64 launcher/bridge diagnostics and Lv20 training dummy."
+  ],
+  "interpretation": "If v3.20.65 can log in, regression is proven to be within these three restored skill/combat files. If it still crashes, they are exonerated and next diff layer should be investigated.",
+  "warning": "This is an isolation build: restored v3.20.59 learned formulas are temporarily disabled until culprit is identified and safely reintroduced."
+}

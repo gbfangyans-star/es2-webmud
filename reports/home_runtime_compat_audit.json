@@ -1,0 +1,17 @@
+{
+  "version": "v3.20.24",
+  "checks": {
+    "board_no_missing_object_header": true,
+    "bed_no_missing_object_header": true,
+    "board_item_no_parent_init": true,
+    "bed_item_no_parent_init": true,
+    "item_base_has_no_init": true,
+    "hud_not_rate_limited": true,
+    "hud_poll_reduced": true,
+    "hud_yields_to_player": true,
+    "hud_kick_debounced": true,
+    "wizard_home_not_shadowed": true
+  },
+  "failures": [],
+  "passed": true
+}

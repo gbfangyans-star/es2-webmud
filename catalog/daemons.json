@@ -1,0 +1,960 @@
+[
+  {
+    "file": "adm/daemons/aliasd.c",
+    "path": "/adm/daemons/aliasd",
+    "type": "daemon",
+    "sha256": "0b4b7d7bd8a18ad03cdc8a55b663343fab41f9654e9d865b0623ce2f51cc9549",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "create",
+      "process_global_alias"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/daemons/channeld.c",
+    "path": "/adm/daemons/channeld",
+    "type": "daemon",
+    "sha256": "72a0f73fe814168bd6700cbb224fa61286cdc891a5e0571aaba82dbe5a85e4c4",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_channel",
+      "filter_listener",
+      "register_relay_channel"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/daemons/chard.c",
+    "path": "/adm/daemons/chard",
+    "type": "daemon",
+    "sha256": "12c0e45d085c3a3bebce484b766a37fac83bd1ceab3511372e1387e9609f29cd",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "hint_user_race",
+      "make_corpse",
+      "make_ghost",
+      "make_living",
+      "make_mist",
+      "setup_char"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "兩個捕頭遠遠的聽見慘叫，迅速的奔了過來!!\\n",
+      "捕頭遠遠的聽見慘叫，迅速的奔了過來!!\\n"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "level": 1,
+    "stat_maximums": {
+      "fatigue": 100
+    },
+    "numeric_calls": {
+      "set_level": 1
+    },
+    "life_form": "ghost",
+    "temp_values": {
+      "apply/vision_of_ghost": 1
+    },
+    "death_hooks": [
+      "corpse"
+    ],
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "adm/daemons/chinesed.c",
+    "path": "/adm/daemons/chinesed",
+    "type": "daemon",
+    "sha256": "8886909692b8e22b83003ca6557fc79718ee8a17088ca6829a616adf2c281439",
+    "inherits": [
+      "F_CLEAN_UP",
+      "F_SAVE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_SAVE",
+        "target": "F_SAVE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "add_translate",
+      "chinese",
+      "chinese_date",
+      "chinese_number",
+      "chinese_period",
+      "create",
+      "dump_translate",
+      "query_save_file",
+      "remove",
+      "remove_translate"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "equipment_hooks": [
+      "remove"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "adm/daemons/cmd_d.c",
+    "path": "/adm/daemons/cmd_d",
+    "type": "daemon",
+    "sha256": "9b9aaf9bcfcfe7b07dda224d42fdf0a300221c66d06edd781df355c75d4549a5",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "find_command",
+      "rehash"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/daemons/combatd.c",
+    "path": "/adm/daemons/combatd",
+    "type": "daemon",
+    "sha256": "afea27591bdc99ddaf7527f09d516e737d487599d12d23b1276e721b9b1b9a87",
+    "inherits": [
+      "F_CLEAN_UP",
+      "F_DBASE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_DBASE",
+        "target": "F_DBASE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "announce",
+      "auto_fight",
+      "create",
+      "damage_msg",
+      "eff_status_msg",
+      "fight",
+      "report_status",
+      "start_aggressive",
+      "start_hatred",
+      "start_vendetta",
+      "status_msg"
+    ],
+    "runtime_traits": [
+      "combat",
+      "damage",
+      "timed"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "damage",
+      "defense",
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "damage_contract": [
+      "absorb",
+      "attack",
+      "defend",
+      "fight_ob",
+      "inflict_damage",
+      "query_ability",
+      "query_strength"
+    ],
+    "weapon_dispatch": {
+      "inflict_damage": true
+    },
+    "function_calls": [
+      "inflict_damage",
+      "query_skill"
+    ],
+    "name": "戰鬥精靈",
+    "temp_values": {
+      "defend_message": 0,
+      "absorb_message": 0
+    },
+    "death_hooks": [
+      "corpse",
+      "kill_ob"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "damage_text",
+      "message_vision"
+    ],
+    "manual_review": [
+      "damage_logic",
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "adm/daemons/daemond.c",
+    "path": "/adm/daemons/daemond",
+    "type": "daemon",
+    "sha256": "feebd0d50d100491a8a956e764c6ea6b7c99bb95b962a33750fa2d240d891463",
+    "inherits": [
+      "F_CLEAN_UP",
+      "F_SAVE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_SAVE",
+        "target": "F_SAVE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "query_daemon",
+      "query_daemons",
+      "query_save_file",
+      "register_class_daemon",
+      "register_condition_daemon",
+      "register_object_daemon",
+      "register_race_daemon",
+      "register_skill_daemon",
+      "remove",
+      "unregister_daemon"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "equipment_hooks": [
+      "remove"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "adm/daemons/emoted.c",
+    "path": "/adm/daemons/emoted",
+    "type": "daemon",
+    "sha256": "289a50d39230682ba7bea9b4c7751190767fb1e1bd4c427e047d7fb6be8a8dff",
+    "inherits": [
+      "F_CLEAN_UP",
+      "F_SAVE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_SAVE",
+        "target": "F_SAVE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "delete_emote",
+      "do_emote",
+      "query_emote",
+      "query_save_file",
+      "remove",
+      "set_emote"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "equipment_hooks": [
+      "remove"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "adm/daemons/enhanced.c",
+    "path": "/adm/daemons/enhanced",
+    "type": "daemon",
+    "sha256": "22a77ff32900dffc4af04f24188c6bfabfa01b0a4861c0a53c36b48997119465",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "enhance_weapon"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "attack_text",
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "adm/daemons/enterd.c",
+    "path": "/adm/daemons/enterd",
+    "type": "daemon",
+    "sha256": "2ddf2c745585f937293a530ab9979e3758415b521b2d3b68851f43fabb4fe85b",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "check_okip",
+      "compare_okip",
+      "extract"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "adm/daemons/fingerd.c",
+    "path": "/adm/daemons/fingerd",
+    "type": "daemon",
+    "sha256": "b525a46efaa58b773194bcaf97dbba294263cd62ab4ac58c706f215cce60dad2",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "acquire_login_ob",
+      "age_string",
+      "create",
+      "finger_all",
+      "finger_user",
+      "remote_finger_user"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/daemons/httpd.c",
+    "path": "/adm/daemons/httpd",
+    "type": "daemon",
+    "sha256": "342a0d74ab2f93ba17cb4dc0bd51003d22c8d4cea5fc6bbc6fd0d47d818a7a0c",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "create",
+      "get_request",
+      "logon",
+      "query"
+    ],
+    "runtime_traits": [
+      "interactive"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "uses_input_to": true,
+    "literal_prompts": [
+      "request:"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "adm/daemons/logind.c",
+    "path": "/adm/daemons/logind",
+    "type": "daemon",
+    "sha256": "6a0d3fb4d50123fc344be4f104757e4171b14fe4af57e547d04c76978c3cd45e",
+    "inherits": [
+      "F_CLEAN_UP",
+      "F_DBASE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_DBASE",
+        "target": "F_DBASE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "authorize",
+      "check_ip",
+      "check_legal_id",
+      "check_legal_name",
+      "confirm_id",
+      "confirm_incarnate",
+      "confirm_reincarnate",
+      "confirm_relogin",
+      "create",
+      "enter_world",
+      "find_body",
+      "get_email",
+      "get_gender",
+      "get_id",
+      "get_name",
+      "get_passwd",
+      "get_race",
+      "increment_visitor_count",
+      "init_new_body",
+      "logon",
+      "make_body",
+      "net_dead",
+      "new_password",
+      "reconnect",
+      "reincarnate",
+      "reset",
+      "retype_password",
+      "set_wizlock"
+    ],
+    "runtime_traits": [
+      "movement",
+      "reset"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "uses_input_to": true,
+    "uses_hidden_input": true,
+    "literal_prompts": [
+      "從您連線的主機創造的人物太多了﹐您的主機將被拒絕往來一段時間。\\n",
+      "您的使用者代號: ",
+      "您的使用者代號: ",
+      "權限設定失敗。\\n",
+      "目前連線中的使用者已達上限，請稍後重新嘗試連線。\\n",
+      "您的連線位置目前不接受使用者登入。\\n",
+      "您的連線位置目前不接受使用者登入。\\n",
+      "\\n",
+      "請輸入密碼: ",
+      "對不起﹐您的人物儲存檔出了一些問題﹐請利用 guest 人物通知巫師處理。\\n",
+      "\\n",
+      "對不起，您的連線位置不正確。\\n",
+      "密碼錯誤！\\n",
+      "安全檢查失敗！強制登出。\\n",
+      "安全檢查通過。\\n",
+      "好吧﹐歡迎下次再來。\\n",
+      "好吧﹐歡迎下次再來。\\n",
+      "\\n",
+      "密碼的長度至少要五個字元﹐請重設您的密碼: ",
+      "請再輸入一次您的密碼﹐以確認您沒記錯: ",
+      "\\n",
+      "您兩次輸入的密碼並不一樣﹐請重新設定一次密碼: ",
+      "\\n\\n您的電子郵件地址 (或 none): ",
+      "電子郵件地址最多可以有 64 個字元。\\n",
+      "您的電子郵件地址 (或 none): ",
+      "您的電子郵件格式錯誤，請輸入正確的電子郵件地址。\\n",
+      "您的電子郵件地址 (或 none): ",
+      "目前線上已經有一位訪客了，請稍後再試。\\n",
+      "您的顯示名稱: ",
+      "現在可能有巫師正在修改使用者物件的程式﹐請稍候再試。\\n",
+      "您的使用者代號必須是 3 到 12 個英文字母或數字。\\n",
+      "您的使用者代號只能由 a 到 z 的英文字母或 0 到 9 的數字組成。\\n",
+      "您的顯示名稱必須使用長度 3 到 18 的合法 UTF-8 文字。\\n",
+      "顯示名稱不能含有控制字元。\\n",
+      "顯示名稱不可以使用空白字元。\\n",
+      "顯示名稱含有容易造成其他人的困擾的字元，請換一個名字。\\n"
+    ],
+    "class": "commoner",
+    "level": 1,
+    "numeric_calls": {
+      "set_level": 1
+    },
+    "manual_review": []
+  },
+  {
+    "file": "adm/daemons/natured.c",
+    "path": "/adm/daemons/natured",
+    "type": "daemon",
+    "sha256": "e7100b2a281ce7272b0ab0d8edabbe06c16ba73cda667629b769e32a9bcb3e59",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "create",
+      "game_time",
+      "init_day_phase",
+      "outdoor_room_description",
+      "remove",
+      "update_day_phase"
+    ],
+    "runtime_traits": [
+      "movement",
+      "timed"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "equipment_hooks": [
+      "remove"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "adm/daemons/profiled.c",
+    "path": "/adm/daemons/profiled",
+    "type": "daemon",
+    "sha256": "d496c9b3c8bbe36bdd4b551bef77904a9005f727491596db23c69cbb0614ce24",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "create",
+      "log_command",
+      "make_profile",
+      "sort_entry"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/daemons/securityd.c",
+    "path": "/adm/daemons/securityd",
+    "type": "daemon",
+    "sha256": "92e36b761aa11fc975971f2933d8b3242557f7cd2c82d494a612425f9e633969",
+    "inherits": [
+      "F_DBASE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_DBASE",
+        "target": "F_DBASE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "get_status",
+      "get_wiz_level",
+      "set_status",
+      "valid_read",
+      "valid_seteuid",
+      "valid_write"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "adm/daemons/smtpd.c",
+    "path": "/adm/daemons/smtpd",
+    "type": "daemon",
+    "sha256": "1e4a21bc213fb21a81acdaeb56301e1ebcd1c83e3690417963ff9fc4c7c9a637",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "restore_mailbox",
+      "send_mail"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "miss_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "adm/daemons/userid.c",
+    "path": "/adm/daemons/userid",
+    "type": "daemon",
+    "sha256": "3c91560956da1dfab46121963599b966b7b60370ff1ad9aa68e698500075d1e2",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "create",
+      "query_requests",
+      "query_userid",
+      "receive_data",
+      "timeout",
+      "write_data"
+    ],
+    "runtime_traits": [
+      "timed"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "callouts": [
+      {
+        "function": "timeout",
+        "delay": 60
+      }
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "adm/daemons/virtuald.c",
+    "path": "/adm/daemons/virtuald",
+    "type": "daemon",
+    "sha256": "e7b4cd369916d9ba1256ffbd1c1533024f3bd56470b10aad4636f274019ec7e6",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "compile_object",
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "daemon/board/bug_board.c",
+    "path": "/daemon/board/bug_board",
+    "type": "daemon",
+    "sha256": "2d1184fa9b741a55858687eb30ca8f01356d12803fdee7201ea953c26c727c2e",
+    "inherits": [
+      "BULLETIN_BOARD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "BULLETIN_BOARD",
+        "target": "BULLETIN_BOARD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "問題回報留言板",
+    "ids": [
+      "bug board",
+      "board"
+    ],
+    "long": "這是一個提供玩家回報問題的留言板。\n",
+    "manual_review": []
+  },
+  {
+    "file": "daemon/class/commoner.c",
+    "path": "/daemon/class/commoner",
+    "type": "daemon",
+    "sha256": "df325ad2fb812295331661260f406e08a8b6fd4a3eb3f1ad015b0efd1df7b8be",
+    "inherits": [
+      "F_DBASE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_DBASE",
+        "target": "F_DBASE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "query_rank"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "daemon/class/fighter.c",
+    "path": "/daemon/class/fighter",
+    "type": "daemon",
+    "sha256": "6ba339df30f9c20e3e89b058f0728b1d7400a9ddeb0e13b56c0a12d351a96e4f",
+    "inherits": [
+      "F_DBASE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_DBASE",
+        "target": "F_DBASE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "query_rank"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "daemon/condition/drunk.c",
+    "path": "/daemon/condition/drunk",
+    "type": "daemon",
+    "sha256": "7b2e5aa5001e691b09c0da83c497ee4ade7cab2c07b033856ba987af3f0ca0b3",
+    "inherits": [
+      "CONDITION"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "CONDITION",
+        "target": "CONDITION",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "apply_drunk",
+      "condition_update",
+      "create"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "function_calls": [
+      "query_skill",
+      "unequip"
+    ],
+    "condition_hooks": [
+      {
+        "hook": "clear_condition"
+      }
+    ],
+    "combat_message_traits": [
+      "damage_text",
+      "message_vision",
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "daemon/condition/poison.c",
+    "path": "/daemon/condition/poison",
+    "type": "daemon",
+    "sha256": "89d0b1da5648bfec25db5492e61e3c509e0f7c1e0373d793cef0680dedce454c",
+    "inherits": [
+      "CONDITION"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "CONDITION",
+        "target": "CONDITION",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "condition_update",
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "condition_hooks": [
+      {
+        "hook": "clear_condition"
+      }
+    ],
+    "combat_message_traits": [
+      "damage_text",
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "daemon/misc/traveler.c",
+    "path": "/daemon/misc/traveler",
+    "type": "daemon",
+    "sha256": "44073a3612e8aae0de1b84cc67c360f98821d1fd2a7c3d72bb035bd02ba956e4",
+    "inherits": [
+      "F_CLEAN_UP",
+      "F_SAVE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_SAVE",
+        "target": "F_SAVE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "query_save_file",
+      "register",
+      "remove",
+      "request_travel_site",
+      "unregister"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "equipment_hooks": [
+      "remove"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "daemon/race/avatar.c",
+    "path": "/daemon/race/avatar",
+    "type": "daemon",
+    "sha256": "0f42d31deda81a202fb33d6cb7fe48c3969cf99a280d30d57eecd61375e87058",
+    "inherits": [
+      "HUMANOID"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "HUMANOID",
+        "target": "HUMANOID",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "initialize",
+      "setup"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "daemon/race/human.c",
+    "path": "/daemon/race/human",
+    "type": "daemon",
+    "sha256": "592ed4b681968bf05c2d136ce91b89e1b7a1b5b7535fd89ddcb01b57b84e8b01",
+    "inherits": [
+      "HUMANOID"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "HUMANOID",
+        "target": "HUMANOID",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "initialize",
+      "setup"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "race": "avatar",
+    "manual_review": []
+  },
+  {
+    "file": "daemon/virtual/field.c",
+    "path": "/daemon/virtual/field",
+    "type": "daemon",
+    "sha256": "190d950f347fafc683059f24e1e35c2a3e67084b3567f1ca41eb12279953a8ee",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "create",
+      "load_map",
+      "query_cached_map",
+      "reset",
+      "virtual_create"
+    ],
+    "runtime_traits": [
+      "reset"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "short": "原野",
+    "long": "你現在正漫步在一處空曠的原野上。\n",
+    "manual_review": []
+  }
+]

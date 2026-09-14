@@ -1,0 +1,171 @@
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif /* HAVE_CONFIG_H */
+#include "std.h"
+#include "rc.h"
+#include "src/simul_efun.h"
+#include "uids.h"
+#include "lpc/lex.h"
+#include "lpc/object.h"
+
+#include <gtest/gtest.h>
+#include <filesystem>
+
+using namespace testing;
+
+class SimulEfunsTest: public Test {
+private:
+    std::filesystem::path previous_cwd;
+
+protected:
+    /*  SimulEfunsTest::SetUp()
+     *  --------------------------------
+     *  Initialize the Simul Efun environment for testing.
+     * 
+     *  The master object and simul_efun object are NOT loaded here.
+     *  --------------------------------
+     */
+    void SetUp() override {
+        namespace fs = std::filesystem;
+        previous_cwd = fs::current_path();
+        setlocale(LC_ALL, PLATFORM_UTF8_LOCALE); // force UTF-8 locale for consistent string handling
+        debug_set_log_with_date (false);
+        debug_message("[ SETUP    ] CTEST_FULL_OUTPUT");
+
+        // setup stem
+        fs::path config_dir = fs::current_path();
+        if (!fs::exists(config_dir / "m3.conf"))
+            fs::current_path(config_dir.parent_path()); // change to parent if config not found in current dir
+        init_stem(3, (unsigned long)-1, "m3.conf"); // use highest debug level and enable all trace logs
+        MAIN_OPTION(pedantic) = true; // enable pedantic mode for stricter checks
+
+        init_config(MAIN_OPTION(config_file));
+        init_strings (8192, 1000000); // LPC compiler needs this since prolog()
+        init_lpc_compiler(CONFIG_INT (__MAX_LOCAL_VARIABLES__), CONFIG_STR (__INCLUDE_DIRS__));
+        setup_simulate();
+        ASSERT_TRUE(MAIN_OPTION(mudlib_dir_absolute)[0] != '\0')
+            << "MAIN_OPTION(mudlib_dir_absolute) should be set after setup_simulate().";
+
+        // remove leftover saved binary from previous runs to ensure clean slate for testing
+        auto bin_path = fs::path(MAIN_OPTION(mudlib_dir_absolute)) / "bin";
+        if (fs::exists(bin_path))
+            fs::remove_all(bin_path);
+    }
+
+    void TearDown() override {
+        namespace fs = std::filesystem;
+        tear_down_simulate();
+        deinit_lpc_compiler();
+        deinit_strings();
+
+        deinit_config();
+        fs::current_path(previous_cwd);
+    }
+};
+
+TEST_F(SimulEfunsTest, loadSimulEfun)
+{
+    ASSERT_GE(mud_state(), MS_PRE_MUDLIB);
+    init_simul_efun ("/simul_efun.c", NULL);
+    ASSERT_TRUE(simul_efun_ob != nullptr) << "simul_efun_ob is null after init_simul_efun().";
+    // simul_efun_ob should have ref count 2: one from set_simul_efun, one from get_empty_object
+    EXPECT_EQ(simul_efun_ob->ref, 2) << "simul_efun_ob reference count is not 2 after init_simul_efun().";
+
+    // simul_efun_ob should be granted NONAME uid without master object.
+    EXPECT_STREQ(simul_efun_ob->uid->name, "NONAME");
+}
+
+TEST_F(SimulEfunsTest, protectSimulEfun)
+{
+    using namespace neolith;
+    ASSERT_GE(mud_state(), MS_PRE_MUDLIB);
+    init_simul_efun ("/simul_efun.c", NULL);
+    ASSERT_TRUE(simul_efun_ob != nullptr) << "simul_efun_ob is null after init_simul_efun().";
+    // simul_efun_ob should have ref count 2: one from set_simul_efun, one from get_empty_object
+    EXPECT_EQ(simul_efun_ob->ref, 2) << "simul_efun_ob reference count is not 2 after init_simul_efun().";
+
+    init_master ("/master.c", NULL);
+    ASSERT_TRUE(master_ob != nullptr) << "master_ob is null after init_master().";
+    ASSERT_GE(mud_state(), MS_MUDLIB_LIMBO);
+
+    error_context_t econ;
+    error_boundary_guard boundary(&econ);
+    
+    try {
+        current_object = master_ob;
+        destruct_object (simul_efun_ob); // should raise error
+        /*
+         * The reason to prevent simul_efun_ob from being destructed while master_ob exists:
+         * 1. The order of function definitions in simul_efun_ob is used as simul_num in the
+         *    permanent identifier table.
+         * 2. When a LPC object that calls simul_efun is loaded, the corresponding simul_num is
+         *    stored in the compiled opcode F_SIMUL_EFUN at compile time.
+         * 3. If simul_efun_ob is destructed and reloaded, the order of function definitions may
+         *    change, causing the simul_num to refer to a different function than intended.
+         * 
+         * In original LPMud and MudOS, the simul_efun_ob is never destructed once loaded.
+         * Neolith allows destructing simul_efun_ob only when master_ob does not exist, which
+         * can only be triggered by using the --pedantic option that enables subsystem teardown.
+         */
+        FAIL() << "destruct_object(simul_efun_ob) did not raise error when master object exists.";
+    } catch (const neolith::driver_runtime_error &) {
+        boundary.restore(); // restore context before checking the error message
+        debug_message("***** expected error: destruct simul_efun_ob while master object exists.");
+    }
+}
+
+TEST_F(SimulEfunsTest, findSimulEfun)
+{
+    ASSERT_GE(mud_state(), MS_PRE_MUDLIB);
+    init_simul_efun ("/non_existing_file.c", R"(
+        // pre_text to define a dummy simul_efun function for testing
+        string dummy_simul_efun(string str) {
+            return "wrapped: " + str;
+        }
+    )");
+    ASSERT_TRUE(simul_efun_ob != nullptr) << "simul_efun_ob is null after init_simul_efun().";
+    // simul_efun_ob should have ref count 2: one from set_simul_efun, one from get_empty_object
+    EXPECT_EQ(simul_efun_ob->ref, 2) << "simul_efun_ob reference count is not 2 after init_simul_efun().";
+
+    EXPECT_NE(find_simul_efun(findstring("dummy_simul_efun", NULL)), -1) << "find_simul_efun failed to find 'dummy_simul_efun' defined in pre_text.";
+
+    shared_str_t func_name = findstring("dummy_simul_efun", NULL);
+    ASSERT_TRUE(func_name != nullptr) << "Failed to find string 'dummy_simul_efun'.";
+    EXPECT_NE(find_simul_efun(func_name), -1) << "find_simul_efun failed to find 'dummy_simul_efun'.";
+
+    ident_hash_elem_t* ihe = lookup_ident(func_name);
+    ASSERT_TRUE(ihe != nullptr) << "lookup_ident failed to find 'dummy_simul_efun'.";
+    EXPECT_TRUE(ihe->token & IHE_SIMUL) << "'dummy_simul_efun' ident_hash_elem_t does not have IHE_SIMUL flag set.";
+
+    func_name = findstring("create", NULL); // create() is always attempted when loading an object
+    ASSERT_TRUE(func_name != nullptr) << "Failed to find string 'create'.";
+    EXPECT_EQ(find_simul_efun(func_name), -1);
+}
+
+TEST_F(SimulEfunsTest, callSimulEfun)
+{
+    ASSERT_GE(mud_state(), MS_PRE_MUDLIB);
+    init_simul_efun ("/simul_efun.c", NULL);
+    ASSERT_TRUE(simul_efun_ob != nullptr) << "simul_efun_ob is null after init_simul_efun().";
+    // simul_efun_ob should have ref count 2: one from set_simul_efun, one from get_empty_object
+    EXPECT_EQ(simul_efun_ob->ref, 2) << "simul_efun_ob reference count is not 2 after init_simul_efun().";
+
+    shared_str_t func_name = findstring("textwrap", NULL);
+    ASSERT_TRUE(func_name != nullptr) << "Failed to find string 'textwrap'.";
+    int index = find_simul_efun(func_name);
+    EXPECT_NE(index, -1) << "find_simul_efun failed to find 'textwrap'.";
+
+    current_object = simul_efun_ob;
+    push_constant_string("Hello, world. This will be wrapped.");
+    push_number(10);
+    call_simul_efun (index, 2);
+    auto view = lpc::svalue_view::from(sp);
+    ASSERT_TRUE(view.is_string()) << "Return value type from simul efun 'textwrap' is not a string.";
+    EXPECT_STREQ(view.c_str(), "Hello, world.\nThis will be\nwrapped.") << "Return value from simul efun 'textwrap' is not correct.";
+
+    pop_stack(); // pop string result
+
+    object_t* base_ob = find_object_by_name("api/unicode");
+    EXPECT_TRUE(base_ob != nullptr);
+    destruct_object(base_ob);
+}

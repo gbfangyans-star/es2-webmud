@@ -1,0 +1,13 @@
+{
+  "project": "ES2 WebMUD Source-Only",
+  "version": "0.2",
+  "allowed_source": "https://github.com/taedlar/es2_mudlib",
+  "allowed_repo_owner": "taedlar",
+  "allowed_repo_name": "es2_mudlib",
+  "allowed_branch": "main",
+  "forbid_external_content": true,
+  "forbid_previous_projects": true,
+  "runtime_core": "Original ES2 mudlib + Neolith from the allowed repository",
+  "browser_rule": "WebSocket bridge only. Never duplicate combat formulas in JavaScript.",
+  "unknown_rule": "manual_review; never invent"
+}

@@ -1,0 +1,485 @@
+#ifdef	HAVE_CONFIG_H
+#include <config.h>
+#endif /* HAVE_CONFIG_H */
+
+#ifdef	HAVE_ARGP_H
+#include <argp.h>
+#else
+  #ifdef _WIN32
+  #include "port/getopt.h"
+  #endif
+#endif /* ! HAVE_ARGP_H */
+
+#include <locale.h>
+
+#ifdef HAVE_SYS_RESOURCE_H
+#include <sys/resource.h>
+#endif
+
+#ifdef	HAVE_SYS_WAIT_H
+#include <sys/wait.h>
+#endif	/* HAVE_SYS_WAIT_H */
+
+#define SUPPRESS_COMPILER_INLINES
+#include "std.h"
+#include "rc.h"
+#include "comm.h"
+#include "simul_efun.h"
+#include "misc/filepath.h"
+
+#ifdef HAVE_ARGP_H
+const char *argp_program_version = PACKAGE "-" VERSION;
+const char *argp_program_bug_address = "https://github.com/taedlar/neolith";
+#endif /* HAVE_ARGP_H */
+
+#ifndef HAVE_REALPATH
+extern char* realpath(const char* path, char* resolved_path);
+#endif /* !HAVE_REALPATH */
+
+/* prototypes */
+
+static void parse_command_line (int, char **);
+static void init_debug_log();
+static void print_startup_info();
+
+#ifndef _WIN32
+static RETSIGTYPE sig_fpe (int sig);
+static RETSIGTYPE sig_cld (int sig);
+
+static RETSIGTYPE sig_usr1 (int sig);
+static RETSIGTYPE sig_usr2 (int sig);
+static RETSIGTYPE sig_term (int sig);
+static RETSIGTYPE sig_int (int sig);
+
+static RETSIGTYPE sig_hup (int sig);
+static RETSIGTYPE sig_segv (int sig);
+static RETSIGTYPE sig_ill (int sig);
+static RETSIGTYPE sig_bus (int sig);
+#endif /* ! _WIN32 */
+
+/* implementations */
+
+int main (int argc, char **argv) {
+
+  char* locale = setlocale (LC_ALL, PLATFORM_UTF8_LOCALE);
+
+#ifndef _WIN32
+  /* Setup signal handlers */
+  signal (SIGFPE, sig_fpe);
+  signal (SIGUSR1, sig_usr1);
+  signal (SIGUSR2, sig_usr2);
+  signal (SIGTERM, sig_term);
+  signal (SIGINT, sig_int);
+  signal (SIGHUP, sig_hup);
+  signal (SIGBUS, sig_bus);
+  signal (SIGSEGV, sig_segv);
+  signal (SIGILL, sig_ill);
+  signal (SIGCHLD, sig_cld);
+#endif
+
+  init_stem (0, 0, NULL); /* initialize MAIN_OPTION() defaults */
+  parse_command_line (argc, argv); /* parse command line arguments, override MAIN_OPTION() */
+  if (!*MAIN_OPTION(config_file) && !*MAIN_OPTION(mud_app))
+    {
+      fprintf (stderr, "%s: you must specify a configuration file, mudlib archive or master file.\n", argv[0]);
+      exit (EXIT_FAILURE);
+    }
+  init_config (MAIN_OPTION(config_file)); /* initialize CONFIG_STR() / CONFIG_INT() */
+
+  /* Determine launch mode (default: use configured MasterFile) */
+  if (*MAIN_OPTION(mud_app))
+    {
+      char* dot = strrchr (MAIN_OPTION(mud_app), '.');
+      if (dot && (strcmp (dot, ".zip") == 0 || strcmp(dot, ".gz") == 0 || strcmp(dot, ".tar") == 0 || strcmp(dot, ".tgz") == 0))
+        init_mudlib_archive (MAIN_OPTION(mud_app),
+                             MAIN_OPTION(argc) > 0 ? MAIN_OPTION(argv)[0] : ""); /* use the first argument as label if exists */
+      else
+        init_application (MAIN_OPTION(mud_app), MAIN_OPTION(config_file));
+    }
+
+  /************************
+   * Initialize debug log *
+   ************************/
+  init_debug_log();
+
+  /* Print startup banner (and smoke-test debug settings) */
+  print_startup_info();
+  if (locale)
+    LOG_NOTICE ("{}\tusing locale \"%s\"", locale);
+
+  /* Initialize resource pools */
+  if (CONFIG_INT (__RESERVED_MEM_SIZE__) > 0)
+    {
+      reserved_area = (char *) DMALLOC (CONFIG_INT (__RESERVED_MEM_SIZE__), TAG_RESERVED, "main.c: reserved_area");
+    } /* malloc.c */
+  init_strings (
+    CONFIG_INT (__SHARED_STRING_HASH_TABLE_SIZE__),
+    CONFIG_INT (__MAX_STRING_LENGTH__)
+  );  /* stralloc.c */
+
+  /* Initialize the LPC compiler. */
+  init_lpc_compiler (
+    CONFIG_INT (__MAX_LOCAL_VARIABLES__),
+    CONFIG_STR (__INCLUDE_DIRS__)
+  ); /* lib/lpc/compiler.c */
+
+  /* Setup the world simulation machine */
+  setup_simulate();
+
+  /* Load and start the mudlib:
+   * 1. Load simul_efun object (if any)
+   * 2. Load master object
+   * 3. Run preload stage (before start listening for connections)
+   * 4. Enter backend loop
+   */
+  if (!stem_startup())
+    {
+      LOG_FATAL ("{}\t***** error occurs in mudlib startup, shutting down.");
+      exit (EXIT_FAILURE);
+    }
+
+  if (g_proceeding_shutdown)
+    {
+      /* It is possible that the mudlib decided to call shutdown() in the preload stage
+       * for some reason, e.g. started at wrong time or any fatal error occurred).
+       * We should let the mudlib end here gracefully without entering multi-user mode.
+       */
+      exit (EXIT_SUCCESS);
+    }
+
+  /* Run the infinite backend loop */
+  stem_run ();
+
+  exit (g_exit_code);
+}
+
+
+#ifdef	HAVE_ARGP_H
+static error_t
+parse_argument (int key, char *arg, struct argp_state *state)
+{
+  (void)state; /* unused */
+  switch (key)
+    {
+    case 'f':
+      if (NULL == realpath (arg, MAIN_OPTION(config_file)))
+        {
+          debug_perror ("configuration file", arg);
+          exit (EXIT_FAILURE);
+        }
+      break;
+    case 'c':
+      MAIN_OPTION(console_mode) = true;
+      break;
+    case 'D':
+      {
+        lpc_predef_t *def;
+
+        def =  (lpc_predef_t *) xcalloc (1, sizeof (lpc_predef_t));
+        def->expression = arg;
+        def->next = lpc_predefs;
+        lpc_predefs = def;
+        break;
+      }
+    case 'd':
+      MAIN_OPTION(debug_level) = atoi (arg);
+      break;
+    case 'e':
+      MAIN_OPTION(epilog_level) = atoi (arg);
+      break;
+    case 'p':
+      MAIN_OPTION(pedantic) = true;
+      break;
+    case 'r':
+      MAIN_OPTION(timer_flags) = (unsigned int) strtoul (arg, NULL, 0);
+      break;
+    case 't':
+      MAIN_OPTION(trace_flags) = strtoul (arg, NULL, 0);
+      break;
+    case ARGP_KEY_ARG:
+      if (state->arg_num == 0)
+        {
+          /* first non-option argument is master file or mudlib archive */
+          if (!realpath (arg, MAIN_OPTION(mud_app)))
+            {
+              perror (arg);
+              exit (EXIT_FAILURE);
+            }
+        }
+      else
+        {
+          /* store additional arguments for the mud application */
+          if (state->arg_num - 1 < MAX_MUD_APP_ARGS)
+            {
+              MAIN_OPTION(argv)[state->arg_num - 1] = arg;
+              MAIN_OPTION(argc)++;
+            }
+        }
+      break;
+    default:
+      return ARGP_ERR_UNKNOWN;
+    }
+  return 0;
+}
+#endif /* HAVE_ARGP_H */
+
+static void
+parse_command_line (int argc, char *argv[])
+{
+#ifdef	HAVE_ARGP_H
+  struct argp_option options[] = {
+    {.name = "console-mode", 'c', NULL, 0, "Run the driver in console mode."},
+    {.name = "debug", 'd', "debug-level", 0, "Specifies the runtime debug level."},
+    {.name = NULL, 'D', "macro[=definition]", 0, "Predefines global preprocessor macro for use in mudlib."},
+    {.name = "epilog", 'e', "epilog-level", 0, "Specifies the epilog level to be passed to the master object."},
+    {.name = NULL, 'f', "config-file", 0, "Specifies the file path of the configuration file."},
+    {.name = "pedantic", 'p', NULL, 0, "Enable pedantic clean up."},
+    {.name = "timers", 'r', "timers", 0, "Specifies an integer of timer flags to enable timers (reset, heart_beat, call_out)."},
+    {.name = "trace", 't', "trace-flags", 0, "Specifies an integer of trace flags to enable trace messages in debug log."},
+    {0}
+  };
+  struct argp parser = {
+    .options = options,
+    .parser = parse_argument,
+    .args_doc = "[MASTER-FILE|MUDLIB-ARCHIVE args ...]",
+    .doc = "\nA lightweight LPMud driver (MudOS fork) for easy extend."
+  };
+
+  argp_parse (&parser, argc, argv, 0, 0, 0);
+#else /* ! HAVE_ARGP_H */
+  int c;
+
+  while ((c = getopt (argc, argv, "cd:D:e:f:pr:t:")) != -1)
+    {
+      switch (c)
+        {
+        case 'f':
+          if (!realpath (optarg, MAIN_OPTION(config_file)))
+            {
+              debug_perror ("configuration file", optarg);
+              exit (EXIT_FAILURE);
+            }
+          break;
+        case 'c':
+          MAIN_OPTION(console_mode) = true;
+          break;
+        case 'd':
+          MAIN_OPTION(debug_level) = atoi (optarg);
+          break;
+        case 'e':
+          MAIN_OPTION(epilog_level) = atoi (optarg);
+          break;
+        case 'D':
+          {
+            lpc_predef_t *def;
+
+            def = (lpc_predef_t *) xcalloc (1, sizeof (lpc_predef_t));
+            def->expression = optarg;
+            def->next = lpc_predefs;
+            lpc_predefs = def;
+            break;
+          }
+        case 'p':
+          MAIN_OPTION(pedantic) = true;
+          break;
+        case 'r':
+          MAIN_OPTION(timer_flags) = (unsigned int) strtoul (optarg, NULL, 0);
+          break;
+        case 't':
+          MAIN_OPTION(trace_flags) = strtoul (optarg, NULL, 0);
+          break;
+        case '?':
+        default:
+          fatal ("invalid option: %c", c);
+        }
+    }
+  if (optind < argc)
+    {
+      /* first non-option argument is master file or mudlib archive */
+      if (!realpath (argv[optind], MAIN_OPTION(mud_app)))
+        {
+          perror (argv[optind]);
+          exit (EXIT_FAILURE);
+        }
+      optind++;
+      /* store additional arguments for the mud application */
+      while (optind < argc && MAIN_OPTION(argc) < MAX_MUD_APP_ARGS)
+        {
+          MAIN_OPTION(argv)[MAIN_OPTION(argc)] = argv[optind];
+          MAIN_OPTION(argc)++;
+          optind++;
+        }
+    }
+#endif /* ! HAVE_ARGP_H */
+}
+
+void init_debug_log() {
+  int log_severity;
+
+  (void)resolve_mudlib_dir();
+
+  /* allow LogDir be specified as absolute path or relative path to mudlib directory */
+  if (CONFIG_STR(__LOG_DIR__))
+    {
+      char log_dir[PATH_MAX] = "";
+      if (filepath_resolve_with_origin (CONFIG_STR(__LOG_DIR__), MAIN_OPTION(mudlib_dir_absolute), log_dir, sizeof(log_dir)))
+        {
+          SET_CONFIG_STR (__LOG_DIR__, log_dir);
+
+          /* DebugLogFile is always specified relative to the log directory */
+          if (CONFIG_STR (__DEBUG_LOG_FILE__))
+            {
+              char log_file[PATH_MAX];
+              if (filepath_join (log_dir, CONFIG_STR (__DEBUG_LOG_FILE__), log_file, sizeof (log_file)))
+                {
+                  debug_set_log_file (log_file);
+                }
+            }
+        }
+    }
+
+  /* log date */
+  debug_set_log_with_date (CONFIG_INT (__ENABLE_LOG_DATE__));
+
+  /* log severity: 0 = most verbose, 4 = least verbose */
+#ifndef _WIN32
+#define max(a, b) ((a) > (b) ? (a) : (b))
+#endif
+  if (MAIN_OPTION(trace_flags))
+    {
+      log_severity = DEBUG_SEVERITY_TRACE; /* do not filter low severity messages */
+    }
+  else
+    {
+      switch (MAIN_OPTION(debug_level))
+        {
+        case 0:
+          log_severity = DEBUG_SEVERITY_WARN;
+          break;
+        case 1:
+          log_severity = DEBUG_SEVERITY_INFO;
+          break;
+        case 2:
+          log_severity = DEBUG_SEVERITY_NOTICE;
+          break;
+        case 3:
+          log_severity = DEBUG_SEVERITY_VERBOSE;
+          break;
+        default:
+          log_severity = DEBUG_SEVERITY_TRACE;
+          break;
+        }
+    }
+  debug_set_log_severity (log_severity);
+#ifndef _WIN32
+#undef max
+#endif
+}
+
+/**
+ * @brief Print startup information to debug log. Also serves as a smoke-test
+ *        for debug logging system.
+ */
+static void print_startup_info() {
+  if (0 > debug_message ("{}\t===== %s-%s starting up =====", PACKAGE, VERSION))
+    {
+      fprintf (stderr, "Failed to write to debug log.\n");
+      exit (EXIT_FAILURE);
+    }
+#ifdef HAVE_SYS_RESOURCE_H
+  struct rlimit rl;
+  if (getrlimit (RLIMIT_NOFILE, &rl) == 0)
+    {
+      LOG_NOTICE ("{}\tmaximum file descriptors: soft=%lu, hard=%lu",
+                  (unsigned long)rl.rlim_cur, (unsigned long)rl.rlim_max);
+    }
+#endif
+}
+
+#ifndef _WIN32
+static RETSIGTYPE
+sig_cld (int sig)
+{
+  int status;
+  (void)sig; /* unused */
+
+  while (wait3 (&status, WNOHANG, NULL) > 0);
+}
+
+static RETSIGTYPE
+sig_fpe (int sig)
+{
+  (void)sig; /* unused */
+  signal (SIGFPE, sig_fpe);
+}
+
+/* send this signal when the machine is about to crash.  The script
+   which restarts the MUD should take an exit code of -1 to mean don't
+   restart
+ */
+static RETSIGTYPE
+sig_usr1 (int sig)
+{
+  (void)sig; /* unused */
+  push_constant_string ("Host machine shutting down");
+  push_undefined ();
+  push_undefined ();
+  APPLY_MASTER_CALL (APPLY_CRASH, 3);
+  LOG_FATAL ("{}\t***** received SIGUSR1, calling exit(-1)");
+  exit (EXIT_FAILURE);
+}
+
+/* Abort evaluation */
+static RETSIGTYPE
+sig_usr2 (int sig)
+{
+  (void)sig; /* unused */
+  eval_cost = 1;
+}
+
+/*
+ * Actually, doing all this stuff from a signal is probably illegal
+ * -Beek
+ */
+static RETSIGTYPE
+sig_term (int sig)
+{
+  (void)sig; /* unused */
+  fatal ("***** process terminated");
+}
+
+static RETSIGTYPE
+sig_int (int sig)
+{
+  (void)sig; /* unused */
+  fatal ("***** process interrupted");
+}
+
+static RETSIGTYPE
+sig_segv (int sig)
+{
+  (void)sig; /* unused */
+  fatal ("***** segmentation fault");
+}
+
+static RETSIGTYPE
+sig_bus (int sig)
+{
+  (void)sig; /* unused */
+  fatal ("***** bus error");
+}
+
+static RETSIGTYPE
+sig_ill (int sig)
+{
+  (void)sig; /* unused */
+  fatal ("***** illegal instruction");
+}
+
+static RETSIGTYPE
+sig_hup (int sig)
+{
+  (void)sig; /* unused */
+  LOG_NOTICE ("{}\tSIGHUP received, reconfiguration not implemented.\n");
+}
+#endif /* ! _WIN32 */

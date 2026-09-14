@@ -1,0 +1,318 @@
+# prebuild-openssl.cmake - CMake script to pre-build OpenSSL from source code.
+#
+# This script is intended to be included in the main CMakeLists.txt before the
+# find_package(OpenSSL) call. It checks for the existence of the OpenSSL
+# library, and if not found, it will download the OpenSSL source code, build it
+# and install it to a specified location. The script also checks for necessary
+# build tools (Perl, Make/NMake, NASM) and dependencies before attempting to
+# build OpenSSL.
+#
+# The script is designed to be compatible with CMake's FindOpenSSL module, which
+# will look for the OpenSSL installation in the specified OPENSSL_ROOT_DIR.
+#
+# Usage:
+#   # declare source code location of `OpenSSL` via `FetchContent_Declare`
+#   set(OPENSSL_ROOT_DIR "/path/to/prebuilt/openssl")
+#   include(cmake/prebuild-openssl.cmake)
+#
+# Note:
+# - If the directory specified by OPENSSL_ROOT_DIR already exists, the script will
+#   skip the build step (assuming OpenSSL is already built and installed there).
+# - To force a rebuild, remove the directory specified by OPENSSL_ROOT_DIR before
+#   re-configuring the main project.
+#
+# References:
+# - OpenSSL build documentation: https://github.com/openssl/openssl/blob/master/INSTALL.md
+
+cmake_minimum_required(VERSION 3.28)
+
+if (NOT DEFINED OPENSSL_ROOT_DIR OR OPENSSL_ROOT_DIR STREQUAL "")
+	message(FATAL_ERROR "OPENSSL_ROOT_DIR must be set before including cmake/prebuild-openssl.cmake")
+endif()
+
+function(_neolith_select_openssl_libdir out_var)
+	if (MSVC)
+		set(_neolith_dir "lib")
+	elseif (EXISTS "${OPENSSL_ROOT_DIR}/lib/libssl.a" AND EXISTS "${OPENSSL_ROOT_DIR}/lib/libcrypto.a")
+		set(_neolith_dir "lib")
+	elseif (EXISTS "${OPENSSL_ROOT_DIR}/lib64/libssl.a" AND EXISTS "${OPENSSL_ROOT_DIR}/lib64/libcrypto.a")
+		set(_neolith_dir "lib64")
+	elseif (EXISTS "${OPENSSL_ROOT_DIR}/lib64")
+		set(_neolith_dir "lib64")
+	else()
+		set(_neolith_dir "lib")
+	endif()
+	set(${out_var} "${_neolith_dir}" PARENT_SCOPE)
+	unset(_neolith_dir)
+endfunction()
+
+_neolith_select_openssl_libdir(openssl_libdir)
+
+if (MSVC)
+	set(openssl_expected_ssl "${OPENSSL_ROOT_DIR}/${openssl_libdir}/libssl.lib")
+	set(openssl_expected_crypto "${OPENSSL_ROOT_DIR}/${openssl_libdir}/libcrypto.lib")
+else()
+	set(openssl_expected_ssl "${OPENSSL_ROOT_DIR}/${openssl_libdir}/libssl.a")
+	set(openssl_expected_crypto "${OPENSSL_ROOT_DIR}/${openssl_libdir}/libcrypto.a")
+endif()
+set(openssl_expected_header "${OPENSSL_ROOT_DIR}/include/openssl/ssl.h")
+
+function(_neolith_log_openssl_hint_once msg)
+	get_property(openssl_hint_logged GLOBAL PROPERTY NEOLITH_OPENSSL_HINT_LOGGED)
+	if (NOT openssl_hint_logged)
+		message(STATUS "${msg}")
+		set_property(GLOBAL PROPERTY NEOLITH_OPENSSL_HINT_LOGGED TRUE)
+	endif()
+endfunction()
+
+if (EXISTS "${openssl_expected_ssl}" AND EXISTS "${openssl_expected_crypto}" AND EXISTS "${openssl_expected_header}")
+	# OPENSSL_ROOT_DIR already contains a complete OpenSSL install.
+	# Proceed to import the pre-built OpenSSL library in the main CMakeLists.txt.
+	_neolith_log_openssl_hint_once("Using prebuilt OpenSSL from ${OPENSSL_ROOT_DIR} (forcing FindOpenSSL hints)")
+	set(OPENSSL_INCLUDE_DIR "${OPENSSL_ROOT_DIR}/include" CACHE PATH "OpenSSL include directory" FORCE)
+	if (MSVC)
+		set(OPENSSL_SSL_LIBRARY "${OPENSSL_ROOT_DIR}/${openssl_libdir}/libssl.lib" CACHE FILEPATH "OpenSSL SSL library" FORCE)
+		set(OPENSSL_CRYPTO_LIBRARY "${OPENSSL_ROOT_DIR}/${openssl_libdir}/libcrypto.lib" CACHE FILEPATH "OpenSSL crypto library" FORCE)
+	else()
+		set(OPENSSL_SSL_LIBRARY "${OPENSSL_ROOT_DIR}/${openssl_libdir}/libssl.a" CACHE FILEPATH "OpenSSL SSL library" FORCE)
+		set(OPENSSL_CRYPTO_LIBRARY "${OPENSSL_ROOT_DIR}/${openssl_libdir}/libcrypto.a" CACHE FILEPATH "OpenSSL crypto library" FORCE)
+	endif()
+	return()
+endif()
+
+# check build prerequisites
+message(CHECK_START "Checking OpenSSL build prerequisites")
+list (APPEND CMAKE_MESSAGE_INDENT "   ")
+unset (missing_prereq)
+
+message(CHECK_START "Perl")
+include(FindPerl) # find Perl interpreter, required for OpenSSL build scripts
+if (PERL_FOUND)
+	message(CHECK_PASS "found: ${PERL_EXECUTABLE}")
+else()
+	message(CHECK_FAIL "not found")
+	list (APPEND missing_prereq "Perl")
+endif()
+
+if(MSVC)
+	message(CHECK_START "nmake")
+	find_program(NMAKE_EXE NAMES nmake.exe REQUIRED) # find nmake, required for building OpenSSL on Windows with MSVC
+	if (EXISTS ${NMAKE_EXE})
+		message(CHECK_PASS "found: ${NMAKE_EXE}")
+	else()
+		message(CHECK_FAIL "not found")
+		list (APPEND missing_prereq "NMAKE")
+	endif()
+
+	message(CHECK_START "nasm")
+	find_program(NASM_EXE NAMES nasm.exe) # find NASM assembler, required for building OpenSSL with assembly optimizations on Windows
+	if (EXISTS ${NASM_EXE})
+		message(CHECK_PASS "found: ${NASM_EXE}")
+	else()
+		message(CHECK_FAIL "not found")
+		list (APPEND missing_prereq "nasm")
+	endif()
+elseif(UNIX)
+	message(CHECK_START "make")
+	find_program(MAKE_EXE NAMES make REQUIRED) # find make, required for building OpenSSL on Unix-like systems
+	if (EXISTS ${MAKE_EXE})
+		message(CHECK_PASS "found: ${MAKE_EXE}")
+	else()
+		message(CHECK_FAIL "not found")
+		list (APPEND missing_prereq "make")
+	endif()
+endif()
+
+list(POP_BACK CMAKE_MESSAGE_INDENT)
+if (missing_prereq)
+	message(CHECK_FAIL "missing components: ${missing_prereq}")
+	return()
+else()
+	message(CHECK_PASS "all prerequisites found")
+endif()
+
+# check and fetch `OpenSSL` source code
+message(CHECK_START "Fetching OpenSSL source code")
+FetchContent_GetProperties(OpenSSL)
+if (NOT openssl_POPULATED)
+	FetchContent_Populate(OpenSSL)
+	if (NOT openssl_POPULATED)
+		message(CHECK_FAIL "Failed to fetch OpenSSL source code")
+		return()
+	endif()
+endif()
+message(CHECK_PASS "done")
+
+# OpenSSL configuration:
+# - For fetched OpenSSL source code, the openssl_BINARY_DIR is empty. The configuration
+#   step will generate the necessary build files in openssl_BINARY_DIR.
+# - If `configdata.pm` already exists, the copy of OpenSSL source code has already been
+#   configured and we can skip this step.
+set(original_locale ENV{LC_ALL})
+set(ENV{LC_ALL} "C") # set locale to "C" to ensure consistent output from OpenSSL build scripts for parsing
+set(config_result 0)
+set(openssl_configdata "${openssl_BINARY_DIR}/configdata.pm")
+set(openssl_need_configure TRUE)
+set(openssl_config_target "")
+if (MSVC)
+	if (${CMAKE_GENERATOR_PLATFORM} STREQUAL "x64")
+		set(openssl_config_target "VC-WIN64A")
+	else()
+		set(openssl_config_target "VC-WIN32")
+	endif()
+elseif(APPLE)
+	set(openssl_arch "")
+	if (DEFINED CMAKE_OSX_ARCHITECTURES AND NOT CMAKE_OSX_ARCHITECTURES STREQUAL "")
+		set(openssl_arch_list ${CMAKE_OSX_ARCHITECTURES})
+		list(LENGTH openssl_arch_list openssl_arch_count)
+		if (openssl_arch_count GREATER 1)
+			# OpenSSL Configure cannot target multiple architectures in one pass.
+			# For universal CMake builds, align with the current process architecture.
+			execute_process(
+				COMMAND uname -m
+				OUTPUT_VARIABLE openssl_arch
+				OUTPUT_STRIP_TRAILING_WHITESPACE
+			)
+			message(STATUS "CMAKE_OSX_ARCHITECTURES has multiple entries (${CMAKE_OSX_ARCHITECTURES}); using uname -m=${openssl_arch} for OpenSSL prebuild")
+		else()
+			list(GET openssl_arch_list 0 openssl_arch)
+		endif()
+		unset(openssl_arch_count)
+		unset(openssl_arch_list)
+	else()
+		execute_process(
+			COMMAND uname -m
+			OUTPUT_VARIABLE openssl_arch
+			OUTPUT_STRIP_TRAILING_WHITESPACE
+		)
+		if (openssl_arch STREQUAL "")
+			set(openssl_arch "${CMAKE_SYSTEM_PROCESSOR}")
+		endif()
+	endif()
+	string(TOLOWER "${openssl_arch}" openssl_arch)
+	if (openssl_arch MATCHES "^(arm64|aarch64)$")
+		set(openssl_config_target "darwin64-arm64-cc")
+	elseif (openssl_arch MATCHES "^(x86_64|amd64)$")
+		set(openssl_config_target "darwin64-x86_64-cc")
+	else()
+		message(STATUS "Unknown macOS architecture '${openssl_arch}', falling back to OpenSSL ./config")
+	endif()
+	unset(openssl_arch)
+endif()
+
+if (EXISTS ${openssl_configdata})
+	set(openssl_need_configure FALSE)
+	if (NOT openssl_config_target STREQUAL "")
+		file(READ ${openssl_configdata} configdata_text)
+		if (NOT configdata_text MATCHES "\"target\" => \"${openssl_config_target}\"")
+			message(STATUS "Detected OpenSSL config target mismatch, reconfiguring from scratch")
+			file(REMOVE_RECURSE ${openssl_BINARY_DIR})
+			file(MAKE_DIRECTORY ${openssl_BINARY_DIR})
+			set(openssl_need_configure TRUE)
+		endif()
+	endif()
+endif()
+
+if (openssl_need_configure)
+	if (NOT openssl_config_target STREQUAL "")
+		message(STATUS "Configuring OpenSSL for platform ${openssl_config_target}")
+		if (MSVC)
+			execute_process(WORKING_DIRECTORY ${openssl_BINARY_DIR} COMMAND
+				${PERL_EXECUTABLE} ${openssl_SOURCE_DIR}/Configure ${openssl_config_target}
+				--prefix=${OPENSSL_ROOT_DIR} --openssldir=SSL --api=3.0 no-shared
+				no-pinshared no-sock no-async no-zlib no-autoload-config no-autoerrinit no-tests
+				-D"_WIN32_WINNT=0x0601"
+				RESULT_VARIABLE config_result
+			)
+		else()
+			execute_process(WORKING_DIRECTORY ${openssl_BINARY_DIR} COMMAND
+				${PERL_EXECUTABLE} ${openssl_SOURCE_DIR}/Configure ${openssl_config_target}
+				--prefix=${OPENSSL_ROOT_DIR} --openssldir=SSL --api=3.0 no-shared
+				no-pinshared no-async no-zlib no-autoload-config no-autoerrinit no-tests
+				-fPIC -fvisibility=hidden
+				RESULT_VARIABLE config_result
+			)
+		endif()
+	elseif(UNIX)
+		execute_process(WORKING_DIRECTORY ${openssl_BINARY_DIR} COMMAND
+			${openssl_SOURCE_DIR}/config
+			--prefix=${OPENSSL_ROOT_DIR} --openssldir=SSL --api=3.0 no-shared
+			no-pinshared no-async no-zlib no-autoload-config no-autoerrinit no-tests
+			-fPIC -fvisibility=hidden
+			RESULT_VARIABLE config_result
+		)
+	endif()
+endif()
+if (NOT config_result EQUAL 0)
+	message(CHECK_FAIL "OpenSSL configure failed with exit code: ${config_result}")
+	set(ENV{LC_ALL} ${original_locale}) # restore original locale settings
+	return()
+endif()
+
+# When the same source tree has been built for multiple targets over time,
+# stale objects can survive and trigger LNK1112. Clean before rebuilding.
+if (MSVC AND EXISTS ${openssl_BINARY_DIR}/makefile)
+	execute_process(WORKING_DIRECTORY ${openssl_BINARY_DIR} COMMAND
+		${NMAKE_EXE} /NOLOGO /S clean
+		RESULT_VARIABLE clean_result
+	)
+endif()
+
+# OpenSSL build and install:
+# - Build OpenSSL using the generated build files. The build step will produce the
+#   OpenSSL library files in openssl_BINARY_DIR.
+# - Install OpenSSL to OPENSSL_ROOT_DIR, which will be used by find_package(OpenSSL)
+#   in the main CMakeLists.txt to locate the OpenSSL library and headers.
+message(CHECK_START "Prebuilding OpenSSL")
+if (MSVC)
+	execute_process(WORKING_DIRECTORY ${openssl_BINARY_DIR} COMMAND
+		${NMAKE_EXE} /NOLOGO /S
+		RESULT_VARIABLE build_result
+	)
+	if (${build_result} EQUAL 0)
+		message(CHECK_PASS "success")
+		execute_process(WORKING_DIRECTORY ${openssl_BINARY_DIR} COMMAND
+			${NMAKE_EXE} /NOLOGO /S install_sw
+			RESULT_VARIABLE install_result
+		)
+	else()
+		message(CHECK_FAIL "build failed with exit code: ${build_result}")
+		return()
+	endif()
+elseif(UNIX)
+	execute_process(WORKING_DIRECTORY ${openssl_BINARY_DIR} COMMAND
+		${MAKE_EXE}
+		RESULT_VARIABLE build_result
+	)
+	if (${build_result} EQUAL 0)
+		message(CHECK_PASS "success")
+		execute_process(WORKING_DIRECTORY ${openssl_BINARY_DIR} COMMAND
+			${MAKE_EXE} install_sw
+			RESULT_VARIABLE install_result
+		)
+	else()
+		message(CHECK_FAIL "build failed with exit code: ${build_result}")
+		return()
+	endif()
+endif()
+
+if (NOT install_result EQUAL 0)
+	message(CHECK_FAIL "OpenSSL install failed with exit code: ${install_result}")
+	set(ENV{LC_ALL} ${original_locale}) # restore original locale settings
+	return()
+endif()
+
+# Prefer the freshly prebuilt tree over Homebrew/system OpenSSL, notably on macOS
+# where FindOpenSSL can otherwise resolve /opt/homebrew first.
+_neolith_log_openssl_hint_once("Using freshly prebuilt OpenSSL from ${OPENSSL_ROOT_DIR} (forcing FindOpenSSL hints)")
+_neolith_select_openssl_libdir(openssl_libdir)
+set(OPENSSL_INCLUDE_DIR "${OPENSSL_ROOT_DIR}/include" CACHE PATH "OpenSSL include directory" FORCE)
+if (MSVC)
+	set(OPENSSL_SSL_LIBRARY "${OPENSSL_ROOT_DIR}/${openssl_libdir}/libssl.lib" CACHE FILEPATH "OpenSSL SSL library" FORCE)
+	set(OPENSSL_CRYPTO_LIBRARY "${OPENSSL_ROOT_DIR}/${openssl_libdir}/libcrypto.lib" CACHE FILEPATH "OpenSSL crypto library" FORCE)
+else()
+	set(OPENSSL_SSL_LIBRARY "${OPENSSL_ROOT_DIR}/${openssl_libdir}/libssl.a" CACHE FILEPATH "OpenSSL SSL library" FORCE)
+	set(OPENSSL_CRYPTO_LIBRARY "${OPENSSL_ROOT_DIR}/${openssl_libdir}/libcrypto.a" CACHE FILEPATH "OpenSSL crypto library" FORCE)
+endif()
+
+set(ENV{LC_ALL} ${original_locale}) # restore original locale settings

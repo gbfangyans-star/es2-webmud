@@ -1,0 +1,16 @@
+ES2 WebMUD v3.20.77 Build 3 - HELP / Map fixes
+
+HELP
+- Pager header now shows current page / total pages.
+- Pager menu only exposes: 1 下一頁, 2 上一頁.
+- Removed next-line, previous-line, first-page, last-page and quit choices.
+- Any other text entered while HELP is open is released to the normal command parser, so the player is not trapped in the pager.
+- Missing HELP topics display 建構中.
+
+MAP
+- Fixed runtime room metadata from overwriting Chinese room labels with LPC paths.
+- Removed 未命名 fallback from map labels.
+- Ordinary roads/paths no longer display room names.
+- Only important landmarks receive labels, normalized to two Chinese characters (客棧、軍營、草棚、彩石、松林 etc.).
+- Runtime HUD snapshot no longer renders after clearing exits and again for every EXIT packet. Rendering waits until the complete snapshot arrives, reducing temporary map collapse/misalignment while data is loading.
+- Existing real room paths/exits remain authoritative; this is presentation-only filtering.

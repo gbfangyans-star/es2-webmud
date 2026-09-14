@@ -1,0 +1,313 @@
+/*---
+description: The user object, which represents a player in the game.
+author: Annihilator <taedlar@gmail.com>
+---*/
+#include <ansi.h>
+#include <origin.h>
+#include <user.h>
+#include <action.h>
+
+inherit CHARACTER;
+inherit F_AUTOLOAD;
+inherit F_EDIT;
+inherit F_FLAG;
+inherit F_INPUT;
+inherit F_MORE;
+inherit F_SAVE;
+
+// private prototypes
+
+private void user_dump(int type);
+
+// variables
+
+static object my_link;
+private int last_age_set;
+
+// implementations
+
+private void create() {
+  object ob;
+
+  // Let LOGIN_D export proper uid to us.
+  seteuid(0);
+
+  if (clonep(this_object()))
+    set_name("無名氏", "noname");
+}
+
+private int move_or_destruct (object dest) {
+  if (dest)
+    move(dest);
+  else {
+    message ("system", "一陣時空的扭曲將你傳送到另一個地方....\n", this_object());
+    set_temp ("last_location", base_name(environment()));
+    move (VOID_OB);
+  }
+}
+
+private void reset() {
+  // To prevent the master copy of user object error out by security
+  // violation.
+  if (!userp (this_object()))
+    return;
+
+  gain_score("survive", (int)query("age") / 2 + 1 );
+}
+
+int set_link(object link) {
+    if (origin()==ORIGIN_CALL_OTHER 
+    && (geteuid(previous_object()) != ROOT_UID)
+    && (geteuid(previous_object()) != geteuid(this_object())))
+        return 0;
+    my_link = link;
+    return 1;
+}
+
+object link() {
+    return my_link;
+}
+
+private void set_terminal_type(string term_type) {
+    set_temp("terminal_type", term_type);
+    message("system", "終端機型態設定為 " + term_type + "。\n", this_object());
+}
+
+// This is used by F_SAVE to determine the filename to save our data.
+string query_save_file() {
+    return user_data (getuid());
+}
+
+int save() {
+    int res;
+
+    if (objectp(my_link))
+        my_link->save();
+    save_autoload();
+    res = ::save();
+    clean_up_autoload();        // To save memory
+    return res;
+}
+
+// This function updates player's age, called by heart_beat()
+private void heart_beat() {
+    ::heart_beat();
+    if (!this_object())
+        return;
+
+    // Make us older. Note this should not rely on fixed period between
+    // each call to heart_beat bcz heart_beat could be stoped for various
+    // reason.                                           - Annihilator
+
+    if (!last_age_set)
+        last_age_set = time();
+    add ("time_aged", time() - last_age_set);
+    last_age_set = time();
+    if ((int)query("time_aged") >= 86400) {
+        add("age", 1);
+        delete("time_aged");
+    }
+
+    if (objectp(my_link))
+        my_link->update_age();
+
+#ifdef SAVE_USER
+    /* WebMUD/Neolith persistence hardening: keep a recent on-disk checkpoint
+     * while the player is online. Disconnect and quit still save immediately.
+     * This is operational persistence only; it does not alter gameplay state. */
+    if (interactive(this_object())
+    &&  time() - (int)query_temp("last_auto_save") >= 300) {
+        if (save())
+            set_temp("last_auto_save", time());
+    }
+#endif
+
+    if (interactive(this_object()) && query_idle(this_object()) >= IDLE_TIMEOUT)
+        user_dump(DUMP_IDLE);
+}
+
+void setup() {
+    if (! query("id"))
+        set ("id", getuid());
+    ::setup();
+
+    /* 以下是讓 F_STATISTIC 檢查這個使用者是否在上次 quit 之前已經死亡，但
+     * 還沒有被 heart_beat 抓到( 俗稱 quit 大法 )
+     */
+    damage_stat("gin", 0);
+    damage_stat("kee", 0);
+    damage_stat("sen", 0);
+    damage_stat("HP", 0);
+
+    restore_autoload();
+    restore_condition();
+}
+
+private void user_dump(int type) {
+  switch(type)
+    {
+    case DUMP_NET_DEAD:
+      // change cmd: quit to quit ! -Dragoon
+      cmd_quit("!");
+      break;
+    case DUMP_IDLE:
+    default:
+      // wiz don't get kicked out (Elon 10-17-95)
+      if (wizardp(this_object()))
+        return;
+      tell_object(this_object(), CYN "你聽到一個細小的聲音說道：節能愛地球，請勿長時間掛機發呆～～\n" NOR);
+      tell_object(this_object(), HIW "\n一個小小的，長著白色翅膀的生物忽然出現，抓著你的手在鍵盤上敲了 quit 命令。\n\n" NOR);
+      tell_room(environment(), "一陣風吹來﹐將發呆中的" + query("name") + "化為一堆飛灰﹐消失了。\n", ({this_object()}));
+      // change cmd: quit to quit ! -Dragoon
+      cmd_quit("!");
+      break;
+    }
+}
+
+/*  net_dead()
+ *
+ *  當使用者斷線時，driver 會呼叫這個函數。
+ */
+private void net_dead() {
+    set_heart_beat(0);
+
+    // Stop fighting, we'll be back soon.
+    remove_all_enemy();
+    if (environment())
+        set_temp("last_location", base_name(environment()) );
+
+#ifdef SAVE_USER
+    /* save() persists both the body and its link object. Keep this single-write
+     * path so simultaneous disconnects do not generate redundant file writes. */
+    save();
+#endif
+
+    if (objectp(my_link))
+        destruct(my_link);
+
+    if( is_busy() ) interrupt(this_object(), INTR_LINKDEAD);
+
+    if( userp(this_object()) ) {
+        call_out("user_dump", NET_DEAD_TIMEOUT, DUMP_NET_DEAD);
+        // tell room what happen to this player -dragoon
+        tell_room(environment(), "時空一陣波動, " + query("name") +
+            "瞬間由這個世界消失...\n");
+        LOGIN_D->net_dead(this_object());
+    } else 
+        command("quit");
+}
+
+// reconnect: called by the LOGIN_D when a netdead player reconnects.
+void reconnect() {
+    string last_loc;
+
+    if (geteuid(previous_object()) != ROOT_UID)
+        error ("Permission denied.\n");
+
+    set_heart_beat(1);
+    remove_call_out("user_dump");
+    tell_object(this_object(), "重新連線完畢。\n");
+    if( stringp(last_loc = query_temp("last_location")) )
+        move(last_loc);
+}
+
+static string last_cmd;
+static int last_cmd_time;
+static int last_cmd_count;
+
+string process_input (string str) {
+#ifdef MAX_COMMAND_PER_SECOND
+    /* CUSTOM WEBMUD CONTROL: webhud is an internal browser telemetry poll,
+     * not a player action. Do not let it consume the player's command-rate
+     * allowance or trigger the legacy "commands too fast" warning. */
+    if (str != "webhud") {
+    if (last_cmd_time == time()) {
+        last_cmd_count++;
+        if (last_cmd_count > MAX_COMMAND_PER_SECOND)
+            return "";
+        if (last_cmd_count == MAX_COMMAND_PER_SECOND) {
+            write ("\r你下指令的速度太快了，你所控制的人物無法執行這麼多命令。\n");
+            return "";
+        }
+    } else {
+        last_cmd_time = time();
+        last_cmd_count = 1;
+    }
+    }
+#endif	/* MAX_COMMAND_PER_SECOND */
+
+    if (str[0..1]=="!!")
+        return last_cmd + str[2..];
+
+    if (objectp(my_link))
+        return last_cmd = my_link->process_alias(str);
+
+    return 0;
+}
+
+void lose_fight(object opponent) {
+    ::lose_fight (opponent);
+    tell_object (this_object(), "這一招你無法招架，輸掉了這場比試。\n");
+}
+
+void win_fight(object opponent) {
+    tell_object(this_object(), opponent->name() + "招架不住，你贏了這場比試。\n");
+    // add to test -Dragoon
+    remove_all_enemy();
+}
+
+/***********************************************************************
+                            USER DATA PROTECTIONS
+ ***********************************************************************/
+ 
+nomask mixed set (string prop, mixed data) {
+    USER_PROTECT();
+    return ::set(prop, data);
+}
+
+nomask mixed add (string prop, mixed data) {
+    USER_PROTECT();
+    return ::add(prop, data);
+}
+
+nomask void delete(string prop) {
+    USER_PROTECT();
+    ::delete(prop);
+}
+
+nomask varargs mixed query(string prop, int raw) {
+    mixed v = ::query(prop, raw);
+    if (mapp(v) || arrayp(v))
+        USER_PROTECT();
+    return v;
+}
+
+nomask void set_skill (string skill, int amount) {
+    USER_PROTECT();
+    ::set_skill (skill, amount);
+}
+
+nomask void advance_skill(string skill, int amount) {
+    USER_PROTECT();
+    ::advance_skill(skill, amount);
+}
+
+nomask void set_learn(string skill, int lrn) {
+    USER_PROTECT();    
+    ::set_learn(skill, lrn);
+}
+
+nomask void improve_skill(string skill, int amount) {
+    USER_PROTECT();
+    ::improve_skill(skill, amount);
+}
+
+nomask int set_attr(string what, int value) {
+    USER_PROTECT();
+    return ::set_attr(what, value);
+}
+
+nomask int set_stat_maximum(string what, int val) {
+    USER_PROTECT();
+    return ::set_stat_maximum(what, val);
+}

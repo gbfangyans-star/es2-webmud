@@ -1,0 +1,12 @@
+{
+  "name": "es2-webmud-source-only",
+  "version": "3.20.75",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "ws": "^8.18.0"
+  }
+}

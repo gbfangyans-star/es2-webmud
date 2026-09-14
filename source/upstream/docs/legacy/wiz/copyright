@@ -1,0 +1,20 @@
+□ 著作權注意事項
+
+關於 ES2 mudlib 詳細的授權內容以及使用限制條款，記載於 Copyright.ES2 中。
+所有的原始碼均發布在 https://github.com/taedlar/es2_mudlib 上，歡迎下載、
+使用、修改及散布，但請務必遵守上述的授權內容及使用限制條款。
+
+關於 ES2 mudlib 原始作者 Annihilator <annihilator@muds.net> 於舊版 ES2 mudlib
+發布的著作權聲明，現已改採更寬鬆的 MIT License 授權，並移除舊版的相關使用
+限制條款。舊的電子郵件信箱 annihilator@muds.net 已經停止使用，請改以 github
+專案頁面上的聯絡方式為主。
+
+如果您先前已經使用舊版的 ES2 mudlib 原始碼開發自己的 mud，可自行選擇改接受
+MIT License 的授權內容，並移除舊版的相關使用限制條款。
+
+如果在著作權授權方面還有任何疑慮，歡迎透過 github 上的 ES2 mudlib 專案頁面
+聯絡 Annihilator (github.com/taedlar) 詢問:
+
+    https://github.com/taedlar/es2_mudlib/issues
+
+By Annihilator (2026-02-04)

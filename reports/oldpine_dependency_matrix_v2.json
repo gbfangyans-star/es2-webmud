@@ -1,0 +1,39 @@
+{
+  "integration_policy": {
+    "gao_route": "unchanged",
+    "full_oldpine": "future separate branch",
+    "lineage_diff_required": false
+  },
+  "dependencies": [
+    {
+      "component": "cave5 bury reward",
+      "dependency": "parrybook",
+      "status": "file_recovered_api_blocked",
+      "reason": "legacy skill mapping does not match current F_STUDY schema"
+    },
+    {
+      "component": "keep2 reopening",
+      "dependency": "bamboo_pipe -> room.pipe_notify()",
+      "status": "recovered"
+    },
+    {
+      "component": "spy",
+      "dependency": "black_cloth",
+      "status": "blocked_missing"
+    },
+    {
+      "component": "maniac",
+      "dependency": "necromancy",
+      "status": "blocked_missing"
+    },
+    {
+      "component": "cave5 skeleton",
+      "dependency": "skeleton ITEM",
+      "status": "recovered"
+    }
+  ],
+  "classification_corrections": {
+    "skeleton": "ITEM, not NPC"
+  },
+  "safe_staging_rule": "stage source-closed rooms/mechanics independently; disable blocked reward/NPC paths until dependency semantics are recovered"
+}

@@ -1,0 +1,2611 @@
+{
+  "format": "es2-static-world-map-v2-readonly-coordinates",
+  "generated_from": [
+    "source/upstream/mudlib/d/**/*.c",
+    "source/upstream/mudlib/custom/**/*.c"
+  ],
+  "layout_policy": "authoritative immutable topology and coordinates; runtime may update player position/exploration only",
+  "nodes": [
+    {
+      "id": "/custom/home/room/bedroom",
+      "label": "bedroom",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "id": "/custom/home/room/future_room",
+      "label": "future_room",
+      "x": 20,
+      "y": 0
+    },
+    {
+      "id": "/custom/home/room/home_hall",
+      "label": "home_hall",
+      "x": 40,
+      "y": 0
+    },
+    {
+      "id": "/custom/home/room/study_room",
+      "label": "study_room",
+      "x": 60,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine/room/path01",
+      "label": "小路",
+      "x": 80,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine/room/path02",
+      "label": "小路",
+      "x": 80,
+      "y": 1
+    },
+    {
+      "id": "/custom/oldpine/room/path03",
+      "label": "小路",
+      "x": 81,
+      "y": 2
+    },
+    {
+      "id": "/custom/oldpine/room/path04",
+      "label": "小路",
+      "x": 82,
+      "y": 3
+    },
+    {
+      "id": "/custom/oldpine/room/path05",
+      "label": "小路",
+      "x": 83,
+      "y": 2
+    },
+    {
+      "id": "/custom/oldpine/room/path06",
+      "label": "小路",
+      "x": 83,
+      "y": 1
+    },
+    {
+      "id": "/custom/oldpine/room/path07",
+      "label": "小路",
+      "x": 84,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine/room/path08",
+      "label": "小路",
+      "x": 85,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine/room/path09",
+      "label": "小路",
+      "x": 86,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine/room/path10",
+      "label": "小路",
+      "x": 88,
+      "y": -1
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/cave1",
+      "label": "山洞",
+      "x": 100,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/cave2",
+      "label": "山洞",
+      "x": 100,
+      "y": -1
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/cave3",
+      "label": "山洞",
+      "x": 120,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/cave4",
+      "label": "山洞",
+      "x": 101,
+      "y": -1
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/cave5",
+      "label": "山洞",
+      "x": 101,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/clearing",
+      "label": "林间空地",
+      "x": 89,
+      "y": 1
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/cliff1",
+      "label": "悬崖",
+      "x": 140,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/cliff2",
+      "label": "悬崖",
+      "x": 160,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/cliffdown",
+      "label": "悬崖顶",
+      "x": 180,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/cliffside",
+      "label": "悬崖边",
+      "x": 200,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/epath1",
+      "label": "林间小路",
+      "x": 90,
+      "y": 1
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/epath2",
+      "label": "小石桥",
+      "x": 91,
+      "y": 1
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/epath3",
+      "label": "林间小路",
+      "x": 92,
+      "y": 1
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/keep1",
+      "label": "老松寨秘密入口",
+      "x": 220,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/keep2",
+      "label": "老松寨",
+      "x": 221,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/keep3",
+      "label": "老松寨大厅",
+      "x": 222,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/lake",
+      "label": "水潭",
+      "x": 240,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/npath1",
+      "label": "林间小路",
+      "x": 85,
+      "y": -1
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/npath2",
+      "label": "林间小路",
+      "x": 87,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/npath3",
+      "label": "林间小路",
+      "x": 88,
+      "y": 1
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/passage",
+      "label": "秘密通道入口",
+      "x": 260,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/path3",
+      "label": "秘密通道",
+      "x": 260,
+      "y": -2
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/pine1",
+      "label": "松树林",
+      "x": 200,
+      "y": -1
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/pine2",
+      "label": "松树林",
+      "x": 219,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/pine3",
+      "label": "松树林",
+      "x": 280,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/pine4",
+      "label": "松树林",
+      "x": 199,
+      "y": -1
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/pine5",
+      "label": "松树林",
+      "x": 199,
+      "y": -2
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/pine6",
+      "label": "松树林",
+      "x": 199,
+      "y": -3
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/pine7",
+      "label": "松树林",
+      "x": 181,
+      "y": -1
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/riverbank1",
+      "label": "山涧之中",
+      "x": 240,
+      "y": -1
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/riverbank2",
+      "label": "山涧之中",
+      "x": 240,
+      "y": -2
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/secrectpath1",
+      "label": "秘密通道",
+      "x": 260,
+      "y": -1
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/spath1",
+      "label": "林间小路",
+      "x": 89,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/spath2",
+      "label": "下坡道",
+      "x": 89,
+      "y": -1
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/spath3",
+      "label": "下坡道",
+      "x": 89,
+      "y": -2
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/spath4",
+      "label": "下坡道",
+      "x": 89,
+      "y": -3
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/stone",
+      "label": "大青石上",
+      "x": 300,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/tree1",
+      "label": "大松树上",
+      "x": 320,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/tree2",
+      "label": "大松树上",
+      "x": 340,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/tree3",
+      "label": "大松树顶",
+      "x": 360,
+      "y": 0
+    },
+    {
+      "id": "/custom/oldpine_recovered/room/waterfall",
+      "label": "瀑布前",
+      "x": 240,
+      "y": -3
+    },
+    {
+      "id": "/custom/wizroom/w/windstory/room/inn_w",
+      "label": "鄉校",
+      "x": 380,
+      "y": 0
+    },
+    {
+      "id": "/custom/zhenwu/room/big_tent",
+      "label": "大帳",
+      "x": 75,
+      "y": -3
+    },
+    {
+      "id": "/custom/zhenwu/room/camp",
+      "label": "軍營",
+      "x": 73,
+      "y": 1
+    },
+    {
+      "id": "/custom/zhenwu/room/gate",
+      "label": "振武軍雙大門",
+      "x": 78,
+      "y": -1
+    },
+    {
+      "id": "/custom/zhenwu/room/shed",
+      "label": "棚場",
+      "x": 74,
+      "y": 1
+    },
+    {
+      "id": "/custom/zhenwu/room/yard01",
+      "label": "校場",
+      "x": 75,
+      "y": -2
+    },
+    {
+      "id": "/custom/zhenwu/room/yard02",
+      "label": "校場",
+      "x": 76,
+      "y": -2
+    },
+    {
+      "id": "/custom/zhenwu/room/yard03",
+      "label": "校場",
+      "x": 77,
+      "y": -2
+    },
+    {
+      "id": "/custom/zhenwu/room/yard04",
+      "label": "校場",
+      "x": 75,
+      "y": -1
+    },
+    {
+      "id": "/custom/zhenwu/room/yard05",
+      "label": "校場",
+      "x": 76,
+      "y": -1
+    },
+    {
+      "id": "/custom/zhenwu/room/yard06",
+      "label": "校場",
+      "x": 77,
+      "y": -1
+    },
+    {
+      "id": "/custom/zhenwu/room/yard07",
+      "label": "校場",
+      "x": 75,
+      "y": 0
+    },
+    {
+      "id": "/custom/zhenwu/room/yard08",
+      "label": "校場",
+      "x": 76,
+      "y": 0
+    },
+    {
+      "id": "/custom/zhenwu/room/yard09",
+      "label": "校場",
+      "x": 77,
+      "y": 0
+    },
+    {
+      "id": "/custom/zhenwu/room/yard10",
+      "label": "校場",
+      "x": 75,
+      "y": 1
+    },
+    {
+      "id": "/custom/zhenwu/room/yard11",
+      "label": "校場",
+      "x": 76,
+      "y": 1
+    },
+    {
+      "id": "/custom/zhenwu/room/yard12",
+      "label": "校場",
+      "x": 77,
+      "y": 1
+    },
+    {
+      "id": "/custom/zhenwu/room/yard13",
+      "label": "校場",
+      "x": 75,
+      "y": 2
+    },
+    {
+      "id": "/custom/zhenwu/room/yard14",
+      "label": "校場",
+      "x": 76,
+      "y": 2
+    },
+    {
+      "id": "/d/lee/creek",
+      "label": "小溪",
+      "x": 89,
+      "y": -8
+    },
+    {
+      "id": "/d/lee/entrance_s",
+      "label": "村口",
+      "x": 85,
+      "y": -5
+    },
+    {
+      "id": "/d/lee/eroad1",
+      "label": "石子路",
+      "x": 86,
+      "y": -10
+    },
+    {
+      "id": "/d/lee/eroad2",
+      "label": "石子路",
+      "x": 87,
+      "y": -10
+    },
+    {
+      "id": "/d/lee/farm_w1",
+      "label": "農家",
+      "x": 82,
+      "y": -9
+    },
+    {
+      "id": "/d/lee/farm_w2",
+      "label": "農家",
+      "x": 83,
+      "y": -9
+    },
+    {
+      "id": "/d/lee/gate_e",
+      "label": "村口大門",
+      "x": 88,
+      "y": -10
+    },
+    {
+      "id": "/d/lee/gate_n",
+      "label": "村口大門",
+      "x": 84,
+      "y": -14
+    },
+    {
+      "id": "/d/lee/gate_s",
+      "label": "村口大門",
+      "x": 85,
+      "y": -6
+    },
+    {
+      "id": "/d/lee/gate_w",
+      "label": "村口大門",
+      "x": 80,
+      "y": -10
+    },
+    {
+      "id": "/d/lee/grocery",
+      "label": "雜貨鋪",
+      "x": 83,
+      "y": -12
+    },
+    {
+      "id": "/d/lee/herb_shop",
+      "label": "藥鋪",
+      "x": 83,
+      "y": -13
+    },
+    {
+      "id": "/d/lee/hunter",
+      "label": "獵戶",
+      "x": 81,
+      "y": -11
+    },
+    {
+      "id": "/d/lee/inn",
+      "label": "小飯店",
+      "x": 84,
+      "y": -7
+    },
+    {
+      "id": "/d/lee/nroad1",
+      "label": "石子路",
+      "x": 84,
+      "y": -13
+    },
+    {
+      "id": "/d/lee/nroad2",
+      "label": "石子路",
+      "x": 84,
+      "y": -12
+    },
+    {
+      "id": "/d/lee/nroad3",
+      "label": "石子路",
+      "x": 84,
+      "y": -11
+    },
+    {
+      "id": "/d/lee/pawnshop",
+      "label": "李記當鋪",
+      "x": 84,
+      "y": -8
+    },
+    {
+      "id": "/d/lee/riverside_n1",
+      "label": "溪邊小路",
+      "x": 89,
+      "y": -11
+    },
+    {
+      "id": "/d/lee/riverside_n2",
+      "label": "溪邊小路",
+      "x": 89,
+      "y": -12
+    },
+    {
+      "id": "/d/lee/riverside_s",
+      "label": "溪邊小路",
+      "x": 89,
+      "y": -10
+    },
+    {
+      "id": "/d/lee/school",
+      "label": "私塾",
+      "x": 83,
+      "y": -11
+    },
+    {
+      "id": "/d/lee/shrine",
+      "label": "福祠",
+      "x": 82,
+      "y": -11
+    },
+    {
+      "id": "/d/lee/square_c",
+      "label": "廣場中央",
+      "x": 85,
+      "y": -9
+    },
+    {
+      "id": "/d/lee/square_e",
+      "label": "廣場",
+      "x": 85,
+      "y": -10
+    },
+    {
+      "id": "/d/lee/square_s",
+      "label": "廣場",
+      "x": 84,
+      "y": -9
+    },
+    {
+      "id": "/d/lee/square_w",
+      "label": "廣場",
+      "x": 84,
+      "y": -10
+    },
+    {
+      "id": "/d/lee/street1",
+      "label": "街道",
+      "x": 85,
+      "y": -8
+    },
+    {
+      "id": "/d/lee/street2",
+      "label": "街道",
+      "x": 85,
+      "y": -7
+    },
+    {
+      "id": "/d/lee/watermelon_n1",
+      "label": "西瓜田",
+      "x": 86,
+      "y": -9
+    },
+    {
+      "id": "/d/lee/watermelon_n2",
+      "label": "西瓜田",
+      "x": 87,
+      "y": -9
+    },
+    {
+      "id": "/d/lee/watermelon_n3",
+      "label": "西瓜田",
+      "x": 88,
+      "y": -9
+    },
+    {
+      "id": "/d/lee/watermelon_s1",
+      "label": "西瓜田",
+      "x": 86,
+      "y": -8
+    },
+    {
+      "id": "/d/lee/watermelon_s2",
+      "label": "西瓜田",
+      "x": 87,
+      "y": -8
+    },
+    {
+      "id": "/d/lee/watermelon_s3",
+      "label": "西瓜田",
+      "x": 88,
+      "y": -8
+    },
+    {
+      "id": "/d/lee/wroad1",
+      "label": "石子路",
+      "x": 81,
+      "y": -10
+    },
+    {
+      "id": "/d/lee/wroad2",
+      "label": "石子路",
+      "x": 82,
+      "y": -10
+    },
+    {
+      "id": "/d/lee/wroad3",
+      "label": "石子路",
+      "x": 83,
+      "y": -10
+    },
+    {
+      "id": "/d/snow/bug_room",
+      "label": "小廣場",
+      "x": 78,
+      "y": -5
+    },
+    {
+      "id": "/d/snow/court",
+      "label": "鄉校",
+      "x": 74,
+      "y": -1
+    },
+    {
+      "id": "/d/snow/ebridge",
+      "label": "ebridge",
+      "x": 83,
+      "y": -6
+    },
+    {
+      "id": "/d/snow/egate",
+      "label": "河邊",
+      "x": 84,
+      "y": -4
+    },
+    {
+      "id": "/d/snow/epath",
+      "label": "僻靜小巷",
+      "x": 81,
+      "y": -4
+    },
+    {
+      "id": "/d/snow/fireplace",
+      "label": "大灶內",
+      "x": 400,
+      "y": 0
+    },
+    {
+      "id": "/d/snow/herb_shop",
+      "label": "小藥鋪",
+      "x": 81,
+      "y": -3
+    },
+    {
+      "id": "/d/snow/inn_kitchen",
+      "label": "廚房",
+      "x": 420,
+      "y": 0
+    },
+    {
+      "id": "/d/snow/inn_staff_room",
+      "label": "inn_staff_room",
+      "x": 440,
+      "y": 0
+    },
+    {
+      "id": "/d/snow/kitchen",
+      "label": "廚房",
+      "x": 460,
+      "y": 0
+    },
+    {
+      "id": "/d/snow/lane1",
+      "label": "僻靜小巷",
+      "x": 82,
+      "y": -4
+    },
+    {
+      "id": "/d/snow/lane2",
+      "label": "溪邊小路",
+      "x": 82,
+      "y": -5
+    },
+    {
+      "id": "/d/snow/mill",
+      "label": "磨坊",
+      "x": 480,
+      "y": 0
+    },
+    {
+      "id": "/d/snow/ngate",
+      "label": "山路",
+      "x": 79,
+      "y": -8
+    },
+    {
+      "id": "/d/snow/npath1",
+      "label": "小路",
+      "x": 80,
+      "y": -7
+    },
+    {
+      "id": "/d/snow/npath2",
+      "label": "溪邊小路",
+      "x": 81,
+      "y": -7
+    },
+    {
+      "id": "/d/snow/npath3",
+      "label": "溪邊小路",
+      "x": 82,
+      "y": -6
+    },
+    {
+      "id": "/d/snow/nstreet1",
+      "label": "街道",
+      "x": 79,
+      "y": -6
+    },
+    {
+      "id": "/d/snow/nstreet2",
+      "label": "街道",
+      "x": 79,
+      "y": -7
+    },
+    {
+      "id": "/d/snow/post_office",
+      "label": "雪亭驛",
+      "x": 78,
+      "y": -7
+    },
+    {
+      "id": "/d/snow/river1",
+      "label": "溪邊",
+      "x": 82,
+      "y": -7
+    },
+    {
+      "id": "/d/snow/riverbank",
+      "label": "河邊空地",
+      "x": 500,
+      "y": 0
+    },
+    {
+      "id": "/d/snow/ruin1",
+      "label": "破舊大宅",
+      "x": 83,
+      "y": -4
+    },
+    {
+      "id": "/d/snow/ruin2",
+      "label": "破舊大宅正廳",
+      "x": 500,
+      "y": 1
+    },
+    {
+      "id": "/d/snow/school",
+      "label": "私塾",
+      "x": 80,
+      "y": -2
+    },
+    {
+      "id": "/d/snow/sgate",
+      "label": "草棚",
+      "x": 79,
+      "y": -1
+    },
+    {
+      "id": "/d/snow/smithy",
+      "label": "打鐵鋪子",
+      "x": 80,
+      "y": -3
+    },
+    {
+      "id": "/d/snow/square",
+      "label": "廣場中央",
+      "x": 79,
+      "y": -4
+    },
+    {
+      "id": "/d/snow/square_e",
+      "label": "廣場",
+      "x": 80,
+      "y": -4
+    },
+    {
+      "id": "/d/snow/square_n",
+      "label": "廣場",
+      "x": 79,
+      "y": -5
+    },
+    {
+      "id": "/d/snow/square_s",
+      "label": "廣場",
+      "x": 79,
+      "y": -3
+    },
+    {
+      "id": "/d/snow/square_sw",
+      "label": "廣場",
+      "x": 78,
+      "y": -3
+    },
+    {
+      "id": "/d/snow/square_w",
+      "label": "square_w",
+      "x": 78,
+      "y": -4
+    },
+    {
+      "id": "/d/snow/sstreet1",
+      "label": "街道",
+      "x": 79,
+      "y": -2
+    },
+    {
+      "id": "/d/snow/store",
+      "label": "貨棧",
+      "x": 78,
+      "y": -2
+    },
+    {
+      "id": "/d/snow/tree",
+      "label": "榕樹上",
+      "x": 520,
+      "y": 0
+    },
+    {
+      "id": "/d/snow/wgate",
+      "label": "雪亭鎮",
+      "x": 78,
+      "y": 1
+    },
+    {
+      "id": "/d/snow/wstreet1",
+      "label": "街道",
+      "x": 77,
+      "y": -3
+    },
+    {
+      "id": "/d/snow/wstreet2",
+      "label": "街道",
+      "x": 76,
+      "y": -3
+    },
+    {
+      "id": "/d/snow/wstreet3",
+      "label": "街道",
+      "x": 78,
+      "y": 0
+    }
+  ],
+  "edges": [
+    {
+      "from": "/d/lee/creek",
+      "to": "/d/lee/riverside_s",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/creek",
+      "to": "/d/lee/watermelon_s3",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/entrance_s",
+      "to": "/d/snow/egate",
+      "direction": "southwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/entrance_s",
+      "to": "/d/lee/gate_s",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/eroad1",
+      "to": "/d/lee/square_e",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/eroad1",
+      "to": "/d/lee/eroad2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/eroad2",
+      "to": "/d/lee/eroad1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/eroad2",
+      "to": "/d/lee/gate_e",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/farm_w1",
+      "to": "/d/lee/wroad2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/farm_w2",
+      "to": "/d/lee/wroad3",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/gate_e",
+      "to": "/d/lee/eroad2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/gate_e",
+      "to": "/d/lee/riverside_s",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/gate_n",
+      "to": "/d/lee/nroad1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/gate_s",
+      "to": "/d/lee/street2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/gate_s",
+      "to": "/d/lee/entrance_s",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/gate_w",
+      "to": "/d/lee/wroad1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/grocery",
+      "to": "/d/lee/nroad2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/herb_shop",
+      "to": "/d/lee/nroad1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/hunter",
+      "to": "/d/lee/wroad2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/inn",
+      "to": "/d/lee/street2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/nroad1",
+      "to": "/d/lee/gate_n",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/nroad1",
+      "to": "/d/lee/nroad2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/nroad1",
+      "to": "/d/lee/herb_shop",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/nroad2",
+      "to": "/d/lee/nroad1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/nroad2",
+      "to": "/d/lee/nroad3",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/nroad2",
+      "to": "/d/lee/grocery",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/nroad3",
+      "to": "/d/lee/nroad2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/nroad3",
+      "to": "/d/lee/square_w",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/nroad3",
+      "to": "/d/lee/school",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/pawnshop",
+      "to": "/d/lee/square_s",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/pawnshop",
+      "to": "/d/lee/street1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/riverside_n1",
+      "to": "/d/lee/riverside_n2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/riverside_n1",
+      "to": "/d/lee/riverside_s",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/riverside_n2",
+      "to": "/d/lee/riverside_n1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/riverside_s",
+      "to": "/d/lee/gate_e",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/riverside_s",
+      "to": "/d/lee/riverside_n1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/riverside_s",
+      "to": "/d/lee/creek",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/riverside_s",
+      "to": "/d/lee/watermelon_n3",
+      "direction": "southwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/school",
+      "to": "/d/lee/nroad3",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/shrine",
+      "to": "/d/lee/wroad3",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/square_c",
+      "to": "/d/lee/square_s",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/square_c",
+      "to": "/d/lee/square_e",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/square_c",
+      "to": "/d/lee/street1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/square_c",
+      "to": "/d/lee/watermelon_n1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/square_e",
+      "to": "/d/lee/square_w",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/square_e",
+      "to": "/d/lee/eroad1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/square_e",
+      "to": "/d/lee/square_c",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/square_s",
+      "to": "/d/lee/square_w",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/square_s",
+      "to": "/d/lee/square_c",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/square_s",
+      "to": "/d/lee/pawnshop",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/square_w",
+      "to": "/d/lee/nroad3",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/square_w",
+      "to": "/d/lee/wroad3",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/square_w",
+      "to": "/d/lee/square_e",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/square_w",
+      "to": "/d/lee/square_s",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/street1",
+      "to": "/d/lee/pawnshop",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/street1",
+      "to": "/d/lee/square_c",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/street1",
+      "to": "/d/lee/street2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/street1",
+      "to": "/d/lee/watermelon_s1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/street2",
+      "to": "/d/lee/street1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/street2",
+      "to": "/d/lee/inn",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/street2",
+      "to": "/d/lee/gate_s",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_n1",
+      "to": "/d/lee/square_c",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_n1",
+      "to": "/d/lee/watermelon_n2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_n1",
+      "to": "/d/lee/watermelon_s1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_n2",
+      "to": "/d/lee/watermelon_n1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_n2",
+      "to": "/d/lee/watermelon_n3",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_n2",
+      "to": "/d/lee/watermelon_s2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_n3",
+      "to": "/d/lee/watermelon_n2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_n3",
+      "to": "/d/lee/watermelon_s3",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_n3",
+      "to": "/d/lee/riverside_s",
+      "direction": "northeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_s1",
+      "to": "/d/lee/street1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_s1",
+      "to": "/d/lee/watermelon_s2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_s1",
+      "to": "/d/lee/watermelon_n1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_s2",
+      "to": "/d/lee/watermelon_s1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_s2",
+      "to": "/d/lee/watermelon_s3",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_s2",
+      "to": "/d/lee/watermelon_n2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_s3",
+      "to": "/d/lee/watermelon_s2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_s3",
+      "to": "/d/lee/watermelon_n3",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_s3",
+      "to": "/d/lee/creek",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/wroad1",
+      "to": "/d/lee/gate_w",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/wroad1",
+      "to": "/d/lee/wroad2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/wroad2",
+      "to": "/d/lee/wroad1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/wroad2",
+      "to": "/d/lee/wroad3",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/wroad2",
+      "to": "/d/lee/hunter",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/wroad2",
+      "to": "/d/lee/farm_w1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/wroad3",
+      "to": "/d/lee/wroad2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/wroad3",
+      "to": "/d/lee/square_w",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/wroad3",
+      "to": "/d/lee/shrine",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/wroad3",
+      "to": "/d/lee/farm_w2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/bug_room",
+      "to": "/d/snow/square_w",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/court",
+      "to": "/d/snow/wstreet3",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/ebridge",
+      "to": "/d/snow/npath3",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/egate",
+      "to": "/d/lee/entrance_s",
+      "direction": "northeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/egate",
+      "to": "/d/snow/ruin1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/epath",
+      "to": "/d/snow/lane1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/epath",
+      "to": "/d/snow/square_e",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/epath",
+      "to": "/d/snow/herb_shop",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/fireplace",
+      "to": "/d/snow/inn_kitchen",
+      "direction": "out",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/herb_shop",
+      "to": "/d/snow/epath",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/lane1",
+      "to": "/d/snow/lane2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/lane1",
+      "to": "/d/snow/epath",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/lane1",
+      "to": "/d/snow/ruin1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/lane2",
+      "to": "/d/snow/lane1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/lane2",
+      "to": "/d/snow/npath3",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/mill",
+      "to": "/d/snow/lane2",
+      "direction": "out",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/ngate",
+      "to": "/d/snow/nstreet2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/npath1",
+      "to": "/d/snow/npath2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/npath1",
+      "to": "/d/snow/nstreet2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/npath2",
+      "to": "/d/snow/npath3",
+      "direction": "southeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/npath2",
+      "to": "/d/snow/npath1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/npath3",
+      "to": "/d/snow/river1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/npath3",
+      "to": "/d/snow/lane2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/npath3",
+      "to": "/d/snow/npath2",
+      "direction": "northwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/npath3",
+      "to": "/d/snow/ebridge",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/nstreet1",
+      "to": "/d/snow/square_n",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/nstreet1",
+      "to": "/d/snow/nstreet2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/nstreet2",
+      "to": "/d/snow/post_office",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/nstreet2",
+      "to": "/d/snow/npath1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/nstreet2",
+      "to": "/d/snow/nstreet1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/nstreet2",
+      "to": "/d/snow/ngate",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/post_office",
+      "to": "/d/snow/nstreet2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/river1",
+      "to": "/d/snow/npath3",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/riverbank",
+      "to": "/d/snow/ruin2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/ruin1",
+      "to": "/d/snow/lane1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/ruin1",
+      "to": "/d/snow/egate",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/ruin2",
+      "to": "/d/snow/riverbank",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/school",
+      "to": "/d/snow/wstreet1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/sgate",
+      "to": "/custom/oldpine/room/path01",
+      "direction": "southeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/sgate",
+      "to": "/custom/zhenwu/room/gate",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/sgate",
+      "to": "/d/snow/sstreet1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/smithy",
+      "to": "/d/snow/square_s",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square",
+      "to": "/d/snow/square_e",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square",
+      "to": "/d/snow/square_n",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square",
+      "to": "/d/snow/square_w",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square",
+      "to": "/d/snow/square_s",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square_e",
+      "to": "/d/snow/epath",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square_e",
+      "to": "/d/snow/square",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square_n",
+      "to": "/d/snow/nstreet1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square_n",
+      "to": "/d/snow/square",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square_s",
+      "to": "/d/snow/square_sw",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square_s",
+      "to": "/d/snow/smithy",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square_s",
+      "to": "/d/snow/square",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square_s",
+      "to": "/d/snow/sstreet1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square_sw",
+      "to": "/d/snow/wstreet1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square_sw",
+      "to": "/d/snow/square_s",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square_sw",
+      "to": "/d/snow/square_w",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square_w",
+      "to": "/d/snow/square_sw",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square_w",
+      "to": "/d/snow/square",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/square_w",
+      "to": "/d/snow/bug_room",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/sstreet1",
+      "to": "/d/snow/sgate",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/sstreet1",
+      "to": "/d/snow/square_s",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/sstreet1",
+      "to": "/d/snow/store",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/store",
+      "to": "/d/snow/sstreet1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/tree",
+      "to": "/d/snow/square",
+      "direction": "down",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/wgate",
+      "to": "/d/snow/wstreet3",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/wstreet1",
+      "to": "/d/snow/school",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/wstreet1",
+      "to": "/d/snow/square_sw",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/wstreet1",
+      "to": "/d/snow/wstreet2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/wstreet2",
+      "to": "/d/snow/wstreet1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/wstreet2",
+      "to": "/d/snow/wstreet3",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/wstreet3",
+      "to": "/d/snow/court",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/wstreet3",
+      "to": "/d/snow/wstreet2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/wstreet3",
+      "to": "/d/snow/wgate",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path01",
+      "to": "/d/snow/sgate",
+      "direction": "northwest",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path01",
+      "to": "/custom/oldpine/room/path02",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path02",
+      "to": "/custom/oldpine/room/path01",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path02",
+      "to": "/custom/oldpine/room/path03",
+      "direction": "southeast",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path03",
+      "to": "/custom/oldpine/room/path02",
+      "direction": "northwest",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path03",
+      "to": "/custom/oldpine/room/path04",
+      "direction": "southeast",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path04",
+      "to": "/custom/oldpine/room/path03",
+      "direction": "northwest",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path04",
+      "to": "/custom/oldpine/room/path05",
+      "direction": "northeast",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path05",
+      "to": "/custom/oldpine/room/path04",
+      "direction": "southwest",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path05",
+      "to": "/custom/oldpine/room/path06",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path06",
+      "to": "/custom/oldpine/room/path05",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path06",
+      "to": "/custom/oldpine/room/path07",
+      "direction": "northeast",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path07",
+      "to": "/custom/oldpine/room/path06",
+      "direction": "southwest",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path07",
+      "to": "/custom/oldpine/room/path08",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path08",
+      "to": "/custom/oldpine_recovered/room/npath1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path08",
+      "to": "/custom/oldpine/room/path07",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path08",
+      "to": "/custom/oldpine/room/path09",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path09",
+      "to": "/custom/oldpine/room/path08",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path09",
+      "to": "/custom/oldpine/room/path10",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine/room/path10",
+      "to": "/custom/oldpine/room/path09",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/cave1",
+      "to": "/custom/oldpine_recovered/room/cave2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/cave2",
+      "to": "/custom/oldpine_recovered/room/cave4",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/cave4",
+      "to": "/custom/oldpine_recovered/room/cave5",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/clearing",
+      "to": "/custom/oldpine_recovered/room/npath3",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/clearing",
+      "to": "/custom/oldpine_recovered/room/spath1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/clearing",
+      "to": "/custom/oldpine_recovered/room/epath1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/cliffdown",
+      "to": "/custom/oldpine_recovered/room/pine7",
+      "direction": "northeast",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/cliffside",
+      "to": "/custom/oldpine_recovered/room/pine1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/epath1",
+      "to": "/custom/oldpine_recovered/room/clearing",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/epath1",
+      "to": "/custom/oldpine_recovered/room/epath2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/epath2",
+      "to": "/custom/oldpine_recovered/room/epath1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/epath2",
+      "to": "/custom/oldpine_recovered/room/epath3",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/epath3",
+      "to": "/custom/oldpine_recovered/room/epath2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/keep1",
+      "to": "/custom/oldpine_recovered/room/pine2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/keep1",
+      "to": "/custom/oldpine_recovered/room/keep2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/keep2",
+      "to": "/custom/oldpine_recovered/room/keep1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/keep2",
+      "to": "/custom/oldpine_recovered/room/keep3",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/keep3",
+      "to": "/custom/oldpine_recovered/room/keep2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/lake",
+      "to": "/custom/oldpine_recovered/room/riverbank1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/npath1",
+      "to": "/custom/oldpine_recovered/room/npath2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/npath2",
+      "to": "/custom/oldpine_recovered/room/npath3",
+      "direction": "southeast",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/npath2",
+      "to": "/custom/oldpine_recovered/room/npath1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/npath3",
+      "to": "/custom/oldpine_recovered/room/npath2",
+      "direction": "northwest",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/npath3",
+      "to": "/custom/oldpine_recovered/room/clearing",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/passage",
+      "to": "/custom/oldpine_recovered/room/secrectpath1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/passage",
+      "to": "/custom/oldpine_recovered/room/waterfall",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/path3",
+      "to": "/custom/oldpine_recovered/room/secrectpath1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/pine1",
+      "to": "/custom/oldpine_recovered/room/pine4",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/pine2",
+      "to": "/custom/oldpine_recovered/room/keep1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/pine4",
+      "to": "/custom/oldpine_recovered/room/pine5",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/pine5",
+      "to": "/custom/oldpine_recovered/room/pine6",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/pine6",
+      "to": "/custom/oldpine_recovered/room/pine7",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/pine7",
+      "to": "/custom/oldpine_recovered/room/cliffdown",
+      "direction": "southwest",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/riverbank1",
+      "to": "/custom/oldpine_recovered/room/riverbank2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/riverbank1",
+      "to": "/custom/oldpine_recovered/room/lake",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/riverbank2",
+      "to": "/custom/oldpine_recovered/room/waterfall",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/riverbank2",
+      "to": "/custom/oldpine_recovered/room/riverbank1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/secrectpath1",
+      "to": "/custom/oldpine_recovered/room/path3",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/secrectpath1",
+      "to": "/custom/oldpine_recovered/room/passage",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/spath1",
+      "to": "/custom/oldpine_recovered/room/clearing",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/spath1",
+      "to": "/custom/oldpine_recovered/room/spath2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/spath2",
+      "to": "/custom/oldpine_recovered/room/spath1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/spath2",
+      "to": "/custom/oldpine_recovered/room/spath3",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/spath3",
+      "to": "/custom/oldpine_recovered/room/spath4",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/spath3",
+      "to": "/custom/oldpine_recovered/room/spath2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/spath4",
+      "to": "/custom/oldpine_recovered/room/spath3",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/tree1",
+      "to": "/custom/oldpine_recovered/room/tree2",
+      "direction": "up",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/tree1",
+      "to": "/custom/oldpine_recovered/room/clearing",
+      "direction": "down",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/tree2",
+      "to": "/custom/oldpine_recovered/room/tree3",
+      "direction": "up",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/tree2",
+      "to": "/custom/oldpine_recovered/room/tree1",
+      "direction": "down",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/tree3",
+      "to": "/custom/oldpine_recovered/room/tree2",
+      "direction": "down",
+      "resolved": true
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/waterfall",
+      "to": "/custom/oldpine_recovered/room/riverbank2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/wizroom/w/windstory/room/inn_w",
+      "to": "/d/snow/square_w",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/big_tent",
+      "to": "/custom/zhenwu/room/yard01",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/camp",
+      "to": "/custom/zhenwu/room/shed",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/gate",
+      "to": "/d/snow/sgate",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/gate",
+      "to": "/custom/zhenwu/room/yard06",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/shed",
+      "to": "/custom/zhenwu/room/yard10",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/shed",
+      "to": "/custom/zhenwu/room/camp",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard01",
+      "to": "/custom/zhenwu/room/yard04",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard01",
+      "to": "/custom/zhenwu/room/yard02",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard01",
+      "to": "/custom/zhenwu/room/big_tent",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard02",
+      "to": "/custom/zhenwu/room/yard01",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard02",
+      "to": "/custom/zhenwu/room/yard03",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard02",
+      "to": "/custom/zhenwu/room/yard05",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard03",
+      "to": "/custom/zhenwu/room/yard02",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard03",
+      "to": "/custom/zhenwu/room/yard06",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard04",
+      "to": "/custom/zhenwu/room/yard01",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard04",
+      "to": "/custom/zhenwu/room/yard07",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard04",
+      "to": "/custom/zhenwu/room/yard05",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard05",
+      "to": "/custom/zhenwu/room/yard02",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard05",
+      "to": "/custom/zhenwu/room/yard08",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard05",
+      "to": "/custom/zhenwu/room/yard04",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard05",
+      "to": "/custom/zhenwu/room/yard06",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard06",
+      "to": "/custom/zhenwu/room/yard03",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard06",
+      "to": "/custom/zhenwu/room/yard09",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard06",
+      "to": "/custom/zhenwu/room/yard05",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard06",
+      "to": "/custom/zhenwu/room/gate",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard07",
+      "to": "/custom/zhenwu/room/yard04",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard07",
+      "to": "/custom/zhenwu/room/yard10",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard08",
+      "to": "/custom/zhenwu/room/yard05",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard08",
+      "to": "/custom/zhenwu/room/yard11",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard09",
+      "to": "/custom/zhenwu/room/yard06",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard09",
+      "to": "/custom/zhenwu/room/yard12",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard10",
+      "to": "/custom/zhenwu/room/yard07",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard10",
+      "to": "/custom/zhenwu/room/yard13",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard10",
+      "to": "/custom/zhenwu/room/yard11",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard10",
+      "to": "/custom/zhenwu/room/shed",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard11",
+      "to": "/custom/zhenwu/room/yard08",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard11",
+      "to": "/custom/zhenwu/room/yard14",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard11",
+      "to": "/custom/zhenwu/room/yard10",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard11",
+      "to": "/custom/zhenwu/room/yard12",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard12",
+      "to": "/custom/zhenwu/room/yard09",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard12",
+      "to": "/custom/zhenwu/room/yard11",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard13",
+      "to": "/custom/zhenwu/room/yard10",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard13",
+      "to": "/custom/zhenwu/room/yard14",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard14",
+      "to": "/custom/zhenwu/room/yard11",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/yard14",
+      "to": "/custom/zhenwu/room/yard13",
+      "direction": "west",
+      "resolved": true
+    }
+  ],
+  "coordinate_policy": "precomputed at build time from LPC exits; browser must never recalculate or mutate coordinates"
+}

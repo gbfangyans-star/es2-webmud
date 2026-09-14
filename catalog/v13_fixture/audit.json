@@ -1,0 +1,12 @@
+{
+  "stats": {
+    "dangling_exits": 0,
+    "dangling_objects": 0,
+    "dangling_merchandise": 0,
+    "dangling_equipment": 0,
+    "door_without_exit": 0,
+    "manual_review_files": 4,
+    "duplicate_paths": 0
+  },
+  "issues": []
+}

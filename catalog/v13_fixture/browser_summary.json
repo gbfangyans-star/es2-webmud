@@ -1,0 +1,28 @@
+{
+  "counts": {
+    "npc": 4,
+    "item": 4,
+    "skill": 2,
+    "daemon": 0,
+    "runtime": 0,
+    "feature": 2,
+    "prototype": 1,
+    "command": 0,
+    "room": 3
+  },
+  "manual_review": 4,
+  "runtime_traits": {
+    "skill_mapping": 3,
+    "teaching": 3,
+    "init": 2,
+    "timed": 1,
+    "inventory": 1,
+    "reset": 1,
+    "vendor": 1
+  },
+  "references": {
+    "total": 10,
+    "resolved": 6
+  },
+  "total": 16
+}

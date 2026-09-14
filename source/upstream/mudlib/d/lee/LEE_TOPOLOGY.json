@@ -1,0 +1,330 @@
+{
+  "source": "user-provided Li Village map (2026-09-13)",
+  "rooms": {
+    "gate_n": {
+      "short": "村口大門",
+      "status": "RECONSTRUCTED",
+      "exits": {
+        "south": "nroad1"
+      }
+    },
+    "nroad1": {
+      "short": "石子路",
+      "status": "RECONSTRUCTED",
+      "exits": {
+        "north": "gate_n",
+        "south": "nroad2",
+        "west": "herb_shop"
+      }
+    },
+    "nroad2": {
+      "short": "石子路",
+      "status": "RECONSTRUCTED",
+      "exits": {
+        "north": "nroad1",
+        "south": "nroad3",
+        "west": "grocery"
+      }
+    },
+    "nroad3": {
+      "short": "石子路",
+      "status": "RECONSTRUCTED",
+      "exits": {
+        "north": "nroad2",
+        "south": "square_w",
+        "west": "school"
+      }
+    },
+    "herb_shop": {
+      "short": "藥鋪",
+      "status": "CONFIRMED_MIXED",
+      "exits": {
+        "east": "nroad1"
+      }
+    },
+    "grocery": {
+      "short": "雜貨鋪",
+      "status": "GENERATED",
+      "exits": {
+        "east": "nroad2"
+      }
+    },
+    "school": {
+      "short": "私塾",
+      "status": "GENERATED",
+      "exits": {
+        "east": "nroad3"
+      }
+    },
+    "hunter": {
+      "short": "獵戶",
+      "status": "GENERATED",
+      "exits": {
+        "south": "wroad2"
+      }
+    },
+    "shrine": {
+      "short": "福祠",
+      "status": "GENERATED",
+      "exits": {
+        "south": "wroad3"
+      }
+    },
+    "gate_w": {
+      "short": "村口大門",
+      "status": "RECONSTRUCTED",
+      "exits": {
+        "east": "wroad1"
+      }
+    },
+    "wroad1": {
+      "short": "石子路",
+      "status": "GENERATED",
+      "exits": {
+        "west": "gate_w",
+        "east": "wroad2"
+      }
+    },
+    "wroad2": {
+      "short": "石子路",
+      "status": "GENERATED",
+      "exits": {
+        "west": "wroad1",
+        "east": "wroad3",
+        "north": "hunter",
+        "south": "farm_w1"
+      }
+    },
+    "wroad3": {
+      "short": "石子路",
+      "status": "GENERATED",
+      "exits": {
+        "west": "wroad2",
+        "east": "square_w",
+        "north": "shrine",
+        "south": "farm_w2"
+      }
+    },
+    "square_w": {
+      "short": "廣場",
+      "status": "GENERATED",
+      "exits": {
+        "north": "nroad3",
+        "west": "wroad3",
+        "east": "square_e",
+        "south": "square_s"
+      }
+    },
+    "square_e": {
+      "short": "廣場",
+      "status": "GENERATED",
+      "exits": {
+        "west": "square_w",
+        "east": "eroad1",
+        "south": "square_c"
+      }
+    },
+    "eroad1": {
+      "short": "石子路",
+      "status": "GENERATED",
+      "exits": {
+        "west": "square_e",
+        "east": "eroad2"
+      }
+    },
+    "eroad2": {
+      "short": "石子路",
+      "status": "GENERATED",
+      "exits": {
+        "west": "eroad1",
+        "east": "gate_e"
+      }
+    },
+    "gate_e": {
+      "short": "村口大門",
+      "status": "RECONSTRUCTED",
+      "exits": {
+        "west": "eroad2",
+        "east": "riverside_s"
+      }
+    },
+    "farm_w1": {
+      "short": "農家",
+      "status": "GENERATED",
+      "exits": {
+        "north": "wroad2"
+      }
+    },
+    "farm_w2": {
+      "short": "農家",
+      "status": "GENERATED",
+      "exits": {
+        "north": "wroad3"
+      }
+    },
+    "square_s": {
+      "short": "廣場",
+      "status": "GENERATED",
+      "exits": {
+        "north": "square_w",
+        "east": "square_c",
+        "south": "pawnshop"
+      }
+    },
+    "square_c": {
+      "short": "廣場中央",
+      "status": "RECONSTRUCTED",
+      "exits": {
+        "west": "square_s",
+        "north": "square_e",
+        "south": "street1",
+        "east": "watermelon_n1"
+      }
+    },
+    "watermelon_n1": {
+      "short": "西瓜田",
+      "status": "RECONSTRUCTED",
+      "exits": {
+        "west": "square_c",
+        "east": "watermelon_n2",
+        "south": "watermelon_s1"
+      }
+    },
+    "watermelon_n2": {
+      "short": "西瓜田",
+      "status": "GENERATED",
+      "exits": {
+        "west": "watermelon_n1",
+        "east": "watermelon_n3",
+        "south": "watermelon_s2"
+      }
+    },
+    "watermelon_n3": {
+      "short": "西瓜田",
+      "status": "GENERATED",
+      "exits": {
+        "west": "watermelon_n2",
+        "south": "watermelon_s3",
+        "northeast": "riverside_s"
+      }
+    },
+    "pawnshop": {
+      "short": "李記當鋪",
+      "status": "CONFIRMED_MIXED",
+      "exits": {
+        "north": "square_s",
+        "east": "street1"
+      }
+    },
+    "street1": {
+      "short": "街道",
+      "status": "GENERATED",
+      "exits": {
+        "west": "pawnshop",
+        "north": "square_c",
+        "south": "street2",
+        "east": "watermelon_s1"
+      }
+    },
+    "watermelon_s1": {
+      "short": "西瓜田",
+      "status": "GENERATED",
+      "exits": {
+        "west": "street1",
+        "east": "watermelon_s2",
+        "north": "watermelon_n1"
+      }
+    },
+    "watermelon_s2": {
+      "short": "西瓜田",
+      "status": "GENERATED",
+      "exits": {
+        "west": "watermelon_s1",
+        "east": "watermelon_s3",
+        "north": "watermelon_n2"
+      }
+    },
+    "watermelon_s3": {
+      "short": "西瓜田",
+      "status": "GENERATED",
+      "exits": {
+        "west": "watermelon_s2",
+        "north": "watermelon_n3",
+        "east": "creek"
+      }
+    },
+    "inn": {
+      "short": "小飯店",
+      "status": "CONFIRMED_MIXED",
+      "exits": {
+        "east": "street2"
+      }
+    },
+    "street2": {
+      "short": "街道",
+      "status": "GENERATED",
+      "exits": {
+        "north": "street1",
+        "west": "inn",
+        "south": "gate_s"
+      }
+    },
+    "gate_s": {
+      "short": "村口大門",
+      "status": "RECONSTRUCTED",
+      "exits": {
+        "north": "street2",
+        "south": "entrance_s"
+      }
+    },
+    "entrance_s": {
+      "short": "村口",
+      "status": "RECONSTRUCTED",
+      "exits": {
+        "north": "gate_s"
+      }
+    },
+    "riverside_n2": {
+      "short": "溪邊小路",
+      "status": "RECONSTRUCTED",
+      "exits": {
+        "south": "riverside_n1"
+      }
+    },
+    "riverside_n1": {
+      "short": "溪邊小路",
+      "status": "RECONSTRUCTED",
+      "exits": {
+        "north": "riverside_n2",
+        "south": "riverside_s"
+      }
+    },
+    "riverside_s": {
+      "short": "溪邊小路",
+      "status": "RECONSTRUCTED",
+      "exits": {
+        "west": "gate_e",
+        "north": "riverside_n1",
+        "south": "creek",
+        "southwest": "watermelon_n3"
+      }
+    },
+    "creek": {
+      "short": "小溪",
+      "status": "RECONSTRUCTED",
+      "exits": {
+        "north": "riverside_s",
+        "west": "watermelon_s3"
+      }
+    }
+  },
+  "room_count": 38,
+  "edge_count": 44,
+  "note": "External connection south of entrance_s intentionally unresolved.",
+  "external_connection": {
+    "from": "/d/snow/egate",
+    "direction": "northeast",
+    "to": "/d/lee/entrance_s",
+    "reverse_direction": "southwest"
+  }
+}

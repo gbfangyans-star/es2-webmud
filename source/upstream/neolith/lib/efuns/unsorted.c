@@ -1,0 +1,1226 @@
+#ifdef	HAVE_CONFIG_H
+#include <config.h>
+#endif /* HAVE_CONFIG_H */
+
+#ifdef HAVE_SYS_RESOURCE_H
+#include <sys/resource.h>
+#endif
+
+#include "src/std.h"
+#include "crc32.h"
+#include "rc.h"
+#include "file_utils.h"
+#include "parse.h"
+#include "dumpstat.h"
+#include "src/interpret.h"
+#include "lpc/object.h"
+#include "lpc/array.h"
+#include "lpc/buffer.h"
+#include "lpc/class.h"
+#include "lpc/mapping.h"
+#include "lpc/compiler.h"
+#include "lpc/otable.h"
+#include "lpc/include/function.h"
+#include "src/ed.h"
+#include "src/backend.h"
+
+#ifdef F_ALLOCATE
+void
+f_allocate (void)
+{
+  sp->u.arr = allocate_array ((size_t)sp->u.number);
+  sp->type = T_ARRAY;
+}
+#endif
+
+
+#ifdef F_ALLOCATE_BUFFER
+void
+f_allocate_buffer (void)
+{
+  buffer_t *buf;
+
+  buf = allocate_buffer ((size_t)sp->u.number);
+  if (buf)
+    {
+      pop_stack ();
+      push_refed_buffer (buf);
+    }
+  else
+    {
+      assign_svalue (sp, &const0);
+    }
+}
+#endif
+
+
+#ifdef F_ED
+void
+f_ed (void)
+{
+  if (!command_giver || !command_giver->interactive)
+    {
+      pop_n_elems (st_num_arg);
+      return;
+    }
+
+  if (!st_num_arg)
+    {
+      /* ed() */
+      ed_start (0, 0, 0, 0, 0);
+    }
+  else if (st_num_arg == 1)
+    {
+      /* ed(fname) */
+      ed_start (SVALUE_STRPTR(sp), 0, 0, 0, 0);
+      pop_stack ();
+    }
+  else if (st_num_arg == 2)
+    {
+      /* ed(fname,exitfn) */
+      ed_start (SVALUE_STRPTR(sp - 1), 0, SVALUE_STRPTR(sp), 0, current_object);
+      pop_2_elems ();
+    }
+  else if (st_num_arg == 3)
+    {
+      /* ed(fname,exitfn,restricted) / ed(fname,writefn,exitfn) */
+      if (sp->type == T_NUMBER)
+        {
+          ed_start (SVALUE_STRPTR(sp - 2), 0, SVALUE_STRPTR(sp - 1), (int)sp->u.number, current_object);
+        }
+      else if (sp->type == T_STRING)
+        {
+          ed_start (SVALUE_STRPTR(sp - 2), SVALUE_STRPTR(sp - 1), SVALUE_STRPTR(sp), 0, current_object);
+        }
+      else
+        {
+          bad_argument (sp, T_NUMBER | T_STRING, 3, F_ED);
+        }
+      pop_3_elems ();
+    }
+  else
+    {				/* st_num_arg == 4 */
+      /* ed(fname,writefn,exitfn,restricted) */
+      if (!((sp - 1)->type == T_STRING))
+        bad_argument (sp - 1, T_STRING, 3, F_ED);
+      if (!(sp->type == T_NUMBER))
+        bad_argument (sp, T_NUMBER, 4, F_ED);
+      ed_start (SVALUE_STRPTR(sp - 3), SVALUE_STRPTR(sp - 2), SVALUE_STRPTR(sp - 1),
+                (int)sp->u.number, current_object);
+      pop_n_elems (4);
+    }
+}
+#endif
+
+
+#ifdef F_ED_CMD
+void
+f_ed_cmd (void)
+{
+  char *res;
+
+  if (current_object->flags & O_DESTRUCTED)
+    error ("destructed objects can't use ed.\n");
+
+  if (!(current_object->flags & O_IN_EDIT))
+    error ("ed_cmd() called with no ed session active.\n");
+
+  res = object_ed_cmd (current_object, SVALUE_STRPTR(sp));
+
+  free_string_svalue (sp);
+  if (res)
+    {
+      SET_SVALUE_MALLOC_STRING(sp, res);
+    }
+  else
+    {
+      SET_SVALUE_CONSTANT_STRING(sp, "");
+    }
+}
+#endif
+
+
+#ifdef F_ED_START
+void
+f_ed_start (void)
+{
+  char *res;
+  char *fname;
+  int restr = 0;
+
+  if (st_num_arg == 2)
+    restr = (sp--)->u.number;
+
+  if (st_num_arg)
+    fname = SVALUE_STRPTR(sp);
+  else
+    fname = 0;
+
+  if (current_object->flags & O_DESTRUCTED)
+    error ("destructed objects can't use ed.\n");
+
+  if (current_object->flags & O_IN_EDIT)
+    error ("ed_start() called while an ed session is already started.\n");
+
+  res = object_ed_start (current_object, fname, restr);
+
+  if (fname)
+    free_string_svalue (sp);
+  else
+    ++sp;
+
+  if (res)
+    {
+      SET_SVALUE_MALLOC_STRING(sp, res);
+    }
+  else
+    {
+      SET_SVALUE_CONSTANT_STRING(sp, "");
+    }
+}
+#endif
+
+
+#ifdef F_FILTER
+void
+f_filter (void)
+{
+  svalue_t *arg = sp - st_num_arg + 1;
+
+  if (arg->type == T_MAPPING)
+    filter_mapping (arg, st_num_arg);
+  else
+    filter_array (arg, st_num_arg);
+}
+#endif
+
+
+#ifdef F_FUNCTION_EXISTS
+void f_function_exists (void) {
+
+  char *str, *res;
+  object_t *ob;
+  int flag = 0;
+
+  if (st_num_arg > 1)
+    {
+      if (st_num_arg > 2)
+        flag = (int)((sp--)->u.number);
+      ob = (sp--)->u.ob;
+      free_object (ob, "f_function_exists");
+    }
+  else
+    {
+      if (current_object->flags & O_DESTRUCTED)
+        {
+          free_string_svalue (sp);
+          *sp = const0;
+          return;
+        }
+      ob = current_object;
+    }
+
+  str = function_exists (SVALUE_STRPTR(sp), ob, flag);
+  free_string_svalue (sp);
+  if (str)
+    {
+      size_t len = SHARED_STRLEN (str) - 2;	/* no .c */
+      res = new_string (len + 1, "function_exists");
+      res[0] = '/';
+      strncpy (res + 1, str, len);
+      res[len + 1] = 0;
+      SET_SVALUE_MALLOC_STRING (sp, res);
+    }
+  else
+    *sp = const0;
+}
+#endif
+
+
+#ifdef F_GET_CONFIG
+void
+f_get_config (void)
+{
+  if (!get_config_item (sp, sp))
+    error ("Bad argument to get_config()\n");
+}
+#endif
+
+
+#ifdef F_MASTER
+void
+f_master (void)
+{
+  if (!master_ob)
+    push_number (0);
+  else
+    push_object (master_ob);
+}
+#endif
+
+
+#ifdef F_MEMBER_ARRAY
+void
+f_member_array (void)
+{
+  array_t *v;
+  int i;
+
+  if (st_num_arg > 2)
+    {
+      i = (int)((sp--)->u.number);
+      if (i < 0)
+        bad_arg (3, F_MEMBER_ARRAY);
+    }
+  else
+    i = 0;
+
+  if (sp->type == T_STRING)
+    {
+      char *res;
+      CHECK_TYPES (sp - 1, T_NUMBER, 1, F_MEMBER_ARRAY);
+      if (i > (int)SVALUE_STRLEN (sp))
+        error ("Index to start search from in member_array() is > string length.\n");
+      if ((res = strchr (SVALUE_STRPTR(sp) + i, (char)(sp - 1)->u.number)))
+        i = (int)(res - SVALUE_STRPTR(sp));
+      else
+        i = -1;
+      free_string_svalue (sp--);
+    }
+  else
+    {
+      int size = (v = sp->u.arr)->size;
+      svalue_t *sv;
+      svalue_t *find;
+      size_t flen = 0;
+
+      find = (sp - 1);
+      /* optimize a bit */
+      if (find->type == T_STRING)
+        flen = SVALUE_STRLEN (find);
+
+      for (; i < size; i++)
+        {
+          switch (find->type | (sv = v->item + i)->type)
+            {
+            case T_STRING:
+              if (string_length_differs(find, sv))
+                continue;
+              if (memcmp (SVALUE_STRPTR(find), SVALUE_STRPTR(sv), flen))
+                continue;
+              break;
+            case T_NUMBER:
+              if (find->u.number == sv->u.number)
+                break;
+              continue;
+            case T_REAL:
+              if (find->u.real == sv->u.real)
+                break;
+              continue;
+            case T_ARRAY:
+              if (find->u.arr == sv->u.arr)
+                break;
+              continue;
+            case T_OBJECT:
+              {
+                if (sv->u.ob->flags & O_DESTRUCTED)
+                  {
+                    assign_svalue (sv, &const0);
+                    continue;
+                  }
+                if (find->u.ob == sv->u.ob)
+                  break;
+                continue;
+              }
+            case T_MAPPING:
+              if (find->u.map == sv->u.map)
+                break;
+              continue;
+            case T_FUNCTION:
+              if (find->u.fp == sv->u.fp)
+                break;
+              continue;
+            case T_BUFFER:
+              if (find->u.buf == sv->u.buf)
+                break;
+              continue;
+            default:
+              if (sv->type == T_OBJECT && sv->u.ob->flags & O_DESTRUCTED)
+                {
+                  assign_svalue (sv, &const0);
+                  if (find->type == T_NUMBER && !find->u.number)
+                    break;
+                }
+              continue;
+            }
+          break;
+        }
+      if (i == size)
+        i = -1;			/* Return -1 for failure */
+      free_array (v);
+      free_svalue (find, "f_member_array");
+      sp--;
+    }
+  put_number (i);
+}
+#endif
+
+
+#ifdef F_MESSAGE
+void
+f_message (void)
+{
+  array_t *use = NULL, *avoid;
+  int num_arg = st_num_arg;
+  svalue_t *args;
+
+  args = sp - num_arg + 1;
+  switch (args[2].type)
+    {
+    case T_OBJECT:
+    case T_STRING:
+      use = allocate_empty_array (1);
+      use->item[0] = args[2];
+      args[2].type = T_ARRAY;
+      args[2].u.arr = use;
+      break;
+    case T_ARRAY:
+      use = args[2].u.arr;
+      break;
+    default:
+      bad_argument (&args[2], T_OBJECT | T_STRING | T_ARRAY, 3, F_MESSAGE);
+    }
+
+  if (num_arg == 4)
+    {
+      switch (args[3].type)
+        {
+        case T_OBJECT:
+          avoid = allocate_empty_array (1);
+          avoid->item[0] = args[3];
+          args[3].type = T_ARRAY;
+          args[3].u.arr = avoid;
+          break;
+        case T_ARRAY:
+          avoid = args[3].u.arr;
+          break;
+        default:
+          avoid = &the_null_array;
+        }
+    }
+  else
+    avoid = &the_null_array;
+
+  if (use != NULL)
+    do_message (&args[0], &args[1], use, avoid, 1);
+  pop_n_elems (num_arg);
+}
+#endif
+
+
+#ifdef F_PREVIOUS_OBJECT
+void f_previous_object (void) {
+  object_t *ob = 0;
+  control_stack_t *p;
+  int i = (int)(sp->u.number);
+
+  if (i > 0)
+    {
+      if (i >= CONFIG_INT (__MAX_CALL_DEPTH__))
+        {
+          sp->u.number = 0;
+          return;
+        }
+      ob = 0;
+      p = csp;
+      do
+        {
+          if ((p->framekind & FRAME_OB_CHANGE) && !(--i))
+            {
+              ob = p->prev_ob;
+              break;
+            }
+        }
+      while (--p >= control_stack);
+    }
+  else if (i == -1)
+    {
+      array_t *v;
+
+      i = previous_ob ? 1 : 0;
+      p = csp;
+      do
+        {
+          if ((p->framekind & FRAME_OB_CHANGE) && p->prev_ob)
+            i++;
+        }
+      while (--p >= control_stack);
+      v = allocate_empty_array (i);
+      p = csp;
+      if (previous_ob)
+        {
+          if (!(previous_ob->flags & O_DESTRUCTED))
+            {
+              v->item[0].type = T_OBJECT;
+              v->item[0].u.ob = previous_ob;
+              add_ref (previous_ob, "previous_object(-1)");
+            }
+          else
+            v->item[0] = const0;
+          i = 1;
+        }
+      else
+        i = 0;
+      do
+        {
+          if ((p->framekind & FRAME_OB_CHANGE) && (ob = p->prev_ob))
+            {
+              if (!(ob->flags & O_DESTRUCTED))
+                {
+                  v->item[i].type = T_OBJECT;
+                  v->item[i].u.ob = ob;
+                  add_ref (ob, "previous_object(-1)");
+                }
+              else
+                v->item[i] = const0;
+              i++;
+            }
+        }
+      while (--p >= control_stack);
+      put_array (v);
+      return;
+    }
+  else if (i < 0)
+    {
+      error ("Illegal negative argument to previous_object()\n");
+    }
+  else
+    ob = previous_ob;
+  if (!ob || (ob->flags & O_DESTRUCTED))
+    sp->u.number = 0;
+  else
+    {
+      put_unrefed_undested_object (ob, "previous_object()");
+    }
+}
+#endif
+
+
+#ifdef F_QUERY_ED_MODE
+void
+f_query_ed_mode (void)
+{
+  /* n = prompt for line 'n'
+     0 = normal ed prompt
+     -1 = not in ed
+     -2 = more prompt */
+  if (current_object->flags & O_IN_EDIT)
+    {
+      push_number (object_ed_mode (current_object));
+    }
+  else
+    push_number (-1);
+}
+#endif
+
+
+#ifdef F_QUERY_LOAD_AVERAGE
+void
+f_query_load_average (void)
+{
+  copy_and_push_string (query_load_av ());
+}
+#endif
+
+
+#ifdef F_QUERY_PRIVS
+void
+f_query_privs (void)
+{
+  ob = sp->u.ob;
+  if (ob->privs != NULL)
+    {
+      free_object (ob, "f_query_privs");
+      SET_SVALUE_SHARED_STRING(sp, make_shared_string(ob->privs, NULL));
+    }
+  else
+    {
+      free_object (ob, "f_query_privs");
+      *sp = const0;
+    }
+}
+#endif
+
+
+#ifdef F_RANDOM
+void
+f_random (void)
+{
+  if (sp->u.number <= 0)
+    {
+      sp->u.number = 0;
+      return;
+    }
+  sp->u.number = rand () % sp->u.number;
+}
+#endif
+
+
+#ifdef F_SET_EVAL_LIMIT
+/* warning: do not enable this without using valid_override() in the master
+   object and a set_eval_limit() simul_efun to restrict access.
+*/
+void
+f_set_eval_limit (void)
+{
+  switch (sp->u.number)
+    {
+    case 0:
+      sp->u.number = eval_cost = CONFIG_INT (__MAX_EVAL_COST__);
+      break;
+    case -1:
+      sp->u.number = eval_cost;
+      break;
+    case 1:
+      sp->u.number = CONFIG_INT (__MAX_EVAL_COST__);
+      break;
+    default:
+      CONFIG_INT (__MAX_EVAL_COST__) = (int)sp->u.number;
+      break;
+    }
+}
+#endif
+
+
+#ifdef F_SET_HIDE
+void
+f_set_hide (void)
+{
+  if (!valid_hide (current_object))
+    {
+      sp--;
+      return;
+    }
+  if ((sp--)->u.number)
+    {
+      if (!(current_object->flags & O_HIDDEN) && current_object->interactive)
+        num_hidden++;
+      current_object->flags |= O_HIDDEN;
+    }
+  else
+    {
+      if ((current_object->flags & O_HIDDEN) && current_object->interactive)
+        num_hidden--;
+      current_object->flags &= ~O_HIDDEN;
+    }
+}
+#endif
+
+
+#ifdef F_SET_PRIVS
+void
+f_set_privs (void)
+{
+  object_t *ob;
+
+  ob = (sp - 1)->u.ob;
+  if (ob->privs != NULL)
+    free_string(to_shared_str(ob->privs));
+  if (!(sp->type == T_STRING))
+    {
+      ob->privs = NULL;
+      sp--;			/* It's a number */
+    }
+  else
+    {
+      ob->privs = make_shared_string(SVALUE_STRPTR(sp), NULL);
+      free_string_svalue (sp--);
+    }
+  free_object (ob, "f_set_privs");
+  sp--;
+}
+#endif
+
+
+#ifdef F_SHADOW
+void
+f_shadow (void)
+{
+  object_t *ob;
+
+  ob = (sp - 1)->u.ob;
+  if (!((sp--)->u.number))
+    {
+      ob = ob->shadowed;
+      free_object (sp->u.ob, "f_shadow:1");
+      if (ob)
+        {
+          add_ref (ob, "shadow(ob, 0)");
+          sp->u.ob = ob;
+        }
+      else
+        *sp = const0;
+      return;
+    }
+  if (ob == current_object)
+    {
+      error ("shadow: Can't shadow self\n");
+    }
+  if (validate_shadowing (ob))
+    {
+      if (current_object->flags & O_DESTRUCTED)
+        {
+          free_object (ob, "f_shadow:2");
+          *sp = const0;
+          return;
+        }
+      /*
+       * The shadow is entered first in the chain.
+       */
+      while (ob->shadowed)
+        ob = ob->shadowed;
+      current_object->shadowing = ob;
+      ob->shadowed = current_object;
+      free_object (sp->u.ob, "f_shadow:3");
+      add_ref (ob, "shadow(ob, 1)");
+      sp->u.ob = ob;
+      return;
+    }
+  free_object (sp->u.ob, "f_shadow:4");
+  *sp = const0;
+}
+#endif
+
+
+#ifdef F_SHUTDOWN
+void
+f_shutdown (void)
+{
+  /* set exit code. return the argument or zero if no argument */
+  if (st_num_arg)
+    g_exit_code = (int)(st_num_arg ? sp->u.number : (*++sp = const0, 0));
+
+  /* initiate shutdown (ends backend loop) */
+  g_proceeding_shutdown = true;
+
+  /* Wake async_runtime_wait immediately so shutdown does not wait for poll timeout. */
+  if (g_runtime)
+    {
+      (void) async_runtime_wakeup (g_runtime);
+    }
+}
+#endif
+
+
+#ifdef F_SIZEOF
+void
+f_sizeof (void)
+{
+  int64_t i;
+
+  switch (sp->type)
+    {
+    case T_CLASS:
+      i = sp->u.arr->size;
+      free_class (sp->u.arr);
+      break;
+    case T_ARRAY:
+      i = sp->u.arr->size;
+      free_array (sp->u.arr);
+      break;
+    case T_MAPPING:
+      i = sp->u.map->count;
+      free_mapping (sp->u.map);
+      break;
+    case T_BUFFER:
+      i = sp->u.buf->size;
+      free_buffer (sp->u.buf);
+      break;
+    case T_STRING:
+      i = SVALUE_STRLEN (sp);
+      free_string_svalue (sp);
+      break;
+    default:
+      i = 0;
+      free_svalue (sp, "f_sizeof");
+    }
+  sp->type = T_NUMBER;
+  sp->u.number = i;
+}
+#endif
+
+
+#ifdef F_THIS_OBJECT
+void
+f_this_object (void)
+{
+  if (current_object->flags & O_DESTRUCTED)	/* Fixed from 3.1.1 */
+    *++sp = const0;
+  else
+    push_object (current_object);
+}
+#endif
+
+
+#ifdef F_THIS_PLAYER
+void
+f_this_player (void)
+{
+  if (sp->u.number)
+    {
+      if (current_interactive)
+        put_unrefed_object (current_interactive, "this_player(1)");
+      else
+        sp->u.number = 0;
+    }
+  else
+    {
+      if (command_giver)
+        put_unrefed_object (command_giver, "this_player(0)");
+      /* else zero is on stack already */
+    }
+}
+#endif
+
+
+#ifdef F_SET_THIS_PLAYER
+void
+f_set_this_player (void)
+{
+  if (sp->type == T_NUMBER)
+    command_giver = 0;
+  else
+    command_giver = sp->u.ob;
+  pop_stack ();
+}
+#endif
+
+
+#ifdef F_TO_FLOAT
+void
+f_to_float (void)
+{
+  double temp = 0;
+
+  switch (sp->type)
+    {
+    case T_NUMBER:
+      sp->type = T_REAL;
+      sp->u.real = (double) sp->u.number;
+      break;
+    case T_STRING:
+      sscanf (SVALUE_STRPTR(sp), "%lf", &temp);
+      free_string_svalue (sp);
+      sp->type = T_REAL;
+      sp->u.real = temp;
+    }
+}
+#endif
+
+
+#ifdef F_TO_INT
+void
+f_to_int (void)
+{
+  switch (sp->type)
+    {
+    case T_REAL:
+      sp->type = T_NUMBER;
+      sp->u.number = (int) sp->u.real;
+      break;
+    case T_STRING:
+      {
+        int temp;
+
+        temp = atoi (SVALUE_STRPTR(sp));
+        free_string_svalue (sp);
+        sp->u.number = temp;
+        sp->type = T_NUMBER;
+        break;
+      }
+    case T_BUFFER:
+      if (sp->u.buf->size < sizeof (int))
+        {
+          free_buffer (sp->u.buf);
+          *sp = const0;
+        }
+      else
+        {
+          int hostint, netint;
+
+          memcpy ((char *) &netint, sp->u.buf->item, sizeof (int));
+          hostint = ntohl (netint);
+          free_buffer (sp->u.buf);
+          put_number (hostint);
+        }
+    }
+}
+#endif
+
+
+#ifdef F_TYPEOF
+void
+f_typeof (void)
+{
+  const char *t = type_name (sp->type);
+
+  free_svalue (sp, "f_typeof");
+  put_constant_string (t);
+}
+#endif
+
+
+#ifdef F_QUERY_SHADOWING
+void
+f_query_shadowing (void)
+{
+  if ((sp->type == T_OBJECT) && (ob = sp->u.ob)->shadowing)
+    {
+      add_ref (ob->shadowing, "query_shadowing(ob)");
+      sp->u.ob = ob->shadowing;
+      free_object (ob, "f_query_shadowing");
+    }
+  else
+    {
+      free_svalue (sp, "f_query_shadowing");
+      *sp = const0;
+    }
+}
+#endif
+
+
+#ifdef F_SET_RESET
+void
+f_set_reset (void)
+{
+  if (st_num_arg == 2)
+    {
+      (sp - 1)->u.ob->next_reset = current_time + sp->u.number;
+      free_object ((--sp)->u.ob, "f_set_reset:1");
+      sp--;
+    }
+  else if (CONFIG_INT (__TIME_TO_RESET__) > 0)
+    {
+      sp->u.ob->next_reset = current_time + CONFIG_INT (__TIME_TO_RESET__) / 2
+        + rand () % (CONFIG_INT (__TIME_TO_RESET__) / 2);
+      free_object ((sp--)->u.ob, "f_set_reset:2");
+    }
+}
+#endif
+
+
+#ifdef F_FLUSH_MESSAGES
+void
+f_flush_messages (void)
+{
+  if (st_num_arg == 1)
+    {
+      if (sp->u.ob->interactive)
+        flush_message (sp->u.ob->interactive);
+      pop_stack ();
+    }
+  else
+    {
+      int i;
+
+      for (i = 0; i < max_users; i++)
+        {
+          if (all_users[i] && !(all_users[i]->iflags & CLOSING))
+            flush_message (all_users[i]);
+        }
+    }
+}
+#endif
+
+
+/* I forgot who wrote this, please claim it :) */
+#ifdef F_REMOVE_SHADOW
+void
+f_remove_shadow (void)
+{
+  object_t *ob;
+
+  ob = current_object;
+  if (st_num_arg)
+    {
+      ob = sp->u.ob;
+      pop_stack ();
+    }
+  if (!ob || !ob->shadowing)
+    push_number (0);
+  else
+    {
+      if (ob->shadowed)
+        ob->shadowed->shadowing = ob->shadowing;
+      if (ob->shadowing)
+        ob->shadowing->shadowed = ob->shadowed;
+      ob->shadowing = ob->shadowed = 0;
+      push_number (1);
+    }
+}
+#endif
+
+
+/* Beek */
+#ifdef F_SET_PROMPT
+void
+f_set_prompt (void)
+{
+  object_t *who;
+  if (st_num_arg == 2)
+    {
+      who = sp->u.ob;
+      pop_stack ();
+    }
+  else
+    who = command_giver;
+
+  if (!who || who->flags & O_DESTRUCTED || !who->interactive)
+    error ("Prompts can only be set for interactives.\n");
+
+  /* Future work */
+  /* ed() will nuke this; also we have to make sure the string will get
+   * freed */
+}
+#endif
+
+
+/* Gudu@VR wrote copy_array() and copy_mapping() which this is heavily
+ * based on.  I made it into a general copy() efun which incorporates
+ * both. -Beek
+ */
+#ifdef F_COPY
+static int depth;
+
+static void deep_copy_svalue (svalue_t *, svalue_t *);
+
+static array_t *
+deep_copy_array (array_t * arg)
+{
+  array_t *vec;
+  int i;
+
+  vec = allocate_empty_array (arg->size);
+  for (i = 0; i < arg->size; i++)
+    deep_copy_svalue (&arg->item[i], &vec->item[i]);
+  return vec;
+}
+
+static int
+doCopy (mapping_t * map, mapping_node_t * elt, mapping_t * dest)
+{
+  svalue_t *sv;
+  (void) map; /* unused */
+
+  sv = find_for_insert (dest, &elt->values[0], 1);
+  if (!sv)
+    {
+      mapping_too_large ();
+      return 1;
+    }
+
+  deep_copy_svalue (&elt->values[1], sv);
+  return 0;
+}
+
+static mapping_t *
+deep_copy_mapping (mapping_t * arg)
+{
+  mapping_t *map;
+
+  map = allocate_mapping (0);	/* this should be fixed.  -Beek */
+  mapTraverse (arg, (map_func_t)doCopy, map);
+  return map;
+}
+
+static void
+deep_copy_svalue (svalue_t * from, svalue_t * to)
+{
+  switch (from->type)
+    {
+    case T_ARRAY:
+    case T_CLASS:
+      depth++;
+      if (depth > MAX_SAVE_SVALUE_DEPTH)
+        {
+          depth = 0;
+          error
+            ("Mappings, arrays and/or classes nested too deep (%d) for copy()\n",
+             MAX_SAVE_SVALUE_DEPTH);
+        }
+      *to = *from;
+      to->u.arr = deep_copy_array (from->u.arr);
+      depth--;
+      break;
+    case T_MAPPING:
+      depth++;
+      if (depth > MAX_SAVE_SVALUE_DEPTH)
+        {
+          depth = 0;
+          error
+            ("Mappings, arrays and/or classes nested too deep (%d) for copy()\n",
+             MAX_SAVE_SVALUE_DEPTH);
+        }
+      *to = *from;
+      to->u.map = deep_copy_mapping (from->u.map);
+      depth--;
+      break;
+    default:
+      assign_svalue_no_free (to, from);
+    }
+}
+
+void
+f_copy (void)
+{
+  svalue_t ret;
+
+  depth = 0;
+  deep_copy_svalue (sp, &ret);
+  free_svalue (sp, "f_copy");
+  *sp = ret;
+}
+#endif
+
+
+/* Gudu@VR */
+/* flag and extra info by Beek */
+#ifdef F_FUNCTIONS
+void
+f_functions (void)
+{
+  int i, j, num, index;
+  array_t *vec, *subvec;
+  runtime_function_u *func_entry;
+  compiler_function_t *funp;
+  program_t *prog;
+  int flag = (int)(sp--)->u.number;
+  unsigned short *types;
+  char buf[256];
+  char *end = buf + sizeof (buf);
+  program_t *progp;
+
+  progp = sp->u.ob->prog;
+  num = progp->num_functions_total;
+  if (num && progp->function_table[progp->num_functions_defined - 1].name[0]
+      == APPLY___INIT_SPECIAL_CHAR)
+    num--;
+
+  vec = allocate_empty_array (num);
+  i = num;
+
+  while (i--)
+    {
+      prog = sp->u.ob->prog;
+      index = i;
+      func_entry = FIND_FUNC_ENTRY (prog, index);
+
+      /* Walk up the inheritance tree to the real definition */
+      while (prog->function_flags[index] & NAME_INHERITED)
+        {
+          prog = prog->inherit[func_entry->inh.offset].prog;
+          index = func_entry->inh.index;
+          func_entry = FIND_FUNC_ENTRY (prog, index);
+        }
+
+      funp = prog->function_table + func_entry->def.f_index;
+
+      if (flag)
+        {
+          if (prog->type_start && prog->type_start[index] != INDEX_START_NONE)
+            types = &prog->argument_types[prog->type_start[index]];
+          else
+            types = 0;
+
+          vec->item[i].type = T_ARRAY;
+          subvec = vec->item[i].u.arr =
+            allocate_empty_array (3 + func_entry->def.num_arg);
+
+          SET_SVALUE_SHARED_STRING(&subvec->item[0], ref_string(to_shared_str(funp->name)));
+
+          subvec->item[1].type = T_NUMBER;
+          subvec->item[1].subtype = 0;
+          subvec->item[1].u.number = func_entry->def.num_arg;
+
+          get_type_name (buf, end, funp->type);
+          SET_SVALUE_SHARED_STRING(&subvec->item[2], make_shared_string(buf, NULL));
+
+          for (j = 0; j < func_entry->def.num_arg; j++)
+            {
+              if (types)
+                {
+                  get_type_name (buf, end, types[j]);
+                  SET_SVALUE_SHARED_STRING(&subvec->item[3 + j], make_shared_string(buf, NULL));
+                }
+              else
+                {
+                  subvec->item[3 + j].type = T_NUMBER;
+                  subvec->item[3 + j].u.number = 0;
+                }
+            }
+        }
+      else
+        {
+          SET_SVALUE_SHARED_STRING(&vec->item[i], ref_string(to_shared_str(funp->name)));
+        }
+    }
+
+  pop_stack ();
+  push_refed_array (vec);
+}
+#endif
+
+
+#ifdef F_FUNCTION_OWNER
+void
+f_function_owner (void)
+{
+  object_t *owner = sp->u.fp->hdr.owner;
+
+  free_funp (sp->u.fp);
+  put_unrefed_object (owner, "f_function_owner");
+}
+#endif
+
+
+#ifdef F_RUSAGE
+void f_rusage (void) {
+  mapping_t *m;
+
+#ifdef HAVE_SYS_RESOURCE_H
+  long usertime, stime;
+  int maxrss;
+  struct rusage rus;
+  if (getrusage (RUSAGE_SELF, &rus) < 0)
+    {
+      m = allocate_mapping (0);
+    }
+  else
+    {
+      usertime = rus.ru_utime.tv_sec * 1000 + rus.ru_utime.tv_usec / 1000;
+      stime = rus.ru_stime.tv_sec * 1000 + rus.ru_stime.tv_usec / 1000;
+      maxrss = rus.ru_maxrss;
+      m = allocate_mapping (16);
+      add_mapping_pair (m, "utime", usertime);
+      add_mapping_pair (m, "stime", stime);
+      add_mapping_pair (m, "maxrss", maxrss);
+      add_mapping_pair (m, "ixrss", rus.ru_ixrss);
+      add_mapping_pair (m, "idrss", rus.ru_idrss);
+      add_mapping_pair (m, "isrss", rus.ru_isrss);
+      add_mapping_pair (m, "minflt", rus.ru_minflt);
+      add_mapping_pair (m, "majflt", rus.ru_majflt);
+      add_mapping_pair (m, "nswap", rus.ru_nswap);
+      add_mapping_pair (m, "inblock", rus.ru_inblock);
+      add_mapping_pair (m, "oublock", rus.ru_oublock);
+      add_mapping_pair (m, "msgsnd", rus.ru_msgsnd);
+      add_mapping_pair (m, "msgrcv", rus.ru_msgrcv);
+      add_mapping_pair (m, "nsignals", rus.ru_nsignals);
+      add_mapping_pair (m, "nvcsw", rus.ru_nvcsw);
+      add_mapping_pair (m, "nivcsw", rus.ru_nivcsw);
+    }
+#else
+  m = allocate_mapping (0);
+#endif
+  push_refed_mapping (m);
+}
+#endif

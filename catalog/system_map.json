@@ -1,0 +1,60 @@
+{
+  "repository_structure": {
+    "/adm": "administrator workspace and privileged LPC objects",
+    "/cmds": "command handlers",
+    "/d": "game domains/areas",
+    "/daemon": "global daemon objects",
+    "/data": "saved LPC objects",
+    "/feature": "shared object features",
+    "/include": "LPC include headers",
+    "/obj": "stock LPC objects",
+    "/std": "LPC object prototypes"
+  },
+  "observed_core": {
+    "character": "/std/char.c",
+    "character_features": [
+      "/feature/char/action.c",
+      "/feature/char/attack.c",
+      "/feature/char/combat.c",
+      "/feature/char/command.c",
+      "/feature/char/condition.c",
+      "/feature/char/finance.c",
+      "/feature/char/message.c",
+      "/feature/char/relation.c",
+      "/feature/char/score.c",
+      "/feature/char/skill.c",
+      "/feature/char/team.c"
+    ],
+    "npc_archetypes": [
+      "/feature/npc/bandit.c",
+      "/feature/npc/currency.c",
+      "/feature/npc/fighter.c",
+      "/feature/npc/scholar.c",
+      "/feature/npc/soldier.c",
+      "/feature/npc/traveler.c",
+      "/feature/npc/vendor.c",
+      "/feature/npc/villager.c"
+    ],
+    "item_prototypes": [
+      "/std/item.c",
+      "/std/money.c",
+      "/std/item/combined.c",
+      "/std/item/container.c",
+      "/std/item/liquid.c",
+      "/std/item/pharmacy.c",
+      "/std/item/reagent.c"
+    ],
+    "race_prototypes": [
+      "/std/race/humanoid.c"
+    ],
+    "command_groups": [
+      "/cmds/adm",
+      "/cmds/arch",
+      "/cmds/imm",
+      "/cmds/std",
+      "/cmds/usr",
+      "/cmds/wiz"
+    ],
+    "starting_area": "/d/snow"
+  }
+}

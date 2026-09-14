@@ -1,0 +1,17 @@
+{
+  "version": "3.17.0",
+  "focus": "multiplayer priority: bridge endurance and restart persistence integrity",
+  "automated": {
+    "bridge_endurance": "500 sessions / 20 waves x 25, zero cross-talk, zero leaked sessions",
+    "targeted_regression": "19 passed",
+    "canonical_v317_multiplayer_audit": "13/13 passed",
+    "core_audit": "12/12 passed",
+    "windows_script_audit": "13 scripts passed",
+    "release_audit": "passed"
+  },
+  "live_windows_neolith": {
+    "status": "required",
+    "gates": ["CHECK_NEOLITH_STORM.bat", "CHECK_MULTIPLAYER_RESILIENCE.bat", "CHECK_RESTART_BEFORE.bat + CHECK_RESTART_AFTER.bat"],
+    "claim": "not run in build environment"
+  }
+}

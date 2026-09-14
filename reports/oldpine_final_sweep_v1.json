@@ -1,0 +1,37 @@
+{
+  "rooms": 41,
+  "npc_files": [
+    "bandit",
+    "bandit_chief",
+    "bandit_commander",
+    "bandit_guard",
+    "bandit_leader",
+    "butterfly",
+    "fat_bandit",
+    "serpent",
+    "skeleton",
+    "tall_bandit",
+    "wolf_dog"
+  ],
+  "object_files": [
+    "bamboo_pipe",
+    "black_suit",
+    "blade",
+    "fur_coat",
+    "glaive",
+    "leather",
+    "long_sword",
+    "parrybook",
+    "robe",
+    "short_sword",
+    "throwing_knife"
+  ],
+  "blockers": [
+    "spy:black_cloth",
+    "maniac:necromancy",
+    "venomsnake:snake_poison",
+    "parrybook:legacy-study-adapter"
+  ],
+  "checks_total": 21,
+  "checks_passed": 21
+}

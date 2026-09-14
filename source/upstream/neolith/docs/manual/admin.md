@@ -1,0 +1,179 @@
+Neolith Administrator Guide
+===========================
+
+# Starting LPMud driver
+The LPMud driver executable is the process to listen for incoming user connections.
+The typical starting command is:
+~~~sh
+neolith -f neolith.conf
+~~~
+
+Traditionally, you would start the LPMud driver and let it run in the background.
+Sometime people would wrap the starting command with a *shell script* and restart it if the driver crashed or shutdown by in-game administrator (e.g. archwizards).
+
+You may use Neolith this way if you're just running a traditional LPMud.
+If you are keen to add efuns or integrate LPMud with some other interesting stuff that involves *modifying* the driver, Neolith provides a ["console mode"](console-mode.md) for administrator to experiment with them:
+~~~sh
+neolith -f neolith.conf -c
+~~~
+
+For troubleshooting and debugging, see [trace.md](trace.md) for information about enabling trace flags.
+
+## Running MUD applications from admin workflows
+
+Neolith can also run a LPC file directly as a MUD application (master file) instead of booting only the configured `MasterFile`.
+This is useful for maintenance tasks, scripted operations, and controlled experiments.
+
+Common admin patterns:
+
+- Single-file application (no config file):
+  ~~~sh
+  neolith -c /path/to/app.c
+  ~~~
+- Regular application with production settings:
+  ~~~sh
+  neolith -f neolith.conf -c mudlib/adm/apps/maintenance_task.c
+  ~~~
+
+When `-f` is used for MUD applications, keep the LPC file inside `MudlibDir`; paths outside mudlib are rejected.
+For architecture details and broader use cases, see [mud-application.md](mud-application.md).
+
+# Command Line Options
+
+Neolith accepts several command line options to control its behavior. All options can be viewed by running `neolith --help`.
+
+## Available Options
+
+| Option | Short | Argument | Description |
+|--------|-------|----------|-------------|
+| | `-f` | `config-file` | Specifies the file path of the configuration file. |
+| `--console-mode` | `-c` | | Run the driver in console mode. See [console-mode.md](console-mode.md) for details. |
+| | `-D` | `macro[=definition]` | Predefines global preprocessor macro for use in mudlib. Can be specified multiple times. |
+| `--debug` | `-d` | `debug-level` | Specifies the runtime debug level (integer). Higher values produce more debug output. |
+| `--epilog` | `-e` | `epilog-level` | Specifies the epilog level to be passed to the master object's `epilog()` apply. |
+| `--pedantic` | `-p` | | Enable pedantic clean up on shutdown. Useful for testing memory leaks. |
+| `--trace` | `-t` | `trace-flags` | Specifies an integer of trace flags to enable trace messages in debug log. See [trace.md](trace.md) for details. |
+| (positional) | | `lpc-file` | Run a LPC file as a MUD application master file. Commonly used with `-c`; with `-f`, the file must be under `MudlibDir`. |
+
+## Examples
+
+Start with a specific configuration file:
+~~~sh
+neolith -f /path/to/neolith.conf
+~~~
+
+Start in console mode with tracing enabled:
+~~~sh
+neolith -f neolith.conf -c -t 0x40
+~~~
+
+Define preprocessor macros for mudlib:
+~~~sh
+neolith -f neolith.conf -D DEBUG_MODE -D MAX_USERS=100
+~~~
+
+Run with debug level 2 and epilog level 1:
+~~~sh
+neolith -f neolith.conf -d 2 -e 1
+~~~
+
+# neolith.conf
+
+Before you can start running your own MUD, you need a configuration file to tell Neolith where is the mudlib along with other settings.
+The source code of Neolith includes an example configuration in [src/neolith.conf](src/neolith.conf).
+
+> [!TIP]
+> The configuration file is optional if you are launching a MUD application.
+
+## Syntax
+
+- For each line, leading whitespace characters are skipped. Then, if the line is empty or starts with the '`#`' character, the entire line is ignored.
+- A setting consists of a name, followed by one or more whitespace character, then followed by the the literal setting value for the rest of the line.
+  (This means it is possible to set empty string for a setting, if the setting name is followed by one or more whitespace characters)
+- A setting name is case-insensitive (usually in camel case)
+- A setting value is case-sensitive, with any trailing whitespace characters stripped for idiot-proof.
+
+## Mandatory Settings
+
+Below is a list of settings that are mandatory.
+Name | Value |
+--- | --- |
+`MudlibDir` | Path of the mudlib directory in the host filesystem. It must be a full-path or a path relative to the configuration file location. |
+`MasterFile` | The file path of the privileged master object. It must be specified in the configuration file or as an argument for MUD applications. |
+
+## MudlibDir and Filesystem Sandboxing
+
+Neolith treats `MudlibDir` as the root of the mudlib filesystem sandbox for driver-internal compile/load paths.
+The only exception for filesystem sandboxing is `LogDir`, which can be set to an absolute path outside of `MudlibDir`.
+
+- Keep `MudlibDir` set to the intended mudlib root directory.
+- Do not rely on the process current working directory as a security boundary.
+- Include, object loading, and binary cache paths are resolved against a verified mudlib root captured at startup.
+- File access efuns are hardened through master permission applies (`valid_read()` / `valid_write()`) and sandboxed path resolution.
+- Paths that attempt traversal (for example using `..`) are rejected.
+
+For design details and implementation references, see [filesystem-sandboxing.md](../internals/filesystem-sandboxing.md).
+
+### File Access Efun Hardening
+
+For file access efuns (such as `cp`, `read_file`, `write_file`, `rm`, and `rename`), Neolith enforces both:
+
+- mudlib policy checks through master object applies (`valid_read()` / `valid_write()`), and
+- sandbox containment under `MudlibDir`.
+
+Operationally, this means mudlib code must pass both policy checks and path safety checks to access files.
+Path traversal patterns (notably `..`) are blocked by the driver.
+
+## Debug logging
+
+- `LogDir` is the base directory used to resolve the debug log file path.
+- `LogDir` can be specified as an absolute path or as a relative path to the mudlib directory.
+- `DebugLogFile` is interpreted as a relative path under `LogDir`, and the log file is opened in append mode.
+- Debug messages are written to a file only when both `LogDir` and `DebugLogFile` are set. Otherwise, debug messages go to stderr.
+- If `LogDir` cannot be resolved to a usable path, Neolith keeps logging on stderr.
+- If the configured log file cannot be opened (for example, missing directory or permission denied), Neolith falls back to stderr.
+- Neolith does not create missing directories automatically; create them and set permissions before startup.
+
+## Optional Settings
+
+Below is a list of optional settings.
+Name | Value | Default |
+--- | --- | --- |
+`MudName` | Name of the MUD, which is made available to LPC by the pre-defined symbol `MUD_NAME`. | (empty string) |
+`Port` | The TCP port for which your MUD shall listen for new connections. | (none) |
+`LogDir` | Base directory for debug log file path resolution. If not set, `DebugLogFile` is ignored and all debug messages go to stderr. | use stderr (ideal for *read-only* mudlib) |
+`DebugLogFile` | Relative log file path under `LogDir`, opened in append mode. If unset (or if `LogDir` is unset), debug messages go to stderr. | Use stderr |
+`LogWithDate` | Prefix each log message with an ISO-8601 format date and time. | No |
+`IncludeDir` | The search path of LPC `#include`. Multiple paths can be assigned by separating them with `:`. Use `/` to mean mudlib top-level directory. | Not using |
+`GlobalInclude` | An #include header that is automatically included by all LPC programs. | Not using |
+`SaveBinaryDir` | The path for storing data file when using `#pragma save_binary`. | Ignores #pragma save_binary |
+`SimulEfunFile` | The first LPC object to be loaded, and all its public functions are made available to any LPC program like efuns. | Not using |
+`DefaultErrorMessage` | A default message shown to the interactive user when LPC runtime error occurs during processing of the commmand he or she has typed. | Not using |
+`DefaultFailMessage` | A default message shown to the interactive user when he or she typed a command that is not recognized by any `add_action` | Not using |
+`CleanUpDuration` | A duration in seconds that the LPMud driver's garbage collection routine waits before calling an unused object's `clean_up()` function | 600 |
+`ResetDuration` | A duration in seconds between the `reset()` function is called in an object. | 1800 |
+`MaxInheritDepth` | Maximum depth of inheritance of LPC objects. | 30 |
+`MaxEvaluationCost` | Maximum cost of a LPC code evaluation | 1000000 |
+`MaxArraySize` | Maximum size of a LPC array. | 15000 |
+`MaxBufferSize` | Maximum size of a LPC buffer. | 4000000 |
+`MaxMappingSize` | Maximum size of a LPC mapping. | 15000 |
+`MaxStringLength` | Maximum length of a LPC string. | 200000 |
+`StackSize` | Maxiumu size of LPC evaluation stack | 1000 |
+`MaxLocalVariables` | Maximum number of local variables in a LPC function. | 25 |
+`MaxCallDepth` | Maximum depth of LPC function calls before the LPMud driver should abort the evaluation. | 50 |
+`ArgumentsInTrace` | Enable output of function call arguments in the dump trace message. | No |
+`LocalVariablesInTrace` | Enable output of local variables in the dump trace message. | No |
+
+### IncludeDir Notes
+
+- `IncludeDir` entries are resolved relative to mudlib.
+- `/` is supported and means the mudlib top-level include search location.
+- You can combine `/` with additional include directories using `:`.
+
+Example from [examples/m3.conf](../../examples/m3.conf):
+
+~~~conf
+IncludeDir      /:/include
+~~~
+
+For sandbox safety, include path traversal attempts (for example `..`) are rejected.

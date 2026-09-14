@@ -1,0 +1,789 @@
+[
+  {
+    "path": "/d/snow/npc/alchemist",
+    "name": "陳維俠",
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 60
+      },
+      {
+        "skill": "sword",
+        "level": 60
+      },
+      {
+        "skill": "parry",
+        "level": 80
+      },
+      {
+        "skill": "dodge",
+        "level": 70
+      },
+      {
+        "skill": "force",
+        "level": 70
+      },
+      {
+        "skill": "kee anatomy",
+        "level": 100
+      },
+      {
+        "skill": "dragon force",
+        "level": 60
+      },
+      {
+        "skill": "alchemy-medication",
+        "level": 140
+      },
+      {
+        "skill": "alchemy-wealth",
+        "level": 40
+      },
+      {
+        "skill": "alchemy-magic",
+        "level": 80
+      },
+      {
+        "skill": "alchemy-immortality",
+        "level": 30
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "force",
+        "mapped_to": "dragon force"
+      }
+    ],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "accept_apprentice",
+      "acquire_skill",
+      "create",
+      "init_apprentice",
+      "set_flag"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child",
+    "name": "阿寶",
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "stealing",
+        "level": 40
+      },
+      {
+        "skill": "dodge",
+        "level": 35
+      },
+      {
+        "skill": "lightswift",
+        "level": 45
+      },
+      {
+        "skill": "dagger",
+        "level": 40
+      },
+      {
+        "skill": "sword",
+        "level": 30
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "dodge",
+        "mapped_to": "lightswift"
+      }
+    ],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "accept_object",
+      "create",
+      "do_follow",
+      "exchange",
+      "give_comb",
+      "init",
+      "relay_say",
+      "set_fon_temp",
+      "timeto_eat"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/gammer",
+    "name": "瞎眼老太婆",
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "staff",
+        "level": 40
+      },
+      {
+        "skill": "stealing",
+        "level": 70
+      },
+      {
+        "skill": "dodge",
+        "level": 90
+      },
+      {
+        "skill": "blade",
+        "level": 30
+      },
+      {
+        "skill": "sword",
+        "level": 30
+      },
+      {
+        "skill": "unarmed",
+        "level": 50
+      },
+      {
+        "skill": "dagger",
+        "level": 70
+      },
+      {
+        "skill": "secondhand dagger",
+        "level": 70
+      },
+      {
+        "skill": "killerhood",
+        "level": 60
+      },
+      {
+        "skill": "force",
+        "level": 90
+      },
+      {
+        "skill": "regular force",
+        "level": 100
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "force",
+        "mapped_to": "regular force"
+      }
+    ],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "accept_fight",
+      "accept_object",
+      "ask_join",
+      "create",
+      "give_coin",
+      "init",
+      "relay_say"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/garrison",
+    "name": "官兵",
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 60
+      },
+      {
+        "skill": "parry",
+        "level": 60
+      },
+      {
+        "skill": "unarmed",
+        "level": 50
+      },
+      {
+        "skill": "dodge",
+        "level": 50
+      },
+      {
+        "skill": "blade",
+        "level": 50
+      }
+    ],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "accept_fight",
+      "create",
+      "init",
+      "intercept"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/girl",
+    "name": "白衣女子",
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 140
+      },
+      {
+        "skill": "dodge",
+        "level": 120
+      },
+      {
+        "skill": "parry",
+        "level": 120
+      },
+      {
+        "skill": "blade",
+        "level": 70
+      },
+      {
+        "skill": "dagger",
+        "level": 70
+      },
+      {
+        "skill": "unarmed",
+        "level": 90
+      },
+      {
+        "skill": "force",
+        "level": 80
+      },
+      {
+        "skill": "celestial force",
+        "level": 80
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "force",
+        "mapped_to": "celestial force"
+      }
+    ],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "accept_object",
+      "attack_intruder",
+      "create",
+      "drop_invitation",
+      "init",
+      "listen_request",
+      "relay_emote",
+      "relay_say"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/guard",
+    "name": "青衣漢子",
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 70
+      },
+      {
+        "skill": "blade",
+        "level": 50
+      },
+      {
+        "skill": "parry",
+        "level": 50
+      },
+      {
+        "skill": "unarmed",
+        "level": 40
+      },
+      {
+        "skill": "dodge",
+        "level": 70
+      }
+    ],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "accept_object",
+      "create",
+      "do_go",
+      "greet_visitor",
+      "init"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/herbalist",
+    "name": "藥鋪掌櫃",
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 5
+      },
+      {
+        "skill": "parry",
+        "level": 5
+      },
+      {
+        "skill": "dodge",
+        "level": 5
+      },
+      {
+        "skill": "dagger",
+        "level": 5
+      }
+    ],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "create",
+      "init"
+    ],
+    "manual_review": [
+      "custom_action",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/lieutenant",
+    "name": "武官",
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 80
+      },
+      {
+        "skill": "blade",
+        "level": 60
+      },
+      {
+        "skill": "unarmed",
+        "level": 65
+      },
+      {
+        "skill": "parry",
+        "level": 60
+      },
+      {
+        "skill": "dodge",
+        "level": 70
+      }
+    ],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "accept_fight",
+      "create",
+      "init",
+      "intercept"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/oldman",
+    "name": "黑衣老人",
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 25
+      },
+      {
+        "skill": "parry",
+        "level": 15
+      },
+      {
+        "skill": "dodge",
+        "level": 20
+      },
+      {
+        "skill": "dagger",
+        "level": 40
+      },
+      {
+        "skill": "stealing",
+        "level": 35
+      }
+    ],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "create",
+      "notify_stat"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/patrol",
+    "name": "巡邏官兵",
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 60
+      },
+      {
+        "skill": "parry",
+        "level": 60
+      }
+    ],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "accept_fight",
+      "create",
+      "protect"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/teacher",
+    "name": "王懷芝",
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "literate",
+        "level": 60
+      }
+    ],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "accept_fight",
+      "accept_info",
+      "acquire_skill",
+      "cancel_pick",
+      "create",
+      "do_sit",
+      "init",
+      "make_new_scholar",
+      "pick_student",
+      "rank",
+      "relay_say",
+      "teach_literate"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/skill/dragon_force",
+    "name": null,
+    "type": "skill",
+    "skills": [],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": "dragon force",
+    "functions": [
+      "create",
+      "do_exercise",
+      "exert_function",
+      "halt_exercise",
+      "skill_advanced",
+      "skill_improved",
+      "valid_enable"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/daemon/skill/sword",
+    "name": null,
+    "type": "skill",
+    "skills": [],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": "sword",
+    "functions": [
+      "attack_using",
+      "create",
+      "valid_enable"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/daemon/skill/unarmed",
+    "name": null,
+    "type": "skill",
+    "skills": [],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": "unarmed",
+    "functions": [
+      "attack_using",
+      "create",
+      "valid_enable"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/traveller",
+    "name": "過路客",
+    "type": "item",
+    "skills": [
+      {
+        "skill": "parry",
+        "level": 50
+      },
+      {
+        "skill": "dodge",
+        "level": 50
+      },
+      {
+        "skill": "blade",
+        "level": 60
+      }
+    ],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "accept_fight",
+      "create"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/vagabond",
+    "name": "市井無賴",
+    "type": "item",
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 5
+      },
+      {
+        "skill": "dodge",
+        "level": 3
+      },
+      {
+        "skill": "dagger",
+        "level": 7
+      }
+    ],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "create"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/example/skill/fonxansword",
+    "name": null,
+    "type": "skill",
+    "skills": [],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": "fonxansword",
+    "functions": [
+      "attack_using",
+      "create",
+      "valid_enable"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/npc/death_black",
+    "name": null,
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 170
+      },
+      {
+        "skill": "sword",
+        "level": 140
+      },
+      {
+        "skill": "blade",
+        "level": 120
+      },
+      {
+        "skill": "parry",
+        "level": 150
+      },
+      {
+        "skill": "unarmed",
+        "level": 130
+      },
+      {
+        "skill": "dodge",
+        "level": 110
+      },
+      {
+        "skill": "berserk",
+        "level": 180
+      }
+    ],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "create"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/npc/death_white",
+    "name": null,
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 60
+      },
+      {
+        "skill": "blunt",
+        "level": 100
+      },
+      {
+        "skill": "sword",
+        "level": 100
+      },
+      {
+        "skill": "parry",
+        "level": 90
+      },
+      {
+        "skill": "unarmed",
+        "level": 80
+      },
+      {
+        "skill": "dodge",
+        "level": 90
+      },
+      {
+        "skill": "blade",
+        "level": 70
+      },
+      {
+        "skill": "berserk",
+        "level": 150
+      }
+    ],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "create"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/npc/garrison",
+    "name": "官兵",
+    "type": "npc",
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 60
+      },
+      {
+        "skill": "blunt",
+        "level": 100
+      },
+      {
+        "skill": "sword",
+        "level": 100
+      },
+      {
+        "skill": "parry",
+        "level": 90
+      },
+      {
+        "skill": "unarmed",
+        "level": 80
+      },
+      {
+        "skill": "dodge",
+        "level": 90
+      },
+      {
+        "skill": "blade",
+        "level": 70
+      },
+      {
+        "skill": "berserk",
+        "level": 150
+      }
+    ],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "accept_fight",
+      "create"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/std/char",
+    "name": null,
+    "type": "skill",
+    "skills": [],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "die",
+      "heart_beat",
+      "id",
+      "is_character",
+      "long",
+      "lose_fight",
+      "move",
+      "name",
+      "notify_stat",
+      "query_id",
+      "rank",
+      "receive_object",
+      "revive",
+      "setup",
+      "short",
+      "unconcious",
+      "visible"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/std/skill",
+    "name": null,
+    "type": "skill",
+    "skills": [],
+    "skill_maps": [],
+    "required_skills": {},
+    "registered_skill_daemon": null,
+    "functions": [
+      "setup",
+      "type"
+    ],
+    "manual_review": []
+  }
+]

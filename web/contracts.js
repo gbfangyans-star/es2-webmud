@@ -1,0 +1,5 @@
+const $=s=>document.querySelector(s);let rows=[];
+const esc=s=>String(s??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+async function load(file){try{rows=await fetch('/api/catalog?file='+file).then(r=>{if(!r.ok)throw Error(r.status);return r.json()});render()}catch(e){rows=[];$('#list').textContent='尚未建立完整 catalog：'+e.message}}
+function render(){const q=$('#filter').value.toLowerCase();$('#list').innerHTML='';for(const x of rows.filter(x=>!q||JSON.stringify(x).toLowerCase().includes(q)).slice(0,3000)){const b=document.createElement('button');b.className='roomitem';b.innerHTML='<b>'+esc(x.name||x.path)+'</b><br><small>'+esc(x.path)+'</small>';b.onclick=()=>{$('#title').textContent=x.name||x.path;$('#detail').textContent=JSON.stringify(x,null,2)};$('#list').appendChild(b)}}
+document.querySelectorAll('[data-file]').forEach(b=>b.onclick=()=>load(b.dataset.file));$('#filter').oninput=render;load('skill_contract_index.json');

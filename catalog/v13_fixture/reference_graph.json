@@ -1,0 +1,262 @@
+{
+  "references": [
+    {
+      "from": "/d/snow/a",
+      "kind": "exit",
+      "to": "/d/snow/b",
+      "resolved": true,
+      "direction": "east"
+    },
+    {
+      "from": "/d/snow/a",
+      "kind": "object",
+      "to": "/d/snow/npc/x",
+      "resolved": true,
+      "count": 1
+    },
+    {
+      "from": "/d/snow/b",
+      "kind": "exit",
+      "to": "/d/snow/a",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/doorroom",
+      "kind": "exit",
+      "to": "/d/snow/a",
+      "resolved": true,
+      "direction": "west"
+    },
+    {
+      "from": "/d/snow/npc/fighter_test",
+      "kind": "skill_map",
+      "to": "sword-art",
+      "resolved": false,
+      "base": "sword"
+    },
+    {
+      "from": "/d/snow/npc/fighter_test",
+      "kind": "skill_map",
+      "to": "sword-art",
+      "resolved": false,
+      "base": "parry"
+    },
+    {
+      "from": "/d/snow/npc/vendor_test",
+      "kind": "merchandise",
+      "to": "/d/snow/obj/thing",
+      "resolved": true,
+      "stock": 3
+    },
+    {
+      "from": "/d/snow/npc/vendor_test",
+      "kind": "skill_map",
+      "to": "test-art",
+      "resolved": false,
+      "base": "unarmed"
+    },
+    {
+      "from": "/d/snow/npc/x",
+      "kind": "merchandise",
+      "to": "/d/snow/obj/thing",
+      "resolved": true,
+      "stock": 3
+    },
+    {
+      "from": "/d/snow/npc/x",
+      "kind": "skill_map",
+      "to": "test-art",
+      "resolved": false,
+      "base": "unarmed"
+    }
+  ],
+  "entities": {
+    "/d/snow/a": {
+      "incoming": [
+        {
+          "from": "/d/snow/b",
+          "kind": "exit",
+          "to": "/d/snow/a",
+          "resolved": true,
+          "direction": "west"
+        },
+        {
+          "from": "/d/snow/doorroom",
+          "kind": "exit",
+          "to": "/d/snow/a",
+          "resolved": true,
+          "direction": "west"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/a",
+          "kind": "exit",
+          "to": "/d/snow/b",
+          "resolved": true,
+          "direction": "east"
+        },
+        {
+          "from": "/d/snow/a",
+          "kind": "object",
+          "to": "/d/snow/npc/x",
+          "resolved": true,
+          "count": 1
+        }
+      ]
+    },
+    "/d/snow/b": {
+      "incoming": [
+        {
+          "from": "/d/snow/a",
+          "kind": "exit",
+          "to": "/d/snow/b",
+          "resolved": true,
+          "direction": "east"
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/b",
+          "kind": "exit",
+          "to": "/d/snow/a",
+          "resolved": true,
+          "direction": "west"
+        }
+      ]
+    },
+    "/d/snow/doorroom": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/d/snow/doorroom",
+          "kind": "exit",
+          "to": "/d/snow/a",
+          "resolved": true,
+          "direction": "west"
+        }
+      ]
+    },
+    "/d/snow/npc/fighter_test": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/fighter_test",
+          "kind": "skill_map",
+          "to": "sword-art",
+          "resolved": false,
+          "base": "sword"
+        },
+        {
+          "from": "/d/snow/npc/fighter_test",
+          "kind": "skill_map",
+          "to": "sword-art",
+          "resolved": false,
+          "base": "parry"
+        }
+      ]
+    },
+    "/d/snow/npc/vendor_test": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/vendor_test",
+          "kind": "merchandise",
+          "to": "/d/snow/obj/thing",
+          "resolved": true,
+          "stock": 3
+        },
+        {
+          "from": "/d/snow/npc/vendor_test",
+          "kind": "skill_map",
+          "to": "test-art",
+          "resolved": false,
+          "base": "unarmed"
+        }
+      ]
+    },
+    "/d/snow/npc/x": {
+      "incoming": [
+        {
+          "from": "/d/snow/a",
+          "kind": "object",
+          "to": "/d/snow/npc/x",
+          "resolved": true,
+          "count": 1
+        }
+      ],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/x",
+          "kind": "merchandise",
+          "to": "/d/snow/obj/thing",
+          "resolved": true,
+          "stock": 3
+        },
+        {
+          "from": "/d/snow/npc/x",
+          "kind": "skill_map",
+          "to": "test-art",
+          "resolved": false,
+          "base": "unarmed"
+        }
+      ]
+    },
+    "/d/snow/obj/thing": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/vendor_test",
+          "kind": "merchandise",
+          "to": "/d/snow/obj/thing",
+          "resolved": true,
+          "stock": 3
+        },
+        {
+          "from": "/d/snow/npc/x",
+          "kind": "merchandise",
+          "to": "/d/snow/obj/thing",
+          "resolved": true,
+          "stock": 3
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/skill/sword-art": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/skill/test-art": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/combat": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/vendor": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/sword": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/armor/cloth": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/armor/fur_hat": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/char": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/item/container": {
+      "incoming": [],
+      "outgoing": []
+    }
+  }
+}

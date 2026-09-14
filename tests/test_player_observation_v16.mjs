@@ -1,0 +1,11 @@
+import assert from 'node:assert/strict';
+import fs from 'node:fs';import os from 'node:os';import path from 'node:path';import {spawnSync} from 'node:child_process';
+const d=fs.mkdtempSync(path.join(os.tmpdir(),'es2v16-'));
+fs.writeFileSync(path.join(d,'hp.txt'),'形體 90/100\t精 80/90\t氣 70/80\t神 60/70\n食物 50/100\t飲水 40/100\t疲勞 30/100\n');
+fs.writeFileSync(path.join(d,'skills.txt'),'  基本內功 (force) - 爐火純青 150\n');
+fs.writeFileSync(path.join(d,'inventory.txt'),'你身上帶著下列這些東西(負重 12%)﹕\nˇ長劍◎\n');
+const out=path.join(d,'observation.json');
+const r=spawnSync(process.execPath,['tools/build_player_observation.mjs','--hp',path.join(d,'hp.txt'),'--skills',path.join(d,'skills.txt'),'--inventory',path.join(d,'inventory.txt'),'--out',out],{cwd:new URL('..',import.meta.url),encoding:'utf8'});
+assert.equal(r.status,0,r.stderr);const x=JSON.parse(fs.readFileSync(out,'utf8'));
+assert.equal(x.commands.hp.state.vitals.hp.current,90);assert.equal(x.commands.skills.state.skills[0].skillId,'force');assert.equal(x.commands.inventory.state.inventory[0].equipped,true);
+console.log('v1.6 observation bundle tests passed');

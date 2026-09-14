@@ -1,0 +1,185 @@
+[
+  {
+    "path": "/d/snow/npc/fighter_test",
+    "name": "劍客",
+    "ids": [
+      "fighter"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": 9,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 40
+      },
+      {
+        "skill": "parry",
+        "level": 25
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "sword",
+        "mapped_to": "sword-art"
+      },
+      {
+        "base": "parry",
+        "mapped_to": "sword-art"
+      }
+    ],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "skill_mapping",
+      "teaching"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/vendor_test",
+    "name": "商人",
+    "ids": [
+      "vendor",
+      "merchant"
+    ],
+    "race": "human",
+    "class": null,
+    "gender": "male",
+    "level": 7,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 20
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "unarmed",
+        "mapped_to": "test-art"
+      }
+    ],
+    "equipment": [],
+    "merchandise": [
+      {
+        "target": "../obj/thing",
+        "relative": true,
+        "stock": 3
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_talk",
+        "verb": "talk"
+      }
+    ],
+    "callouts": [
+      {
+        "function": "hello",
+        "delay": 2
+      }
+    ],
+    "runtime_traits": [
+      "init",
+      "skill_mapping",
+      "teaching",
+      "timed"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/x",
+    "name": "測試者",
+    "ids": [
+      "tester"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "gender": null,
+    "level": 20,
+    "attributes": {
+      "str": 20
+    },
+    "stat_maximums": {
+      "kee": 80
+    },
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 12
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "unarmed",
+        "mapped_to": "test-art"
+      }
+    ],
+    "equipment": [
+      {
+        "stock_type": "weapon",
+        "name": "longsword",
+        "action": "wield"
+      }
+    ],
+    "merchandise": [
+      {
+        "target": "../obj/thing",
+        "relative": true,
+        "stock": 3
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_go",
+        "verb": "go"
+      }
+    ],
+    "callouts": [],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "skill_mapping",
+      "teaching"
+    ],
+    "manual_review": [
+      "custom_action",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/feature/npc/vendor",
+    "name": null,
+    "ids": [],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "reset",
+      "vendor"
+    ],
+    "manual_review": [
+      "vendor_logic"
+    ]
+  }
+]

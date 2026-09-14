@@ -1,0 +1,81 @@
+#pragma once
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/**
+ * @file timer.h
+ * @brief Cross-platform timer abstraction layer
+ * 
+ * Provides a unified interface for high-resolution periodic timers
+ * across different platforms (POSIX librt and Windows waitable timers).
+ */
+
+/**
+ * @brief Timer error codes
+ */
+typedef enum {
+    TIMER_OK = 0,               /**< Success */
+    TIMER_ERR_NULL_PARAM = -1,  /**< NULL parameter passed */
+    TIMER_ERR_ALREADY_ACTIVE = -2,  /**< Timer already running */
+    TIMER_ERR_NOT_ACTIVE = -3,  /**< Timer not running */
+    TIMER_ERR_SYSTEM = -4,      /**< System error (check errno/GetLastError) */
+    TIMER_ERR_THREAD = -5,      /**< Thread creation/management failed */
+    TIMER_ERR_INVALID_INTERVAL = -6  /**< Invalid interval specified */
+} timer_error_t;
+
+/* Timer callback function type */
+typedef void (*timer_callback_t)(void);
+
+/* Timer handle type - opaque structure for C++11 implementation */
+typedef struct {
+    void* internal;  /* Points to C++ platform_timer_internal structure */
+} platform_timer_t;
+
+/**
+ * @brief Initialize the timer system
+ * @param timer Pointer to timer handle structure
+ * @return TIMER_OK on success, error code on failure
+ */
+timer_error_t platform_timer_init(platform_timer_t *timer);
+
+/**
+ * @brief Start a periodic timer
+ * @param timer Pointer to initialized timer handle
+ * @param interval_us Timer interval in microseconds
+ * @param callback Function to call on each timer expiration
+ * @return TIMER_OK on success, error code on failure
+ */
+timer_error_t platform_timer_start(platform_timer_t *timer, unsigned long interval_us, timer_callback_t callback);
+
+/**
+ * @brief Stop the timer
+ * @param timer Pointer to timer handle
+ * @return TIMER_OK on success, error code on failure
+ */
+timer_error_t platform_timer_stop(platform_timer_t *timer);
+
+/**
+ * @brief Cleanup timer resources
+ * @param timer Pointer to timer handle
+ */
+void platform_timer_cleanup(platform_timer_t *timer);
+
+/**
+ * @brief Check if timer is currently active
+ * @param timer Pointer to timer handle
+ * @return 1 if active, 0 if not active
+ */
+int platform_timer_is_active(const platform_timer_t *timer);
+
+/**
+ * @brief Convert timer error code to string
+ * @param error Error code
+ * @return Human-readable error string
+ */
+const char *timer_error_string(timer_error_t error);
+
+#ifdef __cplusplus
+}
+#endif

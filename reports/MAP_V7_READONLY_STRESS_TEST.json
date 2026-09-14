@@ -1,0 +1,50 @@
+{
+  "map_format": "es2-static-world-map-v2-readonly-coordinates",
+  "nodes": 152,
+  "edges": 281,
+  "all_nodes_have_xy": true,
+  "coordinate_collisions": 0,
+  "map_hash_before": "41f581a7e0fde136e3f66c87229a16510a15140469a520433b84a668566c030d",
+  "map_hash_after": "41f581a7e0fde136e3f66c87229a16510a15140469a520433b84a668566c030d",
+  "immutable_after_100k_moves": true,
+  "walkers": [
+    {
+      "walker": 1,
+      "steps": 20000,
+      "valid_moves": 20000,
+      "unique_rooms": 45
+    },
+    {
+      "walker": 2,
+      "steps": 20000,
+      "valid_moves": 20000,
+      "unique_rooms": 13
+    },
+    {
+      "walker": 3,
+      "steps": 20000,
+      "valid_moves": 20000,
+      "unique_rooms": 66
+    },
+    {
+      "walker": 4,
+      "steps": 20000,
+      "valid_moves": 20000,
+      "unique_rooms": 12
+    },
+    {
+      "walker": 5,
+      "steps": 20000,
+      "valid_moves": 20000,
+      "unique_rooms": 4
+    }
+  ],
+  "source_guards": {
+    "no_runtime_graph_nodes_push": true,
+    "no_runtime_adjacency_set": true,
+    "no_runtime_coordinate_rebuild": true,
+    "readonly_cache_key": true,
+    "fixed_coordinate_loader": true,
+    "v7_marker": true
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "ok": true,
+  "scope": "v3.20.1 player lifecycle/home persistence static audit",
+  "checks": [
+    {
+      "name": "revive_delay_is_20_seconds",
+      "ok": true,
+      "note": ""
+    },
+    {
+      "name": "death_still_creates_corpse",
+      "ok": true,
+      "note": ""
+    },
+    {
+      "name": "death_still_announces_dead",
+      "ok": true,
+      "note": ""
+    },
+    {
+      "name": "home_storage_200_slots",
+      "ok": true,
+      "note": ""
+    },
+    {
+      "name": "home_storage_saved_to_player",
+      "ok": true,
+      "note": ""
+    },
+    {
+      "name": "home_rooms_saved_to_player",
+      "ok": true,
+      "note": ""
+    },
+    {
+      "name": "home_room_cap_10",
+      "ok": true,
+      "note": ""
+    },
+    {
+      "name": "home_room_price_linear_10_gold",
+      "ok": true,
+      "note": ""
+    },
+    {
+      "name": "home_owner_bound",
+      "ok": true,
+      "note": ""
+    }
+  ]
+}

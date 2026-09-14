@@ -1,0 +1,81 @@
+{
+  "ok": true,
+  "required": 12,
+  "present": 12,
+  "missing": [],
+  "checks": {
+    "connection_login": {
+      "path": "/obj/login",
+      "present": true,
+      "type": "runtime",
+      "sha256": "60a4168b7b4e6f2d2a1747647fa417ea7957c1864d25ba8466b6b1e9695f243f"
+    },
+    "player_object": {
+      "path": "/obj/user",
+      "present": true,
+      "type": "runtime",
+      "sha256": "6971629b3ab5d93f481fe7db04323434c9f41cc1845e18eab0613f6019e7c50f"
+    },
+    "character": {
+      "path": "/std/char",
+      "present": true,
+      "type": "skill",
+      "sha256": "0a73b86125a42882dc2b7b43bdc83fa90fa01659ee59c3d87b96f91703046685"
+    },
+    "char_attack": {
+      "path": "/feature/char/attack",
+      "present": true,
+      "type": "feature",
+      "sha256": "35ccdb7048346e05d583a36ec38c1a4e937d04ddc3d9916fdfac56ff8054c873"
+    },
+    "char_combat": {
+      "path": "/feature/char/combat",
+      "present": true,
+      "type": "feature",
+      "sha256": "c4687322959daebca80d740b42e33320d7eeda2905a352bf965b4d071569587f"
+    },
+    "char_skill": {
+      "path": "/feature/char/skill",
+      "present": true,
+      "type": "feature",
+      "sha256": "019818125d56934d33b5453a0f8b6bcafeaf5e6ed5e9ee5ee0ab61631430e9c7"
+    },
+    "char_condition": {
+      "path": "/feature/char/condition",
+      "present": true,
+      "type": "feature",
+      "sha256": "b5c4eb8ef39b7d3f0e8c857dadb63922ae80867ca90dd322ebe744ff580a9d13"
+    },
+    "char_statistic": {
+      "path": "/feature/statistic",
+      "present": true,
+      "type": "feature",
+      "sha256": "40a941da7c276d64ec0bbbd391d6a9a30ac0bd43fadc500056019d11a4c3bd4b"
+    },
+    "login_daemon": {
+      "path": "/adm/daemons/logind",
+      "present": true,
+      "type": "daemon",
+      "sha256": "6a0d3fb4d50123fc344be4f104757e4171b14fe4af57e547d04c76978c3cd45e"
+    },
+    "enter_daemon": {
+      "path": "/adm/daemons/enterd",
+      "present": true,
+      "type": "daemon",
+      "sha256": "2ddf2c745585f937293a530ab9979e3758415b521b2d3b68851f43fabb4fe85b"
+    },
+    "combat_daemon": {
+      "path": "/adm/daemons/combatd",
+      "present": true,
+      "type": "daemon",
+      "sha256": "afea27591bdc99ddaf7527f09d516e737d487599d12d23b1276e721b9b1b9a87"
+    },
+    "character_daemon": {
+      "path": "/adm/daemons/chard",
+      "present": true,
+      "type": "daemon",
+      "sha256": "12c0e45d085c3a3bebce484b766a37fac83bd1ceab3511372e1387e9609f29cd"
+    }
+  },
+  "source_policy": "taedlar/es2_mudlib only"
+}

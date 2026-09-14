@@ -1,0 +1,6 @@
+v3.20.20
+- Fixed CUSTOM HOME development_board.c and bed.c Neolith compatibility: removed nonexistent <object.h> include and invalid ITEM ::init() calls.
+- Audited home add_action verbs for command shadowing. Wizard canonical `home` now passes through; regular player `home` and Chinese 家園 remain available at the teleporter.
+- WebHUD telemetry no longer consumes MAX_COMMAND_PER_SECOND.
+- Reduced HUD polling from 400ms to 800ms, added 350ms player-input priority window, and debounced event-driven refreshes to prevent internal polling bursts from competing with user commands.
+- Added home runtime compatibility audit.

@@ -1,0 +1,4462 @@
+[
+  {
+    "file": "adm/obj/mailbox.c",
+    "path": "/adm/obj/mailbox",
+    "type": "item",
+    "sha256": "d8457509bd5cc749b92a10b970d0b17826ca4da27844c86e71dad1edc66906f9",
+    "inherits": [
+      "ITEM",
+      "F_SAVE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_SAVE",
+        "target": "F_SAVE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "confirm_copy",
+      "create",
+      "do_discard",
+      "do_forward",
+      "do_from",
+      "do_mail",
+      "do_read",
+      "get_mail_text",
+      "get_mail_title",
+      "init",
+      "owner_is_killed",
+      "query_save_file",
+      "receive_mail",
+      "retire",
+      "short"
+    ],
+    "runtime_traits": [
+      "init",
+      "interactive",
+      "timed"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "uses_input_to": true,
+    "literal_prompts": [
+      "信件標題﹕",
+      "信件內容﹕\\n",
+      "您自己要留一份備份嗎(y/n)﹖[n]",
+      "Ok.\\n",
+      "寄信失敗！\\n",
+      "你的信札中目前沒有任何信件。\\n",
+      "Ok.\\n",
+      "Ok.\\n"
+    ],
+    "name": "信札",
+    "ids": [
+      "mail folder",
+      "mail",
+      "folder"
+    ],
+    "unit": "個",
+    "long": "這是一個用來整理你信件的信札﹐你可以用以下指令來處理你的信件：\n\nmail <某人>\t\t寄信給別人﹐除非你是巫師﹐否則你必須在驛站才能寄信。\nforward <編號> <某人>\t將某封信轉寄給別人﹐同樣必須在驛站才有用。\nfrom [-a]\t\t查看信札中的信件，預設只顯示尚未讀取的信件，加上 -a\n\t\t\t會顯示全部的信件。\nread <編號>\t\t閱讀一封信件。\ndiscard <編號>\t\t丟棄一封信件。",
+    "actions": [
+      {
+        "handler": "do_mail",
+        "verb": "mail"
+      },
+      {
+        "handler": "do_forward",
+        "verb": "forward"
+      },
+      {
+        "handler": "do_from",
+        "verb": "from"
+      },
+      {
+        "handler": "do_read",
+        "verb": "read"
+      },
+      {
+        "handler": "do_discard",
+        "verb": "discard"
+      }
+    ],
+    "callouts": [
+      {
+        "function": "retire",
+        "delay": 0
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_mail",
+        "verb": "mail"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_forward",
+        "verb": "forward"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_from",
+        "verb": "from"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_read",
+        "verb": "read"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_discard",
+        "verb": "discard"
+      }
+    ],
+    "combat_message_traits": [
+      "miss_text"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "adm/obj/master.c",
+    "path": "/adm/obj/master",
+    "type": "item",
+    "sha256": "6c7a08681513e54994dbfcd131f9d06adafde341cbd6322d96949d1feea714d4",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "compile_object",
+      "connect",
+      "crash",
+      "create",
+      "creator_file",
+      "destruct_env_of",
+      "epilog",
+      "error_handler",
+      "get_bb_uid",
+      "get_root_uid",
+      "get_save_file_name",
+      "log_error",
+      "make_path_absolute",
+      "object_name",
+      "preload",
+      "retrieve_ed_setup",
+      "save_ed_setup",
+      "standard_trace",
+      "valid_bind",
+      "valid_object",
+      "valid_override",
+      "valid_read",
+      "valid_save_binary",
+      "valid_seteuid",
+      "valid_socket",
+      "valid_write"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "Oops, something goes wrong. Please try again later."
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "adm/obj/simul_efun.c",
+    "path": "/adm/obj/simul_efun",
+    "type": "item",
+    "sha256": "5f3e18265792e1d68819b556455f8211f76683c477256d45d37ce7ccb6c1f9ff",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/obj/basic_book.c",
+    "path": "/d/snow/obj/basic_book",
+    "type": "item",
+    "sha256": "97f4bad34292d6902229e09dc889d4b63adc440d3667165034def0a268e79e90",
+    "inherits": [
+      "ITEM",
+      "F_STUDY"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_STUDY",
+        "target": "F_STUDY",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "【幼學輯要】",
+    "ids": [
+      "book of elementary",
+      "book"
+    ],
+    "weight": 1000,
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "unit": "本",
+    "value": 200,
+    "required_skills": {
+      "literate": 1
+    },
+    "study_content": {
+      "literate": 10
+    },
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/obj/literate_book.c",
+    "path": "/d/snow/obj/literate_book",
+    "type": "item",
+    "sha256": "97f4bad34292d6902229e09dc889d4b63adc440d3667165034def0a268e79e90",
+    "inherits": [
+      "ITEM",
+      "F_STUDY"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_STUDY",
+        "target": "F_STUDY",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "【幼學輯要】",
+    "ids": [
+      "book of elementary",
+      "book"
+    ],
+    "weight": 1000,
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "unit": "本",
+    "value": 200,
+    "required_skills": {
+      "literate": 1
+    },
+    "study_content": {
+      "literate": 10
+    },
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/obj/stone.c",
+    "path": "/d/snow/obj/stone",
+    "type": "item",
+    "sha256": "1c2468442f146a08a2f44be70d26077755238f3fc4d764e9b72d1e12e2698370",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "create",
+      "do_clean",
+      "do_touch",
+      "init"
+    ],
+    "runtime_traits": [
+      "init",
+      "timed"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "weight": 100000000,
+    "numeric_calls": {
+      "set_weight": 100000000
+    },
+    "unit": "個",
+    "long": "一顆七彩絢爛的大石, 可以消去你身上錯亂的記錄\n若是你在讀取留言板有問題, 可以試著摸摸這塊大\n石(touch stone)。\n",
+    "value": 1,
+    "actions": [
+      {
+        "handler": "do_touch",
+        "verb": "touch"
+      }
+    ],
+    "temp_values": {
+      "stone/clean": 1
+    },
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_touch",
+        "verb": "touch"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "tell_object"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "include/armor.h",
+    "path": "/include/armor.h",
+    "type": "item",
+    "sha256": "1d485633fe260ffaee951215a1d32e646f8785e12cf46ceb4ab28e56334b28c9",
+    "inherits": [
+      "ITEM",
+      "F_ATTRIBUTE",
+      "F_EQUIP",
+      "F_STATISTIC"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_ATTRIBUTE",
+        "target": "F_ATTRIBUTE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_EQUIP",
+        "target": "F_EQUIP",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_STATISTIC",
+        "target": "F_STATISTIC",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/weapon.h",
+    "path": "/include/weapon.h",
+    "type": "item",
+    "sha256": "9799600bf7add3a027c34c8a3295d911cfb0325eb60e63dcb385083e100e8e59",
+    "inherits": [
+      "ITEM",
+      "F_ATTRIBUTE",
+      "F_EQUIP",
+      "F_STATISTIC"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_ATTRIBUTE",
+        "target": "F_ATTRIBUTE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_EQUIP",
+        "target": "F_EQUIP",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_STATISTIC",
+        "target": "F_STATISTIC",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/man.c",
+    "path": "/obj/area/man",
+    "type": "item",
+    "sha256": "9766bd11c625e0de58c99bc31c8f00d158e6ae808b43b6c4e47abfcec6ba130f",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [
+      "inventory"
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "路人",
+    "ids": [
+      "man"
+    ],
+    "race": "human",
+    "level": 2,
+    "numeric_calls": {
+      "set_level": 2
+    },
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "function_calls": [
+      "wear",
+      "wield"
+    ],
+    "long": "一個普通的路人﹐像這樣的人一天可以在路上碰見幾十個。\n",
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      },
+      {
+        "target": "/obj/area/obj/shortsword",
+        "relative": false,
+        "action": "wield"
+      }
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/axe.c",
+    "path": "/obj/area/obj/axe",
+    "type": "item",
+    "sha256": "7f8c5ff352111f0e63aed298f35f6677d6531f02058e368f691a0828b96ed150",
+    "inherits": [
+      "F_AXE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_AXE",
+        "target": "F_AXE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "斧頭",
+    "ids": [
+      "axe"
+    ],
+    "weight": 10000,
+    "numeric_calls": {
+      "set_weight": 10000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "axe",
+        "twohanded axe"
+      ]
+    },
+    "unit": "把",
+    "long": "這是一把尋常的斧頭，多半用來砍樹劈柴用。\n",
+    "value": 2700,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/bag.c",
+    "path": "/obj/area/obj/bag",
+    "type": "item",
+    "sha256": "d86a0d0f61616f585f487b27128dbd13a1553dcb6c1f88d28098de59c262f543",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_object",
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "麻布袋",
+    "ids": [
+      "bag"
+    ],
+    "weight": 700,
+    "numeric_calls": {
+      "set_weight": 700,
+      "set_max_encumbrance": 30000
+    },
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "unit": "隻",
+    "long": "一隻麻布口袋，看來可以裝不少東西。\n",
+    "value": 130,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/bastardsword.c",
+    "path": "/obj/area/obj/bastardsword",
+    "type": "item",
+    "sha256": "8bd7e5d776699805ee88b0896581262d74a2893021cff4227ae6fbe81833ecec",
+    "inherits": [
+      "F_SWORD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SWORD",
+        "target": "F_SWORD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "varify_template"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "大劍",
+    "ids": [
+      "bastardsword",
+      "sword"
+    ],
+    "weight": 16000,
+    "numeric_calls": {
+      "set_weight": 16000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "twohanded sword",
+        "sword"
+      ]
+    },
+    "unit": "把",
+    "value": 8500,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/belt.c",
+    "path": "/obj/area/obj/belt",
+    "type": "item",
+    "sha256": "71c67963e08cee90b3eaef4ba734a6eb936176a5bf7815e75bceb9e9c7a17f14",
+    "inherits": [
+      "F_WAIST_EQ"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_WAIST_EQ",
+        "target": "F_WAIST_EQ",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "腰帶",
+    "ids": [
+      "belt"
+    ],
+    "weight": 100,
+    "wear_as": "waist_eq",
+    "setup_kinds": [
+      "waist_eq"
+    ],
+    "armor_apply": [
+      {
+        "slot": "waist_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/waist_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 100
+    },
+    "unit": "件",
+    "value": 200,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/blade.c",
+    "path": "/obj/area/obj/blade",
+    "type": "item",
+    "sha256": "e62bfc4ecd52f4b0982dc1d8023cd803aa93129520d73d01edefab5cf34afc79",
+    "inherits": [
+      "F_BLADE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_BLADE",
+        "target": "F_BLADE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "varify_template"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "單刀",
+    "ids": [
+      "blade"
+    ],
+    "weight": 8000,
+    "numeric_calls": {
+      "set_weight": 8000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "blade"
+      ]
+    },
+    "unit": "把",
+    "long": "一把鋼鑄單刀﹐是武林中人常用的武器。\n",
+    "value": 3500,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/broadaxe.c",
+    "path": "/obj/area/obj/broadaxe",
+    "type": "item",
+    "sha256": "006662952e2c8c7aa2181256d4b5a59d382623afdeda48eaf44c9acec554cde8",
+    "inherits": [
+      "F_AXE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_AXE",
+        "target": "F_AXE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "varify_template"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "板斧",
+    "ids": [
+      "broadaxe",
+      "axe"
+    ],
+    "weight": 10000,
+    "numeric_calls": {
+      "set_weight": 10000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "axe",
+        "twohanded axe"
+      ]
+    },
+    "unit": "把",
+    "long": "一把大面板斧，份量著實沉重，不過板斧的斧刃很長，是相當厲害的兵刃。\n",
+    "value": 5000,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/broadsword.c",
+    "path": "/obj/area/obj/broadsword",
+    "type": "item",
+    "sha256": "70f2eb4f16a28e962d9885129e4e30400a7539c30f14f2ceac982a3849956d2e",
+    "inherits": [
+      "F_SWORD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SWORD",
+        "target": "F_SWORD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "varify_template"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "闊劍",
+    "ids": [
+      "broadsword",
+      "sword"
+    ],
+    "weight": 10000,
+    "numeric_calls": {
+      "set_weight": 10000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "sword",
+        "twohanded sword"
+      ]
+    },
+    "unit": "把",
+    "long": "一把約三尺長的闊劍﹐份量不輕，需要不小的膂力才能揮舞這種武器。\n",
+    "value": 5500,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/cloth.c",
+    "path": "/obj/area/obj/cloth",
+    "type": "item",
+    "sha256": "6360dc7dd309b5986cc254d82b95ce72132bb6982f630cf9cb23c4bf2d3d26e9",
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLOTH",
+        "target": "F_CLOTH",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "布衣",
+    "ids": [
+      "cloth"
+    ],
+    "weight": 1000,
+    "wear_as": "cloth",
+    "setup_kinds": [
+      "cloth"
+    ],
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "unit": "件",
+    "long": "一套普通的棉布衣褲。\n",
+    "value": 0,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/curved_blade.c",
+    "path": "/obj/area/obj/curved_blade",
+    "type": "item",
+    "sha256": "61ca2f67800b951e292c641b1ae2e3d37e98f73181a80a012960d3fce93ce454",
+    "inherits": [
+      "F_BLADE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_BLADE",
+        "target": "F_BLADE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "varify_template"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "彎刀",
+    "ids": [
+      "curved blade",
+      "blade"
+    ],
+    "weight": 9000,
+    "numeric_calls": {
+      "set_weight": 9000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "blade"
+      ]
+    },
+    "unit": "把",
+    "long": "這是一種改良型的單刀，刀身較寬而彎，用於揮斬威力要比單刀大。\n",
+    "value": 4200,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/dagger.c",
+    "path": "/obj/area/obj/dagger",
+    "type": "item",
+    "sha256": "f84110bc60faa352cf6198cbd70019e5600d92259496f2f5ff1b1d2c38ce0b85",
+    "inherits": [
+      "F_DAGGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_DAGGER",
+        "target": "F_DAGGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "匕首",
+    "ids": [
+      "dagger"
+    ],
+    "weight": 3000,
+    "numeric_calls": {
+      "set_weight": 3000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "dagger",
+        "secondhand dagger"
+      ]
+    },
+    "unit": "把",
+    "long": "一把鋒利的短匕首﹐握在手裡重量剛剛好。\n",
+    "value": 500,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/dice.c",
+    "path": "/obj/area/obj/dice",
+    "type": "item",
+    "sha256": "c5d6668cc673c1bb4270928da6abfb36acbc01b931ad201446a87f0dfd27728a",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_roll",
+      "init"
+    ],
+    "runtime_traits": [
+      "init"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "骰子",
+    "ids": [
+      "dice"
+    ],
+    "weight": 3,
+    "numeric_calls": {
+      "set_weight": 3
+    },
+    "unit": "粒",
+    "long": "一粒骰子，你可以用 roll 擲骰子玩。\n",
+    "value": 5,
+    "command_hooks": [
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "obj/area/obj/glaive.c",
+    "path": "/obj/area/obj/glaive",
+    "type": "item",
+    "sha256": "448ac5d9e45538f94650b5226916fc1c97b00d1c0a7978331e89e9a4012243b7",
+    "inherits": [
+      "F_BLADE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_BLADE",
+        "target": "F_BLADE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "varify_template"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "鬼頭刀",
+    "ids": [
+      "glaive",
+      "blade"
+    ],
+    "weight": 9000,
+    "numeric_calls": {
+      "set_weight": 9000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "blade",
+        "twohanded blade"
+      ]
+    },
+    "unit": "把",
+    "long": "鬼頭刀是一種背厚刃薄的大刀，刀身長而直，刀背特厚，雖然堅固耐用，份量\n卻是不輕。\n",
+    "value": 6000,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/greatsword.c",
+    "path": "/obj/area/obj/greatsword",
+    "type": "item",
+    "sha256": "c3e1fded1764b93b9c143b59682c47e51a680af16abbc0b6811c3838d3b0ca12",
+    "inherits": [
+      "F_SWORD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SWORD",
+        "target": "F_SWORD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "varify_template"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "大劍",
+    "ids": [
+      "great sword",
+      "sword"
+    ],
+    "weight": 24000,
+    "numeric_calls": {
+      "set_weight": 24000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "twohanded sword"
+      ]
+    },
+    "unit": "把",
+    "value": 11000,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/knife.c",
+    "path": "/obj/area/obj/knife",
+    "type": "item",
+    "sha256": "9bcfa44e691e54963ae848dba206a940a4e11491964c00fe0b09997912fa9474",
+    "inherits": [
+      "F_DAGGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_DAGGER",
+        "target": "F_DAGGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "小刀",
+    "ids": [
+      "knife"
+    ],
+    "weight": 900,
+    "numeric_calls": {
+      "set_weight": 900
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "dagger",
+        "secondhand dagger"
+      ]
+    },
+    "unit": "把",
+    "long": "一柄粗糙的小刀，看來像是私造的凶器。\n",
+    "value": 70,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/kris.c",
+    "path": "/obj/area/obj/kris",
+    "type": "item",
+    "sha256": "4756b0811b11ead97b140715f0c193f94e756e6e2e71cbad40e59dc51a7ac61b",
+    "inherits": [
+      "F_BLADE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_BLADE",
+        "target": "F_BLADE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "短刀",
+    "ids": [
+      "kris"
+    ],
+    "weight": 4000,
+    "numeric_calls": {
+      "set_weight": 4000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "blade",
+        "secondhand blade"
+      ]
+    },
+    "unit": "把",
+    "long": "這是一種適合近身肉搏戰的短刀﹐刃長只有七寸﹐刀柄向內彎曲。\n",
+    "value": 600,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/leather_boot.c",
+    "path": "/obj/area/obj/leather_boot",
+    "type": "item",
+    "sha256": "88133997b2f1d7be98b77e82f1c1651db0a803bcf1bb29a2fb1da6e079058749",
+    "inherits": [
+      "F_FEET_EQ"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_FEET_EQ",
+        "target": "F_FEET_EQ",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "皮短靴",
+    "ids": [
+      "leather boots",
+      "boots"
+    ],
+    "weight": 1000,
+    "wear_as": "feet_eq",
+    "setup_kinds": [
+      "feet_eq"
+    ],
+    "armor_apply": [
+      {
+        "slot": "feet_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/feet_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "unit": "雙",
+    "long": "這是一雙皮製的短靴﹐看起來有些舊了。\n",
+    "value": 400,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/leather_whip.c",
+    "path": "/obj/area/obj/leather_whip",
+    "type": "item",
+    "sha256": "a0af4e7cc2b4067ad7d3de2477e5aa2b95782501fca2e43c2e18ed2ba752e2c6",
+    "inherits": [
+      "F_WHIP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_WHIP",
+        "target": "F_WHIP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "皮鞭",
+    "ids": [
+      "leather whip",
+      "whip"
+    ],
+    "weight": 2000,
+    "numeric_calls": {
+      "set_weight": 2000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "whip"
+      ]
+    },
+    "unit": "條",
+    "long": "一條約九尺多長的皮鞭，可以用來當作兵刃使用。\n",
+    "value": 1800,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/longsword.c",
+    "path": "/obj/area/obj/longsword",
+    "type": "item",
+    "sha256": "23f72e73010f6f4242b320e78e6ed839c64c39ca08a55f40d5e42365d3548ab2",
+    "inherits": [
+      "F_SWORD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SWORD",
+        "target": "F_SWORD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "varify_template"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "長劍",
+    "ids": [
+      "long sword",
+      "sword"
+    ],
+    "weight": 7500,
+    "numeric_calls": {
+      "set_weight": 7500
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "sword"
+      ]
+    },
+    "unit": "把",
+    "long": "一把約三尺長的長劍﹐是武林中人常用的武器。\n",
+    "value": 4000,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/pen.c",
+    "path": "/obj/area/obj/pen",
+    "type": "item",
+    "sha256": "9685cc700538e3c367bd967c0819cb0e3a21adcb98618be818bd3393c1ce05ad",
+    "inherits": [
+      "F_DAGGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_DAGGER",
+        "target": "F_DAGGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "判官筆",
+    "ids": [
+      "pen"
+    ],
+    "weight": 3000,
+    "numeric_calls": {
+      "set_weight": 3000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "dagger",
+        "secondhand dagger"
+      ]
+    },
+    "unit": "隻",
+    "long": "一把用精剛鑄造的判官筆，筆身成黑色。\n",
+    "value": 3000,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/pike.c",
+    "path": "/obj/area/obj/pike",
+    "type": "item",
+    "sha256": "9231d34398bc5c22c0bf9709d481425a4d1ff0fe7170e2e956d49b9df9813a35",
+    "inherits": [
+      "F_PIKE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_PIKE",
+        "target": "F_PIKE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "varify_template"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "長槍",
+    "ids": [
+      "long pike",
+      "pike"
+    ],
+    "weight": 11000,
+    "numeric_calls": {
+      "set_weight": 11000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "twohanded pike",
+        "pike"
+      ]
+    },
+    "unit": "桿",
+    "long": "一把槍頭用精鋼鑄造而成的長槍，槍身筆直，槍頭槍身銜接的地方綁著一條紅巾，膂\n力大的人常常使用的武器。\n",
+    "value": 6000,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/robe.c",
+    "path": "/obj/area/obj/robe",
+    "type": "item",
+    "sha256": "25cf2ef4db96976f425abd9797cb3e431a9e05d088dc620488bd93a798338c3c",
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLOTH",
+        "target": "F_CLOTH",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "布袍",
+    "ids": [
+      "robe"
+    ],
+    "weight": 1000,
+    "wear_as": "cloth",
+    "setup_kinds": [
+      "cloth"
+    ],
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "unit": "件",
+    "long": "一套普通的棉布袍子，上面有一些灰塵。\n",
+    "value": 600,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/rod.c",
+    "path": "/obj/area/obj/rod",
+    "type": "item",
+    "sha256": "0a2401439f7ae5cc97e628956517e05769c84a06dff34ad809865e4fe36455bc",
+    "inherits": [
+      "F_BLUNT"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_BLUNT",
+        "target": "F_BLUNT",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "varify_template"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "鐵鞭",
+    "ids": [
+      "rod",
+      "rod"
+    ],
+    "weight": 12000,
+    "numeric_calls": {
+      "set_weight": 12000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "blunt"
+      ]
+    },
+    "unit": "把",
+    "long": "一把沉重的鐵鞭，武林中常見的兵器。\n",
+    "value": 5200,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/shortsword.c",
+    "path": "/obj/area/obj/shortsword",
+    "type": "item",
+    "sha256": "7d19d9a4b7848ef5243d34eeea1b769258715438be43c51fad8d7dfec0d9e3bc",
+    "inherits": [
+      "F_SWORD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SWORD",
+        "target": "F_SWORD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "varify_template"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "短劍",
+    "ids": [
+      "short sword",
+      "sword"
+    ],
+    "weight": 4000,
+    "numeric_calls": {
+      "set_weight": 4000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "sword",
+        "secondhand sword"
+      ]
+    },
+    "unit": "把",
+    "long": "一把粗糙的短劍﹐一般旅人帶在身邊防身用的武器。\n",
+    "value": 900,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/weirblade.c",
+    "path": "/obj/area/obj/weirblade",
+    "type": "item",
+    "sha256": "5e85908fea4ff7afaee978856060d4d71f1e391c35740672b61589f4d6ab9435",
+    "inherits": [
+      "F_BLADE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_BLADE",
+        "target": "F_BLADE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "varify_template"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "大刀",
+    "ids": [
+      "weirblade",
+      "blade"
+    ],
+    "weight": 15000,
+    "numeric_calls": {
+      "set_weight": 15000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "blade",
+        "twohanded blade"
+      ]
+    },
+    "unit": "把",
+    "long": "又厚又重的大刀，令人望而生畏，如果雙手握持的話，威力更是強大。\n",
+    "value": 6500,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/whip.c",
+    "path": "/obj/area/obj/whip",
+    "type": "item",
+    "sha256": "3b247f52e47d0cb7d07b554367176a90b0c334a40ea3f8e28864da0b2c959f27",
+    "inherits": [
+      "F_WHIP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_WHIP",
+        "target": "F_WHIP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "馬鞭",
+    "ids": [
+      "horse whip",
+      "whip"
+    ],
+    "weight": 8000,
+    "numeric_calls": {
+      "set_weight": 8000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "whip"
+      ]
+    },
+    "unit": "條",
+    "long": "一條尋長的馬鞭, 又黑又長, 編上沾滿泥土砂礫, 鞭上有股難聞的味道.\n",
+    "value": 2000,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/obj/woodsword.c",
+    "path": "/obj/area/obj/woodsword",
+    "type": "item",
+    "sha256": "ad397649b9fc5a0fdd2642db5151e775a8a01a2e8fcd2ffa4e9ae043d2d979f6",
+    "inherits": [
+      "F_SWORD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SWORD",
+        "target": "F_SWORD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "木劍",
+    "ids": [
+      "wooden sword",
+      "sword"
+    ],
+    "weight": 2000,
+    "numeric_calls": {
+      "set_weight": 2000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "sword"
+      ]
+    },
+    "unit": "把",
+    "long": "一把用硬木削成的長劍﹐被炭火燻得黑黑的。\n",
+    "value": 400,
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/traveller.c",
+    "path": "/obj/area/traveller",
+    "type": "item",
+    "sha256": "b153cefdfd2c6491119140ca9bc7fe7aab29b897d13c5b02765b571cff520087",
+    "inherits": [
+      "F_VILLAGER"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_VILLAGER",
+        "target": "F_VILLAGER",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_fight",
+      "create"
+    ],
+    "runtime_traits": [
+      "inventory",
+      "teaching"
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "過路客",
+    "ids": [
+      "traveller"
+    ],
+    "race": "jiaojao",
+    "class": "thief",
+    "level": 20,
+    "attributes": {
+      "con": 36
+    },
+    "numeric_calls": {
+      "set_level": 20
+    },
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "function_calls": [
+      "wear",
+      "wield"
+    ],
+    "gender": "female",
+    "unit": "位",
+    "long": "一位行色匆匆, 滿臉風霜的過路客, 一身勁裝, 似乎隨時又要上路去.\n",
+    "age": 19,
+    "skills": [
+      {
+        "skill": "parry",
+        "level": 50
+      },
+      {
+        "skill": "dodge",
+        "level": 50
+      },
+      {
+        "skill": "blade",
+        "level": 60
+      }
+    ],
+    "equipment": [
+      {
+        "target": "obj/cloth",
+        "relative": true,
+        "action": "wear"
+      },
+      {
+        "target": "obj/whip",
+        "relative": true,
+        "action": "wield"
+      }
+    ],
+    "combat_message_traits": [
+      "dodge_text",
+      "parry_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/area/vagabond.c",
+    "path": "/obj/area/vagabond",
+    "type": "item",
+    "sha256": "30ecb675a0da2cbad498a59849f22f03fc9d44fa5930aec653a0ab4282b4c117",
+    "inherits": [
+      "F_BANDIT"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_BANDIT",
+        "target": "F_BANDIT",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [
+      "inventory",
+      "teaching"
+    ],
+    "combat_surface": [
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "市井無賴",
+    "ids": [
+      "vagabond"
+    ],
+    "race": "human",
+    "class": "fighter",
+    "level": 2,
+    "numeric_calls": {
+      "set_level": 2
+    },
+    "equipment_hooks": [
+      "wield"
+    ],
+    "function_calls": [
+      "wield"
+    ],
+    "long": "一個滿臉兇相，惡行惡狀的無賴漢，最好別靠他太近。\n",
+    "age": 24,
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 5
+      },
+      {
+        "skill": "dodge",
+        "level": 3
+      },
+      {
+        "skill": "dagger",
+        "level": 7
+      }
+    ],
+    "equipment": [
+      {
+        "target": "obj/knife",
+        "relative": true,
+        "action": "wield"
+      }
+    ],
+    "combat_message_traits": [
+      "dodge_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/armor/cloth.c",
+    "path": "/obj/armor/cloth",
+    "type": "item",
+    "sha256": "6360dc7dd309b5986cc254d82b95ce72132bb6982f630cf9cb23c4bf2d3d26e9",
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLOTH",
+        "target": "F_CLOTH",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "布衣",
+    "ids": [
+      "cloth"
+    ],
+    "weight": 1000,
+    "wear_as": "cloth",
+    "setup_kinds": [
+      "cloth"
+    ],
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "unit": "件",
+    "long": "一套普通的棉布衣褲。\n",
+    "value": 0,
+    "manual_review": []
+  },
+  {
+    "file": "obj/armor/fur_hat.c",
+    "path": "/obj/armor/fur_hat",
+    "type": "item",
+    "sha256": "44f75b501dcf465b203ee5ffc665a95786db23af0f5b953c3d059070bcf36692",
+    "inherits": [
+      "F_HEAD_EQ"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_HEAD_EQ",
+        "target": "F_HEAD_EQ",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "毛皮帽",
+    "ids": [
+      "fur hat",
+      "hat"
+    ],
+    "weight": 1000,
+    "wear_as": "head_eq",
+    "setup_kinds": [
+      "head_eq"
+    ],
+    "armor_apply": [
+      {
+        "slot": "head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "unit": "頂",
+    "long": "一頂不知是鹿皮還是麈皮縫製的小帽。\n",
+    "value": 50,
+    "manual_review": []
+  },
+  {
+    "file": "obj/bankbond.c",
+    "path": "/obj/bankbond",
+    "type": "item",
+    "sha256": "722dc7d49466f17e4b50942d620c88eaf45e28cceb8c6527e32a67f5a27d7306",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "autoload",
+      "create",
+      "long",
+      "query_autoload",
+      "query_balance",
+      "set_balance",
+      "transact"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "錢莊金契",
+    "ids": [
+      "bankbond"
+    ],
+    "weight": 1,
+    "numeric_calls": {
+      "set_weight": 1
+    },
+    "unit": "張",
+    "value": 1,
+    "manual_review": []
+  },
+  {
+    "file": "obj/block.c",
+    "path": "/obj/block",
+    "type": "item",
+    "sha256": "e44445426b33eff77d773621d6d8d618c754a5c3d47c307c61851649b2620b98",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "block_cmd",
+      "create",
+      "green",
+      "init"
+    ],
+    "runtime_traits": [
+      "init",
+      "timed"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "short": "綠島",
+    "long": "這裡是 ES2 的「離島」管訓所, 如果你被送到這裡, 表示:\n你違反了遊戲規則, 請好好的反省一下你的所作所為, 想離\n開的話只要斷線超過 15 分鐘即可 :-)",
+    "callouts": [
+      {
+        "function": "green",
+        "delay": 2
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "tell_room"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "obj/block_robot.c",
+    "path": "/obj/block_robot",
+    "type": "item",
+    "sha256": "ce0f21e399f429bce5035eb9b76dcaadb83522fa727a2662728f2c5c63cc0ee3",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_quit",
+      "init"
+    ],
+    "runtime_traits": [
+      "init"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "抱歉, 你現在不能 quit , 請回答機器人小精靈的問話或找巫師反應.\\n"
+    ],
+    "short": "機器人島",
+    "long": "\n\n\\t這裡是 ES2 的機器人島, 如果你被送到這裡, \n\\t那表示你的行為類似為機器人 (help robot).\n\\t若你已醒了, 請回答機器人小精靈的問話, 或找巫師反應.\n\n\n",
+    "objects": [
+      {
+        "target": "spirit",
+        "relative": true,
+        "count": 1
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_quit",
+        "verb": "quit"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_quit",
+        "verb": "quit"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "obj/bottle.c",
+    "path": "/obj/bottle",
+    "type": "item",
+    "sha256": "d9b186515d29353ffa60429560c47b6b17151028530eae184c05d1c94c1b0313",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_object",
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "玻璃瓶",
+    "ids": [
+      "glass bottle",
+      "bottle"
+    ],
+    "weight": 700,
+    "numeric_calls": {
+      "set_weight": 700,
+      "set_max_encumbrance": 3000
+    },
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "unit": "個",
+    "long": "一個透明的玻璃瓶。\n",
+    "value": 100,
+    "manual_review": []
+  },
+  {
+    "file": "obj/clan_symbol.c",
+    "path": "/obj/clan_symbol",
+    "type": "item",
+    "sha256": "f46a560cab04166978dab11ddb8c3b79cce7a1089e76ce5c2906048f053db086",
+    "inherits": [
+      "F_FINGER_EQ"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_FINGER_EQ",
+        "target": "F_FINGER_EQ",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "clan_line",
+      "create",
+      "do_chat",
+      "do_chat_emote",
+      "do_clan_reset",
+      "do_clan_set",
+      "do_members",
+      "filter_clan",
+      "info",
+      "init",
+      "owner_is_killed",
+      "query_autoload",
+      "sort_usrs"
+    ],
+    "runtime_traits": [
+      "init",
+      "reset"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "似乎沒有任何幫派成員在線上....。\\n"
+    ],
+    "weight": 1,
+    "wear_as": "finger_eq",
+    "armor_apply": [
+      {
+        "slot": "finger_eq",
+        "values": {
+          "armor": 2
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/finger_eq",
+        "values": {
+          "armor": 2
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1
+    },
+    "unit": "個",
+    "long": "這是一個幫派專用的信物: 鐵指環。使用方式請參照: info clan\n",
+    "value": 1,
+    "actions": [
+      {
+        "handler": "help",
+        "verb": "help"
+      },
+      {
+        "handler": "info",
+        "verb": "info"
+      },
+      {
+        "handler": "do_members",
+        "verb": "clans"
+      },
+      {
+        "handler": "do_chat",
+        "verb": "clan"
+      },
+      {
+        "handler": "do_chat_emote",
+        "verb": "clan*"
+      },
+      {
+        "handler": "do_clan_set",
+        "verb": "clan_set"
+      },
+      {
+        "handler": "do_clan_reset",
+        "verb": "clan_reset"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "help",
+        "verb": "help"
+      },
+      {
+        "kind": "add_action",
+        "handler": "info",
+        "verb": "info"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_members",
+        "verb": "clans"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_chat",
+        "verb": "clan"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_chat_emote",
+        "verb": "clan*"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_clan_set",
+        "verb": "clan_set"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_clan_reset",
+        "verb": "clan_reset"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "tell_object"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "obj/cloth.c",
+    "path": "/obj/cloth",
+    "type": "item",
+    "sha256": "57908d2de12ad730042245776dc8f83f45cf3f3ad8a3ecf5a879bc617efa70ec",
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLOTH",
+        "target": "F_CLOTH",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "布衣",
+    "ids": [
+      "cloth"
+    ],
+    "weight": 2000,
+    "wear_as": "cloth",
+    "setup_kinds": [
+      "cloth"
+    ],
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 2000
+    },
+    "unit": "件",
+    "long": "一件粗布縫製的布衣﹐看起來像是鄉下人的衣服。\n",
+    "value": 60,
+    "manual_review": []
+  },
+  {
+    "file": "obj/corpse.c",
+    "path": "/obj/corpse",
+    "type": "item",
+    "sha256": "31955b213a156181c17938795dc2e23c1bf43c71022959d74017141652413638",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "decay",
+      "is_character",
+      "is_corpse",
+      "receive_object",
+      "short",
+      "start_decay"
+    ],
+    "runtime_traits": [
+      "timed"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "無名屍體",
+    "ids": [
+      "corpse"
+    ],
+    "unit": "具",
+    "long": "這是一具無名屍體。\n",
+    "death_hooks": [
+      "corpse"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "obj/drug/black_pill.c",
+    "path": "/obj/drug/black_pill",
+    "type": "item",
+    "sha256": "2c0b0d3005833c4ff16fad73fc2647626ba399bcc026b033b906f377ca0f9cb4",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "烏心丹",
+    "ids": [
+      "black pill",
+      "pill"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "damage_text",
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/drug/boar_berry.c",
+    "path": "/obj/drug/boar_berry",
+    "type": "item",
+    "sha256": "e7212c3112165ce6ef188e9d855046a471e9c277e002d54393af0f99f164ddab",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "山豬果",
+    "ids": [
+      "boar berry",
+      "berry"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/drug/dragon_saliva.c",
+    "path": "/obj/drug/dragon_saliva",
+    "type": "item",
+    "sha256": "8b0e31fd63c7710cec37cf475058a71eef50fcb140d1af41405fa293c4711535",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "龍涎草",
+    "ids": [
+      "dragon-saliva herb",
+      "dragon-saliva",
+      "herb"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/drug/flower_pill.c",
+    "path": "/obj/drug/flower_pill",
+    "type": "item",
+    "sha256": "59ca179fa99a466065da2aedf2799be61af7fe61cdf215191c581f47b73bef4c",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "紅花丸",
+    "ids": [
+      "flower pill",
+      "pill"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/drug/gray_mushroom.c",
+    "path": "/obj/drug/gray_mushroom",
+    "type": "item",
+    "sha256": "964ceab629b4247c81c58829e494743415970eb73450f7f66edaaec4cf24a8ce",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "灰草菇",
+    "ids": [
+      "gray mushroom",
+      "mushroom"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/drug/wild_ginseng.c",
+    "path": "/obj/drug/wild_ginseng",
+    "type": "item",
+    "sha256": "720360c07c488421de79c7b25c069798f60704d46df9cf33fd4645564afb30bd",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "野山蔘",
+    "ids": [
+      "wild ginseng",
+      "ginseng"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/dust.c",
+    "path": "/obj/dust",
+    "type": "item",
+    "sha256": "dd6fc9faf617878636bd3d4495f982cb6978a5264efe8dcbc65450733561d9da",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_dissolve",
+      "init"
+    ],
+    "runtime_traits": [
+      "init"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "化屍粉",
+    "ids": [
+      "dust"
+    ],
+    "unit": "包",
+    "actions": [
+      {
+        "handler": "do_dissolve",
+        "verb": "dissolve"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_dissolve",
+        "verb": "dissolve"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "death_hooks": [
+      "corpse"
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "obj/example/army.c",
+    "path": "/obj/example/army",
+    "type": "item",
+    "sha256": "37757a35c656f2169c9fd88233833ebcb9ec4aae46dc540af6ca95b4cdf69360",
+    "inherits": [
+      "F_NAME",
+      "F_MOVE",
+      "F_DBASE",
+      "F_ATTRIBUTE",
+      "F_STATISTIC"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_NAME",
+        "target": "F_NAME",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_MOVE",
+        "target": "F_MOVE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_DBASE",
+        "target": "F_DBASE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_ATTRIBUTE",
+        "target": "F_ATTRIBUTE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_STATISTIC",
+        "target": "F_STATISTIC",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "setup",
+      "short"
+    ],
+    "runtime_traits": [
+      "heart_beat"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "stat_maximums": {
+      "surviver": 1
+    },
+    "manual_review": []
+  },
+  {
+    "file": "obj/example/es2_bottle.c",
+    "path": "/obj/example/es2_bottle",
+    "type": "item",
+    "sha256": "61acdb176242ada1f95c2dd28e768fa1f027a4a01caa1ad9cd06cf069b265654",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_object",
+      "create",
+      "query_autoload"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "精緻玻璃瓶",
+    "ids": [
+      "bottle"
+    ],
+    "numeric_calls": {
+      "set_max_encumbrance": 180000
+    },
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "long": "一個透明又很華麗的精緻玻璃瓶，這是 workshop 的紀念品。\n",
+    "value": 0,
+    "manual_review": []
+  },
+  {
+    "file": "obj/example/infantry.c",
+    "path": "/obj/example/infantry",
+    "type": "item",
+    "sha256": "bebc122ebaa850eb2363954d34464ef9f2dfc88f3aa94f8d2a447928356f88e0",
+    "inherits": [
+      "\"/obj/example/army.c\""
+    ],
+    "inherit_refs": [
+      {
+        "raw": "\"/obj/example/army.c\"",
+        "target": "/obj/example/army.c",
+        "kind": "literal"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "步兵隊",
+    "ids": [
+      "infantry"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/example/weapon/longsword.c",
+    "path": "/obj/example/weapon/longsword",
+    "type": "item",
+    "sha256": "4e7894203213b1edd640cb426edc8a988d8c9e8b444feadbc4c4d1275c8de8ed",
+    "inherits": [
+      "F_SWORD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SWORD",
+        "target": "F_SWORD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "長劍",
+    "ids": [
+      "longsword",
+      "sword"
+    ],
+    "weight": 5000,
+    "numeric_calls": {
+      "set_weight": 5000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "sword"
+      ]
+    },
+    "unit": "把",
+    "long": "一把精鋼鑄成的長劍﹐是武林中人常用的武器。\n",
+    "value": 4000,
+    "manual_review": []
+  },
+  {
+    "file": "obj/example/weapon/shortsword.c",
+    "path": "/obj/example/weapon/shortsword",
+    "type": "item",
+    "sha256": "6425c779c6839910a1768c20cbb4c3463384deefe4e4f042547d5e15b00e8cc0",
+    "inherits": [
+      "F_SWORD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_SWORD",
+        "target": "F_SWORD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "短劍",
+    "ids": [
+      "shortsword",
+      "sword"
+    ],
+    "weight": 3000,
+    "numeric_calls": {
+      "set_weight": 3000
+    },
+    "weapon_dispatch": {
+      "wield_as": [
+        "sword",
+        "secondhand sword"
+      ]
+    },
+    "unit": "把",
+    "long": "一把粗糙的短劍﹐一般旅人帶在身邊防身用的武器。\n",
+    "value": 900,
+    "manual_review": []
+  },
+  {
+    "file": "obj/food/dumpling.c",
+    "path": "/obj/food/dumpling",
+    "type": "item",
+    "sha256": "0f437167c013ea6da1f4caabcaf9c4695cf1baa6deeaa7d46713a313e76c3043",
+    "inherits": [
+      "COMBINED_ITEM",
+      "F_FOOD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_FOOD",
+        "target": "F_FOOD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "牛肉包子",
+    "ids": [
+      "beef dumpling",
+      "dumpling"
+    ],
+    "unit": "堆",
+    "long": "一個香噴噴的牛肉包子。\n",
+    "manual_review": []
+  },
+  {
+    "file": "obj/food/manto.c",
+    "path": "/obj/food/manto",
+    "type": "item",
+    "sha256": "3c4d49da88333287445862f95c0bc9ef57c00948f732558914dcfb91b3b11dee",
+    "inherits": [
+      "COMBINED_ITEM",
+      "F_FOOD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_FOOD",
+        "target": "F_FOOD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "饅頭",
+    "ids": [
+      "manto"
+    ],
+    "unit": "堆",
+    "long": "饅頭 ... 跟你想像中的一模一樣﹐感動吧。\n",
+    "manual_review": []
+  },
+  {
+    "file": "obj/food/mooncake.c",
+    "path": "/obj/food/mooncake",
+    "type": "item",
+    "sha256": "0abdb326ebbdaf8e1b57eae2d7493ebf2b92eb23e7e3189dbf07849e086a2bce",
+    "inherits": [
+      "COMBINED_ITEM",
+      "F_FOOD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_FOOD",
+        "target": "F_FOOD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "月餅",
+    "ids": [
+      "mooncake",
+      "cake"
+    ],
+    "unit": "堆",
+    "long": "一個又圓又大的月餅，就像天上的月亮一樣。\n",
+    "manual_review": []
+  },
+  {
+    "file": "obj/food/pork.c",
+    "path": "/obj/food/pork",
+    "type": "item",
+    "sha256": "ba0d59727734ff7b6c9c0efb1a932c48fb383dc5fca1144b2db275adfbe69273",
+    "inherits": [
+      "COMBINED_ITEM",
+      "F_FOOD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_FOOD",
+        "target": "F_FOOD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "白切肉",
+    "ids": [
+      "pork"
+    ],
+    "unit": "堆",
+    "long": "普通的水煮白切肉 ... 。\n",
+    "manual_review": []
+  },
+  {
+    "file": "obj/food/ricedough.c",
+    "path": "/obj/food/ricedough",
+    "type": "item",
+    "sha256": "e257a95ed4672b57f70caf3792ada8ce44ba63725d64a63b99d7c97347965a72",
+    "inherits": [
+      "COMBINED_ITEM",
+      "F_FOOD"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_FOOD",
+        "target": "F_FOOD",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "飯糰",
+    "ids": [
+      "rice dough",
+      "dough",
+      "rice"
+    ],
+    "unit": "堆",
+    "long": "米飯作成的糰子，裡面包著一些肉鬆、煎蛋、油條段兒的小菜。\n",
+    "manual_review": []
+  },
+  {
+    "file": "obj/http.c",
+    "path": "/obj/http",
+    "type": "item",
+    "sha256": "baeeacbeeb802d3215bf7bbc5f8df10b894a0bf6a8f5bb4fb63eaa2e56dc8fc7",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "create",
+      "http_timeout",
+      "logon",
+      "net_dead",
+      "process_input",
+      "remove"
+    ],
+    "runtime_traits": [
+      "movement",
+      "timed"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "equipment_hooks": [
+      "remove"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "obj/magic.c",
+    "path": "/obj/magic",
+    "type": "item",
+    "sha256": "59bfde88bd60c67f9eb1fc088545362d1ea296eeb44ed52a181389dbc9092b05",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [
+      "combat"
+    ],
+    "combat_surface": [
+      "attack"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "attack_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/map.c",
+    "path": "/obj/map",
+    "type": "item",
+    "sha256": "38a54d04f94bdfe2d105539b1cc00232af26c833727fb6e848f00a1a1f61cef9",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_read",
+      "init"
+    ],
+    "runtime_traits": [
+      "init"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "地圖",
+    "ids": [
+      "map"
+    ],
+    "weight": 10,
+    "numeric_calls": {
+      "set_weight": 10
+    },
+    "unit": "張",
+    "long": "一張可以顯示你附近地形的地圖，用 read map 使用。\n",
+    "value": 300,
+    "actions": [
+      {
+        "handler": "do_read",
+        "verb": "read"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_read",
+        "verb": "read"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "obj/medication/alchemist/aquapill.c",
+    "path": "/obj/medication/alchemist/aquapill",
+    "type": "item",
+    "sha256": "0d1e05107919bbf5ae02eacaf74c9dabe7a4d926d52d231cf65de6337d895201",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "金液丹",
+    "ids": [
+      "aquapill",
+      "pill"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "damage_text",
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/medication/alchemist/black_pill.c",
+    "path": "/obj/medication/alchemist/black_pill",
+    "type": "item",
+    "sha256": "4c1f500ea216cfc34fd16185aa2411082d8366377a9fe5af7a069477758aefde",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "烏心丹",
+    "ids": [
+      "black pill",
+      "pill"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "damage_text",
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/medication/alchemist/green_pill.c",
+    "path": "/obj/medication/alchemist/green_pill",
+    "type": "item",
+    "sha256": "2a1ae8f41dbfc842bb4c579be70e047d5238170b3e662d21e143bb3716379524",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_cure_poison",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "甘靈清毒丹",
+    "ids": [
+      "green pill",
+      "pill"
+    ],
+    "unit": "些",
+    "condition_hooks": [
+      {
+        "hook": "clear_condition"
+      }
+    ],
+    "combat_message_traits": [
+      "damage_text",
+      "message_vision",
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/medication/alchemist/major_heal_pill.c",
+    "path": "/obj/medication/alchemist/major_heal_pill",
+    "type": "item",
+    "sha256": "2f97f806e14bfd359730df4395f643e43bcdf4f555827bfd6d9c1999abaa3f39",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "大還丹",
+    "ids": [
+      "major heal pill",
+      "major",
+      "pill"
+    ],
+    "unit": "些",
+    "manual_review": []
+  },
+  {
+    "file": "obj/medication/alchemist/minor_heal_pill.c",
+    "path": "/obj/medication/alchemist/minor_heal_pill",
+    "type": "item",
+    "sha256": "c4a8fa204d63b23c666be69314d311c7df92df61cc037f77b037cef46b4bd7ca",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "小還丹",
+    "ids": [
+      "minor heal pill",
+      "minor",
+      "pill"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "damage_text",
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/medication/alchemist/mix_recipe.c",
+    "path": "/obj/medication/alchemist/mix_recipe",
+    "type": "item",
+    "sha256": "839c8e1e164346303214b877654b86493149128426cb4e3fd65dea2729570f51",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "混合藥丹",
+    "ids": [
+      "mixed pill",
+      "mixed",
+      "pill"
+    ],
+    "unit": "些",
+    "long": "這是一種正在測試中的藥丹, 藥性未知, 請勿誤食, 否則後果自負。\n",
+    "combat_message_traits": [
+      "damage_text",
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/medication/alchemist/mjp_1.c",
+    "path": "/obj/medication/alchemist/mjp_1",
+    "type": "item",
+    "sha256": "c071ed8f6b2769b55a393a193a7875af702575206de6724987274581750ee80c",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "unit": "些",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/medication/alchemist/mjp_2.c",
+    "path": "/obj/medication/alchemist/mjp_2",
+    "type": "item",
+    "sha256": "309df2a9248614fa2504314b68c46150e997722991084278183853bc4eb0b829",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "unit": "些",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/medication/alchemist/mjp_3.c",
+    "path": "/obj/medication/alchemist/mjp_3",
+    "type": "item",
+    "sha256": "ec287b8440e3f647fdddbb6474a89b37cce0020d5679d6bf424828f62e3f6563",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "大還丹",
+    "ids": [
+      "major heal pill",
+      "major",
+      "pill"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/medication/alchemist/refresh_pill.c",
+    "path": "/obj/medication/alchemist/refresh_pill",
+    "type": "item",
+    "sha256": "a536b4afb7b8fc9eee772c6a6bc47577c3917c930f074929b4a1b344f06857d2",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "金鎖固精丸",
+    "ids": [
+      "refresh pill",
+      "pill"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/medication/black_pill.c",
+    "path": "/obj/medication/black_pill",
+    "type": "item",
+    "sha256": "2c0b0d3005833c4ff16fad73fc2647626ba399bcc026b033b906f377ca0f9cb4",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "烏心丹",
+    "ids": [
+      "black pill",
+      "pill"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "damage_text",
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/medication/boar_berry.c",
+    "path": "/obj/medication/boar_berry",
+    "type": "item",
+    "sha256": "e7212c3112165ce6ef188e9d855046a471e9c277e002d54393af0f99f164ddab",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "山豬果",
+    "ids": [
+      "boar berry",
+      "berry"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/medication/dragon_saliva.c",
+    "path": "/obj/medication/dragon_saliva",
+    "type": "item",
+    "sha256": "8b0e31fd63c7710cec37cf475058a71eef50fcb140d1af41405fa293c4711535",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "龍涎草",
+    "ids": [
+      "dragon-saliva herb",
+      "dragon-saliva",
+      "herb"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/medication/flower_pill.c",
+    "path": "/obj/medication/flower_pill",
+    "type": "item",
+    "sha256": "59ca179fa99a466065da2aedf2799be61af7fe61cdf215191c581f47b73bef4c",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "紅花丸",
+    "ids": [
+      "flower pill",
+      "pill"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/medication/gray_mushroom.c",
+    "path": "/obj/medication/gray_mushroom",
+    "type": "item",
+    "sha256": "964ceab629b4247c81c58829e494743415970eb73450f7f66edaaec4cf24a8ce",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "灰草菇",
+    "ids": [
+      "gray mushroom",
+      "mushroom"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/medication/wild_ginseng.c",
+    "path": "/obj/medication/wild_ginseng",
+    "type": "item",
+    "sha256": "720360c07c488421de79c7b25c069798f60704d46df9cf33fd4645564afb30bd",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "野山蔘",
+    "ids": [
+      "wild ginseng",
+      "ginseng"
+    ],
+    "unit": "些",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "obj/money/coin.c",
+    "path": "/obj/money/coin",
+    "type": "item",
+    "sha256": "b92d6e54d743e0d987f3c9a2753203af705fa69fe9d5de8014bc76be6459a403",
+    "inherits": [
+      "MONEY"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "MONEY",
+        "target": "MONEY",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "錢",
+    "ids": [
+      "coin",
+      "coins",
+      "coin_money"
+    ],
+    "unit": "些",
+    "material": "copper",
+    "long": "這是流通中單位最小的貨幣﹐約要一百文錢才值得一兩銀子。\n",
+    "manual_review": []
+  },
+  {
+    "file": "obj/money/gold.c",
+    "path": "/obj/money/gold",
+    "type": "item",
+    "sha256": "cee6a763a43b73039c26172eeded78935b60443ffc7a047394fe0f70b9eb41ac",
+    "inherits": [
+      "MONEY"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "MONEY",
+        "target": "MONEY",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "黃金",
+    "ids": [
+      "gold",
+      "ingot",
+      "gold_money"
+    ],
+    "unit": "些",
+    "material": "gold",
+    "long": "黃澄澄的金子﹐人見人愛的金子﹐啊～～金子﹗\n",
+    "manual_review": []
+  },
+  {
+    "file": "obj/money/silver.c",
+    "path": "/obj/money/silver",
+    "type": "item",
+    "sha256": "ea728ac00f09ae3db678ab28341f04f2b2943c010ae119e5a08719d3d34354a8",
+    "inherits": [
+      "MONEY"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "MONEY",
+        "target": "MONEY",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "碎銀",
+    "ids": [
+      "silver",
+      "silver_money"
+    ],
+    "unit": "些",
+    "material": "silver",
+    "long": "白花花的銀子﹐人見人愛的銀子。\n",
+    "manual_review": []
+  },
+  {
+    "file": "obj/obj/firework.c",
+    "path": "/obj/obj/firework",
+    "type": "item",
+    "sha256": "15e6d86af0d9ab9f4119bb4b43cfe9c329d882e4d99459bab4b412629e06f588",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_light",
+      "init"
+    ],
+    "runtime_traits": [
+      "init"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "煙火",
+    "ids": [
+      "firework"
+    ],
+    "unit": "個",
+    "long": "這是一個煙火, 點燃它(light_firework), 你將會獲得許多樂趣。\n用法是：light_firework xxx\nxxx 是你想要說的話囉 ....",
+    "actions": [
+      {
+        "handler": "do_light",
+        "verb": "light_firework"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_light",
+        "verb": "light_firework"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "obj/obj/ghostbaby.c",
+    "path": "/obj/obj/ghostbaby",
+    "type": "item",
+    "sha256": "a119dd42d6ac24ed72742f62ffad37298f98d69fdbc8e5da5abf2fa455261355",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "query_autoload"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "鬼娃娃",
+    "ids": [
+      "ghostbaby"
+    ],
+    "weight": 1,
+    "numeric_calls": {
+      "set_weight": 1
+    },
+    "unit": "個",
+    "long": "這是一個鬼娃娃, 可以代替你已死。\n",
+    "value": 1000000000,
+    "manual_review": []
+  },
+  {
+    "file": "obj/reagent/cinnabar.c",
+    "path": "/obj/reagent/cinnabar",
+    "type": "item",
+    "sha256": "ec7d66f9283a34e696564d1f09eb5b2a0c9234ad7ece29b902cf46becd62e570",
+    "inherits": [
+      "REAGENT_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "REAGENT_ITEM",
+        "target": "REAGENT_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "辰砂",
+    "ids": [
+      "cinnabar"
+    ],
+    "weight": 500,
+    "numeric_calls": {
+      "set_weight": 500
+    },
+    "unit": "包",
+    "long": "一種紅色的礦砂，加熱可以得到汞，是煉丹的重要材料。\n",
+    "manual_review": []
+  },
+  {
+    "file": "obj/reagent/crane_dye.c",
+    "path": "/obj/reagent/crane_dye",
+    "type": "item",
+    "sha256": "e30ac09e02294b7bcee36d498643a917fd940f4ceb348221c724889a267f3ed6",
+    "inherits": [
+      "REAGENT_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "REAGENT_ITEM",
+        "target": "REAGENT_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "鶴頂紅",
+    "ids": [
+      "crane dye",
+      "dye"
+    ],
+    "weight": 200,
+    "numeric_calls": {
+      "set_weight": 200
+    },
+    "unit": "些",
+    "long": "一種含劇毒的藥材，但是有些少見的藥方需要這味藥材。\n",
+    "manual_review": []
+  },
+  {
+    "file": "obj/reagent/medlar.c",
+    "path": "/obj/reagent/medlar",
+    "type": "item",
+    "sha256": "0eb056176580fb633310031f6ee42787ea67628815dc63217a7c9743b80ef3fb",
+    "inherits": [
+      "REAGENT_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "REAGENT_ITEM",
+        "target": "REAGENT_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "枸杞",
+    "ids": [
+      "medlar"
+    ],
+    "weight": 100,
+    "numeric_calls": {
+      "set_weight": 100
+    },
+    "unit": "些",
+    "long": "常見的藥材，多用於提煉治療眼疾的丹藥。\n",
+    "manual_review": []
+  },
+  {
+    "file": "obj/reagent/strychin.c",
+    "path": "/obj/reagent/strychin",
+    "type": "item",
+    "sha256": "313aefdad588a7608985e611c530d472baa19fc70825e4d53a60c18ebe631dfa",
+    "inherits": [
+      "REAGENT_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "REAGENT_ITEM",
+        "target": "REAGENT_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "番木鱉",
+    "ids": [
+      "strychin"
+    ],
+    "weight": 30,
+    "numeric_calls": {
+      "set_weight": 30
+    },
+    "unit": "些",
+    "long": "一種含劇毒的植物所提煉的藥材，價格不非。\n",
+    "manual_review": []
+  },
+  {
+    "file": "obj/roommaker.c",
+    "path": "/obj/roommaker",
+    "type": "item",
+    "sha256": "b08de74309a9ac11e33b4b2f4080f27d8eb4e76b5a22cb3a8de2f809e9e7633a",
+    "inherits": [
+      "ITEM",
+      "ROOM",
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_connect",
+      "do_mkroom",
+      "do_rset",
+      "do_saveroom",
+      "init",
+      "owner_is_killed",
+      "query_autoload",
+      "save_room_file"
+    ],
+    "runtime_traits": [
+      "init",
+      "interactive"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "uses_input_to": true,
+    "literal_prompts": [
+      "Ok.\\n",
+      "Ok.\\n",
+      "Ok.\\n"
+    ],
+    "weight": 100,
+    "numeric_calls": {
+      "set_weight": 100
+    },
+    "short": "空房間",
+    "unit": "個",
+    "long": "這是一個用來「快速」製造房間的工具﹐幫助時間不多或有嚴重  lag 的巫師\n利用線上輸入製造簡單的房間﹐不過如果你想提高自己區域房間的品質﹐最好\n不要太依賴這個東西﹐你可以使用以下幾個指令﹕\n\nmkroom <房間檔名>\n\n    造出一個「空」房間﹐之後你可以 goto 到這個房間用 rset 設定房間的\n    敘述或屬性。\n\nrset <房間屬性> <屬性內容>\n\n    設定你目前所在房間的屬性﹐如 short﹐long 等。\n\nconnect <方向> <房間檔名>\n\n    將你目前所在的房間連接一個出口到另一個房間。\n\nsaveroom\n\n    將你目前所在的房間存檔。",
+    "actions": [
+      {
+        "handler": "do_mkroom",
+        "verb": "mkroom"
+      },
+      {
+        "handler": "do_rset",
+        "verb": "rset"
+      },
+      {
+        "handler": "do_connect",
+        "verb": "connect"
+      },
+      {
+        "handler": "do_saveroom",
+        "verb": "saveroom"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_mkroom",
+        "verb": "mkroom"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_rset",
+        "verb": "rset"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_connect",
+        "verb": "connect"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_saveroom",
+        "verb": "saveroom"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "obj/spirit.c",
+    "path": "/obj/spirit",
+    "type": "item",
+    "sha256": "6ae446e6d708e1ac3ec9380220e836aa634e26f7d2b8c47135184c1ffad63a5d",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "about_robot",
+      "ask_q",
+      "create",
+      "init",
+      "relay_say",
+      "robot_help",
+      "set_answer",
+      "set_question"
+    ],
+    "runtime_traits": [
+      "init",
+      "movement",
+      "timed"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "SYNTAX: setp <ID> <question>\\n",
+      "SYNTAX: setp <ID> <question>\\n",
+      "SYNTAX: setp <ID> <answer>\\n",
+      "SYNTAX: setp <ID> <answer>\\n",
+      "SYNTAX: about <ID>\\n"
+    ],
+    "name": "小精靈",
+    "ids": [
+      "spirit",
+      "robot"
+    ],
+    "long": "\n小精靈對看著你, 對你露出詭異的笑容。\n小精靈拿著一個小簿子, 在上面記錄著不回答問題的 robot, 一付要找巫師報告的神情.\n\t",
+    "actions": [
+      {
+        "handler": "set_question",
+        "verb": "setq"
+      },
+      {
+        "handler": "set_answer",
+        "verb": "seta"
+      },
+      {
+        "handler": "about_robot",
+        "verb": "about"
+      },
+      {
+        "handler": "robot_help",
+        "verb": "help"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "set_question",
+        "verb": "setq"
+      },
+      {
+        "kind": "add_action",
+        "handler": "set_answer",
+        "verb": "seta"
+      },
+      {
+        "kind": "add_action",
+        "handler": "about_robot",
+        "verb": "about"
+      },
+      {
+        "kind": "add_action",
+        "handler": "robot_help",
+        "verb": "help"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "tell_object",
+      "tell_room"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "obj/void.c",
+    "path": "/obj/void",
+    "type": "item",
+    "sha256": "083b3d84442c93d963bbf6ae1f5ae81befaefea94c783bb5161ff0b14bfd0274",
+    "inherits": [
+      "F_DBASE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_DBASE",
+        "target": "F_DBASE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_look",
+      "out_path",
+      "receive_object"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "short": "最後樂園",
+    "manual_review": []
+  },
+  {
+    "file": "obj/water.c",
+    "path": "/obj/water",
+    "type": "item",
+    "sha256": "f9c2969d64d229b6c1cd70750b961332bb1389fc27456529c0dde5400cebc50d",
+    "inherits": [
+      "LIQUID_ITEM",
+      "F_DRINK"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "LIQUID_ITEM",
+        "target": "LIQUID_ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_DRINK",
+        "target": "F_DRINK",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "清水",
+    "ids": [
+      "water"
+    ],
+    "long": "... 水就是水﹐沒啥好看的。\n",
+    "manual_review": []
+  },
+  {
+    "file": "std/bboard.c",
+    "path": "/std/bboard",
+    "type": "item",
+    "sha256": "e0ff2812269f1fdcf2d7c027dd22c9adfb012c87dc5db6527584834270589303",
+    "inherits": [
+      "ITEM",
+      "F_SAVE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_SAVE",
+        "target": "F_SAVE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "do_discard",
+      "do_followup",
+      "do_help",
+      "do_post",
+      "do_read",
+      "do_save_article",
+      "done_post",
+      "init",
+      "long",
+      "query_save_file",
+      "setup",
+      "short"
+    ],
+    "runtime_traits": [
+      "init",
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "actions": [
+      {
+        "handler": "do_help",
+        "verb": "help"
+      },
+      {
+        "handler": "do_post",
+        "verb": "post"
+      },
+      {
+        "handler": "do_read",
+        "verb": "read"
+      },
+      {
+        "handler": "do_discard",
+        "verb": "discard"
+      },
+      {
+        "handler": "do_save_article",
+        "verb": "save"
+      },
+      {
+        "handler": "do_followup",
+        "verb": "followup"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_help",
+        "verb": "help"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_post",
+        "verb": "post"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_read",
+        "verb": "read"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_discard",
+        "verb": "discard"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_save_article",
+        "verb": "save"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_followup",
+        "verb": "followup"
+      }
+    ],
+    "combat_message_traits": [
+      "tell_object"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "std/item/combined.c",
+    "path": "/std/item/combined",
+    "type": "item",
+    "sha256": "977ba55e0b0d10368e1f0fba156a51e1f44e75d28cf41a5e02ba18382b5a3f5c",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "add_amount",
+      "destruct_me",
+      "move",
+      "query_amount",
+      "render_value",
+      "set_amount",
+      "setup",
+      "short"
+    ],
+    "runtime_traits": [
+      "movement",
+      "timed"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "callouts": [
+      {
+        "function": "destruct_me",
+        "delay": 0
+      }
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "std/item/container.c",
+    "path": "/std/item/container",
+    "type": "item",
+    "sha256": "e228783ca766898b3843ffc1e694afec77df390441105f91e814836ccb73a23d",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "accept_object",
+      "do_look",
+      "hold_object",
+      "setup"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "從這裡你可以看到外面：\\n"
+    ],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "std/item/liquid.c",
+    "path": "/std/item/liquid",
+    "type": "item",
+    "sha256": "c61acc49e6114ff9497890dd296502c324aabbfb9ee400b308938e05d4849acc",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "add_volume",
+      "dissolve_with",
+      "move",
+      "query_volume",
+      "render_value",
+      "set_volume",
+      "setup",
+      "short"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "不明液體",
+    "ids": [
+      "unknown liquid",
+      "liquid"
+    ],
+    "long": "一些不明成份的液體。\n",
+    "manual_review": []
+  },
+  {
+    "file": "std/item/pharmacy.c",
+    "path": "/std/item/pharmacy",
+    "type": "item",
+    "sha256": "be732a118cf1a946dc72c05e351de3551c26a3dc08a8bc2d296141e10fc5131b",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "query_pharmacy",
+      "set_attr"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "std/item/reagent.c",
+    "path": "/std/item/reagent",
+    "type": "item",
+    "sha256": "f3d1e9e4d36fc25ced626d9945d7ce858357b110bfc8bac3db35ab9a47c576c8",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "reagent_value",
+      "setup",
+      "short",
+      "weight_string"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "std/money.c",
+    "path": "/std/money",
+    "type": "item",
+    "sha256": "25a93e11a922d6e0eab3f040f0e67226eaa7c1e5240ec6f3290183416de38ff7",
+    "inherits": [
+      "COMBINED_ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "COMBINED_ITEM",
+        "target": "COMBINED_ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "autoload",
+      "query_autoload",
+      "setup",
+      "value"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "std/room/obj/pawn_stamp.c",
+    "path": "/std/room/obj/pawn_stamp",
+    "type": "item",
+    "sha256": "a26a6d2f38f2de5d1f292c90e7ec3f387cd0f96270bfe4a0d4ff6f858a1f260a",
+    "inherits": [
+      "ITEM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ITEM",
+        "target": "ITEM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "當票",
+    "ids": [
+      "pawn stamp",
+      "stamp"
+    ],
+    "weight": 5,
+    "numeric_calls": {
+      "set_weight": 5
+    },
+    "unit": "張",
+    "long": "一張空白當票。\n",
+    "manual_review": []
+  }
+]

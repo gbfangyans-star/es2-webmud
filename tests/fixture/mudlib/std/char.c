@@ -1,0 +1,1 @@
+inherit F_COMBAT;

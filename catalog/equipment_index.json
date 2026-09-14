@@ -1,0 +1,298 @@
+[
+  {
+    "path": "/obj/area/obj/belt",
+    "name": "腰帶",
+    "ids": [
+      "belt"
+    ],
+    "wear_as": "waist_eq",
+    "armor_apply": [
+      {
+        "slot": "waist_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "weapon_type": null,
+    "damage": null,
+    "armor": null,
+    "value": 200,
+    "weight": 100,
+    "material": null,
+    "setup_kinds": [
+      "waist_eq"
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/waist_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "inherits": [
+      "F_WAIST_EQ"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/cloth",
+    "name": "布衣",
+    "ids": [
+      "cloth"
+    ],
+    "wear_as": "cloth",
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "weapon_type": null,
+    "damage": null,
+    "armor": null,
+    "value": 0,
+    "weight": 1000,
+    "material": null,
+    "setup_kinds": [
+      "cloth"
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/leather_boot",
+    "name": "皮短靴",
+    "ids": [
+      "leather boots",
+      "boots"
+    ],
+    "wear_as": "feet_eq",
+    "armor_apply": [
+      {
+        "slot": "feet_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "weapon_type": null,
+    "damage": null,
+    "armor": null,
+    "value": 400,
+    "weight": 1000,
+    "material": null,
+    "setup_kinds": [
+      "feet_eq"
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/feet_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "inherits": [
+      "F_FEET_EQ"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/robe",
+    "name": "布袍",
+    "ids": [
+      "robe"
+    ],
+    "wear_as": "cloth",
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "weapon_type": null,
+    "damage": null,
+    "armor": null,
+    "value": 600,
+    "weight": 1000,
+    "material": null,
+    "setup_kinds": [
+      "cloth"
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/armor/cloth",
+    "name": "布衣",
+    "ids": [
+      "cloth"
+    ],
+    "wear_as": "cloth",
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "weapon_type": null,
+    "damage": null,
+    "armor": null,
+    "value": 0,
+    "weight": 1000,
+    "material": null,
+    "setup_kinds": [
+      "cloth"
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/armor/fur_hat",
+    "name": "毛皮帽",
+    "ids": [
+      "fur hat",
+      "hat"
+    ],
+    "wear_as": "head_eq",
+    "armor_apply": [
+      {
+        "slot": "head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "weapon_type": null,
+    "damage": null,
+    "armor": null,
+    "value": 50,
+    "weight": 1000,
+    "material": null,
+    "setup_kinds": [
+      "head_eq"
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "inherits": [
+      "F_HEAD_EQ"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/clan_symbol",
+    "name": null,
+    "ids": [],
+    "wear_as": "finger_eq",
+    "armor_apply": [
+      {
+        "slot": "finger_eq",
+        "values": {
+          "armor": 2
+        }
+      }
+    ],
+    "weapon_type": null,
+    "damage": null,
+    "armor": null,
+    "value": 1,
+    "weight": 1,
+    "material": null,
+    "setup_kinds": [],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/finger_eq",
+        "values": {
+          "armor": 2
+        }
+      }
+    ],
+    "inherits": [
+      "F_FINGER_EQ"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/obj/cloth",
+    "name": "布衣",
+    "ids": [
+      "cloth"
+    ],
+    "wear_as": "cloth",
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "weapon_type": null,
+    "damage": null,
+    "armor": null,
+    "value": 60,
+    "weight": 2000,
+    "material": null,
+    "setup_kinds": [
+      "cloth"
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "manual_review": []
+  }
+]

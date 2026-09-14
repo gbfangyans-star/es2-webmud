@@ -1,0 +1,27 @@
+{
+  "count": 3,
+  "issues": [
+    {
+      "severity": "advisory",
+      "kind": "add_action_handler_not_local",
+      "path": "/d/snow/npc/vendor_test",
+      "handler": "do_talk",
+      "verb": "talk"
+    },
+    {
+      "severity": "advisory",
+      "kind": "call_out_handler_not_local",
+      "path": "/d/snow/npc/vendor_test",
+      "handler": "hello",
+      "delay": 2
+    },
+    {
+      "severity": "advisory",
+      "kind": "add_action_handler_not_local",
+      "path": "/d/snow/npc/x",
+      "handler": "do_go",
+      "verb": "go"
+    }
+  ],
+  "note": "Advisory only: handlers may be inherited."
+}

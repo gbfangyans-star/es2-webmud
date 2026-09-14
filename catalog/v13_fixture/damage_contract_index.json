@@ -1,0 +1,11 @@
+[
+  {
+    "path": "/feature/char/combat",
+    "type": "feature",
+    "damage_contract": [
+      "query_strength"
+    ],
+    "combat_surface": [],
+    "manual_review": []
+  }
+]

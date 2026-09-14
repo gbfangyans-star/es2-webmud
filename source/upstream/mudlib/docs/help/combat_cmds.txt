@@ -1,0 +1,13 @@
+【戰鬥指令】
+
+目前可從這些指令開始查：
+  help fight
+  help kill
+  help guard
+  help wimpy
+  help wield
+  help unwield
+  help hp
+  help skills
+
+特殊武學的可用功能以實際技能 daemon 與目前版本為準。

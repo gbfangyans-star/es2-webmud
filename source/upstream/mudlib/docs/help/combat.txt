@@ -1,0 +1,13 @@
+【戰鬥入門】
+
+戰鬥由 MUD Server 的戰鬥系統處理。開始前可先用 look 確認目標。
+
+  fight <目標>         提出比武／戰鬥互動
+  kill <目標>          對目標發動攻擊
+  hp                   查看目前狀態
+  skills               查看技能
+  wield <物品>         裝備武器
+  unwield <物品>       卸下武器
+
+雪亭客棧目前禁止戰鬥。
+相關：help combat_cmds、help death、help skills

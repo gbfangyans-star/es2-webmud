@@ -1,0 +1,2281 @@
+[
+  {
+    "path": "/d/snow/npc/alchemist",
+    "name": "陳維俠",
+    "ids": [
+      "chen weisha",
+      "weisha",
+      "chen"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "gender": null,
+    "level": 30,
+    "attributes": {
+      "dex": 18,
+      "int": 24,
+      "wis": 25,
+      "spi": 22,
+      "cps": 19,
+      "con": 20
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 60
+      },
+      {
+        "skill": "sword",
+        "level": 60
+      },
+      {
+        "skill": "parry",
+        "level": 80
+      },
+      {
+        "skill": "dodge",
+        "level": 70
+      },
+      {
+        "skill": "force",
+        "level": 70
+      },
+      {
+        "skill": "kee anatomy",
+        "level": 100
+      },
+      {
+        "skill": "dragon force",
+        "level": 60
+      },
+      {
+        "skill": "alchemy-medication",
+        "level": 140
+      },
+      {
+        "skill": "alchemy-wealth",
+        "level": 40
+      },
+      {
+        "skill": "alchemy-magic",
+        "level": 80
+      },
+      {
+        "skill": "alchemy-immortality",
+        "level": 30
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "force",
+        "mapped_to": "dragon force"
+      }
+    ],
+    "equipment": [
+      {
+        "target": "obj/silversword",
+        "relative": true,
+        "action": "wield"
+      },
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      }
+    ],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "inventory",
+      "skill_mapping",
+      "teaching"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child",
+    "name": "阿寶",
+    "ids": [
+      "arbao",
+      "__ID_ARBAO__"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "gender": "female",
+    "level": 10,
+    "attributes": {
+      "spi": 18,
+      "int": 19,
+      "dex": 19,
+      "con": 17
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "stealing",
+        "level": 40
+      },
+      {
+        "skill": "dodge",
+        "level": 35
+      },
+      {
+        "skill": "lightswift",
+        "level": 45
+      },
+      {
+        "skill": "dagger",
+        "level": 40
+      },
+      {
+        "skill": "sword",
+        "level": 30
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "dodge",
+        "mapped_to": "lightswift"
+      }
+    ],
+    "equipment": [
+      {
+        "target": "obj/blue_cloth",
+        "relative": true,
+        "action": "wear"
+      },
+      {
+        "target": "/obj/area/obj/dagger",
+        "relative": false,
+        "action": "wield"
+      }
+    ],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "movement",
+      "skill_mapping",
+      "teaching",
+      "timed"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/child1",
+    "name": "小孩",
+    "ids": [
+      "child"
+    ],
+    "race": "human",
+    "class": null,
+    "gender": null,
+    "level": 1,
+    "attributes": {},
+    "stat_maximums": {
+      "gin": 20,
+      "kee": 20,
+      "sen": 20
+    },
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "obj/tummy_cover",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "inventory"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child2",
+    "name": "小孩",
+    "ids": [
+      "child"
+    ],
+    "race": "human",
+    "class": null,
+    "gender": null,
+    "level": 1,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "obj/woodsword",
+        "relative": true,
+        "action": "wield"
+      }
+    ],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "inventory"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child3",
+    "name": "小孩",
+    "ids": [
+      "child"
+    ],
+    "race": "human",
+    "class": null,
+    "gender": null,
+    "level": 1,
+    "attributes": {},
+    "stat_maximums": {
+      "gin": 20,
+      "kee": 20,
+      "sen": 20
+    },
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "obj/tummy_cover",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "inventory"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child4",
+    "name": "小孩",
+    "ids": [
+      "child"
+    ],
+    "race": "human",
+    "class": null,
+    "gender": null,
+    "level": 1,
+    "attributes": {},
+    "stat_maximums": {
+      "gin": 20,
+      "kee": 20,
+      "sen": 20
+    },
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "obj/tummy_cover",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "inventory"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/foreman",
+    "name": "工頭",
+    "ids": [
+      "foreman"
+    ],
+    "race": "human",
+    "class": null,
+    "gender": null,
+    "level": 8,
+    "attributes": {
+      "str": 18,
+      "cor": 19,
+      "cps": 15,
+      "dex": 16
+    },
+    "stat_maximums": {
+      "kee": 60
+    },
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "movement"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/gammer",
+    "name": "瞎眼老太婆",
+    "ids": [
+      "blind gammer",
+      "gammer",
+      "__ID_GAMMER__"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "gender": "female",
+    "level": 44,
+    "attributes": {
+      "dex": 29,
+      "con": 21,
+      "cor": 22,
+      "str": 19
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "staff",
+        "level": 40
+      },
+      {
+        "skill": "stealing",
+        "level": 70
+      },
+      {
+        "skill": "dodge",
+        "level": 90
+      },
+      {
+        "skill": "blade",
+        "level": 30
+      },
+      {
+        "skill": "sword",
+        "level": 30
+      },
+      {
+        "skill": "unarmed",
+        "level": 50
+      },
+      {
+        "skill": "dagger",
+        "level": 70
+      },
+      {
+        "skill": "secondhand dagger",
+        "level": 70
+      },
+      {
+        "skill": "killerhood",
+        "level": 60
+      },
+      {
+        "skill": "force",
+        "level": 90
+      },
+      {
+        "skill": "regular force",
+        "level": 100
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "force",
+        "mapped_to": "regular force"
+      }
+    ],
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      },
+      {
+        "target": "obj/cane",
+        "relative": true,
+        "action": "wield"
+      },
+      {
+        "target": "obj/syndicator",
+        "relative": true,
+        "action": "wield"
+      }
+    ],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "movement",
+      "skill_mapping",
+      "teaching",
+      "timed"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/garrison",
+    "name": "官兵",
+    "ids": [
+      "garrison"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "gender": null,
+    "level": 17,
+    "attributes": {
+      "con": 19,
+      "str": 20
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 60
+      },
+      {
+        "skill": "parry",
+        "level": 60
+      },
+      {
+        "skill": "unarmed",
+        "level": 50
+      },
+      {
+        "skill": "dodge",
+        "level": 50
+      },
+      {
+        "skill": "blade",
+        "level": 50
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "stock_type": "armor",
+        "name": "cloth",
+        "action": "wear"
+      },
+      {
+        "stock_type": "weapon",
+        "name": "broadsword",
+        "action": "wield"
+      }
+    ],
+    "merchandise": [],
+    "actions": [
+      {
+        "handler": "intercept",
+        "verb": "go"
+      }
+    ],
+    "callouts": [],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "teaching"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/girl",
+    "name": "白衣女子",
+    "ids": [
+      "girl"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "gender": "female",
+    "level": 55,
+    "attributes": {
+      "con": 23,
+      "str": 23,
+      "spi": 27,
+      "int": 22,
+      "dex": 26
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 140
+      },
+      {
+        "skill": "dodge",
+        "level": 120
+      },
+      {
+        "skill": "parry",
+        "level": 120
+      },
+      {
+        "skill": "blade",
+        "level": 70
+      },
+      {
+        "skill": "dagger",
+        "level": 70
+      },
+      {
+        "skill": "unarmed",
+        "level": 90
+      },
+      {
+        "skill": "force",
+        "level": 80
+      },
+      {
+        "skill": "celestial force",
+        "level": 80
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "force",
+        "mapped_to": "celestial force"
+      }
+    ],
+    "equipment": [
+      {
+        "target": "obj/white_dress",
+        "relative": true,
+        "action": "wear"
+      },
+      {
+        "target": "obj/slasher_sword",
+        "relative": true,
+        "action": "wield"
+      }
+    ],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "movement",
+      "skill_mapping",
+      "teaching",
+      "timed"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/guard",
+    "name": "青衣漢子",
+    "ids": [
+      "guard"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "gender": null,
+    "level": 20,
+    "attributes": {
+      "str": 20,
+      "con": 20
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 70
+      },
+      {
+        "skill": "blade",
+        "level": 50
+      },
+      {
+        "skill": "parry",
+        "level": 50
+      },
+      {
+        "skill": "unarmed",
+        "level": 40
+      },
+      {
+        "skill": "dodge",
+        "level": 70
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "stock_type": "armor",
+        "name": "cloth",
+        "action": "wear"
+      },
+      {
+        "stock_type": "weapon",
+        "name": "longsword",
+        "action": "wield"
+      }
+    ],
+    "merchandise": [],
+    "actions": [
+      {
+        "handler": "do_go",
+        "verb": "go"
+      }
+    ],
+    "callouts": [],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "movement",
+      "teaching"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/herbalist",
+    "name": "藥鋪掌櫃",
+    "ids": [
+      "herbalist"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "gender": null,
+    "level": 3,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 5
+      },
+      {
+        "skill": "parry",
+        "level": 5
+      },
+      {
+        "skill": "dodge",
+        "level": 5
+      },
+      {
+        "skill": "dagger",
+        "level": 5
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      },
+      {
+        "target": "obj/fur_hat",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "merchandise": [],
+    "actions": [
+      {
+        "handler": "do_vendor_list",
+        "verb": "list"
+      }
+    ],
+    "callouts": [],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "teaching"
+    ],
+    "manual_review": [
+      "custom_action",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/innkeeper",
+    "name": "掌櫃",
+    "ids": [
+      "innkeeper",
+      "keeper"
+    ],
+    "race": "human",
+    "class": null,
+    "gender": null,
+    "level": 4,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "init",
+      "movement"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/junkman",
+    "name": "拾荒老頭",
+    "ids": [
+      "junkman"
+    ],
+    "race": "human",
+    "class": null,
+    "gender": null,
+    "level": 2,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/lieutenant",
+    "name": "武官",
+    "ids": [
+      "lieutenant"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "gender": null,
+    "level": 24,
+    "attributes": {
+      "con": 21,
+      "str": 22
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 80
+      },
+      {
+        "skill": "blade",
+        "level": 60
+      },
+      {
+        "skill": "unarmed",
+        "level": 65
+      },
+      {
+        "skill": "parry",
+        "level": 60
+      },
+      {
+        "skill": "dodge",
+        "level": 70
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "stock_type": "armor",
+        "name": "cloth",
+        "action": "wear"
+      },
+      {
+        "stock_type": "weapon",
+        "name": "broadsword",
+        "action": "wield"
+      },
+      {
+        "target": "obj/leather_armor",
+        "relative": true,
+        "action": "wear"
+      },
+      {
+        "target": "obj/helmet",
+        "relative": true,
+        "action": "wear"
+      },
+      {
+        "target": "obj/clothboot",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "merchandise": [],
+    "actions": [
+      {
+        "handler": "intercept",
+        "verb": "go"
+      }
+    ],
+    "callouts": [],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "teaching"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/miller",
+    "name": "楊大嬸",
+    "ids": [
+      "miller"
+    ],
+    "race": "human",
+    "class": null,
+    "gender": "female",
+    "level": 2,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      }
+    ],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "inventory"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/arrow",
+    "name": "洛鐵箭",
+    "ids": [
+      "iron arrow",
+      "arrow"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/blue_cloth",
+    "name": "藍布長衫",
+    "ids": [
+      "blue cloth",
+      "cloth"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/blue_jacket",
+    "name": "藍衣套",
+    "ids": [
+      "blue jacket",
+      "jacket"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/broadsword",
+    "name": "闊劍",
+    "ids": [
+      "broadsword",
+      "sword"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/cane",
+    "name": "拐杖",
+    "ids": [
+      "cane"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/clothboot",
+    "name": "皂步靴",
+    "ids": [
+      "black boots",
+      "boots"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/coin",
+    "name": "古錢",
+    "ids": [
+      "ancient coin",
+      "coin"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/comb",
+    "name": "紅木梳子",
+    "ids": [
+      "annatto comb",
+      "comb"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/crate",
+    "name": "大木箱",
+    "ids": [
+      "big crate",
+      "crate"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [
+      {
+        "handler": "do_get",
+        "verb": "get"
+      }
+    ],
+    "callouts": [],
+    "runtime_traits": [
+      "init",
+      "movement"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/obj/fur_hat",
+    "name": "毛皮帽",
+    "ids": [
+      "fur hat",
+      "hat"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/hairpin",
+    "name": "古銅髮簪",
+    "ids": [
+      "bronze hairpin",
+      "hairpin"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/helmet",
+    "name": "銅盔",
+    "ids": [
+      "brass helmet",
+      "helmet"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/hoe",
+    "name": "鋤頭",
+    "ids": [
+      "hoe"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/invitation",
+    "name": "英雄帖",
+    "ids": [
+      "invitation"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/leather_armor",
+    "name": "硬皮甲冑",
+    "ids": [
+      "leather armor",
+      "armor"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/note",
+    "name": "雪亭小鎮見聞",
+    "ids": [
+      "snow note",
+      "note",
+      "map"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/pot",
+    "name": "大水缸",
+    "ids": [
+      "pot"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "movement",
+      "reset"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/roast_chicken",
+    "name": "紅燒雞",
+    "ids": [
+      "roast chicken",
+      "chicken"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/shovel",
+    "name": "鐵鏟",
+    "ids": [
+      "shovel"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/silversword",
+    "name": "洗銀劍",
+    "ids": [
+      "silver sword",
+      "sword"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/slasher_sword",
+    "name": null,
+    "ids": [],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/smock",
+    "name": "打鐵褂子",
+    "ids": [
+      "work smock",
+      "smock"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/syndicator",
+    "name": "「尺娘」",
+    "ids": [
+      "syndicator"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "damage"
+    ],
+    "manual_review": [
+      "damage_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/obj/tummy_cover",
+    "name": "肚兜",
+    "ids": [
+      "tummy cover",
+      "tummy",
+      "cover"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/wagon",
+    "name": "運貨驢車",
+    "ids": [
+      "wagon"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [
+      {
+        "handler": "do_load",
+        "verb": "load"
+      }
+    ],
+    "callouts": [],
+    "runtime_traits": [
+      "init",
+      "movement"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/obj/white_dress",
+    "name": "白綢羽衫",
+    "ids": [
+      "white dress",
+      "dress"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/wine_pot",
+    "name": "大酒缸",
+    "ids": [
+      "wine pot",
+      "pot"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "movement",
+      "reset"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/woodblade",
+    "name": "木刀",
+    "ids": [
+      "wooden blade",
+      "blade"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/woodsword",
+    "name": "木劍",
+    "ids": [
+      "wooden sword",
+      "sword"
+    ],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/oldman",
+    "name": "黑衣老人",
+    "ids": [
+      "oldman"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "gender": null,
+    "level": 7,
+    "attributes": {},
+    "stat_maximums": {
+      "gin": 70,
+      "sen": 50
+    },
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 25
+      },
+      {
+        "skill": "parry",
+        "level": 15
+      },
+      {
+        "skill": "dodge",
+        "level": 20
+      },
+      {
+        "skill": "dagger",
+        "level": 40
+      },
+      {
+        "skill": "stealing",
+        "level": 35
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      },
+      {
+        "target": "/obj/area/obj/shortsword",
+        "relative": false,
+        "action": "wield"
+      }
+    ],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "inventory",
+      "teaching"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/patrol",
+    "name": "巡邏官兵",
+    "ids": [
+      "patrol garrison",
+      "patrol",
+      "garrison"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "gender": null,
+    "level": 15,
+    "attributes": {},
+    "stat_maximums": {
+      "gin": 150,
+      "kee": 150
+    },
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 60
+      },
+      {
+        "skill": "parry",
+        "level": 60
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "stock_type": "armor",
+        "name": "cloth",
+        "action": "wear"
+      }
+    ],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "inventory",
+      "teaching"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/smith",
+    "name": "鐵匠",
+    "ids": [
+      "smith"
+    ],
+    "race": "human",
+    "class": null,
+    "gender": null,
+    "level": 13,
+    "attributes": {
+      "str": 19,
+      "cor": 17,
+      "cps": 15,
+      "dex": 18
+    },
+    "stat_maximums": {
+      "kee": 80
+    },
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "obj/smock",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "merchandise": [
+      {
+        "target": "obj/hoe",
+        "relative": true,
+        "stock": 3
+      },
+      {
+        "target": "obj/shovel",
+        "relative": true,
+        "stock": 5
+      },
+      {
+        "target": "/obj/area/obj/dagger",
+        "relative": false,
+        "stock": 10
+      },
+      {
+        "target": "/obj/area/obj/shortsword",
+        "relative": false,
+        "stock": 5
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_vendor_list",
+        "verb": "list"
+      }
+    ],
+    "callouts": [],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "movement",
+      "timed"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/teacher",
+    "name": "王懷芝",
+    "ids": [
+      "wang whaiz",
+      "wang",
+      "whaiz"
+    ],
+    "race": "human",
+    "class": "scholar",
+    "gender": null,
+    "level": 5,
+    "attributes": {},
+    "stat_maximums": {
+      "sen": 50
+    },
+    "skills": [
+      {
+        "skill": "literate",
+        "level": 60
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [
+      {
+        "handler": "do_sit",
+        "verb": "sit"
+      }
+    ],
+    "callouts": [],
+    "runtime_traits": [
+      "init",
+      "teaching",
+      "timed"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/waiter",
+    "name": "店小二",
+    "ids": [
+      "waiter",
+      "snow_inn_waiter"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "gender": null,
+    "level": 2,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [
+      {
+        "target": "/obj/food/dumpling",
+        "relative": false,
+        "stock": 50
+      },
+      {
+        "target": "/obj/food/manto",
+        "relative": false,
+        "stock": 50
+      },
+      {
+        "target": "/obj/food/pork",
+        "relative": false,
+        "stock": 30
+      },
+      {
+        "target": "obj/roast_chicken",
+        "relative": true,
+        "stock": 30
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_vendor_list",
+        "verb": "list"
+      }
+    ],
+    "callouts": [],
+    "runtime_traits": [
+      "init"
+    ],
+    "manual_review": [
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/woman",
+    "name": "少婦",
+    "ids": [
+      "woman"
+    ],
+    "race": "human",
+    "class": null,
+    "gender": "female",
+    "level": 2,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      }
+    ],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "inventory"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/yu",
+    "name": "魚天",
+    "ids": [
+      "yu tan",
+      "yu",
+      "tan"
+    ],
+    "race": "human",
+    "class": null,
+    "gender": "male",
+    "level": 1,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "obj/blue_jacket",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "merchandise": [
+      {
+        "target": "/d/snow/npc/obj/blue_jacket",
+        "relative": false,
+        "stock": 5
+      },
+      {
+        "target": "/obj/armor/fur_hat",
+        "relative": false,
+        "stock": 5
+      },
+      {
+        "target": "/obj/bottle",
+        "relative": false,
+        "stock": 5
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_vendor_list",
+        "verb": "list"
+      }
+    ],
+    "callouts": [],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "movement",
+      "timed"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/feature/npc/bandit",
+    "name": null,
+    "ids": [],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/currency",
+    "name": null,
+    "ids": [],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/fighter",
+    "name": null,
+    "ids": [],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/scholar",
+    "name": null,
+    "ids": [],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/soldier",
+    "name": null,
+    "ids": [],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/traveler",
+    "name": null,
+    "ids": [],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "movement",
+      "reset"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/vendor",
+    "name": null,
+    "ids": [],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "movement",
+      "reset",
+      "vendor"
+    ],
+    "manual_review": [
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/feature/npc/villager",
+    "name": null,
+    "ids": [],
+    "race": null,
+    "class": null,
+    "gender": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/npc/death_black",
+    "name": null,
+    "ids": [],
+    "race": "human",
+    "class": "soldier",
+    "gender": null,
+    "level": 70,
+    "attributes": {
+      "str": 45,
+      "con": 40,
+      "dex": 40,
+      "cor": 35,
+      "cps": 45,
+      "spi": 40,
+      "wis": 35,
+      "int": 30
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 170
+      },
+      {
+        "skill": "sword",
+        "level": 140
+      },
+      {
+        "skill": "blade",
+        "level": 120
+      },
+      {
+        "skill": "parry",
+        "level": 150
+      },
+      {
+        "skill": "unarmed",
+        "level": 130
+      },
+      {
+        "skill": "dodge",
+        "level": 110
+      },
+      {
+        "skill": "berserk",
+        "level": 180
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "teaching"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/npc/death_white",
+    "name": null,
+    "ids": [],
+    "race": "human",
+    "class": "soldier",
+    "gender": null,
+    "level": 70,
+    "attributes": {
+      "str": 45,
+      "con": 40,
+      "dex": 40,
+      "cor": 35,
+      "cps": 45,
+      "spi": 40,
+      "wis": 35,
+      "int": 30
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 60
+      },
+      {
+        "skill": "blunt",
+        "level": 100
+      },
+      {
+        "skill": "sword",
+        "level": 100
+      },
+      {
+        "skill": "parry",
+        "level": 90
+      },
+      {
+        "skill": "unarmed",
+        "level": 80
+      },
+      {
+        "skill": "dodge",
+        "level": 90
+      },
+      {
+        "skill": "blade",
+        "level": 70
+      },
+      {
+        "skill": "berserk",
+        "level": 150
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "teaching"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/npc/demogorgon",
+    "name": null,
+    "ids": [],
+    "race": "human",
+    "class": null,
+    "gender": null,
+    "level": 100,
+    "attributes": {
+      "str": 35,
+      "dex": 42,
+      "con": 35,
+      "spi": 45,
+      "cor": 45
+    },
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [
+      {
+        "function": "countdown",
+        "delay": 240
+      },
+      {
+        "function": "countdown",
+        "delay": 49
+      },
+      {
+        "function": "countdown",
+        "delay": 1
+      },
+      {
+        "function": "do_shutdown",
+        "delay": 2
+      }
+    ],
+    "runtime_traits": [
+      "timed"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/obj/npc/garrison",
+    "name": "官兵",
+    "ids": [
+      "garrison",
+      "guard"
+    ],
+    "race": "human",
+    "class": "fighter",
+    "gender": null,
+    "level": 25,
+    "attributes": {
+      "con": 22,
+      "str": 24,
+      "dex": 18,
+      "cor": 18
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 60
+      },
+      {
+        "skill": "blunt",
+        "level": 100
+      },
+      {
+        "skill": "sword",
+        "level": 100
+      },
+      {
+        "skill": "parry",
+        "level": 90
+      },
+      {
+        "skill": "unarmed",
+        "level": 80
+      },
+      {
+        "skill": "dodge",
+        "level": 90
+      },
+      {
+        "skill": "blade",
+        "level": 70
+      },
+      {
+        "skill": "berserk",
+        "level": 150
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "stock_type": "weapon",
+        "name": "rod",
+        "action": "wield"
+      }
+    ],
+    "merchandise": [],
+    "actions": [],
+    "callouts": [],
+    "runtime_traits": [
+      "inventory",
+      "teaching"
+    ],
+    "manual_review": []
+  }
+]

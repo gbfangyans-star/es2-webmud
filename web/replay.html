@@ -1,0 +1,6 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ES2 Session Replay</title><link rel="stylesheet" href="/styles.css"></head><body>
+<header><h1>ES2 WebMUD · Session Replay</h1><div><a href="/">遊戲</a> · <a href="/runtime.html">Runtime</a> · <a href="/evidence.html">Evidence</a></div> · <a href="/session.html">Session</a> · <a href="/acceptance.html">Acceptance</a></header>
+<main><div class="card"><b>離線實機紀錄重播</b><p>使用 <code>tools/replay_session.mjs</code> 分析 command/response JSONL。它只讀真正捕獲的原生輸出，不執行、不模擬 ES2。</p><pre>{"command":"score","response":"..."}
+{"command":"look","response":"..."}
+{"command":"go north","response":"..."}</pre></div>
+<div class="card"><b>目前 source-confirmed coverage</b><p>score、hp、skills、inventory，以及 go/look 的確定失敗訊息。成功移動不靠猜測判定。</p></div></main></body></html>

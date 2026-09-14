@@ -1,0 +1,38 @@
+{
+  "mode": "source_level_fallback_NOT_live_neolith",
+  "scenario": "oldpine entry + NPC placement + reinforcement regression",
+  "players": [
+    {
+      "player": 1,
+      "laps": 3,
+      "checks": 18,
+      "passed": true
+    },
+    {
+      "player": 2,
+      "laps": 3,
+      "checks": 18,
+      "passed": true
+    },
+    {
+      "player": 3,
+      "laps": 3,
+      "checks": 18,
+      "passed": true
+    },
+    {
+      "player": 4,
+      "laps": 3,
+      "checks": 18,
+      "passed": true
+    },
+    {
+      "player": 5,
+      "laps": 3,
+      "checks": 18,
+      "passed": true
+    }
+  ],
+  "all_passed": true,
+  "total_checks": 90
+}

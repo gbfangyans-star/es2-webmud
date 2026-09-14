@@ -1,0 +1,383 @@
+{
+  "nodes": 152,
+  "edges": 281,
+  "components": 27,
+  "coordinate_conflicts": 22,
+  "conflicts": [
+    {
+      "from": "/d/lee/creek",
+      "to": "/d/lee/riverside_s",
+      "direction": "north",
+      "from_xy": [
+        89,
+        -8
+      ],
+      "to_xy": [
+        89,
+        -10
+      ],
+      "expected_to_xy": [
+        89,
+        -9
+      ]
+    },
+    {
+      "from": "/d/lee/hunter",
+      "to": "/d/lee/wroad2",
+      "direction": "south",
+      "from_xy": [
+        81,
+        -11
+      ],
+      "to_xy": [
+        82,
+        -10
+      ],
+      "expected_to_xy": [
+        81,
+        -10
+      ]
+    },
+    {
+      "from": "/d/lee/riverside_s",
+      "to": "/d/lee/creek",
+      "direction": "south",
+      "from_xy": [
+        89,
+        -10
+      ],
+      "to_xy": [
+        89,
+        -8
+      ],
+      "expected_to_xy": [
+        89,
+        -9
+      ]
+    },
+    {
+      "from": "/d/lee/shrine",
+      "to": "/d/lee/wroad3",
+      "direction": "south",
+      "from_xy": [
+        82,
+        -11
+      ],
+      "to_xy": [
+        83,
+        -10
+      ],
+      "expected_to_xy": [
+        82,
+        -10
+      ]
+    },
+    {
+      "from": "/d/lee/wroad2",
+      "to": "/d/lee/hunter",
+      "direction": "north",
+      "from_xy": [
+        82,
+        -10
+      ],
+      "to_xy": [
+        81,
+        -11
+      ],
+      "expected_to_xy": [
+        82,
+        -11
+      ]
+    },
+    {
+      "from": "/d/lee/wroad3",
+      "to": "/d/lee/shrine",
+      "direction": "north",
+      "from_xy": [
+        83,
+        -10
+      ],
+      "to_xy": [
+        82,
+        -11
+      ],
+      "expected_to_xy": [
+        83,
+        -11
+      ]
+    },
+    {
+      "from": "/d/snow/court",
+      "to": "/d/snow/wstreet3",
+      "direction": "south",
+      "from_xy": [
+        74,
+        -1
+      ],
+      "to_xy": [
+        78,
+        0
+      ],
+      "expected_to_xy": [
+        74,
+        0
+      ]
+    },
+    {
+      "from": "/d/snow/school",
+      "to": "/d/snow/wstreet1",
+      "direction": "north",
+      "from_xy": [
+        80,
+        -2
+      ],
+      "to_xy": [
+        77,
+        -3
+      ],
+      "expected_to_xy": [
+        80,
+        -3
+      ]
+    },
+    {
+      "from": "/d/snow/wgate",
+      "to": "/d/snow/wstreet3",
+      "direction": "east",
+      "from_xy": [
+        78,
+        1
+      ],
+      "to_xy": [
+        78,
+        0
+      ],
+      "expected_to_xy": [
+        79,
+        1
+      ]
+    },
+    {
+      "from": "/d/snow/wstreet1",
+      "to": "/d/snow/school",
+      "direction": "south",
+      "from_xy": [
+        77,
+        -3
+      ],
+      "to_xy": [
+        80,
+        -2
+      ],
+      "expected_to_xy": [
+        77,
+        -2
+      ]
+    },
+    {
+      "from": "/d/snow/wstreet2",
+      "to": "/d/snow/wstreet3",
+      "direction": "west",
+      "from_xy": [
+        76,
+        -3
+      ],
+      "to_xy": [
+        78,
+        0
+      ],
+      "expected_to_xy": [
+        75,
+        -3
+      ]
+    },
+    {
+      "from": "/d/snow/wstreet3",
+      "to": "/d/snow/court",
+      "direction": "north",
+      "from_xy": [
+        78,
+        0
+      ],
+      "to_xy": [
+        74,
+        -1
+      ],
+      "expected_to_xy": [
+        78,
+        -1
+      ]
+    },
+    {
+      "from": "/d/snow/wstreet3",
+      "to": "/d/snow/wstreet2",
+      "direction": "east",
+      "from_xy": [
+        78,
+        0
+      ],
+      "to_xy": [
+        76,
+        -3
+      ],
+      "expected_to_xy": [
+        79,
+        0
+      ]
+    },
+    {
+      "from": "/d/snow/wstreet3",
+      "to": "/d/snow/wgate",
+      "direction": "west",
+      "from_xy": [
+        78,
+        0
+      ],
+      "to_xy": [
+        78,
+        1
+      ],
+      "expected_to_xy": [
+        77,
+        0
+      ]
+    },
+    {
+      "from": "/custom/oldpine/room/path09",
+      "to": "/custom/oldpine/room/path10",
+      "direction": "east",
+      "from_xy": [
+        86,
+        0
+      ],
+      "to_xy": [
+        88,
+        -1
+      ],
+      "expected_to_xy": [
+        87,
+        0
+      ]
+    },
+    {
+      "from": "/custom/oldpine/room/path10",
+      "to": "/custom/oldpine/room/path09",
+      "direction": "west",
+      "from_xy": [
+        88,
+        -1
+      ],
+      "to_xy": [
+        86,
+        0
+      ],
+      "expected_to_xy": [
+        87,
+        -1
+      ]
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/cave4",
+      "to": "/custom/oldpine_recovered/room/cave5",
+      "direction": "west",
+      "from_xy": [
+        101,
+        -1
+      ],
+      "to_xy": [
+        101,
+        0
+      ],
+      "expected_to_xy": [
+        100,
+        -1
+      ]
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/npath1",
+      "to": "/custom/oldpine_recovered/room/npath2",
+      "direction": "south",
+      "from_xy": [
+        85,
+        -1
+      ],
+      "to_xy": [
+        87,
+        0
+      ],
+      "expected_to_xy": [
+        85,
+        0
+      ]
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/npath2",
+      "to": "/custom/oldpine_recovered/room/npath1",
+      "direction": "north",
+      "from_xy": [
+        87,
+        0
+      ],
+      "to_xy": [
+        85,
+        -1
+      ],
+      "expected_to_xy": [
+        87,
+        -1
+      ]
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/passage",
+      "to": "/custom/oldpine_recovered/room/waterfall",
+      "direction": "south",
+      "from_xy": [
+        260,
+        0
+      ],
+      "to_xy": [
+        240,
+        -3
+      ],
+      "expected_to_xy": [
+        260,
+        1
+      ]
+    },
+    {
+      "from": "/custom/oldpine_recovered/room/pine6",
+      "to": "/custom/oldpine_recovered/room/pine7",
+      "direction": "west",
+      "from_xy": [
+        199,
+        -3
+      ],
+      "to_xy": [
+        181,
+        -1
+      ],
+      "expected_to_xy": [
+        198,
+        -3
+      ]
+    },
+    {
+      "from": "/custom/wizroom/w/windstory/room/inn_w",
+      "to": "/d/snow/square_w",
+      "direction": "west",
+      "from_xy": [
+        380,
+        0
+      ],
+      "to_xy": [
+        78,
+        -4
+      ],
+      "expected_to_xy": [
+        379,
+        0
+      ]
+    }
+  ],
+  "map_sha256": "9db43f61817bbd50874ae1852f72ba99a36c611a11ec449899b337c0f53796f6"
+}

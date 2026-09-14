@@ -1,0 +1,33 @@
+{
+  "counts": {
+    "npc": 64,
+    "item": 103,
+    "skill": 6,
+    "daemon": 28,
+    "runtime": 2,
+    "feature": 47,
+    "prototype": 11,
+    "command": 154,
+    "room": 43
+  },
+  "manual_review": 59,
+  "runtime_traits": {
+    "movement": 67,
+    "combat": 7,
+    "damage": 4,
+    "timed": 24,
+    "interactive": 10,
+    "reset": 12,
+    "init": 41,
+    "teaching": 27,
+    "vendor": 2,
+    "skill_mapping": 7,
+    "heart_beat": 7,
+    "inventory": 23
+  },
+  "references": {
+    "total": 168,
+    "resolved": 155
+  },
+  "total": 513
+}

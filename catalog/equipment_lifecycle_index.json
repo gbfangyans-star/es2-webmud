@@ -1,0 +1,1078 @@
+[
+  {
+    "path": "/adm/daemons/chinesed",
+    "type": "daemon",
+    "name": null,
+    "equipment_hooks": [
+      "remove"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": []
+  },
+  {
+    "path": "/adm/daemons/daemond",
+    "type": "daemon",
+    "name": null,
+    "equipment_hooks": [
+      "remove"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": []
+  },
+  {
+    "path": "/adm/daemons/emoted",
+    "type": "daemon",
+    "name": null,
+    "equipment_hooks": [
+      "remove"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": []
+  },
+  {
+    "path": "/adm/daemons/natured",
+    "type": "daemon",
+    "name": null,
+    "equipment_hooks": [
+      "remove"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/adm/intermud/i2d",
+    "type": "other",
+    "name": null,
+    "equipment_hooks": [
+      "remove"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/adm/simul_efun/object",
+    "type": "other",
+    "name": null,
+    "equipment_hooks": [
+      "remove"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/std/wear",
+    "type": "command",
+    "name": null,
+    "equipment_hooks": [
+      "wear"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": []
+  },
+  {
+    "path": "/cmds/std/wield",
+    "type": "command",
+    "name": null,
+    "equipment_hooks": [
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/alchemist",
+    "type": "npc",
+    "name": "陳維俠",
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 30
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child",
+    "type": "npc",
+    "name": "阿寶",
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 10
+    },
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/child1",
+    "type": "npc",
+    "name": "小孩",
+    "equipment_hooks": [
+      "wear"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 1
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child2",
+    "type": "npc",
+    "name": "小孩",
+    "equipment_hooks": [
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 1
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child3",
+    "type": "npc",
+    "name": "小孩",
+    "equipment_hooks": [
+      "wear"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 1
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child4",
+    "type": "npc",
+    "name": "小孩",
+    "equipment_hooks": [
+      "wear"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 1
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/gammer",
+    "type": "npc",
+    "name": "瞎眼老太婆",
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 44
+    },
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/garrison",
+    "type": "npc",
+    "name": "官兵",
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 17
+    },
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/girl",
+    "type": "npc",
+    "name": "白衣女子",
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 55
+    },
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/guard",
+    "type": "npc",
+    "name": "青衣漢子",
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 20
+    },
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/herbalist",
+    "type": "npc",
+    "name": "藥鋪掌櫃",
+    "equipment_hooks": [
+      "wear"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 3
+    },
+    "manual_review": [
+      "custom_action",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/junkman",
+    "type": "npc",
+    "name": "拾荒老頭",
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 2
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/lieutenant",
+    "type": "npc",
+    "name": "武官",
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 24
+    },
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/miller",
+    "type": "npc",
+    "name": "楊大嬸",
+    "equipment_hooks": [
+      "wear"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 2
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/blue_cloth",
+    "type": "npc",
+    "name": "藍布長衫",
+    "equipment_hooks": [],
+    "wear_as": "cloth",
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 2
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 2
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 2000
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/blue_jacket",
+    "type": "npc",
+    "name": "藍衣套",
+    "equipment_hooks": [],
+    "wear_as": "cloth",
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 2
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 2
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 2000
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/clothboot",
+    "type": "npc",
+    "name": "皂步靴",
+    "equipment_hooks": [],
+    "wear_as": "feet_eq",
+    "armor_apply": [
+      {
+        "slot": "feet_eq",
+        "values": {
+          "armor": 1,
+          "dodge": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/feet_eq",
+        "values": {
+          "armor": 1,
+          "dodge": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/fur_hat",
+    "type": "npc",
+    "name": "毛皮帽",
+    "equipment_hooks": [],
+    "wear_as": "head_eq",
+    "armor_apply": [
+      {
+        "slot": "head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/hairpin",
+    "type": "npc",
+    "name": "古銅髮簪",
+    "equipment_hooks": [],
+    "wear_as": "head_eq",
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_weight": 400
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/helmet",
+    "type": "npc",
+    "name": "銅盔",
+    "equipment_hooks": [],
+    "wear_as": "head_eq",
+    "armor_apply": [
+      {
+        "slot": "head_eq",
+        "values": {
+          "armor": 3,
+          "dodge": -3
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/head_eq",
+        "values": {
+          "armor": 3,
+          "dodge": -3
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 4000
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/leather_armor",
+    "type": "npc",
+    "name": "硬皮甲冑",
+    "equipment_hooks": [
+      "setup_armor"
+    ],
+    "wear_as": "armor",
+    "armor_apply": [
+      {
+        "slot": "armor",
+        "values": {
+          "armor": 6
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/armor",
+        "values": {
+          "armor": 6
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 10000
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/smock",
+    "type": "npc",
+    "name": "打鐵褂子",
+    "equipment_hooks": [
+      "setup_armor"
+    ],
+    "wear_as": "armor",
+    "armor_apply": [
+      {
+        "slot": "armor",
+        "values": {
+          "armor": 2,
+          "armor_vs_fire": 5
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/armor",
+        "values": {
+          "armor": 2,
+          "armor_vs_fire": 5
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 5500
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/tummy_cover",
+    "type": "npc",
+    "name": "肚兜",
+    "equipment_hooks": [],
+    "wear_as": "cloth",
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/white_dress",
+    "type": "npc",
+    "name": "白綢羽衫",
+    "equipment_hooks": [],
+    "wear_as": "cloth",
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 3,
+          "spi": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 3,
+          "spi": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 2000
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/oldman",
+    "type": "npc",
+    "name": "黑衣老人",
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 7
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/patrol",
+    "type": "npc",
+    "name": "巡邏官兵",
+    "equipment_hooks": [
+      "wear"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 15
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/smith",
+    "type": "npc",
+    "name": "鐵匠",
+    "equipment_hooks": [
+      "wear"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 13
+    },
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/woman",
+    "type": "npc",
+    "name": "少婦",
+    "equipment_hooks": [
+      "wear"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 2
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/yu",
+    "type": "npc",
+    "name": "魚天",
+    "equipment_hooks": [
+      "wear"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 1
+    },
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/daemon/misc/traveler",
+    "type": "daemon",
+    "name": null,
+    "equipment_hooks": [
+      "remove"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": []
+  },
+  {
+    "path": "/feature/armor/armor",
+    "type": "feature",
+    "name": null,
+    "equipment_hooks": [
+      "setup_armor"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": []
+  },
+  {
+    "path": "/feature/equip",
+    "type": "feature",
+    "name": null,
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": [
+      "damage_logic",
+      "weapon_runtime"
+    ]
+  },
+  {
+    "path": "/feature/move",
+    "type": "feature",
+    "name": null,
+    "equipment_hooks": [
+      "remove"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/obj/area/man",
+    "type": "item",
+    "name": "路人",
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 2
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/belt",
+    "type": "item",
+    "name": "腰帶",
+    "equipment_hooks": [],
+    "wear_as": "waist_eq",
+    "armor_apply": [
+      {
+        "slot": "waist_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/waist_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 100
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/cloth",
+    "type": "item",
+    "name": "布衣",
+    "equipment_hooks": [],
+    "wear_as": "cloth",
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/leather_boot",
+    "type": "item",
+    "name": "皮短靴",
+    "equipment_hooks": [],
+    "wear_as": "feet_eq",
+    "armor_apply": [
+      {
+        "slot": "feet_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/feet_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/obj/robe",
+    "type": "item",
+    "name": "布袍",
+    "equipment_hooks": [],
+    "wear_as": "cloth",
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/traveller",
+    "type": "item",
+    "name": "過路客",
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 20
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/obj/area/vagabond",
+    "type": "item",
+    "name": "市井無賴",
+    "equipment_hooks": [
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 2
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/obj/armor/cloth",
+    "type": "item",
+    "name": "布衣",
+    "equipment_hooks": [],
+    "wear_as": "cloth",
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/obj/armor/fur_hat",
+    "type": "item",
+    "name": "毛皮帽",
+    "equipment_hooks": [],
+    "wear_as": "head_eq",
+    "armor_apply": [
+      {
+        "slot": "head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/obj/clan_symbol",
+    "type": "item",
+    "name": null,
+    "equipment_hooks": [],
+    "wear_as": "finger_eq",
+    "armor_apply": [
+      {
+        "slot": "finger_eq",
+        "values": {
+          "armor": 2
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/finger_eq",
+        "values": {
+          "armor": 2
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1
+    },
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/obj/cloth",
+    "type": "item",
+    "name": "布衣",
+    "equipment_hooks": [],
+    "wear_as": "cloth",
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 2000
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/obj/http",
+    "type": "item",
+    "name": null,
+    "equipment_hooks": [
+      "remove"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/obj/npc/garrison",
+    "type": "npc",
+    "name": "官兵",
+    "equipment_hooks": [
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 25
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/std/room",
+    "type": "prototype",
+    "name": null,
+    "equipment_hooks": [
+      "remove"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": [
+      "door"
+    ]
+  },
+  {
+    "path": "/std/room/hockshop",
+    "type": "prototype",
+    "name": null,
+    "equipment_hooks": [
+      "remove"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": [
+      "custom_action"
+    ]
+  }
+]

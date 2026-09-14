@@ -1,0 +1,31 @@
+#!/usr/bin/env node
+import net from 'node:net';
+import {spawn} from 'node:child_process';
+import WebSocket from '../server/node_modules/ws/index.js';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const here=path.dirname(fileURLToPath(import.meta.url));
+const root=path.resolve(here,'..');
+const mudPort=14800+Math.floor(Math.random()*100), webPort=18800+Math.floor(Math.random()*100), CAP=12, TOTAL=18;
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+const sockets=new Set();
+const mud=net.createServer(sock=>{sockets.add(sock);sock.write('READY\r\n');sock.on('close',()=>sockets.delete(sock))});
+await new Promise((res,rej)=>{mud.once('error',rej);mud.listen(mudPort,'127.0.0.1',res)});
+const child=spawn(process.execPath,['server/index.js'],{cwd:root,env:{...process.env,HOST:'127.0.0.1',PORT:String(webPort),MUD_HOST:'127.0.0.1',MUD_PORT:String(mudPort),MAX_SESSIONS:String(CAP)},stdio:['ignore','pipe','pipe']});
+let log='';child.stdout.on('data',d=>log+=d);child.stderr.on('data',d=>log+=d);for(let i=0;i<100&&!log.includes('ES2 WebMUD');i++)await wait(50);if(!log.includes('ES2 WebMUD'))throw Error(log);
+const clients=[];let rejected=0,opened=0;
+await Promise.all(Array.from({length:TOTAL},(_,i)=>new Promise(resolve=>{
+  const ws=new WebSocket(`ws://127.0.0.1:${webPort}/mud`);clients.push(ws);let done=false;
+  const finish=()=>{if(done)return;done=true;resolve()};
+  ws.on('open',()=>{opened++;setTimeout(finish,250)});
+  ws.on('close',(code)=>{if(code===1013)rejected++;finish()});
+  ws.on('error',()=>finish());
+  setTimeout(finish,1000);
+})));
+await wait(200);
+const health=await fetch(`http://127.0.0.1:${webPort}/api/multiplayer-health`).then(r=>r.json());
+const accepted=health.sessions.active;
+const ok=accepted===CAP && rejected===TOTAL-CAP && health.totals.rejectedCapacity===TOTAL-CAP;
+console.log(JSON.stringify({ok,capacity:CAP,totalAttempts:TOTAL,activeAccepted:accepted,rejected1013:rejected,health},null,2));
+for(const ws of clients)try{ws.close()}catch{};await wait(200);child.kill('SIGTERM');for(const s of sockets)s.destroy();await new Promise(r=>mud.close(r));
+process.exit(ok?0:2);

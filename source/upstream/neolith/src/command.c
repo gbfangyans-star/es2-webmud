@@ -1,0 +1,1420 @@
+#ifdef	HAVE_CONFIG_H
+#include <config.h>
+#endif /* HAVE_CONFIG_H */
+
+#include "std.h"
+#include "lpc/array.h"
+#include "lpc/object.h"
+#include "lpc/include/function.h"
+#include "lpc/include/origin.h"
+#include "lpc/program.h"
+#include "comm.h"
+#include "command.h"
+#include "rc/rc.h"
+#include "ed.h"
+
+static int illegal_sentence_action;
+
+ /*
+  * This macro is for testing whether ip is still valid, since many
+  * functions call LPC code, which could otherwise use
+  * enable_commands(), set_this_player(), or destruct() to cause
+  * all hell to break loose by changing or dangling command_giver
+  * or command_giver->interactive.  It also saves us a few dereferences
+  * since we know we can trust ip, and also increases code readability.
+  *
+  * Basically, this should be used as follows:
+  *
+  * (1) when using command_giver:
+  *     set a variable named ip to command_giver->interactive at a point
+  *     when you know it is valid.  Then, after a call that might have
+  *     called LPC code, check IP_VALID(command_giver), or use
+  *     VALIDATE_IP.
+  * (2) some other object:
+  *     set a variable named ip to ob->interactive, and save ob somewhere;
+  *     or if you are just dealing with an ip as input, save ip->ob somewhere.
+  *     After calling LPC code, check IP_VALID(ob), or use VALIDATE_IP.
+  * 
+  * Yes, I know VALIDATE_IP uses a goto.  It's due to C's lack of proper
+  * exception handling.  Only use it in subroutines that are set up
+  * for it (i.e. define a failure label, and are set up to deal with
+  * branching to it from arbitrary points).
+  */
+#define IP_VALID(ip, ob) (ob && ob->interactive == ip)
+#define VALIDATE_IP(ip, ob) if (!IP_VALID(ip, ob)) goto failure
+
+
+static char *get_user_command (void);
+static char *first_cmd_in_buf (interactive_t *);
+static void next_cmd_in_buf (interactive_t *);
+static void print_prompt (interactive_t *);
+static int user_parser (const char * buff);
+static void set_last_verb_from_input (const char *input, char *verb_buf, size_t verb_buf_size);
+static size_t single_char_token_len (const interactive_t *ip);
+
+void set_prompt (const char *str) {
+  if (command_giver && command_giver->interactive)
+    command_giver->interactive->prompt = str;
+}
+
+
+/**
+ *  @brief Print the prompt, and optionally let input_to customize it.
+ */
+static void print_prompt (interactive_t * ip) {
+  object_t *ob = ip->ob;
+
+  if (ip->input_to == 0)
+    {
+      /* give user object a chance to write its own prompt */
+      if (!(ip->iflags & HAS_WRITE_PROMPT))
+        tell_object (ip->ob, ip->prompt);
+#ifdef OLD_ED
+      else if (ip->ed_buffer)
+        tell_object (ip->ob, ip->prompt);
+#endif
+      else if (!APPLY_SAFE_CALL (APPLY_WRITE_PROMPT, ip->ob, 0, ORIGIN_DRIVER))
+        {
+          if (!IP_VALID (ip, ob))
+            return;
+          ip->iflags &= ~HAS_WRITE_PROMPT;
+          tell_object (ip->ob, ip->prompt);
+        }
+    }
+  else if (ip->iflags & HAS_INPUT_PROMPT)
+    {
+      svalue_t* ret;
+      sentence_t *sent = ip->input_to;
+      array_t *args = 0;
+      int num_arg = 2; /* always at least the callback identifier and the iflags */
+      /* If the callback was specified as a function name string, pass the name;
+       * otherwise pass the funptr itself. */
+      if ((sent->function.f->hdr.type & FP_MASK) == FP_LOCAL)
+        copy_and_push_string (function_name (sent->function.f->hdr.owner->prog,
+                                             sent->function.f->f.local.index));
+      else
+        push_refed_funp (sent->function.f);
+      push_number (ip->iflags & 0x3); /* pass the I_NOECHO and I_NOESC flags as arguments */
+      if (sent->args)
+        {
+          args = sent->args;
+          args->ref++;
+          num_arg += args->size;
+          for (int i = 0; i < args->size; i++)
+            {
+              push_svalue (&args->item[i]);
+            }
+        }
+      ret = APPLY_SAFE_CALL (APPLY_INPUT_PROMPT, ip->ob, num_arg, ORIGIN_DRIVER);
+      if (args)
+        free_array (args);
+      if (!IP_VALID (ip, ob))
+        return;
+      if (!ret)
+        ip->iflags &= ~HAS_INPUT_PROMPT;
+    }
+
+#if 0
+  /*
+   * Put the IAC GA thing in here... Moved from before writing the prompt;
+   * vt src says it's a terminator. Should it be inside the no-input_to
+   * case? We'll see, I guess.
+   * 
+   * TODO: we have negotiated suppress GA, so we should only send this if
+   * the client did not negotiate that option.
+   */
+  if (ip->iflags & USING_TELNET)
+    add_message (command_giver, telnet_ga);
+#endif
+
+  flush_message (ip);
+}
+
+
+void notify_no_command () {
+  string_or_func_t p;
+  svalue_t *v;
+  object_t *saved_ob = command_giver;
+
+  if (!command_giver || !command_giver->interactive)
+    return;
+  p = command_giver->interactive->default_err_message;
+  if (command_giver->interactive->iflags & NOTIFY_FAIL_FUNC)
+    {
+      /* Use local variable for exception-safe restoration.
+       * If error() is called during the function pointer invocation,
+       * the stack-based save/restore would leak references and cause
+       * command_giver state corruption. Local variables avoid this.
+       */
+      add_ref(command_giver, "notify_no_command"); /* ensure command_giver is not destructed during call */
+      v = SAFE_CALL_FUNCTION_POINTER_SLOT_CALL (p.f, 0);
+      free_object (command_giver, "notify_no_command");  /* balance ref increment above */
+      command_giver = saved_ob;  /* Restore regardless of whether error() was called */
+      free_funp (p.f);
+      if (command_giver && command_giver->interactive)
+        {
+          if (v && v->type == T_STRING)
+            tell_object (command_giver, SVALUE_STRPTR(v));
+          command_giver->interactive->iflags &= ~NOTIFY_FAIL_FUNC;
+          command_giver->interactive->default_err_message.s = 0;
+        }
+      CALL_FUNCTION_POINTER_SLOT_FINISH();
+    }
+  else
+    {
+      if (p.s)
+        {
+          tell_object (command_giver, p.s);
+          free_string(to_shared_str(p.s));
+          command_giver->interactive->default_err_message.s = 0;
+        }
+      else if (CONFIG_STR (__DEFAULT_FAIL_MESSAGE__))
+        {
+          add_vmessage (command_giver, "%s\n",
+                        CONFIG_STR (__DEFAULT_FAIL_MESSAGE__));
+        }
+      else
+        {
+          tell_object (command_giver, "What?\n");
+        }
+    }
+}				/* notify_no_command() */
+
+void clear_notify (interactive_t * ip) {
+  string_or_func_t dem;
+
+  dem = ip->default_err_message;
+  if (ip->iflags & NOTIFY_FAIL_FUNC)
+    {
+      free_funp (dem.f);
+      ip->iflags &= ~NOTIFY_FAIL_FUNC;
+    }
+  else if (dem.s)
+    free_string(to_shared_str(dem.s));
+  ip->default_err_message.s = 0;
+}				/* clear_notify() */
+
+void set_notify_fail_message (const char *str) {
+  if (!command_giver || !command_giver->interactive)
+    return;
+  clear_notify (command_giver->interactive);
+  command_giver->interactive->default_err_message.s = make_shared_string(str, NULL);
+}				/* set_notify_fail_message() */
+
+void set_notify_fail_function (funptr_t * funp) {
+  if (!command_giver || !command_giver->interactive)
+    return;
+  clear_notify (command_giver->interactive);
+  command_giver->interactive->iflags |= NOTIFY_FAIL_FUNC;
+  command_giver->interactive->default_err_message.f = funp;
+  funp->hdr.ref++;
+}				/* set_notify_fail_function() */
+
+
+
+/*
+ * Let object 'me' snoop object 'you'. If 'you' is 0, then turn off
+ * snooping.
+ *
+ * This routine is almost identical to the old set_snoop. The main
+ * difference is that the routine writes nothing to user directly,
+ * all such communication is taken care of by the mudlib. It communicates
+ * with master.c in order to find out if the operation is permissble or
+ * not. The old routine let everyone snoop anyone. This routine also returns
+ * 0 or 1 depending on success.
+ */
+int new_set_snoop (object_t * me, object_t * you) {
+  interactive_t *on, *by, *tmp;
+
+  /*
+   * Stop if people managed to quit before we got this far.
+   */
+  if (me->flags & O_DESTRUCTED)
+    return (0);
+  if (you && (you->flags & O_DESTRUCTED))
+    return (0);
+  /*
+   * Find the snooper && snoopee.
+   */
+  if (!me->interactive)
+    error ("First argument of snoop() is not interactive!\n");
+
+  by = me->interactive;
+
+  if (you)
+    {
+      if (!you->interactive)
+        error ("Second argument of snoop() is not interactive!\n");
+      on = you->interactive;
+    }
+  else
+    {
+      /*
+       * Stop snoop.
+       */
+      if (by->snoop_on)
+        {
+          by->snoop_on->snoop_by = 0;
+          by->snoop_on = 0;
+        }
+      return 1;
+    }
+
+  /*
+   * Protect against snooping loops.
+   */
+  for (tmp = on; tmp; tmp = tmp->snoop_on)
+    {
+      if (tmp == by)
+        return (0);
+    }
+
+  /*
+   * Terminate previous snoop, if any.
+   */
+  if (by->snoop_on)
+    {
+      by->snoop_on->snoop_by = 0;
+      by->snoop_on = 0;
+    }
+  if (on->snoop_by)
+    {
+      on->snoop_by->snoop_on = 0;
+      on->snoop_by = 0;
+    }
+  on->snoop_by = by;
+  by->snoop_on = on;
+  return (1);
+}				/* set_new_snoop() */
+
+object_t *query_snoop (object_t * ob) {
+  if (!ob->interactive || (ob->interactive->snoop_by == 0))
+    return (0);
+  return (ob->interactive->snoop_by->ob);
+}				/* query_snoop() */
+
+object_t *query_snooping (object_t * ob) {
+  if (!ob->interactive || (ob->interactive->snoop_on == 0))
+    return (0);
+  return (ob->interactive->snoop_on->ob);
+}				/* query_snooping() */
+
+
+/**
+ *  @brief Set up an input_to or get_char call for an interactive object.
+ *  @param ob The interactive object.
+ *  @param sent The sentence (function and object) to call.
+ *  @param flags Flags for the input_to call (I_NOECHO = 1, I_NOESC = 2, I_SINGLE_CHAR = 4).
+ *  @return 1 on success, 0 on failure.
+ */
+int set_call (object_t * ob, sentence_t * sent, int flags) {
+  if (ob == 0 || sent == 0 || ob->interactive == 0 || ob->interactive->input_to)
+    return 0;
+
+  ob->interactive->input_to = sent;
+  ob->interactive->iflags |= (flags & (I_NOECHO | I_NOESC | I_SINGLE_CHAR));
+
+  set_input_echo (ob, (flags & I_NOECHO) ? false : true);
+
+  if (flags & I_SINGLE_CHAR)
+    set_input_single_char (ob->interactive, true);
+  return 1;
+}				/* set_call() */
+
+/**
+ * Call a function on an interactive object set up by input_to() efun or
+ * get_char() efun.
+ *
+ * @param i The interactive structure for the user.
+ * @param str The input string to pass to the function.
+ * @return 1 if a function was called, otherwise returns 0.
+ */
+int call_function_interactive (interactive_t * i, char *str) {
+
+  funptr_t *funp = NULL;
+  array_t *args;
+  sentence_t *sent;
+  int num_arg;
+
+  i->iflags &= ~NOESC; /* remove disable shell escape flag */
+
+  if (!(sent = i->input_to))
+    return 0; /* no input_to() was set up on this interactive */
+
+  /* [NEOLITH-EXTENSION] The sentence is always V_FUNCTION now. And carryover arguments
+   * are passed via sent->args array. This is more efficient and flexible than the old
+   * code that stores a carryover svalue_t array in the interactive_t struct.
+   */
+  DEBUG_CHECK (!(sent->flags & V_FUNCTION), "input_to must be function pointer");
+  funp = sent->function.f;
+  funp->hdr.ref++; /* by local variable funp */
+
+  args = sent->args;
+  if (args)
+    args->ref++; /* by local variable args */
+  num_arg = args ? args->size : 0;
+
+  /* Free sentence before calling the function pointer.
+   * This is necessary since the input_to/get_char callback (LPC code) may call
+   * set_call() again to set up a new input_to before the current callback returns,
+   * and we need to free the old sentence or the set_call() will fail due to the
+   * existing sentence.
+   */
+  free_sentence (sent);
+  i->input_to = 0;
+
+  /* Disable single char mode if needed */
+  if (i->iflags & SINGLE_CHAR)
+    {
+      i->iflags &= ~SINGLE_CHAR;
+      set_input_single_char (i, false);
+    }
+
+  /* Push input FIRST.
+   * The LPC efun input_to/get_char expect the input string to be the
+   * first argument, followed by any carryover args from the original call
+   * to input_to/get_char.
+   */
+  copy_and_push_string (str);
+
+  if (args)
+    {
+      /* Push carryover args AFTER input */
+      for (int j = 0; j < args->size; j++)
+        {
+          push_svalue (&args->item[j]);
+        }
+      free_array (args); /* by local variable args */
+      args = 0; /* this is always the last reference to carryover args array */
+    }
+
+  /* Call function pointer.
+   * The function pointer can be a closure with arguments already bound.
+   * In the case, they will be combined via merge_arg_lists() to form the
+   * actual argument list. For example:
+   *     input_to(bind((: foo :), arg1, arg2), I_NOECHO, arg3, arg4);
+   * will result in a call to:
+   *     foo(arg1, arg2, str, arg3, arg4) where str is the user input.
+   */
+  CALL_FUNCTION_POINTER_CALL (funp, num_arg + 1);
+  free_funp (funp); /* by local variable funp */
+  funp = 0;
+  return 1;
+}				/* call_function_interactive() */
+
+
+/** @brief Return the next user command to be processed in sequence.
+ * The order of user command being processed is "rotated" so that no one
+ * user can monopolize the command processing. The \c s_next_user
+ * static variable keeps track of which user should be checked next.
+ * This function scans through all connected users starting from
+ * s_next_user and looks for a user with a complete command
+ * in his input buffer. It also calls \c flush_message() to ensure
+ * that any outgoing messages are sent to the user before processing
+ * his input.
+ * 
+ * This should also return a value if there is something in the
+ * buffer and we are supposed to be in single character mode.
+ * 
+ * @returns Pointer to a static buffer containing the next user command to be processed
+ * and updates \c command_giver if a command is found, or 0 if no commands are available.
+ */
+static char* get_user_command () {
+
+  /* A static counter that iterates between all users in sequence.
+   * This ensures fair processing of user commands.
+   */
+  static int s_next_user = 0;
+
+  int i;
+  interactive_t *ip = NULL;
+  char *user_command = NULL;
+  static char buf[MAX_TEXT];
+
+  /*
+   * find and return a user command.
+   */
+  for (i = 0; i < max_users; i++)
+    {
+      ip = all_users[s_next_user];
+      if (ip && ip->message_length)
+        {
+          object_t *ob = ip->ob;
+          flush_message (ip);
+          if (!IP_VALID (ip, ob))
+            ip = 0;
+        }
+
+      if (ip)
+        {
+          /* Keep readiness flag in sync with actual buffered command state. */
+          if (cmd_in_buf (ip))
+            ip->iflags |= CMD_IN_BUF;
+          else
+            ip->iflags &= ~CMD_IN_BUF;
+
+          if (!(ip->iflags & CMD_IN_BUF))
+            {
+              if (s_next_user-- == 0)
+                s_next_user = max_users - 1; /* wrap around */
+              continue;
+            }
+
+          user_command = first_cmd_in_buf (ip);
+          if (user_command)
+            {
+              /* Check if user has their turn */
+              if (ip->iflags & HAS_CMD_TURN)
+                {
+                  ip->iflags &= ~HAS_CMD_TURN;  /* Consume turn */
+                  break;  /* Process this command */
+                }
+              else
+                {
+                  /* User has command but no turn - skip and continue searching */
+                  user_command = NULL;
+                }
+            }
+          else
+            {
+              if (cmd_in_buf (ip))
+                ip->iflags |= CMD_IN_BUF;
+              else
+                ip->iflags &= ~CMD_IN_BUF;
+            }
+        }
+
+      if (s_next_user-- == 0)
+        s_next_user = max_users - 1; /* wrap around */
+    }
+
+  /*
+   * no cmds found; return 0.
+   */
+  if (!ip || !user_command)
+    return 0;
+
+  /*
+   * we have a user cmd -- return it. If user has only one partially
+   * completed cmd left after this, move it to the start of his buffer; new
+   * stuff will be appended.
+   */
+  command_giver = ip->ob;
+
+  /*
+   * telnet option parsing and negotiation.
+   */
+  if (ip->iflags & SINGLE_CHAR)
+    {
+      size_t token_len = single_char_token_len (ip);
+
+      if (!token_len || token_len >= MAX_TEXT)
+        {
+          if (!cmd_in_buf (ip))
+            ip->iflags &= ~CMD_IN_BUF;
+          return 0;
+        }
+
+      memcpy (buf, ip->text + ip->text_start, token_len);
+      buf[token_len] = '\0';
+
+      ip->text_start += token_len;
+      if (ip->text_start >= ip->text_end)
+        {
+          ip->text_start = ip->text_end = 0;
+          ip->text[0] = '\0';
+        }
+    }
+  else
+    {
+      telnet_neg (buf, user_command);
+
+      /*
+       * move input buffer pointers to next command.
+       */
+      next_cmd_in_buf (ip);
+    }
+
+  if (!cmd_in_buf (ip))
+    ip->iflags &= ~CMD_IN_BUF;
+
+  s_next_user = (s_next_user - 1 + max_users) % max_users; /* wrap around */
+
+  if (ip->iflags & NOECHO)
+    {
+      /*
+       * Must not enable echo before the user input is received.
+       */
+      set_input_echo (command_giver, false);
+      ip->iflags &= ~NOECHO;
+    }
+
+  ip->last_time = current_time;
+  return buf;
+}
+
+
+/*
+ * find the first character of the next complete cmd in a buffer, 0 if no
+ * completed cmd.  There is a completed cmd if there is a null between
+ * text_start and text_end.  Zero length commands are discarded (as occur
+ * between <cr> and <lf>).  Update text_start if we have to skip leading
+ * nulls.
+ * This should return true when in single char mode and there is
+ * Anything at all in the buffer.
+ */
+static char* first_cmd_in_buf (interactive_t * ip) {
+  char *p, *q;
+
+  p = ip->text + ip->text_start;
+
+  /*
+   * skip null input.
+   */
+  while ((p < (ip->text + ip->text_end)) && !*p)
+    p++;
+
+  ip->text_start = p - ip->text;
+
+  if (ip->text_start >= ip->text_end)
+    {
+      ip->text_start = ip->text_end = 0;
+      ip->text[0] = '\0';
+      return 0;
+    }
+  /* If we got here, must have something in the array */
+  if (ip->iflags & SINGLE_CHAR)
+    {
+      if (!single_char_token_len (ip))
+        return 0;
+      return (ip->text + ip->text_start);
+    }
+  /*
+   * find end of cmd.
+   */
+  while ((p < (ip->text + ip->text_end)) && *p)
+    p++;
+  /*
+   * null terminated; was command.
+   */
+  if (p < ip->text + ip->text_end)
+    return (ip->text + ip->text_start);
+  /*
+   * have a partial command at end of buffer; move it to start, return
+   * null. if it can't move down, truncate it and return it as cmd.
+   */
+  p = ip->text + ip->text_start;
+  q = ip->text;
+  while (p < (ip->text + ip->text_end))
+    *(q++) = *(p++);
+
+  ip->text_end -= ip->text_start;
+  ip->text_start = 0;
+  if (ip->text_end > MAX_TEXT - 2)
+    {
+      ip->text[ip->text_end - 2] = '\0';	/* nulls to truncate */
+      ip->text[ip->text_end - 1] = '\0';	/* nulls to truncate */
+      ip->text_end--;
+      return (ip->text);
+    }
+  /*
+   * buffer not full and no newline - no cmd.
+   */
+  return 0;
+}				/* first_command_in_buf() */
+
+/**
+ *  @brief Check if there is a complete, non-empty line in the buffer.
+ *  Looks for a null character between text_start and text_end.
+ *  If in SINGLE_CHAR mode, any input is a complete command.
+ *  @param ip The interactive structure for the user.
+ *  @return 1 if there is a complete command, otherwise returns zero.
+ */
+int cmd_in_buf (interactive_t * ip) {
+
+  const char *p;
+
+  p = ip->text + ip->text_start;
+
+  /* skip empty lines */
+  while ((p < (ip->text + ip->text_end)) && !*p)
+    p++;
+
+   /* end of user command buffer? */
+  if ((p - ip->text) >= ip->text_end)
+    return 0;
+
+  /* expecting single character input? */
+  if (ip->iflags & SINGLE_CHAR)
+    return (single_char_token_len (ip) > 0);
+
+  /* find end of command */
+  while ((p < (ip->text + ip->text_end)) && *p)
+    p++;
+  if (p < ip->text + ip->text_end)
+    return 1;
+
+  /* user command buffer is empty or only partial command received. */
+  return 0;
+}
+
+/*
+ * move pointers to next cmd, or clear buf.
+ */
+static void next_cmd_in_buf (interactive_t * ip) {
+  char *p = ip->text + ip->text_start;
+
+  while (*p && p < ip->text + ip->text_end)
+    p++;
+  /*
+   * skip past any nulls at the end.
+   */
+  while (!*p && p < ip->text + ip->text_end)
+    p++;
+  if (p < ip->text + ip->text_end)
+    ip->text_start = p - ip->text;
+  else
+    {
+      ip->text_start = ip->text_end = 0;
+      ip->text[0] = '\0';
+    }
+}				/* next_cmd_in_buf() */
+
+const char *last_verb = 0;
+
+/**
+ * @brief Parse the first command token from input and publish it via last_verb.
+ *
+ * This is used for process_input() applies, which run before user_parser()
+ * sets command-dispatch verb state.
+ */
+static void set_last_verb_from_input (const char *input, char *verb_buf, size_t verb_buf_size) {
+  const char *start = input;
+  const char *end;
+  size_t len;
+
+  while (*start && isspace ((unsigned char)*start))
+    start++;
+
+  if (!*start)
+    {
+      last_verb = 0;
+      return;
+    }
+
+  end = start;
+  while (*end && !isspace ((unsigned char)*end))
+    end++;
+
+  len = end - start;
+  if (len >= verb_buf_size)
+    len = verb_buf_size - 1;
+
+  memcpy (verb_buf, start, len);
+  verb_buf[len] = '\0';
+  last_verb = verb_buf;
+}
+
+/**
+ * @brief Return the length of the next logical SINGLE_CHAR token.
+ *
+ * For normal input this is 1 byte. For ANSI cursor keys, this recognizes
+ * common escape sequences as a single logical token:
+ *   ESC [ A/B/C/D
+ *   ESC O A/B/C/D
+ *   ESC [ <digits and ';'> A/B/C/D
+ *
+ * By policy, a lone ESC byte is treated as incomplete and is not delivered.
+ * This intentionally trades ESC-alone behavior for robust arrow-key support
+ * under fragmented reads.
+ *
+ * @returns Token length in bytes, or 0 when more bytes are needed.
+ */
+static size_t single_char_token_len (const interactive_t *ip) {
+  const unsigned char *p;
+  size_t available;
+  size_t i;
+
+  if (!ip || ip->text_start >= ip->text_end)
+    return 0;
+
+  p = (const unsigned char *)(ip->text + ip->text_start);
+  available = ip->text_end - ip->text_start;
+
+  if (p[0] != 0x1b)
+    return 1;
+
+  /* ESC-alone limitation: require more bytes to determine intent. */
+  if (available == 1)
+    return 0;
+
+  if (p[1] == '[') /* CSI sequence */
+    {
+      i = 2;
+      while (i < available && (isdigit (p[i]) || p[i] == ';'))
+        i++;
+
+      /* ESC [<digits and ';'> <command> */
+      return (i >= available) ? 0 : i + 1;
+    }
+
+  if (p[1] == 'N' || p[1] == 'O') /* SS2 or SS3 */
+    {
+      return (available < 3) ? 0 : 3;
+    }
+
+  return (available < 2) ? 0 : 2; /* other ESC x sequences */
+}
+
+#ifdef F_QUERY_VERB
+void f_query_verb (void) {
+  if (!last_verb)
+    {
+      push_number (0);
+      return;
+    }
+  share_and_push_string (last_verb);
+}
+#endif
+
+/**
+ * @brief Parse a raw command and call matching sentence functions registered by add_action() efun.
+ *
+ * This function iterates through the sentences registered to the current command_giver object and
+ * tries to find a match for the user input command. If a match is found, it calls the corresponding
+ * function with the appropriate arguments.
+ * 
+ * The function also handles sentence flags such as V_NOSPACE and V_SHORT to determine how to match
+ * the verb and what part of the input to pass as arguments.
+ * 
+ * FIXME: There are dangling problem if the sentence function called by this function destructs
+ * or moves the command_giver object. We currently rely on reference counting to keep the memory
+ * valid, but this can lead to unexpected behavior if the sentence function modifies the command_giver
+ * object in certain ways.
+ * 
+ * @param buff The user input command string (null-terminated) to parse and execute.
+ * @return 1 if a command was successfully parsed and executed, otherwise returns 0.
+ * @see add_action() efun for short verb, xverb, and function pointer command registration.
+ */
+static int user_parser (const char *buff) {
+  char verb_buff[MAX_TEXT];
+  const char *save_last_verb = last_verb;
+  sentence_t *s;
+  const char *space;
+  ptrdiff_t length;
+  object_t *save_command_giver = command_giver; /* save command giver on entry */
+  const char *user_verb = 0;
+  int where;
+  int save_illegal_sentence_action;
+
+  /* command_giver must be enabled for commands */
+  if (!(command_giver->flags & O_ENABLE_COMMANDS))
+    return 0;
+
+  /* find the "verb" (using space separator) in the command */
+  length = strlen (buff);
+  if ((space = strchr (buff, ' ')))
+    {
+      user_verb = findstring (buff, space);
+      length = space - buff;
+    }
+  else
+    {
+      user_verb = findstring (buff, buff + length);
+    }
+  if (!user_verb)
+    {
+      /* either an xverb (V_NOSPACE) or a verb without a previous add_action() */
+      user_verb = buff;
+    }
+  strput (verb_buff, verb_buff + MAX_TEXT, user_verb); /* always null-terminated */
+  if (space && (space - buff) < MAX_TEXT)
+    verb_buff[space - buff] = '\0';
+
+  save_illegal_sentence_action = illegal_sentence_action;
+  illegal_sentence_action = 0;
+
+  /* iterate all sentences */
+  for (s = save_command_giver->sent; s; s = s->next)
+    {
+      svalue_t *ret;
+      int ret_is_nonzero;
+      int ret_is_missing;
+
+      /* skip sentences from destructed objects (ref counting keeps memory valid) */
+      if (s->ob->flags & O_DESTRUCTED)
+        continue;
+
+      /* determine if the verb matches */
+      if (s->flags & (V_NOSPACE | V_SHORT) || strchr(s->verb, ' '))
+        {
+          size_t verb_len = strlen(s->verb);
+          if (strncmp (buff, s->verb, verb_len) != 0)
+            continue;
+
+          /* multi-word verbs must be followed by a space or end-of-command */
+          if (!(s->flags & (V_NOSPACE | V_SHORT)) && buff[verb_len] != ' ' && buff[verb_len] != '\0')
+            continue;
+        }
+      else
+        {
+          /* s->verb is a shared string that will match findstring() results */
+          if (*s->verb) {
+            if (user_verb == s->verb) {
+              /* match */
+            } else if (user_verb != buff) {
+              /* user_verb is a shared string but not matching s->verb */
+              continue;
+            } else if (strcmp(s->verb, verb_buff) != 0) {
+              /* user_verb is not a shared string, so we compare strings */
+              continue;
+            }
+          }
+          /* the verb matches or the sentence was added by add_action() with "" as verb */
+        }
+
+      if (s->flags & V_NOSPACE) /* xverb: return the part after s->verb in query_verb() */
+        {
+          size_t l1 = strlen (s->verb);
+          size_t l2 = strlen (verb_buff);
+
+          if (l1 < l2)
+            last_verb = verb_buff + l1;
+          else
+            last_verb = "";
+        }
+      else
+        {
+          if (!*s->verb || (s->flags & V_SHORT))
+            last_verb = verb_buff;
+          else
+            last_verb = s->verb;
+        }
+
+      /*
+       * If the function is static and not defined by current object, then
+       * it will fail. If this is called directly from user input, then
+       * the origin is the driver and it will be allowed.
+       */
+      where = (current_object ? ORIGIN_EFUN : ORIGIN_DRIVER);
+
+      /* Push command args FIRST (correct LPC order) */
+      if (s->flags & V_NOSPACE)
+        copy_and_push_string (&buff[strlen (s->verb)]);
+      else if (s->flags & V_SHORT)
+        {
+          if (!*s->verb)
+            {
+              if (buff[length] == ' ')
+                copy_and_push_string (&buff[length + 1]);
+              else
+                push_undefined ();
+            }
+          else
+            {
+              const char *arg = &buff[strlen (s->verb)];
+
+              if (*arg == ' ')
+                arg++;
+
+              if (*arg)
+                copy_and_push_string (arg);
+              else
+                push_undefined ();
+            }
+        }
+      else if (strchr(s->verb, ' '))
+        {
+          size_t verb_len = strlen(s->verb);
+          if (buff[verb_len] == ' ')
+            copy_and_push_string(&buff[verb_len + 1]);
+          else
+            push_undefined();
+        }
+      else if (buff[length] == ' ')
+        copy_and_push_string (&buff[length + 1]);
+      else
+        push_undefined ();
+
+      /* Push carryover args AFTER command args */
+      int num_args = 1;  /* Command args */
+      if (s->args)
+        {
+          for (int i = 0; i < s->args->size; i++)
+            {
+              push_svalue (&s->args->item[i]);
+            }
+          num_args += s->args->size;
+        }
+
+      /* Call function with all args */
+      if (s->flags & V_FUNCTION)
+        ret = CALL_FUNCTION_POINTER_SLOT_CALL (s->function.f, num_args);
+      else
+        {
+          if (s->function.s[0] == APPLY___INIT_SPECIAL_CHAR)
+            error ("*Illegal function name.");
+          ret = APPLY_SLOT_CALL (s->function.s, s->ob, num_args, where);
+        }
+
+      ret_is_missing = (ret == 0);
+      ret_is_nonzero = (ret && (ret->type != T_NUMBER || ret->u.number != 0));
+      if (s->flags & V_FUNCTION)
+        CALL_FUNCTION_POINTER_SLOT_FINISH();
+      else
+        APPLY_SLOT_FINISH_CALL();
+
+      /* s may be dangling at this point */
+
+      command_giver = save_command_giver;
+      last_verb = 0;
+
+      /* was this the right verb? */
+      if (ret_is_missing)
+        {
+          /* is it still around?  Otherwise, ignore this ...
+             it moved somewhere or dested itself */
+          if (s == save_command_giver->sent)
+            {
+              if (s->flags & V_FUNCTION)
+                {
+                  error ("*Verb '%s' bound to uncallable function pointer.", s->verb);
+                }
+              else
+                {
+                  error ("*Function for verb '%s' not found.", s->verb);
+                }
+            }
+        }
+
+      if (ret_is_nonzero)
+        {
+          if (!illegal_sentence_action)
+            illegal_sentence_action = save_illegal_sentence_action;
+          last_verb = save_last_verb;
+          return 1; /* Verb handled successfully */
+        }
+
+      if (illegal_sentence_action)
+        {
+          switch (illegal_sentence_action)
+            {
+            case 1:
+              error ("*Illegal to call remove_action() from a verb returning zero.");
+            case 2:
+              error ("*Illegal to move or destruct an object defining actions from a verb function which returns zero.");
+            }
+        }
+    }
+
+  notify_no_command ();
+  illegal_sentence_action = save_illegal_sentence_action;
+
+  last_verb = save_last_verb;
+  return 0;
+}
+
+/**
+ * Take a user command and parse it.
+ * The command can also come from a NPC.
+ * Beware that 'str' can be modified and extended !
+ */
+int process_command (char *buff, object_t * ob) {
+  object_t *save = command_giver;
+  char *p;
+  int res;
+
+  /* disallow users to issue commands containing ansi escape codes */
+#if defined(NO_ANSI) && !defined(STRIP_BEFORE_PROCESS_INPUT)
+  char *c;
+
+  for (c = buff; *c; c++)
+    {
+      if (*c == 27)
+        {
+          *c = ' ';		/* replace ESC with ' ' */
+        }
+    }
+#endif
+
+  /* trim trailing whitespace (in-place) and skip empty lines */
+  p = buff + strlen (buff);
+  while (p > buff && isspace (*(p - 1)))
+    p--;
+  *p = '\0';
+  if (*buff == '\0')
+    return 0;
+
+  command_giver = ob;
+  res = user_parser (buff);
+  command_giver = save;
+  return (res);
+}				/* process_command() */
+
+/**
+ * @brief Execute a command for an object.
+ * 
+ * Copy the command into a mutable buffer, because \p process_command() need to
+ * modify the command in-place.
+ *
+ * If the object is interactive but not current object, the command will not be executed
+ * and an error will be raised, because this can lead to confusing situations where
+ * commands are executed for an interactive object that is not the one issuing the
+ * command.
+ * 
+ * For non-interactive objects, the command will be executed regardless of whether it is
+ * the current object or not. Mudlib may want to protect the \p command() efun with a
+ * simul_efun and protects this from non-privileged users forcing NPC to execute commands
+ * for interactive objects.
+ *
+ * @return Returns the cost of the command executed if successful (> 0).
+ */
+int64_t command_for_object (const char *str, object_t *ob) {
+
+  char buff[MAX_TEXT];
+  int64_t save_eval_cost = eval_cost;
+  object_t *target_ob = ob ? ob : current_object;
+
+  if (strlen (str) > sizeof (buff) - 1)
+    error ("*Too long command.");
+  else if (target_ob->interactive && target_ob != current_object)
+    error ("*Cannot execute command for interactive object other than current object.");
+  else if (target_ob->flags & O_DESTRUCTED)
+    return 0;
+
+  strput (buff, buff + MAX_TEXT, str);
+  if (process_command (buff, target_ob))
+    return save_eval_cost - eval_cost;
+  else
+    return 0;
+}
+
+/**
+ *  User command turn handler.
+ *
+ *  This function is called by the backend after unblocked from a communication polling.
+ *  Network traffics from all connected users are buffered in each user's command buffer and
+ *  marked with CMD_IN_BUF flag if a complete command is available.
+ * 
+ *  This function calls \c get_user_command() to iterate over all connected users,
+ *  assigining \c command_giver to each user in turn, and checking for pending commands.
+ *  If a command is pending, it is processed by \c process_command() or \c APPLY_CALL () to the user
+ *  object as appropriate.
+ *  
+ *  User commands are processed in sequence (round-robin) that one user command is processed
+ *  per execution of this function.
+ * 
+ *  @return Returns 1 if a user command was processed, 0 if no more user commands are pending.
+ */
+int process_user_command () {
+
+  char *user_command;
+  char process_input_verb[MAX_TEXT];
+  char buf[MAX_TEXT], *tbuf;
+  const char *save_last_verb = last_verb;
+  object_t *save_current_object = current_object;
+  object_t *save_command_giver = command_giver;
+  interactive_t *ip;
+  svalue_t *ret;
+
+  buf[MAX_TEXT - 1] = '\0';
+
+  /* WARNING: get_user_command() sets command_giver */
+  if ((user_command = get_user_command ()))
+    {
+#if defined(NO_ANSI) && defined(STRIP_BEFORE_PROCESS_INPUT)
+      char *p;
+      for (p = user_command; *p; p++)
+        {
+          if (*p == 27)
+            {
+              char *q = buf;
+              for (p = user_command; *p && p - user_command < MAX_TEXT - 1; p++)
+                *q++ = ((*p == 27) ? ' ' : *p);
+              *q = 0;
+              user_command = buf;
+              break;
+            }
+        }
+#endif
+
+      if (command_giver->flags & O_DESTRUCTED)
+        {
+          command_giver = save_command_giver;
+          current_object = save_current_object;
+          last_verb = save_last_verb;
+          return 1;
+        }
+      ip = command_giver->interactive;
+      if (!ip)
+        {
+          last_verb = save_last_verb;
+          return 1;
+        }
+      current_interactive = command_giver;
+      current_object = 0;
+      clear_notify (ip);
+      update_load_av ();
+      tbuf = user_command;
+
+      /*
+       * Check for special command prefixes.
+       * '!' indicates a command to be processed by process_input() in the user object.
+       * If ed_buffer is set, the command is for the line editor
+       */
+      if ((user_command[0] == '!') && (
+#ifdef OLD_ED
+          ip->ed_buffer ||
+#endif
+          (ip->input_to && !(ip->iflags & NOESC))))
+        {
+          if (ip->iflags & SINGLE_CHAR)
+            {
+              /* only 1 char ... switch to line buffer mode */
+              ip->iflags |= WAS_SINGLE_CHAR;
+              ip->iflags &= ~SINGLE_CHAR;
+              set_input_single_char (ip, false);
+              /* come back later */
+            }
+          else
+            {
+              if (ip->iflags & WAS_SINGLE_CHAR)
+                {
+                  /* we now have a string ... switch back to char mode */
+                  ip->iflags &= ~WAS_SINGLE_CHAR;
+                  ip->iflags |= SINGLE_CHAR;
+                  set_input_single_char (ip, true);
+                  VALIDATE_IP (ip, command_giver);
+                }
+
+              if (ip->iflags & HAS_PROCESS_INPUT)
+                {
+                  const char *saved_last_verb = last_verb;
+
+                  set_last_verb_from_input (user_command + 1, process_input_verb, sizeof (process_input_verb));
+                  copy_and_push_string (user_command + 1);
+                  ret = APPLY_SLOT_CALL (APPLY_PROCESS_INPUT, command_giver, 1, ORIGIN_DRIVER);
+                  last_verb = saved_last_verb;
+                  VALIDATE_IP (ip, command_giver);
+                  if (!ret)
+                    ip->iflags &= ~HAS_PROCESS_INPUT;
+                  if (ret && ret->type == T_STRING)
+                    {
+                      strncpy (buf, SVALUE_STRPTR(ret), MAX_TEXT - 1);
+                      APPLY_SLOT_FINISH_CALL();
+                      process_command (buf, command_giver);
+                    }
+                  else if (!ret || ret->type != T_NUMBER || !ret->u.number)
+                    {
+                      APPLY_SLOT_FINISH_CALL();
+                      process_command (tbuf + 1, command_giver);
+                    }
+                  else
+                    {
+                      APPLY_SLOT_FINISH_CALL();
+                    }
+                }
+              else
+                process_command (tbuf + 1, command_giver);
+            }
+#ifdef OLD_ED
+        }
+      else if (ip->ed_buffer)
+        {
+          ed_cmd (user_command);
+#endif /* OLD_ED */
+        }
+      else if (call_function_interactive (ip, user_command))
+        {
+          /* input_to or get_char handled by call_function_interactive() */
+        }
+      else
+        {
+          /*
+           * send a copy of user input back to user object to provide
+           * support for things like command history and mud shell
+           * programming languages.
+           */
+          if (ip->iflags & HAS_PROCESS_INPUT)
+            {
+              const char *save_process_input_last_verb = last_verb;
+
+              set_last_verb_from_input (user_command, process_input_verb, sizeof (process_input_verb));
+              copy_and_push_string (user_command);
+              ret = APPLY_SLOT_CALL (APPLY_PROCESS_INPUT, command_giver, 1, ORIGIN_DRIVER);
+              last_verb = save_process_input_last_verb;
+              VALIDATE_IP (ip, command_giver);
+              if (!ret)
+                ip->iflags &= ~HAS_PROCESS_INPUT;
+              if (ret && ret->type == T_STRING)
+                {
+                  strncpy (buf, SVALUE_STRPTR(ret), MAX_TEXT - 1);
+                  APPLY_SLOT_FINISH_CALL();
+                  process_command (buf, command_giver);
+                }
+              else if (!ret || ret->type != T_NUMBER || !ret->u.number)
+                {
+                  APPLY_SLOT_FINISH_CALL();
+                  process_command (tbuf, command_giver);
+                }
+              else
+                {
+                  APPLY_SLOT_FINISH_CALL();
+                }
+            }
+          else
+            process_command (tbuf, command_giver);
+        }
+      VALIDATE_IP (ip, command_giver);
+      /*
+       * Print a prompt if user is still here.
+       */
+      print_prompt (ip);
+    failure:
+      current_object = save_current_object;
+      command_giver = save_command_giver;
+      current_interactive = 0;
+      last_verb = save_last_verb;
+      return (1);
+    }
+  /* no more commands */
+  current_object = save_current_object;
+  command_giver = save_command_giver;
+  current_interactive = 0;
+  last_verb = save_last_verb;
+  return 0;
+}				/* process_user_command() */
+
+/*
+ * Associate a command with function in this object.
+ *
+ * The optinal third argument is a flag that will state that the verb should
+ * only match against leading characters.
+ *
+ * The optional varargs after the flag are carryover arguments that will be
+ * passed to the action function after the command argument.
+ *
+ * The object must be near the command giver, so that we ensure that the
+ * sentence is removed when the command giver leaves.
+ *
+ * If the call is from a shadow, make it look like it is really from
+ * the shadowed object.
+ */
+void add_action (svalue_t * str, const char *cmd, int flag, int num_carry, svalue_t *carry_args) {
+  sentence_t *p;
+  object_t *ob;
+
+  if (current_object->flags & O_DESTRUCTED)
+    return;
+  ob = current_object;
+#ifndef NO_SHADOWS
+  while (ob->shadowing)
+    {
+      ob = ob->shadowing;
+    }
+  /* don't allow add_actions of a static function from a shadowing object */
+  if ((ob != current_object) && str->type == T_STRING
+      && is_static (SVALUE_STRPTR(str), ob))
+    {
+      return;
+    }
+#endif
+  if (command_giver == 0 || (command_giver->flags & O_DESTRUCTED))
+    return;
+  if (ob != command_giver
+      && ob->super != command_giver &&
+      ob->super != command_giver->super && ob != command_giver->super)
+    return;			/* No need for an error, they know what they
+                                 * did wrong. */
+  p = alloc_sentence ();
+  if (str->type == T_STRING)
+    {
+      p->function.s = make_shared_string(SVALUE_STRPTR(str), NULL);
+      p->flags = flag;
+    }
+  else
+    {
+      p->function.f = str->u.fp;
+      str->u.fp->hdr.ref++;
+      p->flags = flag | V_FUNCTION;
+    }
+  p->ob = ob;
+  add_ref (ob, "add_action");
+  p->verb = make_shared_string(cmd, NULL);
+
+  /* Store carryover args in sentence */
+  if (num_carry > 0)
+    {
+      array_t *arg_array = allocate_empty_array (num_carry);
+      for (int i = 0; i < num_carry; i++)
+        assign_svalue_no_free (&arg_array->item[i], &carry_args[i]);
+      p->args = arg_array;
+    }
+  else
+    {
+      p->args = NULL;
+    }
+
+  /* This is ok; adding to the top of the list doesn't harm anything */
+  p->next = command_giver->sent;
+  command_giver->sent = p;
+}
+
+
+/*
+ * Remove sentence with specified verb and action.  Return 1
+ * if success.  If command_giver, remove his action, otherwise
+ * remove current_object's action.
+ */
+int remove_action (const char *act, const char *verb) {
+  object_t *ob;
+  sentence_t **s;
+
+  if (command_giver)
+    ob = command_giver;
+  else
+    ob = current_object;
+
+  if (ob)
+    {
+      for (s = &ob->sent; *s; s = &((*s)->next))
+        {
+          sentence_t *tmp;
+
+          if (((*s)->ob == current_object) && (!((*s)->flags & V_FUNCTION))
+              && !strcmp ((*s)->function.s, act)
+              && !strcmp ((*s)->verb, verb))
+            {
+              tmp = *s;
+              *s = tmp->next;
+              free_sentence (tmp);
+              illegal_sentence_action = 1;
+              return 1;
+            }
+        }
+    }
+  return 0;
+}
+
+
+/**
+ * Remove all commands (sentences) defined by object 'ob' in object 'user'
+ */
+void remove_sent (object_t * ob, object_t * user) {
+  sentence_t **s;
+
+  for (s = &user->sent; *s;)
+    {
+      sentence_t *tmp;
+
+      if ((*s)->ob == ob)
+        {
+          tmp = *s;
+          *s = tmp->next;
+          free_sentence (tmp);
+          illegal_sentence_action = 2;
+        }
+      else
+        s = &((*s)->next);
+    }
+}

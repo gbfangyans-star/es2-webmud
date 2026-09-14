@@ -1,0 +1,289 @@
+[
+  {
+    "file": "d/snow/npc/fighter_test.c",
+    "path": "/d/snow/npc/fighter_test",
+    "type": "npc",
+    "sha256": "7a67d52551e57a9e748d8b6691adde2b0b1b757bece33fc3d5f7bcf5bf8bb72f",
+    "inherits": [
+      "NPC"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "NPC",
+        "target": "NPC",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create"
+    ],
+    "runtime_traits": [
+      "skill_mapping",
+      "teaching"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "劍客",
+    "ids": [
+      "fighter"
+    ],
+    "level": 9,
+    "numeric_calls": {
+      "set_level": 9
+    },
+    "function_calls": [
+      "map_skill"
+    ],
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 40
+      },
+      {
+        "skill": "parry",
+        "level": 25
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "sword",
+        "mapped_to": "sword-art"
+      },
+      {
+        "base": "parry",
+        "mapped_to": "sword-art"
+      }
+    ],
+    "combat_message_traits": [
+      "parry_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "d/snow/npc/vendor_test.c",
+    "path": "/d/snow/npc/vendor_test",
+    "type": "npc",
+    "sha256": "c6bf2045a1b0918c9327ddae715e118cf61552dcc412df66fb08780cc40a73d3",
+    "inherits": [
+      "NPC",
+      "F_VENDOR"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "NPC",
+        "target": "NPC",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_VENDOR",
+        "target": "F_VENDOR",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "init"
+    ],
+    "runtime_traits": [
+      "init",
+      "skill_mapping",
+      "teaching",
+      "timed"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "商人",
+    "ids": [
+      "vendor",
+      "merchant"
+    ],
+    "race": "human",
+    "gender": "male",
+    "level": 7,
+    "numeric_calls": {
+      "set_level": 7
+    },
+    "function_calls": [
+      "map_skill"
+    ],
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 20
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "unarmed",
+        "mapped_to": "test-art"
+      }
+    ],
+    "merchandise": [
+      {
+        "target": "../obj/thing",
+        "relative": true,
+        "stock": 3
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_talk",
+        "verb": "talk"
+      }
+    ],
+    "callouts": [
+      {
+        "function": "hello",
+        "delay": 2
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_talk",
+        "verb": "talk"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "file": "d/snow/npc/x.c",
+    "path": "/d/snow/npc/x",
+    "type": "npc",
+    "sha256": "00ded63c4d75b2b5b0a50903bf8a666f5bd7c60fea147dc692b2cfcc2a171d3d",
+    "inherits": [
+      "NPC",
+      "F_VENDOR"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "NPC",
+        "target": "NPC",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_VENDOR",
+        "target": "F_VENDOR",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "init"
+    ],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "skill_mapping",
+      "teaching"
+    ],
+    "combat_surface": [
+      "skill",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "name": "測試者",
+    "ids": [
+      "tester"
+    ],
+    "race": "human",
+    "class": "commoner",
+    "level": 20,
+    "attributes": {
+      "str": 20
+    },
+    "stat_maximums": {
+      "kee": 80
+    },
+    "numeric_calls": {
+      "set_level": 20
+    },
+    "equipment_hooks": [
+      "wield"
+    ],
+    "function_calls": [
+      "map_skill",
+      "wield"
+    ],
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 12
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "unarmed",
+        "mapped_to": "test-art"
+      }
+    ],
+    "merchandise": [
+      {
+        "target": "../obj/thing",
+        "relative": true,
+        "stock": 3
+      }
+    ],
+    "actions": [
+      {
+        "handler": "do_go",
+        "verb": "go"
+      }
+    ],
+    "equipment": [
+      {
+        "stock_type": "weapon",
+        "name": "longsword",
+        "action": "wield"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_go",
+        "verb": "go"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "manual_review": [
+      "custom_action",
+      "vendor_logic"
+    ]
+  },
+  {
+    "file": "feature/npc/vendor.c",
+    "path": "/feature/npc/vendor",
+    "type": "npc",
+    "sha256": "1fcfe53efc38ec1d5a25604de6beff020b9bdb3a3447fb7822b7992c4623d32d",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "affirm_merchandise",
+      "deliver_merchandise",
+      "query_trading_price",
+      "reset"
+    ],
+    "runtime_traits": [
+      "reset",
+      "vendor"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": [
+      "vendor_logic"
+    ]
+  }
+]

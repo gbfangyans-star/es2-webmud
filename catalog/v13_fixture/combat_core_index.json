@@ -1,0 +1,58 @@
+[
+  {
+    "path": "/d/snow/npc/fighter_test",
+    "type": "npc",
+    "functions": [
+      "create"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "inherits": [
+      "NPC"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/vendor_test",
+    "type": "npc",
+    "functions": [
+      "create",
+      "init"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "inherits": [
+      "NPC",
+      "F_VENDOR"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/x",
+    "type": "npc",
+    "functions": [
+      "create",
+      "init"
+    ],
+    "combat_surface": [
+      "skill",
+      "weapon"
+    ],
+    "inherits": [
+      "NPC",
+      "F_VENDOR"
+    ]
+  },
+  {
+    "path": "/feature/weapon/sword",
+    "type": "feature",
+    "functions": [
+      "attack_with",
+      "init_damage"
+    ],
+    "combat_surface": [
+      "weapon"
+    ],
+    "inherits": []
+  }
+]

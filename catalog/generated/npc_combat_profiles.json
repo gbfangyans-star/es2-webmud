@@ -1,0 +1,1604 @@
+[
+  {
+    "path": "/d/snow/npc/alchemist",
+    "name": "陳維俠",
+    "level": 30,
+    "attributes": {
+      "dex": 18,
+      "int": 24,
+      "wis": 25,
+      "spi": 22,
+      "cps": 19,
+      "con": 20
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 60
+      },
+      {
+        "skill": "sword",
+        "level": 60
+      },
+      {
+        "skill": "parry",
+        "level": 80
+      },
+      {
+        "skill": "dodge",
+        "level": 70
+      },
+      {
+        "skill": "force",
+        "level": 70
+      },
+      {
+        "skill": "kee anatomy",
+        "level": 100
+      },
+      {
+        "skill": "dragon force",
+        "level": 60
+      },
+      {
+        "skill": "alchemy-medication",
+        "level": 140
+      },
+      {
+        "skill": "alchemy-wealth",
+        "level": 40
+      },
+      {
+        "skill": "alchemy-magic",
+        "level": 80
+      },
+      {
+        "skill": "alchemy-immortality",
+        "level": 30
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "force",
+        "mapped_to": "dragon force",
+        "resolved_path": "/d/snow/skill/dragon_force",
+        "matches": 1
+      }
+    ],
+    "equipment": [
+      {
+        "target": "obj/silversword",
+        "relative": true,
+        "action": "wield"
+      },
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      }
+    ],
+    "combat_surface": [
+      "armor",
+      "skill",
+      "weapon"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child",
+    "name": "阿寶",
+    "level": 10,
+    "attributes": {
+      "spi": 18,
+      "int": 19,
+      "dex": 19,
+      "con": 17
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "stealing",
+        "level": 40
+      },
+      {
+        "skill": "dodge",
+        "level": 35
+      },
+      {
+        "skill": "lightswift",
+        "level": 45
+      },
+      {
+        "skill": "dagger",
+        "level": 40
+      },
+      {
+        "skill": "sword",
+        "level": 30
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "dodge",
+        "mapped_to": "lightswift",
+        "resolved_path": null,
+        "matches": 0
+      }
+    ],
+    "equipment": [
+      {
+        "target": "obj/blue_cloth",
+        "relative": true,
+        "action": "wear"
+      },
+      {
+        "target": "/obj/area/obj/dagger",
+        "relative": false,
+        "action": "wield"
+      }
+    ],
+    "combat_surface": [
+      "armor",
+      "skill",
+      "weapon"
+    ],
+    "damage_contract": [],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/child1",
+    "name": "小孩",
+    "level": 1,
+    "attributes": {},
+    "stat_maximums": {
+      "gin": 20,
+      "kee": 20,
+      "sen": 20
+    },
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "obj/tummy_cover",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child2",
+    "name": "小孩",
+    "level": 1,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "obj/woodsword",
+        "relative": true,
+        "action": "wield"
+      }
+    ],
+    "combat_surface": [
+      "weapon"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child3",
+    "name": "小孩",
+    "level": 1,
+    "attributes": {},
+    "stat_maximums": {
+      "gin": 20,
+      "kee": 20,
+      "sen": 20
+    },
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "obj/tummy_cover",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/child4",
+    "name": "小孩",
+    "level": 1,
+    "attributes": {},
+    "stat_maximums": {
+      "gin": 20,
+      "kee": 20,
+      "sen": 20
+    },
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "obj/tummy_cover",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/foreman",
+    "name": "工頭",
+    "level": 8,
+    "attributes": {
+      "str": 18,
+      "cor": 19,
+      "cps": 15,
+      "dex": 16
+    },
+    "stat_maximums": {
+      "kee": 60
+    },
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/gammer",
+    "name": "瞎眼老太婆",
+    "level": 44,
+    "attributes": {
+      "dex": 29,
+      "con": 21,
+      "cor": 22,
+      "str": 19
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "staff",
+        "level": 40
+      },
+      {
+        "skill": "stealing",
+        "level": 70
+      },
+      {
+        "skill": "dodge",
+        "level": 90
+      },
+      {
+        "skill": "blade",
+        "level": 30
+      },
+      {
+        "skill": "sword",
+        "level": 30
+      },
+      {
+        "skill": "unarmed",
+        "level": 50
+      },
+      {
+        "skill": "dagger",
+        "level": 70
+      },
+      {
+        "skill": "secondhand dagger",
+        "level": 70
+      },
+      {
+        "skill": "killerhood",
+        "level": 60
+      },
+      {
+        "skill": "force",
+        "level": 90
+      },
+      {
+        "skill": "regular force",
+        "level": 100
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "force",
+        "mapped_to": "regular force",
+        "resolved_path": null,
+        "matches": 0
+      }
+    ],
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      },
+      {
+        "target": "obj/cane",
+        "relative": true,
+        "action": "wield"
+      },
+      {
+        "target": "obj/syndicator",
+        "relative": true,
+        "action": "wield"
+      }
+    ],
+    "combat_surface": [
+      "armor",
+      "skill",
+      "weapon"
+    ],
+    "damage_contract": [],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/garrison",
+    "name": "官兵",
+    "level": 17,
+    "attributes": {
+      "con": 19,
+      "str": 20
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 60
+      },
+      {
+        "skill": "parry",
+        "level": 60
+      },
+      {
+        "skill": "unarmed",
+        "level": 50
+      },
+      {
+        "skill": "dodge",
+        "level": 50
+      },
+      {
+        "skill": "blade",
+        "level": 50
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "stock_type": "armor",
+        "name": "cloth",
+        "action": "wear"
+      },
+      {
+        "stock_type": "weapon",
+        "name": "broadsword",
+        "action": "wield"
+      }
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "damage_contract": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/girl",
+    "name": "白衣女子",
+    "level": 55,
+    "attributes": {
+      "con": 23,
+      "str": 23,
+      "spi": 27,
+      "int": 22,
+      "dex": 26
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 140
+      },
+      {
+        "skill": "dodge",
+        "level": 120
+      },
+      {
+        "skill": "parry",
+        "level": 120
+      },
+      {
+        "skill": "blade",
+        "level": 70
+      },
+      {
+        "skill": "dagger",
+        "level": 70
+      },
+      {
+        "skill": "unarmed",
+        "level": 90
+      },
+      {
+        "skill": "force",
+        "level": 80
+      },
+      {
+        "skill": "celestial force",
+        "level": 80
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "force",
+        "mapped_to": "celestial force",
+        "resolved_path": null,
+        "matches": 0
+      }
+    ],
+    "equipment": [
+      {
+        "target": "obj/white_dress",
+        "relative": true,
+        "action": "wear"
+      },
+      {
+        "target": "obj/slasher_sword",
+        "relative": true,
+        "action": "wield"
+      }
+    ],
+    "combat_surface": [
+      "armor",
+      "attack",
+      "skill",
+      "weapon"
+    ],
+    "damage_contract": [
+      "fight_ob"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/guard",
+    "name": "青衣漢子",
+    "level": 20,
+    "attributes": {
+      "str": 20,
+      "con": 20
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 70
+      },
+      {
+        "skill": "blade",
+        "level": 50
+      },
+      {
+        "skill": "parry",
+        "level": 50
+      },
+      {
+        "skill": "unarmed",
+        "level": 40
+      },
+      {
+        "skill": "dodge",
+        "level": 70
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "stock_type": "armor",
+        "name": "cloth",
+        "action": "wear"
+      },
+      {
+        "stock_type": "weapon",
+        "name": "longsword",
+        "action": "wield"
+      }
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "damage_contract": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/herbalist",
+    "name": "藥鋪掌櫃",
+    "level": 3,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 5
+      },
+      {
+        "skill": "parry",
+        "level": 5
+      },
+      {
+        "skill": "dodge",
+        "level": 5
+      },
+      {
+        "skill": "dagger",
+        "level": 5
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      },
+      {
+        "target": "obj/fur_hat",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "damage_contract": [],
+    "manual_review": [
+      "custom_action",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/innkeeper",
+    "name": "掌櫃",
+    "level": 4,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [
+      "attack"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/junkman",
+    "name": "拾荒老頭",
+    "level": 2,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/lieutenant",
+    "name": "武官",
+    "level": 24,
+    "attributes": {
+      "con": 21,
+      "str": 22
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 80
+      },
+      {
+        "skill": "blade",
+        "level": 60
+      },
+      {
+        "skill": "unarmed",
+        "level": 65
+      },
+      {
+        "skill": "parry",
+        "level": 60
+      },
+      {
+        "skill": "dodge",
+        "level": 70
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "stock_type": "armor",
+        "name": "cloth",
+        "action": "wear"
+      },
+      {
+        "stock_type": "weapon",
+        "name": "broadsword",
+        "action": "wield"
+      },
+      {
+        "target": "obj/leather_armor",
+        "relative": true,
+        "action": "wear"
+      },
+      {
+        "target": "obj/helmet",
+        "relative": true,
+        "action": "wear"
+      },
+      {
+        "target": "obj/clothboot",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "damage_contract": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/miller",
+    "name": "楊大嬸",
+    "level": 2,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      }
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/arrow",
+    "name": "洛鐵箭",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/blue_cloth",
+    "name": "藍布長衫",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/blue_jacket",
+    "name": "藍衣套",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/broadsword",
+    "name": "闊劍",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/cane",
+    "name": "拐杖",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/clothboot",
+    "name": "皂步靴",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/coin",
+    "name": "古錢",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/comb",
+    "name": "紅木梳子",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/crate",
+    "name": "大木箱",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/obj/fur_hat",
+    "name": "毛皮帽",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/hairpin",
+    "name": "古銅髮簪",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/helmet",
+    "name": "銅盔",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/hoe",
+    "name": "鋤頭",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/invitation",
+    "name": "英雄帖",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/leather_armor",
+    "name": "硬皮甲冑",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/note",
+    "name": "雪亭小鎮見聞",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/pot",
+    "name": "大水缸",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/roast_chicken",
+    "name": "紅燒雞",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/shovel",
+    "name": "鐵鏟",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/silversword",
+    "name": "洗銀劍",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/slasher_sword",
+    "name": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/smock",
+    "name": "打鐵褂子",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/syndicator",
+    "name": "「尺娘」",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [
+      "damage"
+    ],
+    "damage_contract": [
+      "inflict_damage"
+    ],
+    "manual_review": [
+      "damage_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/obj/tummy_cover",
+    "name": "肚兜",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/wagon",
+    "name": "運貨驢車",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/obj/white_dress",
+    "name": "白綢羽衫",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/wine_pot",
+    "name": "大酒缸",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/woodblade",
+    "name": "木刀",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/obj/woodsword",
+    "name": "木劍",
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/oldman",
+    "name": "黑衣老人",
+    "level": 7,
+    "attributes": {},
+    "stat_maximums": {
+      "gin": 70,
+      "sen": 50
+    },
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 25
+      },
+      {
+        "skill": "parry",
+        "level": 15
+      },
+      {
+        "skill": "dodge",
+        "level": 20
+      },
+      {
+        "skill": "dagger",
+        "level": 40
+      },
+      {
+        "skill": "stealing",
+        "level": 35
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      },
+      {
+        "target": "/obj/area/obj/shortsword",
+        "relative": false,
+        "action": "wield"
+      }
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/patrol",
+    "name": "巡邏官兵",
+    "level": 15,
+    "attributes": {},
+    "stat_maximums": {
+      "gin": 150,
+      "kee": 150
+    },
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 60
+      },
+      {
+        "skill": "parry",
+        "level": 60
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "stock_type": "armor",
+        "name": "cloth",
+        "action": "wear"
+      }
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/smith",
+    "name": "鐵匠",
+    "level": 13,
+    "attributes": {
+      "str": 19,
+      "cor": 17,
+      "cps": 15,
+      "dex": 18
+    },
+    "stat_maximums": {
+      "kee": 80
+    },
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "obj/smock",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "damage_contract": [],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/teacher",
+    "name": "王懷芝",
+    "level": 5,
+    "attributes": {},
+    "stat_maximums": {
+      "sen": 50
+    },
+    "skills": [
+      {
+        "skill": "literate",
+        "level": 60
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [
+      "skill"
+    ],
+    "damage_contract": [],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/waiter",
+    "name": "店小二",
+    "level": 2,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": [
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/woman",
+    "name": "少婦",
+    "level": 2,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "/obj/area/obj/cloth",
+        "relative": false,
+        "action": "wear"
+      }
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/yu",
+    "name": "魚天",
+    "level": 1,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "target": "obj/blue_jacket",
+        "relative": true,
+        "action": "wear"
+      }
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "damage_contract": [],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/feature/npc/bandit",
+    "name": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [
+      "attack"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/currency",
+    "name": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/fighter",
+    "name": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [
+      "attack"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/scholar",
+    "name": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [
+      "attack"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/soldier",
+    "name": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [
+      "attack"
+    ],
+    "damage_contract": [
+      "fight_ob"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/traveler",
+    "name": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/feature/npc/vendor",
+    "name": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": [
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/feature/npc/villager",
+    "name": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/npc/death_black",
+    "name": null,
+    "level": 70,
+    "attributes": {
+      "str": 45,
+      "con": 40,
+      "dex": 40,
+      "cor": 35,
+      "cps": 45,
+      "spi": 40,
+      "wis": 35,
+      "int": 30
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 170
+      },
+      {
+        "skill": "sword",
+        "level": 140
+      },
+      {
+        "skill": "blade",
+        "level": 120
+      },
+      {
+        "skill": "parry",
+        "level": 150
+      },
+      {
+        "skill": "unarmed",
+        "level": 130
+      },
+      {
+        "skill": "dodge",
+        "level": 110
+      },
+      {
+        "skill": "berserk",
+        "level": 180
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/npc/death_white",
+    "name": null,
+    "level": 70,
+    "attributes": {
+      "str": 45,
+      "con": 40,
+      "dex": 40,
+      "cor": 35,
+      "cps": 45,
+      "spi": 40,
+      "wis": 35,
+      "int": 30
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 60
+      },
+      {
+        "skill": "blunt",
+        "level": 100
+      },
+      {
+        "skill": "sword",
+        "level": 100
+      },
+      {
+        "skill": "parry",
+        "level": 90
+      },
+      {
+        "skill": "unarmed",
+        "level": 80
+      },
+      {
+        "skill": "dodge",
+        "level": 90
+      },
+      {
+        "skill": "blade",
+        "level": 70
+      },
+      {
+        "skill": "berserk",
+        "level": 150
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/npc/demogorgon",
+    "name": null,
+    "level": 100,
+    "attributes": {
+      "str": 35,
+      "dex": 42,
+      "con": 35,
+      "spi": 45,
+      "cor": 45
+    },
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [
+      "death"
+    ],
+    "damage_contract": [],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "path": "/obj/npc/garrison",
+    "name": "官兵",
+    "level": 25,
+    "attributes": {
+      "con": 22,
+      "str": 24,
+      "dex": 18,
+      "cor": 18
+    },
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "twohanded sword",
+        "level": 60
+      },
+      {
+        "skill": "blunt",
+        "level": 100
+      },
+      {
+        "skill": "sword",
+        "level": 100
+      },
+      {
+        "skill": "parry",
+        "level": 90
+      },
+      {
+        "skill": "unarmed",
+        "level": 80
+      },
+      {
+        "skill": "dodge",
+        "level": 90
+      },
+      {
+        "skill": "blade",
+        "level": 70
+      },
+      {
+        "skill": "berserk",
+        "level": 150
+      }
+    ],
+    "skill_maps": [],
+    "equipment": [
+      {
+        "stock_type": "weapon",
+        "name": "rod",
+        "action": "wield"
+      }
+    ],
+    "combat_surface": [
+      "weapon"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  }
+]

@@ -1,0 +1,126 @@
+[
+  {
+    "path": "/d/snow/npc/fighter_test",
+    "name": "劍客",
+    "level": 9,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 40
+      },
+      {
+        "skill": "parry",
+        "level": 25
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "sword",
+        "mapped_to": "sword-art",
+        "resolved_path": "/d/snow/skill/sword-art",
+        "matches": 1
+      },
+      {
+        "base": "parry",
+        "mapped_to": "sword-art",
+        "resolved_path": "/d/snow/skill/sword-art",
+        "matches": 1
+      }
+    ],
+    "equipment": [],
+    "combat_surface": [
+      "skill"
+    ],
+    "damage_contract": [],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/vendor_test",
+    "name": "商人",
+    "level": 7,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 20
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "unarmed",
+        "mapped_to": "test-art",
+        "resolved_path": null,
+        "matches": 0
+      }
+    ],
+    "equipment": [],
+    "combat_surface": [
+      "skill"
+    ],
+    "damage_contract": [],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/x",
+    "name": "測試者",
+    "level": 20,
+    "attributes": {
+      "str": 20
+    },
+    "stat_maximums": {
+      "kee": 80
+    },
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 12
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "unarmed",
+        "mapped_to": "test-art",
+        "resolved_path": null,
+        "matches": 0
+      }
+    ],
+    "equipment": [
+      {
+        "stock_type": "weapon",
+        "name": "longsword",
+        "action": "wield"
+      }
+    ],
+    "combat_surface": [
+      "skill",
+      "weapon"
+    ],
+    "damage_contract": [],
+    "manual_review": [
+      "custom_action",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/feature/npc/vendor",
+    "name": null,
+    "level": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [],
+    "skill_maps": [],
+    "equipment": [],
+    "combat_surface": [],
+    "damage_contract": [],
+    "manual_review": [
+      "vendor_logic"
+    ]
+  }
+]

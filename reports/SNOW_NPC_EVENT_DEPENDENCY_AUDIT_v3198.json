@@ -1,0 +1,23 @@
+{
+  "version": "3.19.8",
+  "scope": "source/upstream/mudlib/d/snow",
+  "legacyEs2Used": false,
+  "npcSourceCount": 23,
+  "canonicalGameplayModified": false,
+  "closedGroups": [
+    "innkeeper->patrol protection",
+    "foreman->crate->wagon->wage",
+    "ruin1 hairpin->girl->invitation",
+    "waiter food service",
+    "herbalist medication shop",
+    "yu merchandise/payment->note"
+  ],
+  "blockers": [
+    {"chain":"guard->invitation->snowkeep","missing":"d/snowkeep/entrance.c"},
+    {"chain":"smith lo iron->arrow","missing":"source/producer for object id 'lo iron'"}
+  ],
+  "manualReview": [
+    "child/gammer try/fon state chain has states without producers in current tree",
+    "girl.c queries hairpin_quest but no setter exists in current tree"
+  ]
+}

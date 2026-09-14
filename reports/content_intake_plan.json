@@ -1,0 +1,38 @@
+{
+  "schema": 1,
+  "version": "3.20.76",
+  "generated": "2026-09-11T14:43:32",
+  "readOnly": true,
+  "sourceBoundary": "taedlar/es2_mudlib only",
+  "canonicalEntities": 513,
+  "byType": {
+    "command": 154,
+    "daemon": 28,
+    "feature": 47,
+    "include": 37,
+    "item": 103,
+    "npc": 64,
+    "other": 18,
+    "prototype": 11,
+    "room": 43,
+    "runtime": 2,
+    "skill": 6
+  },
+  "manualReview": 59,
+  "triageEntries": 135,
+  "workflow": [
+    "verify source boundary",
+    "fingerprint canonical source before work",
+    "rebuild catalog/workbench",
+    "map supplied material only to source-confirmed entities",
+    "preserve unresolved items as manual_review",
+    "run catalog diff and canonical source change report",
+    "run regression/release gates before packaging"
+  ],
+  "prohibitions": [
+    "no guessed gameplay",
+    "no external gameplay source",
+    "no automatic resolution of manual_review",
+    "no canonical write without explicit content task and source evidence"
+  ]
+}

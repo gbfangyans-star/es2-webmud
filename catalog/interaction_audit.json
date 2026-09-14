@@ -1,0 +1,48 @@
+{
+  "count": 6,
+  "issues": [
+    {
+      "severity": "advisory",
+      "kind": "add_action_handler_not_local",
+      "path": "/d/snow/npc/herbalist",
+      "handler": "do_vendor_list",
+      "verb": "list"
+    },
+    {
+      "severity": "advisory",
+      "kind": "add_action_handler_not_local",
+      "path": "/d/snow/npc/smith",
+      "handler": "do_vendor_list",
+      "verb": "list"
+    },
+    {
+      "severity": "advisory",
+      "kind": "add_action_handler_not_local",
+      "path": "/d/snow/npc/waiter",
+      "handler": "do_vendor_list",
+      "verb": "list"
+    },
+    {
+      "severity": "advisory",
+      "kind": "add_action_handler_not_local",
+      "path": "/d/snow/npc/yu",
+      "handler": "do_vendor_list",
+      "verb": "list"
+    },
+    {
+      "severity": "advisory",
+      "kind": "call_out_handler_not_local",
+      "path": "/feature/char/combat",
+      "handler": "lose_fight",
+      "delay": 0
+    },
+    {
+      "severity": "advisory",
+      "kind": "add_action_handler_not_local",
+      "path": "/obj/clan_symbol",
+      "handler": "help",
+      "verb": "help"
+    }
+  ],
+  "note": "Advisory only: handlers may be inherited."
+}

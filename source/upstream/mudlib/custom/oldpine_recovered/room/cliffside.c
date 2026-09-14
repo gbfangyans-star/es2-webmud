@@ -1,0 +1,1 @@
+inherit ROOM; void create(){ set("short","悬崖边"); set("long","你攀到悬崖边缘，北边就是茂密得令人分不清方向的松树林。\n"); set("exits",(["north":__DIR__"pine1"])); set("map/area","老松林"); set("map/layer","地面"); setup(); }

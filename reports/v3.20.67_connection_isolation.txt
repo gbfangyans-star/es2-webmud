@@ -1,0 +1,9 @@
+v3.20.67 connection isolation build
+Known-good baseline: v3.20.65 connects successfully in user's real browser/server test.
+v3.20.66 fails to connect.
+This build keeps v3.20.66 combat.c, combatd.c and web interaction delegated click fix,
+but restores ONLY feature/char/skill.c to the v3.20.65 known-good file.
+Purpose: isolate whether skill.c is the crash trigger.
+Expected interpretation:
+- If v3.20.67 connects: skill.c is confirmed as the failing component.
+- If v3.20.67 fails: culprit is in combat.c and/or combatd.c (or an interaction among restored combat files), not skill.c alone.

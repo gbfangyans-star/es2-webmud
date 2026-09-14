@@ -1,0 +1,16 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ES2 Multiplayer</title><link rel="stylesheet" href="/styles.css"></head><body>
+<header><h1>ES2 WebMUD · Multiplayer</h1><div><a href="/">遊戲</a> · <a href="/runtime.html">Runtime</a> · <a href="/acceptance.html">Acceptance</a></div></header>
+<main>
+<div class="card"><b>Bridge 即時狀態</b><pre id="mpHealth">載入中...</pre></div>
+<div class="card"><b>多人驗證層</b><p>每個 Browser WebSocket 對應一條獨立 MUD TCP session。Bridge 層現在有容量上限、心跳、慢客戶端保護與 payload 上限。</p><pre>8-client isolation
+50-client simultaneous burst
+4 × 20 rapid connect/disconnect churn
+capacity overflow rejection
+20-client live Neolith connection probe
+same-account reconnect / takeover (canonical LOGIN_D)
+per-player disconnect save (canonical user::net_dead)</pre></div>
+<div class="card"><b>尚需 Windows canonical runtime 實機驗收</b><p class="muted">兩個以上真實角色同房可見、聊天、移動隔離、戰鬥隔離、同時斷線存檔、同帳號重連/接管。沒有真實 Neolith 證據前不標 PASS。</p></div>
+</main>
+<script>
+const out=document.querySelector('#mpHealth');async function tick(){try{const r=await fetch('/api/multiplayer-health',{cache:'no-store'});const j=await r.json();out.textContent=JSON.stringify(j,null,2)}catch(e){out.textContent='讀取失敗: '+e.message}}tick();setInterval(tick,2000);
+</script></body></html>

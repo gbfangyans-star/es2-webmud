@@ -1,0 +1,106 @@
+[
+  {
+    "path": "/d/snow/npc/fighter_test",
+    "name": "劍客",
+    "level": 9,
+    "race": null,
+    "class": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "sword",
+        "level": 40
+      },
+      {
+        "skill": "parry",
+        "level": 25
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "sword",
+        "mapped_to": "sword-art"
+      },
+      {
+        "base": "parry",
+        "mapped_to": "sword-art"
+      }
+    ],
+    "equipment": [],
+    "combat_surface": [
+      "skill"
+    ],
+    "manual_review": []
+  },
+  {
+    "path": "/d/snow/npc/vendor_test",
+    "name": "商人",
+    "level": 7,
+    "race": "human",
+    "class": null,
+    "attributes": {},
+    "stat_maximums": {},
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 20
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "unarmed",
+        "mapped_to": "test-art"
+      }
+    ],
+    "equipment": [],
+    "combat_surface": [
+      "skill"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/x",
+    "name": "測試者",
+    "level": 20,
+    "race": "human",
+    "class": "commoner",
+    "attributes": {
+      "str": 20
+    },
+    "stat_maximums": {
+      "kee": 80
+    },
+    "skills": [
+      {
+        "skill": "unarmed",
+        "level": 12
+      }
+    ],
+    "skill_maps": [
+      {
+        "base": "unarmed",
+        "mapped_to": "test-art"
+      }
+    ],
+    "equipment": [
+      {
+        "stock_type": "weapon",
+        "name": "longsword",
+        "action": "wield"
+      }
+    ],
+    "combat_surface": [
+      "skill",
+      "weapon"
+    ],
+    "manual_review": [
+      "custom_action",
+      "vendor_logic"
+    ]
+  }
+]

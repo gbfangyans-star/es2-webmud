@@ -1,0 +1,114 @@
+/*
+	[1992-05-??] by Dwayne Fontenot (Jacques@TMI), original coding.
+	[1992-10-??] by Dave Richards (Cynosure), less original coding.
+
+    MODIFIED BY
+	[2001-06-27] by Annihilator <annihilator@muds.net>, see CVS log.
+ */
+
+#pragma once
+
+#include "lpc/types.h"
+#include "lpc/functional.h"
+#include "port/socket_comm.h"
+#include "src/addr_resolver.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+enum socket_mode {
+    MUD, STREAM, DATAGRAM, STREAM_BINARY, DATAGRAM_BINARY
+};
+enum socket_state {
+    CLOSED, FLUSHING, UNBOUND, BOUND, LISTEN, DATA_XFER
+};
+
+enum socket_operation_phase {
+    OP_INIT,
+    OP_DNS_RESOLVING,
+    OP_CONNECTING,
+    OP_TRANSFERRING,
+    OP_COMPLETED,
+    OP_FAILED,
+    OP_TIMED_OUT,
+    OP_CANCELED
+};
+
+#define	BUF_SIZE	2048	/* max reliable packet size	   */
+#define ADDR_BUF_SIZE	64	/* max length of address string    */
+
+typedef struct {
+    socket_fd_t fd;
+#ifdef HAVE_POLL
+    int poll_index;             /* index in poll_fds[] */
+#endif
+    short flags;
+    enum socket_mode mode;
+    enum socket_state state;
+    struct sockaddr_in l_addr;
+    struct sockaddr_in r_addr;
+    char name[ADDR_BUF_SIZE];
+    object_t *owner_ob;
+    object_t *release_ob;
+    string_or_func_t	read_callback;
+    string_or_func_t	write_callback;
+    string_or_func_t	close_callback;
+    char *r_buf;
+    int r_off;
+    long r_len;
+    char *w_buf;
+    int w_off;
+    int w_len;
+} lpc_socket_t;
+
+typedef void (*socket_release_test_hook_t)(int, object_t *);
+typedef int (*socket_dns_timeout_test_hook_t)(int, const char *, uint16_t);
+
+extern lpc_socket_t *lpc_socks;
+extern int max_lpc_socks;
+
+#define	S_RELEASE	0x01
+#define	S_BLOCKED	0x02
+#define	S_HEADER	0x04
+#define	S_WACCEPT	0x08
+#define S_BINARY        0x10
+#define S_READ_FP       0x20
+#define S_WRITE_FP      0x40
+#define S_CLOSE_FP      0x80
+#define S_EXTERNAL	0x100
+
+int check_valid_socket(char *, socket_fd_t, object_t *, char *, int);
+void socket_read_select_handler(int);
+void socket_write_select_handler(int);
+void assign_socket_owner(svalue_t *, object_t *);
+object_t *get_socket_owner(int);
+void dump_socket_status(outbuffer_t *);
+void close_referencing_sockets(object_t *);
+int get_socket_address(int, char *, int *);
+int socket_bind(int, int);
+int socket_create(enum socket_mode, svalue_t *, svalue_t *);
+int socket_listen(int, svalue_t *);
+int socket_accept(int, svalue_t *, svalue_t *);
+int socket_connect(int, const char *, svalue_t *, svalue_t *);
+int socket_write(int, svalue_t *, const char *);
+int socket_close(int, int);
+int socket_release(int, object_t *, svalue_t *);
+int socket_acquire(int, svalue_t *, svalue_t *, svalue_t *);
+void set_socket_release_test_hook(socket_release_test_hook_t);
+void set_socket_dns_timeout_test_hook(socket_dns_timeout_test_hook_t);
+int get_dns_telemetry_snapshot(int *in_flight, unsigned long *admitted, unsigned long *dedup_hit,
+                               unsigned long *timed_out);
+char *socket_error(int);
+void handle_dns_completions(void);
+int handle_socket_dns_resolver_result(const resolver_result_t *result);
+void deinit_dns_system(void);
+int get_socket_operation_info(int, int *, int *, int *, int *);
+int get_socket_runtime_info(int, int *, int *, socket_fd_t *);
+int get_socket_runtime_registration_count(void);
+void *get_socket_runtime_context(int);
+int resolve_lpc_socket_context(void *, socket_fd_t, int *);
+
+#ifdef __cplusplus
+}
+#endif

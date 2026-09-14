@@ -1,0 +1,186 @@
+[
+  {
+    "skill": "axe",
+    "file": "axe.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "secondhand axe",
+    "file": "secondhand-axe.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "twohanded axe",
+    "file": "twohanded-axe.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "blade",
+    "file": "blade.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "secondhand blade",
+    "file": "secondhand-blade.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "twohanded blade",
+    "file": "twohanded-blade.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "blunt",
+    "file": "blunt.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "secondhand blunt",
+    "file": "secondhand-blunt.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "twohanded blunt",
+    "file": "twohanded-blunt.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "dagger",
+    "file": "dagger.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "secondhand dagger",
+    "file": "secondhand-dagger.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "needle",
+    "file": "needle.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "secondhand needle",
+    "file": "secondhand-needle.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "pike",
+    "file": "pike.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "secondhand pike",
+    "file": "secondhand-pike.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "twohanded pike",
+    "file": "twohanded-pike.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "staff",
+    "file": "staff.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "secondhand staff",
+    "file": "secondhand-staff.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "twohanded staff",
+    "file": "twohanded-staff.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "sword",
+    "file": "sword.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "secondhand sword",
+    "file": "secondhand-sword.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "twohanded sword",
+    "file": "twohanded-sword.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  },
+  {
+    "skill": "whip",
+    "file": "whip.c",
+    "exists": true,
+    "registered": true,
+    "fight": true,
+    "actions": true
+  }
+]

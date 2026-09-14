@@ -1,0 +1,1347 @@
+[
+  {
+    "file": "feature/armor/armor.c",
+    "path": "/feature/armor/armor",
+    "type": "feature",
+    "sha256": "b9927ea5c053c79716e0ae391628c3ecfb6cfd0787b427888780daad9c00e61d",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "setup_armor"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "setup_kinds": [
+      "armor"
+    ],
+    "equipment_hooks": [
+      "setup_armor"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/armor/cloth.c",
+    "path": "/feature/armor/cloth",
+    "type": "feature",
+    "sha256": "90403db106c6b32c0517e75f0b234cbf4e158a679859383b7b44c2e5357dbc9a",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "setup_cloth"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "setup_kinds": [
+      "cloth"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/armor/feet_eq.c",
+    "path": "/feature/armor/feet_eq",
+    "type": "feature",
+    "sha256": "11b37b80b44701faeed491598668034ada9735e7a09bf8ff35487dc8d169ade1",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "setup_feet_eq"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "setup_kinds": [
+      "feet_eq"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/armor/finger_eq.c",
+    "path": "/feature/armor/finger_eq",
+    "type": "feature",
+    "sha256": "7f52f7a634f5718c70c0b77d3385f91a264d44764fe9cfa53e17f027ed35936b",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "setup_finger_eq"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "setup_kinds": [
+      "finger_eq"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/armor/hand_eq.c",
+    "path": "/feature/armor/hand_eq",
+    "type": "feature",
+    "sha256": "47a5e6647cc1aaf04db4f99d660e273c733e73482717cd30597c906827f91cb9",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "setup_hand_eq"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "setup_kinds": [
+      "hand_eq"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/armor/head_eq.c",
+    "path": "/feature/armor/head_eq",
+    "type": "feature",
+    "sha256": "b00e598172492ad7b78ea0d3c87b5f021b8ba4006993f07247cd4d30adad2c2b",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "setup_head_eq"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "setup_kinds": [
+      "head_eq"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/armor/leg_eq.c",
+    "path": "/feature/armor/leg_eq",
+    "type": "feature",
+    "sha256": "daf8bacc72cbf3e258a902220cf4362b3e2ad7ee3943a7a0386fc4085dd1e205",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "setup_leg_eq"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "setup_kinds": [
+      "leg_eq"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/armor/neck_eq.c",
+    "path": "/feature/armor/neck_eq",
+    "type": "feature",
+    "sha256": "f4a3c4cb62fb2e232eced2b5262d76f36e6eafc8dc15395cb92a1bb03a900d57",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "setup_neck_eq"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "setup_kinds": [
+      "neck_eq"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/armor/waist_eq.c",
+    "path": "/feature/armor/waist_eq",
+    "type": "feature",
+    "sha256": "eab37f8713085079ac72351c305c45c20bb901134bf867d792abd3b519045d12",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "setup_waist_eq"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "setup_kinds": [
+      "waist_eq"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/attribute.c",
+    "path": "/feature/attribute",
+    "type": "feature",
+    "sha256": "56a9a2617ac87cf8361fc727c211c9baf7a6d4c11411283f3588af9da5fe3b54",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "init_attribute",
+      "query_attr",
+      "query_attribute",
+      "set_attr"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "attack_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/char/action.c",
+    "path": "/feature/char/action",
+    "type": "feature",
+    "sha256": "3774a95391af530fc9757eee957ba1e4af2c2a049f8b664566e2e038d881db30",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "continue_action",
+      "interrupt",
+      "is_busy",
+      "query_busy",
+      "start_busy"
+    ],
+    "runtime_traits": [
+      "combat",
+      "heart_beat"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "damage_contract": [
+      "attack"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/char/attack.c",
+    "path": "/feature/char/attack",
+    "type": "feature",
+    "sha256": "35ccdb7048346e05d583a36ec38c1a4e937d04ddc3d9916fdfac56ff8054c873",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "activate_guard",
+      "add_guard",
+      "attack",
+      "charge_ob",
+      "clean_up_enemy",
+      "fight_ob",
+      "guard_ob",
+      "init",
+      "is_fighting",
+      "is_killing",
+      "kill_ob",
+      "query_charging",
+      "query_guarding",
+      "query_killer",
+      "query_opponent",
+      "remove_all_enemy",
+      "remove_all_killer",
+      "remove_charge",
+      "remove_enemy",
+      "remove_guard",
+      "remove_killer",
+      "select_opponent",
+      "wake_guard"
+    ],
+    "runtime_traits": [
+      "combat",
+      "heart_beat",
+      "init"
+    ],
+    "combat_surface": [
+      "attack"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "skill_contract": {
+      "functions": [
+        "attack_using"
+      ],
+      "contracts": []
+    },
+    "damage_contract": [
+      "attack",
+      "fight_ob",
+      "query_ability",
+      "select_opponent"
+    ],
+    "skill_daemon_calls": [
+      {
+        "expression": "skill",
+        "method": "attack_using",
+        "dynamic": true
+      }
+    ],
+    "weapon_dispatch": {
+      "attack_with": true
+    },
+    "function_calls": [
+      "attack_using"
+    ],
+    "command_hooks": [
+      {
+        "kind": "init"
+      }
+    ],
+    "death_hooks": [
+      "kill_ob"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "combat_daemon",
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/char/combat.c",
+    "path": "/feature/char/combat",
+    "type": "feature",
+    "sha256": "c4687322959daebca80d740b42e33320d7eeda2905a352bf965b4d071569587f",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "absorb",
+      "add_combat_message",
+      "defend",
+      "get_combat_message",
+      "inflict_damage",
+      "query_ability",
+      "query_attr",
+      "query_strength",
+      "receive_damage",
+      "resist_damage",
+      "set_combat_message"
+    ],
+    "runtime_traits": [
+      "damage",
+      "timed"
+    ],
+    "combat_surface": [
+      "damage",
+      "defense",
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "skill_contract": {
+      "functions": [
+        "dodge_using",
+        "parry_using"
+      ],
+      "contracts": []
+    },
+    "damage_contract": [
+      "absorb",
+      "defend",
+      "inflict_damage",
+      "query_ability",
+      "query_strength",
+      "receive_damage"
+    ],
+    "skill_daemon_calls": [
+      {
+        "skill": "force",
+        "method": "inflict_damage",
+        "dynamic": false
+      },
+      {
+        "expression": "sk",
+        "method": "dodge_using",
+        "dynamic": true
+      },
+      {
+        "expression": "sk",
+        "method": "parry_using",
+        "dynamic": true
+      },
+      {
+        "expression": "force_sk",
+        "method": "inflict_damage",
+        "dynamic": true
+      }
+    ],
+    "weapon_dispatch": {
+      "inflict_damage": true
+    },
+    "function_calls": [
+      "dodge_using",
+      "inflict_damage",
+      "parry_using",
+      "query_skill",
+      "receive_damage"
+    ],
+    "callouts": [
+      {
+        "function": "lose_fight",
+        "delay": 0
+      }
+    ],
+    "death_hooks": [
+      "receive_damage"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "damage_text",
+      "dodge_text",
+      "parry_text"
+    ],
+    "manual_review": [
+      "damage_logic",
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "feature/char/command.c",
+    "path": "/feature/char/command",
+    "type": "feature",
+    "sha256": "0409ec6a894600e14438e2e60aab5877ee91191804ddcce5b3b7c87164420fb7",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "add_path",
+      "cmd_quit",
+      "cmd_update",
+      "command_hook",
+      "disable_player",
+      "enable_player",
+      "find_command",
+      "force_me",
+      "init_command",
+      "set_path"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "actions": [
+      {
+        "handler": "cmd_quit",
+        "verb": "quit"
+      },
+      {
+        "handler": "cmd_update",
+        "verb": "update"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "cmd_quit",
+        "verb": "quit"
+      },
+      {
+        "kind": "add_action",
+        "handler": "cmd_update",
+        "verb": "update"
+      }
+    ],
+    "combat_message_traits": [
+      "miss_text"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "feature/char/condition.c",
+    "path": "/feature/char/condition",
+    "type": "feature",
+    "sha256": "b5c4eb8ef39b7d3f0e8c857dadb63922ae80867ca90dd322ebe744ff580a9d13",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "clear_condition",
+      "delete_condition",
+      "query_condition",
+      "restore_condition",
+      "set_condition",
+      "update_condition"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "condition"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "function_calls": [
+      "update_condition"
+    ],
+    "condition_hooks": [
+      {
+        "hook": "update_condition"
+      },
+      {
+        "hook": "clear_condition"
+      }
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/char/finance.c",
+    "path": "/feature/char/finance",
+    "type": "feature",
+    "sha256": "61833f3e956d672f381e356f91a0d070b5741e0b27b5c62c7af86f26d9e40cb1",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "can_afford",
+      "pay_money"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "feature/char/message.c",
+    "path": "/feature/char/message",
+    "type": "feature",
+    "sha256": "a417d83ad3a4a1345956200e65e430217dcc6ec71ba8e6fbcb57135c52ec0768",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "receive_message",
+      "receive_snoop",
+      "write_prompt"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "feature/char/relation.c",
+    "path": "/feature/char/relation",
+    "type": "feature",
+    "sha256": "3c4cdcae94c01db964073d00e052aecc51abddd6c3c1d6290cd045004eba8c79",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "add_apprentice",
+      "add_master",
+      "delete_apprentice",
+      "delete_master",
+      "init_apprentice",
+      "is_apprentice_of",
+      "is_master_of",
+      "query_apprentices",
+      "query_masters"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "feature/char/score.c",
+    "path": "/feature/char/score",
+    "type": "feature",
+    "sha256": "a57b93a1654023f4f4bdc488ba2ab1141f29d355ddd81384a93dbc3f16acb5ea",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "gain_score",
+      "query_class",
+      "query_level",
+      "query_race",
+      "query_score",
+      "query_score_gain",
+      "query_target_score",
+      "reset_score_gain",
+      "set_class",
+      "set_level",
+      "set_race",
+      "set_target_score"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "feature/char/skill.c",
+    "path": "/feature/char/skill",
+    "type": "feature",
+    "sha256": "019818125d56934d33b5453a0f8b6bcafeaf5e6ed5e9ee5ee0ab61631430e9c7",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "abandon_skill",
+      "advance_skill",
+      "delete_skill",
+      "improve_skill",
+      "map_skill",
+      "query_best_skill",
+      "query_learn",
+      "query_learned",
+      "query_skill",
+      "query_skill_flags",
+      "query_skill_gain",
+      "query_skill_map",
+      "query_skill_map_num",
+      "query_skills",
+      "reset_skill_gain",
+      "set_learn",
+      "set_skill",
+      "skill_mapped"
+    ],
+    "runtime_traits": [
+      "skill_mapping",
+      "teaching"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "skill_contract": {
+      "functions": [
+        "skill_improved",
+        "skill_advanced"
+      ],
+      "contracts": []
+    },
+    "skill_daemon_calls": [
+      {
+        "expression": "skill",
+        "method": "skill_improved",
+        "dynamic": true
+      },
+      {
+        "expression": "skill",
+        "method": "skill_advanced",
+        "dynamic": true
+      }
+    ],
+    "function_calls": [
+      "improve_skill",
+      "map_skill",
+      "query_skill"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/char/team.c",
+    "path": "/feature/char/team",
+    "type": "feature",
+    "sha256": "980c66f4b4b3f1309bf889bfd7f508d6c6f1fba576d47707fad1d9e060a9792d",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "add_team_member",
+      "clean_up_enemy",
+      "dismiss_team",
+      "do_chat",
+      "follow_me",
+      "is_fighting",
+      "is_team_leader",
+      "query_charging",
+      "query_leader",
+      "query_team",
+      "reset_time_unit",
+      "set_leader",
+      "set_team"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "miss_text",
+      "tell_object"
+    ],
+    "manual_review": [
+      "leader_ai"
+    ]
+  },
+  {
+    "file": "feature/clean_up.c",
+    "path": "/feature/clean_up",
+    "type": "feature",
+    "sha256": "929f6dbbfd55b1ecfb6e9c911023ef08f763ac5809e8f456208f188e7c386e3b",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "clean_up"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "feature/dbase.c",
+    "path": "/feature/dbase",
+    "type": "feature",
+    "sha256": "1b6a966d35f5b57ca70a5d7beccab814b2d899d2fc7be94781c38c4e23511e55",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "add",
+      "add_temp",
+      "clear_temp_dbase",
+      "delete",
+      "delete_temp",
+      "query",
+      "query_default_object",
+      "query_entire_dbase",
+      "query_entire_temp_dbase",
+      "query_temp",
+      "set",
+      "set_default_object",
+      "set_temp"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "miss_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/drink.c",
+    "path": "/feature/drink",
+    "type": "feature",
+    "sha256": "bd395d2ef009167ba3cdb99d83df80b545b6a695d1a5d8f93e7e18186a714702",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "add_volume",
+      "drink_ob",
+      "query_volume"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/equip.c",
+    "path": "/feature/equip",
+    "type": "feature",
+    "sha256": "bc4043746652a54a14640a90b0043c0e7371a5a3c50771ab306b62b527d16a7b",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "apply",
+      "attack_with",
+      "inflict_damage",
+      "init_damage",
+      "unapply",
+      "unequip",
+      "wear",
+      "wield"
+    ],
+    "runtime_traits": [
+      "damage",
+      "teaching"
+    ],
+    "combat_surface": [
+      "armor",
+      "damage",
+      "skill",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "skill_contract": {
+      "functions": [
+        "attack_using"
+      ],
+      "contracts": []
+    },
+    "equipment_hooks": [
+      "wear",
+      "wield"
+    ],
+    "damage_contract": [
+      "inflict_damage",
+      "receive_damage"
+    ],
+    "skill_daemon_calls": [
+      {
+        "expression": "skill_type",
+        "method": "attack_using",
+        "dynamic": true
+      }
+    ],
+    "weapon_dispatch": {
+      "attack_with": true,
+      "inflict_damage": true
+    },
+    "function_calls": [
+      "attack_using",
+      "improve_skill",
+      "inflict_damage",
+      "query_skill",
+      "receive_damage",
+      "unequip",
+      "wear",
+      "wield"
+    ],
+    "death_hooks": [
+      "receive_damage"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "damage_text"
+    ],
+    "manual_review": [
+      "damage_logic",
+      "weapon_runtime"
+    ]
+  },
+  {
+    "file": "feature/food.c",
+    "path": "/feature/food",
+    "type": "feature",
+    "sha256": "5bf18f020b7e5d514b680188726ef5de117a8969a4faba83b2fe73411a7da9b2",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "stuff_ob"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "你吃了營養的食物﹐恢復了一些體力。\\n",
+      "你吃了營養的食物﹐覺得氣力恢復了一些。\\n",
+      "你覺得清醒多了。\\n"
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/move.c",
+    "path": "/feature/move",
+    "type": "feature",
+    "sha256": "707eda14f5ae5a87c0d5656e6fbabac970c0eece0fc36122c26079ab52fd8f85",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "add_encumbrance",
+      "inventory_burning",
+      "move",
+      "query_encumbrance",
+      "query_max_encumbrance",
+      "query_max_inventory",
+      "query_weight",
+      "receive_object",
+      "remove",
+      "set_max_encumbrance",
+      "set_max_inventory",
+      "set_weight",
+      "weight"
+    ],
+    "runtime_traits": [
+      "init",
+      "movement",
+      "timed"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "equipment_hooks": [
+      "remove"
+    ],
+    "function_calls": [
+      "unequip"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "feature/name.c",
+    "path": "/feature/name",
+    "type": "feature",
+    "sha256": "45a3599deb4b34afc12d2aabf7dfe540c5caf0b975efc71c2e01b95264b3c2b2",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "id",
+      "long",
+      "name",
+      "parse_command_id_list",
+      "query_id",
+      "rank",
+      "set_name",
+      "short",
+      "visible"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "feature/save.c",
+    "path": "/feature/save",
+    "type": "feature",
+    "sha256": "df6eb4458317ad3926b8e4eda7d70c756ae0fb51d405a62c9718675249561699",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "restore",
+      "save"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "feature/statistic.c",
+    "path": "/feature/statistic",
+    "type": "feature",
+    "sha256": "40a941da7c276d64ec0bbbd391d6a9a30ac0bd43fadc500056019d11a4c3bd4b",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "advance_stat",
+      "clear_statistic_flags",
+      "consume_stat",
+      "damage_stat",
+      "delete_stat",
+      "heal_stat",
+      "health_regenerator",
+      "init_statistic",
+      "last_damage_giver",
+      "query_destroyed",
+      "query_exhausted",
+      "query_notified",
+      "query_stat",
+      "query_stat_current",
+      "query_stat_effective",
+      "query_stat_maximum",
+      "query_stat_name",
+      "query_stat_notify",
+      "query_stat_regenerate",
+      "regenerate",
+      "set_stat_current",
+      "set_stat_effective",
+      "set_stat_maximum",
+      "set_stat_notify",
+      "set_stat_regenerate",
+      "start_regenerate",
+      "supplement_stat",
+      "wasting_regenerator"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/study.c",
+    "path": "/feature/study",
+    "type": "feature",
+    "sha256": "eae0c0dc82ea9ce184bec1c89a8418e366a8f90be3f1793d2a721cb52f513186",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "halt_study",
+      "study_content",
+      "study_ob"
+    ],
+    "runtime_traits": [
+      "teaching"
+    ],
+    "combat_surface": [
+      "busy",
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "這上面記載的內容對你而言都了無新意 ...。\\n"
+    ],
+    "function_calls": [
+      "improve_skill",
+      "query_skill"
+    ],
+    "combat_message_traits": [
+      "damage_text",
+      "message_vision",
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/unique.c",
+    "path": "/feature/unique",
+    "type": "feature",
+    "sha256": "5810720c1e3ac69789d65837ddb4335976bd6a9642571ca7c1dc18dcc8218f74",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "create_replica",
+      "violate_unique"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "feature/user/alias.c",
+    "path": "/feature/user/alias",
+    "type": "feature",
+    "sha256": "0fe36aa2513f366424888897fd5271672077da661d393f05ded8cc37b5ff8b85",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "process_alias",
+      "query_all_alias",
+      "set_alias",
+      "set_all_alias"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "feature/user/autoload.c",
+    "path": "/feature/user/autoload",
+    "type": "feature",
+    "sha256": "14592fc9ead2fb8db185d2609f0205215019fb3ebe8a41e3bce4bb633b11b580",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "clean_up_autoload",
+      "restore_autoload",
+      "save_autoload"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "你覺得似乎失落了什麼重要的東西﹐最好通知一下巫師。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/user/edit.c",
+    "path": "/feature/user/edit",
+    "type": "feature",
+    "sha256": "d7d3083a2be2889e43ff0aff245133afbfd8e6d8353bf68f2e4eab2c55dad820",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "edit",
+      "input_line"
+    ],
+    "runtime_traits": [
+      "interactive"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "uses_input_to": true,
+    "literal_prompts": [
+      "結束離開用 '.'﹐取消輸入用 '~q'﹐使用內建列編輯器用 '~e'。\\n",
+      "─────────────────────────────\\n",
+      "啟動編輯模式的物件已經消失了﹐輸入取消。\\n",
+      "輸入取消。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/user/flag.c",
+    "path": "/feature/user/flag",
+    "type": "feature",
+    "sha256": "65068ac5e4515e60594fe560f8719f24a81c05775774a9e8b979a5b2bf42b737",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "recognize"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "feature/user/input.c",
+    "path": "/feature/user/input",
+    "type": "feature",
+    "sha256": "e10ed9ce24cf684bd23b2d949351832eea8057923cc7ba6246d666a89a5b1901",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "input_prompt"
+    ],
+    "runtime_traits": [
+      "interactive"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "uses_input_to": true,
+    "literal_prompts": [
+      "Y. 是\\nN. 否\\n請輸入 Y 或 N: ",
+      "請輸入選項數字: "
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/user/more.c",
+    "path": "/feature/user/more",
+    "type": "feature",
+    "sha256": "f91109ac2f38152827e2e7063bdaad08fe10f0f9c7a02b39366e8fb6fb658a5d",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "justify_next_line",
+      "more",
+      "start_more",
+      "start_more_if_needed"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "uses_input_to": true,
+    "manual_review": []
+  },
+  {
+    "file": "feature/weapon/axe.c",
+    "path": "/feature/weapon/axe",
+    "type": "feature",
+    "sha256": "193e49cc73bf9673f275bb97c02015b67cbb9f6b372ed305290b7cbac9393ee7",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "init_damage",
+      "setup_axe"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "weapon_dispatch": {
+      "damage_skills": [
+        "axe",
+        "secondhand axe",
+        "twohanded axe"
+      ]
+    },
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/weapon/blade.c",
+    "path": "/feature/weapon/blade",
+    "type": "feature",
+    "sha256": "720d77f816d4d8d73d5d1d7b193fc0fecc87731d65af3f6d6ad62d255d3b9c2e",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "init_damage",
+      "setup_blade"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "weapon_dispatch": {
+      "damage_skills": [
+        "blade",
+        "secondhand blade",
+        "twohanded blade"
+      ]
+    },
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/weapon/blunt.c",
+    "path": "/feature/weapon/blunt",
+    "type": "feature",
+    "sha256": "cd8d4a0b36d709a84c56b1844412385ada37275c3d505c7e5649bd62205bf623",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "init_damage",
+      "setup_blunt"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "weapon_dispatch": {
+      "damage_skills": [
+        "blunt",
+        "secondhand blunt",
+        "twohanded blunt"
+      ]
+    },
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/weapon/dagger.c",
+    "path": "/feature/weapon/dagger",
+    "type": "feature",
+    "sha256": "f8d289c6994c2f4d5894a00debc39512c052a4a162a40b73410e0e988d66dddc",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "init_damage",
+      "setup_dagger"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "weapon_dispatch": {
+      "damage_skills": [
+        "dagger",
+        "secondhand dagger"
+      ]
+    },
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/weapon/needle.c",
+    "path": "/feature/weapon/needle",
+    "type": "feature",
+    "sha256": "e925d1f1db70f0b978184c8f17290acc5ac99e7c1942c50bc2eefe2c5e452080",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "init_damage",
+      "setup_needle"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "weapon_dispatch": {
+      "damage_skills": [
+        "needle",
+        "secondhand needle"
+      ]
+    },
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/weapon/pike.c",
+    "path": "/feature/weapon/pike",
+    "type": "feature",
+    "sha256": "09c66944aa9ea6d04adc870d7e92c592ad7c46d07329a7f613d8c1e2efc243cc",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "init_damage",
+      "setup_pike"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "weapon_dispatch": {
+      "damage_skills": [
+        "pike",
+        "secondhand pike",
+        "twohanded pike"
+      ]
+    },
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/weapon/staff.c",
+    "path": "/feature/weapon/staff",
+    "type": "feature",
+    "sha256": "64c67cd127cc57fdebe6f811c82a04346132b139a2803f6df9756bbe68a68056",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "init_damage",
+      "setup_staff"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "weapon_dispatch": {
+      "damage_skills": [
+        "secondhand staff",
+        "staff",
+        "twohanded staff"
+      ]
+    },
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/weapon/sword.c",
+    "path": "/feature/weapon/sword",
+    "type": "feature",
+    "sha256": "2697693aa3dff1bc23e411fe5c40f70b8e089e53139ba519ea594806693f1ec0",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "init_damage",
+      "setup_sword"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "weapon_dispatch": {
+      "damage_skills": [
+        "secondhand sword",
+        "sword",
+        "twohanded sword"
+      ]
+    },
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "feature/weapon/whip.c",
+    "path": "/feature/weapon/whip",
+    "type": "feature",
+    "sha256": "4e0bb9c666a4535dd9748f85dbeeec73b3b9825a62cb807ad1f54d0198d1db6e",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "init_damage",
+      "setup_whip"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "weapon_dispatch": {
+      "damage_skills": [
+        "whip"
+      ]
+    },
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": []
+  }
+]

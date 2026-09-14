@@ -1,0 +1,491 @@
+{
+  "version": "3.18.3",
+  "users": [
+    "wolfer",
+    "wolfer1"
+  ],
+  "waves": 20,
+  "tellPass": 0,
+  "tellFail": 40,
+  "tellFailures": [
+    {
+      "wave": 1,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES1_1788852042922",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n掌櫃說道﹕歡迎﹗歡迎﹗請裡面坐﹗\r\n",
+      "recipientOutput": "掌櫃說道﹕歡迎﹗歡迎﹗請裡面坐﹗\r\n"
+    },
+    {
+      "wave": 1,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES1_1788852042922B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 2,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES2_1788852058374",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 2,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES2_1788852058374B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 3,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES3_1788852073880",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 3,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES3_1788852073880B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 4,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES4_1788852089426",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n店小二探頭出去望了望天色﹐說道﹕這幾天天氣不錯﹐真想出去走走。\r\n",
+      "recipientOutput": "店小二探頭出去望了望天色﹐說道﹕這幾天天氣不錯﹐真想出去走走。\r\n"
+    },
+    {
+      "wave": 4,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES4_1788852089426B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 5,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES5_1788852104936",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 5,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES5_1788852104936B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 6,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES6_1788852122350",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "掌櫃說道﹕歡迎﹗歡迎﹗請裡面坐﹗\r\n\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": "掌櫃說道﹕歡迎﹗歡迎﹗請裡面坐﹗\r\n"
+    },
+    {
+      "wave": 6,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES6_1788852122350B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 7,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES7_1788852137874",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 7,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES7_1788852137874B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 8,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES8_1788852153375",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 8,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES8_1788852153375B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 9,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES9_1788852168837",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 9,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES9_1788852168837B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": "店小二閒著無聊﹐哼起小曲兒來。\r\n"
+    },
+    {
+      "wave": 10,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES10_1788852184584",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 10,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES10_1788852184584B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編���時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 11,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES11_1788852202058",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "掌櫃說道﹕歡迎﹗歡迎﹗請裡面坐﹗\r\n\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": "掌櫃說道﹕歡迎﹗歡迎﹗請裡面坐﹗\r\n"
+    },
+    {
+      "wave": 11,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES11_1788852202058B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 12,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES12_1788852217614",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 12,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES12_1788852217614B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 13,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES13_1788852233083",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 13,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES13_1788852233083B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 14,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES14_1788852248609",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 14,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES14_1788852248609B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 15,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES15_1788852264087",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 15,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES15_1788852264087B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 16,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES16_1788852281596",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "掌櫃說道﹕歡迎﹗歡迎﹗請裡面坐﹗\r\n\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": "掌櫃說道﹕歡迎﹗歡迎﹗請裡面坐﹗\r\n"
+    },
+    {
+      "wave": 16,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES16_1788852281596B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 17,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES17_1788852297179",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 17,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES17_1788852297179B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 18,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES18_1788852312624",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 18,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES18_1788852312624B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": "店小二說道﹕那說書的李先生不知道好點了沒﹐少了說書的這裡實在氣悶。\r\n"
+    },
+    {
+      "wave": 19,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES19_1788852328336",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 19,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES19_1788852328336B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 20,
+      "sender": "wolfer",
+      "target": "wolfer1",
+      "token": "RES20_1788852343880",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    },
+    {
+      "wave": 20,
+      "sender": "wolfer1",
+      "target": "wolfer",
+      "token": "RES20_1788852343880B",
+      "reason": "no recipient token observed",
+      "senderSawToken": false,
+      "recipientSawToken": false,
+      "senderOutput": "\r\r\n編譯時段錯誤﹕cmds/std/tell.c:4: Cannot #include net/dns.h\r\n編譯時段錯誤﹕cmds/std/tell.c:30: Undefined variable 'GTELL'\r\n",
+      "recipientOutput": ""
+    }
+  ],
+  "tellIntervalSeconds": 3.0,
+  "tellSafetyMarginSeconds": 0.35,
+  "savePass": 40,
+  "saveFail": 0,
+  "fileChecks": 80,
+  "fileFailures": [],
+  "reconnectPass": 4,
+  "reconnectFail": 0,
+  "debugSaveErrors": [],
+  "errors": [],
+  "started": "2026-09-08T15:20:41",
+  "finalFiles": {
+    "wolfer": [
+      {
+        "path": "data\\user\\w\\wolfer.o",
+        "bytes": 759,
+        "sha256": "28650f68198853d5e793d2e0ba9a9bb0d9d63dc341ebbd7edb0077461ef3bfbc"
+      },
+      {
+        "path": "data\\login\\w\\wolfer.o",
+        "bytes": 219,
+        "sha256": "5dcff2928b6140ed4c656f6b1e7011a3b7767cc4c487d81313cdb15ec17ea034"
+      }
+    ],
+    "wolfer1": [
+      {
+        "path": "data\\user\\w\\wolfer1.o",
+        "bytes": 760,
+        "sha256": "cefb5c3160bde7b5516690b21f16d1777d6f2e554a7a2508c277bfee7c25825a"
+      },
+      {
+        "path": "data\\login\\w\\wolfer1.o",
+        "bytes": 222,
+        "sha256": "d6276bb46b6848a94a6441bab078fd45f8c794afbf26120cce05fed280aa7758"
+      }
+    ]
+  },
+  "finished": "2026-09-08T15:26:01",
+  "ok": false
+}

@@ -1,0 +1,20 @@
+{
+  "expected_origin": "https://github.com/taedlar/es2_mudlib",
+  "origin": "https://github.com/taedlar/es2_mudlib.git",
+  "origin_verified": true,
+  "branch": "main",
+  "commit": "cc45c06af4852380e5148dad3c9d53ff06854f2c",
+  "dirty": true,
+  "catalog_files": 513,
+  "audit_stats": {
+    "dangling_exits": 8,
+    "dangling_objects": 0,
+    "dangling_merchandise": 0,
+    "dangling_equipment": 0,
+    "door_without_exit": 1,
+    "manual_review_files": 59,
+    "duplicate_paths": 0
+  },
+  "core_ok": true,
+  "source_policy": "taedlar/es2_mudlib only"
+}

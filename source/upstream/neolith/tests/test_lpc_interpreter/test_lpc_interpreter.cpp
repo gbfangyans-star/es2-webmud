@@ -1,0 +1,373 @@
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include "fixtures.hpp"
+
+#include "lpc/program.h"
+#include "lpc/program/disassemble.h"
+#include "lpc/buffer.h"
+#include "lpc/mapping.h"
+
+namespace {
+
+void ExpectArrayItemNumber(const array_t *arr, int index, int64_t expected, const char *msg) {
+    auto view = lpc::svalue_view::from(&arr->item[index]);
+    ASSERT_TRUE(view.is_number());
+    EXPECT_EQ(view.number(), expected) << msg;
+}
+
+int RuntimeIndexFor(program_t *prog, const char *name) {
+    int index = 0;
+    int fio = 0;
+    int vio = 0;
+    program_t *found_prog = find_function(prog, findstring(name, NULL), &index, &fio, &vio);
+    EXPECT_EQ(found_prog, prog) << "find_function did not return the expected program for " << name;
+    if (found_prog != prog) {
+        return -1;
+    }
+    return found_prog->function_table[index].runtime_index + fio;
+}
+
+} // namespace
+
+TEST_F(LPCInterpreterTest, disassemble) {
+    // compile a simple test file
+    program_t* prog = compile_file(-1, "master.c",
+        "int i; // global\n"
+        "void create() { i = 1234; }\n"
+    );
+    ASSERT_TRUE(prog != nullptr) << "compile_file returned null program.";
+    total_lines = 0;
+
+    EXPECT_EQ(prog->num_functions_defined, 1) << "Expected 1 defined function.";
+    EXPECT_EQ(prog->num_variables_total, 1) << "Expected 1 global variable.";
+    
+    compiler_function_t* funp = prog->function_table; // index 0
+    EXPECT_STREQ(funp->name, "create") << "First function is not create().";
+
+    EXPECT_NO_THROW(disassemble (stderr, prog->program, 0, prog->program_size, prog));
+
+    // free the compiled program
+    free_prog(prog, 1);
+}
+
+TEST_F(LPCInterpreterTest, callFunction) {
+    // compile a simple test file
+    program_t* prog = compile_file(-1, "simple.c",
+        "int add(int a, int b) { return a + b; }\n"
+    );
+    ASSERT_TRUE(prog != nullptr) << "compile_file returned null program.";
+    EXPECT_EQ(prog->num_functions_defined, 1) << "Expected 1 defined function.";
+
+    // no object is created; we just call the functions directly
+    // (no global variables used in the test functions)
+    int index, fio, vio;
+    lpc::svalue ret;
+    program_t* found_prog = find_function(prog, findstring("add", NULL), &index, &fio, &vio);
+    ASSERT_EQ(found_prog, prog) << "find_function did not return the expected program for add().";
+    int runtime_index = found_prog->function_table[index].runtime_index + fio;
+
+    push_number(1);
+    push_number(2);
+    call_function (prog, runtime_index, 2, ret.raw());
+
+    auto ret_view = ret.view();
+    EXPECT_TRUE(ret_view.is_number()) << "Expected return type to be integer.";
+    EXPECT_EQ(ret_view.number(), 3) << "Expected return value of add(1,2) to be 3.";
+    free_prog(prog, 1);
+}
+
+TEST_F(LPCInterpreterTest, callInheritedFunction) {
+    init_simul_efun("/simul_efun.c", NULL); // need simul efuns to load the inherited object
+    ASSERT_NE(simul_efun_ob, nullptr) << "simul_efun_ob is null after init_simul_efun().";
+    init_master("/master.c", NULL);
+    ASSERT_NE(master_ob, nullptr) << "master_ob is null after init_master().";
+
+    object_t* obj = load_object("room/start_room.c", 0); // start_room inherits from base/room.c which defines query_exit()
+    ASSERT_NE(obj, nullptr) << "load_object returned null object.";
+
+    shared_str_t method = findstring("query_exit", NULL); // function names are always stored as shared strings
+    ASSERT_NE(method, nullptr) << "findstring returned null for `query_exit`.";
+
+    int index, fio, vio;
+    lpc::svalue ret;
+    program_t* found_prog = find_function(obj->prog, method, &index, &fio, &vio);
+    ASSERT_NE(found_prog, obj->prog) << "find_function did not return inherited program for query_exit().";
+    int runtime_index = found_prog->function_table[index].runtime_index + fio;
+
+    current_object = obj;
+    variable_index_offset = vio;
+    push_constant_string("north");
+    call_function (obj->prog, runtime_index, 1, ret.raw());
+
+    auto ret_view = ret.view();
+    EXPECT_TRUE(ret_view.is_string()) << "Expected return value to be a string.";
+    EXPECT_STREQ(ret_view.c_str(), "room/observatory.c") << "Expected return value of query_exit(\"north\") to be \"room/observatory.c\".";
+    destruct_object(obj);
+
+    obj = find_object_by_name("/base/room");
+    EXPECT_NE(obj, nullptr);
+    destruct_object(obj);
+}
+
+TEST_F(LPCInterpreterTest, evalCostLimit) {
+    // compile a simple test file
+    program_t* prog = compile_file(-1, "huge_loop.c",
+        "void create() { int j; j = 0; while (j < 100000) { j = j + 1; } }\n"
+    );
+    ASSERT_TRUE(prog != nullptr) << "compile_file returned null program.";
+    EXPECT_EQ(prog->num_functions_defined, 1) << "Expected 1 defined function.";
+
+    error_context_t econ;
+    save_context (&econ);
+    
+    try {
+        // no object is created; we just call the functions directly
+        // (no global variables used in the test functions)
+        int index, fio, vio;
+        program_t* found_prog = find_function(prog, findstring("create", NULL), &index, &fio, &vio);
+        ASSERT_EQ(found_prog, prog) << "find_function did not return the expected program for create().";
+        int runtime_index = found_prog->function_table[index].runtime_index;
+
+        // set a low eval cost limit
+        eval_cost = 500; // should be enough to run out of eval cost in the loop
+        call_function (prog, runtime_index, 0, 0);
+        
+        pop_context (&econ);
+        free_prog(prog, 1);
+        FAIL() << "Expected too long evaluation error was not raised.";
+    } catch (const neolith::driver_runtime_error &e) {
+        restore_context (&econ);
+        pop_context (&econ);
+        debug_message("***** expected error: eval_cost too big: %s", e.what());
+        free_prog(prog, 1);
+        return;
+    } catch (...) {
+        restore_context (&econ);
+        pop_context (&econ);
+        free_prog(prog, 1);
+        throw;
+    }
+}
+
+TEST_F(LPCInterpreterTest, nonCatchableEvalCostEscapesCatchBoundary) {
+    program_t* prog = compile_file(-1, "noncatch_eval.c",
+        "void burn_eval() { int j; j = 0; while (j < 100000) { j = j + 1; } }\n"
+        "mixed trap_eval() { return catch(burn_eval()); }\n"
+    );
+    ASSERT_TRUE(prog != nullptr) << "compile_file returned null program.";
+
+    int runtime_index = RuntimeIndexFor(prog, "trap_eval");
+    ASSERT_GE(runtime_index, 0);
+
+    error_context_t econ;
+    volatile int escaped_catch = 0;
+    save_context(&econ);
+    
+    try {
+        eval_cost = 500;
+        call_function(prog, runtime_index, 0, nullptr);
+    }
+    catch (const neolith::driver_runtime_error &e) {
+        escaped_catch = 1;
+        restore_context(&econ);
+        EXPECT_NE(std::string(e.what()).find("Can't catch eval cost"), std::string::npos)
+            << "Expected eval-cost escape message from catch boundary.";
+    }
+    catch (...) {
+        restore_context(&econ);
+        throw;
+    }
+    pop_context(&econ);
+    free_prog(prog, 1);
+
+    EXPECT_EQ(escaped_catch, 1) << "eval-cost limit was unexpectedly trapped by LPC catch().";
+}
+
+TEST_F(LPCInterpreterTest, nonCatchableStackFullEscapesCatchBoundary) {
+    program_t* prog = compile_file(-1, "noncatch_stack.c",
+        "void dive_stack() { dive_stack(); }\n"
+        "mixed trap_stack() { return catch(dive_stack()); }\n"
+    );
+    ASSERT_TRUE(prog != nullptr) << "compile_file returned null program.";
+
+    int runtime_index = RuntimeIndexFor(prog, "trap_stack");
+    ASSERT_GE(runtime_index, 0);
+
+    error_context_t econ;
+    volatile int escaped_catch = 0;
+    save_context(&econ);
+    
+    try {
+        call_function(prog, runtime_index, 0, nullptr);
+    } catch (const neolith::driver_runtime_error &e) {
+        escaped_catch = 1;
+        restore_context(&econ);
+        EXPECT_NE(std::string(e.what()).find("Can't catch too deep recursion"), std::string::npos)
+            << "Expected stack-full escape message from catch boundary.";
+    } catch (...) {
+        restore_context(&econ);
+        throw;
+    }
+    pop_context(&econ);
+    free_prog(prog, 1);
+
+    EXPECT_EQ(escaped_catch, 1) << "stack-full recursion was unexpectedly trapped by LPC catch().";
+}
+
+TEST_F(LPCInterpreterTest, catchSuccessReturnsZeroContract) {
+    program_t* prog = compile_file(-1, "catch_success.c",
+        "mixed catch_success() { return catch(1 + 1); }\n"
+    );
+    ASSERT_TRUE(prog != nullptr) << "compile_file returned null program.";
+
+    int runtime_index = RuntimeIndexFor(prog, "catch_success");
+    ASSERT_GE(runtime_index, 0);
+
+    lpc::svalue ret;
+    call_function(prog, runtime_index, 0, ret.raw());
+
+    auto ret_view = ret.view();
+    EXPECT_TRUE(ret_view.is_number()) << "Expected catch-success return value to be number 0.";
+    EXPECT_EQ(ret_view.number(), 0) << "F_END_CATCH success contract regression: expected 0.";
+
+    free_prog(prog, 1);
+}
+
+TEST_F(LPCInterpreterTest, throwZeroNormalizesToUnspecifiedError) {
+    program_t* prog = compile_file(-1, "throw_zero.c",
+        "mixed throw_zero() { return catch(throw(0)); }\n"
+    );
+    ASSERT_TRUE(prog != nullptr) << "compile_file returned null program.";
+
+    int runtime_index = RuntimeIndexFor(prog, "throw_zero");
+    ASSERT_GE(runtime_index, 0);
+
+    lpc::svalue ret;
+    call_function(prog, runtime_index, 0, ret.raw());
+
+    auto ret_view = ret.view();
+    ASSERT_TRUE(ret_view.is_string()) << "Expected caught throw(0) to produce a string payload.";
+    ASSERT_NE(ret_view.c_str(), nullptr) << "Expected non-null caught throw(0) payload.";
+    EXPECT_EQ(ret_view.c_str()[0], '*') << "Expected caught throw(0) payload to be '*' prefixed driver error text.";
+    free_prog(prog, 1);
+}
+
+TEST_F(LPCInterpreterTest, embeddedNullStringLiteralPaths) {
+    program_t* prog = compile_file(-1, "bytespan_interpreter.c",
+        "string direct() { return \"ab\\0cd\"; }\n"
+        "string hexv() { return \"ab\\x00yz\"; }\n"
+        "string adjacent() { return \"ab\\0\" \"cd\"; }\n"
+        "string plus_fold() { return \"ab\\0\" + \"cd\"; }\n"
+    );
+    ASSERT_TRUE(prog != nullptr) << "compile_file returned null program.";
+
+    auto assert_string_result = [&](const char* fn_name, const char* expected, size_t expected_len) {
+        int runtime_index = RuntimeIndexFor(prog, fn_name);
+        ASSERT_GE(runtime_index, 0) << "Failed to resolve runtime index for " << fn_name;
+
+        lpc::svalue ret;
+        call_function(prog, runtime_index, 0, ret.raw());
+
+        auto ret_view = ret.view();
+        ASSERT_TRUE(ret_view.is_string()) << "Expected string return from " << fn_name;
+        EXPECT_EQ(ret_view.length(), expected_len) << "Unexpected byte length for " << fn_name;
+        EXPECT_EQ(std::string(ret_view.c_str(), ret_view.length()), std::string(expected, expected_len))
+            << "Unexpected byte payload for " << fn_name;
+    };
+
+    assert_string_result("direct", "ab\0cd", 5);
+    assert_string_result("hexv", "ab\0yz", 5);
+    assert_string_result("adjacent", "ab\0cd", 5);
+    assert_string_result("plus_fold", "ab\0cd", 5);
+
+    free_prog(prog, 1);
+}
+
+TEST_F(LPCInterpreterTest, foreachUtf8String) {
+    // Test foreach loop iterating over UTF-8 characters in a string
+    // The loop should iterate over each character correctly, handling multi-byte UTF-8 sequences
+    // Note: We use hex escapes for UTF-8 bytes to ensure correct encoding across platforms
+    program_t* prog = compile_file(-1, "utf8_foreach.c",
+        "int* test_utf8_foreach() {\n"
+        "    string s = \"Hello\\xe4\\xb8\\x96\\xe7\\x95\\x8c\";\n"  // "Hello世界" in UTF-8 bytes
+        "    int* result = allocate(7);\n"
+        "    int i = 0;\n"
+        "    foreach(int ch in s) {\n"
+        "        result[i++] = ch;\n"
+        "    }\n"
+        "    return result;\n"
+        "}\n"
+    );
+    ASSERT_TRUE(prog != nullptr) << "compile_file returned null program.";
+    EXPECT_EQ(prog->num_functions_defined, 1) << "Expected 1 defined function.";
+
+    // Find and call the function
+    int index, fio, vio;
+    lpc::svalue ret;
+    program_t* found_prog = find_function(prog, findstring("test_utf8_foreach", NULL), &index, &fio, &vio);
+    ASSERT_EQ(found_prog, prog) << "find_function did not return the expected program.";
+    int runtime_index = found_prog->function_table[index].runtime_index;
+
+    call_function(prog, runtime_index, 0, ret.raw());
+
+    // Verify the return value is an array
+    auto ret_view = ret.view();
+    EXPECT_TRUE(ret_view.is_array()) << "Expected return value to be an array.";
+    ASSERT_TRUE(ret.raw()->u.arr != nullptr) << "Expected non-null array.";
+    EXPECT_EQ(ret.raw()->u.arr->size, 7) << "Expected array size to be 7.";
+
+    // Verify the array contains the correct Unicode code points:
+    // 'H' = 72, 'e' = 101, 'l' = 108, 'l' = 108, 'o' = 111
+    // '世' = 0x4E16 (19990), '界' = 0x754C (30028)
+    ExpectArrayItemNumber(ret.raw()->u.arr, 0, 72, "Expected 'H' (72).");
+    ExpectArrayItemNumber(ret.raw()->u.arr, 1, 101, "Expected 'e' (101).");
+    ExpectArrayItemNumber(ret.raw()->u.arr, 2, 108, "Expected 'l' (108).");
+    ExpectArrayItemNumber(ret.raw()->u.arr, 3, 108, "Expected 'l' (108).");
+    ExpectArrayItemNumber(ret.raw()->u.arr, 4, 111, "Expected 'o' (111).");
+    ExpectArrayItemNumber(ret.raw()->u.arr, 5, 19990, "Expected '世' (0x4E16 = 19990).");
+    ExpectArrayItemNumber(ret.raw()->u.arr, 6, 30028, "Expected '界' (0x754C = 30028).");
+
+    free_prog(prog, 1);
+}
+
+#ifdef F_FROM_JSON
+TEST_F(LPCInterpreterTest, fromJsonBufferViaLpcVm) {
+    /* Compile a small LPC object that calls from_json(buffer) through the
+     * full LPC interpreter dispatch path, verifying end-to-end buffer→value. */
+    init_simul_efun("/simul_efun.c", NULL);
+    ASSERT_NE(simul_efun_ob, nullptr) << "simul_efun_ob is null";
+    init_master("/master.c", NULL);
+    ASSERT_NE(master_ob, nullptr) << "master_ob is null";
+
+    program_t *prog = compile_file(-1, "json_buf_test.c",
+        "mixed test_from_json_buf(buffer b) { return from_json(b); }\n"
+    );
+    ASSERT_TRUE(prog != nullptr) << "compile_file returned null";
+
+    int index, fio, vio;
+    lpc::svalue ret;
+    program_t *found = find_function(prog, findstring("test_from_json_buf", NULL), &index, &fio, &vio);
+    ASSERT_EQ(found, prog);
+    int runtime_index = found->function_table[index].runtime_index;
+
+    /* Build buffer holding {\"x\":7} */
+    static const char payload[] = "{\"x\":7}";
+    buffer_t *buf = allocate_buffer(sizeof(payload) - 1);
+    memcpy(buf->item, payload, sizeof(payload) - 1);
+    push_refed_buffer(buf);
+
+    call_function(prog, runtime_index, 1, ret.raw());
+
+    ASSERT_TRUE(ret.view().is_array() == false);
+    ASSERT_EQ(ret.raw()->type, T_MAPPING) << "Expected T_MAPPING from from_json buffer via LPC VM";
+    svalue_t *found_val = find_string_in_mapping(ret.raw()->u.map, "x");
+    ASSERT_NE(found_val, &const0u) << "key 'x' not found";
+    auto found_view = lpc::svalue_view::from(found_val);
+    ASSERT_TRUE(found_view.is_number());
+    EXPECT_EQ(found_view.number(), 7);
+
+    free_prog(prog, 1);
+}
+#endif /* F_FROM_JSON */

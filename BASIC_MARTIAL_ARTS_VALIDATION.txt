@@ -1,0 +1,29 @@
+BASIC MARTIAL ARTS STATIC VALIDATION
+Result: PASS
+Weapon skill types found in feature/weapon: 23
+
+axe                  source=True registry=True register=True combat=True actions=8
+blade                source=True registry=True register=True combat=True actions=8
+blunt                source=True registry=True register=True combat=True actions=8
+dagger               source=True registry=True register=True combat=True actions=8
+needle               source=True registry=True register=True combat=True actions=8
+pike                 source=True registry=True register=True combat=True actions=8
+secondhand axe       source=True registry=True register=True combat=True actions=8
+secondhand blade     source=True registry=True register=True combat=True actions=8
+secondhand blunt     source=True registry=True register=True combat=True actions=8
+secondhand dagger    source=True registry=True register=True combat=True actions=8
+secondhand needle    source=True registry=True register=True combat=True actions=8
+secondhand pike      source=True registry=True register=True combat=True actions=8
+secondhand staff     source=True registry=True register=True combat=True actions=8
+secondhand sword     source=True registry=True register=True combat=True actions=8
+staff                source=True registry=True register=True combat=True actions=8
+sword                source=True registry=True register=True combat=True actions=8
+twohanded axe        source=True registry=True register=True combat=True actions=8
+twohanded blade      source=True registry=True register=True combat=True actions=8
+twohanded blunt      source=True registry=True register=True combat=True actions=8
+twohanded pike       source=True registry=True register=True combat=True actions=8
+twohanded staff      source=True registry=True register=True combat=True actions=8
+twohanded sword      source=True registry=True register=True combat=True actions=8
+whip                 source=True registry=True register=True combat=True actions=8
+
+Note: Linux workspace cannot launch the Windows Neolith runtime; this is source-level/registration validation.

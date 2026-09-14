@@ -1,0 +1,67 @@
+{
+  "stats": {
+    "dangling_exits": 8,
+    "dangling_objects": 0,
+    "dangling_merchandise": 0,
+    "dangling_equipment": 0,
+    "door_without_exit": 1,
+    "manual_review_files": 59,
+    "duplicate_paths": 0
+  },
+  "issues": [
+    {
+      "kind": "dangling_exit",
+      "file": "d/snow/ebridge.c",
+      "direction": "east",
+      "target": "d/snowkeep/entrance.c"
+    },
+    {
+      "kind": "dangling_exit",
+      "file": "d/snow/egate.c",
+      "direction": "northeast",
+      "target": "d/lee/r1.c"
+    },
+    {
+      "kind": "dangling_exit",
+      "file": "d/snow/ngate.c",
+      "direction": "north",
+      "target": "d/goat/sroad1.c"
+    },
+    {
+      "kind": "dangling_exit",
+      "file": "d/snow/npath2.c",
+      "direction": "north",
+      "target": "d/month/a1.c"
+    },
+    {
+      "kind": "dangling_exit",
+      "file": "d/snow/river1.c",
+      "direction": "north",
+      "target": "d/chixiao/river2.c"
+    },
+    {
+      "kind": "dangling_exit",
+      "file": "d/snow/sgate.c",
+      "direction": "southeast",
+      "target": "d/oldpine/road1.c"
+    },
+    {
+      "kind": "dangling_exit",
+      "file": "d/snow/sgate.c",
+      "direction": "west",
+      "target": "d/newcamp/gate.c"
+    },
+    {
+      "kind": "dangling_exit",
+      "file": "d/snow/wgate.c",
+      "direction": "northwest",
+      "target": "d/graveyard/grave1.c"
+    },
+    {
+      "kind": "door_without_exit",
+      "file": "std/room.c",
+      "direction": "north",
+      "name": "木門"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+ES2 WebMUD v3.20.77 - Wizard change audit
+Compared against preserved ES2_WebMUD_SourceOnly_v3.20.77_REAPPLIED_ARCH6_1.zip baseline.
+
+SUMMARY
+- 3 files added.
+- 29 existing files differ.
+- No existing source .c file was replaced in the main world tree.
+- The only newly added LPC source file is:
+  source/upstream/mudlib/custom/wizroom/w/windstory/npc/kao_shen.c
+- A new player/login record for ID hummm was added.
+- Most other differences are runtime save/log/compiled .b files and player-state rewrites caused by actually running the server.
+
+IMPORTANT WIZARD NPC CHANGE
+New custom NPC:
+  /custom/wizroom/w/windstory/npc/kao_shen.c
+
+Compared with the active project Gao Shen at:
+  /custom/oldpine/npc/kao_shen.c
+
+the wizard copy changes apprenticeship behavior:
+1. Requires player class == fighter.
+2. Requires basic blade >= 1.
+3. Removes the original init_apprentice() call that sets class to fighter.
+4. Removes the Chinese alias "高慎" from set_name aliases.
+
+This conflicts with the currently confirmed project rule that Gao Shen apprenticeship has no prerequisite other than reaching/finding Gao Shen.
+The custom wizard copy is NOT referenced by the current Oldpine room placement. The active Oldpine room still clones /custom/oldpine/npc/kao_shen.
+Therefore this custom copy appears to be a wizard-room experiment/test copy rather than a replacement of the live Oldpine NPC.
+
+RUNTIME/PLAYER CHANGES OBSERVED
+- New account/player: hummm / 咕咕雞.
+- windstory was saved after interacting with the custom Gao Shen copy; its save now records Gao Shen as a master and points cwd/cwf into the wizard NPC directory.
+- wolfer save changed through normal runtime activity and now has /obj/bankbond in autoload.
+- juys save changed mostly from runtime aging/tick/save ordering.
+- visitor counter increased from 32 to 47.
+- various daemon/command .b compiled files changed, consistent with recompilation/runtime activity rather than source edits.
+- log files changed from server use.
+
+PRESERVATION POLICY FOR THIS UI BUILD
+All of the above current files are preserved exactly from the user's uploaded formal archive.
+This UI build only overlays:
+  web/app.js
+  web/index.html
+  web/styles.css
+No wizard custom NPC, player save, MUD server source, startup script, or formal port setting is overwritten by the UI update.

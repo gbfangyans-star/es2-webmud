@@ -1,0 +1,4918 @@
+[
+  {
+    "file": "cmds/adm/chpass.c",
+    "path": "/cmds/adm/chpass",
+    "type": "command",
+    "sha256": "9a5ddaca13ec388f7d49a1302a0afa6e0a78aecea9140a84f6b416ea31cc4880",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "chpass",
+    "command_group": "adm",
+    "literal_prompts": [
+      "使用者資料儲存失敗。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/adm/disassemble.c",
+    "path": "/cmds/adm/disassemble",
+    "type": "command",
+    "sha256": "91ca4c348bd20a74094377af846a4f9622be54e4c54f544e73e27b23eff901da",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "disassemble",
+    "command_group": "adm",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/adm/dump.c",
+    "path": "/cmds/adm/dump",
+    "type": "command",
+    "sha256": "4696408d6cad4fb1751fd6ca754cf5df7c6a16c581f3a23a7686ddaa74840d70",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "dump",
+    "command_group": "adm",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/adm/halt.c",
+    "path": "/cmds/adm/halt",
+    "type": "command",
+    "sha256": "25e604f586399d7fb2750f7ae63cd682b91a5869bf4f4634a8e781e625b39a0d",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "halt",
+    "command_group": "adm",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/adm/profile.c",
+    "path": "/cmds/adm/profile",
+    "type": "command",
+    "sha256": "e299bc9ecb39666425bfdcacaf2f6b6ef908cce0fc8eae0f955bfcfc7496d521",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "profile",
+    "command_group": "adm",
+    "literal_prompts": [
+      "Result written to /PROFILE\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/adm/renew.c",
+    "path": "/cmds/adm/renew",
+    "type": "command",
+    "sha256": "d5db45186b63b978953609e723e0d01561066e970a1c6317696adef0344213ac",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "renew",
+    "command_group": "adm",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/adm/resurrect.c",
+    "path": "/cmds/adm/resurrect",
+    "type": "command",
+    "sha256": "5bd4be6014a6b53551bbdd8280dff72baca830cf47bf543b851e3e7cfef9ae19",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "resurrect",
+    "command_group": "adm",
+    "literal_prompts": [
+      "ok.\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/adm/shutdown.c",
+    "path": "/cmds/adm/shutdown",
+    "type": "command",
+    "sha256": "7a9d31dd5b48e6778bfa2e5a306b654adba743cb5ee86becd5f727292bbead1a",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "shutdown",
+    "command_group": "adm",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/adm/socket.c",
+    "path": "/cmds/adm/socket",
+    "type": "command",
+    "sha256": "98461023dd7d883e207016127be65ec73f1b4b6551271469c5225e596d86df9d",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "socket",
+    "command_group": "adm",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/arch/callouts.c",
+    "path": "/cmds/arch/callouts",
+    "type": "command",
+    "sha256": "07fce4f2caa46d5b0310c52e3fb5ab61679ecb17a0487ba877be87c86e205fc1",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "callouts",
+    "command_group": "arch",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/arch/chinese.c",
+    "path": "/cmds/arch/chinese",
+    "type": "command",
+    "sha256": "38b659346d8ab26a990448eb960565dad337698f0e49afed8f6b342fd25729fd",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "chinese",
+    "command_group": "arch",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/arch/cleanup.c",
+    "path": "/cmds/arch/cleanup",
+    "type": "command",
+    "sha256": "aa217a609f23331174220bfe1cac804d4b84e4940fa21101ed84c314b8d535df",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "cleanup",
+    "command_group": "arch",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/arch/force.c",
+    "path": "/cmds/arch/force",
+    "type": "command",
+    "sha256": "2233326a52deac0f2c695ec34041d8741b84646515186895947157b8d436ac46",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "force",
+    "command_group": "arch",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/arch/heal.c",
+    "path": "/cmds/arch/heal",
+    "type": "command",
+    "sha256": "99f696dbc9e44804181db94c38b3a371fd298ad905f27a9a85ab7ffd3ed82519",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "heal",
+    "command_group": "arch",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/arch/overview.c",
+    "path": "/cmds/arch/overview",
+    "type": "command",
+    "sha256": "072d099943c23ad1ea48586edc07b85095452fe2e56ed96791f8178d9100f7d7",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "overview",
+    "command_group": "arch",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/arch/possess.c",
+    "path": "/cmds/arch/possess",
+    "type": "command",
+    "sha256": "fc4f1af60c8d72beac24e4086d6120d5420c7483c867ca3bc75faf0862911d58",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "possess",
+    "command_group": "arch",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/arch/promote.c",
+    "path": "/cmds/arch/promote",
+    "type": "command",
+    "sha256": "75c2bb887d6398773f9fde3cfe2d4e2a2572a3c76a983e7616503d22d394111c",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "promote",
+    "command_group": "arch",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/arch/purge.c",
+    "path": "/cmds/arch/purge",
+    "type": "command",
+    "sha256": "71a6088381f3e8111e0058042a796bcebcc82e46ee3e32779a966d73b75b0e89",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "do_purge_players",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "purge",
+    "command_group": "arch",
+    "literal_prompts": [
+      "處理中﹕"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/arch/reboot.c",
+    "path": "/cmds/arch/reboot",
+    "type": "command",
+    "sha256": "912b37ff9dacdec724209e4c46be6d0df3b62fde95e8997f2881ede103b6795b",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "reboot",
+    "command_group": "arch",
+    "literal_prompts": [
+      "Ok。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/arch/reclaim.c",
+    "path": "/cmds/arch/reclaim",
+    "type": "command",
+    "sha256": "130911ed446b98a33fa62fc8ccb05fa130794b1f488b5964d55fd356e7dcc605",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "reclaim",
+    "command_group": "arch",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/arch/rehash.c",
+    "path": "/cmds/arch/rehash",
+    "type": "command",
+    "sha256": "59457efcb1828cda05f3279872e5f5a36a6173ded870eb65d8dc8cf394ce2cd6",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "rehash",
+    "command_group": "arch",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/arch/reset_okip.c",
+    "path": "/cmds/arch/reset_okip",
+    "type": "command",
+    "sha256": "4b3a1543bc5e90ec12b0dec2e9ac141475083aa0c670cf574d2b0dcd6daae22e",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "reset_okip",
+    "command_group": "arch",
+    "combat_message_traits": [
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/arch/restore.c",
+    "path": "/cmds/arch/restore",
+    "type": "command",
+    "sha256": "84a778c86d6cbbb830d2f6a046517bd91b02cdd1266483a5331aa1ffe288d1bf",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "restore",
+    "command_group": "arch",
+    "literal_prompts": [
+      "備份回存完畢。\\n",
+      "備份回存失敗！\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/arch/wizlock.c",
+    "path": "/cmds/arch/wizlock",
+    "type": "command",
+    "sha256": "610009828f77728c30d092f5a48ac99f02e9b5e1be24d08c2a5de0942f9f9107",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "wizlock",
+    "command_group": "arch",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/imm/cd.c",
+    "path": "/cmds/imm/cd",
+    "type": "command",
+    "sha256": "6d6981bca7cbe854543fa1a963a8a2b95714b11da63aa28e62ab34806cfe1627",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "cd",
+    "command_group": "imm",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/imm/edemote.c",
+    "path": "/cmds/imm/edemote",
+    "type": "command",
+    "sha256": "fc5dcb4ab95c9743ee0c3cd8a2ea23393d62553ac6ecb35e6a2cd5a579587106",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "get_msg_myself",
+      "get_msg_myself_self",
+      "get_msg_myself_target",
+      "get_msg_others",
+      "get_msg_others_self",
+      "get_msg_others_target",
+      "get_msg_target",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "interactive"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "edemote",
+    "command_group": "imm",
+    "uses_input_to": true,
+    "literal_prompts": [
+      "訊息可以有好幾行﹐用 . 表示結束。\\n",
+      "訊息中可使用的參數有以下幾種﹕\\n",
+      "  $N  自己的名字。\\n",
+      "  $n  使用對象的名字。\\n",
+      "  $P  自己的人稱代名詞﹐如你、妳、他、她、牠、它。\\n",
+      "  $p  使用對象的人稱代名詞﹐如你、妳、他、她、牠、它。\\n",
+      "────────────────────────────────────\\n",
+      "不指定對象使用這個 emote 時﹐你自己看到的訊息﹕\\n->",
+      "不指定對象使用這個 emote 時﹐其他人看到的訊息﹕\\n->",
+      "->",
+      "對自己使用這個 emote 時﹐自己看到的訊息﹕\\n->",
+      "->",
+      "對自己使用這個 emote 時﹐其他人看到的訊息﹕\\n->",
+      "->",
+      "對別人使用這個 emote 時﹐自己看到的訊息﹕\\n->",
+      "->",
+      "對別人使用這個 emote 時﹐使用對象看到的訊息﹕\\n->",
+      "->",
+      "對別人使用這個 emote 時﹐除你自己和使用對象外﹐其他人看到的訊息﹕\\n->",
+      "->",
+      "Emote 編輯結束。\\n",
+      "->"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/imm/goto.c",
+    "path": "/cmds/imm/goto",
+    "type": "command",
+    "sha256": "34430b104d61cb15671fc8717c60eb856f0f414c18dd26daef7954d73d996341",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "goto",
+    "command_group": "imm",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/imm/ls.c",
+    "path": "/cmds/imm/ls",
+    "type": "command",
+    "sha256": "ec7a9fc7ad3355ee4cbefedbf091bab4598fd71892792c8fa82a18ea59f8b0fc",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "ls",
+    "command_group": "imm",
+    "literal_prompts": [
+      "目錄是空的。\\n",
+      "沒有這個目錄。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/imm/mem.c",
+    "path": "/cmds/imm/mem",
+    "type": "command",
+    "sha256": "1304dbb67f74ae05d8d095d0d8aa458338d41226a3d4f1586acbddd6570d2cd0",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main",
+      "memory_expression"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "mem",
+    "command_group": "imm",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/imm/more.c",
+    "path": "/cmds/imm/more",
+    "type": "command",
+    "sha256": "92a39547429c772ae023726621eee4d4b3ed7def8d40a7f75aa31708ffecd4f1",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "more",
+    "command_group": "imm",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/imm/pwd.c",
+    "path": "/cmds/imm/pwd",
+    "type": "command",
+    "sha256": "089bf112290797901ab8699d5bb4177804130af6d657afc799e3be8396c22e39",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "pwd",
+    "command_group": "imm",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/imm/status.c",
+    "path": "/cmds/imm/status",
+    "type": "command",
+    "sha256": "0c42f138b72f7e661e9e2ad079539c5254dd78a3b62d72df6e70e2ca5fb2fb8c",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "status",
+    "command_group": "imm",
+    "literal_prompts": [
+      "無。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/imm/where.c",
+    "path": "/cmds/imm/where",
+    "type": "command",
+    "sha256": "8b7f9c26dbd6294dcca3bfe69e22c9cc898aa834db89bc53b50f120805ac47fb",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "where",
+    "command_group": "imm",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/imm/which.c",
+    "path": "/cmds/imm/which",
+    "type": "command",
+    "sha256": "2949928eafaba0cf5a55b2b39c6d8f669023b9f8e8616a088565c86aa574344c",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "which",
+    "command_group": "imm",
+    "literal_prompts": [
+      "你的指令路徑中沒有這個指令﹐請試試 localcmds 這個指令。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/acquire.c",
+    "path": "/cmds/std/acquire",
+    "type": "command",
+    "sha256": "cd304b02dea02eb47d27bae374bd2db1057cdcdf468e124f150f72c4305ef1aa",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "acquire",
+    "command_group": "std",
+    "function_calls": [
+      "query_skill"
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/acupuncture.c",
+    "path": "/cmds/std/acupuncture",
+    "type": "command",
+    "sha256": "4b1c962fa3849a448fffd297500409caa550b4db58cb9b5aeebf0214275f5f57",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "acupuncture",
+    "command_group": "std",
+    "skill_daemon_calls": [
+      {
+        "expression": "cauterization",
+        "method": "acupuncture_cauterization",
+        "dynamic": true
+      }
+    ],
+    "temp_values": {
+      "pending/hidden": 0
+    },
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/apprentice.c",
+    "path": "/cmds/std/apprentice",
+    "type": "command",
+    "sha256": "a66071c81a10ee937a67c00e5ebc67541eb1d387d0e78becaea7437bfe455503",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "apprentice",
+    "command_group": "std",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/ask.c",
+    "path": "/cmds/std/ask",
+    "type": "command",
+    "sha256": "c7198b7c62b058ca6d18882c6b90294129e4f5527f4ff0a25cd68cd6431b8172",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "ask",
+    "command_group": "std",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/backstab.c",
+    "path": "/cmds/std/backstab",
+    "type": "command",
+    "sha256": "16214504865d5734def9d53b980549a1d745dbac7400cc34499c003e1653b706",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_backstab",
+      "halt_backstab",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "combat",
+      "teaching"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "backstab",
+    "command_group": "std",
+    "literal_prompts": [
+      "你不需要偷襲這個傢伙，直接上啊！\\n",
+      "假人類的對象只能讓你習得粗淺的偷襲暗算技巧！\\n",
+      "你被發現了！\\n",
+      "你打消了偷襲的念頭。\\n",
+      "太遲了，你手忙腳亂地想脫身，但是沒空！\\n"
+    ],
+    "damage_contract": [
+      "attack",
+      "query_ability"
+    ],
+    "function_calls": [
+      "improve_skill",
+      "query_skill"
+    ],
+    "temp_values": {
+      "pending/hidden": 0
+    },
+    "death_hooks": [
+      "corpse",
+      "kill_ob"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "damage_text",
+      "message_vision",
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/berserk.c",
+    "path": "/cmds/std/berserk",
+    "type": "command",
+    "sha256": "9af1b2b1810df2b26ba149d88ff6d751d61aac645fe15656aa047895b2a57903",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_berserk",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "combat",
+      "teaching"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "berserk",
+    "command_group": "std",
+    "damage_contract": [
+      "attack"
+    ],
+    "function_calls": [
+      "improve_skill",
+      "query_skill"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "damage_text",
+      "message_vision",
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/buy.c",
+    "path": "/cmds/std/buy",
+    "type": "command",
+    "sha256": "a8f59f4e959e54691fdf0b43d21e35de0f90d2802ea11b305c794af04dc6c627",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "vendor"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "buy",
+    "command_group": "std",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": [
+      "vendor_logic"
+    ]
+  },
+  {
+    "file": "cmds/std/cast.c",
+    "path": "/cmds/std/cast",
+    "type": "command",
+    "sha256": "7953badd37c49291950dfa651a067ae8c27c53650e58ea672a67f39bc895023a",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "cast",
+    "command_group": "std",
+    "literal_prompts": [
+      "你不能對斷線中的人施法。\\n"
+    ],
+    "skill_daemon_calls": [
+      {
+        "expression": "spells",
+        "method": "cast_spell",
+        "dynamic": true
+      }
+    ],
+    "combat_message_traits": [
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/ccmd.c",
+    "path": "/cmds/std/ccmd",
+    "type": "command",
+    "sha256": "2239f772838d10753523dce64e24019090bce240fde0a24c0743693677d64183",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "clan_line",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "ccmd",
+    "command_group": "std",
+    "literal_prompts": [
+      "目前已有的幫派如下: \\n\\n",
+      "\\n欲加入一個幫派請找長老級以上玩家申請加入幫派。\\n"
+    ],
+    "temp_values": {
+      "clan/apply": 1,
+      "clan/change_leader": 1
+    },
+    "combat_message_traits": [
+      "message_vision",
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/cestablish.c",
+    "path": "/cmds/std/cestablish",
+    "type": "command",
+    "sha256": "2d8da8f42b8b405ff1b0de96804613a26dd73443b1f76963df79281f64fd24dd",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "confirm_name",
+      "confirm_rank",
+      "get_clan_name",
+      "get_clan_rank",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "interactive",
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "cestablish",
+    "command_group": "std",
+    "uses_input_to": true,
+    "literal_prompts": [
+      "目前已有的幫派如下: \\n\\n",
+      "\\n在幫名決定之前, 可隨時以指令:q脫離建幫手續。請\\n",
+      "創一具風格的全新幫派。請輸入幫派名: ",
+      "您確定要用這當您的幫派名嗎(y/n/q)﹖",
+      "您確定要用這當您的幫派名嗎(y/n)﹖",
+      "那麼....下次吧。\\n",
+      "那麼請重新輸入您想要的幫派名字: ",
+      "請輸入這個幫派領導人的稱號(如: 幫主, 門主, 掌門): ",
+      "稱號過長, 請重新輸入: ",
+      "您確定要用這當您的幫派稱號嗎(y/n)﹖",
+      "您確定要用這當您的幫派稱號嗎(y/n)﹖",
+      "那麼請重新輸入您想要的幫派稱號: "
+    ],
+    "combat_message_traits": [
+      "message_vision",
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/charge.c",
+    "path": "/cmds/std/charge",
+    "type": "command",
+    "sha256": "a5870e49625ed18f8ef0e5fc7ce9db5522acc1b6841db47e72c6c9820ab02271",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "charge",
+    "command_group": "std",
+    "literal_prompts": [
+      "你現在並沒有選定首要攻擊目標。\\n",
+      "Ok.\\n",
+      "Ok.\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/close.c",
+    "path": "/cmds/std/close",
+    "type": "command",
+    "sha256": "d4ec6dfe9879b3090e74f59d0c845a79e1e7c08b61c23560e96853047437d2d4",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "close",
+    "command_group": "std",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/conjure.c",
+    "path": "/cmds/std/conjure",
+    "type": "command",
+    "sha256": "bdccc917c04f372b22ec338daa1e6131e448a58f7d157ef7fb8920ea9c863573",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "conjure",
+    "command_group": "std",
+    "skill_daemon_calls": [
+      {
+        "expression": "magic",
+        "method": "conjure_magic",
+        "dynamic": true
+      }
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/drink.c",
+    "path": "/cmds/std/drink",
+    "type": "command",
+    "sha256": "858c69b6b718d2eedb5d166cca0fab4a02f44d2ab1b4f89318a142c181d74bcc",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "drink",
+    "command_group": "std",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/drop.c",
+    "path": "/cmds/std/drop",
+    "type": "command",
+    "sha256": "4ea7987e3ba3d396f8fa4f2e3e82f703e7e827319bf6e6915a053f1a0878c355",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_drop",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "drop",
+    "command_group": "std",
+    "literal_prompts": [
+      "Ok.\\n",
+      "一隻綠色的小鬼很快的跑出來，接住你丟下的東西，然後消失不見了。\\n",
+      "因為這樣東西並不值錢﹐所以人們並不會注意到它的存在。\\n"
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/eat.c",
+    "path": "/cmds/std/eat",
+    "type": "command",
+    "sha256": "b35eb0c8ef5f7f2026e462d65207b0aab6187e37969f71a3f09950004265269b",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "eat",
+    "command_group": "std",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/emote.c",
+    "path": "/cmds/std/emote",
+    "type": "command",
+    "sha256": "57b425cd937e691cd16543f7f6385dfe49cf506c7198b7649e945f8e8a46f077",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "emote",
+    "command_group": "std",
+    "combat_message_traits": [
+      "tell_room"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/enter.c",
+    "path": "/cmds/std/enter",
+    "type": "command",
+    "sha256": "da5b91bd2860f05d4191245d0e1c7c7dd1c8028c919bcd2ce94a7d5d2452162c",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "enter",
+    "command_group": "std",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/exert.c",
+    "path": "/cmds/std/exert",
+    "type": "command",
+    "sha256": "af1d0d1a75dcacb61a2a926822aa79713472d47d0517a3512f535a0246214763",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "exert",
+    "command_group": "std",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "skill_contract": {
+      "functions": [
+        "exert_function"
+      ],
+      "contracts": []
+    },
+    "function_calls": [
+      "exert_function"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/fight.c",
+    "path": "/cmds/std/fight",
+    "type": "command",
+    "sha256": "be1a2837cd5a478c88efeced4ecd96d24ac409512a4915b6c180335aaa1a86e5",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "attack",
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "fight",
+    "command_group": "std",
+    "damage_contract": [
+      "fight_ob"
+    ],
+    "accept_hooks": [
+      "accept_fight"
+    ],
+    "death_hooks": [
+      "corpse",
+      "kill_ob"
+    ],
+    "combat_message_traits": [
+      "message_vision",
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/fill.c",
+    "path": "/cmds/std/fill",
+    "type": "command",
+    "sha256": "82e2e8a6fac5418ff44c662068b55f22855ddde0e465c4970818ec4c2ca0f7d8",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "fill",
+    "command_group": "std",
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "combat_message_traits": [
+      "message_vision",
+      "tell_room"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/follow.c",
+    "path": "/cmds/std/follow",
+    "type": "command",
+    "sha256": "434ecf132fbf58c02a5913142a9acc683617e4d81666a95f815afbebafe2d340",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "follow",
+    "command_group": "std",
+    "literal_prompts": [
+      "Ok.\\n",
+      "你現在並沒有跟隨任何人。\\n"
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": [
+      "leader_ai"
+    ]
+  },
+  {
+    "file": "cmds/std/get.c",
+    "path": "/cmds/std/get",
+    "type": "command",
+    "sha256": "af000871b9e25242a2b155fea86a40f40e3d7b844ce8eddeadc33c02870749b7",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_get",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "get",
+    "command_group": "std",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/give.c",
+    "path": "/cmds/std/give",
+    "type": "command",
+    "sha256": "9600e7f933a22400351098f552ae0d3e53abae083603cb511082aa3c8f19a1c0",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_give",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "give",
+    "command_group": "std",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/go.c",
+    "path": "/cmds/std/go",
+    "type": "command",
+    "sha256": "5462cb726698f1b2e7507590d92d93f3d94c8a5d0ce892e4a19a32cf5884dcec",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_go",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "go",
+    "command_group": "std",
+    "literal_prompts": [
+      "要移動請你先用 halt 終止你正在做的事。\\n",
+      "你的負荷過重﹐動彈不得。\\n",
+      "你已經無路可逃了！\\n",
+      "這個方向沒有出路。\\n",
+      "這一個方向的出口有問題﹐請通知巫師處理。\\n"
+    ],
+    "damage_contract": [
+      "query_ability"
+    ],
+    "temp_values": {
+      "pending": 0
+    },
+    "combat_message_traits": [
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/guard.c",
+    "path": "/cmds/std/guard",
+    "type": "command",
+    "sha256": "c00da0920ab377cf1cc20c243679a3f1cc02d88da5b6449b9484f9f4c8a9b119",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "guard",
+    "command_group": "std",
+    "literal_prompts": [
+      "你現在並沒有選定保護的對象。\\n",
+      "Ok.\\n",
+      "Ok.\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/halt.c",
+    "path": "/cmds/std/halt",
+    "type": "command",
+    "sha256": "14f0944a2eb99459770948acbd15e8aad9fb586b2459b50f5a0afc17ec8a6bde",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "halt",
+    "command_group": "std",
+    "literal_prompts": [
+      "Ok。\\n",
+      "Ok.\\n"
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/identify.c",
+    "path": "/cmds/std/identify",
+    "type": "command",
+    "sha256": "ec3d34ff1ba64cadfdb697276bb96529edfdde2ddffa2728844aa72f4e5fb58a",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "identify",
+    "command_group": "std",
+    "literal_prompts": [
+      "可用技能：\\n",
+      "\\n武器特性﹕\\n",
+      "護具特性﹕\\n"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/ignore.c",
+    "path": "/cmds/std/ignore",
+    "type": "command",
+    "sha256": "10b0d6b067d29db0de3d793d8a489f4dfd40b4c0bfb6e003cc3febae26c780ff",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "ignore",
+    "command_group": "std",
+    "literal_prompts": [
+      "你現在沒有拒絕別人跟你交談。\\n"
+    ],
+    "temp_values": {
+      "ignore/all": 1
+    },
+    "combat_message_traits": [
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/kill.c",
+    "path": "/cmds/std/kill",
+    "type": "command",
+    "sha256": "6b3c6e2beac159486d79d97dd8a034ab64ce568b6503ae6ce603a73a78e32b86",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "do_kill",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "attack",
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "kill",
+    "command_group": "std",
+    "damage_contract": [
+      "fight_ob"
+    ],
+    "accept_hooks": [
+      "accept_kill"
+    ],
+    "temp_values": {
+      "pending/hidden": 0
+    },
+    "death_hooks": [
+      "corpse",
+      "kill_ob"
+    ],
+    "combat_message_traits": [
+      "message_vision",
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/lock.c",
+    "path": "/cmds/std/lock",
+    "type": "command",
+    "sha256": "2bbf69efc448cc2bd472e17813dc1be55a1cacad4b505362a2721411ed7a8252",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "lock",
+    "command_group": "std",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/look.c",
+    "path": "/cmds/std/look",
+    "type": "command",
+    "sha256": "f0d258678a085772348530c64822ec1958edf93e5c4debd7567c589c9ea71c95",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "inventory_look",
+      "look_item",
+      "look_living",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "look",
+    "command_group": "std",
+    "death_hooks": [
+      "corpse"
+    ],
+    "combat_message_traits": [
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/open.c",
+    "path": "/cmds/std/open",
+    "type": "command",
+    "sha256": "17c688ed047f49aa570b24b9af690051b43f2fd0e5c93c47249850cfc2cb8b7c",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "open",
+    "command_group": "std",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/perform.c",
+    "path": "/cmds/std/perform",
+    "type": "command",
+    "sha256": "c50348bc6dae0c6d318b054cb653b61a567ecf18cfa1cad4ede17254ec7cc664",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "perform",
+    "command_group": "std",
+    "skill_contract": {
+      "functions": [
+        "perform_action"
+      ],
+      "contracts": []
+    },
+    "function_calls": [
+      "perform_action"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/put.c",
+    "path": "/cmds/std/put",
+    "type": "command",
+    "sha256": "6032136f2efc45449f4eb05cf58361e341973ff3d787975b8d7a04283851a4e5",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_put",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "put",
+    "command_group": "std",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "accept_hooks": [
+      "accept_object"
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/remove.c",
+    "path": "/cmds/std/remove",
+    "type": "command",
+    "sha256": "fa9483389ed3f9656b870d893fa9bd46999da2973d63b7eab0d8a0490d9f7a6b",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "do_remove",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [
+      "armor",
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "remove",
+    "command_group": "std",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "function_calls": [
+      "unequip"
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/reply.c",
+    "path": "/cmds/std/reply",
+    "type": "command",
+    "sha256": "5bd10be23d056b0af7be18a09a2154420b0a8b0ea95bfcc828c3ff55ffadecf4",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "reply",
+    "command_group": "std",
+    "literal_prompts": [
+      "網路訊息已送出﹐可能要稍候才能得到回應。\\n"
+    ],
+    "combat_message_traits": [
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/say.c",
+    "path": "/cmds/std/say",
+    "type": "command",
+    "sha256": "e2c77f374bb1a93610555bfa36e4e1b543ed3263c42d55ad92ea0f3601c14b42",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "say",
+    "command_group": "std",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/search.c",
+    "path": "/cmds/std/search",
+    "type": "command",
+    "sha256": "0a20553158ddb07ff902bcc44b7af283025416cfda9c5aa4c296fef12d8766e1",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "find_drug",
+      "help",
+      "main",
+      "searching"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [
+      "busy",
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "search",
+    "command_group": "std",
+    "function_calls": [
+      "query_skill"
+    ],
+    "combat_message_traits": [
+      "message_vision",
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/shout.c",
+    "path": "/cmds/std/shout",
+    "type": "command",
+    "sha256": "ebda46e63f6c9c8bc31c6e7d56069d0a7964e7b5f6c1a516ab112f69dfc89913",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "shout",
+    "command_group": "std",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/sneak.c",
+    "path": "/cmds/std/sneak",
+    "type": "command",
+    "sha256": "3970d2b07f2c5085a938f21a6f6f33e42ccfa3aaeb4b8b03d965a1746073013b",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "do_sneak",
+      "halt_sneak",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement",
+      "teaching"
+    ],
+    "combat_surface": [
+      "busy",
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "sneak",
+    "command_group": "std",
+    "function_calls": [
+      "improve_skill",
+      "query_skill"
+    ],
+    "temp_values": {
+      "sneak_countdown": 3,
+      "pending/hidden": 0
+    },
+    "combat_message_traits": [
+      "tell_object"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "cmds/std/steal.c",
+    "path": "/cmds/std/steal",
+    "type": "command",
+    "sha256": "5fec0ecd470c011224ead6b1195e8718706883b0b81a39be530f204a0bf2b277",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "compelete_steal",
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement",
+      "teaching",
+      "timed"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "steal",
+    "command_group": "std",
+    "damage_contract": [
+      "fight_ob"
+    ],
+    "accept_hooks": [
+      "accept_kill"
+    ],
+    "function_calls": [
+      "improve_skill",
+      "query_skill"
+    ],
+    "temp_values": {
+      "stealing": 1
+    },
+    "callouts": [
+      {
+        "function": "compelete_steal",
+        "delay": 3
+      }
+    ],
+    "death_hooks": [
+      "kill_ob"
+    ],
+    "combat_message_traits": [
+      "message_vision",
+      "tell_object"
+    ],
+    "manual_review": [
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "cmds/std/study.c",
+    "path": "/cmds/std/study",
+    "type": "command",
+    "sha256": "1fa184ac01ae8f3f938373bdb7c63c778bfba52832d7aea894a0d33591aad0d5",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "study",
+    "command_group": "std",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/suicide.c",
+    "path": "/cmds/std/suicide",
+    "type": "command",
+    "sha256": "374887a8cef441c83a7e46fdcf9bf76bee0c61638b7861676da2ae7fe30a6287",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "suicide",
+    "command_group": "std",
+    "literal_prompts": [
+      "好吧，希望還能很快再 ES2 中看到您。\\n"
+    ],
+    "combat_message_traits": [
+      "tell_room"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/team.c",
+    "path": "/cmds/std/team",
+    "type": "command",
+    "sha256": "ab8e6103d0e16169cc6a995a3cc7f1fc92df27d27f9e4bc94df8e188b8222a32",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "team",
+    "command_group": "std",
+    "literal_prompts": [
+      "你將隊伍解散了。\\n",
+      "你脫離了你的隊伍。\\n"
+    ],
+    "skill_daemon_calls": [
+      {
+        "expression": "arg",
+        "method": "form_array",
+        "dynamic": true
+      }
+    ],
+    "function_calls": [
+      "query_skill"
+    ],
+    "combat_message_traits": [
+      "message_vision",
+      "miss_text",
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/tell.c",
+    "path": "/cmds/std/tell",
+    "type": "command",
+    "sha256": "6f4ec765e71c0f84df837924de87e7c1ee3921725b449280aa2adae5fac0c3d4",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main",
+      "remote_tell"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "tell",
+    "command_group": "std",
+    "literal_prompts": [
+      "網路訊息已送出，可能要稍候才能得到回應。\\n"
+    ],
+    "combat_message_traits": [
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/unlock.c",
+    "path": "/cmds/std/unlock",
+    "type": "command",
+    "sha256": "4af12e7c89db13a20543648983d8ef1703081e07bba56ffb47f38cfe5809cfcd",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "unlock",
+    "command_group": "std",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/unwield.c",
+    "path": "/cmds/std/unwield",
+    "type": "command",
+    "sha256": "b9afa08aa2d4e51d0f72f8a8b18685010de9a02dc3aabe690002b8a4ab25dd07",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "unwield",
+    "command_group": "std",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "function_calls": [
+      "unequip"
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/wear.c",
+    "path": "/cmds/std/wear",
+    "type": "command",
+    "sha256": "bf7ed03af411fdc71e79cda0163990c45ac8cbf1f54e879125230a7bbe0ceb17",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "do_wear",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "armor",
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "wear",
+    "command_group": "std",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "equipment_hooks": [
+      "wear"
+    ],
+    "function_calls": [
+      "wear"
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/whisper.c",
+    "path": "/cmds/std/whisper",
+    "type": "command",
+    "sha256": "82e60eea7a885ffecdddfc8b24d68fbf945a04cb7b8638a8a1f51a724fc01776",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "whisper",
+    "command_group": "std",
+    "combat_message_traits": [
+      "tell_object",
+      "tell_room"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/std/wield.c",
+    "path": "/cmds/std/wield",
+    "type": "command",
+    "sha256": "371ed279db402989a1c429b999787bcbe28d56989a219d9d5a7e672bbeb11483",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "do_wield",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "busy",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "wield",
+    "command_group": "std",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "equipment_hooks": [
+      "wield"
+    ],
+    "function_calls": [
+      "wield"
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/abandon.c",
+    "path": "/cmds/usr/abandon",
+    "type": "command",
+    "sha256": "ff6e356bd759833b60678266b4ef3b8f1db75c4de4cf8ea826de759028a861e0",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "abandon",
+    "command_group": "usr",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/alias.c",
+    "path": "/cmds/usr/alias",
+    "type": "command",
+    "sha256": "f5d02c97ae15f759af52a7a99be4678ac9cfc8294e7979f8032f675fa2f65274",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "alias",
+    "command_group": "usr",
+    "literal_prompts": [
+      "你目前並沒有設定任何 alias。\\n",
+      "你目前設定的 alias 有﹕\\n",
+      "Ok.\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/backup.c",
+    "path": "/cmds/usr/backup",
+    "type": "command",
+    "sha256": "251578374af3a1f6c3e783948154dc7f3d191822effe81b5fa2040c7d5166a6c",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "backup",
+    "command_group": "usr",
+    "literal_prompts": [
+      "備份完畢。\\n",
+      "備份失敗！\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/chfn.c",
+    "path": "/cmds/usr/chfn",
+    "type": "command",
+    "sha256": "bf84fd4b4b95677233e61369b9fa39f486a0f7b5a4cfb9ad3525a35675c437f1",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "get_email",
+      "get_profile",
+      "get_signature",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "interactive"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "chfn",
+    "command_group": "usr",
+    "uses_input_to": true,
+    "literal_prompts": [
+      "您的自我介紹: (finger時顯示)\\n",
+      "您的簽名格式: (post時用)\\n",
+      "簽名格式太長﹗請重新設定。\\n",
+      "請記得用 save 儲存您所作的修改。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/describe.c",
+    "path": "/cmds/usr/describe",
+    "type": "command",
+    "sha256": "bd9a7f47b1a839005965eae8b9aa1bbc87d3f2d18f36b576ad7bf9085ad01f75",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "describe",
+    "command_group": "usr",
+    "literal_prompts": [
+      "Ok。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/disable.c",
+    "path": "/cmds/usr/disable",
+    "type": "command",
+    "sha256": "655a79fe6e5a70b507cf6b9217447cd73af815b37ad969fbccd3bc570276cb1f",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "skill_mapping"
+    ],
+    "combat_surface": [
+      "busy",
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "disable",
+    "command_group": "usr",
+    "function_calls": [
+      "map_skill"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/enable.c",
+    "path": "/cmds/usr/enable",
+    "type": "command",
+    "sha256": "3805c87a9a6e8714cace28ac2691db7ced2ae300cacf32f85f3f141a80d21259",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "skill_mapping"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "enable",
+    "command_group": "usr",
+    "literal_prompts": [
+      "以下是你目前使用中的特殊技能。\\n",
+      "你在適當的場合會自動使用這個技能。\\n"
+    ],
+    "skill_contract": {
+      "functions": [
+        "valid_enable"
+      ],
+      "contracts": [
+        "valid_enable"
+      ]
+    },
+    "skill_daemon_calls": [
+      {
+        "expression": "map_to",
+        "method": "valid_enable",
+        "dynamic": true
+      }
+    ],
+    "function_calls": [
+      "map_skill",
+      "query_skill"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/estimate.c",
+    "path": "/cmds/usr/estimate",
+    "type": "command",
+    "sha256": "2ccdfbd2400a6871e72c32d6e9b23a4ac1c03d83ca144b0bbf73968c9203f2ce",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "estimate",
+    "command_group": "usr",
+    "damage_contract": [
+      "query_ability",
+      "query_strength"
+    ],
+    "function_calls": [
+      "query_skill"
+    ],
+    "combat_message_traits": [
+      "attack_text",
+      "dodge_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/finger.c",
+    "path": "/cmds/usr/finger",
+    "type": "command",
+    "sha256": "5e420915f442895d2396a3bb5c4f4ddb91d21295ac1fc26ebb7fd5492d585c07",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "finger",
+    "command_group": "usr",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/gain.c",
+    "path": "/cmds/usr/gain",
+    "type": "command",
+    "sha256": "18f170598028f9c0ce368fcb66bcadc94868a11326dac506930d62e538f5b8be",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "gain",
+    "command_group": "usr",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/help.c",
+    "path": "/cmds/usr/help",
+    "type": "command",
+    "sha256": "803b3efce973b565a475b16570f168fd8a06ccd094d4b496a26a160e8ca9a9a6",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "help",
+    "command_group": "usr",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/hp.c",
+    "path": "/cmds/usr/hp",
+    "type": "command",
+    "sha256": "6204908d832d18d7f66508fa038ca197c699542d8daa0f09a03fb71a1eba4a08",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main",
+      "status_color"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "hp",
+    "command_group": "usr",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/id.c",
+    "path": "/cmds/usr/id",
+    "type": "command",
+    "sha256": "53a8198c700c8afbea1a9e1e5a01c1b1fb3938845a98ed7138276d223a8c4158",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "id",
+    "command_group": "usr",
+    "literal_prompts": [
+      "你(妳)身上攜帶物品的別稱如下(右方) :\\n",
+      "在這個房間中, 生物及物品的(英文)名稱如下 :\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/inventory.c",
+    "path": "/cmds/usr/inventory",
+    "type": "command",
+    "sha256": "01049edf41f3f7f0dfc89a10ecbb5bb10d73ae7b09af1e17225123dfd35e2b1d",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "inventory_desc",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "inventory",
+    "command_group": "usr",
+    "damage_contract": [
+      "query_strength"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/keep.c",
+    "path": "/cmds/usr/keep",
+    "type": "command",
+    "sha256": "589172cc0a07b227b6cd529cab8d19ba454e302d9f8fdf13b0f578935d123111",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "keep",
+    "command_group": "usr",
+    "literal_prompts": [
+      "你將所有身上的東西記了個小記號◎。\\n",
+      "你將所有身上的東西之小記號◎清掉。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/localtime.c",
+    "path": "/cmds/usr/localtime",
+    "type": "command",
+    "sha256": "82d5a7e983367b16dc50b3a24c3d1a062710616c2602b5c2e727594c210818e1",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "localtime",
+    "command_group": "usr",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/nick.c",
+    "path": "/cmds/usr/nick",
+    "type": "command",
+    "sha256": "85307011f11c0fd16eefc1312905b49563b7e933c4d9d56cb1514d5d17fb869a",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "nick",
+    "command_group": "usr",
+    "literal_prompts": [
+      "Ok。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/okip.c",
+    "path": "/cmds/usr/okip",
+    "type": "command",
+    "sha256": "9c5d540f101c6b08b341e2dd0eb1fe95e4bd4eee246c8411528788c9494d750c",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "reset"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "okip",
+    "command_group": "usr",
+    "literal_prompts": [
+      "Ok。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/option.c",
+    "path": "/cmds/usr/option",
+    "type": "command",
+    "sha256": "536cb2f285f0c2bf20cd0b82421d606fdbe88524064442348e0af5c80cf9cfff",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "option",
+    "command_group": "usr",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/order.c",
+    "path": "/cmds/usr/order",
+    "type": "command",
+    "sha256": "0f724921b8b8270ed6c790c5e7adf51abd4af30bae0343d472dd209da3645f04",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "order",
+    "command_group": "usr",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/passwd.c",
+    "path": "/cmds/usr/passwd",
+    "type": "command",
+    "sha256": "b5cde62df4af8f6825b45793946551ca9afb43b58c7666cbfd9ca5e99b26da7c",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "confirm_new_pass",
+      "get_new_pass",
+      "get_old_pass",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "interactive"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "passwd",
+    "command_group": "usr",
+    "uses_input_to": true,
+    "uses_hidden_input": true,
+    "literal_prompts": [
+      "為了安全起見﹐請先輸入您原來的密碼﹕",
+      "請輸入新密碼：",
+      "\\n",
+      "密碼錯誤﹗\\n",
+      "請輸入新密碼﹕",
+      "\\n請再輸入一次新密碼﹕",
+      "\\n",
+      "對不起﹐您輸入的密碼並不相同﹐繼續使用原來的密碼。\\n",
+      "密碼變更失敗﹗\\n",
+      "密碼變更成功。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/praise.c",
+    "path": "/cmds/usr/praise",
+    "type": "command",
+    "sha256": "a65f78f88a1fa090949ff9b6340da2857a34dc25cf4a64ddc1ddf86700926337",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "praise",
+    "command_group": "usr",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/quit.c",
+    "path": "/cmds/usr/quit",
+    "type": "command",
+    "sha256": "b671683e60e94e66141d1e36a5c8805356de36268f281a20f16e2591f8dcaff4",
+    "inherits": [
+      "F_DBASE",
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_DBASE",
+        "target": "F_DBASE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "quit",
+    "command_group": "usr",
+    "literal_prompts": [
+      "你正忙著呢, 請試著停下所忙的事。\\n",
+      "歡迎下次再來﹗\\n"
+    ],
+    "combat_message_traits": [
+      "miss_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/save.c",
+    "path": "/cmds/usr/save",
+    "type": "command",
+    "sha256": "83fbabceac20213c909513710631059a013d98f948a74f60c16296bf51bc29e0",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "save",
+    "command_group": "usr",
+    "literal_prompts": [
+      "當你下次連線進來時﹐會從這裡開始。\\n",
+      "檔案儲存完畢。\\n",
+      "儲存失敗。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/score.c",
+    "path": "/cmds/usr/score",
+    "type": "command",
+    "sha256": "459ce204212ae8f8365bbfedd1af0369fa5219fc9250ee4ba107f3dcc7e37534",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "display_attr",
+      "help",
+      "main",
+      "status_color",
+      "tribar_graph"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "score",
+    "command_group": "usr",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/semote.c",
+    "path": "/cmds/usr/semote",
+    "type": "command",
+    "sha256": "616139311f12edd3b7c0ae18873b6253a3c89e715b7dd507825b3b244d6813f3",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "semote",
+    "command_group": "usr",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/skills.c",
+    "path": "/cmds/usr/skills",
+    "type": "command",
+    "sha256": "abe6347cc34e847654bb5c646bf680a50dff94ab371022acf791cebe6594f5ba",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main",
+      "skill_level"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "skills",
+    "command_group": "usr",
+    "skill_daemon_calls": [
+      {
+        "expression": "s",
+        "method": "type",
+        "dynamic": true
+      },
+      {
+        "expression": "s",
+        "method": "type",
+        "dynamic": true
+      }
+    ],
+    "function_calls": [
+      "query_skill"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/time.c",
+    "path": "/cmds/usr/time",
+    "type": "command",
+    "sha256": "4bb79d41b5305653bdfa09429ea50799c52fe4de9f7e759bd339a060c08e0299",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "time",
+    "command_group": "usr",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/to.c",
+    "path": "/cmds/usr/to",
+    "type": "command",
+    "sha256": "bc841e37f8f00802655237fe46ad71c685345d3b1376f351f63cd5b137f5c7a3",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "do_to",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "to",
+    "command_group": "usr",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/tune.c",
+    "path": "/cmds/usr/tune",
+    "type": "command",
+    "sha256": "1d6f35e70c7a7161bbc4a9d96a71f3cc279d91421acff96275679d9def0691ae",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "tune",
+    "command_group": "usr",
+    "literal_prompts": [
+      "你現在並沒有收聽任何頻道。\\n",
+      "要打開某個頻道只要用該頻道說話即可。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/undescribe.c",
+    "path": "/cmds/usr/undescribe",
+    "type": "command",
+    "sha256": "083f0adcc57be964d0ec54f4935c912ad81f7c133b9ed00c4467fb980e064294",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "undescribe",
+    "command_group": "usr",
+    "literal_prompts": [
+      "Ok。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/uptime.c",
+    "path": "/cmds/usr/uptime",
+    "type": "command",
+    "sha256": "7460a585cbc3ec9181d18a06ecfb5234e5b00a4e06420160c9d72bb3d4011a5b",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "uptime",
+    "command_group": "usr",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/version.c",
+    "path": "/cmds/usr/version",
+    "type": "command",
+    "sha256": "9b2956cb6b5557511c89834fdd71b09f63f9e32a31b053893e63ba7e7d67cccc",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "version",
+    "command_group": "usr",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/visitor.c",
+    "path": "/cmds/usr/visitor",
+    "type": "command",
+    "sha256": "1d0d749150b15a46aff99dd026df086855c011f3c536ead538bccaf8a744d848",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "visitor",
+    "command_group": "usr",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/who.c",
+    "path": "/cmds/usr/who",
+    "type": "command",
+    "sha256": "3f6ec63346b0ae5dd0992c839207d9a96f8ae18b487c4068b3feb935e710dd80",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main",
+      "msg_format",
+      "sort_user"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "who",
+    "command_group": "usr",
+    "literal_prompts": [
+      "為了減低系統負荷, 目前只有巫師可以使用 who -l。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/wimpy.c",
+    "path": "/cmds/usr/wimpy",
+    "type": "command",
+    "sha256": "99cdfeeb2d054cb5b30aaef05ca6168479e0e62042f819464c7da642627ac6d6",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "wimpy",
+    "command_group": "usr",
+    "literal_prompts": [
+      "Ok。\\n",
+      "Ok。\\n",
+      "Ok.\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/usr/wizlist.c",
+    "path": "/cmds/usr/wizlist",
+    "type": "command",
+    "sha256": "987d92919fe9a20a1a72655824841478b07c5e1f423c1e06e4ff63fe7576ac35",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "wizlist",
+    "command_group": "usr",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/analyze.c",
+    "path": "/cmds/wiz/analyze",
+    "type": "command",
+    "sha256": "780740a5644587bbfa24865c094807a1c91cd9328de2c754a9ffc12ad7ef87a9",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "analyze",
+    "command_group": "wiz",
+    "damage_contract": [
+      "query_ability",
+      "query_strength"
+    ],
+    "function_calls": [
+      "query_skill"
+    ],
+    "combat_message_traits": [
+      "attack_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/arrest.c",
+    "path": "/cmds/wiz/arrest",
+    "type": "command",
+    "sha256": "2bc3ce2f8d5bc0b39eba2761900bccbabac30fee80343bd25dab95f5a2d46fd0",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "arrest",
+    "command_group": "wiz",
+    "combat_message_traits": [
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/call.c",
+    "path": "/cmds/wiz/call",
+    "type": "command",
+    "sha256": "d90aeef686f08e81f3b9683b31b0e46c45c54ada1fe43e6f40a62658f3af8bab",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "call",
+    "command_group": "wiz",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/cat.c",
+    "path": "/cmds/wiz/cat",
+    "type": "command",
+    "sha256": "8d7e9d83f64d9b5a0a8454099e080d6011d689995b117c14c536059d03ab0aab",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "cat",
+    "command_group": "wiz",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/clone.c",
+    "path": "/cmds/wiz/clone",
+    "type": "command",
+    "sha256": "5ccdd16b4a3548a7e8c66043ba51797b80c9890a05705c77efb6ae25833b420d",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "clone",
+    "command_group": "wiz",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/cost.c",
+    "path": "/cmds/wiz/cost",
+    "type": "command",
+    "sha256": "6ee30f3ee05d4a2a9fcbd8d8ca193764e02ce43bbced670a5eb81d5654ff968a",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "cost",
+    "command_group": "wiz",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/cp.c",
+    "path": "/cmds/wiz/cp",
+    "type": "command",
+    "sha256": "7619c83994e61342f0b0e56341d8993c8b63379db568bf1f0b000057c7adb26c",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "cp",
+    "command_group": "wiz",
+    "literal_prompts": [
+      "Ok.\\n",
+      "你沒有足夠的讀寫權利。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/daemon.c",
+    "path": "/cmds/wiz/daemon",
+    "type": "command",
+    "sha256": "2dc75138e8c1005493a02e17caf0cd90ba316e6b1107f28faf501b6f093c19ee",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "daemon",
+    "command_group": "wiz",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/dest.c",
+    "path": "/cmds/wiz/dest",
+    "type": "command",
+    "sha256": "e12c8ea403fc23b91e63071ef795f926e4926408d1d7d560320360df62247f20",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "dest",
+    "command_group": "wiz",
+    "literal_prompts": [
+      "你無法將這個物件強制摧毀。\\n",
+      "Ok.\\n"
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/edit.c",
+    "path": "/cmds/wiz/edit",
+    "type": "command",
+    "sha256": "5214b9ac8dadeb98a4c9f0e8bb21435b973bd60896793519cc883ec86637f877",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "edit",
+    "command_group": "wiz",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/ff.c",
+    "path": "/cmds/wiz/ff",
+    "type": "command",
+    "sha256": "c54387d6289fa631cda00ddf80f2cc54b401e04646476434a9bc918e8841bf2d",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "ff",
+    "command_group": "wiz",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/home.c",
+    "path": "/cmds/wiz/home",
+    "type": "command",
+    "sha256": "90f72b092ed8426cc409de001f9e5eff27db6240e6694977cc00aa69dbb3b350",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "home",
+    "command_group": "wiz",
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/ilist.c",
+    "path": "/cmds/wiz/ilist",
+    "type": "command",
+    "sha256": "319dd2ee2578dca7317adbced038606eb73b0e814feb6f58746c7a30c3e98cfa",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "format_inherit_list",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "ilist",
+    "command_group": "wiz",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/info.c",
+    "path": "/cmds/wiz/info",
+    "type": "command",
+    "sha256": "a4a21eaca8e2de63bf471504e34c5ee6ce07af4125cd8a201a25b0761b7a53c4",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "heart_beat"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "info",
+    "command_group": "wiz",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/invis.c",
+    "path": "/cmds/wiz/invis",
+    "type": "command",
+    "sha256": "c92cbbcbd230fedbae6cf18e4bd800b2d9e8432872b97eeb2c1d755489725e23",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "invis",
+    "command_group": "wiz",
+    "literal_prompts": [
+      "Ok。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/localcmds.c",
+    "path": "/cmds/wiz/localcmds",
+    "type": "command",
+    "sha256": "4ad6ae1003d6b67117fbddadb4dd636349f48d9ba98775dc11484295ed28c738",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "localcmds",
+    "command_group": "wiz",
+    "literal_prompts": [
+      "你身上及四周的物品與所在的環境提供以下指令﹕\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/log.c",
+    "path": "/cmds/wiz/log",
+    "type": "command",
+    "sha256": "f49a1871938a7dc4b13f653431ca5a8cdbca3b9c745fa9d47c58485cd48a37ea",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "log",
+    "command_group": "wiz",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/mkdir.c",
+    "path": "/cmds/wiz/mkdir",
+    "type": "command",
+    "sha256": "06b3a092d72b02a7cdd56bf700f2ad4abf4ff0042e1bb79798d38e0ddb4771a5",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "mkdir",
+    "command_group": "wiz",
+    "literal_prompts": [
+      "Ok.\\n",
+      "你沒有在這裡建子目錄的權利。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/mudlist.c",
+    "path": "/cmds/wiz/mudlist",
+    "type": "command",
+    "sha256": "1de8e47b18064ff38301e8d4f1f5d57c79f857e77a483de29e98cfaf0f70c992",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "mudlist",
+    "command_group": "wiz",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/mv.c",
+    "path": "/cmds/wiz/mv",
+    "type": "command",
+    "sha256": "5d50e2db900753ec5b447b1b55c548fa983bd47a4419f79afa85ebc969e6e0b1",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "mv",
+    "command_group": "wiz",
+    "literal_prompts": [
+      "Ok.\\n",
+      "你沒有足夠的讀寫權利。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/ping.c",
+    "path": "/cmds/wiz/ping",
+    "type": "command",
+    "sha256": "19f2d94aed6077afb40ff19da94857208894b12f7d14a5e41482483a9ed53cd9",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "ping",
+    "command_group": "wiz",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/qload.c",
+    "path": "/cmds/wiz/qload",
+    "type": "command",
+    "sha256": "524f69e0f92b375ccf7b4d6a168ef4804fce2851f69fd31a8342f72d753deaff",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "qload",
+    "command_group": "wiz",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/quiet.c",
+    "path": "/cmds/wiz/quiet",
+    "type": "command",
+    "sha256": "bed09f297a5fd8c63ee4f1bf83fb01dc0941d39e32ba72c51b5438d8d68a04c1",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "quiet",
+    "command_group": "wiz",
+    "combat_message_traits": [
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/rm.c",
+    "path": "/cmds/wiz/rm",
+    "type": "command",
+    "sha256": "5eff545ecbd1ee5cc9226c423af8fef4cb8f7ff1be74b304d1c72a072a98dc72",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "rm",
+    "command_group": "wiz",
+    "literal_prompts": [
+      "Ok.\\n",
+      "你沒有刪除這個檔案的權利。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/rmdir.c",
+    "path": "/cmds/wiz/rmdir",
+    "type": "command",
+    "sha256": "d0657af6387f87b91929e296f558c96f1a3478ce51049ce3a1db317d27298833",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "rmdir",
+    "command_group": "wiz",
+    "literal_prompts": [
+      "Ok.\\n",
+      "刪除失敗。\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/snoop.c",
+    "path": "/cmds/wiz/snoop",
+    "type": "command",
+    "sha256": "6816431739282dff4cace2934bd4a22a114d1f47c8b60094745d717cbb519053",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "snoop",
+    "command_group": "wiz",
+    "literal_prompts": [
+      "Ok.\\n"
+    ],
+    "combat_message_traits": [
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/summon.c",
+    "path": "/cmds/wiz/summon",
+    "type": "command",
+    "sha256": "512e3ac124fb28523223b3aef68f52833f43430e4bdda5e11e334683c1669349",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "summon",
+    "command_group": "wiz",
+    "combat_message_traits": [
+      "tell_object",
+      "tell_room"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/tail.c",
+    "path": "/cmds/wiz/tail",
+    "type": "command",
+    "sha256": "e8f1e1dd7a8b70b3dc2bc78e76d819c7dab5b2ca4d529e3b410039230607c971",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "tail",
+    "command_group": "wiz",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/ulist.c",
+    "path": "/cmds/wiz/ulist",
+    "type": "command",
+    "sha256": "f887c773ef5090395b07067fc269e78525cef288b1f5facfc557e707fc01ac8e",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "ulist",
+    "command_group": "wiz",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/update.c",
+    "path": "/cmds/wiz/update",
+    "type": "command",
+    "sha256": "da45f13712966d5a2e61b7ddfebe1102946f41d5c2c46c426d1eaad6974fee76",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main",
+      "update_player"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "update",
+    "command_group": "wiz",
+    "literal_prompts": [
+      "下一次使用 update 指令將會重新編譯 update 指令。\\n",
+      "成功。\\n",
+      "身體更新完畢。\\n\\n"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/userid.c",
+    "path": "/cmds/wiz/userid",
+    "type": "command",
+    "sha256": "10b3b6149a1d978e524c9bd82cc9e0cb4742de28e109dd31cd7b108eb0de87f3",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "userid",
+    "command_group": "wiz",
+    "manual_review": []
+  },
+  {
+    "file": "cmds/wiz/whoami.c",
+    "path": "/cmds/wiz/whoami",
+    "type": "command",
+    "sha256": "7f02d256f4ffa02cc060c42cdc9d45f5653fc91d5e995497302366a42f790dda",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "help",
+      "main"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "command": "whoami",
+    "command_group": "wiz",
+    "manual_review": []
+  }
+]

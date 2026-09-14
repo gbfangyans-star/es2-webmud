@@ -1,0 +1,24 @@
+{
+  "version": "v3.20.21",
+  "checks": {
+    "room_scoped_context_parser": true,
+    "ansi_stripped_for_context": true,
+    "aligned_combat_values": true,
+    "inventory_hud_feed": true,
+    "silent_hud_framing": true,
+    "live_hud_precedes_score_cache": true,
+    "hud_poll_800ms": true,
+    "hud_player_priority": true,
+    "hud_control_hidden": true,
+    "food_button": true,
+    "drink_button": true,
+    "equipment_buttons": true,
+    "buttons_send_server_commands": true,
+    "test_gold_spawn": true,
+    "test_gold_100": true,
+    "test_gold_is_canonical_money": true,
+    "test_gold_stays_in_inn": true
+  },
+  "failures": [],
+  "passed": true
+}

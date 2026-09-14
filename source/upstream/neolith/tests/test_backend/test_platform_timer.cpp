@@ -1,0 +1,302 @@
+/**
+ * @file test_backend_timer.cpp
+ * @brief Tests for backend timer integration with platform_timer
+ */
+
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
+#include "std.h"
+#include "backend.h"
+#include "port/timer.h"
+
+#include <gtest/gtest.h>
+#include <thread>
+#include <chrono>
+
+using namespace testing;
+
+class PlatformTimerTest : public Test {
+protected:
+    void SetUp() override {
+        debug_set_log_with_date (false);
+    }
+
+    void TearDown() override {
+        // Ensure heart_beat_flag is reset
+        heart_beat_flag = false;
+    }
+};
+
+/**
+ * @brief Test that heart_beat_flag is set by timer callback
+ */
+TEST_F(PlatformTimerTest, HeartBeatFlagSetByTimer) {
+    platform_timer_t test_timer;
+    memset(&test_timer, 0, sizeof(test_timer));
+
+    auto test_callback = +[]() {
+        heart_beat_flag = true;
+    };
+
+    // Initialize timer
+    ASSERT_EQ(platform_timer_init(&test_timer), TIMER_OK) << "Failed to initialize timer";
+
+    // Start timer with 100ms interval (100,000 microseconds)
+    heart_beat_flag = false;
+    ASSERT_EQ(platform_timer_start(&test_timer, 100000, test_callback), TIMER_OK)
+        << "Failed to start timer";
+
+    // Wait for at least one timer expiration
+    std::this_thread::sleep_for(std::chrono::milliseconds(150));
+
+    // Verify heart_beat_flag was set
+    EXPECT_EQ(heart_beat_flag, true) << "heart_beat_flag should be set by timer callback";
+
+    // Stop timer
+    ASSERT_EQ(platform_timer_stop(&test_timer), TIMER_OK) << "Failed to stop timer";
+
+    // Cleanup
+    platform_timer_cleanup(&test_timer);
+}
+
+/**
+ * @brief Test multiple timer callbacks over time
+ */
+TEST_F(PlatformTimerTest, MultipleTimerCallbacks) {
+    platform_timer_t test_timer;
+    memset(&test_timer, 0, sizeof(test_timer));
+    static volatile int callback_count = 0;
+
+    auto counting_callback = +[]() {
+        callback_count++;
+    };
+
+    // Initialize and start timer
+    ASSERT_EQ(platform_timer_init(&test_timer), TIMER_OK);
+
+    callback_count = 0;
+    // Use 200ms interval for more reliable testing
+    ASSERT_EQ(platform_timer_start(&test_timer, 200000, counting_callback), TIMER_OK);
+
+    // Wait for ~1 second (should get ~5 callbacks)
+    std::this_thread::sleep_for(std::chrono::milliseconds(1100));
+
+    // Stop timer
+    platform_timer_stop(&test_timer);
+
+    // Should have received between 4 and 6 callbacks (allowing for timing variations)
+    EXPECT_GE(callback_count, 4) << "Should have at least 4 callbacks in 1.1 seconds";
+    EXPECT_LE(callback_count, 6) << "Should have at most 6 callbacks in 1.1 seconds";
+
+    // Cleanup
+    platform_timer_cleanup(&test_timer);
+}
+
+/**
+ * @brief Test timer stop prevents further callbacks
+ */
+TEST_F(PlatformTimerTest, TimerStopPreventsFurtherCallbacks) {
+    platform_timer_t test_timer;
+    memset(&test_timer, 0, sizeof(test_timer));
+    static volatile int callback_count = 0;
+
+    auto counting_callback = +[]() {
+        callback_count++;
+    };
+
+    // Initialize and start timer
+    ASSERT_EQ(platform_timer_init(&test_timer), TIMER_OK);
+
+    callback_count = 0;
+    ASSERT_EQ(platform_timer_start(&test_timer, 100000, counting_callback), TIMER_OK);
+
+    // Wait for a few callbacks
+    std::this_thread::sleep_for(std::chrono::milliseconds(350));
+
+    // Stop timer
+    ASSERT_EQ(platform_timer_stop(&test_timer), TIMER_OK);
+    int count_at_stop = callback_count;
+
+    // Wait again - count should not increase
+    std::this_thread::sleep_for(std::chrono::milliseconds(300));
+
+    EXPECT_EQ(callback_count, count_at_stop)
+        << "Callback count should not increase after timer stopped";
+
+    // Cleanup
+    platform_timer_cleanup(&test_timer);
+}
+
+/**
+ * @brief Test timer restart functionality
+ */
+TEST_F(PlatformTimerTest, TimerRestart) {
+    platform_timer_t test_timer;
+    memset(&test_timer, 0, sizeof(test_timer));
+    static volatile int callback_count = 0;
+
+    auto counting_callback = +[]() {
+        callback_count++;
+    };
+
+    // Initialize timer
+    ASSERT_EQ(platform_timer_init(&test_timer), TIMER_OK);
+
+    // First run
+    callback_count = 0;
+    ASSERT_EQ(platform_timer_start(&test_timer, 100000, counting_callback), TIMER_OK);
+    std::this_thread::sleep_for(std::chrono::milliseconds(250));
+    ASSERT_EQ(platform_timer_stop(&test_timer), TIMER_OK);
+    int first_count = callback_count;
+    EXPECT_GE(first_count, 1) << "Should have callbacks from first run";
+
+    // Restart timer
+    callback_count = 0;
+    ASSERT_EQ(platform_timer_start(&test_timer, 100000, counting_callback), TIMER_OK);
+    std::this_thread::sleep_for(std::chrono::milliseconds(250));
+    ASSERT_EQ(platform_timer_stop(&test_timer), TIMER_OK);
+    int second_count = callback_count;
+    EXPECT_GE(second_count, 1) << "Should have callbacks from second run";
+
+    // Cleanup
+    platform_timer_cleanup(&test_timer);
+}
+
+/**
+ * @brief Test timer is_active status
+ */
+TEST_F(PlatformTimerTest, TimerActiveStatus) {
+    platform_timer_t test_timer;
+    memset(&test_timer, 0, sizeof(test_timer));
+
+    auto dummy_callback = +[]() { };
+
+    // Initialize timer
+    ASSERT_EQ(platform_timer_init(&test_timer), TIMER_OK);
+    EXPECT_EQ(platform_timer_is_active(&test_timer), TIMER_OK) << "Timer should not be active after init";
+
+    // Start timer
+    ASSERT_EQ(platform_timer_start(&test_timer, 100000, dummy_callback), TIMER_OK);
+    EXPECT_EQ(platform_timer_is_active(&test_timer), 1) << "Timer should be active after start";
+
+    // Stop timer
+    ASSERT_EQ(platform_timer_stop(&test_timer), TIMER_OK);
+    EXPECT_EQ(platform_timer_is_active(&test_timer), TIMER_OK) << "Timer should not be active after stop";
+
+    // Cleanup
+    platform_timer_cleanup(&test_timer);
+}
+
+#ifdef HEARTBEAT_INTERVAL
+/**
+ * @brief Test HEARTBEAT_INTERVAL timer interval (2 seconds)
+ */
+TEST_F(PlatformTimerTest, HeartBeatIntervalTiming) {
+    platform_timer_t test_timer;
+    memset(&test_timer, 0, sizeof(test_timer));
+    static volatile int callback_count = 0;
+    
+    auto counting_callback = +[]() {
+        callback_count++;
+    };
+
+    // Initialize timer
+    ASSERT_EQ(platform_timer_init(&test_timer), TIMER_OK);
+
+    // Start timer with HEARTBEAT_INTERVAL (2 seconds = 2,000,000 microseconds)
+    callback_count = 0;
+    auto start_time = std::chrono::steady_clock::now();
+    ASSERT_EQ(platform_timer_start(&test_timer, HEARTBEAT_INTERVAL, counting_callback), TIMER_OK);
+
+    // Wait for ~4.5 seconds (should get 2 callbacks at 2s and 4s)
+    std::this_thread::sleep_for(std::chrono::milliseconds(4500));
+    auto end_time = std::chrono::steady_clock::now();
+
+    // Stop timer
+    platform_timer_stop(&test_timer);
+
+    // Should have received 2 callbacks (allowing for timing variations)
+    EXPECT_GE(callback_count, 2) << "Should have at least 2 callbacks in 4.5 seconds";
+    EXPECT_LE(callback_count, 3) << "Should have at most 3 callbacks in 4.5 seconds";
+
+    // Verify timing accuracy (within 10% tolerance)
+    auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+        end_time - start_time).count();
+    EXPECT_GE(elapsed_ms, 4400) << "Test should run for ~4.5 seconds";
+    EXPECT_LE(elapsed_ms, 4700) << "Test should run for ~4.5 seconds";
+
+    // Cleanup
+    platform_timer_cleanup(&test_timer);
+}
+#endif /* HEARTBEAT_INTERVAL */
+
+/**
+ * @brief Regression test: stop signal delivered just before wait_until entry must not stall
+ *
+ * Without a predicate-based wait_until, a stop notification delivered between
+ * the thread's loop-condition check and the blocking call is silently dropped.
+ * The thread then sleeps for the full interval before seeing stop_requested,
+ * causing platform_timer_stop() to stall.
+ *
+ * With the predicate, wait_until re-evaluates stop_requested atomically on
+ * entry, so the thread exits immediately regardless of notification timing.
+ *
+ * The test uses a 10-second interval and asserts that each stop completes in
+ * under 1 second. Without the fix, some iterations would stall for ~10 seconds.
+ */
+TEST_F(PlatformTimerTest, StopDoesNotStallOnLostNotifyRegression) {
+    constexpr unsigned long long long_interval_us = 10'000'000; // 10 seconds
+    constexpr long long max_stop_ms = 1000; // well under one full interval
+
+    auto dummy_callback = +[]() { };
+
+    // Repeat to increase the probability of hitting the race window.
+    for (int iteration = 0; iteration < 20; ++iteration) {
+        platform_timer_t test_timer;
+        memset(&test_timer, 0, sizeof(test_timer));
+
+        ASSERT_EQ(platform_timer_init(&test_timer), TIMER_OK);
+        ASSERT_EQ(platform_timer_start(&test_timer, long_interval_us, dummy_callback), TIMER_OK);
+
+        // Stop immediately, racing against the thread's first wait_until entry.
+        auto t0 = std::chrono::steady_clock::now();
+        ASSERT_EQ(platform_timer_stop(&test_timer), TIMER_OK);
+        auto elapsed_ms = std::chrono::duration_cast<std::chrono::milliseconds>(
+            std::chrono::steady_clock::now() - t0).count();
+
+        EXPECT_LT(elapsed_ms, max_stop_ms)
+            << "platform_timer_stop() stalled " << elapsed_ms
+            << " ms on iteration " << iteration
+            << "; lost-notify race detected (predicate-based wait_until required)";
+
+        platform_timer_cleanup(&test_timer);
+    }
+}
+
+/**
+ * @brief Test query_heart_beat integration with timer
+ */
+TEST_F(PlatformTimerTest, QueryHeartBeatIntegration) {
+    // This test verifies that query_heart_beat() works correctly
+    // even though the underlying timer implementation has changed
+
+    // Note: query_heart_beat() operates on objects, not timers directly
+    // The timer just triggers the heart beat flag; the object tracking
+    // is handled separately by set_heart_beat()/query_heart_beat()
+    
+    // This test ensures the timer infrastructure doesn't interfere
+    // with the existing heart beat object tracking
+
+    platform_timer_t test_timer;
+    memset(&test_timer, 0, sizeof(test_timer));
+    ASSERT_EQ(platform_timer_init(&test_timer), TIMER_OK);
+    
+    // Just verify timer can start/stop without affecting other systems
+    auto dummy_callback = +[]() { };
+    ASSERT_EQ(platform_timer_start(&test_timer, 100000, dummy_callback), TIMER_OK);
+    ASSERT_EQ(platform_timer_stop(&test_timer), TIMER_OK);
+    
+    platform_timer_cleanup(&test_timer);
+}

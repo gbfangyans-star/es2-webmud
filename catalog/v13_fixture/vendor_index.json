@@ -1,0 +1,57 @@
+[
+  {
+    "path": "/d/snow/npc/vendor_test",
+    "name": "商人",
+    "merchandise": [
+      {
+        "target": "../obj/thing",
+        "relative": true,
+        "stock": 3
+      }
+    ],
+    "runtime_traits": [
+      "init",
+      "skill_mapping",
+      "teaching",
+      "timed"
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/x",
+    "name": "測試者",
+    "merchandise": [
+      {
+        "target": "../obj/thing",
+        "relative": true,
+        "stock": 3
+      }
+    ],
+    "runtime_traits": [
+      "init",
+      "inventory",
+      "skill_mapping",
+      "teaching"
+    ],
+    "manual_review": [
+      "custom_action",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/feature/npc/vendor",
+    "name": null,
+    "merchandise": [],
+    "runtime_traits": [
+      "reset",
+      "vendor"
+    ],
+    "manual_review": [
+      "vendor_logic"
+    ]
+  }
+]

@@ -1,0 +1,1714 @@
+[
+  {
+    "path": "/adm/daemons/chinesed",
+    "type": "daemon",
+    "functions": [
+      "add_translate",
+      "chinese",
+      "chinese_date",
+      "chinese_number",
+      "chinese_period",
+      "create",
+      "dump_translate",
+      "query_save_file",
+      "remove",
+      "remove_translate"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "F_CLEAN_UP",
+      "F_SAVE"
+    ]
+  },
+  {
+    "path": "/adm/daemons/combatd",
+    "type": "daemon",
+    "functions": [
+      "announce",
+      "auto_fight",
+      "create",
+      "damage_msg",
+      "eff_status_msg",
+      "fight",
+      "report_status",
+      "start_aggressive",
+      "start_hatred",
+      "start_vendetta",
+      "status_msg"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "damage",
+      "defense",
+      "skill"
+    ],
+    "inherits": [
+      "F_CLEAN_UP",
+      "F_DBASE"
+    ]
+  },
+  {
+    "path": "/adm/daemons/daemond",
+    "type": "daemon",
+    "functions": [
+      "create",
+      "query_daemon",
+      "query_daemons",
+      "query_save_file",
+      "register_class_daemon",
+      "register_condition_daemon",
+      "register_object_daemon",
+      "register_race_daemon",
+      "register_skill_daemon",
+      "remove",
+      "unregister_daemon"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "F_CLEAN_UP",
+      "F_SAVE"
+    ]
+  },
+  {
+    "path": "/adm/daemons/emoted",
+    "type": "daemon",
+    "functions": [
+      "create",
+      "delete_emote",
+      "do_emote",
+      "query_emote",
+      "query_save_file",
+      "remove",
+      "set_emote"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "F_CLEAN_UP",
+      "F_SAVE"
+    ]
+  },
+  {
+    "path": "/adm/daemons/natured",
+    "type": "daemon",
+    "functions": [
+      "create",
+      "game_time",
+      "init_day_phase",
+      "outdoor_room_description",
+      "remove",
+      "update_day_phase"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/adm/intermud/i2d",
+    "type": "other",
+    "functions": [
+      "create",
+      "query_address",
+      "query_mudinfo",
+      "query_mudlist",
+      "query_save_file",
+      "query_udp_port",
+      "read_callback",
+      "remove",
+      "resolve_callback",
+      "send_event",
+      "set_mud_alias",
+      "set_mudinfo",
+      "startup",
+      "update"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "F_DBASE",
+      "F_SAVE"
+    ]
+  },
+  {
+    "path": "/adm/simul_efun/object",
+    "type": "other",
+    "functions": [
+      "destruct",
+      "file_owner",
+      "getoid"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/cmds/std/acquire",
+    "type": "command",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/acupuncture",
+    "type": "command",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/backstab",
+    "type": "command",
+    "functions": [
+      "create",
+      "do_backstab",
+      "halt_backstab",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "skill"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/berserk",
+    "type": "command",
+    "functions": [
+      "create",
+      "do_berserk",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "skill"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/buy",
+    "type": "command",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/cast",
+    "type": "command",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/close",
+    "type": "command",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/conjure",
+    "type": "command",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/drink",
+    "type": "command",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/drop",
+    "type": "command",
+    "functions": [
+      "create",
+      "do_drop",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/eat",
+    "type": "command",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/exert",
+    "type": "command",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/fight",
+    "type": "command",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/fill",
+    "type": "command",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/get",
+    "type": "command",
+    "functions": [
+      "create",
+      "do_get",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/go",
+    "type": "command",
+    "functions": [
+      "create",
+      "do_go",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/halt",
+    "type": "command",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/identify",
+    "type": "command",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/kill",
+    "type": "command",
+    "functions": [
+      "do_kill",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/perform",
+    "type": "command",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/remove",
+    "type": "command",
+    "functions": [
+      "do_remove",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "armor",
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/search",
+    "type": "command",
+    "functions": [
+      "find_drug",
+      "help",
+      "main",
+      "searching"
+    ],
+    "combat_surface": [
+      "busy",
+      "skill"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/sneak",
+    "type": "command",
+    "functions": [
+      "create",
+      "do_sneak",
+      "halt_sneak",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy",
+      "skill"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/steal",
+    "type": "command",
+    "functions": [
+      "compelete_steal",
+      "create",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "skill"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/study",
+    "type": "command",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/team",
+    "type": "command",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/wear",
+    "type": "command",
+    "functions": [
+      "do_wear",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "armor",
+      "busy"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/std/wield",
+    "type": "command",
+    "functions": [
+      "do_wield",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy",
+      "weapon"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/usr/disable",
+    "type": "command",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy",
+      "skill"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/usr/enable",
+    "type": "command",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/usr/estimate",
+    "type": "command",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/usr/quit",
+    "type": "command",
+    "functions": [
+      "create",
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "F_DBASE",
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/usr/skills",
+    "type": "command",
+    "functions": [
+      "help",
+      "main",
+      "skill_level"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/cmds/wiz/analyze",
+    "type": "command",
+    "functions": [
+      "help",
+      "main"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "inherits": [
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/alchemist",
+    "type": "npc",
+    "functions": [
+      "accept_apprentice",
+      "acquire_skill",
+      "create",
+      "init_apprentice",
+      "set_flag"
+    ],
+    "combat_surface": [
+      "armor",
+      "skill",
+      "weapon"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/child",
+    "type": "npc",
+    "functions": [
+      "accept_object",
+      "create",
+      "do_follow",
+      "exchange",
+      "give_comb",
+      "init",
+      "relay_say",
+      "set_fon_temp",
+      "timeto_eat"
+    ],
+    "combat_surface": [
+      "armor",
+      "skill",
+      "weapon"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/child1",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "create",
+      "notify_stat"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/child2",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "create",
+      "notify_stat"
+    ],
+    "combat_surface": [
+      "weapon"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/child3",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "create",
+      "notify_stat"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/child4",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "create",
+      "notify_stat"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/gammer",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "accept_object",
+      "ask_join",
+      "create",
+      "give_coin",
+      "init",
+      "relay_say"
+    ],
+    "combat_surface": [
+      "armor",
+      "skill",
+      "weapon"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/garrison",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "create",
+      "init",
+      "intercept"
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "inherits": [
+      "F_SOLDIER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/girl",
+    "type": "npc",
+    "functions": [
+      "accept_object",
+      "attack_intruder",
+      "create",
+      "drop_invitation",
+      "init",
+      "listen_request",
+      "relay_emote",
+      "relay_say"
+    ],
+    "combat_surface": [
+      "armor",
+      "attack",
+      "skill",
+      "weapon"
+    ],
+    "inherits": [
+      "F_FIGHTER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/guard",
+    "type": "npc",
+    "functions": [
+      "accept_object",
+      "create",
+      "do_go",
+      "greet_visitor",
+      "init"
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/herbalist",
+    "type": "npc",
+    "functions": [
+      "create",
+      "init"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "F_VILLAGER",
+      "F_VENDOR"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/innkeeper",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "accept_kill",
+      "close_inn",
+      "create",
+      "init",
+      "open_inn",
+      "relay_emote"
+    ],
+    "combat_surface": [
+      "attack"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/junkman",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "accept_object",
+      "create",
+      "junk_ob"
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/lieutenant",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "create",
+      "init",
+      "intercept"
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "inherits": [
+      "F_SOLDIER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/miller",
+    "type": "npc",
+    "functions": [
+      "create"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/obj/syndicator",
+    "type": "npc",
+    "functions": [
+      "create",
+      "inflict_damage"
+    ],
+    "combat_surface": [
+      "damage"
+    ],
+    "inherits": [
+      "F_DAGGER",
+      "F_UNIQUE"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/oldman",
+    "type": "npc",
+    "functions": [
+      "create",
+      "notify_stat"
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "inherits": [
+      "F_BANDIT"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/patrol",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "create",
+      "protect"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/smith",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "accept_object",
+      "create",
+      "init"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "F_VILLAGER",
+      "F_VENDOR"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/teacher",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "accept_info",
+      "acquire_skill",
+      "cancel_pick",
+      "create",
+      "do_sit",
+      "init",
+      "make_new_scholar",
+      "pick_student",
+      "rank",
+      "relay_say",
+      "teach_literate"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/woman",
+    "type": "npc",
+    "functions": [
+      "create"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/d/snow/npc/yu",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "accept_object",
+      "create",
+      "init"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "F_VILLAGER",
+      "F_VENDOR"
+    ]
+  },
+  {
+    "path": "/d/snow/skill/dragon_force",
+    "type": "skill",
+    "functions": [
+      "create",
+      "do_exercise",
+      "exert_function",
+      "halt_exercise",
+      "skill_advanced",
+      "skill_improved",
+      "valid_enable"
+    ],
+    "combat_surface": [
+      "busy",
+      "skill"
+    ],
+    "inherits": [
+      "SKILL"
+    ]
+  },
+  {
+    "path": "/daemon/condition/drunk",
+    "type": "daemon",
+    "functions": [
+      "apply_drunk",
+      "condition_update",
+      "create"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "inherits": [
+      "CONDITION"
+    ]
+  },
+  {
+    "path": "/daemon/misc/traveler",
+    "type": "daemon",
+    "functions": [
+      "create",
+      "query_save_file",
+      "register",
+      "remove",
+      "request_travel_site",
+      "unregister"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "F_CLEAN_UP",
+      "F_SAVE"
+    ]
+  },
+  {
+    "path": "/feature/char/action",
+    "type": "feature",
+    "functions": [
+      "continue_action",
+      "interrupt",
+      "is_busy",
+      "query_busy",
+      "start_busy"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/feature/char/attack",
+    "type": "feature",
+    "functions": [
+      "activate_guard",
+      "add_guard",
+      "attack",
+      "charge_ob",
+      "clean_up_enemy",
+      "fight_ob",
+      "guard_ob",
+      "init",
+      "is_fighting",
+      "is_killing",
+      "kill_ob",
+      "query_charging",
+      "query_guarding",
+      "query_killer",
+      "query_opponent",
+      "remove_all_enemy",
+      "remove_all_killer",
+      "remove_charge",
+      "remove_enemy",
+      "remove_guard",
+      "remove_killer",
+      "select_opponent",
+      "wake_guard"
+    ],
+    "combat_surface": [
+      "attack"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/feature/char/combat",
+    "type": "feature",
+    "functions": [
+      "absorb",
+      "add_combat_message",
+      "defend",
+      "get_combat_message",
+      "inflict_damage",
+      "query_ability",
+      "query_attr",
+      "query_strength",
+      "receive_damage",
+      "resist_damage",
+      "set_combat_message"
+    ],
+    "combat_surface": [
+      "damage",
+      "defense",
+      "skill"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/feature/char/condition",
+    "type": "feature",
+    "functions": [
+      "clear_condition",
+      "delete_condition",
+      "query_condition",
+      "restore_condition",
+      "set_condition",
+      "update_condition"
+    ],
+    "combat_surface": [
+      "condition"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/feature/char/skill",
+    "type": "feature",
+    "functions": [
+      "abandon_skill",
+      "advance_skill",
+      "delete_skill",
+      "improve_skill",
+      "map_skill",
+      "query_best_skill",
+      "query_learn",
+      "query_learned",
+      "query_skill",
+      "query_skill_flags",
+      "query_skill_gain",
+      "query_skill_map",
+      "query_skill_map_num",
+      "query_skills",
+      "reset_skill_gain",
+      "set_learn",
+      "set_skill",
+      "skill_mapped"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/feature/equip",
+    "type": "feature",
+    "functions": [
+      "apply",
+      "attack_with",
+      "inflict_damage",
+      "init_damage",
+      "unapply",
+      "unequip",
+      "wear",
+      "wield"
+    ],
+    "combat_surface": [
+      "armor",
+      "damage",
+      "skill",
+      "weapon"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/feature/move",
+    "type": "feature",
+    "functions": [
+      "add_encumbrance",
+      "inventory_burning",
+      "move",
+      "query_encumbrance",
+      "query_max_encumbrance",
+      "query_max_inventory",
+      "query_weight",
+      "receive_object",
+      "remove",
+      "set_max_encumbrance",
+      "set_max_inventory",
+      "set_weight",
+      "weight"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/feature/npc/bandit",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "accept_kill",
+      "do_chat",
+      "is_fighting",
+      "kill_ob",
+      "name"
+    ],
+    "combat_surface": [
+      "attack"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/feature/npc/fighter",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "accept_kill",
+      "accept_negotiation",
+      "do_chat",
+      "is_fighting",
+      "kill_ob",
+      "name",
+      "query_level",
+      "rank"
+    ],
+    "combat_surface": [
+      "attack"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/feature/npc/scholar",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "accept_kill",
+      "accept_negotiation",
+      "do_chat",
+      "is_fighting",
+      "kill_ob",
+      "name",
+      "query_level",
+      "rank",
+      "win_fight"
+    ],
+    "combat_surface": [
+      "attack"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/feature/npc/soldier",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "accept_kill",
+      "do_chat",
+      "is_fighting",
+      "kill_ob",
+      "name",
+      "soldier_assist"
+    ],
+    "combat_surface": [
+      "attack"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/feature/study",
+    "type": "feature",
+    "functions": [
+      "halt_study",
+      "study_content",
+      "study_ob"
+    ],
+    "combat_surface": [
+      "busy",
+      "skill"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/include/skill.h",
+    "type": "include",
+    "functions": [
+      "improve_skill",
+      "query_skill",
+      "skill_mapped"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/obj/area/man",
+    "type": "item",
+    "functions": [
+      "create"
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/obj/area/traveller",
+    "type": "item",
+    "functions": [
+      "accept_fight",
+      "create"
+    ],
+    "combat_surface": [
+      "armor",
+      "weapon"
+    ],
+    "inherits": [
+      "F_VILLAGER"
+    ]
+  },
+  {
+    "path": "/obj/area/vagabond",
+    "type": "item",
+    "functions": [
+      "create"
+    ],
+    "combat_surface": [
+      "weapon"
+    ],
+    "inherits": [
+      "F_BANDIT"
+    ]
+  },
+  {
+    "path": "/obj/http",
+    "type": "item",
+    "functions": [
+      "create",
+      "http_timeout",
+      "logon",
+      "net_dead",
+      "process_input",
+      "remove"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": []
+  },
+  {
+    "path": "/obj/magic",
+    "type": "item",
+    "functions": [
+      "create"
+    ],
+    "combat_surface": [
+      "attack"
+    ],
+    "inherits": [
+      "ITEM"
+    ]
+  },
+  {
+    "path": "/obj/npc/demogorgon",
+    "type": "npc",
+    "functions": [
+      "countdown",
+      "create",
+      "die",
+      "do_shutdown",
+      "start_shutdown"
+    ],
+    "combat_surface": [
+      "death"
+    ],
+    "inherits": [
+      "NPC"
+    ]
+  },
+  {
+    "path": "/obj/npc/garrison",
+    "type": "npc",
+    "functions": [
+      "accept_fight",
+      "create"
+    ],
+    "combat_surface": [
+      "weapon"
+    ],
+    "inherits": [
+      "F_SOLDIER"
+    ]
+  },
+  {
+    "path": "/obj/user",
+    "type": "runtime",
+    "functions": [
+      "add",
+      "advance_skill",
+      "create",
+      "delete",
+      "heart_beat",
+      "improve_skill",
+      "link",
+      "lose_fight",
+      "move_or_destruct",
+      "net_dead",
+      "process_input",
+      "query",
+      "query_save_file",
+      "reconnect",
+      "reset",
+      "save",
+      "set",
+      "set_attr",
+      "set_learn",
+      "set_link",
+      "set_skill",
+      "set_stat_maximum",
+      "set_terminal_type",
+      "setup",
+      "user_dump",
+      "win_fight"
+    ],
+    "combat_surface": [
+      "busy",
+      "skill"
+    ],
+    "inherits": [
+      "CHARACTER",
+      "F_AUTOLOAD",
+      "F_EDIT",
+      "F_FLAG",
+      "F_INPUT",
+      "F_MORE",
+      "F_SAVE"
+    ]
+  },
+  {
+    "path": "/std/char",
+    "type": "skill",
+    "functions": [
+      "die",
+      "heart_beat",
+      "id",
+      "is_character",
+      "long",
+      "lose_fight",
+      "move",
+      "name",
+      "notify_stat",
+      "query_id",
+      "rank",
+      "receive_object",
+      "revive",
+      "setup",
+      "short",
+      "unconcious",
+      "visible"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "condition",
+      "death"
+    ],
+    "inherits": [
+      "F_ACTION",
+      "F_ATTACK",
+      "F_ATTRIBUTE",
+      "F_COMBAT",
+      "F_COMMAND",
+      "F_CONDITION",
+      "F_DBASE",
+      "F_FINANCE",
+      "F_MESSAGE",
+      "F_RELATION",
+      "F_MOVE",
+      "F_NAME",
+      "F_SCORE",
+      "F_SKILL",
+      "F_STATISTIC",
+      "F_TEAM"
+    ]
+  },
+  {
+    "path": "/std/char/npc",
+    "type": "prototype",
+    "functions": [
+      "activate_guard",
+      "acupuncture_cauterization",
+      "carry_money",
+      "carry_object",
+      "cast_spell",
+      "chat",
+      "conjure_magic",
+      "die",
+      "do_chat",
+      "do_heal",
+      "eval_chat",
+      "exert_function",
+      "gain_score",
+      "heart_beat",
+      "improve_skill",
+      "is_chatting",
+      "is_npc",
+      "perform_action",
+      "random_move"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "death",
+      "skill"
+    ],
+    "inherits": [
+      "CHARACTER",
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/std/race/humanoid",
+    "type": "prototype",
+    "functions": [
+      "advance_level",
+      "create",
+      "initialize",
+      "query_action",
+      "query_appearance",
+      "setup",
+      "statistic_destroyed",
+      "statistic_exhausted",
+      "valid_wear",
+      "valid_wield"
+    ],
+    "combat_surface": [
+      "armor",
+      "death",
+      "weapon"
+    ],
+    "inherits": [
+      "F_DBASE"
+    ]
+  },
+  {
+    "path": "/std/room",
+    "type": "prototype",
+    "functions": [
+      "check_door",
+      "clean_up",
+      "close_door",
+      "create_door",
+      "do_look",
+      "extra_room_desc",
+      "init",
+      "lock_door",
+      "look_door",
+      "make_inventory",
+      "open_door",
+      "query_door",
+      "query_doors",
+      "receive_object",
+      "remove",
+      "reset",
+      "set_door",
+      "setup",
+      "unlock_door",
+      "valid_leave"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "F_DBASE",
+      "F_CLEAN_UP"
+    ]
+  },
+  {
+    "path": "/std/room/hockshop",
+    "type": "prototype",
+    "functions": [
+      "do_buy",
+      "do_list",
+      "do_pawn",
+      "do_retrieve",
+      "do_sell",
+      "do_store",
+      "do_value",
+      "init",
+      "pay_player",
+      "remove",
+      "sell_item",
+      "setup",
+      "value_string"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "inherits": [
+      "ROOM"
+    ]
+  },
+  {
+    "path": "/std/room/journey",
+    "type": "prototype",
+    "functions": [
+      "arrive_destination",
+      "check_arrive",
+      "check_journey",
+      "confirm_journey",
+      "do_look",
+      "do_return",
+      "init",
+      "receive_object"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "ROOM"
+    ]
+  },
+  {
+    "path": "/std/room/temple",
+    "type": "prototype",
+    "functions": [
+      "do_enter",
+      "do_look",
+      "extra_room_desc",
+      "init",
+      "setup"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "inherits": [
+      "ROOM"
+    ]
+  }
+]

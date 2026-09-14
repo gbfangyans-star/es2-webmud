@@ -1,0 +1,7 @@
+v3.20.21
+- Right-side local map now receives the exact current LPC room path from silent webhud, instead of guessing from duplicated room titles.
+- Ambiguous duplicate room names no longer fall back to the first matching room, preventing map jumps.
+- Browser local map merges an explicit CUSTOM room graph so Old Pine, Zhenwu Camp, and home rooms are recognized.
+- Custom graph includes 33 room nodes and 67 directional edges, including Snow south-gate bridge edges.
+- recall home verified as a direct private-home teleport command; it creates the player's private home hall, binds ownership, and moves the player directly there.
+- Combat/busy safety restrictions remain intentionally in force for recall.

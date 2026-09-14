@@ -1,0 +1,79 @@
+[
+  {
+    "path": "/d/snow/obj/thing",
+    "name": "測試書",
+    "ids": [
+      "test book",
+      "book"
+    ],
+    "value": null,
+    "weight": 1000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {
+      "literate": 1
+    },
+    "study_content": {
+      "literate": 10
+    },
+    "inherits": [
+      "ITEM",
+      "F_STUDY"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/armor/cloth",
+    "name": "布衣",
+    "ids": [
+      "cloth"
+    ],
+    "value": 0,
+    "weight": 1000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_CLOTH"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/obj/armor/fur_hat",
+    "name": "毛皮帽",
+    "ids": [
+      "fur hat",
+      "hat"
+    ],
+    "value": 50,
+    "weight": 1000,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "F_HEAD_EQ"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  },
+  {
+    "path": "/std/item/container",
+    "name": null,
+    "ids": [],
+    "value": null,
+    "weight": null,
+    "material": null,
+    "weapon_type": null,
+    "required_skills": {},
+    "study_content": {},
+    "inherits": [
+      "ITEM"
+    ],
+    "runtime_traits": [],
+    "manual_review": []
+  }
+]

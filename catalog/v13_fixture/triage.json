@@ -1,0 +1,93 @@
+{
+  "ranked": [
+    {
+      "path": "/d/snow/npc/vendor_test",
+      "score": 16,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 3
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        },
+        {
+          "kind": "callouts",
+          "count": 1
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/d/snow/npc/vendor_test",
+            "kind": "skill_map",
+            "name": "test-art",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/npc/x",
+      "score": 11,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 2
+        },
+        {
+          "kind": "actions",
+          "count": 1
+        },
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/d/snow/npc/x",
+            "kind": "skill_map",
+            "name": "test-art",
+            "matches": []
+          }
+        }
+      ]
+    },
+    {
+      "path": "/feature/weapon/sword",
+      "score": 4,
+      "reasons": [
+        {
+          "kind": "unresolved_dependency",
+          "detail": {
+            "from": "/feature/weapon/sword",
+            "kind": "dynamic_skill_dispatch",
+            "expression": "skill_type",
+            "method": "attack_using"
+          }
+        }
+      ]
+    },
+    {
+      "path": "/d/snow/doorroom",
+      "score": 3,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        }
+      ]
+    },
+    {
+      "path": "/feature/npc/vendor",
+      "score": 3,
+      "reasons": [
+        {
+          "kind": "manual_review",
+          "count": 1
+        }
+      ]
+    }
+  ],
+  "stats": {
+    "entities": 5,
+    "max_score": 16
+  }
+}

@@ -1,0 +1,87 @@
+[
+  {
+    "path": "/d/snow/npc/x",
+    "type": "npc",
+    "name": "測試者",
+    "equipment_hooks": [
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {
+      "set_level": 20
+    },
+    "manual_review": [
+      "custom_action",
+      "vendor_logic"
+    ]
+  },
+  {
+    "path": "/feature/weapon/sword",
+    "type": "feature",
+    "name": null,
+    "equipment_hooks": [
+      "wield"
+    ],
+    "wear_as": null,
+    "armor_apply": [],
+    "apply_mappings": [],
+    "numeric_calls": {},
+    "manual_review": []
+  },
+  {
+    "path": "/obj/armor/cloth",
+    "type": "item",
+    "name": "布衣",
+    "equipment_hooks": [],
+    "wear_as": "cloth",
+    "armor_apply": [
+      {
+        "slot": "cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/cloth",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "manual_review": []
+  },
+  {
+    "path": "/obj/armor/fur_hat",
+    "type": "item",
+    "name": "毛皮帽",
+    "equipment_hooks": [],
+    "wear_as": "head_eq",
+    "armor_apply": [
+      {
+        "slot": "head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "apply_mappings": [
+      {
+        "key": "apply_armor/head_eq",
+        "values": {
+          "armor": 1
+        }
+      }
+    ],
+    "numeric_calls": {
+      "set_weight": 1000
+    },
+    "manual_review": []
+  }
+]

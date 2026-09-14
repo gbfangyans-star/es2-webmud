@@ -1,0 +1,10 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>ES2 Content Workbench</title><link rel="stylesheet" href="/styles.css"></head><body>
+<header><h1>ES2 WebMUD · 內容工作台</h1><a href="/">回遊戲</a><span style="margin-left:auto"><a href="/admin.html">Source Editor</a> · <a href="/explorer.html">Explorer</a> · <a href="/audit.html">Audit</a></span></header>
+<main class="workbench-wrap">
+<section class="card"><div class="toolbar"><b>Canonical 內容準備狀態</b><button id="reload">重新載入</button></div><div id="summary" class="metric-grid"></div><p class="muted">此頁只整理 canonical catalog。它不新增、不猜測、不覆蓋任何遊戲內容。</p></section>
+<section class="workbench-grid">
+<div class="card"><h2>manual_review 佇列</h2><div class="toolbar"><select id="reason"><option value="">全部原因</option></select><select id="type"><option value="">全部分類</option></select><input id="q" placeholder="搜尋 path / 名稱 / ID"></div><div id="reviewCount" class="muted"></div><div id="reviewList" class="queue"></div></div>
+<div class="card"><h2>檔案檢視</h2><div id="entityMeta" class="muted">從左側選一筆。</div><div id="relations" class="relation-list"></div><div class="toolbar"><button id="openEditor" disabled>在 Source Editor 開啟</button><button id="openExplorer" disabled>在 Explorer 開啟</button></div><pre id="sourcePreview" class="source-preview"></pre></div>
+</section>
+<section class="workbench-grid"><div class="card"><h2>高優先人工審計</h2><div id="triage"></div></div><div class="card"><h2>依賴熱點</h2><div id="hotspots"></div></div></section>
+</main><script src="/workbench.js"></script></body></html>

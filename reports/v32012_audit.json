@@ -1,0 +1,14 @@
+{
+  "version": "3.20.12",
+  "checks": {
+    "chat_level_gate_removed_only_for_chat": true,
+    "woochan_food_zero_zero": true,
+    "woochan_hunger_does_not_block_heal": true,
+    "score_25_cells": true,
+    "hud_one_second_poll": true,
+    "hud_no_prompt_dependency": true,
+    "hud_immediate_after_game_text": true
+  },
+  "failures": [],
+  "passed": true
+}

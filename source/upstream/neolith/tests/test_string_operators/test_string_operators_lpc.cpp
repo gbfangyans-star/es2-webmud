@@ -1,0 +1,340 @@
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif /* HAVE_CONFIG_H */
+
+#include "std.h"
+#include "rc.h"
+#include "interpret.h"
+#include "lpc/array.h"
+#include "lpc/compiler.h"
+#include "lpc/object.h"
+#include "lpc/operator.h"
+#include "lpc/program.h"
+#include "simulate.h"
+
+#include <gtest/gtest.h>
+#include <filesystem>
+
+class StringOperatorsLPCTest : public ::testing::Test {
+protected:
+    std::filesystem::path previous_cwd_;
+    svalue_t *saved_sp_ = nullptr;
+
+    void SetUp() override {
+        // init testing environment
+        namespace fs = std::filesystem;
+        previous_cwd_ = fs::current_path();
+        setlocale(LC_ALL, PLATFORM_UTF8_LOCALE);
+        debug_set_log_with_date (false);
+        debug_message("[ SETUP    ] CTEST_FULL_OUTPUT");
+
+        // setup stem
+        fs::path config_dir = fs::current_path();
+        if (!fs::exists(config_dir / "m3.conf"))
+            fs::current_path(config_dir.parent_path()); // change to parent if config not found in current dir
+        init_stem(3, (unsigned long)-1, "m3.conf");
+        MAIN_OPTION(pedantic) = true; // enable pedantic mode for stricter checks
+
+        // setup runtime / simulate
+        init_config(MAIN_OPTION(config_file));
+        init_strings(8192, 1000000);
+        init_lpc_compiler(CONFIG_INT(__MAX_LOCAL_VARIABLES__), CONFIG_STR(__INCLUDE_DIRS__));
+        setup_simulate();
+        saved_sp_ = sp; // we use a local svalue stack in tests, so save the original sp to restore later
+
+        init_master(CONFIG_STR(__MASTER_FILE__), NULL);
+        ASSERT_NE(master_ob, nullptr) << "master_ob is null after init_master().";
+    }
+
+    void TearDown() override {
+        namespace fs = std::filesystem;
+        sp = saved_sp_; // restore original sp in case tests modified it
+        tear_down_simulate();
+        deinit_lpc_compiler();
+        deinit_strings();
+        deinit_config();
+        fs::current_path(previous_cwd_);
+    }
+
+    object_t *load_inline_object(const char *name, const char *code) {
+        current_object = master_ob;
+        object_t *obj = load_object(name, code);
+        EXPECT_NE(obj, nullptr) << "Failed to load inline LPC object: " << name;
+        return obj;
+    }
+
+    lpc::svalue call_noarg(object_t *obj, const char *method) {
+        int index = 0;
+        int fio = 0;
+        int vio = 0;
+        lpc::svalue ret;
+
+        program_t *found_prog = find_function(obj->prog, findstring(method, NULL), &index, &fio, &vio);
+        EXPECT_NE(found_prog, nullptr) << "find_function failed for method: " << method;
+
+        if (found_prog) {
+            int runtime_index = found_prog->function_table[index].runtime_index + fio;
+            object_t* saved_current_object = current_object;
+            current_object = obj;
+            int saved_variable_index_offset = variable_index_offset;
+            variable_index_offset = vio;
+            call_function(obj->prog, runtime_index, 0, ret.raw());
+            variable_index_offset = saved_variable_index_offset;
+            current_object = saved_current_object;
+        }
+        return ret;
+    }
+};
+
+TEST_F(StringOperatorsLPCTest, LpcConcatReturnsExpectedString) {
+    const char *code = R"(
+        string run_test() {
+          return "Hello" + " " + "World";
+        }
+    )";
+
+    object_t *obj = load_inline_object("test_lpc_concat.c", code);
+    ASSERT_NE(obj, nullptr);
+
+    lpc::svalue ret = call_noarg(obj, "run_test");
+    auto ret_view = ret.view();
+    ASSERT_TRUE(ret_view.is_string());
+    ASSERT_EQ(ret_view.length(), 11u);
+    ASSERT_EQ(memcmp(ret_view.c_str(), "Hello World", 11), 0);
+
+    destruct_object(obj);
+}
+
+TEST_F(StringOperatorsLPCTest, LpcEqNeOnConstantAndConcat) {
+    const char *code = R"(
+        int test_eq() {
+          return ("ab" == ("a" + "b"));
+        }
+        int test_ne() {
+          return ("ab" != "abc");
+        }
+    )";
+
+    object_t *obj = load_inline_object("test_lpc_eq_ne.c", code);
+    ASSERT_NE(obj, nullptr);
+
+    lpc::svalue eq_ret = call_noarg(obj, "test_eq");
+    auto eq_ret_view = eq_ret.view();
+    ASSERT_TRUE(eq_ret_view.is_number());
+    ASSERT_EQ(eq_ret_view.number(), 1);
+
+    lpc::svalue ne_ret = call_noarg(obj, "test_ne");
+    auto ne_ret_view = ne_ret.view();
+    ASSERT_TRUE(ne_ret_view.is_number());
+    ASSERT_EQ(ne_ret_view.number(), 1);
+
+    destruct_object(obj);
+}
+
+TEST_F(StringOperatorsLPCTest, LpcRangeSlicesExpectedBytes) {
+    const char *code = R"(
+        string run_test() {
+          string s = "0123456789";
+          return s[2..5];
+        }
+    )";
+
+    object_t *obj = load_inline_object("test_lpc_range.c", code);
+    ASSERT_NE(obj, nullptr);
+
+    lpc::svalue ret = call_noarg(obj, "run_test");
+    auto ret_view = ret.view();
+    ASSERT_TRUE(ret_view.is_string());
+    ASSERT_EQ(ret_view.length(), 4u);
+    ASSERT_EQ(memcmp(ret_view.c_str(), "2345", 4), 0);
+
+    destruct_object(obj);
+}
+
+TEST_F(StringOperatorsLPCTest, EqNeConstantVsMallocDifferentLengths) {
+    svalue_t stack[2] = {};
+    auto setup_operands = [&]() {
+        free_svalue(&stack[0], "EqNeConstantVsMallocDifferentLengths");
+        lpc::svalue_view::from(&stack[0]).set_constant_string("ab");
+        free_svalue(&stack[1], "EqNeConstantVsMallocDifferentLengths");
+        lpc::svalue_view::from(&stack[1]).set_malloc_string("abc");
+        sp = &stack[1];
+    };
+
+    setup_operands();
+
+    f_eq();
+    lpc::svalue_view result_view = lpc::svalue_view::from(sp);
+    ASSERT_EQ(sp, &stack[0]);
+    ASSERT_TRUE(result_view.is_number());
+    ASSERT_EQ(result_view.number(), 0);
+
+    setup_operands();
+
+    f_ne();
+    result_view = lpc::svalue_view::from(sp);
+    ASSERT_EQ(sp, &stack[0]);
+    ASSERT_TRUE(result_view.is_number());
+    ASSERT_EQ(result_view.number(), 1);
+}
+
+TEST_F(StringOperatorsLPCTest, EqNeMallocVsConstantDifferentLengths) {
+    svalue_t stack[2] = {};
+    auto setup_operands = [&]() {
+        free_svalue(&stack[0], "EqNeMallocVsConstantDifferentLengths");
+        lpc::svalue_view::from(&stack[0]).set_malloc_string("abc");
+        free_svalue(&stack[1], "EqNeMallocVsConstantDifferentLengths");
+        lpc::svalue_view::from(&stack[1]).set_constant_string("ab");
+        sp = &stack[1];
+    };
+
+    setup_operands();
+
+    f_eq();
+    lpc::svalue_view result_view = lpc::svalue_view::from(sp);
+    ASSERT_EQ(sp, &stack[0]);
+    ASSERT_TRUE(result_view.is_number());
+    ASSERT_EQ(result_view.number(), 0);
+
+    setup_operands();
+
+    f_ne();
+    result_view = lpc::svalue_view::from(sp);
+    ASSERT_EQ(sp, &stack[0]);
+    ASSERT_TRUE(result_view.is_number());
+    ASSERT_EQ(result_view.number(), 1);
+}
+
+TEST_F(StringOperatorsLPCTest, EqNeConstantVsMallocSameLength) {
+    svalue_t stack[2] = {};
+    auto setup_operands = [&]() {
+        free_svalue(&stack[0], "EqNeConstantVsMallocSameLength");
+        lpc::svalue_view::from(&stack[0]).set_constant_string("abc");
+        free_svalue(&stack[1], "EqNeConstantVsMallocSameLength");
+        lpc::svalue_view::from(&stack[1]).set_malloc_string("abc");
+        sp = &stack[1];
+    };
+
+    setup_operands();
+
+    f_eq();
+    lpc::svalue_view result_view = lpc::svalue_view::from(sp);
+    ASSERT_EQ(sp, &stack[0]);
+    ASSERT_TRUE(result_view.is_number());
+    ASSERT_EQ(result_view.number(), 1);
+
+    setup_operands();
+
+    f_ne();
+    result_view = lpc::svalue_view::from(sp);
+    ASSERT_EQ(sp, &stack[0]);
+    ASSERT_TRUE(result_view.is_number());
+    ASSERT_EQ(result_view.number(), 0);
+}
+
+TEST_F(StringOperatorsLPCTest, EqNeConstantVsMallocSameLengthDifferentBytes) {
+    svalue_t stack[2] = {};
+    auto setup_operands = [&]() {
+        free_svalue(&stack[0], "EqNeConstantVsMallocSameLengthDifferentBytes");
+        lpc::svalue_view::from(&stack[0]).set_constant_string("abc");
+        free_svalue(&stack[1], "EqNeConstantVsMallocSameLengthDifferentBytes");
+        lpc::svalue_view::from(&stack[1]).set_malloc_string("abd");
+        sp = &stack[1];
+    };
+
+    setup_operands();
+
+    f_eq();
+    lpc::svalue_view result_view = lpc::svalue_view::from(sp);
+    ASSERT_EQ(sp, &stack[0]);
+    ASSERT_TRUE(result_view.is_number());
+    ASSERT_EQ(result_view.number(), 0);
+
+    setup_operands();
+
+    f_ne();
+    result_view = lpc::svalue_view::from(sp);
+    ASSERT_EQ(sp, &stack[0]);
+    ASSERT_TRUE(result_view.is_number());
+    ASSERT_EQ(result_view.number(), 1);
+}
+
+TEST_F(StringOperatorsLPCTest, LpcSortArrayOrdersEmbeddedNulByByteSpan) {
+    const char *code = R"(
+        mixed *run_test() {
+            string b = "A\000";
+            string c = "A\000A";
+            string a = "A\000B";
+            return sort_array(({ a, b, c }), 1);
+        }
+    )";
+
+    object_t *obj = load_inline_object("test_lpc_sort_array_embedded_nul.c", code);
+    ASSERT_NE(obj, nullptr);
+
+    lpc::svalue ret = call_noarg(obj, "run_test");
+    auto ret_view = ret.view();
+    ASSERT_TRUE(ret_view.is_array());
+
+    array_t *arr = ret.raw()->u.arr;
+    ASSERT_NE(arr, nullptr);
+    ASSERT_EQ(arr->size, 3);
+
+    auto v0 = lpc::svalue_view::from(&arr->item[0]);
+    auto v1 = lpc::svalue_view::from(&arr->item[1]);
+    auto v2 = lpc::svalue_view::from(&arr->item[2]);
+
+    ASSERT_TRUE(v0.is_string());
+    ASSERT_TRUE(v1.is_string());
+    ASSERT_TRUE(v2.is_string());
+
+    ASSERT_EQ(v0.length(), 2u);
+    ASSERT_EQ(v1.length(), 3u);
+    ASSERT_EQ(v2.length(), 3u);
+
+    ASSERT_EQ(memcmp(v0.c_str(), "A\0", 2), 0);
+    ASSERT_EQ(memcmp(v1.c_str(), "A\0A", 3), 0);
+    ASSERT_EQ(memcmp(v2.c_str(), "A\0B", 3), 0);
+
+    destruct_object(obj);
+}
+
+TEST_F(StringOperatorsLPCTest, LpcSortArrayOrdersEmbeddedNulByByteSpanDescending) {
+    const char *code = R"(
+        mixed *run_test() {
+            string b = "A\000";
+            string c = "A\000A";
+            string a = "A\000B";
+            return sort_array(({ a, b, c }), -1);
+        }
+    )";
+
+    object_t *obj = load_inline_object("test_lpc_sort_array_embedded_nul_desc.c", code);
+    ASSERT_NE(obj, nullptr);
+
+    lpc::svalue ret = call_noarg(obj, "run_test");
+    auto ret_view = ret.view();
+    ASSERT_TRUE(ret_view.is_array());
+
+    array_t *arr = ret.raw()->u.arr;
+    ASSERT_NE(arr, nullptr);
+    ASSERT_EQ(arr->size, 3);
+
+    auto v0 = lpc::svalue_view::from(&arr->item[0]);
+    auto v1 = lpc::svalue_view::from(&arr->item[1]);
+    auto v2 = lpc::svalue_view::from(&arr->item[2]);
+
+    ASSERT_TRUE(v0.is_string());
+    ASSERT_TRUE(v1.is_string());
+    ASSERT_TRUE(v2.is_string());
+
+    ASSERT_EQ(v0.length(), 3u);
+    ASSERT_EQ(v1.length(), 3u);
+    ASSERT_EQ(v2.length(), 2u);
+
+    ASSERT_EQ(memcmp(v0.c_str(), "A\0B", 3), 0);
+    ASSERT_EQ(memcmp(v1.c_str(), "A\0A", 3), 0);
+    ASSERT_EQ(memcmp(v2.c_str(), "A\0", 2), 0);
+
+    destruct_object(obj);
+}

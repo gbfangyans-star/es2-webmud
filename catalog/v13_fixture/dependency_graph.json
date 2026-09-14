@@ -1,0 +1,156 @@
+{
+  "skill_registry": {
+    "sword-art": [
+      "/d/snow/skill/sword-art"
+    ]
+  },
+  "edges": [
+    {
+      "from": "/d/snow/npc/fighter_test",
+      "to": "/d/snow/skill/sword-art",
+      "kind": "skill_map",
+      "detail": {
+        "base": "sword",
+        "name": "sword-art"
+      }
+    },
+    {
+      "from": "/d/snow/npc/fighter_test",
+      "to": "/d/snow/skill/sword-art",
+      "kind": "skill_map",
+      "detail": {
+        "base": "parry",
+        "name": "sword-art"
+      }
+    }
+  ],
+  "unresolved": [
+    {
+      "from": "/d/snow/npc/vendor_test",
+      "kind": "skill_map",
+      "name": "test-art",
+      "matches": []
+    },
+    {
+      "from": "/d/snow/npc/x",
+      "kind": "skill_map",
+      "name": "test-art",
+      "matches": []
+    },
+    {
+      "from": "/feature/weapon/sword",
+      "kind": "dynamic_skill_dispatch",
+      "expression": "skill_type",
+      "method": "attack_using"
+    }
+  ],
+  "entities": {
+    "/d/snow/a": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/b": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/doorroom": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/fighter_test": {
+      "incoming": [],
+      "outgoing": [
+        {
+          "from": "/d/snow/npc/fighter_test",
+          "to": "/d/snow/skill/sword-art",
+          "kind": "skill_map",
+          "detail": {
+            "base": "sword",
+            "name": "sword-art"
+          }
+        },
+        {
+          "from": "/d/snow/npc/fighter_test",
+          "to": "/d/snow/skill/sword-art",
+          "kind": "skill_map",
+          "detail": {
+            "base": "parry",
+            "name": "sword-art"
+          }
+        }
+      ]
+    },
+    "/d/snow/npc/vendor_test": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/npc/x": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/obj/thing": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/d/snow/skill/sword-art": {
+      "incoming": [
+        {
+          "from": "/d/snow/npc/fighter_test",
+          "to": "/d/snow/skill/sword-art",
+          "kind": "skill_map",
+          "detail": {
+            "base": "sword",
+            "name": "sword-art"
+          }
+        },
+        {
+          "from": "/d/snow/npc/fighter_test",
+          "to": "/d/snow/skill/sword-art",
+          "kind": "skill_map",
+          "detail": {
+            "base": "parry",
+            "name": "sword-art"
+          }
+        }
+      ],
+      "outgoing": []
+    },
+    "/d/snow/skill/test-art": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/char/combat": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/npc/vendor": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/feature/weapon/sword": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/armor/cloth": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/obj/armor/fur_hat": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/char": {
+      "incoming": [],
+      "outgoing": []
+    },
+    "/std/item/container": {
+      "incoming": [],
+      "outgoing": []
+    }
+  },
+  "stats": {
+    "registered_names": 1,
+    "edges": 2,
+    "unresolved": 3
+  }
+}

@@ -1,0 +1,15 @@
+ES2 WebMUD v3.20.77 formal-source UI redesign build
+
+Base:
+  ES2_WebMUD_SourceOnly_v3.20.77_REAPPLIED_ARCH6_1(1).zip
+
+Preserved:
+  All current MUD server files, player/runtime data, wizard custom files, startup scripts, and formal ports.
+
+Changed only for this UI pass:
+  web/app.js
+  web/index.html
+  web/styles.css
+
+Formal startup/ports were intentionally left unchanged.
+This build keeps the current source archive intact and overlays only the Web UI renderer/layout.

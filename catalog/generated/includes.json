@@ -1,0 +1,594 @@
+[
+  {
+    "file": "include/action.h",
+    "path": "/include/action.h",
+    "type": "include",
+    "sha256": "25090f853a2a121fdae3c9dd975bf3d994d85ab360fbc530a28dd59bcdc52e63",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/ansi.h",
+    "path": "/include/ansi.h",
+    "type": "include",
+    "sha256": "67aeae44d9119550fe695cdbee60ea803a36c860aebcb9c5e5839cf9fb0ff621",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/attack.h",
+    "path": "/include/attack.h",
+    "type": "include",
+    "sha256": "2a7b94a4298c2a76c49aaafe722dd4bd2aba0d8024d69e2d44e503f0338f9131",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "is_fighting",
+      "is_killing",
+      "remove_all_enemy",
+      "remove_enemy",
+      "remove_killer"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "attack_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "include/attribute.h",
+    "path": "/include/attribute.h",
+    "type": "include",
+    "sha256": "6a72eb7a69f258dcf66ace01da1da497e7b42326f62090865f2f8a318963166c",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "init_attribute",
+      "query_attr",
+      "set_attr"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/char.h",
+    "path": "/include/char.h",
+    "type": "include",
+    "sha256": "44c39b4ccb55cd2fc104746f284c144bb42ba37f9412af816b8220cdd8c3336c",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "attack_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "include/combat.h",
+    "path": "/include/combat.h",
+    "type": "include",
+    "sha256": "5728060a5624afecfe09aeaab042ae74350adfe7247b96cce96b3653cff47aff",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "include/command.h",
+    "path": "/include/command.h",
+    "type": "include",
+    "sha256": "1c789feaeb9f87f3ccd9a31be5a9f36835b9ee574ed31d94cdcc2bd81139ab00",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/condition.h",
+    "path": "/include/condition.h",
+    "type": "include",
+    "sha256": "7660439e7b2b1d819a4e86bef852a70a8c8709f0aad1dd0324bc959c3fd53aec",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/daemon.h",
+    "path": "/include/daemon.h",
+    "type": "include",
+    "sha256": "b95c5a22411f90de17ef6f996f24b887f0b8c0083fc87e38180962d66b00b86a",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/dbase.h",
+    "path": "/include/dbase.h",
+    "type": "include",
+    "sha256": "d03793bc6dd0983d68a589d96221bdd020f5098969deee42506d47b63be67969",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "add",
+      "add_temp",
+      "delete",
+      "delete_temp",
+      "query",
+      "query_entire_dbase",
+      "query_entire_temp_dbase",
+      "query_temp",
+      "set",
+      "set_temp",
+      "set_temp_vector",
+      "set_vector"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/dbase_security.h",
+    "path": "/include/dbase_security.h",
+    "type": "include",
+    "sha256": "3612d1c416b3bfebe1a9595b2173d0150ea789c60cb925afd443c8ec35d3f88a",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "add",
+      "delete",
+      "query",
+      "set"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/explore.h",
+    "path": "/include/explore.h",
+    "type": "include",
+    "sha256": "6f8fbac850f55c517d79ba0df1bfc5de2dea09a0cafd95f365c310d0ef31e701",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/function.h",
+    "path": "/include/function.h",
+    "type": "include",
+    "sha256": "9f8714c1e4e123df46f5f46c4cb7a12e6661664d331fb2b6710af3390be7dacf",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/globals.h",
+    "path": "/include/globals.h",
+    "type": "include",
+    "sha256": "ddd9f46253cf8bc91268c8a97b545270b97a3602d940a1711176e7e9c68cd054",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "death_hooks": [
+      "corpse"
+    ],
+    "combat_message_traits": [
+      "combat_daemon"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "include/help.h",
+    "path": "/include/help.h",
+    "type": "include",
+    "sha256": "0353476b438b2e56229ad682454d651eced03b5356b9552d3d6b60ffa05d5735",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/html.h",
+    "path": "/include/html.h",
+    "type": "include",
+    "sha256": "80a46dd97aef1a4e7a9525490c6320c1016177a12d8a3c91eacf6e4206f36138",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/http.h",
+    "path": "/include/http.h",
+    "type": "include",
+    "sha256": "463f39d620dc0920e56f516c99e2c35261ca2e43191d624b4113e28fb3ba403e",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/intermud.h",
+    "path": "/include/intermud.h",
+    "type": "include",
+    "sha256": "9378fa6276fde6e06ab07428bd219aa8e9deb00fec6828b96cd9656b65457fdb",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "miss_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "include/localtime.h",
+    "path": "/include/localtime.h",
+    "type": "include",
+    "sha256": "258ccce57fd14a185ff26358509e0171b76d7d15dfb0ff7c0f7c64a97df86db0",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/login.h",
+    "path": "/include/login.h",
+    "type": "include",
+    "sha256": "e5fac18b7aa29301339de2222da72c29b641f734bd02ef35920b4fd8e9dcda7e",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/move.h",
+    "path": "/include/move.h",
+    "type": "include",
+    "sha256": "ceb71c6a04cad42b9f1b8a93013db9adaeb89454f4e8607debfd0a6816f717c0",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "move",
+      "over_encumbranced",
+      "query_encumbrance",
+      "query_max_encumbrance",
+      "query_weight",
+      "weight"
+    ],
+    "runtime_traits": [
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/mudlib.h",
+    "path": "/include/mudlib.h",
+    "type": "include",
+    "sha256": "a8e35f54d2edaa05ad312eef819b42261236294a50e4a242db6c94c4937b6750",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/name.h",
+    "path": "/include/name.h",
+    "type": "include",
+    "sha256": "3e9b51ee03394f4fd85c9927968e3002c8307dca475ba622cf0ae28a00447d69",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "id",
+      "long",
+      "name",
+      "short"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/npc.h",
+    "path": "/include/npc.h",
+    "type": "include",
+    "sha256": "58051b2ca2565966187d0f0896a5d7c51ccde9ec4af77294cd006963839cc8d9",
+    "inherits": [
+      "\"/std/char/npc.c\""
+    ],
+    "inherit_refs": [
+      {
+        "raw": "\"/std/char/npc.c\"",
+        "target": "/std/char/npc.c",
+        "kind": "literal"
+      }
+    ],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/obj.h",
+    "path": "/include/obj.h",
+    "type": "include",
+    "sha256": "142f7b1dbbd38f49ff5d3931df5b7ff95e2bda337c14eefbe94c16b9928d81e8",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/origin.h",
+    "path": "/include/origin.h",
+    "type": "include",
+    "sha256": "706d12c19e4f7e6c5982987c8e7545481c5af184871cd0a05030aaa3c1407210",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/race.h",
+    "path": "/include/race.h",
+    "type": "include",
+    "sha256": "1c968d5fc0bd9df175c87bfa052e8b0afba9cd37255babb1a6a62f4535c4eac5",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/reboot.h",
+    "path": "/include/reboot.h",
+    "type": "include",
+    "sha256": "7113667b74dd5ea0a73ddb418d520b9357ec5a3c325b4f50ad6ba6a55bdd6ba9",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/room.h",
+    "path": "/include/room.h",
+    "type": "include",
+    "sha256": "880fa7c4d3bca241b28c8817311cc8c877fa9b4bf2d91371b1132aa82f03545a",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/runtime_config.h",
+    "path": "/include/runtime_config.h",
+    "type": "include",
+    "sha256": "b444b1811ad284f8ae23e8688f12700bcc85f768c6da259f39654e0c52e692d3",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/score.h",
+    "path": "/include/score.h",
+    "type": "include",
+    "sha256": "6fae01a48887d596c0e6df604fdfd1c58802304278d24e70d525c0ce9a53f5e7",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "gain_score"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/skill.h",
+    "path": "/include/skill.h",
+    "type": "include",
+    "sha256": "46c292dc05d7e76d08036aeee52edc6de04b10e62c313176a3e0b3dc60ca193b",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "improve_skill",
+      "query_skill",
+      "skill_mapped"
+    ],
+    "runtime_traits": [
+      "teaching"
+    ],
+    "combat_surface": [
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "function_calls": [
+      "improve_skill",
+      "query_skill"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "include/socket_err.h",
+    "path": "/include/socket_err.h",
+    "type": "include",
+    "sha256": "d2b1ce6caf78668f6c3492caf3a81f22eb6028de7445a511b661482dc10d1bf1",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/statistic.h",
+    "path": "/include/statistic.h",
+    "type": "include",
+    "sha256": "de1597cca6cd0b7a1aee20647ca3c49d4f5e5f1959bb9607183b8faaae78df6b",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "clear_statistic_flags",
+      "consume_stat",
+      "damage_stat",
+      "heal_stat",
+      "health_regenerator",
+      "query_destroyed",
+      "query_exhausted",
+      "query_notified",
+      "query_stat",
+      "query_stat_current",
+      "query_stat_effective",
+      "query_stat_maximum",
+      "query_stat_regenerate",
+      "set_stat_current",
+      "set_stat_effective",
+      "set_stat_maximum",
+      "set_stat_regenerate",
+      "start_regenerate",
+      "supplement_stat",
+      "wasting_regenerator"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "include/team.h",
+    "path": "/include/team.h",
+    "type": "include",
+    "sha256": "7ba34391efbb2e9a11581b4ba407135014bc99f6b736040230fe2f3252adbb38",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [
+      "dismiss_team"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "combat_message_traits": [
+      "miss_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "include/type.h",
+    "path": "/include/type.h",
+    "type": "include",
+    "sha256": "557d07a42308cac3c8f7bcd5d3b61030d80ce09eb7ddd77f732e94f2bcc5f1e2",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "include/user.h",
+    "path": "/include/user.h",
+    "type": "include",
+    "sha256": "4c6974dc67406967f634fddf93033e388549e2f313ec65f2f0f6e3579b252b0d",
+    "inherits": [],
+    "inherit_refs": [],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  }
+]

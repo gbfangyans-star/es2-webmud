@@ -1,0 +1,678 @@
+[
+  {
+    "file": "std/char/npc.c",
+    "path": "/std/char/npc",
+    "type": "prototype",
+    "sha256": "b6295069dfe697531f997fd425b69751529074e3caf9c03b760aa1b97e9d7776",
+    "inherits": [
+      "CHARACTER",
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "CHARACTER",
+        "target": "CHARACTER",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "activate_guard",
+      "acupuncture_cauterization",
+      "carry_money",
+      "carry_object",
+      "cast_spell",
+      "chat",
+      "conjure_magic",
+      "die",
+      "do_chat",
+      "do_heal",
+      "eval_chat",
+      "exert_function",
+      "gain_score",
+      "heart_beat",
+      "improve_skill",
+      "is_chatting",
+      "is_npc",
+      "perform_action",
+      "random_move"
+    ],
+    "runtime_traits": [
+      "heart_beat",
+      "inventory",
+      "movement",
+      "teaching"
+    ],
+    "combat_surface": [
+      "attack",
+      "busy",
+      "death",
+      "skill"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "skill_contract": {
+      "functions": [
+        "exert_function",
+        "perform_action"
+      ],
+      "contracts": []
+    },
+    "skill_daemon_calls": [
+      {
+        "expression": "spell_skill",
+        "method": "cast_spell",
+        "dynamic": true
+      },
+      {
+        "expression": "magic_skill",
+        "method": "conjure_magic",
+        "dynamic": true
+      },
+      {
+        "expression": "cauterization_skill",
+        "method": "acupuncture_cauterization",
+        "dynamic": true
+      },
+      {
+        "expression": "force_skill",
+        "method": "exert_function",
+        "dynamic": true
+      },
+      {
+        "expression": "skill",
+        "method": "perform_action",
+        "dynamic": true
+      }
+    ],
+    "function_calls": [
+      "exert_function",
+      "improve_skill",
+      "perform_action"
+    ],
+    "death_hooks": [
+      "die",
+      "kill_ob"
+    ],
+    "combat_message_traits": [
+      "damage_text"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "std/condition.c",
+    "path": "/std/condition",
+    "type": "prototype",
+    "sha256": "4575e392747eed984fa2609f9f06108d4381b3d5791a53fdaa9e3e88ba3e394a",
+    "inherits": [
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "std/item.c",
+    "path": "/std/item",
+    "type": "prototype",
+    "sha256": "7c923920659e702f222d52e66c83bc2852b472964b592a359df855b53b32e64f",
+    "inherits": [
+      "F_CLEAN_UP",
+      "F_DBASE",
+      "F_MOVE",
+      "F_NAME"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_DBASE",
+        "target": "F_DBASE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_MOVE",
+        "target": "F_MOVE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_NAME",
+        "target": "F_NAME",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "setup"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "unit": "個",
+    "manual_review": []
+  },
+  {
+    "file": "std/race/humanoid.c",
+    "path": "/std/race/humanoid",
+    "type": "prototype",
+    "sha256": "79cd033f940779f8b871782d06d3bca1ecf12923ccc71e6b336cffd2294d4ecf",
+    "inherits": [
+      "F_DBASE"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_DBASE",
+        "target": "F_DBASE",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "advance_level",
+      "create",
+      "initialize",
+      "query_action",
+      "query_appearance",
+      "setup",
+      "statistic_destroyed",
+      "statistic_exhausted",
+      "valid_wear",
+      "valid_wield"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [
+      "armor",
+      "death",
+      "weapon"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "skill_contract": {
+      "functions": [
+        "query_action"
+      ],
+      "contracts": []
+    },
+    "gender": "male",
+    "unit": "位",
+    "attitude": "peaceful",
+    "life_form": "living",
+    "death_hooks": [
+      "die"
+    ],
+    "combat_message_traits": [
+      "damage_text",
+      "tell_object"
+    ],
+    "manual_review": []
+  },
+  {
+    "file": "std/room.c",
+    "path": "/std/room",
+    "type": "prototype",
+    "sha256": "ab0f7ef4a5e575446aa952569bf743aff57b9119ce2d283a84237f61082d871d",
+    "inherits": [
+      "F_DBASE",
+      "F_CLEAN_UP"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "F_DBASE",
+        "target": "F_DBASE",
+        "kind": "symbolic"
+      },
+      {
+        "raw": "F_CLEAN_UP",
+        "target": "F_CLEAN_UP",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "check_door",
+      "clean_up",
+      "close_door",
+      "create_door",
+      "do_look",
+      "extra_room_desc",
+      "init",
+      "lock_door",
+      "look_door",
+      "make_inventory",
+      "open_door",
+      "query_door",
+      "query_doors",
+      "receive_object",
+      "remove",
+      "reset",
+      "set_door",
+      "setup",
+      "unlock_door",
+      "valid_leave"
+    ],
+    "runtime_traits": [
+      "init",
+      "movement",
+      "reset"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "equipment_hooks": [
+      "remove"
+    ],
+    "doors": [
+      {
+        "direction": "north",
+        "name": "木門",
+        "other_side": "south",
+        "state": "DOOR_CLOSED"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "init"
+      }
+    ],
+    "manual_review": [
+      "door"
+    ]
+  },
+  {
+    "file": "std/room/bank.c",
+    "path": "/std/room/bank",
+    "type": "prototype",
+    "sha256": "31a77f440ddfcefcf9c21e499ff85b832c2b9a79dcea3556a8fa8cff4b58256d",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "do_convert",
+      "do_deposit",
+      "do_new_account",
+      "do_withdraw",
+      "init"
+    ],
+    "runtime_traits": [
+      "init",
+      "movement"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "你身上的東西太多了﹐帶不動錢莊金契。\\n",
+      "錢莊查對帳簿﹐扣掉一成的保證金﹐重新發給你一張新的金契。\\n",
+      "你和錢莊共同畫了個花押﹐作為以後金錢往來的憑據。\\n",
+      "錢莊給你一張金契﹐上面記著你現在戶頭還餘下多少錢。\\n",
+      "你的帳簿出了點問題, 請找巫師反應。\\n",
+      "錢莊發現你的花押不對﹐沒收了你的金契。\\n",
+      "錢莊發現金契上的帳目不對﹐沒收了你的金契。\\n",
+      "錢莊發現你的花押不對﹐沒收了你的金契。\\n",
+      "錢莊發現金契上的帳目不對﹐沒收了你的金契。\\n"
+    ],
+    "actions": [
+      {
+        "handler": "do_convert",
+        "verb": "convert"
+      },
+      {
+        "handler": "do_deposit",
+        "verb": "deposit"
+      },
+      {
+        "handler": "do_withdraw",
+        "verb": "withdraw"
+      },
+      {
+        "handler": "do_new_account",
+        "verb": "open"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_convert",
+        "verb": "convert"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_deposit",
+        "verb": "deposit"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_withdraw",
+        "verb": "withdraw"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_new_account",
+        "verb": "open"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "std/room/hockshop.c",
+    "path": "/std/room/hockshop",
+    "type": "prototype",
+    "sha256": "727c6eaa01b5d28bf74a572df109a278e834fadba1c887873cf3d686398fbdb6",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "do_buy",
+      "do_list",
+      "do_pawn",
+      "do_retrieve",
+      "do_sell",
+      "do_store",
+      "do_value",
+      "init",
+      "pay_player",
+      "remove",
+      "sell_item",
+      "setup",
+      "value_string"
+    ],
+    "runtime_traits": [
+      "init",
+      "movement"
+    ],
+    "combat_surface": [
+      "armor"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "Ok。\\n",
+      "這張當票上的典物因為你太久沒有來贖﹐已經被當鋪賣掉了。\\n",
+      "你隨手將當票撕掉扔了。\\n",
+      "Ok.\\n"
+    ],
+    "equipment_hooks": [
+      "remove"
+    ],
+    "actions": [
+      {
+        "handler": "do_value",
+        "verb": "value"
+      },
+      {
+        "handler": "do_pawn",
+        "verb": "pawn"
+      },
+      {
+        "handler": "do_sell",
+        "verb": "sell"
+      },
+      {
+        "handler": "do_retrieve",
+        "verb": "retrieve"
+      },
+      {
+        "handler": "do_list",
+        "verb": "list"
+      },
+      {
+        "handler": "do_buy",
+        "verb": "buy"
+      },
+      {
+        "handler": "do_store",
+        "verb": "store"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_value",
+        "verb": "value"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_pawn",
+        "verb": "pawn"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_sell",
+        "verb": "sell"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_retrieve",
+        "verb": "retrieve"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_list",
+        "verb": "list"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_buy",
+        "verb": "buy"
+      },
+      {
+        "kind": "add_action",
+        "handler": "do_store",
+        "verb": "store"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "combat_message_traits": [
+      "message_vision"
+    ],
+    "manual_review": [
+      "custom_action"
+    ]
+  },
+  {
+    "file": "std/room/hockshop_storage.c",
+    "path": "/std/room/hockshop_storage",
+    "type": "prototype",
+    "sha256": "6ab3173f0f87ecf029767554647cb6969de3de3ac897dcbc509d4777e7f1436e",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "clean_up",
+      "create",
+      "reset"
+    ],
+    "runtime_traits": [
+      "reset"
+    ],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "short": "某間當鋪的儲藏室",
+    "long": "這裡是某間當鋪的儲藏室﹐你不該出現在這裡。\n",
+    "manual_review": []
+  },
+  {
+    "file": "std/room/inn.c",
+    "path": "/std/room/inn",
+    "type": "prototype",
+    "sha256": "27d27163ed96d2bfd79c94599b5ad96e7c221cc93b65866ac05ee318040a1183",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "setup"
+    ],
+    "runtime_traits": [],
+    "combat_surface": [],
+    "source_policy": "taedlar/es2_mudlib only",
+    "manual_review": []
+  },
+  {
+    "file": "std/room/journey.c",
+    "path": "/std/room/journey",
+    "type": "prototype",
+    "sha256": "2dad6d4c799083af05d909f1bef36fb867e38c1d96275039087c4935e9deedbf",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "arrive_destination",
+      "check_arrive",
+      "check_journey",
+      "confirm_journey",
+      "do_look",
+      "do_return",
+      "init",
+      "receive_object"
+    ],
+    "runtime_traits": [
+      "init",
+      "interactive",
+      "movement",
+      "timed"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "uses_input_to": true,
+    "literal_prompts": [
+      "你正往回走向原來出發的地方。\\n",
+      "你確定要離開這個區域嗎﹖[y/n]",
+      "你確定要離開這個區域嗎﹖[y/n]",
+      "你開始往回走。\\n"
+    ],
+    "actions": [
+      {
+        "handler": "do_return",
+        "verb": "return"
+      }
+    ],
+    "callouts": [
+      {
+        "function": "arrive_destination",
+        "delay": 5
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_return",
+        "verb": "return"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "manual_review": [
+      "custom_action",
+      "timed_logic"
+    ]
+  },
+  {
+    "file": "std/room/temple.c",
+    "path": "/std/room/temple",
+    "type": "prototype",
+    "sha256": "b52ca44efe63d189c260d9f1fd68c258d8c107802628b8fb8d483de44e6c1aaa",
+    "inherits": [
+      "ROOM"
+    ],
+    "inherit_refs": [
+      {
+        "raw": "ROOM",
+        "target": "ROOM",
+        "kind": "symbolic"
+      }
+    ],
+    "functions": [
+      "do_enter",
+      "do_look",
+      "extra_room_desc",
+      "init",
+      "setup"
+    ],
+    "runtime_traits": [
+      "init"
+    ],
+    "combat_surface": [
+      "busy"
+    ],
+    "source_policy": "taedlar/es2_mudlib only",
+    "literal_prompts": [
+      "你走進漩渦的中央，但甚麼事都沒有發生。\\n",
+      "這個漩渦散發著詭異的紅光，你不確定是否應該鼓起勇氣走進去(enter) ...\\n"
+    ],
+    "actions": [
+      {
+        "handler": "do_enter",
+        "verb": "enter"
+      }
+    ],
+    "command_hooks": [
+      {
+        "kind": "add_action",
+        "handler": "do_enter",
+        "verb": "enter"
+      },
+      {
+        "kind": "init"
+      }
+    ],
+    "manual_review": []
+  }
+]
