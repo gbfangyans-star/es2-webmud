@@ -14,7 +14,7 @@ LONG
         "east" : __DIR__"yard14",
     ]));
     set("objects", ([
-        "/custom/zhenwu/npc/target_stake" : 1,
+        "/custom/zhenwu/npc/target_stake" : 5,
     ]));
     setup();
 }

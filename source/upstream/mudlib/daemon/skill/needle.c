@@ -12,37 +12,44 @@ mapping *actions = ({
     "dodge":       10,
     "damage":      5,
     "damage_type": "刺傷"
-  ]),\n  ([
+  ]),
+  ([
     "action":      "$N手腕輕彈﹐$w直取$n的$l",
     "dodge":       10,
     "damage":      5,
     "damage_type": "刺傷"
-  ]),\n  ([
+  ]),
+  ([
     "action":      "$N側身一讓﹐順勢將$w送向$n的$l",
     "dodge":       15,
     "damage":      4,
     "damage_type": "刺傷"
-  ]),\n  ([
+  ]),
+  ([
     "action":      "$N指尖一轉﹐$w忽然刺向$n的$l",
     "dodge":       10,
     "damage":      5,
     "damage_type": "刺傷"
-  ]),\n  ([
+  ]),
+  ([
     "action":      "$N假意後退﹐冷不防以$w點向$n的$l",
     "dodge":       5,
     "damage":      6,
     "damage_type": "刺傷"
-  ]),\n  ([
+  ]),
+  ([
     "action":      "$N手臂微抬﹐$w從袖旁疾出刺向$n的$l",
     "dodge":       5,
     "damage":      6,
     "damage_type": "刺傷"
-  ]),\n  ([
+  ]),
+  ([
     "action":      "$N腳下一移﹐$w貼著側面刺向$n的$l",
     "dodge":       10,
     "damage":      5,
     "damage_type": "刺傷"
-  ]),\n  ([
+  ]),
+  ([
     "action":      "$N凝神看準空隙﹐以$w直刺$n的$l",
     "dodge":       5,
     "damage":      6,

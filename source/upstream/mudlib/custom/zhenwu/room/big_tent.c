@@ -8,9 +8,8 @@ void create()
 一座厚重軍帳立在校場北端，帳布經風吹日曬已略顯褪色，帳前卻收拾得一塵不亂。兩側兵器架與軍旗排列整齊，往來士卒經過此處都不自覺放輕聲音，顯示這裡是軍中主將處理軍務的地方。
 LONG
     );
-    set("outdoors", "snow");
     set("exits", ([
-        "south" : __DIR__"yard01",
+        "out" : __DIR__"yard04",
     ]));
     set("objects", ([
         "/custom/zhenwu/npc/mee_pei" : 1,

@@ -10,12 +10,11 @@ LONG
     );
     set("outdoors", "snow");
     set("exits", ([
-        "west" : __DIR__"yard01",
         "east" : __DIR__"yard03",
         "south" : __DIR__"yard05",
     ]));
     set("objects", ([
-        "/custom/zhenwu/npc/target_stake" : 1,
+        "/custom/zhenwu/npc/target_stake" : 5,
     ]));
     setup();
 }

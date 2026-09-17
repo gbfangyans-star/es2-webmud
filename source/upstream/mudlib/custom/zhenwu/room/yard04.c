@@ -10,9 +10,12 @@ LONG
     );
     set("outdoors", "snow");
     set("exits", ([
-        "north" : __DIR__"yard01",
+        "in" : __DIR__"big_tent",
         "south" : __DIR__"yard07",
         "east" : __DIR__"yard05",
+    ]));
+    set("objects", ([
+        "/custom/zhenwu/npc/zhenwu_soldier" : 5,
     ]));
     setup();
 }

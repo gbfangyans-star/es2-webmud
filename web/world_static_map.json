@@ -356,7 +356,7 @@
     },
     {
       "id": "/custom/zhenwu/room/gate",
-      "label": "振武軍雙大門",
+      "label": "振武軍營大門",
       "x": 78,
       "y": -1
     },
@@ -365,12 +365,6 @@
       "label": "棚場",
       "x": 74,
       "y": 1
-    },
-    {
-      "id": "/custom/zhenwu/room/yard01",
-      "label": "校場",
-      "x": 75,
-      "y": -2
     },
     {
       "id": "/custom/zhenwu/room/yard02",
@@ -2356,8 +2350,8 @@
     },
     {
       "from": "/custom/zhenwu/room/big_tent",
-      "to": "/custom/zhenwu/room/yard01",
-      "direction": "south",
+      "to": "/custom/zhenwu/room/yard04",
+      "direction": "out",
       "resolved": true
     },
     {
@@ -2391,30 +2385,6 @@
       "resolved": true
     },
     {
-      "from": "/custom/zhenwu/room/yard01",
-      "to": "/custom/zhenwu/room/yard04",
-      "direction": "south",
-      "resolved": true
-    },
-    {
-      "from": "/custom/zhenwu/room/yard01",
-      "to": "/custom/zhenwu/room/yard02",
-      "direction": "east",
-      "resolved": true
-    },
-    {
-      "from": "/custom/zhenwu/room/yard01",
-      "to": "/custom/zhenwu/room/big_tent",
-      "direction": "north",
-      "resolved": true
-    },
-    {
-      "from": "/custom/zhenwu/room/yard02",
-      "to": "/custom/zhenwu/room/yard01",
-      "direction": "west",
-      "resolved": true
-    },
-    {
       "from": "/custom/zhenwu/room/yard02",
       "to": "/custom/zhenwu/room/yard03",
       "direction": "east",
@@ -2436,12 +2406,6 @@
       "from": "/custom/zhenwu/room/yard03",
       "to": "/custom/zhenwu/room/yard06",
       "direction": "south",
-      "resolved": true
-    },
-    {
-      "from": "/custom/zhenwu/room/yard04",
-      "to": "/custom/zhenwu/room/yard01",
-      "direction": "north",
       "resolved": true
     },
     {
