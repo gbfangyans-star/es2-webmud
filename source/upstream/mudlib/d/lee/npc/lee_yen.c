@@ -4,7 +4,7 @@ inherit F_VENDOR;
 
 void create()
 {
-    set_name("李岩", ({ "lee yen", "li yan", "herbalist" }));
+    set_name("李岩", ({ "lee yen", "li yan", "herbalist", "lee", "yen", "li", "yan" }));
     set_race("human");
     set_class("commoner");
     set_level(4);

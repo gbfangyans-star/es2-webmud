@@ -3,7 +3,7 @@
     "file": "adm/daemons/aliasd.c",
     "path": "/adm/daemons/aliasd",
     "type": "daemon",
-    "sha256": "0b4b7d7bd8a18ad03cdc8a55b663343fab41f9654e9d865b0623ce2f51cc9549",
+    "sha256": "9eb1c499c19cbeedb14b2b91469d1dbdc9d1379d4e71ee2b044716bfcb02bb2c",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -19,7 +19,7 @@
     "file": "adm/daemons/channeld.c",
     "path": "/adm/daemons/channeld",
     "type": "daemon",
-    "sha256": "72a0f73fe814168bd6700cbb224fa61286cdc891a5e0571aaba82dbe5a85e4c4",
+    "sha256": "b66caf06f24fc0c3902b6b78020a8d73a369dea5c34802360b124de69719a171",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -45,7 +45,7 @@
     "file": "adm/daemons/chard.c",
     "path": "/adm/daemons/chard",
     "type": "daemon",
-    "sha256": "12c0e45d085c3a3bebce484b766a37fac83bd1ceab3511372e1387e9609f29cd",
+    "sha256": "c583ed940d0c59e01af2e1b5c6eaddcfa1a222e3a14ef41cda45d6f9c178750d",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -99,7 +99,7 @@
     "file": "adm/daemons/chinesed.c",
     "path": "/adm/daemons/chinesed",
     "type": "daemon",
-    "sha256": "8886909692b8e22b83003ca6557fc79718ee8a17088ca6829a616adf2c281439",
+    "sha256": "c04d88ff2fbc00f1b7dbe73ae772d46567cbf1c87244ef8c9bbaccb5ac5d28c7",
     "inherits": [
       "F_CLEAN_UP",
       "F_SAVE"
@@ -144,7 +144,7 @@
     "file": "adm/daemons/cmd_d.c",
     "path": "/adm/daemons/cmd_d",
     "type": "daemon",
-    "sha256": "9b9aaf9bcfcfe7b07dda224d42fdf0a300221c66d06edd781df355c75d4549a5",
+    "sha256": "81307eaf9ba17ead6f18fc2b744f07cc1d1baed77673bbf967809160ab3fe496",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -169,7 +169,7 @@
     "file": "adm/daemons/combatd.c",
     "path": "/adm/daemons/combatd",
     "type": "daemon",
-    "sha256": "afea27591bdc99ddaf7527f09d516e737d487599d12d23b1276e721b9b1b9a87",
+    "sha256": "49a4563d1798721d8e02ae113d5085e9d6f43e9a84aa9c78f3ac616c9291c9fb",
     "inherits": [
       "F_CLEAN_UP",
       "F_DBASE"
@@ -251,7 +251,7 @@
     "file": "adm/daemons/daemond.c",
     "path": "/adm/daemons/daemond",
     "type": "daemon",
-    "sha256": "feebd0d50d100491a8a956e764c6ea6b7c99bb95b962a33750fa2d240d891463",
+    "sha256": "7746f7d2155ab949f546f432f00b668b6d20ef1e5f145fd9e5f89e96d7ab314a",
     "inherits": [
       "F_CLEAN_UP",
       "F_SAVE"
@@ -297,7 +297,7 @@
     "file": "adm/daemons/emoted.c",
     "path": "/adm/daemons/emoted",
     "type": "daemon",
-    "sha256": "289a50d39230682ba7bea9b4c7751190767fb1e1bd4c427e047d7fb6be8a8dff",
+    "sha256": "5fc3fb40449632460734089194d121e04024ef596363eef4ea732d40f61305ff",
     "inherits": [
       "F_CLEAN_UP",
       "F_SAVE"
@@ -339,7 +339,7 @@
     "file": "adm/daemons/enhanced.c",
     "path": "/adm/daemons/enhanced",
     "type": "daemon",
-    "sha256": "22a77ff32900dffc4af04f24188c6bfabfa01b0a4861c0a53c36b48997119465",
+    "sha256": "d9a3326aec4a6cbcad28e822929b8623807eb78520278b8a261d40c2a6622db5",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -358,7 +358,7 @@
     "file": "adm/daemons/enterd.c",
     "path": "/adm/daemons/enterd",
     "type": "daemon",
-    "sha256": "2ddf2c745585f937293a530ab9979e3758415b521b2d3b68851f43fabb4fe85b",
+    "sha256": "9cb5a15ec8f39357305567d0bb9c9891a3a37031a09a8f305c4976d72257e9f7",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -378,7 +378,7 @@
     "file": "adm/daemons/fingerd.c",
     "path": "/adm/daemons/fingerd",
     "type": "daemon",
-    "sha256": "b525a46efaa58b773194bcaf97dbba294263cd62ab4ac58c706f215cce60dad2",
+    "sha256": "a0eccabf72288e3ae6bb71387e14a0649e26964fae6d74f2ed372d0b9e4fdf4a",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -406,7 +406,7 @@
     "file": "adm/daemons/httpd.c",
     "path": "/adm/daemons/httpd",
     "type": "daemon",
-    "sha256": "342a0d74ab2f93ba17cb4dc0bd51003d22c8d4cea5fc6bbc6fd0d47d818a7a0c",
+    "sha256": "8966aaae2fcf7331a577ddcabfcf8fad55fcb99f865d9ca7e8a27b9dc21cf7b8",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -430,7 +430,7 @@
     "file": "adm/daemons/logind.c",
     "path": "/adm/daemons/logind",
     "type": "daemon",
-    "sha256": "6a0d3fb4d50123fc344be4f104757e4171b14fe4af57e547d04c76978c3cd45e",
+    "sha256": "daadba1224c7e052f3bdb52a6831c7697b9997043700f9210493474880bfb7dc",
     "inherits": [
       "F_CLEAN_UP",
       "F_DBASE"
@@ -516,8 +516,8 @@
       "目前線上已經有一位訪客了，請稍後再試。\\n",
       "您的顯示名稱: ",
       "現在可能有巫師正在修改使用者物件的程式﹐請稍候再試。\\n",
-      "您的使用者代號必須是 3 到 12 個英文字母或數字。\\n",
-      "您的使用者代號只能由 a 到 z 的英文字母或 0 到 9 的數字組成。\\n",
+      "您的使用者代號必須是 3 到 12 個英文字母。\\n",
+      "您的使用者代號只能由 a 到 z 的英文字母組成。\\n",
       "您的顯示名稱必須使用長度 3 到 18 的合法 UTF-8 文字。\\n",
       "顯示名稱不能含有控制字元。\\n",
       "顯示名稱不可以使用空白字元。\\n",
@@ -534,7 +534,7 @@
     "file": "adm/daemons/natured.c",
     "path": "/adm/daemons/natured",
     "type": "daemon",
-    "sha256": "e7100b2a281ce7272b0ab0d8edabbe06c16ba73cda667629b769e32a9bcb3e59",
+    "sha256": "9efd97047cb3794099f8fedafa31e18d088052dc03a1ba9490c62cc450ffe01f",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -564,7 +564,7 @@
     "file": "adm/daemons/profiled.c",
     "path": "/adm/daemons/profiled",
     "type": "daemon",
-    "sha256": "d496c9b3c8bbe36bdd4b551bef77904a9005f727491596db23c69cbb0614ce24",
+    "sha256": "bf1aa4ab81484b8c9b8a9bd44920d1bf1621c1f0d266f0eb9c0c7fad48a49a27",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -582,7 +582,7 @@
     "file": "adm/daemons/securityd.c",
     "path": "/adm/daemons/securityd",
     "type": "daemon",
-    "sha256": "92e36b761aa11fc975971f2933d8b3242557f7cd2c82d494a612425f9e633969",
+    "sha256": "88fa078dc78ab091070dc8ae8d1ea7da58be105679cde5fba6d070ebd9e829a8",
     "inherits": [
       "F_DBASE"
     ],
@@ -611,7 +611,7 @@
     "file": "adm/daemons/smtpd.c",
     "path": "/adm/daemons/smtpd",
     "type": "daemon",
-    "sha256": "1e4a21bc213fb21a81acdaeb56301e1ebcd1c83e3690417963ff9fc4c7c9a637",
+    "sha256": "8ecdfbdcc91dedfbdc9fed650a527623d45dcffacc04313a37419a4d644669c8",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -639,7 +639,7 @@
     "file": "adm/daemons/userid.c",
     "path": "/adm/daemons/userid",
     "type": "daemon",
-    "sha256": "3c91560956da1dfab46121963599b966b7b60370ff1ad9aa68e698500075d1e2",
+    "sha256": "271f9daef998b249f035a4a69d1b2246795996968dda29e4602c3eef46ad768d",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -669,7 +669,7 @@
     "file": "adm/daemons/virtuald.c",
     "path": "/adm/daemons/virtuald",
     "type": "daemon",
-    "sha256": "e7b4cd369916d9ba1256ffbd1c1533024f3bd56470b10aad4636f274019ec7e6",
+    "sha256": "0a785f37ac8be153973c05649b936dfb8cc1c4f068a962a6f39b640beeffb5a6",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -693,7 +693,7 @@
     "file": "adm/guild/academy.c",
     "path": "/adm/guild/academy",
     "type": "other",
-    "sha256": "773eda3de934e4d84bc93bd48144c97299eed0df4f73b29484acb59d554b8de4",
+    "sha256": "930987bb9a8a8d26f8a3f0038078245e88dcceef9b36c2221f6308818d5c29a3",
     "inherits": [
       "ROOM"
     ],
@@ -724,7 +724,7 @@
     "file": "adm/guild/guildhall.c",
     "path": "/adm/guild/guildhall",
     "type": "other",
-    "sha256": "833881dab4bc7c327891c2375d83d4f5f017f58c1be936a04ba52bb581812666",
+    "sha256": "610b004a7efeceb76324c74e5fa6f4ecd49e32744a03bfab1c5d6abcddf1d32b",
     "inherits": [
       "ROOM"
     ],
@@ -763,7 +763,7 @@
     "file": "adm/guild/meetingroom.c",
     "path": "/adm/guild/meetingroom",
     "type": "other",
-    "sha256": "9904858489817cca146d606761b417ec6468834b817dcf10f7452ac9fd62f530",
+    "sha256": "5881011550dec6efd74470bfbc43caebb6bf4d32ea3252ad0d69c5b91144b9b6",
     "inherits": [
       "ROOM"
     ],
@@ -794,7 +794,7 @@
     "file": "adm/guild/portal.c",
     "path": "/adm/guild/portal",
     "type": "other",
-    "sha256": "c1005acfb0ca7e5fa6a773b39947ced8e93503ed4cc47f5acbd3f796c7c32ea9",
+    "sha256": "05930d8360b79883c325968e251f3ffbe473bebaa705e11d30797ced714145c6",
     "inherits": [
       "ROOM"
     ],
@@ -829,7 +829,7 @@
     "file": "adm/intermud/_gchannel.c",
     "path": "/adm/intermud/_gchannel",
     "type": "other",
-    "sha256": "4971bcb793280b4ab95a75c30970c59bd1fb5a181d8a3e242b1949302720174f",
+    "sha256": "00d4d8623c8e99e3291c30bbd18a9fc1c633d1a0e38903778c3738f93b1ee87b",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -855,7 +855,7 @@
     "file": "adm/intermud/_mudlist.c",
     "path": "/adm/intermud/_mudlist",
     "type": "other",
-    "sha256": "65c036d05b8b0f3f9cf9d7e8cb10ab573185e2b4033fd8e9580e1859df03413b",
+    "sha256": "3d24435482aca4bb7ea0e0ca4f4d19e61cd7329fc9a23352601b0a5141fd62e8",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -881,7 +881,7 @@
     "file": "adm/intermud/_ping.c",
     "path": "/adm/intermud/_ping",
     "type": "other",
-    "sha256": "b6af4666a2e4eb7613abfbf1a4ee6d7ceecde26a86787a35bfce872abda46976",
+    "sha256": "34eb6ce58e167bc5ef09d51200655aee2c4dd28bf7ae608fe2f51609a1594737",
     "inherits": [
       "F_CLEAN_UP",
       "F_DBASE"
@@ -913,7 +913,7 @@
     "file": "adm/intermud/i2d.c",
     "path": "/adm/intermud/i2d",
     "type": "other",
-    "sha256": "d09bb15915ddc24752118897aae40416d520a269409edb59e82dfb728d8c7f72",
+    "sha256": "47a4d0de4560045827e590238595a439fb2848eb24ed8957202a50cbc9802509",
     "inherits": [
       "F_DBASE",
       "F_SAVE"
@@ -974,7 +974,7 @@
     "file": "adm/obj/mailbox.c",
     "path": "/adm/obj/mailbox",
     "type": "item",
-    "sha256": "d8457509bd5cc749b92a10b970d0b17826ca4da27844c86e71dad1edc66906f9",
+    "sha256": "e7a9c5f088ba52fafbc7b7bb48bd30d7c9b1ca489d5234322903ff261bc5dd50",
     "inherits": [
       "ITEM",
       "F_SAVE"
@@ -1101,7 +1101,7 @@
     "file": "adm/obj/master.c",
     "path": "/adm/obj/master",
     "type": "item",
-    "sha256": "6c7a08681513e54994dbfcd131f9d06adafde341cbd6322d96949d1feea714d4",
+    "sha256": "0dd675ce27a48f3dc6340d8366c972717a8d63d79f311e836dada2f98674a847",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1146,7 +1146,7 @@
     "file": "adm/obj/simul_efun.c",
     "path": "/adm/obj/simul_efun",
     "type": "item",
-    "sha256": "5f3e18265792e1d68819b556455f8211f76683c477256d45d37ce7ccb6c1f9ff",
+    "sha256": "8de8dc621ced3a2e34c92b54cf8a9bd8044a96f78d2fa39eff4395281d450cdf",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -1159,7 +1159,7 @@
     "file": "adm/simul_efun/atoi.c",
     "path": "/adm/simul_efun/atoi",
     "type": "other",
-    "sha256": "6cb8e6e07d31362637518d98f5d17ee159a07c56a77531843d10cc49ffb7e4b8",
+    "sha256": "b737a7f4109db854d8d981c4aa7d01832f0273b89c00bff0ceb433781ab7d152",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1174,7 +1174,7 @@
     "file": "adm/simul_efun/chinese.c",
     "path": "/adm/simul_efun/chinese",
     "type": "other",
-    "sha256": "1b23ce2b3e0f9edbe8471db6851947c4dc4d175b174bd2ec215b50752d7ce42b",
+    "sha256": "96974dee40e2f6117967b85250db62feccec26f19ccb96a63f20fea6b5a4c7a7",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1192,12 +1192,11 @@
     "file": "adm/simul_efun/cursor.c",
     "path": "/adm/simul_efun/cursor",
     "type": "other",
-    "sha256": "7e0c45064e7fca180feac7ced099d194895369a94502b8355434dc4a7f6e76b7",
+    "sha256": "cd2bbcea965d16e79c6a820904855cef45e7f1d3ebeb8377601dd5d7dda94ab9",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
-      "cursor_translate",
-      "option_value"
+      "cursor_translate"
     ],
     "runtime_traits": [],
     "combat_surface": [],
@@ -1208,7 +1207,7 @@
     "file": "adm/simul_efun/file.c",
     "path": "/adm/simul_efun/file",
     "type": "other",
-    "sha256": "84a7df0ccfec7e2d44b5f834b0c7f66ed1f03fb6a912a76304b1f1936664a97f",
+    "sha256": "8b04bb179e67e0a0ed0e2129de701b741c8030aca0390d22935d7c962ed2d414",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1226,7 +1225,7 @@
     "file": "adm/simul_efun/gender.c",
     "path": "/adm/simul_efun/gender",
     "type": "other",
-    "sha256": "a12830b759a44124538138e08bfc81a143c85d1a5f42ef92729e232e50a1b589",
+    "sha256": "7ec5afbbadc2a57d42a809307b2cf093e4f1eb8a98504b9e658f2d5eb5032c41",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1242,7 +1241,7 @@
     "file": "adm/simul_efun/message.c",
     "path": "/adm/simul_efun/message",
     "type": "other",
-    "sha256": "7abd6d49c6ac6f0ba44a7cca9f4fa1fcc9ef9f3ea8baa39c10c113843c158a52",
+    "sha256": "68e78dbac1d27506864e19f8ece8cdf4b388254954741af6eb8182c8e7a8dbcf",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1262,7 +1261,7 @@
     "file": "adm/simul_efun/object.c",
     "path": "/adm/simul_efun/object",
     "type": "other",
-    "sha256": "8494153793fe0e1f01e23dcba1ddf19ad4c1616ecb870ee9cf44b6aa98f18c11",
+    "sha256": "f7e449335f00615c8c2d120a7c505ac26254652e8223c74dcdfbc9dadf02874f",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1286,7 +1285,7 @@
     "file": "adm/simul_efun/path.c",
     "path": "/adm/simul_efun/path",
     "type": "other",
-    "sha256": "02bfed9852b85b541924bdd149af9bde82cbec7541dc684457c0302fd5fe4d19",
+    "sha256": "9953447e52ec7a7e7bf3b6a1dc2919fdb041f0ac23103ab0cfc0b21d9b94eb48",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1307,7 +1306,7 @@
     "file": "adm/simul_efun/utf8.c",
     "path": "/adm/simul_efun/utf8",
     "type": "other",
-    "sha256": "a2294e5b0f85c97cccab4a4c4ea5da25f7f7d7acfe680b52e4b085e9e7bd1129",
+    "sha256": "d9c0319beb5ba2ce9e7d5a266f7198fcd50b11eb6ecdaa73265405ecd7d63862",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1322,7 +1321,7 @@
     "file": "adm/simul_efun/wizard.c",
     "path": "/adm/simul_efun/wizard",
     "type": "other",
-    "sha256": "af7c2f4b70673354a64a602b74421ea18b4970cd5ec0e7daf6b2011d696ca4ae",
+    "sha256": "e65d210969976e79b6ef2bad1401bd31e2f4840c9888466f4b42e0ad5d5d3735",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1338,7 +1337,7 @@
     "file": "cmds/adm/chpass.c",
     "path": "/cmds/adm/chpass",
     "type": "command",
-    "sha256": "9a5ddaca13ec388f7d49a1302a0afa6e0a78aecea9140a84f6b416ea31cc4880",
+    "sha256": "1b0f21b6c8068da6c35f848dbfdc10e69407f1080abd435e8ad8eccb77918c2a",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1367,7 +1366,7 @@
     "file": "cmds/adm/disassemble.c",
     "path": "/cmds/adm/disassemble",
     "type": "command",
-    "sha256": "91ca4c348bd20a74094377af846a4f9622be54e4c54f544e73e27b23eff901da",
+    "sha256": "0d05c53052434d2bc1c58f6b63ea38e347cbea71e92caa72107d05d9603f8a9a",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1395,7 +1394,7 @@
     "file": "cmds/adm/dump.c",
     "path": "/cmds/adm/dump",
     "type": "command",
-    "sha256": "4696408d6cad4fb1751fd6ca754cf5df7c6a16c581f3a23a7686ddaa74840d70",
+    "sha256": "8b003cb556b2b3a51b1f899403b944d394b50da524886ff465933abb3d7fd76a",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1421,7 +1420,7 @@
     "file": "cmds/adm/halt.c",
     "path": "/cmds/adm/halt",
     "type": "command",
-    "sha256": "25e604f586399d7fb2750f7ae63cd682b91a5869bf4f4634a8e781e625b39a0d",
+    "sha256": "a772ac8e26f06f12fc4dc6e854ec2d2045a84bb25c4d38ca36fcedd8e5247be5",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1447,7 +1446,7 @@
     "file": "cmds/adm/profile.c",
     "path": "/cmds/adm/profile",
     "type": "command",
-    "sha256": "e299bc9ecb39666425bfdcacaf2f6b6ef908cce0fc8eae0f955bfcfc7496d521",
+    "sha256": "0fab6d4996738576c4b421fc6a8cf748586f27c41572dcf7dd1f1710028a1bea",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1468,7 +1467,7 @@
     "file": "cmds/adm/renew.c",
     "path": "/cmds/adm/renew",
     "type": "command",
-    "sha256": "d5db45186b63b978953609e723e0d01561066e970a1c6317696adef0344213ac",
+    "sha256": "9cb5c1fcb9b1e67316c9149a2bc9755cbe5dc026e84e9bf0926d2136006f4fd4",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1493,7 +1492,7 @@
     "file": "cmds/adm/resurrect.c",
     "path": "/cmds/adm/resurrect",
     "type": "command",
-    "sha256": "5bd4be6014a6b53551bbdd8280dff72baca830cf47bf543b851e3e7cfef9ae19",
+    "sha256": "576cefdebf518c2562a23719dfab57205dd02cc6478e505b6443f88ba28aef93",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1522,7 +1521,7 @@
     "file": "cmds/adm/shutdown.c",
     "path": "/cmds/adm/shutdown",
     "type": "command",
-    "sha256": "7a9d31dd5b48e6778bfa2e5a306b654adba743cb5ee86becd5f727292bbead1a",
+    "sha256": "00324886288b0022d95471cf796e50baca4df42190afbf8851d7540e89669012",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1548,7 +1547,7 @@
     "file": "cmds/adm/socket.c",
     "path": "/cmds/adm/socket",
     "type": "command",
-    "sha256": "98461023dd7d883e207016127be65ec73f1b4b6551271469c5225e596d86df9d",
+    "sha256": "163153ab5fc4932d0b64dfb379d4e05a7708cab720f393668651b6d8f908a3f5",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1573,7 +1572,7 @@
     "file": "cmds/arch/callouts.c",
     "path": "/cmds/arch/callouts",
     "type": "command",
-    "sha256": "07fce4f2caa46d5b0310c52e3fb5ab61679ecb17a0487ba877be87c86e205fc1",
+    "sha256": "0b65dccb1abe5aa149c21ea1c2354cd314c8e9363078fcc2b32d7664e52d6b53",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1599,7 +1598,7 @@
     "file": "cmds/arch/chinese.c",
     "path": "/cmds/arch/chinese",
     "type": "command",
-    "sha256": "38b659346d8ab26a990448eb960565dad337698f0e49afed8f6b342fd25729fd",
+    "sha256": "bcc5dc8f0e2b0643c2b72cf3a4353d29523b46fe7978c9aaf913387124dc44d2",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1625,7 +1624,7 @@
     "file": "cmds/arch/cleanup.c",
     "path": "/cmds/arch/cleanup",
     "type": "command",
-    "sha256": "aa217a609f23331174220bfe1cac804d4b84e4940fa21101ed84c314b8d535df",
+    "sha256": "004681df30e4af13799720bfbed8d255cef1003a4225b6bcae8c6a24f30ed218",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1652,7 +1651,7 @@
     "file": "cmds/arch/force.c",
     "path": "/cmds/arch/force",
     "type": "command",
-    "sha256": "2233326a52deac0f2c695ec34041d8741b84646515186895947157b8d436ac46",
+    "sha256": "cbaf38ffa1d1df726bb8793431306a9d3c1a4608c16fcee40c4dcb083ee988f0",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1679,7 +1678,7 @@
     "file": "cmds/arch/heal.c",
     "path": "/cmds/arch/heal",
     "type": "command",
-    "sha256": "99f696dbc9e44804181db94c38b3a371fd298ad905f27a9a85ab7ffd3ed82519",
+    "sha256": "c722d692ef88f9c47cc46a816619125add5fefa631ee3c16104ba98fa1d1d9c2",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1708,7 +1707,7 @@
     "file": "cmds/arch/overview.c",
     "path": "/cmds/arch/overview",
     "type": "command",
-    "sha256": "072d099943c23ad1ea48586edc07b85095452fe2e56ed96791f8178d9100f7d7",
+    "sha256": "e2c66308102422974fac3ab9d18e878507f55b91be6ec64be2cffdcefc8bd3d4",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1734,7 +1733,7 @@
     "file": "cmds/arch/possess.c",
     "path": "/cmds/arch/possess",
     "type": "command",
-    "sha256": "fc4f1af60c8d72beac24e4086d6120d5420c7483c867ca3bc75faf0862911d58",
+    "sha256": "07452673906fa6a38e193b019b2ca27f7f461df49e363707d390e05b58013be6",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1763,7 +1762,7 @@
     "file": "cmds/arch/promote.c",
     "path": "/cmds/arch/promote",
     "type": "command",
-    "sha256": "75c2bb887d6398773f9fde3cfe2d4e2a2572a3c76a983e7616503d22d394111c",
+    "sha256": "4dd82ac82b2ef3c46ad88d8f5b05c4d9c8b5f35a26bf1b54a1ae95f781c19764",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1796,7 +1795,7 @@
     "file": "cmds/arch/purge.c",
     "path": "/cmds/arch/purge",
     "type": "command",
-    "sha256": "71a6088381f3e8111e0058042a796bcebcc82e46ee3e32779a966d73b75b0e89",
+    "sha256": "d5915cf19ebf3fef8543d6f7afb26e99c7386b9cb66abfc93837dbbb50e23149",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1826,7 +1825,7 @@
     "file": "cmds/arch/reboot.c",
     "path": "/cmds/arch/reboot",
     "type": "command",
-    "sha256": "912b37ff9dacdec724209e4c46be6d0df3b62fde95e8997f2881ede103b6795b",
+    "sha256": "77f5e34566defbc8059a1d88a2026becca1939a59ab30145fab10f0f272d19fd",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1857,7 +1856,7 @@
     "file": "cmds/arch/reclaim.c",
     "path": "/cmds/arch/reclaim",
     "type": "command",
-    "sha256": "130911ed446b98a33fa62fc8ccb05fa130794b1f488b5964d55fd356e7dcc605",
+    "sha256": "15d043b5327117632b86b0dd5bb3ae32e5ee8c7c57c5e31b716e765d43f76539",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1875,7 +1874,7 @@
     "file": "cmds/arch/rehash.c",
     "path": "/cmds/arch/rehash",
     "type": "command",
-    "sha256": "59457efcb1828cda05f3279872e5f5a36a6173ded870eb65d8dc8cf394ce2cd6",
+    "sha256": "8305f76fe3cbcdcf64e8b99dc4b584ba23a059905b9338bb582d31b6cbdb8de3",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1901,7 +1900,7 @@
     "file": "cmds/arch/reset_okip.c",
     "path": "/cmds/arch/reset_okip",
     "type": "command",
-    "sha256": "4b3a1543bc5e90ec12b0dec2e9ac141475083aa0c670cf574d2b0dcd6daae22e",
+    "sha256": "d0ab8def12698eaef7e6867cd5c10a10591ab6dd80f50dfd682fbe7a10c660d1",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1930,7 +1929,7 @@
     "file": "cmds/arch/restore.c",
     "path": "/cmds/arch/restore",
     "type": "command",
-    "sha256": "84a778c86d6cbbb830d2f6a046517bd91b02cdd1266483a5331aa1ffe288d1bf",
+    "sha256": "d4ea7b9461eb1fc98e9564f1a9d6f409290c58a5dc3d8081e4346f92055fec0f",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1960,7 +1959,7 @@
     "file": "cmds/arch/wizlock.c",
     "path": "/cmds/arch/wizlock",
     "type": "command",
-    "sha256": "610009828f77728c30d092f5a48ac99f02e9b5e1be24d08c2a5de0942f9f9107",
+    "sha256": "2257fd48f6cf2d77e36ffed71cbba64925e3f543acf9626a00b4885c07db95a6",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1989,7 +1988,7 @@
     "file": "cmds/imm/cd.c",
     "path": "/cmds/imm/cd",
     "type": "command",
-    "sha256": "6d6981bca7cbe854543fa1a963a8a2b95714b11da63aa28e62ab34806cfe1627",
+    "sha256": "47b8f020b4fe892a1af57dfb4aa941bb9bd35e580b63db19b6b20fab7cf3a057",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2015,7 +2014,7 @@
     "file": "cmds/imm/edemote.c",
     "path": "/cmds/imm/edemote",
     "type": "command",
-    "sha256": "fc5dcb4ab95c9743ee0c3cd8a2ea23393d62553ac6ecb35e6a2cd5a579587106",
+    "sha256": "78d6f4f5f5518c2bc8c28985de530c205bee23c95cf11911f970d3b147815004",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2075,7 +2074,7 @@
     "file": "cmds/imm/goto.c",
     "path": "/cmds/imm/goto",
     "type": "command",
-    "sha256": "34430b104d61cb15671fc8717c60eb856f0f414c18dd26daef7954d73d996341",
+    "sha256": "230d1b2184cfcdda4d280d571a65f2504f52438c21cb5aa6942dca8155e8c0ea",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2104,7 +2103,7 @@
     "file": "cmds/imm/ls.c",
     "path": "/cmds/imm/ls",
     "type": "command",
-    "sha256": "ec7a9fc7ad3355ee4cbefedbf091bab4598fd71892792c8fa82a18ea59f8b0fc",
+    "sha256": "b3ae9bca7e267fb476820645fe3fa3d6b396f2f0efe16b3c93fc6f608607144e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2134,7 +2133,7 @@
     "file": "cmds/imm/mem.c",
     "path": "/cmds/imm/mem",
     "type": "command",
-    "sha256": "1304dbb67f74ae05d8d095d0d8aa458338d41226a3d4f1586acbddd6570d2cd0",
+    "sha256": "dc42bb423a09e03560a27d71c83a131a2b8d3cbe1f1465d9209439cd614ae26f",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2161,7 +2160,7 @@
     "file": "cmds/imm/more.c",
     "path": "/cmds/imm/more",
     "type": "command",
-    "sha256": "92a39547429c772ae023726621eee4d4b3ed7def8d40a7f75aa31708ffecd4f1",
+    "sha256": "84ca13b6af9355a5d99d28847be9c8b856ba1f15d41350fd8d4f90c686b879f5",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2187,7 +2186,7 @@
     "file": "cmds/imm/pwd.c",
     "path": "/cmds/imm/pwd",
     "type": "command",
-    "sha256": "089bf112290797901ab8699d5bb4177804130af6d657afc799e3be8396c22e39",
+    "sha256": "6b5005f81bb7bd597b71b0161ca2ae79bd8c16b573ddefe014a3365249316229",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2213,7 +2212,7 @@
     "file": "cmds/imm/status.c",
     "path": "/cmds/imm/status",
     "type": "command",
-    "sha256": "0c42f138b72f7e661e9e2ad079539c5254dd78a3b62d72df6e70e2ca5fb2fb8c",
+    "sha256": "924b0a447acff6fc244297217886cdb15bcde3b854926bd564a4cbebee4090e7",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2242,7 +2241,7 @@
     "file": "cmds/imm/where.c",
     "path": "/cmds/imm/where",
     "type": "command",
-    "sha256": "8b7f9c26dbd6294dcca3bfe69e22c9cc898aa834db89bc53b50f120805ac47fb",
+    "sha256": "154c9a86af68fd847f00752184a8c056e6499cb5d8b464238f89fe97a4734a47",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2268,7 +2267,7 @@
     "file": "cmds/imm/which.c",
     "path": "/cmds/imm/which",
     "type": "command",
-    "sha256": "2949928eafaba0cf5a55b2b39c6d8f669023b9f8e8616a088565c86aa574344c",
+    "sha256": "e9c4323b5452353bd04b626acd7d8b49f20cd842bd9c7196ddb1831c5ce49f0c",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2297,7 +2296,7 @@
     "file": "cmds/std/acquire.c",
     "path": "/cmds/std/acquire",
     "type": "command",
-    "sha256": "cd304b02dea02eb47d27bae374bd2db1057cdcdf468e124f150f72c4305ef1aa",
+    "sha256": "07c45a404b0308c48660a8f6b2676d6bf00c1dbc424c32dbeaf9f9ad1c38028e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2332,7 +2331,7 @@
     "file": "cmds/std/acupuncture.c",
     "path": "/cmds/std/acupuncture",
     "type": "command",
-    "sha256": "4b1c962fa3849a448fffd297500409caa550b4db58cb9b5aeebf0214275f5f57",
+    "sha256": "082a19fe9bca11e8cfbf92ff73a9c7a073f7ccaf837b3a103b07552b48bdd324",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2371,7 +2370,7 @@
     "file": "cmds/std/apprentice.c",
     "path": "/cmds/std/apprentice",
     "type": "command",
-    "sha256": "a66071c81a10ee937a67c00e5ebc67541eb1d387d0e78becaea7437bfe455503",
+    "sha256": "a2808d8a307e913d858a7be57211c3e53943cd2226466d12c9eeb49fcf832606",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2400,7 +2399,7 @@
     "file": "cmds/std/ask.c",
     "path": "/cmds/std/ask",
     "type": "command",
-    "sha256": "c7198b7c62b058ca6d18882c6b90294129e4f5527f4ff0a25cd68cd6431b8172",
+    "sha256": "689342f5820ac3d60a85f8e20ae656a407ac15247056fd4a2c31298feb90d126",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2429,7 +2428,7 @@
     "file": "cmds/std/backstab.c",
     "path": "/cmds/std/backstab",
     "type": "command",
-    "sha256": "16214504865d5734def9d53b980549a1d745dbac7400cc34499c003e1653b706",
+    "sha256": "2d6724cac9d79dc2a26916b67907525aaacdbdbb93f2335c230c2d834b8d9c24",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2493,7 +2492,7 @@
     "file": "cmds/std/berserk.c",
     "path": "/cmds/std/berserk",
     "type": "command",
-    "sha256": "9af1b2b1810df2b26ba149d88ff6d751d61aac645fe15656aa047895b2a57903",
+    "sha256": "d29feac9debbd590cdb55f69d02fceb39f6bb88cd188206af5ef7368e85ef152",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2541,7 +2540,7 @@
     "file": "cmds/std/buy.c",
     "path": "/cmds/std/buy",
     "type": "command",
-    "sha256": "a8f59f4e959e54691fdf0b43d21e35de0f90d2802ea11b305c794af04dc6c627",
+    "sha256": "f087bd029bc84ab92b0fc9fdb84dfa61aa0efc2574ebd7ff80cfc5e52ffeccb4",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2577,7 +2576,7 @@
     "file": "cmds/std/cast.c",
     "path": "/cmds/std/cast",
     "type": "command",
-    "sha256": "7953badd37c49291950dfa651a067ae8c27c53650e58ea672a67f39bc895023a",
+    "sha256": "b41a28434f58771ff6fd6672f5f62b38418bf61ee16ead18d91f7ae29e07de44",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2618,7 +2617,7 @@
     "file": "cmds/std/ccmd.c",
     "path": "/cmds/std/ccmd",
     "type": "command",
-    "sha256": "2239f772838d10753523dce64e24019090bce240fde0a24c0743693677d64183",
+    "sha256": "e2a70a65f82aa18b3c1babcd3744db39a3194f3dff8559190172cdfb1644b083",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2659,7 +2658,7 @@
     "file": "cmds/std/cestablish.c",
     "path": "/cmds/std/cestablish",
     "type": "command",
-    "sha256": "2d8da8f42b8b405ff1b0de96804613a26dd73443b1f76963df79281f64fd24dd",
+    "sha256": "0c4e13e4c46321be2033c1dc5ba83954a0cfef96eeff4f9faed6ee243f1f9292",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2711,7 +2710,7 @@
     "file": "cmds/std/charge.c",
     "path": "/cmds/std/charge",
     "type": "command",
-    "sha256": "a5870e49625ed18f8ef0e5fc7ce9db5522acc1b6841db47e72c6c9820ab02271",
+    "sha256": "6911aed7af22de5f453d8797a69e3b37fe105223015d1913b48b4c58d2d4407b",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2742,7 +2741,7 @@
     "file": "cmds/std/close.c",
     "path": "/cmds/std/close",
     "type": "command",
-    "sha256": "d4ec6dfe9879b3090e74f59d0c845a79e1e7c08b61c23560e96853047437d2d4",
+    "sha256": "0f6d16e8da38ffccf9a24de8f08f40863ebee29a7d0b614a0b24ca7f5f806786",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2773,7 +2772,7 @@
     "file": "cmds/std/conjure.c",
     "path": "/cmds/std/conjure",
     "type": "command",
-    "sha256": "bdccc917c04f372b22ec338daa1e6131e448a58f7d157ef7fb8920ea9c863573",
+    "sha256": "15f27fd01b019144197cb72be7866cf501369d6ef867b358d74ef47de9283192",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2808,7 +2807,7 @@
     "file": "cmds/std/drink.c",
     "path": "/cmds/std/drink",
     "type": "command",
-    "sha256": "858c69b6b718d2eedb5d166cca0fab4a02f44d2ab1b4f89318a142c181d74bcc",
+    "sha256": "dc53b67a0681f5f0694d5faaa9575ab893cb0d43c58106b7159d7310eceb5f83",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2836,7 +2835,7 @@
     "file": "cmds/std/drop.c",
     "path": "/cmds/std/drop",
     "type": "command",
-    "sha256": "4ea7987e3ba3d396f8fa4f2e3e82f703e7e827319bf6e6915a053f1a0878c355",
+    "sha256": "7dbddab371ade061c0a8b2dce19fd8daec440bf43de8e3824c2a1cc6fcdca0e6",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2876,7 +2875,7 @@
     "file": "cmds/std/eat.c",
     "path": "/cmds/std/eat",
     "type": "command",
-    "sha256": "b35eb0c8ef5f7f2026e462d65207b0aab6187e37969f71a3f09950004265269b",
+    "sha256": "d216ffdd34061020fbe11843a54e97f6de2ff3b494d4e33cfa014201665b72b9",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2904,7 +2903,7 @@
     "file": "cmds/std/emote.c",
     "path": "/cmds/std/emote",
     "type": "command",
-    "sha256": "57b425cd937e691cd16543f7f6385dfe49cf506c7198b7649e945f8e8a46f077",
+    "sha256": "4c1c4b0620f11d80d2408f3feae4376226a939ae17d85b00691f1d3480092aec",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2933,7 +2932,7 @@
     "file": "cmds/std/enter.c",
     "path": "/cmds/std/enter",
     "type": "command",
-    "sha256": "da5b91bd2860f05d4191245d0e1c7c7dd1c8028c919bcd2ce94a7d5d2452162c",
+    "sha256": "f3ad60a5d85384bef56f92910a5176620e153cef142fbb412a9c74d289f82212",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2958,7 +2957,7 @@
     "file": "cmds/std/exert.c",
     "path": "/cmds/std/exert",
     "type": "command",
-    "sha256": "af1d0d1a75dcacb61a2a926822aa79713472d47d0517a3512f535a0246214763",
+    "sha256": "08e5b6c3c899198b4c27b32adf02e565c7e572f8401fb0c19106fd295fcd3003",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2999,7 +2998,7 @@
     "file": "cmds/std/fight.c",
     "path": "/cmds/std/fight",
     "type": "command",
-    "sha256": "be1a2837cd5a478c88efeced4ecd96d24ac409512a4915b6c180335aaa1a86e5",
+    "sha256": "df57e2dfdfea44575bbc87b6dce58473d3e3139180fa2532f1935f06dd861f01",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3042,7 +3041,7 @@
     "file": "cmds/std/fill.c",
     "path": "/cmds/std/fill",
     "type": "command",
-    "sha256": "82e2e8a6fac5418ff44c662068b55f22855ddde0e465c4970818ec4c2ca0f7d8",
+    "sha256": "1ff975041a1098b3e192823e518b9f6e3f3fb3df18d262d4ab8d62284ac96cd5",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3079,7 +3078,7 @@
     "file": "cmds/std/follow.c",
     "path": "/cmds/std/follow",
     "type": "command",
-    "sha256": "434ecf132fbf58c02a5913142a9acc683617e4d81666a95f815afbebafe2d340",
+    "sha256": "30572cf9f33c801193ac0315ee4fd5f333d9e7e692ab89dfad2910b5a294b646",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3114,7 +3113,7 @@
     "file": "cmds/std/get.c",
     "path": "/cmds/std/get",
     "type": "command",
-    "sha256": "af000871b9e25242a2b155fea86a40f40e3d7b844ce8eddeadc33c02870749b7",
+    "sha256": "f2b2ab3c68bf01f91fdb827f5ba7f139bdb2e048e62752f9966c7824019520e2",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3149,7 +3148,7 @@
     "file": "cmds/std/give.c",
     "path": "/cmds/std/give",
     "type": "command",
-    "sha256": "9600e7f933a22400351098f552ae0d3e53abae083603cb511082aa3c8f19a1c0",
+    "sha256": "47bcbbf879442d3481fca9d862619821be876da3a711f45c768527658c5ac5ac",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3188,7 +3187,7 @@
     "file": "cmds/std/go.c",
     "path": "/cmds/std/go",
     "type": "command",
-    "sha256": "5462cb726698f1b2e7507590d92d93f3d94c8a5d0ce892e4a19a32cf5884dcec",
+    "sha256": "c4505afe0bba3d879ff7da04d71e5fddb178472ef1f7e1ad4d53bbf943477e9b",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3236,7 +3235,7 @@
     "file": "cmds/std/guard.c",
     "path": "/cmds/std/guard",
     "type": "command",
-    "sha256": "c00da0920ab377cf1cc20c243679a3f1cc02d88da5b6449b9484f9f4c8a9b119",
+    "sha256": "d7431e1ab249de6c867fd7094a7fa48142769c243bda468e4dd27088b86430e7",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3267,7 +3266,7 @@
     "file": "cmds/std/halt.c",
     "path": "/cmds/std/halt",
     "type": "command",
-    "sha256": "14f0944a2eb99459770948acbd15e8aad9fb586b2459b50f5a0afc17ec8a6bde",
+    "sha256": "30c55d4815848a14f7a9ac45bf69fcdcbf1b9256f001e80da2790f13e2a1c177",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3303,7 +3302,7 @@
     "file": "cmds/std/identify.c",
     "path": "/cmds/std/identify",
     "type": "command",
-    "sha256": "ec3d34ff1ba64cadfdb697276bb96529edfdde2ddffa2728844aa72f4e5fb58a",
+    "sha256": "1b41698f501b9d1331d2c9882de4abffe1d6838a2c4e5b05b9875aa19e097e34",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3340,7 +3339,7 @@
     "file": "cmds/std/ignore.c",
     "path": "/cmds/std/ignore",
     "type": "command",
-    "sha256": "10b0d6b067d29db0de3d793d8a489f4dfd40b4c0bfb6e003cc3febae26c780ff",
+    "sha256": "a88569d44d544257575ea422cb84b4fdab0100d5d412d908ad503941f9bc91b9",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3376,7 +3375,7 @@
     "file": "cmds/std/kill.c",
     "path": "/cmds/std/kill",
     "type": "command",
-    "sha256": "6b3c6e2beac159486d79d97dd8a034ab64ce568b6503ae6ce603a73a78e32b86",
+    "sha256": "211e23305b5bb9695f999be8c9f31632cbb20dcf1de5b02776c8aa73de89407e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3423,7 +3422,7 @@
     "file": "cmds/std/lock.c",
     "path": "/cmds/std/lock",
     "type": "command",
-    "sha256": "2bbf69efc448cc2bd472e17813dc1be55a1cacad4b505362a2721411ed7a8252",
+    "sha256": "d1ddddfc2148996107642ee657896b9c2342953ce5b6a49c3b6cdde277d5afad",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3452,7 +3451,7 @@
     "file": "cmds/std/look.c",
     "path": "/cmds/std/look",
     "type": "command",
-    "sha256": "f0d258678a085772348530c64822ec1958edf93e5c4debd7567c589c9ea71c95",
+    "sha256": "fc854f7aad20e113bf29f07ed2bda227b6c9efcc2374ada577d34e0e7707c3e3",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3488,7 +3487,7 @@
     "file": "cmds/std/open.c",
     "path": "/cmds/std/open",
     "type": "command",
-    "sha256": "17c688ed047f49aa570b24b9af690051b43f2fd0e5c93c47249850cfc2cb8b7c",
+    "sha256": "3309ab9fabfc2165914ccfc2c92c4c4df458085f020d7080e780e6e39ee5ee67",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3517,7 +3516,7 @@
     "file": "cmds/std/perform.c",
     "path": "/cmds/std/perform",
     "type": "command",
-    "sha256": "c50348bc6dae0c6d318b054cb653b61a567ecf18cfa1cad4ede17254ec7cc664",
+    "sha256": "7249972ffdcafae656a7bdd3d7ffe17e5cca66424cbd7af2fe30992336fc9d66",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3554,7 +3553,7 @@
     "file": "cmds/std/put.c",
     "path": "/cmds/std/put",
     "type": "command",
-    "sha256": "6032136f2efc45449f4eb05cf58361e341973ff3d787975b8d7a04283851a4e5",
+    "sha256": "bfe23f88b6ee36173461be55281b4af71b98be821b699165d692379cf2f9d9b4",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3593,7 +3592,7 @@
     "file": "cmds/std/remove.c",
     "path": "/cmds/std/remove",
     "type": "command",
-    "sha256": "fa9483389ed3f9656b870d893fa9bd46999da2973d63b7eab0d8a0490d9f7a6b",
+    "sha256": "4583689011e4714ad9e9e190a1203d070d924f3bb6d25c9354417e71915016c9",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3634,7 +3633,7 @@
     "file": "cmds/std/reply.c",
     "path": "/cmds/std/reply",
     "type": "command",
-    "sha256": "5bd10be23d056b0af7be18a09a2154420b0a8b0ea95bfcc828c3ff55ffadecf4",
+    "sha256": "2dece9335dba80e130543c94714efeb046cceac513c6e3afb24b8dfc5deb1cba",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3667,7 +3666,7 @@
     "file": "cmds/std/say.c",
     "path": "/cmds/std/say",
     "type": "command",
-    "sha256": "e2c77f374bb1a93610555bfa36e4e1b543ed3263c42d55ad92ea0f3601c14b42",
+    "sha256": "fedbd3f66a8cce6efa033cc02c584bbd972c5d3f3a0344319d0e279c8370f894",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3693,7 +3692,7 @@
     "file": "cmds/std/search.c",
     "path": "/cmds/std/search",
     "type": "command",
-    "sha256": "0a20553158ddb07ff902bcc44b7af283025416cfda9c5aa4c296fef12d8766e1",
+    "sha256": "7a3ca2c06a87728e59fde1ba427d3e5d3c15e337ba8e521f90cbfae8f8939a6e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3733,7 +3732,7 @@
     "file": "cmds/std/shout.c",
     "path": "/cmds/std/shout",
     "type": "command",
-    "sha256": "ebda46e63f6c9c8bc31c6e7d56069d0a7964e7b5f6c1a516ab112f69dfc89913",
+    "sha256": "90d03ababfe352cf52561387ca2656b308c7d5e442c7df772b4640efeb0b6e7e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3759,7 +3758,7 @@
     "file": "cmds/std/sneak.c",
     "path": "/cmds/std/sneak",
     "type": "command",
-    "sha256": "3970d2b07f2c5085a938f21a6f6f33e42ccfa3aaeb4b8b03d965a1746073013b",
+    "sha256": "3ce856ae05527338139584366606cc541232dcb78b57aa505e684573fc275006",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3807,7 +3806,7 @@
     "file": "cmds/std/steal.c",
     "path": "/cmds/std/steal",
     "type": "command",
-    "sha256": "5fec0ecd470c011224ead6b1195e8718706883b0b81a39be530f204a0bf2b277",
+    "sha256": "3c70084a7d780de9ba11993ade96a46cf2d9e96a4892c3e493fbf48b08deb219",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3871,7 +3870,7 @@
     "file": "cmds/std/study.c",
     "path": "/cmds/std/study",
     "type": "command",
-    "sha256": "1fa184ac01ae8f3f938373bdb7c63c778bfba52832d7aea894a0d33591aad0d5",
+    "sha256": "c5d488c4e7947fe0b2170d2fac0d1d499686e59c3e72410c5b49b481d6aec237",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3899,7 +3898,7 @@
     "file": "cmds/std/suicide.c",
     "path": "/cmds/std/suicide",
     "type": "command",
-    "sha256": "374887a8cef441c83a7e46fdcf9bf76bee0c61638b7861676da2ae7fe30a6287",
+    "sha256": "4a39ac453a6a991aca89526069d73521e60c994c4d007c1e6977a351f2bd0f6f",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3932,7 +3931,7 @@
     "file": "cmds/std/team.c",
     "path": "/cmds/std/team",
     "type": "command",
-    "sha256": "ab8e6103d0e16169cc6a995a3cc7f1fc92df27d27f9e4bc94df8e188b8222a32",
+    "sha256": "16987550a49df33b9a48c88ef63701dac0fbfc51add195fef0f41150538ee7d2",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3979,7 +3978,7 @@
     "file": "cmds/std/tell.c",
     "path": "/cmds/std/tell",
     "type": "command",
-    "sha256": "6f4ec765e71c0f84df837924de87e7c1ee3921725b449280aa2adae5fac0c3d4",
+    "sha256": "45d78e5c73fc214bcc63e8786cb5606df30db738ed5e70c1cc146590e7306064",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4013,7 +4012,7 @@
     "file": "cmds/std/unlock.c",
     "path": "/cmds/std/unlock",
     "type": "command",
-    "sha256": "4af12e7c89db13a20543648983d8ef1703081e07bba56ffb47f38cfe5809cfcd",
+    "sha256": "7398d704247463d073f0efa12b120265932b8383c2b93ff977773b6c46fa6ba8",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4042,7 +4041,7 @@
     "file": "cmds/std/unwield.c",
     "path": "/cmds/std/unwield",
     "type": "command",
-    "sha256": "b9afa08aa2d4e51d0f72f8a8b18685010de9a02dc3aabe690002b8a4ab25dd07",
+    "sha256": "15aa7405256a92f2cface25b6c11ba6e5d33143322aac2633a3e8c13878db44b",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4077,7 +4076,7 @@
     "file": "cmds/std/wear.c",
     "path": "/cmds/std/wear",
     "type": "command",
-    "sha256": "bf7ed03af411fdc71e79cda0163990c45ac8cbf1f54e879125230a7bbe0ceb17",
+    "sha256": "e14248f56329163a08bfe8f1d0909cbb0e97c8d0f85a82bce898952dcb5bf4d5",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4119,7 +4118,7 @@
     "file": "cmds/std/whisper.c",
     "path": "/cmds/std/whisper",
     "type": "command",
-    "sha256": "82e60eea7a885ffecdddfc8b24d68fbf945a04cb7b8638a8a1f51a724fc01776",
+    "sha256": "4a68b41b4919abfb37fbb997c8fbc73f06a7d753df83bcda27394c8bbee4a177",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4149,7 +4148,7 @@
     "file": "cmds/std/wield.c",
     "path": "/cmds/std/wield",
     "type": "command",
-    "sha256": "371ed279db402989a1c429b999787bcbe28d56989a219d9d5a7e672bbeb11483",
+    "sha256": "4a026c45e5b0535b20f6a1bfdede96a0cc08aba11db981c42830b7de61c66d5a",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4191,7 +4190,7 @@
     "file": "cmds/usr/abandon.c",
     "path": "/cmds/usr/abandon",
     "type": "command",
-    "sha256": "ff6e356bd759833b60678266b4ef3b8f1db75c4de4cf8ea826de759028a861e0",
+    "sha256": "de0b4e2155865cc0f6ed96dce6f89800b55228c54e103d85df2e20c072d1c968",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4221,7 +4220,7 @@
     "file": "cmds/usr/alias.c",
     "path": "/cmds/usr/alias",
     "type": "command",
-    "sha256": "f5d02c97ae15f759af52a7a99be4678ac9cfc8294e7979f8032f675fa2f65274",
+    "sha256": "1aa254fab53b3a5b8876ddb71c419bc4241040aa05b0d1e0cd7b4b1c9a2bcf5f",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4253,7 +4252,7 @@
     "file": "cmds/usr/backup.c",
     "path": "/cmds/usr/backup",
     "type": "command",
-    "sha256": "251578374af3a1f6c3e783948154dc7f3d191822effe81b5fa2040c7d5166a6c",
+    "sha256": "826100a4de15b621d797480e19847cc205897959c41dfcfc6299c771d853c46f",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4283,7 +4282,7 @@
     "file": "cmds/usr/chfn.c",
     "path": "/cmds/usr/chfn",
     "type": "command",
-    "sha256": "bf84fd4b4b95677233e61369b9fa39f486a0f7b5a4cfb9ad3525a35675c437f1",
+    "sha256": "9e869661b7e4738c53b1c0f3e150d6ac910d34ce8f5ebaa61358b5a2a34f1802",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4322,7 +4321,7 @@
     "file": "cmds/usr/describe.c",
     "path": "/cmds/usr/describe",
     "type": "command",
-    "sha256": "bd9a7f47b1a839005965eae8b9aa1bbc87d3f2d18f36b576ad7bf9085ad01f75",
+    "sha256": "df1157dcecffe74db512475ee3238abec25677f28c322b2c789ce82556ddc729",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4352,7 +4351,7 @@
     "file": "cmds/usr/disable.c",
     "path": "/cmds/usr/disable",
     "type": "command",
-    "sha256": "655a79fe6e5a70b507cf6b9217447cd73af815b37ad969fbccd3bc570276cb1f",
+    "sha256": "dfe1194c2bbb5b5e42062e149c7729767de0088c0329f62ad08e08cf127c22f0",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4387,7 +4386,7 @@
     "file": "cmds/usr/enable.c",
     "path": "/cmds/usr/enable",
     "type": "command",
-    "sha256": "3805c87a9a6e8714cace28ac2691db7ced2ae300cacf32f85f3f141a80d21259",
+    "sha256": "4f108411a98e7dd2c46159fdd06fa18908405f212bebef91cbf27f99ed4884f9",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4441,7 +4440,7 @@
     "file": "cmds/usr/estimate.c",
     "path": "/cmds/usr/estimate",
     "type": "command",
-    "sha256": "2ccdfbd2400a6871e72c32d6e9b23a4ac1c03d83ca144b0bbf73968c9203f2ce",
+    "sha256": "eacbaf2a8c89dce929c5faf60fc525f9f81756fd362bbfd79c1ed2ff60abd35d",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4480,7 +4479,7 @@
     "file": "cmds/usr/finger.c",
     "path": "/cmds/usr/finger",
     "type": "command",
-    "sha256": "5e420915f442895d2396a3bb5c4f4ddb91d21295ac1fc26ebb7fd5492d585c07",
+    "sha256": "1cfebcc6026f81812ddfdc7e87e10b473c454e93310072e84e19c549390a3770",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4507,7 +4506,7 @@
     "file": "cmds/usr/gain.c",
     "path": "/cmds/usr/gain",
     "type": "command",
-    "sha256": "18f170598028f9c0ce368fcb66bcadc94868a11326dac506930d62e538f5b8be",
+    "sha256": "85c9969241a79d3db3aa70e32ea43a55581ee9757b200d3deb01ebbe0fa65662",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4533,7 +4532,7 @@
     "file": "cmds/usr/help.c",
     "path": "/cmds/usr/help",
     "type": "command",
-    "sha256": "803b3efce973b565a475b16570f168fd8a06ccd094d4b496a26a160e8ca9a9a6",
+    "sha256": "83e84118319e704ea93a9c2748aff074175d02bff3832dec37bf0d88e4bab98f",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4559,7 +4558,7 @@
     "file": "cmds/usr/hp.c",
     "path": "/cmds/usr/hp",
     "type": "command",
-    "sha256": "6204908d832d18d7f66508fa038ca197c699542d8daa0f09a03fb71a1eba4a08",
+    "sha256": "cdeb1e0bdbde1083718c000fba9ecb8f6d127250de81815f3bffe43fe0bf15cd",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4586,7 +4585,7 @@
     "file": "cmds/usr/id.c",
     "path": "/cmds/usr/id",
     "type": "command",
-    "sha256": "53a8198c700c8afbea1a9e1e5a01c1b1fb3938845a98ed7138276d223a8c4158",
+    "sha256": "79b7e81486e501187d8043646cd0c166d60c35fcc057e3351db0550b2b6ba06e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4616,7 +4615,7 @@
     "file": "cmds/usr/inventory.c",
     "path": "/cmds/usr/inventory",
     "type": "command",
-    "sha256": "01049edf41f3f7f0dfc89a10ecbb5bb10d73ae7b09af1e17225123dfd35e2b1d",
+    "sha256": "8e43f0b4c49fe43f15c73f936f433b4dc626929751b18d4a8397e1d88330e6a7",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4646,7 +4645,7 @@
     "file": "cmds/usr/keep.c",
     "path": "/cmds/usr/keep",
     "type": "command",
-    "sha256": "589172cc0a07b227b6cd529cab8d19ba454e302d9f8fdf13b0f578935d123111",
+    "sha256": "74b1b4a7dd4c6316060da7db34f53b9eafc84496ed226016d852c0a95c8b4762",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4677,7 +4676,7 @@
     "file": "cmds/usr/localtime.c",
     "path": "/cmds/usr/localtime",
     "type": "command",
-    "sha256": "82d5a7e983367b16dc50b3a24c3d1a062710616c2602b5c2e727594c210818e1",
+    "sha256": "d4d605ff26a2bdd1c8ccd368da4e9c99d623627b4dc41f8e7e02512c70c3fdbf",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4703,7 +4702,7 @@
     "file": "cmds/usr/nick.c",
     "path": "/cmds/usr/nick",
     "type": "command",
-    "sha256": "85307011f11c0fd16eefc1312905b49563b7e933c4d9d56cb1514d5d17fb869a",
+    "sha256": "6b4d5d9ea1755cad2c0f6d8035819481923ee53a967c593881fa78116a146e82",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4732,7 +4731,7 @@
     "file": "cmds/usr/okip.c",
     "path": "/cmds/usr/okip",
     "type": "command",
-    "sha256": "9c5d540f101c6b08b341e2dd0eb1fe95e4bd4eee246c8411528788c9494d750c",
+    "sha256": "a23e0767fe7fbe22363f3b18b9f9521d31391dc165d6cb1ffa67a2141acb7c63",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -4756,7 +4755,7 @@
     "file": "cmds/usr/option.c",
     "path": "/cmds/usr/option",
     "type": "command",
-    "sha256": "536cb2f285f0c2bf20cd0b82421d606fdbe88524064442348e0af5c80cf9cfff",
+    "sha256": "ccf3e1204ccd42eae1f6dbc330b20321249f9aab5194f09ae3462d0a55a5f58d",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4786,7 +4785,7 @@
     "file": "cmds/usr/order.c",
     "path": "/cmds/usr/order",
     "type": "command",
-    "sha256": "0f724921b8b8270ed6c790c5e7adf51abd4af30bae0343d472dd209da3645f04",
+    "sha256": "aa50c14d2dcca0af196df4d0f706d7d80f1563719d796b9e5b254b41888194d1",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4812,7 +4811,7 @@
     "file": "cmds/usr/passwd.c",
     "path": "/cmds/usr/passwd",
     "type": "command",
-    "sha256": "b5cde62df4af8f6825b45793946551ca9afb43b58c7666cbfd9ca5e99b26da7c",
+    "sha256": "3e86d4bdb154abe55901918d40f69a7750fa9924092a88e458a5580eac8b1dc7",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4857,7 +4856,7 @@
     "file": "cmds/usr/praise.c",
     "path": "/cmds/usr/praise",
     "type": "command",
-    "sha256": "a65f78f88a1fa090949ff9b6340da2857a34dc25cf4a64ddc1ddf86700926337",
+    "sha256": "506f70ce0cc1d35a9d9b5088f953369a2940c5034c7d1c868b6c709b68b9447e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4886,7 +4885,7 @@
     "file": "cmds/usr/quit.c",
     "path": "/cmds/usr/quit",
     "type": "command",
-    "sha256": "b671683e60e94e66141d1e36a5c8805356de36268f281a20f16e2591f8dcaff4",
+    "sha256": "4ae7260185a3d81aaee42dab87d36d7ba99cad8ea00ffd8cd3d4d7a21565cd78",
     "inherits": [
       "F_DBASE",
       "F_CLEAN_UP"
@@ -4928,7 +4927,7 @@
     "file": "cmds/usr/save.c",
     "path": "/cmds/usr/save",
     "type": "command",
-    "sha256": "83fbabceac20213c909513710631059a013d98f948a74f60c16296bf51bc29e0",
+    "sha256": "e9ad1e406eff7fe891316aa78d7d83301daa377b3fd4a0a45dd47c5f389e369e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4959,7 +4958,7 @@
     "file": "cmds/usr/score.c",
     "path": "/cmds/usr/score",
     "type": "command",
-    "sha256": "459ce204212ae8f8365bbfedd1af0369fa5219fc9250ee4ba107f3dcc7e37534",
+    "sha256": "626b7aa5a6c7854d737ba65c340f28ba6020c6c2f8530a570603b6d7d3fc4376",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4989,7 +4988,7 @@
     "file": "cmds/usr/semote.c",
     "path": "/cmds/usr/semote",
     "type": "command",
-    "sha256": "616139311f12edd3b7c0ae18873b6253a3c89e715b7dd507825b3b244d6813f3",
+    "sha256": "c6633e3bda833db5c06809a7eab7c037d8553fdbea1f26ad29ce4d2a30dcefab",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5015,7 +5014,7 @@
     "file": "cmds/usr/skills.c",
     "path": "/cmds/usr/skills",
     "type": "command",
-    "sha256": "abe6347cc34e847654bb5c646bf680a50dff94ab371022acf791cebe6594f5ba",
+    "sha256": "d7ff482638d7a29dc2ac2025b6ebab894812f17f9ca1589ccc8640c6f8a34399",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5059,7 +5058,7 @@
     "file": "cmds/usr/time.c",
     "path": "/cmds/usr/time",
     "type": "command",
-    "sha256": "4bb79d41b5305653bdfa09429ea50799c52fe4de9f7e759bd339a060c08e0299",
+    "sha256": "70421cdc9bfb37abeab3b02d1423a393470c5310c8f76161ea13620801f3fa60",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5085,7 +5084,7 @@
     "file": "cmds/usr/to.c",
     "path": "/cmds/usr/to",
     "type": "command",
-    "sha256": "bc841e37f8f00802655237fe46ad71c685345d3b1376f351f63cd5b137f5c7a3",
+    "sha256": "0a01db7fedcb4a35a4f4e2497b0db6d41328101393d8154adce8cad3752454b2",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -5104,7 +5103,7 @@
     "file": "cmds/usr/tune.c",
     "path": "/cmds/usr/tune",
     "type": "command",
-    "sha256": "1d6f35e70c7a7161bbc4a9d96a71f3cc279d91421acff96275679d9def0691ae",
+    "sha256": "c2281de6a52e93ac9f350a6b79c9a50d366dbda82998e0b7fee00d24e1470e18",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5135,7 +5134,7 @@
     "file": "cmds/usr/undescribe.c",
     "path": "/cmds/usr/undescribe",
     "type": "command",
-    "sha256": "083f0adcc57be964d0ec54f4935c912ad81f7c133b9ed00c4467fb980e064294",
+    "sha256": "42acfa776dd2f4e6f3b010e0d1bec468ed7d8623971de2390ad2c0920b806756",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5165,7 +5164,7 @@
     "file": "cmds/usr/uptime.c",
     "path": "/cmds/usr/uptime",
     "type": "command",
-    "sha256": "7460a585cbc3ec9181d18a06ecfb5234e5b00a4e06420160c9d72bb3d4011a5b",
+    "sha256": "b7627b01143b0817b8ca6a2fb70cf8581b1d08bf29db9b6900ae5bd3442957fb",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5191,7 +5190,7 @@
     "file": "cmds/usr/version.c",
     "path": "/cmds/usr/version",
     "type": "command",
-    "sha256": "9b2956cb6b5557511c89834fdd71b09f63f9e32a31b053893e63ba7e7d67cccc",
+    "sha256": "519c26a2f3dd29d30eb24678f3fdf70d7ad0f66ad2282f64c4e9a9bbef087d3b",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5217,7 +5216,7 @@
     "file": "cmds/usr/visitor.c",
     "path": "/cmds/usr/visitor",
     "type": "command",
-    "sha256": "1d0d749150b15a46aff99dd026df086855c011f3c536ead538bccaf8a744d848",
+    "sha256": "da42230617fc75d11ed2b9d8e23bfa23f8fb46b434d074e5d9ada5e199091b6c",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5243,7 +5242,7 @@
     "file": "cmds/usr/who.c",
     "path": "/cmds/usr/who",
     "type": "command",
-    "sha256": "3f6ec63346b0ae5dd0992c839207d9a96f8ae18b487c4068b3feb935e710dd80",
+    "sha256": "c1fa6d628b6a9c968b17b104ff7a18b57d367715f3e42b8e0d9639a6bcdfc014",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5275,7 +5274,7 @@
     "file": "cmds/usr/wimpy.c",
     "path": "/cmds/usr/wimpy",
     "type": "command",
-    "sha256": "99cdfeeb2d054cb5b30aaef05ca6168479e0e62042f819464c7da642627ac6d6",
+    "sha256": "5d8521c4cee4adb531302d56b36c5d72786ecdfff8e6d58d17db0cbfdf4ada76",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5307,7 +5306,7 @@
     "file": "cmds/usr/wizlist.c",
     "path": "/cmds/usr/wizlist",
     "type": "command",
-    "sha256": "987d92919fe9a20a1a72655824841478b07c5e1f423c1e06e4ff63fe7576ac35",
+    "sha256": "57a631db6a51c4f9a202027a9520034fd267fe043cb650ebddc413a54b9f62f1",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5333,7 +5332,7 @@
     "file": "cmds/wiz/analyze.c",
     "path": "/cmds/wiz/analyze",
     "type": "command",
-    "sha256": "780740a5644587bbfa24865c094807a1c91cd9328de2c754a9ffc12ad7ef87a9",
+    "sha256": "6db0090973dc5c17b750ab2cc322c0494d487499fff07449263fea09afb5f543",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5371,7 +5370,7 @@
     "file": "cmds/wiz/arrest.c",
     "path": "/cmds/wiz/arrest",
     "type": "command",
-    "sha256": "2bc3ce2f8d5bc0b39eba2761900bccbabac30fee80343bd25dab95f5a2d46fd0",
+    "sha256": "182b8539d1045832c761794d546fc5d313b88415692d62cefb0607d4c258d5a4",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5400,7 +5399,7 @@
     "file": "cmds/wiz/call.c",
     "path": "/cmds/wiz/call",
     "type": "command",
-    "sha256": "d90aeef686f08e81f3b9683b31b0e46c45c54ada1fe43e6f40a62658f3af8bab",
+    "sha256": "a1154a843cf9bfdc4c27e0a2543af55edd3baf61c870107eccac3510ac59cd13",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5426,7 +5425,7 @@
     "file": "cmds/wiz/cat.c",
     "path": "/cmds/wiz/cat",
     "type": "command",
-    "sha256": "8d7e9d83f64d9b5a0a8454099e080d6011d689995b117c14c536059d03ab0aab",
+    "sha256": "3062397613c9f056430f3d13996f99fe055dbce0b38fcd945ed9f83c734031cd",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5452,7 +5451,7 @@
     "file": "cmds/wiz/clone.c",
     "path": "/cmds/wiz/clone",
     "type": "command",
-    "sha256": "5ccdd16b4a3548a7e8c66043ba51797b80c9890a05705c77efb6ae25833b420d",
+    "sha256": "7082ad55c3f113b2df2df7b04c9ab78c4ff544ecce837cd0e27f6248898c7b5a",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5483,7 +5482,7 @@
     "file": "cmds/wiz/cost.c",
     "path": "/cmds/wiz/cost",
     "type": "command",
-    "sha256": "6ee30f3ee05d4a2a9fcbd8d8ca193764e02ce43bbced670a5eb81d5654ff968a",
+    "sha256": "0f7e9159df72bd1bccda1d7a95b4f49da6ff99e5099f25ff307f6d9d4b89fbd7",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5509,7 +5508,7 @@
     "file": "cmds/wiz/cp.c",
     "path": "/cmds/wiz/cp",
     "type": "command",
-    "sha256": "7619c83994e61342f0b0e56341d8993c8b63379db568bf1f0b000057c7adb26c",
+    "sha256": "4410296aeea71ddc42da78f5964934fec1ef9406eb44c7bf7a8bea36344c4837",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5539,7 +5538,7 @@
     "file": "cmds/wiz/daemon.c",
     "path": "/cmds/wiz/daemon",
     "type": "command",
-    "sha256": "2dc75138e8c1005493a02e17caf0cd90ba316e6b1107f28faf501b6f093c19ee",
+    "sha256": "a362c1b942c12b161841d69481877a817778c61379c138ab77dad1fc15b76246",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5568,7 +5567,7 @@
     "file": "cmds/wiz/dest.c",
     "path": "/cmds/wiz/dest",
     "type": "command",
-    "sha256": "e12c8ea403fc23b91e63071ef795f926e4926408d1d7d560320360df62247f20",
+    "sha256": "6cb9050d6cd3dfbbe6f2d35008d1e4ccb7fcc1e028cab1faea422419fcca2e74",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5602,7 +5601,7 @@
     "file": "cmds/wiz/edit.c",
     "path": "/cmds/wiz/edit",
     "type": "command",
-    "sha256": "5214b9ac8dadeb98a4c9f0e8bb21435b973bd60896793519cc883ec86637f877",
+    "sha256": "1f04b0e60e4682fe9d970856eb3997c046adceceb5d44bc3904489613982c4fc",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5628,7 +5627,7 @@
     "file": "cmds/wiz/ff.c",
     "path": "/cmds/wiz/ff",
     "type": "command",
-    "sha256": "c54387d6289fa631cda00ddf80f2cc54b401e04646476434a9bc918e8841bf2d",
+    "sha256": "8e18f8d780cfd9d2d10558cbf6efea0cf9aebe290d125db58f2f44987a048c50",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5654,7 +5653,7 @@
     "file": "cmds/wiz/home.c",
     "path": "/cmds/wiz/home",
     "type": "command",
-    "sha256": "90f72b092ed8426cc409de001f9e5eff27db6240e6694977cc00aa69dbb3b350",
+    "sha256": "c892a0f21763a446b7115b94983c7e1b340ed5eb122d4c81c48cabffd0299f22",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5685,7 +5684,7 @@
     "file": "cmds/wiz/ilist.c",
     "path": "/cmds/wiz/ilist",
     "type": "command",
-    "sha256": "319dd2ee2578dca7317adbced038606eb73b0e814feb6f58746c7a30c3e98cfa",
+    "sha256": "1b1a664f4a28178627d7a9fb80098a77c4349922c6f99fb500ce9db8b9a49802",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5712,7 +5711,7 @@
     "file": "cmds/wiz/info.c",
     "path": "/cmds/wiz/info",
     "type": "command",
-    "sha256": "a4a21eaca8e2de63bf471504e34c5ee6ce07af4125cd8a201a25b0761b7a53c4",
+    "sha256": "e2913def62874c89ad0beb859404198728cfe99737c83a8271b54aa7c9f5e622",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5741,7 +5740,7 @@
     "file": "cmds/wiz/invis.c",
     "path": "/cmds/wiz/invis",
     "type": "command",
-    "sha256": "c92cbbcbd230fedbae6cf18e4bd800b2d9e8432872b97eeb2c1d755489725e23",
+    "sha256": "8367068fc16f88aafdeef0f81d39ee014396609f0dff1ff155c6dd3f52d5752d",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5770,7 +5769,7 @@
     "file": "cmds/wiz/localcmds.c",
     "path": "/cmds/wiz/localcmds",
     "type": "command",
-    "sha256": "4ad6ae1003d6b67117fbddadb4dd636349f48d9ba98775dc11484295ed28c738",
+    "sha256": "53c9fa369d311e17a77330a522c5f4ab7fbe5e5472d00bc2783ea919ece8bdcf",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5799,7 +5798,7 @@
     "file": "cmds/wiz/log.c",
     "path": "/cmds/wiz/log",
     "type": "command",
-    "sha256": "f49a1871938a7dc4b13f653431ca5a8cdbca3b9c745fa9d47c58485cd48a37ea",
+    "sha256": "43476105952ec7eb93408aaf71c68c87fa75f2182bf8d91a9afe79b0bd5551f6",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5828,7 +5827,7 @@
     "file": "cmds/wiz/mkdir.c",
     "path": "/cmds/wiz/mkdir",
     "type": "command",
-    "sha256": "06b3a092d72b02a7cdd56bf700f2ad4abf4ff0042e1bb79798d38e0ddb4771a5",
+    "sha256": "685bb4d18901d86761ddaab1215658bcf1b355da542abbc395ef7f78fa240c51",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5858,7 +5857,7 @@
     "file": "cmds/wiz/mudlist.c",
     "path": "/cmds/wiz/mudlist",
     "type": "command",
-    "sha256": "1de8e47b18064ff38301e8d4f1f5d57c79f857e77a483de29e98cfaf0f70c992",
+    "sha256": "f881af421e6984d3043a433a3788f9c4b2a387595a6dc4d21352b59a070bd544",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5885,7 +5884,7 @@
     "file": "cmds/wiz/mv.c",
     "path": "/cmds/wiz/mv",
     "type": "command",
-    "sha256": "5d50e2db900753ec5b447b1b55c548fa983bd47a4419f79afa85ebc969e6e0b1",
+    "sha256": "47188b9e533deb73b8c7937abcfb2d6c2840ea4c0569f36ae566e2ad9353b60c",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5915,7 +5914,7 @@
     "file": "cmds/wiz/ping.c",
     "path": "/cmds/wiz/ping",
     "type": "command",
-    "sha256": "19f2d94aed6077afb40ff19da94857208894b12f7d14a5e41482483a9ed53cd9",
+    "sha256": "00a26dc3119aac0d3b8cd3bac660dee162be1d696213af0cc1d6c114e92f062e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5945,7 +5944,7 @@
     "file": "cmds/wiz/qload.c",
     "path": "/cmds/wiz/qload",
     "type": "command",
-    "sha256": "524f69e0f92b375ccf7b4d6a168ef4804fce2851f69fd31a8342f72d753deaff",
+    "sha256": "eec65f48eef58c20557672c51c5fd45a0cf6d5ed2d4f288ab6de18ef1ffc88f5",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -5971,7 +5970,7 @@
     "file": "cmds/wiz/quiet.c",
     "path": "/cmds/wiz/quiet",
     "type": "command",
-    "sha256": "bed09f297a5fd8c63ee4f1bf83fb01dc0941d39e32ba72c51b5438d8d68a04c1",
+    "sha256": "b7a92544fb7b9a0c2bb6c56df496b22858cb2f526675043c6cccc156a11432e3",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -6000,7 +5999,7 @@
     "file": "cmds/wiz/rm.c",
     "path": "/cmds/wiz/rm",
     "type": "command",
-    "sha256": "5eff545ecbd1ee5cc9226c423af8fef4cb8f7ff1be74b304d1c72a072a98dc72",
+    "sha256": "0416ad98c16676b035dd678901fac7f273f71de4620c77041b87b4d5c2298201",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -6030,7 +6029,7 @@
     "file": "cmds/wiz/rmdir.c",
     "path": "/cmds/wiz/rmdir",
     "type": "command",
-    "sha256": "d0657af6387f87b91929e296f558c96f1a3478ce51049ce3a1db317d27298833",
+    "sha256": "8fb79dce4e8d28a4a47c46141d5e190dc1eb3478e334441d130b2f0c8ce0872e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -6060,7 +6059,7 @@
     "file": "cmds/wiz/snoop.c",
     "path": "/cmds/wiz/snoop",
     "type": "command",
-    "sha256": "6816431739282dff4cace2934bd4a22a114d1f47c8b60094745d717cbb519053",
+    "sha256": "26fd87962c61cba77e60dd7e50895cc6b2a05c235afb74a4896e88f8c8c7c99c",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -6092,7 +6091,7 @@
     "file": "cmds/wiz/summon.c",
     "path": "/cmds/wiz/summon",
     "type": "command",
-    "sha256": "512e3ac124fb28523223b3aef68f52833f43430e4bdda5e11e334683c1669349",
+    "sha256": "2b5f0c8cd00b5d1b089191d04889fa97b7d23affa9fce0cd0e2e06dad92ff07a",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -6124,7 +6123,7 @@
     "file": "cmds/wiz/tail.c",
     "path": "/cmds/wiz/tail",
     "type": "command",
-    "sha256": "e8f1e1dd7a8b70b3dc2bc78e76d819c7dab5b2ca4d529e3b410039230607c971",
+    "sha256": "5b48e744c385417587f0792c5b9ec1526a9dba0d060c67025d6125b3ff033d12",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -6150,7 +6149,7 @@
     "file": "cmds/wiz/ulist.c",
     "path": "/cmds/wiz/ulist",
     "type": "command",
-    "sha256": "f887c773ef5090395b07067fc269e78525cef288b1f5facfc557e707fc01ac8e",
+    "sha256": "41b5393797c3f6c1d4b576e20f0f727ab1c939414eb4f8debb94cd26a6e535c1",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -6176,7 +6175,7 @@
     "file": "cmds/wiz/update.c",
     "path": "/cmds/wiz/update",
     "type": "command",
-    "sha256": "da45f13712966d5a2e61b7ddfebe1102946f41d5c2c46c426d1eaad6974fee76",
+    "sha256": "ad0f60dd1692db34b7e1b6ec75eaacdd5ba56875b133cdde530040747e4af8e1",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -6210,7 +6209,7 @@
     "file": "cmds/wiz/userid.c",
     "path": "/cmds/wiz/userid",
     "type": "command",
-    "sha256": "10b3b6149a1d978e524c9bd82cc9e0cb4742de28e109dd31cd7b108eb0de87f3",
+    "sha256": "61b73a704a047d8b5eb00e7883f8efc26f2e5c8e22a6b8d57fbfd990dee95412",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -6236,7 +6235,7 @@
     "file": "cmds/wiz/whoami.c",
     "path": "/cmds/wiz/whoami",
     "type": "command",
-    "sha256": "7f02d256f4ffa02cc060c42cdc9d45f5653fc91d5e995497302366a42f790dda",
+    "sha256": "6c2faaa1f2653406bd248615c84e6510ce8abdcd7342b254a9df504835017024",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -6254,7 +6253,7 @@
     "file": "d/snow/bazar.c",
     "path": "/d/snow/bazar",
     "type": "room",
-    "sha256": "1480c4f22701cf43ede5ad51bc8971715ea48e84fda12a50aee25a6077c34da6",
+    "sha256": "c9983e3d2d1989a0a211bc7b9c0f927da8f5e61348c58ed4e29582933bfc769e",
     "inherits": [
       "BANK"
     ],
@@ -6292,7 +6291,7 @@
     "file": "d/snow/bug_room.c",
     "path": "/d/snow/bug_room",
     "type": "room",
-    "sha256": "66d162585384bcb8426b2d8ea3aa58edc9918971d3ec3954279c88c09b1822bb",
+    "sha256": "b944a4aa3cf6564d191c15b7576ccb877bdc96ab59b1132ee3324c1c0214d030",
     "inherits": [
       "ROOM"
     ],
@@ -6323,7 +6322,7 @@
     "file": "d/snow/court.c",
     "path": "/d/snow/court",
     "type": "room",
-    "sha256": "234e3ad5f933f72eba57f38301a2b1e91dfcee611de3ad72eddcc2a6640292fd",
+    "sha256": "8c0209795af7f356fd676c321f4c57ddebf4e59bc363f7a3aa6e238a5b482375",
     "inherits": [
       "ROOM"
     ],
@@ -6361,7 +6360,7 @@
     "file": "d/snow/ebridge.c",
     "path": "/d/snow/ebridge",
     "type": "room",
-    "sha256": "de032b223a86965468953bf15c147648410c1d8c105c881ad7e11756aab101e2",
+    "sha256": "1331ed9b18a7cf5fbb94c481ce4973c03ab89090566da771d20a202896d27789",
     "inherits": [
       "ROOM"
     ],
@@ -6403,7 +6402,7 @@
     "file": "d/snow/egate.c",
     "path": "/d/snow/egate",
     "type": "room",
-    "sha256": "1c68efb20e0de083dc152f0668ca3899e916a6c59d94e2fae245ca1ab29a9632",
+    "sha256": "9a9d684b0f0dccc89d4cf6853e29fd6810d225cd4aa24ecb699a09207017a78d",
     "inherits": [
       "ROOM"
     ],
@@ -6438,7 +6437,7 @@
     "file": "d/snow/epath.c",
     "path": "/d/snow/epath",
     "type": "room",
-    "sha256": "7c4b2fbaed9cd9c53adef65bcc9ceeacf5f7308361365ec439463ca0c9d29bff",
+    "sha256": "00c6608e32177d461c4c5b0994d778bc2c2d0912f32b1b417673bf7a5278a64e",
     "inherits": [
       "ROOM"
     ],
@@ -6503,7 +6502,7 @@
     "file": "d/snow/fireplace.c",
     "path": "/d/snow/fireplace",
     "type": "room",
-    "sha256": "8290f8181a5d43c2e294a3bd28b6465bf3608e1e63ff9371d9e7b0578ea209f0",
+    "sha256": "598a50582fe3fe6ec29fa8485ea5b605b6415d8c2f69cf232fe1ebc3e2909dc1",
     "inherits": [
       "ROOM"
     ],
@@ -6546,7 +6545,7 @@
     "file": "d/snow/herb_shop.c",
     "path": "/d/snow/herb_shop",
     "type": "room",
-    "sha256": "d675d7c9e8b7447d9d4b3f10a3c2137e4126af1625ed691f9ebafbdc84ca1881",
+    "sha256": "612452e7eca48011c36b779e8c3a5b3825d6bc61edd2199f13188ee7d3a70dcc",
     "inherits": [
       "ROOM"
     ],
@@ -6584,7 +6583,7 @@
     "file": "d/snow/inn_hall.c",
     "path": "/d/snow/inn_hall",
     "type": "room",
-    "sha256": "43a50ad9104a20c0fb5e3ef7a6aa83c0798e16f3bc9bb500f696e7c772a5b454",
+    "sha256": "90b5633017026f5db8d6c0cfdab537e1d7e3a02ced516c508105c72981c24430",
     "inherits": [
       "INN"
     ],
@@ -6639,7 +6638,7 @@
     "file": "d/snow/inn_kitchen.c",
     "path": "/d/snow/inn_kitchen",
     "type": "room",
-    "sha256": "1a87e2c3e8f01ec7316ad89d070099e1bf181d1688f2fd250abc3053313bf9a7",
+    "sha256": "170e37f5dd2b16249424f161a3f47848320a6bae33a392b7565222c22feb7077",
     "inherits": [
       "ROOM"
     ],
@@ -6686,7 +6685,7 @@
     "file": "d/snow/inn_staff_room.c",
     "path": "/d/snow/inn_staff_room",
     "type": "room",
-    "sha256": "dbd66f3ead824d2d431e6afe5dbd117d02952c3a892698765e88672cb4ed9bf1",
+    "sha256": "51ae004631269f3f1c05d0849e594088d0cc0e5e7f1dd9d589f20eae01bf95e0",
     "inherits": [
       "ROOM"
     ],
@@ -6711,7 +6710,7 @@
     "file": "d/snow/kitchen.c",
     "path": "/d/snow/kitchen",
     "type": "room",
-    "sha256": "dd316981fcd18bcdad382a0ab62f4b67c6ee67a97a5884746028f26b5a88b3d0",
+    "sha256": "ea9e77b186498248103b02f4cceba166643106394d43b27a3599abeec8f9736a",
     "inherits": [
       "ROOM"
     ],
@@ -6769,7 +6768,7 @@
     "file": "d/snow/lane1.c",
     "path": "/d/snow/lane1",
     "type": "room",
-    "sha256": "fb8818f433c4a0acb9ab24583603f0da5552c335c416eaa36136fe6e970a5aad",
+    "sha256": "13424e7314e4bbf7bd0135311f06ea943e3d0e3339966d9e84f28a53cacc426a",
     "inherits": [
       "ROOM"
     ],
@@ -6808,7 +6807,7 @@
     "file": "d/snow/lane2.c",
     "path": "/d/snow/lane2",
     "type": "room",
-    "sha256": "34d3b65d0231ebc13ee2333b7aa22c98d75164ba44c80f5c6a7d107d1f10e45e",
+    "sha256": "c230d3b4e360bb532542149ed016df070f84ebeb3039fed8b13d59050f9683fc",
     "inherits": [
       "ROOM"
     ],
@@ -6869,7 +6868,7 @@
     "file": "d/snow/mill.c",
     "path": "/d/snow/mill",
     "type": "room",
-    "sha256": "7d49b1976d1f258f5f4736fa3971b469699013a62a0fa9ec050c5f4937de2760",
+    "sha256": "38e2c1c2387a85f9aeaee2a3925bb4b1267c71ccc42e8ecc9f7c1ae3c7bb48ae",
     "inherits": [
       "ROOM"
     ],
@@ -6907,7 +6906,7 @@
     "file": "d/snow/ngate.c",
     "path": "/d/snow/ngate",
     "type": "room",
-    "sha256": "c7031f02b72a7c012c718538d75c7edb7a4ca42b7aa1b95d800df0d627c5e33c",
+    "sha256": "5beee83318d4fd9930fb34fbcd7187938ff21cac5a17f8e5bff928e2639fef14",
     "inherits": [
       "ROOM"
     ],
@@ -6954,7 +6953,7 @@
     "file": "d/snow/npath1.c",
     "path": "/d/snow/npath1",
     "type": "room",
-    "sha256": "39ae4455eb7669b726d92df2469e80c6ac8f1e2e37b9211b4bcbffd6a5644a16",
+    "sha256": "42c10275cf2055854b7acca221a2990c392785395d6de85433350bda833d9bce",
     "inherits": [
       "ROOM"
     ],
@@ -6989,7 +6988,7 @@
     "file": "d/snow/npath2.c",
     "path": "/d/snow/npath2",
     "type": "room",
-    "sha256": "1ca3b86a39c51ee47d8e1ed87a9e9437ea7eb0e6e85eab9b596f18cbb9f20fe3",
+    "sha256": "7f2d315da0f6cf396ef365a7ce9fd3dd4eb678672ed351948724865d9cbfc480",
     "inherits": [
       "ROOM"
     ],
@@ -7035,7 +7034,7 @@
     "file": "d/snow/npath3.c",
     "path": "/d/snow/npath3",
     "type": "room",
-    "sha256": "195e1ef0fba471a707194b75f352c1270b8c5f7262e7f99c667dd17db560b068",
+    "sha256": "e2ecb404143a761a383d346c90ea21b66ec24bcb3711bf701cc7fb72c1df7be9",
     "inherits": [
       "ROOM"
     ],
@@ -7078,7 +7077,7 @@
     "file": "d/snow/npc/alchemist.c",
     "path": "/d/snow/npc/alchemist",
     "type": "npc",
-    "sha256": "dd5c1a5eaae7171f944acd4a3d89ee4a312a9728666c4f219b661dba99cc7472",
+    "sha256": "43e3b8f2033052dbc51e15a588dcf041066e72145627b2f19606dcc43e9da420",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -7216,7 +7215,7 @@
     "file": "d/snow/npc/child.c",
     "path": "/d/snow/npc/child",
     "type": "npc",
-    "sha256": "0312ef8deb474ec5d2f2f0675702f6b040f85b86c3dae6a98ef61c8d2d3983d8",
+    "sha256": "87729dc18ae74a035923ce9cfef471de089d4717d0247b84cff171f0cdad5d3f",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -7343,7 +7342,7 @@
     "file": "d/snow/npc/child1.c",
     "path": "/d/snow/npc/child1",
     "type": "npc",
-    "sha256": "7039c70c4502288ecd7dfaf61fe1e570f89784265f18241a309d89e13a5e8a5e",
+    "sha256": "36e3e4153d1b210e4629fbba4709f1126618860e22adca2d2f7de818f39852ae",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -7404,7 +7403,7 @@
     "file": "d/snow/npc/child2.c",
     "path": "/d/snow/npc/child2",
     "type": "npc",
-    "sha256": "77aab059593475441082b628e2b03478044b7b84249ddce24d0855f0c0c8ede4",
+    "sha256": "ee347612cb5799b7e4b3219d89a6af8b8ef3e04ec417900acbd3283500f08377",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -7459,7 +7458,7 @@
     "file": "d/snow/npc/child3.c",
     "path": "/d/snow/npc/child3",
     "type": "npc",
-    "sha256": "19d616f81580fabfb6bc99cdfc6add20e8e5f73a3272cb62303964f034284399",
+    "sha256": "ea8c84183c2d54fd94a70634b76d4cb2e9d879f775c12f5403c0abc067678c6c",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -7523,7 +7522,7 @@
     "file": "d/snow/npc/child4.c",
     "path": "/d/snow/npc/child4",
     "type": "npc",
-    "sha256": "6da5f79ab4a126ab51fa78a798ce10a1db11632ad690410c140b61841812a7a6",
+    "sha256": "31c75e2cad7c43c82a098759951a68530992217548e61f58b577c7e39710a85b",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -7584,7 +7583,7 @@
     "file": "d/snow/npc/foreman.c",
     "path": "/d/snow/npc/foreman",
     "type": "npc",
-    "sha256": "8950404376fe2f00611188c0fdf1d3c0b020dbfb2c360412733e186c5e5d9812",
+    "sha256": "228daaefceff2c06032e768c0dcd75b81968c1f821083e51b24bc6be7d484139",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -7634,7 +7633,7 @@
     "file": "d/snow/npc/gammer.c",
     "path": "/d/snow/npc/gammer",
     "type": "npc",
-    "sha256": "048ee5e9a2b11beddc52ef00e23625f48dd052ad2f2b823aef26c0bc39d4fbf9",
+    "sha256": "012dc359cfab07cdced862fced1131b3d48adb09eabd16ab905bfcd9dfa93148",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -7794,7 +7793,7 @@
     "file": "d/snow/npc/garrison.c",
     "path": "/d/snow/npc/garrison",
     "type": "npc",
-    "sha256": "89a76db549dcc1eb95e71b7b6b36d37128260538247c5dcdd56919f0817cef8b",
+    "sha256": "306924ea7f677cc2e99d4f3d010181832dc743fde2a695316284c7d165eed1ad",
     "inherits": [
       "F_SOLDIER"
     ],
@@ -7908,7 +7907,7 @@
     "file": "d/snow/npc/girl.c",
     "path": "/d/snow/npc/girl",
     "type": "npc",
-    "sha256": "c5607192da05b671f2fe76bbf5f62a1fbcb78481eb5e808b6ad43851260aa4c5",
+    "sha256": "f72bec02f87087793aa1d8bf870c04a8c2b457a6440224d3db6439f40368dcca",
     "inherits": [
       "F_FIGHTER"
     ],
@@ -8051,7 +8050,7 @@
     "file": "d/snow/npc/guard.c",
     "path": "/d/snow/npc/guard",
     "type": "npc",
-    "sha256": "7ef02a4d754ef33adff86676bb565d83fcec37c13ea1e209ddd60ba1094c9128",
+    "sha256": "88c867193035be064b95075b1fb9ed1a2bb0370ac369dff69e5c51e9a71ba105",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -8170,7 +8169,7 @@
     "file": "d/snow/npc/herbalist.c",
     "path": "/d/snow/npc/herbalist",
     "type": "npc",
-    "sha256": "0b7f0688a31f32f303983debed7c99b7876b4f91bdb245804996bce5354ea657",
+    "sha256": "c32b621ea0d9cd6128a97419716c2e97f2f397e0c12fc90d5849e07c66462895",
     "inherits": [
       "F_VILLAGER",
       "F_VENDOR"
@@ -8276,7 +8275,7 @@
     "file": "d/snow/npc/innkeeper.c",
     "path": "/d/snow/npc/innkeeper",
     "type": "npc",
-    "sha256": "2de22458798edb81731a514ca3360cf4e6a5793d28b56ada291ce6739fa274c8",
+    "sha256": "77797052f0f73570fd6bd327a750349b043979d3b255c73a4db6c85a30e75f2a",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -8337,7 +8336,7 @@
     "file": "d/snow/npc/junkman.c",
     "path": "/d/snow/npc/junkman",
     "type": "npc",
-    "sha256": "bdc21740d9fb46de5f09a8dca312e50ece902eb9f309bfe6e5cde0e45b079aea",
+    "sha256": "3b087c98db803fcf0d620cd1fc96dd54c378aaf460b73f67cc2a0a5886b36978",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -8388,7 +8387,7 @@
     "file": "d/snow/npc/lieutenant.c",
     "path": "/d/snow/npc/lieutenant",
     "type": "npc",
-    "sha256": "7efcef79bf276cdda8efa8dac9e7b02466788f217e6a1ddfad03552e5116282f",
+    "sha256": "e52e2ed3e7a711d314f074688f21c2184860a07cb50849ac09ecf262881847e1",
     "inherits": [
       "F_SOLDIER"
     ],
@@ -8519,7 +8518,7 @@
     "file": "d/snow/npc/miller.c",
     "path": "/d/snow/npc/miller",
     "type": "npc",
-    "sha256": "2f58594660a923c026318fd38a6853dc075b8b0aeacbbc473f54e321cf6b367b",
+    "sha256": "3115060fe009cf35c086ecee7323d6b0ac3b2bb53dd6dbaa32cdfec5f9ac47d2",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -8569,7 +8568,7 @@
     "file": "d/snow/npc/obj/arrow.c",
     "path": "/d/snow/npc/obj/arrow",
     "type": "npc",
-    "sha256": "671cec39bb86022e5c70e2d812e4546d7a848e67e17e561eaaabf2603e187a44",
+    "sha256": "92a9411771f5a20d5a1501babdd1776dc67c1126e5de2c36512b90c06c7f9cd8",
     "inherits": [
       "ITEM"
     ],
@@ -8604,7 +8603,7 @@
     "file": "d/snow/npc/obj/blue_cloth.c",
     "path": "/d/snow/npc/obj/blue_cloth",
     "type": "npc",
-    "sha256": "4044bc1cc9ccede015a55119d5d5f6a2c1d58e6e6aef6e501fa9c8172fd94ef6",
+    "sha256": "debbd16ff9962adf1aeb94644c2a3923b3d2d7e855df538d5c69cc653b340f26",
     "inherits": [
       "F_CLOTH"
     ],
@@ -8659,7 +8658,7 @@
     "file": "d/snow/npc/obj/blue_jacket.c",
     "path": "/d/snow/npc/obj/blue_jacket",
     "type": "npc",
-    "sha256": "49a7af6cf99b6de24f9df8c985cf3da2b2930425e2c45b08acb25acb500fb138",
+    "sha256": "a97580f751cb35f089cd262aec7d1dcfa86d0ee5a10bbc097a932b0f0f7c0c63",
     "inherits": [
       "F_CLOTH"
     ],
@@ -8714,7 +8713,7 @@
     "file": "d/snow/npc/obj/broadsword.c",
     "path": "/d/snow/npc/obj/broadsword",
     "type": "npc",
-    "sha256": "17212eceac444cc8b71520e62dabccaf21a001e755ac64670e855a04b738ef34",
+    "sha256": "4efde55c9f3e4fbb44b10d4ec0d44882fbd3bd0fcda28fa390e892465f2900cb",
     "inherits": [
       "F_SWORD",
       "F_BLADE"
@@ -8762,7 +8761,7 @@
     "file": "d/snow/npc/obj/cane.c",
     "path": "/d/snow/npc/obj/cane",
     "type": "npc",
-    "sha256": "8c186e7beb596f84555a9afcf720d1bec47ac3fbf7f3d0bd78ad969da2dfdb36",
+    "sha256": "09f6fea0ecdd97a7f3e26f4e3fdaa87626190b2bda54f01d42f248f749b5fce0",
     "inherits": [
       "F_STAFF"
     ],
@@ -8802,7 +8801,7 @@
     "file": "d/snow/npc/obj/clothboot.c",
     "path": "/d/snow/npc/obj/clothboot",
     "type": "npc",
-    "sha256": "0bc8cb2a4d13a476708524e92eb41883607faf43191d7c5087495c28e58559f5",
+    "sha256": "0d9b2ec2e889e2a6f46d538cab6445abb670a0273b02183b5becfc24d5e5b88b",
     "inherits": [
       "F_FEET_EQ"
     ],
@@ -8862,7 +8861,7 @@
     "file": "d/snow/npc/obj/coin.c",
     "path": "/d/snow/npc/obj/coin",
     "type": "npc",
-    "sha256": "d05332cde85b1b56b5fe7686a059b3bbede4c6984ad0040c8f3e84c3086ce010",
+    "sha256": "2e6044c7e4c23ca4e093dcb454f0e20039e4e0920fc8b7a4d8af2b500618bf1a",
     "inherits": [
       "ITEM"
     ],
@@ -8897,7 +8896,7 @@
     "file": "d/snow/npc/obj/comb.c",
     "path": "/d/snow/npc/obj/comb",
     "type": "npc",
-    "sha256": "25f9d602c7a1185a35befd95afa14e6b1adb60b91c90d8ac76578f7e3ff8ac32",
+    "sha256": "e1e2cf3ff6d67a5bfbcfad8385cddbc543dacd7c882f83902d29a43229aad019",
     "inherits": [
       "ITEM"
     ],
@@ -8932,7 +8931,7 @@
     "file": "d/snow/npc/obj/crate.c",
     "path": "/d/snow/npc/obj/crate",
     "type": "npc",
-    "sha256": "e849d78c55e432c0741d191d20b4133c516e0a4ba4eb35165d1f6bafe631cc2d",
+    "sha256": "5e6be0e1d44d9ffc830550d47d88bbc34d5dea1192f80c39c3fb69f84d2375d3",
     "inherits": [
       "ITEM"
     ],
@@ -8996,7 +8995,7 @@
     "file": "d/snow/npc/obj/fur_hat.c",
     "path": "/d/snow/npc/obj/fur_hat",
     "type": "npc",
-    "sha256": "a7621e3c6123755692da49cd1ced8592e09d81dcfb896b2423d89b5d5baa4594",
+    "sha256": "276b8db4a1a3296a7428ca795cdcfc5c6e94e977b995c6e1499da99a983bdadc",
     "inherits": [
       "F_HEAD_EQ"
     ],
@@ -9051,7 +9050,7 @@
     "file": "d/snow/npc/obj/hairpin.c",
     "path": "/d/snow/npc/obj/hairpin",
     "type": "npc",
-    "sha256": "8160e65ad1c9d65db6f970a186503922c827b61d454d0c3472f5aaa52b007ad6",
+    "sha256": "c10667224fdcb20879e8286ccdbd839bde94935b02b09eee5bca64bab98fdb28",
     "inherits": [
       "F_HEAD_EQ"
     ],
@@ -9090,7 +9089,7 @@
     "file": "d/snow/npc/obj/helmet.c",
     "path": "/d/snow/npc/obj/helmet",
     "type": "npc",
-    "sha256": "313ece07edecd284bf0f48e3eeebd4566314cf057b9dc56338b33763d5f9ecb5",
+    "sha256": "7ee2fb6287865064840773077c0eaf782f36feb5380cb94c38a390fe637a6431",
     "inherits": [
       "F_HEAD_EQ"
     ],
@@ -9150,7 +9149,7 @@
     "file": "d/snow/npc/obj/hoe.c",
     "path": "/d/snow/npc/obj/hoe",
     "type": "npc",
-    "sha256": "086f95d35659084f03df15569b4f0a313a07a9741b2cedd50af980d1d8d5e69d",
+    "sha256": "b3c731bce873030314c83799a53435526d5acce58eba40546e15843a2df1ad61",
     "inherits": [
       "F_PIKE"
     ],
@@ -9189,7 +9188,7 @@
     "file": "d/snow/npc/obj/invitation.c",
     "path": "/d/snow/npc/obj/invitation",
     "type": "npc",
-    "sha256": "fd7e363e1e3e930da09723c9366ff3c9f901d3b40de1bcfc521e350d9b763674",
+    "sha256": "5d829d0f7ac6fd96086046280df230011394815863ee3b093af69ed00ae4dc1f",
     "inherits": [
       "ITEM"
     ],
@@ -9222,7 +9221,7 @@
     "file": "d/snow/npc/obj/leather_armor.c",
     "path": "/d/snow/npc/obj/leather_armor",
     "type": "npc",
-    "sha256": "6db7bdd19082fdd32134867d5ff0edcee8a4813b93d16df9c24d5779326cb9eb",
+    "sha256": "59c19add7b9a86caba304352f18b0f1040a15b84d6a38343c1437b0c6b2a7873",
     "inherits": [
       "F_ARMOR"
     ],
@@ -9279,7 +9278,7 @@
     "file": "d/snow/npc/obj/note.c",
     "path": "/d/snow/npc/obj/note",
     "type": "npc",
-    "sha256": "0a6749bb66d4e259786e29ecd81e8790ca59a9e1fe43dc15bdfe7462da9ff9d1",
+    "sha256": "39934d88f9abc00f7b079a99bdec739a26c90f10b087afa8864cc5697a897f04",
     "inherits": [
       "ITEM"
     ],
@@ -9315,7 +9314,7 @@
     "file": "d/snow/npc/obj/pot.c",
     "path": "/d/snow/npc/obj/pot",
     "type": "npc",
-    "sha256": "891ad396da1720db213df464adadcb0001cf41da80993937513019b21bd02d7a",
+    "sha256": "8690c1affc507f43d851aeff328c16c1c224e6db6e82f466f21f7548a60320da",
     "inherits": [
       "ITEM"
     ],
@@ -9354,7 +9353,7 @@
     "file": "d/snow/npc/obj/roast_chicken.c",
     "path": "/d/snow/npc/obj/roast_chicken",
     "type": "npc",
-    "sha256": "aa5b032590a0b4bb79bc7af3a84ec27a2be2d207c83616691a457b1484365e05",
+    "sha256": "97f1121b00721c575d791b1bd793971c42f0f8a5ad217b8da77d7c810509a594",
     "inherits": [
       "COMBINED_ITEM",
       "F_FOOD"
@@ -9390,7 +9389,7 @@
     "file": "d/snow/npc/obj/shovel.c",
     "path": "/d/snow/npc/obj/shovel",
     "type": "npc",
-    "sha256": "dfe8ece2c9a7c5cf1851dcbf98c98ea96ca52739e42fd58f25cc547bdea90859",
+    "sha256": "ed7fb59f1410e5741916aa061626ffd8d1b1d4e123b029963ebcbd0e1dc3f28f",
     "inherits": [
       "F_PIKE"
     ],
@@ -9429,7 +9428,7 @@
     "file": "d/snow/npc/obj/silversword.c",
     "path": "/d/snow/npc/obj/silversword",
     "type": "npc",
-    "sha256": "44ee4cf8305ab23916d7ff009690620e26f39020121ba7f096280de0f6ab1cad",
+    "sha256": "787cbe30d0e4b611fff86a1799cfde22f64eab5d00a58c4b919c40101870c1fd",
     "inherits": [
       "F_SWORD"
     ],
@@ -9469,7 +9468,7 @@
     "file": "d/snow/npc/obj/slasher_sword.c",
     "path": "/d/snow/npc/obj/slasher_sword",
     "type": "npc",
-    "sha256": "386d2ac161ae5269dc62d700706ef50ad647ff4f3be1602db41bb9b95b0b223a",
+    "sha256": "064703ef98c9d33040676d20af2f38bb8f00e7cd71e66859862173233d0cb13e",
     "inherits": [
       "F_UNIQUE",
       "F_SWORD"
@@ -9524,7 +9523,7 @@
     "file": "d/snow/npc/obj/smock.c",
     "path": "/d/snow/npc/obj/smock",
     "type": "npc",
-    "sha256": "e8bfc6c0bf9b525e21af6806c5272668feb697140464b9b20a6ae8d885be794d",
+    "sha256": "aa84282e77e96e78e9602cd46735a4e10a464f8c58671c30a8145fa8a1839c04",
     "inherits": [
       "F_ARMOR"
     ],
@@ -9584,7 +9583,7 @@
     "file": "d/snow/npc/obj/syndicator.c",
     "path": "/d/snow/npc/obj/syndicator",
     "type": "npc",
-    "sha256": "a91c6ff8f34ce9058adf9560a9db1ad799cb7236a6510ffb3f729aace794c047",
+    "sha256": "d01cce36146ad6a2976981d750a742f00d50ca335f6837e1812192c72a3688e7",
     "inherits": [
       "F_DAGGER",
       "F_UNIQUE"
@@ -9646,7 +9645,7 @@
     "file": "d/snow/npc/obj/tummy_cover.c",
     "path": "/d/snow/npc/obj/tummy_cover",
     "type": "npc",
-    "sha256": "0fbff4f89c75164b8405d5136a1c3753c0593ad425e5da379938cb0c4a3da50e",
+    "sha256": "e8af33eb85f69f8d3cc3a0f733205fd34e0fc6bdecddc179d562cea6af986128",
     "inherits": [
       "F_CLOTH"
     ],
@@ -9702,7 +9701,7 @@
     "file": "d/snow/npc/obj/wagon.c",
     "path": "/d/snow/npc/obj/wagon",
     "type": "npc",
-    "sha256": "ff552180c6699ba6ee7c4011d77911322e945ac8928c7be1a66a8a62b16f325d",
+    "sha256": "f7a35e30416f416cd37a21fbc5cd650dff7ad5039d41d736aa1fc166e42fbc83",
     "inherits": [
       "CONTAINER_ITEM"
     ],
@@ -9765,7 +9764,7 @@
     "file": "d/snow/npc/obj/white_dress.c",
     "path": "/d/snow/npc/obj/white_dress",
     "type": "npc",
-    "sha256": "7ab460974583b078961426265bab6a3cc49adc8ecb3ee9ee6c64368b54204b6d",
+    "sha256": "a27deca2f238de8f3af562bace737c52e6b67b15b54607c3900d35627cefd0af",
     "inherits": [
       "F_CLOTH"
     ],
@@ -9822,7 +9821,7 @@
     "file": "d/snow/npc/obj/wine_pot.c",
     "path": "/d/snow/npc/obj/wine_pot",
     "type": "npc",
-    "sha256": "2fbe1f9c138979518e0ad0ed8137757b0b0d0aca59dcb6de9856bb651db3881f",
+    "sha256": "8caddbc13f670d1ce245b7306595e4337d14694f7890028ec241aee14071022a",
     "inherits": [
       "ITEM"
     ],
@@ -9862,7 +9861,7 @@
     "file": "d/snow/npc/obj/woodblade.c",
     "path": "/d/snow/npc/obj/woodblade",
     "type": "npc",
-    "sha256": "ad6c3b0748f5150a8e0c3c577cc74024bac2732c0646b45a67a62e7ac2368f1c",
+    "sha256": "30ab335e7af05e60b2ffdb708e4e3e3d445fd74caae66ce6a8f30bf9057d778d",
     "inherits": [
       "F_BLADE"
     ],
@@ -9902,7 +9901,7 @@
     "file": "d/snow/npc/obj/woodsword.c",
     "path": "/d/snow/npc/obj/woodsword",
     "type": "npc",
-    "sha256": "12d2bab11a150cc2a7a79fbc5cf013b1b8e0507b0956cf96120ffd0ff15af2a7",
+    "sha256": "ee04370e236c9a9ba0c44648f0a711416289fbd37d61a56d605aa4440a87d4d2",
     "inherits": [
       "F_SWORD"
     ],
@@ -9942,7 +9941,7 @@
     "file": "d/snow/npc/oldman.c",
     "path": "/d/snow/npc/oldman",
     "type": "npc",
-    "sha256": "66783117e791e18d1c0d0b2d0a144e22df6b21baab647b2c4ce2d0f9e06e71bb",
+    "sha256": "00a92ea200ecd6e2e423864c5c1d92a5ecac72a62c507a179b8bb16f322eeff0",
     "inherits": [
       "F_BANDIT"
     ],
@@ -10035,7 +10034,7 @@
     "file": "d/snow/npc/patrol.c",
     "path": "/d/snow/npc/patrol",
     "type": "npc",
-    "sha256": "e46dcc2d66c399bc21e173c2f4834b37240b7e75ff2e3a0b3e7ea5fbf51b5af0",
+    "sha256": "ec90ad78be5317069e1d312306d715d5ca34902ff05748c514eb9861ed514975",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -10110,7 +10109,7 @@
     "file": "d/snow/npc/smith.c",
     "path": "/d/snow/npc/smith",
     "type": "npc",
-    "sha256": "6c3b65d6e9e683855245f8d529d014a48b0ae95005068cabdf97ab33ca549247",
+    "sha256": "31316d3cc248330cd939c4192ef263b5037b5d1fd263e8a40044559717a1a186",
     "inherits": [
       "F_VILLAGER",
       "F_VENDOR"
@@ -10229,7 +10228,7 @@
     "file": "d/snow/npc/teacher.c",
     "path": "/d/snow/npc/teacher",
     "type": "npc",
-    "sha256": "80c4d030263e36db3166875fd978cf8cc76a334e9042ad8338b0a2c1f5085148",
+    "sha256": "6b773e99872365319b32b5bae338bb4b341aa99bc3bea2452e372eced50a6b06",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -10324,7 +10323,7 @@
     "file": "d/snow/npc/waiter.c",
     "path": "/d/snow/npc/waiter",
     "type": "npc",
-    "sha256": "93d4fc4ddf279b2f3127734550f581ea6768203fa029678f0554090dba7d90c8",
+    "sha256": "10b35ac582e2c36b20e58737e308fc2113e71cad37b618a8e94e2e91a702dddb",
     "inherits": [
       "F_VILLAGER",
       "F_VENDOR"
@@ -10415,7 +10414,7 @@
     "file": "d/snow/npc/woman.c",
     "path": "/d/snow/npc/woman",
     "type": "npc",
-    "sha256": "821abfe0e0d0c1d68903156d32bb5e948f66c02ef3f5430f9858c7aabf694a01",
+    "sha256": "a7e558e834763467f1d6f713dc40291abb9ac652d8ee07d9282971f36dc85dd8",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -10466,7 +10465,7 @@
     "file": "d/snow/npc/yu.c",
     "path": "/d/snow/npc/yu",
     "type": "npc",
-    "sha256": "cf13d3b7053607aac1d4528c9d85468392d8fa4422b18ba2af1bbb1cd017e2d4",
+    "sha256": "13f7015f2a130bf3c3ba87ceef6f47f054e760120c2d4b9702390eb05a1df9d4",
     "inherits": [
       "F_VILLAGER",
       "F_VENDOR"
@@ -10572,7 +10571,7 @@
     "file": "d/snow/nstreet1.c",
     "path": "/d/snow/nstreet1",
     "type": "room",
-    "sha256": "c60b8c8fa9f4e286e5341302cacb339cd2b80e4536deabd3861ef0ecdd1dc11d",
+    "sha256": "8c1e74f8dc1bf8b1c5fb59692b041b738665ad7897880ff7bff1f37d389170c0",
     "inherits": [
       "ROOM"
     ],
@@ -10611,7 +10610,7 @@
     "file": "d/snow/nstreet2.c",
     "path": "/d/snow/nstreet2",
     "type": "room",
-    "sha256": "53ec41de823edd8676c99463677e11aa8df423d3a823ceedc528cd929270bdf2",
+    "sha256": "a8f763938b2a9d370de4dfdcba7534247424cc40557be1ce2b347558f5520c03",
     "inherits": [
       "ROOM"
     ],
@@ -10661,7 +10660,7 @@
     "file": "d/snow/obj/basic_book.c",
     "path": "/d/snow/obj/basic_book",
     "type": "item",
-    "sha256": "97f4bad34292d6902229e09dc889d4b63adc440d3667165034def0a268e79e90",
+    "sha256": "68c004265a89f0600866f53d81a4e9242846d8c107483e6da4e693a0fef5ce61",
     "inherits": [
       "ITEM",
       "F_STUDY"
@@ -10707,7 +10706,7 @@
     "file": "d/snow/obj/literate_book.c",
     "path": "/d/snow/obj/literate_book",
     "type": "item",
-    "sha256": "97f4bad34292d6902229e09dc889d4b63adc440d3667165034def0a268e79e90",
+    "sha256": "68c004265a89f0600866f53d81a4e9242846d8c107483e6da4e693a0fef5ce61",
     "inherits": [
       "ITEM",
       "F_STUDY"
@@ -10753,7 +10752,7 @@
     "file": "d/snow/obj/stone.c",
     "path": "/d/snow/obj/stone",
     "type": "item",
-    "sha256": "1c2468442f146a08a2f44be70d26077755238f3fc4d764e9b72d1e12e2698370",
+    "sha256": "0cf991f49a7894cacb46ef4881411ecff4b8ff34fc644b21e3d45b6f574f2a4a",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -10806,7 +10805,7 @@
     "file": "d/snow/post_office.c",
     "path": "/d/snow/post_office",
     "type": "room",
-    "sha256": "a3c6be1407fef18a9e7ef08edb39c9729a89354704b0fe1c0b6e85c5b2c98bd4",
+    "sha256": "f8c6669eb4458ba70b23abe0693def313086b2c02df0a8e5d7986e84c93ebe18",
     "inherits": [
       "ROOM"
     ],
@@ -10865,7 +10864,7 @@
     "file": "d/snow/river1.c",
     "path": "/d/snow/river1",
     "type": "room",
-    "sha256": "163a1da04ad2670f04aff831a64f0fe9eafd047d7830b170b10c9ccd3555e2d1",
+    "sha256": "83ed07b392cf01f3a392734ed5ab8a7153292bd5a75650d231fa33cff411f54f",
     "inherits": [
       "ROOM"
     ],
@@ -10900,7 +10899,7 @@
     "file": "d/snow/riverbank.c",
     "path": "/d/snow/riverbank",
     "type": "room",
-    "sha256": "4fb067605cebae845913bbc4c7edb974e22f55287a013e2e5fc2ff69bc7571a3",
+    "sha256": "0d5e46a44307596d59e2a475d1c1f2e81b2bc36fc09e9dc09fc52e52d42c92e1",
     "inherits": [
       "ROOM"
     ],
@@ -10931,7 +10930,7 @@
     "file": "d/snow/ruin1.c",
     "path": "/d/snow/ruin1",
     "type": "room",
-    "sha256": "61353bb68a66d7960f8412d5758badf2953601e2d45916e27cfd7f2dee1a3bd0",
+    "sha256": "b7a84971dc2855023c65eb48d54a0d31670b7b4bb35a6b55a8126b943685dcde",
     "inherits": [
       "ROOM"
     ],
@@ -11004,7 +11003,7 @@
     "file": "d/snow/ruin2.c",
     "path": "/d/snow/ruin2",
     "type": "room",
-    "sha256": "90bea2eb5f3e5f065f063ebc54e36417efe15696e7e7a964348b5cd8ed12939f",
+    "sha256": "72ca40ca5a7264b35b939f25db0e57faf327c5f23c13c3a413cf65784277ce6c",
     "inherits": [
       "ROOM"
     ],
@@ -11068,7 +11067,7 @@
     "file": "d/snow/school.c",
     "path": "/d/snow/school",
     "type": "room",
-    "sha256": "4bfdfcd403541e0a9277342ae5be8b22d30ca8b0fa846f4ceae2f8cd6766fdc4",
+    "sha256": "d98ad781ad408fb1992c3b789455482a8721f236aa851c18d9a97ec4065a2f28",
     "inherits": [
       "ROOM"
     ],
@@ -11116,7 +11115,7 @@
     "file": "d/snow/sgate.c",
     "path": "/d/snow/sgate",
     "type": "room",
-    "sha256": "e72727e7a7d02c9806299e40a472bddca11668409a2aeef022269c665ba5a972",
+    "sha256": "868d84c5a3291882386f3a86fadc1651a0c9ec934a61f79702938c03d30bcbb8",
     "inherits": [
       "ROOM"
     ],
@@ -11155,7 +11154,7 @@
     "file": "d/snow/skill/dragon_force.c",
     "path": "/d/snow/skill/dragon_force",
     "type": "skill",
-    "sha256": "5e35527c1b683e3abbf7c3eae1ed8018130352d855cb906b08c3b2f300c6eba4",
+    "sha256": "a0317b5e80f82f2fd3c13ba6287dd0dde135a6a8966da25540ca0acd8f14a93a",
     "inherits": [
       "SKILL"
     ],
@@ -11214,7 +11213,7 @@
     "file": "d/snow/small_temple.c",
     "path": "/d/snow/small_temple",
     "type": "room",
-    "sha256": "73dc48717b30a7a93e70842c54de500e8ccce1b926325ffb0b33eb17be881664",
+    "sha256": "66fc3168e65c0a7247461e16de87b80ebba72d6badc71a6fb6d2bb153e6cece3",
     "inherits": [
       "TEMPLE"
     ],
@@ -11245,7 +11244,7 @@
     "file": "d/snow/smithy.c",
     "path": "/d/snow/smithy",
     "type": "room",
-    "sha256": "69b1db1bf8f1a7c7f9db32742bfdee070471c1fe6dec83dbedd5e5132849c17d",
+    "sha256": "6918e040660b34a087c9fde1cd7d3edb4370b30d3d8647a848b0705b3bd29de3",
     "inherits": [
       "ROOM"
     ],
@@ -11283,7 +11282,7 @@
     "file": "d/snow/square.c",
     "path": "/d/snow/square",
     "type": "room",
-    "sha256": "4a72a6678418bba192591948cebebf14831fae2bc967d20b0e80602c61450f5b",
+    "sha256": "cc55248169a1d6e254b6b0f209be5a2626ad5a370983fce6d6877fa079564f38",
     "inherits": [
       "ROOM"
     ],
@@ -11369,7 +11368,7 @@
     "file": "d/snow/square_e.c",
     "path": "/d/snow/square_e",
     "type": "room",
-    "sha256": "93b6dbdbd21c91c3be913ac7a035fb263aaca214d8d1a88a8437c2c96720513c",
+    "sha256": "7ae2616371f7f4aecc49cfb264b710f4c6ce019399b82155c153d756ac554b47",
     "inherits": [
       "ROOM"
     ],
@@ -11404,7 +11403,7 @@
     "file": "d/snow/square_n.c",
     "path": "/d/snow/square_n",
     "type": "room",
-    "sha256": "57c0e1201b196206193f7689c34d9595abad8f8551ec81e588dddcd498e9f29f",
+    "sha256": "7d42c87f124aa32f80c5f063d1ef775744a9390318c996d0b7d6bb9d74a308ee",
     "inherits": [
       "ROOM"
     ],
@@ -11451,7 +11450,7 @@
     "file": "d/snow/square_s.c",
     "path": "/d/snow/square_s",
     "type": "room",
-    "sha256": "5ab37f1c99d3675f890e37ed6c8fbce9ad286d4685126e134ab637950fcef1a4",
+    "sha256": "e6a5c74ee6f99aeb52a67feddc14af51af3ee0ada789aa9dfc98dfad9fdc9a4d",
     "inherits": [
       "ROOM"
     ],
@@ -11494,7 +11493,7 @@
     "file": "d/snow/square_sw.c",
     "path": "/d/snow/square_sw",
     "type": "room",
-    "sha256": "3d6ef8bfd8efd7ed561ca523159ca48af3ece6f8e4e335be838efcca79d12982",
+    "sha256": "64e02cd12eb4ab35de119f0f12a577878802434925ae0c51720dae84cac77dc4",
     "inherits": [
       "ROOM"
     ],
@@ -11533,7 +11532,7 @@
     "file": "d/snow/square_w.c",
     "path": "/d/snow/square_w",
     "type": "room",
-    "sha256": "9a50c9cef7f5a0e566ede3f792aecade64c6ceeeb1046855ca9212577893ff27",
+    "sha256": "8eaeaaeffa6ffe16c7a8e148bca1d9e433196740cd18ae90f03d39710561d03a",
     "inherits": [
       "ROOM"
     ],
@@ -11593,7 +11592,7 @@
     "file": "d/snow/sstreet1.c",
     "path": "/d/snow/sstreet1",
     "type": "room",
-    "sha256": "eb98d343952afd03ba9f33a860569391500bc6802afc2b3cfe6d4098007d2e83",
+    "sha256": "d262637ed1096792155f4f4261dc18e610384f3b496b74b4406deb9ae1c9e248",
     "inherits": [
       "ROOM"
     ],
@@ -11636,7 +11635,7 @@
     "file": "d/snow/store.c",
     "path": "/d/snow/store",
     "type": "room",
-    "sha256": "19f3dc42a497a37f5ff456bc5bcdcf05e5eb3a41f02447cff82a29c2a6889096",
+    "sha256": "e08a132f98c3197b203733494fe5c252ca73d1071009e89080d401af9736408e",
     "inherits": [
       "ROOM"
     ],
@@ -11684,7 +11683,7 @@
     "file": "d/snow/tree.c",
     "path": "/d/snow/tree",
     "type": "room",
-    "sha256": "1c634e76667b4a176bde563152452e8c899990dff4e5ac8989cfa685619d1519",
+    "sha256": "24e0e014ed32840b091bbe53141a058fec03afbc16c6e9807847fd56463b67e9",
     "inherits": [
       "ROOM"
     ],
@@ -11722,7 +11721,7 @@
     "file": "d/snow/wgate.c",
     "path": "/d/snow/wgate",
     "type": "room",
-    "sha256": "ed4fbc195cd9ae498d4a46af7fddb5fcc3a837d2b4bee6108798bbf0a215ded5",
+    "sha256": "4d034f33cc815d5e227d505ad6d5552611970187192930706733404f4a3cd134",
     "inherits": [
       "ROOM"
     ],
@@ -11757,7 +11756,7 @@
     "file": "d/snow/wstreet1.c",
     "path": "/d/snow/wstreet1",
     "type": "room",
-    "sha256": "ddecf97e4bd93475cc0dc1c8005b4aed7eda53237529de36cc319cb44d9e784a",
+    "sha256": "bcb1d210a736bfcd7fb83bcd3ad94f070a844f008ea7bc89b68d99fae8bc0a78",
     "inherits": [
       "ROOM"
     ],
@@ -11796,7 +11795,7 @@
     "file": "d/snow/wstreet2.c",
     "path": "/d/snow/wstreet2",
     "type": "room",
-    "sha256": "4439a7074323ae97f469800d2c305020501507d97a301ce5d73d803c3c1a2309",
+    "sha256": "f11690b7950f06746d1502f2cd6cae3ada57fd0b0124321d9ff471b1ad5fa329",
     "inherits": [
       "ROOM"
     ],
@@ -11831,7 +11830,7 @@
     "file": "d/snow/wstreet3.c",
     "path": "/d/snow/wstreet3",
     "type": "room",
-    "sha256": "415c81374e44eae51fd40eb8765955c8501175c6a25669e1b29f45d235d900bf",
+    "sha256": "903fee84605231ade136534bca2b34ef2d9fb449604902d55994dfbe3b7c6a21",
     "inherits": [
       "ROOM"
     ],
@@ -11870,7 +11869,7 @@
     "file": "daemon/board/bug_board.c",
     "path": "/daemon/board/bug_board",
     "type": "daemon",
-    "sha256": "2d1184fa9b741a55858687eb30ca8f01356d12803fdee7201ea953c26c727c2e",
+    "sha256": "c5e3b6a57901b426bec16eae811e09b811d59d575da49055468944168940068d",
     "inherits": [
       "BULLETIN_BOARD"
     ],
@@ -11899,7 +11898,7 @@
     "file": "daemon/class/commoner.c",
     "path": "/daemon/class/commoner",
     "type": "daemon",
-    "sha256": "df325ad2fb812295331661260f406e08a8b6fd4a3eb3f1ad015b0efd1df7b8be",
+    "sha256": "5e2f700c2510a8b553c7778b2d90ca49a0cbed4f5962f5780e946d0ae8bb9cde",
     "inherits": [
       "F_DBASE"
     ],
@@ -11923,7 +11922,7 @@
     "file": "daemon/class/fighter.c",
     "path": "/daemon/class/fighter",
     "type": "daemon",
-    "sha256": "6ba339df30f9c20e3e89b058f0728b1d7400a9ddeb0e13b56c0a12d351a96e4f",
+    "sha256": "cd19b9336fe3d811850ac87324750165c9e707f8ec75b760f3847ff39f21526a",
     "inherits": [
       "F_DBASE"
     ],
@@ -11947,7 +11946,7 @@
     "file": "daemon/condition/drunk.c",
     "path": "/daemon/condition/drunk",
     "type": "daemon",
-    "sha256": "7b2e5aa5001e691b09c0da83c497ee4ade7cab2c07b033856ba987af3f0ca0b3",
+    "sha256": "b67ffe0f7e07da51d458229be62a183dcc461dced81c578d8bb18f6c60fe97b3",
     "inherits": [
       "CONDITION"
     ],
@@ -11990,7 +11989,7 @@
     "file": "daemon/condition/poison.c",
     "path": "/daemon/condition/poison",
     "type": "daemon",
-    "sha256": "89d0b1da5648bfec25db5492e61e3c509e0f7c1e0373d793cef0680dedce454c",
+    "sha256": "6f339c26a2824a7f852029ae2bca83a36a3381f70f0bf12c214e3dc1915efb69",
     "inherits": [
       "CONDITION"
     ],
@@ -12023,7 +12022,7 @@
     "file": "daemon/misc/traveler.c",
     "path": "/daemon/misc/traveler",
     "type": "daemon",
-    "sha256": "44073a3612e8aae0de1b84cc67c360f98821d1fd2a7c3d72bb035bd02ba956e4",
+    "sha256": "3c77c2d361c97f017d6e274178fef621e41396b593dd868a3c6894700b742ef5",
     "inherits": [
       "F_CLEAN_UP",
       "F_SAVE"
@@ -12064,7 +12063,7 @@
     "file": "daemon/race/avatar.c",
     "path": "/daemon/race/avatar",
     "type": "daemon",
-    "sha256": "0f42d31deda81a202fb33d6cb7fe48c3969cf99a280d30d57eecd61375e87058",
+    "sha256": "2def4357b28e9c64d4e6e8661ed6bd4e6452e18f342166cbe9c72e5b1ff9af6e",
     "inherits": [
       "HUMANOID"
     ],
@@ -12089,7 +12088,7 @@
     "file": "daemon/race/human.c",
     "path": "/daemon/race/human",
     "type": "daemon",
-    "sha256": "592ed4b681968bf05c2d136ce91b89e1b7a1b5b7535fd89ddcb01b57b84e8b01",
+    "sha256": "1b8191397fa515d79f1722845b816ce1cff8dcd8c03824e5fb0fb2ce5b798f72",
     "inherits": [
       "HUMANOID"
     ],
@@ -12115,7 +12114,7 @@
     "file": "daemon/skill/sword.c",
     "path": "/daemon/skill/sword",
     "type": "skill",
-    "sha256": "a49d3c731511b80d5c9ef549a00a8c5375f4edb5dc8fa2ace65df086608b576e",
+    "sha256": "2a2fcfa679b88637b74de4cccb28d58a3c56c97ff1c6bf4ae6101d211aae5369",
     "inherits": [
       "SKILL"
     ],
@@ -12159,7 +12158,7 @@
     "file": "daemon/skill/unarmed.c",
     "path": "/daemon/skill/unarmed",
     "type": "skill",
-    "sha256": "1e1388e1d3774f44c5876818af4a604d96550718022b183df220ae507506ad8d",
+    "sha256": "907b449ae48e378b34e1454ee79abe76989a9ddc2efb4cc34befce6516009be6",
     "inherits": [
       "SKILL"
     ],
@@ -12203,7 +12202,7 @@
     "file": "daemon/virtual/field.c",
     "path": "/daemon/virtual/field",
     "type": "daemon",
-    "sha256": "190d950f347fafc683059f24e1e35c2a3e67084b3567f1ca41eb12279953a8ee",
+    "sha256": "8b9846621da278c6d3ce511292d64cb99c0e1930146bcf85d9ee410a8ff03cb8",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12226,7 +12225,7 @@
     "file": "feature/armor/armor.c",
     "path": "/feature/armor/armor",
     "type": "feature",
-    "sha256": "b9927ea5c053c79716e0ae391628c3ecfb6cfd0787b427888780daad9c00e61d",
+    "sha256": "2a84c8cf0124dbaf56040f0ece4cb1e3331ce19064766a782add7c5e626f7b2e",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12247,7 +12246,7 @@
     "file": "feature/armor/cloth.c",
     "path": "/feature/armor/cloth",
     "type": "feature",
-    "sha256": "90403db106c6b32c0517e75f0b234cbf4e158a679859383b7b44c2e5357dbc9a",
+    "sha256": "1fa15762ea41bf6732513becb551eb6862ed68aeeed4bd7443091258f9e85226",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12265,7 +12264,7 @@
     "file": "feature/armor/feet_eq.c",
     "path": "/feature/armor/feet_eq",
     "type": "feature",
-    "sha256": "11b37b80b44701faeed491598668034ada9735e7a09bf8ff35487dc8d169ade1",
+    "sha256": "d548ed9628ec07ead204ff2138fcfdaa61dd1f9a48183ca03113a6906697b86b",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12283,7 +12282,7 @@
     "file": "feature/armor/finger_eq.c",
     "path": "/feature/armor/finger_eq",
     "type": "feature",
-    "sha256": "7f52f7a634f5718c70c0b77d3385f91a264d44764fe9cfa53e17f027ed35936b",
+    "sha256": "4fec004863df9b61bb457dcb39553b9c42ada5f5535e0b5b4cb5329227480da5",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12301,7 +12300,7 @@
     "file": "feature/armor/hand_eq.c",
     "path": "/feature/armor/hand_eq",
     "type": "feature",
-    "sha256": "47a5e6647cc1aaf04db4f99d660e273c733e73482717cd30597c906827f91cb9",
+    "sha256": "1472046584b44b09d55376171c961bdb2130d5ba4ffd2b18cb0a9c1607f49065",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12319,7 +12318,7 @@
     "file": "feature/armor/head_eq.c",
     "path": "/feature/armor/head_eq",
     "type": "feature",
-    "sha256": "b00e598172492ad7b78ea0d3c87b5f021b8ba4006993f07247cd4d30adad2c2b",
+    "sha256": "17357b0e2896d1c758bae5a72325c4725e01ff95452ef7402b44f28846536d63",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12337,7 +12336,7 @@
     "file": "feature/armor/leg_eq.c",
     "path": "/feature/armor/leg_eq",
     "type": "feature",
-    "sha256": "daf8bacc72cbf3e258a902220cf4362b3e2ad7ee3943a7a0386fc4085dd1e205",
+    "sha256": "6886434f30c906d32faa857a7ed105f33abfb9e64d420d0673f7ecf5a0b4ced6",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12355,7 +12354,7 @@
     "file": "feature/armor/neck_eq.c",
     "path": "/feature/armor/neck_eq",
     "type": "feature",
-    "sha256": "f4a3c4cb62fb2e232eced2b5262d76f36e6eafc8dc15395cb92a1bb03a900d57",
+    "sha256": "07af8f2e15c81b16a6644e22a5b1b386b6fa596b9fb8310df11e37b925773858",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12373,7 +12372,7 @@
     "file": "feature/armor/waist_eq.c",
     "path": "/feature/armor/waist_eq",
     "type": "feature",
-    "sha256": "eab37f8713085079ac72351c305c45c20bb901134bf867d792abd3b519045d12",
+    "sha256": "39dd26b8e51c8946e8586eea29054e62707222c5abf2df0a66e1f3539e5e4ebe",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12391,7 +12390,7 @@
     "file": "feature/attribute.c",
     "path": "/feature/attribute",
     "type": "feature",
-    "sha256": "56a9a2617ac87cf8361fc727c211c9baf7a6d4c11411283f3588af9da5fe3b54",
+    "sha256": "3e0028ac4f0683be36b4503474de5671ac285a878c9ee6adc453673340c142fd",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12412,7 +12411,7 @@
     "file": "feature/char/action.c",
     "path": "/feature/char/action",
     "type": "feature",
-    "sha256": "3774a95391af530fc9757eee957ba1e4af2c2a049f8b664566e2e038d881db30",
+    "sha256": "032e2c28c3f5ed1c99c847c7993332f0893fd8da96da856237c08dcc60d7fbb9",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12444,7 +12443,7 @@
     "file": "feature/char/attack.c",
     "path": "/feature/char/attack",
     "type": "feature",
-    "sha256": "35ccdb7048346e05d583a36ec38c1a4e937d04ddc3d9916fdfac56ff8054c873",
+    "sha256": "65cff4caea2c89e473c190b62a26a4a5ee24d9ef99cd5b4395f640fcb94866a2",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12525,7 +12524,7 @@
     "file": "feature/char/combat.c",
     "path": "/feature/char/combat",
     "type": "feature",
-    "sha256": "c4687322959daebca80d740b42e33320d7eeda2905a352bf965b4d071569587f",
+    "sha256": "95bef48a7406d1b0726347953d0d3f64ef9ffb6ad812aaa248fc594594e2df53",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12622,7 +12621,7 @@
     "file": "feature/char/command.c",
     "path": "/feature/char/command",
     "type": "feature",
-    "sha256": "0409ec6a894600e14438e2e60aab5877ee91191804ddcce5b3b7c87164420fb7",
+    "sha256": "e7b4960876115fb63a6af4791fd29f8de13f2a06a2db7f39795b1f1f78f15c08",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12673,7 +12672,7 @@
     "file": "feature/char/condition.c",
     "path": "/feature/char/condition",
     "type": "feature",
-    "sha256": "b5c4eb8ef39b7d3f0e8c857dadb63922ae80867ca90dd322ebe744ff580a9d13",
+    "sha256": "4bcef9e9ad1a49e829ef269819406c998dc57c4a119cee340e3b8fa463b6d830",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12706,7 +12705,7 @@
     "file": "feature/char/finance.c",
     "path": "/feature/char/finance",
     "type": "feature",
-    "sha256": "61833f3e956d672f381e356f91a0d070b5741e0b27b5c62c7af86f26d9e40cb1",
+    "sha256": "df01a0537247140abc7540ee84136561fa0c9dcd6bd11c8f2803d0a0c851ac48",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12722,7 +12721,7 @@
     "file": "feature/char/message.c",
     "path": "/feature/char/message",
     "type": "feature",
-    "sha256": "a417d83ad3a4a1345956200e65e430217dcc6ec71ba8e6fbcb57135c52ec0768",
+    "sha256": "4f04e41ad7fa6d66aa5355cc907fce0925c59d25150fb4c2308881cd261701bb",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12739,7 +12738,7 @@
     "file": "feature/char/relation.c",
     "path": "/feature/char/relation",
     "type": "feature",
-    "sha256": "3c4cdcae94c01db964073d00e052aecc51abddd6c3c1d6290cd045004eba8c79",
+    "sha256": "cfe1b7091b86eddd820d086c255c7a442e17125b56d13962bd4bad68c4a53f8a",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12762,7 +12761,7 @@
     "file": "feature/char/score.c",
     "path": "/feature/char/score",
     "type": "feature",
-    "sha256": "a57b93a1654023f4f4bdc488ba2ab1141f29d355ddd81384a93dbc3f16acb5ea",
+    "sha256": "d8a00f8d83bc33dd3f0ad400fbb32e569ad825caf32d2100d7a7ea26e22d438a",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12788,7 +12787,7 @@
     "file": "feature/char/skill.c",
     "path": "/feature/char/skill",
     "type": "feature",
-    "sha256": "019818125d56934d33b5453a0f8b6bcafeaf5e6ed5e9ee5ee0ab61631430e9c7",
+    "sha256": "0b9366f9ba05c0a242439605736ef4770dc2d1f17cd9ea03a1ad2d034abaf2f2",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12849,7 +12848,7 @@
     "file": "feature/char/team.c",
     "path": "/feature/char/team",
     "type": "feature",
-    "sha256": "980c66f4b4b3f1309bf889bfd7f508d6c6f1fba576d47707fad1d9e060a9792d",
+    "sha256": "31daf0932e76bf8b7ceba30c670210f9829dcd509dc74d9e381ab9affbeebf0c",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12882,7 +12881,7 @@
     "file": "feature/clean_up.c",
     "path": "/feature/clean_up",
     "type": "feature",
-    "sha256": "929f6dbbfd55b1ecfb6e9c911023ef08f763ac5809e8f456208f188e7c386e3b",
+    "sha256": "d8c5591c241fbdb773a11d92572b3859e9c3cf32ec89bcb69a10436b09257c49",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12897,7 +12896,7 @@
     "file": "feature/dbase.c",
     "path": "/feature/dbase",
     "type": "feature",
-    "sha256": "1b6a966d35f5b57ca70a5d7beccab814b2d899d2fc7be94781c38c4e23511e55",
+    "sha256": "437be77b166f8e81b289386e8daaf9f9da69930e6c437b3886ea9308201457cf",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12927,7 +12926,7 @@
     "file": "feature/drink.c",
     "path": "/feature/drink",
     "type": "feature",
-    "sha256": "bd395d2ef009167ba3cdb99d83df80b545b6a695d1a5d8f93e7e18186a714702",
+    "sha256": "66de92d0ed5493eda3626de12b3ca41c9cffd9380689460ad06216f0f6d1b083",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -12947,7 +12946,7 @@
     "file": "feature/equip.c",
     "path": "/feature/equip",
     "type": "feature",
-    "sha256": "bc4043746652a54a14640a90b0043c0e7371a5a3c50771ab306b62b527d16a7b",
+    "sha256": "2b76c9f6de716935e9b6b842f4d30e46ff3c81cc6aeffe0e6d49745a451739ae",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13022,7 +13021,7 @@
     "file": "feature/food.c",
     "path": "/feature/food",
     "type": "feature",
-    "sha256": "5bf18f020b7e5d514b680188726ef5de117a8969a4faba83b2fe73411a7da9b2",
+    "sha256": "84102898ccf6a5d85f1684150de21447ce744b9796adcf5de927e46770db10ca",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13045,7 +13044,7 @@
     "file": "feature/move.c",
     "path": "/feature/move",
     "type": "feature",
-    "sha256": "707eda14f5ae5a87c0d5656e6fbabac970c0eece0fc36122c26079ab52fd8f85",
+    "sha256": "ebe276ea6583967fdf5383a03955c425b27918dd7828bc552c0394e542b33816",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13086,7 +13085,7 @@
     "file": "feature/name.c",
     "path": "/feature/name",
     "type": "feature",
-    "sha256": "45a3599deb4b34afc12d2aabf7dfe540c5caf0b975efc71c2e01b95264b3c2b2",
+    "sha256": "5b738cac8ab76a4c7249c757b66db3393012b86dcabd9fc4cb27ebbb97a4d078",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13109,7 +13108,7 @@
     "file": "feature/npc/bandit.c",
     "path": "/feature/npc/bandit",
     "type": "npc",
-    "sha256": "2264a0df14519f5ba859b08242d879282c8dd9160628bf3ba1f0f4076edd411a",
+    "sha256": "a0a597e00c0fc4384c0ada0853cb9fa26b01b866fce19a74e7996ac6fd9402cd",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13138,7 +13137,7 @@
     "file": "feature/npc/currency.c",
     "path": "/feature/npc/currency",
     "type": "npc",
-    "sha256": "2de660a68230ee5c29d7792fc30b1cdd304ec168df3d6940a8ca67d8704fbb88",
+    "sha256": "e37da6f82a85d8786eac5e6b6a49b53f2b57c8b625e51b39c9b5d466431d9430",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13153,7 +13152,7 @@
     "file": "feature/npc/fighter.c",
     "path": "/feature/npc/fighter",
     "type": "npc",
-    "sha256": "56e92d984a1e3ef77f925ec8e1c76f575527edd594a4dc11436c06748bd0e32b",
+    "sha256": "be6a763476439abd6291a670d44f6c1467211d6dac572cc915aa56eb2363b928",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13188,7 +13187,7 @@
     "file": "feature/npc/scholar.c",
     "path": "/feature/npc/scholar",
     "type": "npc",
-    "sha256": "c6ec2155dc2df061961dd8c202d6d4f81d7586a5554b56342068af1b6bd9ccc5",
+    "sha256": "646e3e0bf614da131d428879371deb699182b582b896a5500537c0df1f515dad",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13224,7 +13223,7 @@
     "file": "feature/npc/soldier.c",
     "path": "/feature/npc/soldier",
     "type": "npc",
-    "sha256": "b8ee39f272c807d6fe99c50b78bdf3a3507edba0c96a372dd4c7190fe4922f7f",
+    "sha256": "39f4f69c1bf605baa865631d250c04de85d5b012c88ae3fedb67dca1cc06874c",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13257,7 +13256,7 @@
     "file": "feature/npc/traveler.c",
     "path": "/feature/npc/traveler",
     "type": "npc",
-    "sha256": "61810d8923876b9ad068e8b87a3df799cb62f787cd421cc84b5d9575e1238943",
+    "sha256": "eb734572d5449651e615ee7ff2411e946fb7712d2a90ea9672eec6ef34e2e9df",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13279,7 +13278,7 @@
     "file": "feature/npc/vendor.c",
     "path": "/feature/npc/vendor",
     "type": "npc",
-    "sha256": "1c4a9e7176dcc7376fad6f8ea23e0f9559a9882ceb7ad96d518aa4104412d40c",
+    "sha256": "2871cd5edcea2c300ac668e38d901f8e9a7ac21219ff878d2e4943844f29ea8b",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13305,7 +13304,7 @@
     "file": "feature/npc/villager.c",
     "path": "/feature/npc/villager",
     "type": "npc",
-    "sha256": "167b1b7f9603b099163baa757432b15de3dc14415bd05742899e394be29c54d9",
+    "sha256": "7dfbfd17bb60ffb9fe88f3d9bdbcd6b6af02bd878fcea6e4966fb79cf2c0da59",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13327,7 +13326,7 @@
     "file": "feature/save.c",
     "path": "/feature/save",
     "type": "feature",
-    "sha256": "df6eb4458317ad3926b8e4eda7d70c756ae0fb51d405a62c9718675249561699",
+    "sha256": "873e6b2323a33c57670842a8edf4b40263a79e99c648d852c8f3718a02d405e8",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13343,7 +13342,7 @@
     "file": "feature/statistic.c",
     "path": "/feature/statistic",
     "type": "feature",
-    "sha256": "40a941da7c276d64ec0bbbd391d6a9a30ac0bd43fadc500056019d11a4c3bd4b",
+    "sha256": "4bea96919c319a1cb085cd3833d3eecf46f054515797a8505504349a6acf671d",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13388,7 +13387,7 @@
     "file": "feature/study.c",
     "path": "/feature/study",
     "type": "feature",
-    "sha256": "eae0c0dc82ea9ce184bec1c89a8418e366a8f90be3f1793d2a721cb52f513186",
+    "sha256": "d485feca44dba6af2f94a32edf68f8be138ddb7de392a6820fb06c3a27da9b0a",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13422,7 +13421,7 @@
     "file": "feature/unique.c",
     "path": "/feature/unique",
     "type": "feature",
-    "sha256": "5810720c1e3ac69789d65837ddb4335976bd6a9642571ca7c1dc18dcc8218f74",
+    "sha256": "15ade17c35a2baceaa747444fa6064d5037e9b91bc0d942c91addaff027783d4",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13438,7 +13437,7 @@
     "file": "feature/user/alias.c",
     "path": "/feature/user/alias",
     "type": "feature",
-    "sha256": "0fe36aa2513f366424888897fd5271672077da661d393f05ded8cc37b5ff8b85",
+    "sha256": "4cbf3b11c802f9d10823dd31aa8eab52161af71f0f468832f8e5594c5942f417",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13456,7 +13455,7 @@
     "file": "feature/user/autoload.c",
     "path": "/feature/user/autoload",
     "type": "feature",
-    "sha256": "14592fc9ead2fb8db185d2609f0205215019fb3ebe8a41e3bce4bb633b11b580",
+    "sha256": "952bba6a8b0a9939caa86f81d1a1ebe893475b64ebd9c6cb06ea782b7d925550",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13478,7 +13477,7 @@
     "file": "feature/user/edit.c",
     "path": "/feature/user/edit",
     "type": "feature",
-    "sha256": "d7d3083a2be2889e43ff0aff245133afbfd8e6d8353bf68f2e4eab2c55dad820",
+    "sha256": "50b01dedf4f32d992de2123432737123c39dc3ae161a3f77ce2724063f99478c",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13503,7 +13502,7 @@
     "file": "feature/user/flag.c",
     "path": "/feature/user/flag",
     "type": "feature",
-    "sha256": "65068ac5e4515e60594fe560f8719f24a81c05775774a9e8b979a5b2bf42b737",
+    "sha256": "a9050e65031ee3f4a1bf6fac64ced47dc475bdbc3d49ad7dbc304d7dd97fe9ce",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13518,7 +13517,7 @@
     "file": "feature/user/input.c",
     "path": "/feature/user/input",
     "type": "feature",
-    "sha256": "e10ed9ce24cf684bd23b2d949351832eea8057923cc7ba6246d666a89a5b1901",
+    "sha256": "a7730d73c70313463bc16e436c135ed7c1dad4d5b633202dcbfab93b6c3f5ae2",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13531,8 +13530,8 @@
     "source_policy": "taedlar/es2_mudlib only",
     "uses_input_to": true,
     "literal_prompts": [
-      "Y. 是\\nN. 否\\n請輸入 Y 或 N: ",
-      "請輸入選項數字: "
+      "   ",
+      "\\n"
     ],
     "manual_review": []
   },
@@ -13540,7 +13539,7 @@
     "file": "feature/user/more.c",
     "path": "/feature/user/more",
     "type": "feature",
-    "sha256": "f91109ac2f38152827e2e7063bdaad08fe10f0f9c7a02b39366e8fb6fb658a5d",
+    "sha256": "afd1ea5deab55d11638e85900a874fd7dc1324b22ad9f86211bc9932bc6bc113",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13552,14 +13551,13 @@
     "runtime_traits": [],
     "combat_surface": [],
     "source_policy": "taedlar/es2_mudlib only",
-    "uses_input_to": true,
     "manual_review": []
   },
   {
     "file": "feature/weapon/axe.c",
     "path": "/feature/weapon/axe",
     "type": "feature",
-    "sha256": "193e49cc73bf9673f275bb97c02015b67cbb9f6b372ed305290b7cbac9393ee7",
+    "sha256": "ff2dccf07ee2f38d4e3fd3b1eeca89797e5646a2a66d8493de30b94cef180e5d",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13585,7 +13583,7 @@
     "file": "feature/weapon/blade.c",
     "path": "/feature/weapon/blade",
     "type": "feature",
-    "sha256": "720d77f816d4d8d73d5d1d7b193fc0fecc87731d65af3f6d6ad62d255d3b9c2e",
+    "sha256": "08d7c501a73ef743ffe23e8c208f10980b5499a919d72a7f5034daf03b21ab43",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13611,7 +13609,7 @@
     "file": "feature/weapon/blunt.c",
     "path": "/feature/weapon/blunt",
     "type": "feature",
-    "sha256": "cd8d4a0b36d709a84c56b1844412385ada37275c3d505c7e5649bd62205bf623",
+    "sha256": "a3735d3b3d67a01d53395e28da4ab8898c760c2d2c74444f4b7471cbb9cc7910",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13637,7 +13635,7 @@
     "file": "feature/weapon/dagger.c",
     "path": "/feature/weapon/dagger",
     "type": "feature",
-    "sha256": "f8d289c6994c2f4d5894a00debc39512c052a4a162a40b73410e0e988d66dddc",
+    "sha256": "c6089610477186a1069b3396591d8e7ec8e754f407bc5ab801939386a89166b2",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13662,7 +13660,7 @@
     "file": "feature/weapon/needle.c",
     "path": "/feature/weapon/needle",
     "type": "feature",
-    "sha256": "e925d1f1db70f0b978184c8f17290acc5ac99e7c1942c50bc2eefe2c5e452080",
+    "sha256": "77eb91646fc74c13ffffc7d89734df99831f6df3b0f9a17ba0c1208c48504c3d",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13687,7 +13685,7 @@
     "file": "feature/weapon/pike.c",
     "path": "/feature/weapon/pike",
     "type": "feature",
-    "sha256": "09c66944aa9ea6d04adc870d7e92c592ad7c46d07329a7f613d8c1e2efc243cc",
+    "sha256": "9e0de9f8f892a92cfcc96b89cdec196f1096520fe9b86d206d3bbe99ca3fcee9",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13713,7 +13711,7 @@
     "file": "feature/weapon/staff.c",
     "path": "/feature/weapon/staff",
     "type": "feature",
-    "sha256": "64c67cd127cc57fdebe6f811c82a04346132b139a2803f6df9756bbe68a68056",
+    "sha256": "fe7037b6e534f0a34fec77b24e46c3b6c010898cf9f105e78bbb03773995e8c0",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13739,7 +13737,7 @@
     "file": "feature/weapon/sword.c",
     "path": "/feature/weapon/sword",
     "type": "feature",
-    "sha256": "2697693aa3dff1bc23e411fe5c40f70b8e089e53139ba519ea594806693f1ec0",
+    "sha256": "353b024701f9122c203b04a32fdb5fe5b7c412ebe82cc8e6565c5e4e7d34d8b6",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13765,7 +13763,7 @@
     "file": "feature/weapon/whip.c",
     "path": "/feature/weapon/whip",
     "type": "feature",
-    "sha256": "4e0bb9c666a4535dd9748f85dbeeec73b3b9825a62cb807ad1f54d0198d1db6e",
+    "sha256": "c8920c78162e12e06dd73c257422f31c572e227e2b0795679e5a0075ef988619",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13789,7 +13787,7 @@
     "file": "include/action.h",
     "path": "/include/action.h",
     "type": "include",
-    "sha256": "25090f853a2a121fdae3c9dd975bf3d994d85ab360fbc530a28dd59bcdc52e63",
+    "sha256": "5a41a46b526b494baa294a7bda5fa8bf4b4258c20810d71e122d6275fb9f0943",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -13802,7 +13800,7 @@
     "file": "include/ansi.h",
     "path": "/include/ansi.h",
     "type": "include",
-    "sha256": "67aeae44d9119550fe695cdbee60ea803a36c860aebcb9c5e5839cf9fb0ff621",
+    "sha256": "3bc99a86cbcc057033e4a201f9eb98aa93efb6fe2aafdec84809def45ccdc0f5",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -13815,7 +13813,7 @@
     "file": "include/armor.h",
     "path": "/include/armor.h",
     "type": "item",
-    "sha256": "1d485633fe260ffaee951215a1d32e646f8785e12cf46ceb4ab28e56334b28c9",
+    "sha256": "620c686630a840abacc85c92a1e2f4ac8a590caca2db39f204786ca71a410cb9",
     "inherits": [
       "ITEM",
       "F_ATTRIBUTE",
@@ -13854,7 +13852,7 @@
     "file": "include/attack.h",
     "path": "/include/attack.h",
     "type": "include",
-    "sha256": "2a7b94a4298c2a76c49aaafe722dd4bd2aba0d8024d69e2d44e503f0338f9131",
+    "sha256": "7adf45ad81f3187284aca5a3ed7957431f2cad9e35f3524933abb111a9b637f7",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13876,7 +13874,7 @@
     "file": "include/attribute.h",
     "path": "/include/attribute.h",
     "type": "include",
-    "sha256": "6a72eb7a69f258dcf66ace01da1da497e7b42326f62090865f2f8a318963166c",
+    "sha256": "5befa8f3fa0a853b9ee010564889ed96111147a89f66025d8f6d5a6339335a60",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13893,7 +13891,7 @@
     "file": "include/char.h",
     "path": "/include/char.h",
     "type": "include",
-    "sha256": "44c39b4ccb55cd2fc104746f284c144bb42ba37f9412af816b8220cdd8c3336c",
+    "sha256": "8c27d84d95dcaafc8a93058c7f825131f744758030bc0e33cb065dc5819f0220",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -13909,7 +13907,7 @@
     "file": "include/combat.h",
     "path": "/include/combat.h",
     "type": "include",
-    "sha256": "5728060a5624afecfe09aeaab042ae74350adfe7247b96cce96b3653cff47aff",
+    "sha256": "7f60cf02965a6e1344dde34b87d9be6f4740f712d14d13a96ea02217bdf79424",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -13925,7 +13923,7 @@
     "file": "include/command.h",
     "path": "/include/command.h",
     "type": "include",
-    "sha256": "1c789feaeb9f87f3ccd9a31be5a9f36835b9ee574ed31d94cdcc2bd81139ab00",
+    "sha256": "bf0797ba5623159305d11bf89eda2d50770854adb43bd17a8797cbabd88f8b3e",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -13938,7 +13936,7 @@
     "file": "include/condition.h",
     "path": "/include/condition.h",
     "type": "include",
-    "sha256": "7660439e7b2b1d819a4e86bef852a70a8c8709f0aad1dd0324bc959c3fd53aec",
+    "sha256": "1e1d5866bc4a42c87ac91e2769360821deb83c033a7d89cb3d16be7131214fcc",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -13951,7 +13949,7 @@
     "file": "include/daemon.h",
     "path": "/include/daemon.h",
     "type": "include",
-    "sha256": "b95c5a22411f90de17ef6f996f24b887f0b8c0083fc87e38180962d66b00b86a",
+    "sha256": "9e05822c41141e238966a1f45f43b0225608936f548fe49ec168e1facd8a5fa3",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -13964,7 +13962,7 @@
     "file": "include/dbase.h",
     "path": "/include/dbase.h",
     "type": "include",
-    "sha256": "d03793bc6dd0983d68a589d96221bdd020f5098969deee42506d47b63be67969",
+    "sha256": "f1faca7fbd3595b558c44b0fdf9239fcab7e8543d87fe38983a55891e1df28b8",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -13990,7 +13988,7 @@
     "file": "include/dbase_security.h",
     "path": "/include/dbase_security.h",
     "type": "include",
-    "sha256": "3612d1c416b3bfebe1a9595b2173d0150ea789c60cb925afd443c8ec35d3f88a",
+    "sha256": "a3e0330d951adae94c506ff82f73f48067956c6b327c01101f0209e21b2baf04",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -14008,7 +14006,7 @@
     "file": "include/explore.h",
     "path": "/include/explore.h",
     "type": "include",
-    "sha256": "6f8fbac850f55c517d79ba0df1bfc5de2dea09a0cafd95f365c310d0ef31e701",
+    "sha256": "7345b43895766022335074b83746b8eebbc274f6234c3fe2a375b97f5aa88d8a",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14021,7 +14019,7 @@
     "file": "include/function.h",
     "path": "/include/function.h",
     "type": "include",
-    "sha256": "9f8714c1e4e123df46f5f46c4cb7a12e6661664d331fb2b6710af3390be7dacf",
+    "sha256": "ce25f0617b7d402e83b712f02a0c665563ea429797ddfd50171615a4fe65322e",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14034,7 +14032,7 @@
     "file": "include/globals.h",
     "path": "/include/globals.h",
     "type": "include",
-    "sha256": "ddd9f46253cf8bc91268c8a97b545270b97a3602d940a1711176e7e9c68cd054",
+    "sha256": "b4715e6bcb2d968428869749c00e5a9f5866cf8f5cade9f3df8179f0a3e6b46c",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14053,7 +14051,7 @@
     "file": "include/help.h",
     "path": "/include/help.h",
     "type": "include",
-    "sha256": "0353476b438b2e56229ad682454d651eced03b5356b9552d3d6b60ffa05d5735",
+    "sha256": "a1b00f09971e5557369f9ae81527d55e7609c658a230a8ccc0c974d49be1b5ae",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14066,7 +14064,7 @@
     "file": "include/html.h",
     "path": "/include/html.h",
     "type": "include",
-    "sha256": "80a46dd97aef1a4e7a9525490c6320c1016177a12d8a3c91eacf6e4206f36138",
+    "sha256": "11fcbd0bae868aa0542b08ec889a964dff353d1fb4b372fde7cb5191d6f059d1",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14079,7 +14077,7 @@
     "file": "include/http.h",
     "path": "/include/http.h",
     "type": "include",
-    "sha256": "463f39d620dc0920e56f516c99e2c35261ca2e43191d624b4113e28fb3ba403e",
+    "sha256": "ecd137a64b246b46bce5e85b4b01831c88b43b34329e44a8307ac3e89ef9aeea",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14092,7 +14090,7 @@
     "file": "include/intermud.h",
     "path": "/include/intermud.h",
     "type": "include",
-    "sha256": "9378fa6276fde6e06ab07428bd219aa8e9deb00fec6828b96cd9656b65457fdb",
+    "sha256": "ab97d8d136c06d90868af48f69f89dacbc6a5128f1f5b954c3295b4fadcf3074",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14108,7 +14106,7 @@
     "file": "include/localtime.h",
     "path": "/include/localtime.h",
     "type": "include",
-    "sha256": "258ccce57fd14a185ff26358509e0171b76d7d15dfb0ff7c0f7c64a97df86db0",
+    "sha256": "201cb95ad2098e44494bd8ca36ade6aa31835cf14e4651be5ae1fe1ec720f9f6",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14121,7 +14119,7 @@
     "file": "include/login.h",
     "path": "/include/login.h",
     "type": "include",
-    "sha256": "e5fac18b7aa29301339de2222da72c29b641f734bd02ef35920b4fd8e9dcda7e",
+    "sha256": "2d0be8867650bc4172985080260c576fb97b619c2714ea2a1c208260e7880747",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14134,7 +14132,7 @@
     "file": "include/move.h",
     "path": "/include/move.h",
     "type": "include",
-    "sha256": "ceb71c6a04cad42b9f1b8a93013db9adaeb89454f4e8607debfd0a6816f717c0",
+    "sha256": "9977bf672857ca09316fd8dac65c129832f415c6ad64069dc71fa811b706bfc8",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -14156,7 +14154,7 @@
     "file": "include/mudlib.h",
     "path": "/include/mudlib.h",
     "type": "include",
-    "sha256": "a8e35f54d2edaa05ad312eef819b42261236294a50e4a242db6c94c4937b6750",
+    "sha256": "4566f0d1760b89fefdf79979e79dbecb637ea5916928de2d7ba8d96eb0826f7d",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14169,7 +14167,7 @@
     "file": "include/name.h",
     "path": "/include/name.h",
     "type": "include",
-    "sha256": "3e9b51ee03394f4fd85c9927968e3002c8307dca475ba622cf0ae28a00447d69",
+    "sha256": "e698cc7d36b944cb94e5fc09147f4f60e096bc31e9216a592624ff50468c9664",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -14187,7 +14185,7 @@
     "file": "include/npc.h",
     "path": "/include/npc.h",
     "type": "include",
-    "sha256": "58051b2ca2565966187d0f0896a5d7c51ccde9ec4af77294cd006963839cc8d9",
+    "sha256": "b9b81bf27d62db484e11703a5fa5037903fefcb726c75ae8f7fb42cbbe74330a",
     "inherits": [
       "\"/std/char/npc.c\""
     ],
@@ -14208,7 +14206,7 @@
     "file": "include/obj.h",
     "path": "/include/obj.h",
     "type": "include",
-    "sha256": "142f7b1dbbd38f49ff5d3931df5b7ff95e2bda337c14eefbe94c16b9928d81e8",
+    "sha256": "38ccbead4ecb608de4243d3157a761b383919d634fb935e0d46768e331f6fbe2",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14221,7 +14219,7 @@
     "file": "include/origin.h",
     "path": "/include/origin.h",
     "type": "include",
-    "sha256": "706d12c19e4f7e6c5982987c8e7545481c5af184871cd0a05030aaa3c1407210",
+    "sha256": "3754741108ac6378e3437cd335b709e3380a5ffb9b7f64125e3c48e3b105cc59",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14234,7 +14232,7 @@
     "file": "include/race.h",
     "path": "/include/race.h",
     "type": "include",
-    "sha256": "1c968d5fc0bd9df175c87bfa052e8b0afba9cd37255babb1a6a62f4535c4eac5",
+    "sha256": "60164e02c3a12aee4df1d8c93e76d86d6e61be1239f34a22c747f4db8351a5cf",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14247,7 +14245,7 @@
     "file": "include/reboot.h",
     "path": "/include/reboot.h",
     "type": "include",
-    "sha256": "7113667b74dd5ea0a73ddb418d520b9357ec5a3c325b4f50ad6ba6a55bdd6ba9",
+    "sha256": "bf7a20124d46e3328a5a85994803b611ddd2917d04b6a4e87def2acf4bcca6d9",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14260,7 +14258,7 @@
     "file": "include/room.h",
     "path": "/include/room.h",
     "type": "include",
-    "sha256": "880fa7c4d3bca241b28c8817311cc8c877fa9b4bf2d91371b1132aa82f03545a",
+    "sha256": "83873663a7fbb8fc75d0efc53a27c6a45d0037b1da05916f526ffb9fe091bcf4",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14273,7 +14271,7 @@
     "file": "include/runtime_config.h",
     "path": "/include/runtime_config.h",
     "type": "include",
-    "sha256": "b444b1811ad284f8ae23e8688f12700bcc85f768c6da259f39654e0c52e692d3",
+    "sha256": "1e3f16b7b17dd1b557aee493e1079c4653b44aa738dae5ca273797d71798448f",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14286,7 +14284,7 @@
     "file": "include/score.h",
     "path": "/include/score.h",
     "type": "include",
-    "sha256": "6fae01a48887d596c0e6df604fdfd1c58802304278d24e70d525c0ce9a53f5e7",
+    "sha256": "1925f725c26649d2d03b60374a74da506f5017eb47903a3ae78e4ab05ad52585",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -14301,7 +14299,7 @@
     "file": "include/skill.h",
     "path": "/include/skill.h",
     "type": "include",
-    "sha256": "46c292dc05d7e76d08036aeee52edc6de04b10e62c313176a3e0b3dc60ca193b",
+    "sha256": "1da6f7aab73f493650341b08af9fba5e1e581ab8b390d0d1369bf9fb35535014",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -14326,7 +14324,7 @@
     "file": "include/socket_err.h",
     "path": "/include/socket_err.h",
     "type": "include",
-    "sha256": "d2b1ce6caf78668f6c3492caf3a81f22eb6028de7445a511b661482dc10d1bf1",
+    "sha256": "ba3bb402079621295cb9f4d6e8acb267f008d82013ae38d3e46a885b8aae7e48",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14339,7 +14337,7 @@
     "file": "include/statistic.h",
     "path": "/include/statistic.h",
     "type": "include",
-    "sha256": "de1597cca6cd0b7a1aee20647ca3c49d4f5e5f1959bb9607183b8faaae78df6b",
+    "sha256": "0d2bea410dad24e394d4cd940f6ca164ccfc6698fd55412b5dab039851b32122",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -14376,7 +14374,7 @@
     "file": "include/team.h",
     "path": "/include/team.h",
     "type": "include",
-    "sha256": "7ba34391efbb2e9a11581b4ba407135014bc99f6b736040230fe2f3252adbb38",
+    "sha256": "d1dad6d21c6f53245bf0536d6f605475eb5a8c37d05d158e0645c4d1fefb1be2",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -14394,7 +14392,7 @@
     "file": "include/type.h",
     "path": "/include/type.h",
     "type": "include",
-    "sha256": "557d07a42308cac3c8f7bcd5d3b61030d80ce09eb7ddd77f732e94f2bcc5f1e2",
+    "sha256": "343b3138460a24d7eb74fc4a5bf4c4bd4bfe16e9fe511f3c48f9d2cab642a5c7",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14407,7 +14405,7 @@
     "file": "include/user.h",
     "path": "/include/user.h",
     "type": "include",
-    "sha256": "4c6974dc67406967f634fddf93033e388549e2f313ec65f2f0f6e3579b252b0d",
+    "sha256": "63a1db1b8fe4cc5f968f1a317e30734f538510c8ffb5e52528448afb09670b9b",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -14420,7 +14418,7 @@
     "file": "include/weapon.h",
     "path": "/include/weapon.h",
     "type": "item",
-    "sha256": "9799600bf7add3a027c34c8a3295d911cfb0325eb60e63dcb385083e100e8e59",
+    "sha256": "6a70f10c7ab07d37306218624332cfd5f9e0dfcedcf43e740fc67e38ece0b79f",
     "inherits": [
       "ITEM",
       "F_ATTRIBUTE",
@@ -14459,7 +14457,7 @@
     "file": "obj/area/man.c",
     "path": "/obj/area/man",
     "type": "item",
-    "sha256": "9766bd11c625e0de58c99bc31c8f00d158e6ae808b43b6c4e47abfcec6ba130f",
+    "sha256": "8616be9ad8bb444ff051ad72253cd6db8dc4b8f218f40ef722224e46b8e1a473",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -14517,7 +14515,7 @@
     "file": "obj/area/obj/axe.c",
     "path": "/obj/area/obj/axe",
     "type": "item",
-    "sha256": "7f8c5ff352111f0e63aed298f35f6677d6531f02058e368f691a0828b96ed150",
+    "sha256": "8c02a20ac900d0547a97dd36e61bb0003f099f80af30b3cb6ccdd2324c6c8655",
     "inherits": [
       "F_AXE"
     ],
@@ -14557,7 +14555,7 @@
     "file": "obj/area/obj/bag.c",
     "path": "/obj/area/obj/bag",
     "type": "item",
-    "sha256": "d86a0d0f61616f585f487b27128dbd13a1553dcb6c1f88d28098de59c262f543",
+    "sha256": "58ff50d5b4ad110a0a0fb0c2a637ef6ca34806944fb11002b7387738172c9e3e",
     "inherits": [
       "ITEM"
     ],
@@ -14596,7 +14594,7 @@
     "file": "obj/area/obj/bastardsword.c",
     "path": "/obj/area/obj/bastardsword",
     "type": "item",
-    "sha256": "8bd7e5d776699805ee88b0896581262d74a2893021cff4227ae6fbe81833ecec",
+    "sha256": "09f94cb8024152842b8204ce814cceccf20f6215153e41245e3bf770722ef543",
     "inherits": [
       "F_SWORD"
     ],
@@ -14637,7 +14635,7 @@
     "file": "obj/area/obj/belt.c",
     "path": "/obj/area/obj/belt",
     "type": "item",
-    "sha256": "71c67963e08cee90b3eaef4ba734a6eb936176a5bf7815e75bceb9e9c7a17f14",
+    "sha256": "a405ed03fe465db89302226abe857f4775dfffda38fffe8cae08113b9340997c",
     "inherits": [
       "F_WAIST_EQ"
     ],
@@ -14690,7 +14688,7 @@
     "file": "obj/area/obj/blade.c",
     "path": "/obj/area/obj/blade",
     "type": "item",
-    "sha256": "e62bfc4ecd52f4b0982dc1d8023cd803aa93129520d73d01edefab5cf34afc79",
+    "sha256": "16c568f811cd338bb32e615b178a2d3aa9c3b84de651c76a8fb849292ffaa6c8",
     "inherits": [
       "F_BLADE"
     ],
@@ -14730,7 +14728,7 @@
     "file": "obj/area/obj/broadaxe.c",
     "path": "/obj/area/obj/broadaxe",
     "type": "item",
-    "sha256": "006662952e2c8c7aa2181256d4b5a59d382623afdeda48eaf44c9acec554cde8",
+    "sha256": "a132663641adffec2d97dba0e889cf851bc1e57d2849a2733bc07bebbb93658b",
     "inherits": [
       "F_AXE"
     ],
@@ -14772,7 +14770,7 @@
     "file": "obj/area/obj/broadsword.c",
     "path": "/obj/area/obj/broadsword",
     "type": "item",
-    "sha256": "70f2eb4f16a28e962d9885129e4e30400a7539c30f14f2ceac982a3849956d2e",
+    "sha256": "8ec61beab0612d318d3bf4e71dd74e26df500fcdcb4af1118bc1ea0b699ad2d2",
     "inherits": [
       "F_SWORD"
     ],
@@ -14814,7 +14812,7 @@
     "file": "obj/area/obj/cloth.c",
     "path": "/obj/area/obj/cloth",
     "type": "item",
-    "sha256": "6360dc7dd309b5986cc254d82b95ce72132bb6982f630cf9cb23c4bf2d3d26e9",
+    "sha256": "dd59a3071b8dac01e404e34eff285617f3ee36af91dcc24f6fe6f55d41e79c46",
     "inherits": [
       "F_CLOTH"
     ],
@@ -14868,7 +14866,7 @@
     "file": "obj/area/obj/curved_blade.c",
     "path": "/obj/area/obj/curved_blade",
     "type": "item",
-    "sha256": "61ca2f67800b951e292c641b1ae2e3d37e98f73181a80a012960d3fce93ce454",
+    "sha256": "1c5f17eea181c60f388e856424582bb07a9aff3d3c4c30d33535559f23963bc6",
     "inherits": [
       "F_BLADE"
     ],
@@ -14909,7 +14907,7 @@
     "file": "obj/area/obj/dagger.c",
     "path": "/obj/area/obj/dagger",
     "type": "item",
-    "sha256": "f84110bc60faa352cf6198cbd70019e5600d92259496f2f5ff1b1d2c38ce0b85",
+    "sha256": "bd5831f68f68da80e9588121d54b8268ed811d43852381f02cc953b5d9e5db02",
     "inherits": [
       "F_DAGGER"
     ],
@@ -14949,7 +14947,7 @@
     "file": "obj/area/obj/dice.c",
     "path": "/obj/area/obj/dice",
     "type": "item",
-    "sha256": "c5d6668cc673c1bb4270928da6abfb36acbc01b931ad201446a87f0dfd27728a",
+    "sha256": "2e37c82e140a24cc6991700a120c3ffde16c1f5c70eeb74bdf890181e4cc24a8",
     "inherits": [
       "ITEM"
     ],
@@ -14997,7 +14995,7 @@
     "file": "obj/area/obj/glaive.c",
     "path": "/obj/area/obj/glaive",
     "type": "item",
-    "sha256": "448ac5d9e45538f94650b5226916fc1c97b00d1c0a7978331e89e9a4012243b7",
+    "sha256": "d352792f0663032d4441e47a07fdf5595c8fceac3a42379825a73d95fd808752",
     "inherits": [
       "F_BLADE"
     ],
@@ -15039,7 +15037,7 @@
     "file": "obj/area/obj/greatsword.c",
     "path": "/obj/area/obj/greatsword",
     "type": "item",
-    "sha256": "c3e1fded1764b93b9c143b59682c47e51a680af16abbc0b6811c3838d3b0ca12",
+    "sha256": "539f9b00227ce34f1ce3983ee95ddfeccd5e4f3453c5e5445109ca479bf5971b",
     "inherits": [
       "F_SWORD"
     ],
@@ -15079,7 +15077,7 @@
     "file": "obj/area/obj/knife.c",
     "path": "/obj/area/obj/knife",
     "type": "item",
-    "sha256": "9bcfa44e691e54963ae848dba206a940a4e11491964c00fe0b09997912fa9474",
+    "sha256": "5ca563aada8fb4502b93e897de66eb470629c76cc47bde39d16860fae9c23a6f",
     "inherits": [
       "F_DAGGER"
     ],
@@ -15119,7 +15117,7 @@
     "file": "obj/area/obj/kris.c",
     "path": "/obj/area/obj/kris",
     "type": "item",
-    "sha256": "4756b0811b11ead97b140715f0c193f94e756e6e2e71cbad40e59dc51a7ac61b",
+    "sha256": "709915742477ba4d0008172cbcdda2546dd383925c4b962983aae13a739b1a36",
     "inherits": [
       "F_BLADE"
     ],
@@ -15159,7 +15157,7 @@
     "file": "obj/area/obj/leather_boot.c",
     "path": "/obj/area/obj/leather_boot",
     "type": "item",
-    "sha256": "88133997b2f1d7be98b77e82f1c1651db0a803bcf1bb29a2fb1da6e079058749",
+    "sha256": "2102ffb90eb15538c005f4bba6ce0eef254dc8e0d443f7565e79cdf14107da05",
     "inherits": [
       "F_FEET_EQ"
     ],
@@ -15214,7 +15212,7 @@
     "file": "obj/area/obj/leather_whip.c",
     "path": "/obj/area/obj/leather_whip",
     "type": "item",
-    "sha256": "a0af4e7cc2b4067ad7d3de2477e5aa2b95782501fca2e43c2e18ed2ba752e2c6",
+    "sha256": "88718334e0707dc6ec633546d088906423be8c4e8ac21a0ddb24fd1ef6a06020",
     "inherits": [
       "F_WHIP"
     ],
@@ -15254,7 +15252,7 @@
     "file": "obj/area/obj/longsword.c",
     "path": "/obj/area/obj/longsword",
     "type": "item",
-    "sha256": "23f72e73010f6f4242b320e78e6ed839c64c39ca08a55f40d5e42365d3548ab2",
+    "sha256": "22e1a5f3e4a6684fcd31342b10e841a02ee04790dd2810e3fafbb2c95fb7fbb9",
     "inherits": [
       "F_SWORD"
     ],
@@ -15295,7 +15293,7 @@
     "file": "obj/area/obj/pen.c",
     "path": "/obj/area/obj/pen",
     "type": "item",
-    "sha256": "9685cc700538e3c367bd967c0819cb0e3a21adcb98618be818bd3393c1ce05ad",
+    "sha256": "55278a28f4d91bff7117b7bd074a1e37b41c8271852513df7bf206c839074a29",
     "inherits": [
       "F_DAGGER"
     ],
@@ -15335,7 +15333,7 @@
     "file": "obj/area/obj/pike.c",
     "path": "/obj/area/obj/pike",
     "type": "item",
-    "sha256": "9231d34398bc5c22c0bf9709d481425a4d1ff0fe7170e2e956d49b9df9813a35",
+    "sha256": "45745bf42f0dfdf6565f92df5955f48d20fa6e55ff2c031fdae65d8c8c34dd04",
     "inherits": [
       "F_PIKE"
     ],
@@ -15377,7 +15375,7 @@
     "file": "obj/area/obj/robe.c",
     "path": "/obj/area/obj/robe",
     "type": "item",
-    "sha256": "25cf2ef4db96976f425abd9797cb3e431a9e05d088dc620488bd93a798338c3c",
+    "sha256": "cd002481d2011636bda29a5951df4b5ec5cc8c6e517507467f1fefcdcc40fdc3",
     "inherits": [
       "F_CLOTH"
     ],
@@ -15431,7 +15429,7 @@
     "file": "obj/area/obj/rod.c",
     "path": "/obj/area/obj/rod",
     "type": "item",
-    "sha256": "0a2401439f7ae5cc97e628956517e05769c84a06dff34ad809865e4fe36455bc",
+    "sha256": "e66a13befa151261bec1799a9d731f33a2dc61a2a7f06363e1952c9b6b059927",
     "inherits": [
       "F_BLUNT"
     ],
@@ -15472,7 +15470,7 @@
     "file": "obj/area/obj/shortsword.c",
     "path": "/obj/area/obj/shortsword",
     "type": "item",
-    "sha256": "7d19d9a4b7848ef5243d34eeea1b769258715438be43c51fad8d7dfec0d9e3bc",
+    "sha256": "30bbf994281971f81d3db52f39799218374556dad9a4d1bcc1ff9d9948011e0d",
     "inherits": [
       "F_SWORD"
     ],
@@ -15514,7 +15512,7 @@
     "file": "obj/area/obj/weirblade.c",
     "path": "/obj/area/obj/weirblade",
     "type": "item",
-    "sha256": "5e85908fea4ff7afaee978856060d4d71f1e391c35740672b61589f4d6ab9435",
+    "sha256": "8fea0677fb96f4cc66a1459578aff17f30d8865760ced48bb8fb250aec18e22e",
     "inherits": [
       "F_BLADE"
     ],
@@ -15556,7 +15554,7 @@
     "file": "obj/area/obj/whip.c",
     "path": "/obj/area/obj/whip",
     "type": "item",
-    "sha256": "3b247f52e47d0cb7d07b554367176a90b0c334a40ea3f8e28864da0b2c959f27",
+    "sha256": "ab0bd21e2e3aea96a957ef9504bcd0077f542bfba25daa270f1ebeaaaff9c8f4",
     "inherits": [
       "F_WHIP"
     ],
@@ -15596,7 +15594,7 @@
     "file": "obj/area/obj/woodsword.c",
     "path": "/obj/area/obj/woodsword",
     "type": "item",
-    "sha256": "ad397649b9fc5a0fdd2642db5151e775a8a01a2e8fcd2ffa4e9ae043d2d979f6",
+    "sha256": "cd7222b386b71d49e9caff861e7e494f496d28721f992fa9b57f1873b9d37dc3",
     "inherits": [
       "F_SWORD"
     ],
@@ -15636,7 +15634,7 @@
     "file": "obj/area/traveller.c",
     "path": "/obj/area/traveller",
     "type": "item",
-    "sha256": "b153cefdfd2c6491119140ca9bc7fe7aab29b897d13c5b02765b571cff520087",
+    "sha256": "d6cc6374742a5b8ba24cd2130f1b28e189987f0b3a200b50fa8ee9ed7bb7685b",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -15724,7 +15722,7 @@
     "file": "obj/area/vagabond.c",
     "path": "/obj/area/vagabond",
     "type": "item",
-    "sha256": "30ecb675a0da2cbad498a59849f22f03fc9d44fa5930aec653a0ab4282b4c117",
+    "sha256": "63b0b8ec622cebc6ac5acaeb99cd94c57c0e8106b5b89dbda735a817673be1fe",
     "inherits": [
       "F_BANDIT"
     ],
@@ -15794,7 +15792,7 @@
     "file": "obj/armor/cloth.c",
     "path": "/obj/armor/cloth",
     "type": "item",
-    "sha256": "6360dc7dd309b5986cc254d82b95ce72132bb6982f630cf9cb23c4bf2d3d26e9",
+    "sha256": "dd59a3071b8dac01e404e34eff285617f3ee36af91dcc24f6fe6f55d41e79c46",
     "inherits": [
       "F_CLOTH"
     ],
@@ -15848,7 +15846,7 @@
     "file": "obj/armor/fur_hat.c",
     "path": "/obj/armor/fur_hat",
     "type": "item",
-    "sha256": "44f75b501dcf465b203ee5ffc665a95786db23af0f5b953c3d059070bcf36692",
+    "sha256": "9ff839c032a61d8cb91a21605022d04ffa41f122092f147a7e90c2335b1dacc9",
     "inherits": [
       "F_HEAD_EQ"
     ],
@@ -15903,7 +15901,7 @@
     "file": "obj/bankbond.c",
     "path": "/obj/bankbond",
     "type": "item",
-    "sha256": "722dc7d49466f17e4b50942d620c88eaf45e28cceb8c6527e32a67f5a27d7306",
+    "sha256": "b60e69a3ec42cf09a255348cf9a9fbc55a7841331026a3791fcd6b30a7ab64f6",
     "inherits": [
       "ITEM"
     ],
@@ -15942,7 +15940,7 @@
     "file": "obj/block.c",
     "path": "/obj/block",
     "type": "item",
-    "sha256": "e44445426b33eff77d773621d6d8d618c754a5c3d47c307c61851649b2620b98",
+    "sha256": "0adb3a85f217508afe183b524eb688acb76e8811e1ef3b85aaaa2cdd45ab6e63",
     "inherits": [
       "ROOM"
     ],
@@ -15990,7 +15988,7 @@
     "file": "obj/block_robot.c",
     "path": "/obj/block_robot",
     "type": "item",
-    "sha256": "ce0f21e399f429bce5035eb9b76dcaadb83522fa727a2662728f2c5c63cc0ee3",
+    "sha256": "4efb48c1365871f5d633d8153aa127528d34e0cef4f596b05684eff5cd82ae2d",
     "inherits": [
       "ROOM"
     ],
@@ -16047,7 +16045,7 @@
     "file": "obj/bottle.c",
     "path": "/obj/bottle",
     "type": "item",
-    "sha256": "d9b186515d29353ffa60429560c47b6b17151028530eae184c05d1c94c1b0313",
+    "sha256": "9d626bb0b6bfc6947c301669f2ab3378de808d2046877caf77032246ecfa21d5",
     "inherits": [
       "ITEM"
     ],
@@ -16087,7 +16085,7 @@
     "file": "obj/clan_symbol.c",
     "path": "/obj/clan_symbol",
     "type": "item",
-    "sha256": "f46a560cab04166978dab11ddb8c3b79cce7a1089e76ce5c2906048f053db086",
+    "sha256": "ebb8f5ff97ebf0c0efabf11bec7fa42ea0857b2929eec4c1e78b67455dc9be45",
     "inherits": [
       "F_FINGER_EQ"
     ],
@@ -16227,7 +16225,7 @@
     "file": "obj/cloth.c",
     "path": "/obj/cloth",
     "type": "item",
-    "sha256": "57908d2de12ad730042245776dc8f83f45cf3f3ad8a3ecf5a879bc617efa70ec",
+    "sha256": "a1414b2ee746ae583b90a01410ac09dd0a490a7e2ab20f6a20e5b532b3f0c6c0",
     "inherits": [
       "F_CLOTH"
     ],
@@ -16281,7 +16279,7 @@
     "file": "obj/corpse.c",
     "path": "/obj/corpse",
     "type": "item",
-    "sha256": "31955b213a156181c17938795dc2e23c1bf43c71022959d74017141652413638",
+    "sha256": "c3dc5991cbaeb4f5a7c1eabd17be8553b99db58472ed705dbb63d3c80a0b3804",
     "inherits": [
       "ITEM"
     ],
@@ -16323,7 +16321,7 @@
     "file": "obj/drug/black_pill.c",
     "path": "/obj/drug/black_pill",
     "type": "item",
-    "sha256": "2c0b0d3005833c4ff16fad73fc2647626ba399bcc026b033b906f377ca0f9cb4",
+    "sha256": "740b80b8713e174c843663122ad1e60d7598c4665810289ad8f376146d8f9e11",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -16357,7 +16355,7 @@
     "file": "obj/drug/boar_berry.c",
     "path": "/obj/drug/boar_berry",
     "type": "item",
-    "sha256": "e7212c3112165ce6ef188e9d855046a471e9c277e002d54393af0f99f164ddab",
+    "sha256": "ca6847b144ac4b2564a7ab0f966239ee150264acf5ae2425f108a30f2ba7493b",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -16390,7 +16388,7 @@
     "file": "obj/drug/dragon_saliva.c",
     "path": "/obj/drug/dragon_saliva",
     "type": "item",
-    "sha256": "8b0e31fd63c7710cec37cf475058a71eef50fcb140d1af41405fa293c4711535",
+    "sha256": "a88d02671bd921d1a364fd53b3174603c0092bcd28731acf175311be24150fc1",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -16424,7 +16422,7 @@
     "file": "obj/drug/flower_pill.c",
     "path": "/obj/drug/flower_pill",
     "type": "item",
-    "sha256": "59ca179fa99a466065da2aedf2799be61af7fe61cdf215191c581f47b73bef4c",
+    "sha256": "19d3ad37e8be2ac07065aee76aeb4e36aaebd94bf2a25dadf15973cc07e5f7f5",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -16457,7 +16455,7 @@
     "file": "obj/drug/gray_mushroom.c",
     "path": "/obj/drug/gray_mushroom",
     "type": "item",
-    "sha256": "964ceab629b4247c81c58829e494743415970eb73450f7f66edaaec4cf24a8ce",
+    "sha256": "e2da2edb38ab6929827b014e301cf25f0de2697b64684f845eef892b08203bce",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -16490,7 +16488,7 @@
     "file": "obj/drug/wild_ginseng.c",
     "path": "/obj/drug/wild_ginseng",
     "type": "item",
-    "sha256": "720360c07c488421de79c7b25c069798f60704d46df9cf33fd4645564afb30bd",
+    "sha256": "12bf8cbf914aa6c57f8699bd86e78f60f42d1a08394238fdca8bee3ac0288d88",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -16523,7 +16521,7 @@
     "file": "obj/dust.c",
     "path": "/obj/dust",
     "type": "item",
-    "sha256": "dd6fc9faf617878636bd3d4495f982cb6978a5264efe8dcbc65450733561d9da",
+    "sha256": "219bdc486327bc3797c77c8d9df2b6c6a592f2ea2c4f23f7213db098af26ecfb",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -16579,7 +16577,7 @@
     "file": "obj/example/army.c",
     "path": "/obj/example/army",
     "type": "item",
-    "sha256": "37757a35c656f2169c9fd88233833ebcb9ec4aae46dc540af6ca95b4cdf69360",
+    "sha256": "61ea70262add84b582cc188a8205d03fb6859361e4d1f7685f85d3b8ee46b72c",
     "inherits": [
       "F_NAME",
       "F_MOVE",
@@ -16632,7 +16630,7 @@
     "file": "obj/example/es2_bottle.c",
     "path": "/obj/example/es2_bottle",
     "type": "item",
-    "sha256": "61acdb176242ada1f95c2dd28e768fa1f027a4a01caa1ad9cd06cf069b265654",
+    "sha256": "4172dec7e25459c4bb53585fac1e0047a5e5af87c45fe5f919063f6155403e0d",
     "inherits": [
       "ITEM"
     ],
@@ -16671,7 +16669,7 @@
     "file": "obj/example/infantry.c",
     "path": "/obj/example/infantry",
     "type": "item",
-    "sha256": "bebc122ebaa850eb2363954d34464ef9f2dfc88f3aa94f8d2a447928356f88e0",
+    "sha256": "c5222a2bc0ae90c1e4e4a83287f8d808fbdb61c541258f680f669c2021bbf549",
     "inherits": [
       "\"/obj/example/army.c\""
     ],
@@ -16698,7 +16696,7 @@
     "file": "obj/example/skill/fonxansword.c",
     "path": "/obj/example/skill/fonxansword",
     "type": "skill",
-    "sha256": "8ce7942fc80c15c7e4d6b4c2cd9ffec848feb0e6dca0a9e2dcefb092a3b8bd7c",
+    "sha256": "e1cf97892e7c947ed3a101cee2555b50c39a50588cb3e19584350eee06dfa586",
     "inherits": [
       "SKILL"
     ],
@@ -16748,7 +16746,7 @@
     "file": "obj/example/weapon/longsword.c",
     "path": "/obj/example/weapon/longsword",
     "type": "item",
-    "sha256": "4e7894203213b1edd640cb426edc8a988d8c9e8b444feadbc4c4d1275c8de8ed",
+    "sha256": "4aff9d1b8096f7ff4c98d2a86da427c8f882536b07024064e12b567c7c62ab97",
     "inherits": [
       "F_SWORD"
     ],
@@ -16788,7 +16786,7 @@
     "file": "obj/example/weapon/shortsword.c",
     "path": "/obj/example/weapon/shortsword",
     "type": "item",
-    "sha256": "6425c779c6839910a1768c20cbb4c3463384deefe4e4f042547d5e15b00e8cc0",
+    "sha256": "8747b577cc7da35eee5fe3701d750ea304bd9301b2aa44c1e6ae5c653cab8c58",
     "inherits": [
       "F_SWORD"
     ],
@@ -16829,7 +16827,7 @@
     "file": "obj/food/dumpling.c",
     "path": "/obj/food/dumpling",
     "type": "item",
-    "sha256": "0f437167c013ea6da1f4caabcaf9c4695cf1baa6deeaa7d46713a313e76c3043",
+    "sha256": "17d1830963f357be3b7e5fca818a6227c34c278eb5daf1eec9c8e430322a0406",
     "inherits": [
       "COMBINED_ITEM",
       "F_FOOD"
@@ -16865,7 +16863,7 @@
     "file": "obj/food/manto.c",
     "path": "/obj/food/manto",
     "type": "item",
-    "sha256": "3c4d49da88333287445862f95c0bc9ef57c00948f732558914dcfb91b3b11dee",
+    "sha256": "816044ad7dac6cb9369b572c3d8e93194696930c7e4d4bc3ae3e473b2b942938",
     "inherits": [
       "COMBINED_ITEM",
       "F_FOOD"
@@ -16900,7 +16898,7 @@
     "file": "obj/food/mooncake.c",
     "path": "/obj/food/mooncake",
     "type": "item",
-    "sha256": "0abdb326ebbdaf8e1b57eae2d7493ebf2b92eb23e7e3189dbf07849e086a2bce",
+    "sha256": "070d73100f3fb34be62cd41decab679fb0f35b2ee1c14f58ae5aec709c815b56",
     "inherits": [
       "COMBINED_ITEM",
       "F_FOOD"
@@ -16936,7 +16934,7 @@
     "file": "obj/food/pork.c",
     "path": "/obj/food/pork",
     "type": "item",
-    "sha256": "ba0d59727734ff7b6c9c0efb1a932c48fb383dc5fca1144b2db275adfbe69273",
+    "sha256": "2052e81e6853b6005be05004f96a69356ef95e188adc3681375e1c688a7b56cf",
     "inherits": [
       "COMBINED_ITEM",
       "F_FOOD"
@@ -16971,7 +16969,7 @@
     "file": "obj/food/ricedough.c",
     "path": "/obj/food/ricedough",
     "type": "item",
-    "sha256": "e257a95ed4672b57f70caf3792ada8ce44ba63725d64a63b99d7c97347965a72",
+    "sha256": "758d8016501cad27bddfbc9ca958c39a52a2ab7057b0459f7990f48d585e594a",
     "inherits": [
       "COMBINED_ITEM",
       "F_FOOD"
@@ -17008,7 +17006,7 @@
     "file": "obj/http.c",
     "path": "/obj/http",
     "type": "item",
-    "sha256": "baeeacbeeb802d3215bf7bbc5f8df10b894a0bf6a8f5bb4fb63eaa2e56dc8fc7",
+    "sha256": "11bc9b9a6e4286e8f0769715d8b42d1a214e6611504ff8d64ab47c87be35d90e",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -17038,7 +17036,7 @@
     "file": "obj/login.c",
     "path": "/obj/login",
     "type": "runtime",
-    "sha256": "60a4168b7b4e6f2d2a1747647fa417ea7957c1864d25ba8466b6b1e9695f243f",
+    "sha256": "d85c4cfe0397fb66c4f7f6bf7206de5360a1ba8d1815361cd05dad0737ac472e",
     "inherits": [
       "F_ALIAS",
       "F_DBASE",
@@ -17096,7 +17094,7 @@
     "file": "obj/magic.c",
     "path": "/obj/magic",
     "type": "item",
-    "sha256": "59bfde88bd60c67f9eb1fc088545362d1ea296eeb44ed52a181389dbc9092b05",
+    "sha256": "73a2facb76aae7d43aac3667f3588fb50c173d86245175bd409e49cf34950c74",
     "inherits": [
       "ITEM"
     ],
@@ -17126,7 +17124,7 @@
     "file": "obj/map.c",
     "path": "/obj/map",
     "type": "item",
-    "sha256": "38a54d04f94bdfe2d105539b1cc00232af26c833727fb6e848f00a1a1f61cef9",
+    "sha256": "b97120682fe02510de511bdc5d42742070c199d74e27d7e0c6222716886d5766",
     "inherits": [
       "ITEM"
     ],
@@ -17182,7 +17180,7 @@
     "file": "obj/medication/alchemist/aquapill.c",
     "path": "/obj/medication/alchemist/aquapill",
     "type": "item",
-    "sha256": "0d1e05107919bbf5ae02eacaf74c9dabe7a4d926d52d231cf65de6337d895201",
+    "sha256": "5147491a6a2d00b256c723a1d1c73f30ca9ec15154d7af0e450bb84466b0972e",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17216,7 +17214,7 @@
     "file": "obj/medication/alchemist/black_pill.c",
     "path": "/obj/medication/alchemist/black_pill",
     "type": "item",
-    "sha256": "4c1f500ea216cfc34fd16185aa2411082d8366377a9fe5af7a069477758aefde",
+    "sha256": "050a8c6f519a51c034760c077e9fd0203ef79c1e932711c4028019f587a78e2f",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17250,7 +17248,7 @@
     "file": "obj/medication/alchemist/green_pill.c",
     "path": "/obj/medication/alchemist/green_pill",
     "type": "item",
-    "sha256": "2a1ae8f41dbfc842bb4c579be70e047d5238170b3e662d21e143bb3716379524",
+    "sha256": "bb775e60119e03cf160864bc1bbaedeb78e04d55fa50a34d46335647f75640e3",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17291,7 +17289,7 @@
     "file": "obj/medication/alchemist/major_heal_pill.c",
     "path": "/obj/medication/alchemist/major_heal_pill",
     "type": "item",
-    "sha256": "2f97f806e14bfd359730df4395f643e43bcdf4f555827bfd6d9c1999abaa3f39",
+    "sha256": "7b7396dab6373efe973c4828108cf6221e9dd2692558d9f1206ecf2806b967a6",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17321,7 +17319,7 @@
     "file": "obj/medication/alchemist/minor_heal_pill.c",
     "path": "/obj/medication/alchemist/minor_heal_pill",
     "type": "item",
-    "sha256": "c4a8fa204d63b23c666be69314d311c7df92df61cc037f77b037cef46b4bd7ca",
+    "sha256": "abd58d6b6473ba3cdf56808a74539aee4472a5ada344704d06d419a8957623e2",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17356,7 +17354,7 @@
     "file": "obj/medication/alchemist/mix_recipe.c",
     "path": "/obj/medication/alchemist/mix_recipe",
     "type": "item",
-    "sha256": "839c8e1e164346303214b877654b86493149128426cb4e3fd65dea2729570f51",
+    "sha256": "fdd548bbc5c15bc739f62bb3658f90b367c912a9e7aa829f615d79eff389a982",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17392,7 +17390,7 @@
     "file": "obj/medication/alchemist/mjp_1.c",
     "path": "/obj/medication/alchemist/mjp_1",
     "type": "item",
-    "sha256": "c071ed8f6b2769b55a393a193a7875af702575206de6724987274581750ee80c",
+    "sha256": "167a729041d6b4227e6362e2bb1fef1c4c3e8965dfb8d5d6f92f386581d7ec76",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17420,7 +17418,7 @@
     "file": "obj/medication/alchemist/mjp_2.c",
     "path": "/obj/medication/alchemist/mjp_2",
     "type": "item",
-    "sha256": "309df2a9248614fa2504314b68c46150e997722991084278183853bc4eb0b829",
+    "sha256": "5ac43f54e0da25ca85837cc797fe1ce3f9e3e6236dcb4e21607a65e210a91b63",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17448,7 +17446,7 @@
     "file": "obj/medication/alchemist/mjp_3.c",
     "path": "/obj/medication/alchemist/mjp_3",
     "type": "item",
-    "sha256": "ec287b8440e3f647fdddbb6474a89b37cce0020d5679d6bf424828f62e3f6563",
+    "sha256": "70a743ff8b23c888d169c6cd76d19ef4f416d11d5bd27a4df43e9c76972d7fb2",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17482,7 +17480,7 @@
     "file": "obj/medication/alchemist/refresh_pill.c",
     "path": "/obj/medication/alchemist/refresh_pill",
     "type": "item",
-    "sha256": "a536b4afb7b8fc9eee772c6a6bc47577c3917c930f074929b4a1b344f06857d2",
+    "sha256": "dd7f8f087a6a7433a8fe0306849a3afd0669669df653f8f493c0861cd76553e1",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17515,7 +17513,7 @@
     "file": "obj/medication/black_pill.c",
     "path": "/obj/medication/black_pill",
     "type": "item",
-    "sha256": "2c0b0d3005833c4ff16fad73fc2647626ba399bcc026b033b906f377ca0f9cb4",
+    "sha256": "740b80b8713e174c843663122ad1e60d7598c4665810289ad8f376146d8f9e11",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17549,7 +17547,7 @@
     "file": "obj/medication/boar_berry.c",
     "path": "/obj/medication/boar_berry",
     "type": "item",
-    "sha256": "e7212c3112165ce6ef188e9d855046a471e9c277e002d54393af0f99f164ddab",
+    "sha256": "ca6847b144ac4b2564a7ab0f966239ee150264acf5ae2425f108a30f2ba7493b",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17582,7 +17580,7 @@
     "file": "obj/medication/dragon_saliva.c",
     "path": "/obj/medication/dragon_saliva",
     "type": "item",
-    "sha256": "8b0e31fd63c7710cec37cf475058a71eef50fcb140d1af41405fa293c4711535",
+    "sha256": "a88d02671bd921d1a364fd53b3174603c0092bcd28731acf175311be24150fc1",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17616,7 +17614,7 @@
     "file": "obj/medication/flower_pill.c",
     "path": "/obj/medication/flower_pill",
     "type": "item",
-    "sha256": "59ca179fa99a466065da2aedf2799be61af7fe61cdf215191c581f47b73bef4c",
+    "sha256": "19d3ad37e8be2ac07065aee76aeb4e36aaebd94bf2a25dadf15973cc07e5f7f5",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17649,7 +17647,7 @@
     "file": "obj/medication/gray_mushroom.c",
     "path": "/obj/medication/gray_mushroom",
     "type": "item",
-    "sha256": "964ceab629b4247c81c58829e494743415970eb73450f7f66edaaec4cf24a8ce",
+    "sha256": "e2da2edb38ab6929827b014e301cf25f0de2697b64684f845eef892b08203bce",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17682,7 +17680,7 @@
     "file": "obj/medication/wild_ginseng.c",
     "path": "/obj/medication/wild_ginseng",
     "type": "item",
-    "sha256": "720360c07c488421de79c7b25c069798f60704d46df9cf33fd4645564afb30bd",
+    "sha256": "12bf8cbf914aa6c57f8699bd86e78f60f42d1a08394238fdca8bee3ac0288d88",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -17715,7 +17713,7 @@
     "file": "obj/money/coin.c",
     "path": "/obj/money/coin",
     "type": "item",
-    "sha256": "b92d6e54d743e0d987f3c9a2753203af705fa69fe9d5de8014bc76be6459a403",
+    "sha256": "aea86505c73bb33fa3e87bde97e07faff55fb8033080b51d80089b83f8e40758",
     "inherits": [
       "MONEY"
     ],
@@ -17747,7 +17745,7 @@
     "file": "obj/money/gold.c",
     "path": "/obj/money/gold",
     "type": "item",
-    "sha256": "cee6a763a43b73039c26172eeded78935b60443ffc7a047394fe0f70b9eb41ac",
+    "sha256": "84cfc5a6e8b2d2cbbd71b15c14af6da777a17f938886e1d49cb0cc805cd95d1d",
     "inherits": [
       "MONEY"
     ],
@@ -17779,7 +17777,7 @@
     "file": "obj/money/silver.c",
     "path": "/obj/money/silver",
     "type": "item",
-    "sha256": "ea728ac00f09ae3db678ab28341f04f2b2943c010ae119e5a08719d3d34354a8",
+    "sha256": "a2a23faea45173f9f1e18afa562190107a8b3d8fd90a19060c949c7313d2e867",
     "inherits": [
       "MONEY"
     ],
@@ -17810,7 +17808,7 @@
     "file": "obj/npc/death_black.c",
     "path": "/obj/npc/death_black",
     "type": "npc",
-    "sha256": "decbf05891b2c1bf350f000cbebf6426778e0c862a6cf5b1b2b1bf0b89c15d63",
+    "sha256": "f5a147ed1812f204366b0fcd2afc62bd30fbea0d80ba3ce10dd7e08352c30419",
     "inherits": [
       "F_SOLDIER"
     ],
@@ -17888,7 +17886,7 @@
     "file": "obj/npc/death_white.c",
     "path": "/obj/npc/death_white",
     "type": "npc",
-    "sha256": "c281b3b2a06b76ef0b812124200ad33c03a42e3818357806360ff2e68b56d9e9",
+    "sha256": "a031352a2e82c47de77f83b8e547eb849478177101923fe96317ec0b61f2a723",
     "inherits": [
       "F_SOLDIER"
     ],
@@ -17970,7 +17968,7 @@
     "file": "obj/npc/demogorgon.c",
     "path": "/obj/npc/demogorgon",
     "type": "npc",
-    "sha256": "0b847d8dd75e66ade7ab7bdf65782725ff114d4cc3f4758404a4a7adf71a765a",
+    "sha256": "a19faff62ec50c04f3a2160dacb01e7a38df28d65a46a748673b663eacad0808",
     "inherits": [
       "NPC"
     ],
@@ -18040,7 +18038,7 @@
     "file": "obj/npc/garrison.c",
     "path": "/obj/npc/garrison",
     "type": "npc",
-    "sha256": "06f8d6d2ee5582c7943be0a7666254413a02c8869d22c522540e7675be5ba1ad",
+    "sha256": "a5da930e497cfa4fc9df5b9af0bc7d72c6091a5b3ca52a7da455c20b07b7c1a5",
     "inherits": [
       "F_SOLDIER"
     ],
@@ -18141,7 +18139,7 @@
     "file": "obj/obj/firework.c",
     "path": "/obj/obj/firework",
     "type": "item",
-    "sha256": "15e6d86af0d9ab9f4119bb4b43cfe9c329d882e4d99459bab4b412629e06f588",
+    "sha256": "a555f2a0a1c49b37ca0ede66170f0eaa255ee7f9ddc07b4c3af567f1cbaeb7ca",
     "inherits": [
       "ITEM"
     ],
@@ -18195,7 +18193,7 @@
     "file": "obj/obj/ghostbaby.c",
     "path": "/obj/obj/ghostbaby",
     "type": "item",
-    "sha256": "a119dd42d6ac24ed72742f62ffad37298f98d69fdbc8e5da5abf2fa455261355",
+    "sha256": "3c56b8a654c6f7e4a96f94b96b124c5e6151752ac7df6eadc529437d2c95915a",
     "inherits": [
       "ITEM"
     ],
@@ -18230,7 +18228,7 @@
     "file": "obj/reagent/cinnabar.c",
     "path": "/obj/reagent/cinnabar",
     "type": "item",
-    "sha256": "ec7d66f9283a34e696564d1f09eb5b2a0c9234ad7ece29b902cf46becd62e570",
+    "sha256": "d3fc82f59a6ae388f39841776a003c2d74250a8981cf941881da9a9753e842e1",
     "inherits": [
       "REAGENT_ITEM"
     ],
@@ -18263,7 +18261,7 @@
     "file": "obj/reagent/crane_dye.c",
     "path": "/obj/reagent/crane_dye",
     "type": "item",
-    "sha256": "e30ac09e02294b7bcee36d498643a917fd940f4ceb348221c724889a267f3ed6",
+    "sha256": "28aeac79338bf0e3cb7654c95d4704ca20de2bb9fbc5b322e9425e3d70c86d79",
     "inherits": [
       "REAGENT_ITEM"
     ],
@@ -18297,7 +18295,7 @@
     "file": "obj/reagent/medlar.c",
     "path": "/obj/reagent/medlar",
     "type": "item",
-    "sha256": "0eb056176580fb633310031f6ee42787ea67628815dc63217a7c9743b80ef3fb",
+    "sha256": "12ba56dc76e07fd8d60a79b843d95b9c130503ef8555b253c2208b768d30dae6",
     "inherits": [
       "REAGENT_ITEM"
     ],
@@ -18330,7 +18328,7 @@
     "file": "obj/reagent/strychin.c",
     "path": "/obj/reagent/strychin",
     "type": "item",
-    "sha256": "313aefdad588a7608985e611c530d472baa19fc70825e4d53a60c18ebe631dfa",
+    "sha256": "90f4585befcc8016b2f7445abd82a325c1792c584bf61c26adb921b53a18d358",
     "inherits": [
       "REAGENT_ITEM"
     ],
@@ -18363,7 +18361,7 @@
     "file": "obj/roommaker.c",
     "path": "/obj/roommaker",
     "type": "item",
-    "sha256": "b08de74309a9ac11e33b4b2f4080f27d8eb4e76b5a22cb3a8de2f809e9e7633a",
+    "sha256": "edb21fc792f6b29be321c2f7e7f304d723e2326168324ecca8f7356bf40398ba",
     "inherits": [
       "ITEM",
       "ROOM",
@@ -18470,7 +18468,7 @@
     "file": "obj/spirit.c",
     "path": "/obj/spirit",
     "type": "item",
-    "sha256": "6ae446e6d708e1ac3ec9380220e836aa634e26f7d2b8c47135184c1ffad63a5d",
+    "sha256": "5df84ecde0440a6a8061f659db190c77ba1643a838fe69597ee6168eca184742",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -18559,7 +18557,7 @@
     "file": "obj/user.c",
     "path": "/obj/user",
     "type": "runtime",
-    "sha256": "6971629b3ab5d93f481fe7db04323434c9f41cc1845e18eab0613f6019e7c50f",
+    "sha256": "a22d9a8a222d637ae85efa8c2865a9793237adf30ebc6dd1d8e2f963b188a5e0",
     "inherits": [
       "CHARACTER",
       "F_AUTOLOAD",
@@ -18670,7 +18668,7 @@
     "file": "obj/void.c",
     "path": "/obj/void",
     "type": "item",
-    "sha256": "083b3d84442c93d963bbf6ae1f5ae81befaefea94c783bb5161ff0b14bfd0274",
+    "sha256": "31a68f4f5f159a97f1493db42a0938eef04f23d9fa47500ccfe83d28221727e6",
     "inherits": [
       "F_DBASE"
     ],
@@ -18697,7 +18695,7 @@
     "file": "obj/water.c",
     "path": "/obj/water",
     "type": "item",
-    "sha256": "f9c2969d64d229b6c1cd70750b961332bb1389fc27456529c0dde5400cebc50d",
+    "sha256": "fbf403a47265cfbd3f3239f9cdb08d283cc3edcb69bdff512e0b5d220672b4da",
     "inherits": [
       "LIQUID_ITEM",
       "F_DRINK"
@@ -18731,7 +18729,7 @@
     "file": "std/bboard.c",
     "path": "/std/bboard",
     "type": "item",
-    "sha256": "e0ff2812269f1fdcf2d7c027dd22c9adfb012c87dc5db6527584834270589303",
+    "sha256": "9a3d3377cb2c1e321a2db0417699c210ce68433e8ce2daa1ef0e8b4bd8d1843f",
     "inherits": [
       "ITEM",
       "F_SAVE"
@@ -18840,7 +18838,7 @@
     "file": "std/char.c",
     "path": "/std/char",
     "type": "skill",
-    "sha256": "0a73b86125a42882dc2b7b43bdc83fa90fa01659ee59c3d87b96f91703046685",
+    "sha256": "3d96dea3a34a3b3c6562a8a84b6f9c6685c1388343c7d23716162761d61b65f5",
     "inherits": [
       "F_ACTION",
       "F_ATTACK",
@@ -19017,7 +19015,7 @@
     "file": "std/char/npc.c",
     "path": "/std/char/npc",
     "type": "prototype",
-    "sha256": "b6295069dfe697531f997fd425b69751529074e3caf9c03b760aa1b97e9d7776",
+    "sha256": "4bff425e724faa490683e5bd83094500c612851b43c882669a6a96d0f056b043",
     "inherits": [
       "CHARACTER",
       "F_CLEAN_UP"
@@ -19120,7 +19118,7 @@
     "file": "std/condition.c",
     "path": "/std/condition",
     "type": "prototype",
-    "sha256": "4575e392747eed984fa2609f9f06108d4381b3d5791a53fdaa9e3e88ba3e394a",
+    "sha256": "10cab44db88f3e7c787961db7abeb7c46316959a2e83b942a2640884a12ceb52",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -19141,7 +19139,7 @@
     "file": "std/item.c",
     "path": "/std/item",
     "type": "prototype",
-    "sha256": "7c923920659e702f222d52e66c83bc2852b472964b592a359df855b53b32e64f",
+    "sha256": "d6d6410875e8f92b113cc1556e0c7af76741489a6653fdf6cf89705d38daec93",
     "inherits": [
       "F_CLEAN_UP",
       "F_DBASE",
@@ -19183,7 +19181,7 @@
     "file": "std/item/combined.c",
     "path": "/std/item/combined",
     "type": "item",
-    "sha256": "977ba55e0b0d10368e1f0fba156a51e1f44e75d28cf41a5e02ba18382b5a3f5c",
+    "sha256": "56e9c28bda54f4282a0eeb3d4c71059e02cb4370af425545587725cd42b0797c",
     "inherits": [
       "ITEM"
     ],
@@ -19224,7 +19222,7 @@
     "file": "std/item/container.c",
     "path": "/std/item/container",
     "type": "item",
-    "sha256": "e228783ca766898b3843ffc1e694afec77df390441105f91e814836ccb73a23d",
+    "sha256": "1f17ce138d484243ede66d404d494e4055b5482a42209c45952fedcb715ea618",
     "inherits": [
       "ITEM"
     ],
@@ -19256,7 +19254,7 @@
     "file": "std/item/liquid.c",
     "path": "/std/item/liquid",
     "type": "item",
-    "sha256": "c61acc49e6114ff9497890dd296502c324aabbfb9ee400b308938e05d4849acc",
+    "sha256": "b8ad93146f45880ab9574dd8381da29e907235f672f0e6517779556e37a7cc4e",
     "inherits": [
       "ITEM"
     ],
@@ -19294,7 +19292,7 @@
     "file": "std/item/pharmacy.c",
     "path": "/std/item/pharmacy",
     "type": "item",
-    "sha256": "be732a118cf1a946dc72c05e351de3551c26a3dc08a8bc2d296141e10fc5131b",
+    "sha256": "1ec906e107d342115e982fb64d5472d22cdc33374615a86a35fd40a4b211dc46",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -19318,7 +19316,7 @@
     "file": "std/item/reagent.c",
     "path": "/std/item/reagent",
     "type": "item",
-    "sha256": "f3d1e9e4d36fc25ced626d9945d7ce858357b110bfc8bac3db35ab9a47c576c8",
+    "sha256": "c8ae4ba45421318ad5c808e4904e6794d18666ff96d7bf11d8e5de5cc64dc024",
     "inherits": [
       "ITEM"
     ],
@@ -19344,7 +19342,7 @@
     "file": "std/money.c",
     "path": "/std/money",
     "type": "item",
-    "sha256": "25a93e11a922d6e0eab3f040f0e67226eaa7c1e5240ec6f3290183416de38ff7",
+    "sha256": "9a7602c0c0b3ee90aec317fd1c1d4b7d01cbf101e449a31d7b161965379f8fca",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -19370,7 +19368,7 @@
     "file": "std/race/humanoid.c",
     "path": "/std/race/humanoid",
     "type": "prototype",
-    "sha256": "79cd033f940779f8b871782d06d3bca1ecf12923ccc71e6b336cffd2294d4ecf",
+    "sha256": "c28addba80b56d270f9620a6371b287bf860d2667bbe068b66c1d08bbc7d2b1e",
     "inherits": [
       "F_DBASE"
     ],
@@ -19423,7 +19421,7 @@
     "file": "std/room.c",
     "path": "/std/room",
     "type": "prototype",
-    "sha256": "ab0f7ef4a5e575446aa952569bf743aff57b9119ce2d283a84237f61082d871d",
+    "sha256": "cd60af504de552da71a2cccf4b813b31fb9b072bfbbefbf238f6ed1369dc11cf",
     "inherits": [
       "F_DBASE",
       "F_CLEAN_UP"
@@ -19495,7 +19493,7 @@
     "file": "std/room/bank.c",
     "path": "/std/room/bank",
     "type": "prototype",
-    "sha256": "31a77f440ddfcefcf9c21e499ff85b832c2b9a79dcea3556a8fa8cff4b58256d",
+    "sha256": "91a4681abecaee2aa1e66580116f24de90c932723f04089713d168d2e532d2aa",
     "inherits": [
       "ROOM"
     ],
@@ -19584,7 +19582,7 @@
     "file": "std/room/hockshop.c",
     "path": "/std/room/hockshop",
     "type": "prototype",
-    "sha256": "727c6eaa01b5d28bf74a572df109a278e834fadba1c887873cf3d686398fbdb6",
+    "sha256": "b09027003063582558b9d2092e0c9781bf88b32551ac26566ed0e0a5906bec52",
     "inherits": [
       "ROOM"
     ],
@@ -19708,7 +19706,7 @@
     "file": "std/room/hockshop_storage.c",
     "path": "/std/room/hockshop_storage",
     "type": "prototype",
-    "sha256": "6ab3173f0f87ecf029767554647cb6969de3de3ac897dcbc509d4777e7f1436e",
+    "sha256": "7993f0c2136f0f22ade46e81e8ad58cd7c45e88508c82a80ea42e48626e815bb",
     "inherits": [
       "ROOM"
     ],
@@ -19737,7 +19735,7 @@
     "file": "std/room/inn.c",
     "path": "/std/room/inn",
     "type": "prototype",
-    "sha256": "27d27163ed96d2bfd79c94599b5ad96e7c221cc93b65866ac05ee318040a1183",
+    "sha256": "ec9b178a8ddc8e2e3c5bef4b024e12851dfdc65f2b820d36eec3f21b52d7ceda",
     "inherits": [
       "ROOM"
     ],
@@ -19760,7 +19758,7 @@
     "file": "std/room/journey.c",
     "path": "/std/room/journey",
     "type": "prototype",
-    "sha256": "2dad6d4c799083af05d909f1bef36fb867e38c1d96275039087c4935e9deedbf",
+    "sha256": "fac8f66dd395e45478d36536e34a9defd18b5ff31526e79e4f2d96c24efb6424",
     "inherits": [
       "ROOM"
     ],
@@ -19829,7 +19827,7 @@
     "file": "std/room/obj/pawn_stamp.c",
     "path": "/std/room/obj/pawn_stamp",
     "type": "item",
-    "sha256": "a26a6d2f38f2de5d1f292c90e7ec3f387cd0f96270bfe4a0d4ff6f858a1f260a",
+    "sha256": "abb2bace765efce86b7755f18e44afd18c8ec6534e0857988cd3b942b702dbc1",
     "inherits": [
       "ITEM"
     ],
@@ -19863,7 +19861,7 @@
     "file": "std/room/temple.c",
     "path": "/std/room/temple",
     "type": "prototype",
-    "sha256": "b52ca44efe63d189c260d9f1fd68c258d8c107802628b8fb8d483de44e6c1aaa",
+    "sha256": "b1df864334eba9f2318b36684f63744b050a87ab2abc43cc7204c46b1e7b9abb",
     "inherits": [
       "ROOM"
     ],
@@ -19914,7 +19912,7 @@
     "file": "std/skill.c",
     "path": "/std/skill",
     "type": "skill",
-    "sha256": "828feff718e330861f4490326fcd3fa0498a775e83f37472e1f38edfab159a03",
+    "sha256": "a235a4df8811879acdf0ac069ef0ffa157c6cc47a908a11573ba752674a71fb5",
     "inherits": [
       "F_CLEAN_UP"
     ],

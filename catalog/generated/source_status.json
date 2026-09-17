@@ -4,7 +4,7 @@
   "origin_verified": true,
   "branch": "main",
   "commit": "cc45c06af4852380e5148dad3c9d53ff06854f2c",
-  "dirty": true,
+  "dirty": false,
   "catalog_files": 513,
   "audit_stats": {
     "dangling_exits": 8,

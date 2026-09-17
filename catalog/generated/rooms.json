@@ -3,7 +3,7 @@
     "file": "d/snow/bazar.c",
     "path": "/d/snow/bazar",
     "type": "room",
-    "sha256": "1480c4f22701cf43ede5ad51bc8971715ea48e84fda12a50aee25a6077c34da6",
+    "sha256": "c9983e3d2d1989a0a211bc7b9c0f927da8f5e61348c58ed4e29582933bfc769e",
     "inherits": [
       "BANK"
     ],
@@ -41,7 +41,7 @@
     "file": "d/snow/bug_room.c",
     "path": "/d/snow/bug_room",
     "type": "room",
-    "sha256": "66d162585384bcb8426b2d8ea3aa58edc9918971d3ec3954279c88c09b1822bb",
+    "sha256": "b944a4aa3cf6564d191c15b7576ccb877bdc96ab59b1132ee3324c1c0214d030",
     "inherits": [
       "ROOM"
     ],
@@ -72,7 +72,7 @@
     "file": "d/snow/court.c",
     "path": "/d/snow/court",
     "type": "room",
-    "sha256": "234e3ad5f933f72eba57f38301a2b1e91dfcee611de3ad72eddcc2a6640292fd",
+    "sha256": "8c0209795af7f356fd676c321f4c57ddebf4e59bc363f7a3aa6e238a5b482375",
     "inherits": [
       "ROOM"
     ],
@@ -110,7 +110,7 @@
     "file": "d/snow/ebridge.c",
     "path": "/d/snow/ebridge",
     "type": "room",
-    "sha256": "de032b223a86965468953bf15c147648410c1d8c105c881ad7e11756aab101e2",
+    "sha256": "1331ed9b18a7cf5fbb94c481ce4973c03ab89090566da771d20a202896d27789",
     "inherits": [
       "ROOM"
     ],
@@ -152,7 +152,7 @@
     "file": "d/snow/egate.c",
     "path": "/d/snow/egate",
     "type": "room",
-    "sha256": "1c68efb20e0de083dc152f0668ca3899e916a6c59d94e2fae245ca1ab29a9632",
+    "sha256": "9a9d684b0f0dccc89d4cf6853e29fd6810d225cd4aa24ecb699a09207017a78d",
     "inherits": [
       "ROOM"
     ],
@@ -187,7 +187,7 @@
     "file": "d/snow/epath.c",
     "path": "/d/snow/epath",
     "type": "room",
-    "sha256": "7c4b2fbaed9cd9c53adef65bcc9ceeacf5f7308361365ec439463ca0c9d29bff",
+    "sha256": "00c6608e32177d461c4c5b0994d778bc2c2d0912f32b1b417673bf7a5278a64e",
     "inherits": [
       "ROOM"
     ],
@@ -252,7 +252,7 @@
     "file": "d/snow/fireplace.c",
     "path": "/d/snow/fireplace",
     "type": "room",
-    "sha256": "8290f8181a5d43c2e294a3bd28b6465bf3608e1e63ff9371d9e7b0578ea209f0",
+    "sha256": "598a50582fe3fe6ec29fa8485ea5b605b6415d8c2f69cf232fe1ebc3e2909dc1",
     "inherits": [
       "ROOM"
     ],
@@ -295,7 +295,7 @@
     "file": "d/snow/herb_shop.c",
     "path": "/d/snow/herb_shop",
     "type": "room",
-    "sha256": "d675d7c9e8b7447d9d4b3f10a3c2137e4126af1625ed691f9ebafbdc84ca1881",
+    "sha256": "612452e7eca48011c36b779e8c3a5b3825d6bc61edd2199f13188ee7d3a70dcc",
     "inherits": [
       "ROOM"
     ],
@@ -333,7 +333,7 @@
     "file": "d/snow/inn_hall.c",
     "path": "/d/snow/inn_hall",
     "type": "room",
-    "sha256": "43a50ad9104a20c0fb5e3ef7a6aa83c0798e16f3bc9bb500f696e7c772a5b454",
+    "sha256": "90b5633017026f5db8d6c0cfdab537e1d7e3a02ced516c508105c72981c24430",
     "inherits": [
       "INN"
     ],
@@ -388,7 +388,7 @@
     "file": "d/snow/inn_kitchen.c",
     "path": "/d/snow/inn_kitchen",
     "type": "room",
-    "sha256": "1a87e2c3e8f01ec7316ad89d070099e1bf181d1688f2fd250abc3053313bf9a7",
+    "sha256": "170e37f5dd2b16249424f161a3f47848320a6bae33a392b7565222c22feb7077",
     "inherits": [
       "ROOM"
     ],
@@ -435,7 +435,7 @@
     "file": "d/snow/inn_staff_room.c",
     "path": "/d/snow/inn_staff_room",
     "type": "room",
-    "sha256": "dbd66f3ead824d2d431e6afe5dbd117d02952c3a892698765e88672cb4ed9bf1",
+    "sha256": "51ae004631269f3f1c05d0849e594088d0cc0e5e7f1dd9d589f20eae01bf95e0",
     "inherits": [
       "ROOM"
     ],
@@ -460,7 +460,7 @@
     "file": "d/snow/kitchen.c",
     "path": "/d/snow/kitchen",
     "type": "room",
-    "sha256": "dd316981fcd18bcdad382a0ab62f4b67c6ee67a97a5884746028f26b5a88b3d0",
+    "sha256": "ea9e77b186498248103b02f4cceba166643106394d43b27a3599abeec8f9736a",
     "inherits": [
       "ROOM"
     ],
@@ -518,7 +518,7 @@
     "file": "d/snow/lane1.c",
     "path": "/d/snow/lane1",
     "type": "room",
-    "sha256": "fb8818f433c4a0acb9ab24583603f0da5552c335c416eaa36136fe6e970a5aad",
+    "sha256": "13424e7314e4bbf7bd0135311f06ea943e3d0e3339966d9e84f28a53cacc426a",
     "inherits": [
       "ROOM"
     ],
@@ -557,7 +557,7 @@
     "file": "d/snow/lane2.c",
     "path": "/d/snow/lane2",
     "type": "room",
-    "sha256": "34d3b65d0231ebc13ee2333b7aa22c98d75164ba44c80f5c6a7d107d1f10e45e",
+    "sha256": "c230d3b4e360bb532542149ed016df070f84ebeb3039fed8b13d59050f9683fc",
     "inherits": [
       "ROOM"
     ],
@@ -618,7 +618,7 @@
     "file": "d/snow/mill.c",
     "path": "/d/snow/mill",
     "type": "room",
-    "sha256": "7d49b1976d1f258f5f4736fa3971b469699013a62a0fa9ec050c5f4937de2760",
+    "sha256": "38e2c1c2387a85f9aeaee2a3925bb4b1267c71ccc42e8ecc9f7c1ae3c7bb48ae",
     "inherits": [
       "ROOM"
     ],
@@ -656,7 +656,7 @@
     "file": "d/snow/ngate.c",
     "path": "/d/snow/ngate",
     "type": "room",
-    "sha256": "c7031f02b72a7c012c718538d75c7edb7a4ca42b7aa1b95d800df0d627c5e33c",
+    "sha256": "5beee83318d4fd9930fb34fbcd7187938ff21cac5a17f8e5bff928e2639fef14",
     "inherits": [
       "ROOM"
     ],
@@ -703,7 +703,7 @@
     "file": "d/snow/npath1.c",
     "path": "/d/snow/npath1",
     "type": "room",
-    "sha256": "39ae4455eb7669b726d92df2469e80c6ac8f1e2e37b9211b4bcbffd6a5644a16",
+    "sha256": "42c10275cf2055854b7acca221a2990c392785395d6de85433350bda833d9bce",
     "inherits": [
       "ROOM"
     ],
@@ -738,7 +738,7 @@
     "file": "d/snow/npath2.c",
     "path": "/d/snow/npath2",
     "type": "room",
-    "sha256": "1ca3b86a39c51ee47d8e1ed87a9e9437ea7eb0e6e85eab9b596f18cbb9f20fe3",
+    "sha256": "7f2d315da0f6cf396ef365a7ce9fd3dd4eb678672ed351948724865d9cbfc480",
     "inherits": [
       "ROOM"
     ],
@@ -784,7 +784,7 @@
     "file": "d/snow/npath3.c",
     "path": "/d/snow/npath3",
     "type": "room",
-    "sha256": "195e1ef0fba471a707194b75f352c1270b8c5f7262e7f99c667dd17db560b068",
+    "sha256": "e2ecb404143a761a383d346c90ea21b66ec24bcb3711bf701cc7fb72c1df7be9",
     "inherits": [
       "ROOM"
     ],
@@ -827,7 +827,7 @@
     "file": "d/snow/nstreet1.c",
     "path": "/d/snow/nstreet1",
     "type": "room",
-    "sha256": "c60b8c8fa9f4e286e5341302cacb339cd2b80e4536deabd3861ef0ecdd1dc11d",
+    "sha256": "8c1e74f8dc1bf8b1c5fb59692b041b738665ad7897880ff7bff1f37d389170c0",
     "inherits": [
       "ROOM"
     ],
@@ -866,7 +866,7 @@
     "file": "d/snow/nstreet2.c",
     "path": "/d/snow/nstreet2",
     "type": "room",
-    "sha256": "53ec41de823edd8676c99463677e11aa8df423d3a823ceedc528cd929270bdf2",
+    "sha256": "a8f763938b2a9d370de4dfdcba7534247424cc40557be1ce2b347558f5520c03",
     "inherits": [
       "ROOM"
     ],
@@ -916,7 +916,7 @@
     "file": "d/snow/post_office.c",
     "path": "/d/snow/post_office",
     "type": "room",
-    "sha256": "a3c6be1407fef18a9e7ef08edb39c9729a89354704b0fe1c0b6e85c5b2c98bd4",
+    "sha256": "f8c6669eb4458ba70b23abe0693def313086b2c02df0a8e5d7986e84c93ebe18",
     "inherits": [
       "ROOM"
     ],
@@ -975,7 +975,7 @@
     "file": "d/snow/river1.c",
     "path": "/d/snow/river1",
     "type": "room",
-    "sha256": "163a1da04ad2670f04aff831a64f0fe9eafd047d7830b170b10c9ccd3555e2d1",
+    "sha256": "83ed07b392cf01f3a392734ed5ab8a7153292bd5a75650d231fa33cff411f54f",
     "inherits": [
       "ROOM"
     ],
@@ -1010,7 +1010,7 @@
     "file": "d/snow/riverbank.c",
     "path": "/d/snow/riverbank",
     "type": "room",
-    "sha256": "4fb067605cebae845913bbc4c7edb974e22f55287a013e2e5fc2ff69bc7571a3",
+    "sha256": "0d5e46a44307596d59e2a475d1c1f2e81b2bc36fc09e9dc09fc52e52d42c92e1",
     "inherits": [
       "ROOM"
     ],
@@ -1041,7 +1041,7 @@
     "file": "d/snow/ruin1.c",
     "path": "/d/snow/ruin1",
     "type": "room",
-    "sha256": "61353bb68a66d7960f8412d5758badf2953601e2d45916e27cfd7f2dee1a3bd0",
+    "sha256": "b7a84971dc2855023c65eb48d54a0d31670b7b4bb35a6b55a8126b943685dcde",
     "inherits": [
       "ROOM"
     ],
@@ -1114,7 +1114,7 @@
     "file": "d/snow/ruin2.c",
     "path": "/d/snow/ruin2",
     "type": "room",
-    "sha256": "90bea2eb5f3e5f065f063ebc54e36417efe15696e7e7a964348b5cd8ed12939f",
+    "sha256": "72ca40ca5a7264b35b939f25db0e57faf327c5f23c13c3a413cf65784277ce6c",
     "inherits": [
       "ROOM"
     ],
@@ -1178,7 +1178,7 @@
     "file": "d/snow/school.c",
     "path": "/d/snow/school",
     "type": "room",
-    "sha256": "4bfdfcd403541e0a9277342ae5be8b22d30ca8b0fa846f4ceae2f8cd6766fdc4",
+    "sha256": "d98ad781ad408fb1992c3b789455482a8721f236aa851c18d9a97ec4065a2f28",
     "inherits": [
       "ROOM"
     ],
@@ -1226,7 +1226,7 @@
     "file": "d/snow/sgate.c",
     "path": "/d/snow/sgate",
     "type": "room",
-    "sha256": "e72727e7a7d02c9806299e40a472bddca11668409a2aeef022269c665ba5a972",
+    "sha256": "868d84c5a3291882386f3a86fadc1651a0c9ec934a61f79702938c03d30bcbb8",
     "inherits": [
       "ROOM"
     ],
@@ -1265,7 +1265,7 @@
     "file": "d/snow/small_temple.c",
     "path": "/d/snow/small_temple",
     "type": "room",
-    "sha256": "73dc48717b30a7a93e70842c54de500e8ccce1b926325ffb0b33eb17be881664",
+    "sha256": "66fc3168e65c0a7247461e16de87b80ebba72d6badc71a6fb6d2bb153e6cece3",
     "inherits": [
       "TEMPLE"
     ],
@@ -1296,7 +1296,7 @@
     "file": "d/snow/smithy.c",
     "path": "/d/snow/smithy",
     "type": "room",
-    "sha256": "69b1db1bf8f1a7c7f9db32742bfdee070471c1fe6dec83dbedd5e5132849c17d",
+    "sha256": "6918e040660b34a087c9fde1cd7d3edb4370b30d3d8647a848b0705b3bd29de3",
     "inherits": [
       "ROOM"
     ],
@@ -1334,7 +1334,7 @@
     "file": "d/snow/square.c",
     "path": "/d/snow/square",
     "type": "room",
-    "sha256": "4a72a6678418bba192591948cebebf14831fae2bc967d20b0e80602c61450f5b",
+    "sha256": "cc55248169a1d6e254b6b0f209be5a2626ad5a370983fce6d6877fa079564f38",
     "inherits": [
       "ROOM"
     ],
@@ -1420,7 +1420,7 @@
     "file": "d/snow/square_e.c",
     "path": "/d/snow/square_e",
     "type": "room",
-    "sha256": "93b6dbdbd21c91c3be913ac7a035fb263aaca214d8d1a88a8437c2c96720513c",
+    "sha256": "7ae2616371f7f4aecc49cfb264b710f4c6ce019399b82155c153d756ac554b47",
     "inherits": [
       "ROOM"
     ],
@@ -1455,7 +1455,7 @@
     "file": "d/snow/square_n.c",
     "path": "/d/snow/square_n",
     "type": "room",
-    "sha256": "57c0e1201b196206193f7689c34d9595abad8f8551ec81e588dddcd498e9f29f",
+    "sha256": "7d42c87f124aa32f80c5f063d1ef775744a9390318c996d0b7d6bb9d74a308ee",
     "inherits": [
       "ROOM"
     ],
@@ -1502,7 +1502,7 @@
     "file": "d/snow/square_s.c",
     "path": "/d/snow/square_s",
     "type": "room",
-    "sha256": "5ab37f1c99d3675f890e37ed6c8fbce9ad286d4685126e134ab637950fcef1a4",
+    "sha256": "e6a5c74ee6f99aeb52a67feddc14af51af3ee0ada789aa9dfc98dfad9fdc9a4d",
     "inherits": [
       "ROOM"
     ],
@@ -1545,7 +1545,7 @@
     "file": "d/snow/square_sw.c",
     "path": "/d/snow/square_sw",
     "type": "room",
-    "sha256": "3d6ef8bfd8efd7ed561ca523159ca48af3ece6f8e4e335be838efcca79d12982",
+    "sha256": "64e02cd12eb4ab35de119f0f12a577878802434925ae0c51720dae84cac77dc4",
     "inherits": [
       "ROOM"
     ],
@@ -1584,7 +1584,7 @@
     "file": "d/snow/square_w.c",
     "path": "/d/snow/square_w",
     "type": "room",
-    "sha256": "9a50c9cef7f5a0e566ede3f792aecade64c6ceeeb1046855ca9212577893ff27",
+    "sha256": "8eaeaaeffa6ffe16c7a8e148bca1d9e433196740cd18ae90f03d39710561d03a",
     "inherits": [
       "ROOM"
     ],
@@ -1644,7 +1644,7 @@
     "file": "d/snow/sstreet1.c",
     "path": "/d/snow/sstreet1",
     "type": "room",
-    "sha256": "eb98d343952afd03ba9f33a860569391500bc6802afc2b3cfe6d4098007d2e83",
+    "sha256": "d262637ed1096792155f4f4261dc18e610384f3b496b74b4406deb9ae1c9e248",
     "inherits": [
       "ROOM"
     ],
@@ -1687,7 +1687,7 @@
     "file": "d/snow/store.c",
     "path": "/d/snow/store",
     "type": "room",
-    "sha256": "19f3dc42a497a37f5ff456bc5bcdcf05e5eb3a41f02447cff82a29c2a6889096",
+    "sha256": "e08a132f98c3197b203733494fe5c252ca73d1071009e89080d401af9736408e",
     "inherits": [
       "ROOM"
     ],
@@ -1735,7 +1735,7 @@
     "file": "d/snow/tree.c",
     "path": "/d/snow/tree",
     "type": "room",
-    "sha256": "1c634e76667b4a176bde563152452e8c899990dff4e5ac8989cfa685619d1519",
+    "sha256": "24e0e014ed32840b091bbe53141a058fec03afbc16c6e9807847fd56463b67e9",
     "inherits": [
       "ROOM"
     ],
@@ -1773,7 +1773,7 @@
     "file": "d/snow/wgate.c",
     "path": "/d/snow/wgate",
     "type": "room",
-    "sha256": "ed4fbc195cd9ae498d4a46af7fddb5fcc3a837d2b4bee6108798bbf0a215ded5",
+    "sha256": "4d034f33cc815d5e227d505ad6d5552611970187192930706733404f4a3cd134",
     "inherits": [
       "ROOM"
     ],
@@ -1808,7 +1808,7 @@
     "file": "d/snow/wstreet1.c",
     "path": "/d/snow/wstreet1",
     "type": "room",
-    "sha256": "ddecf97e4bd93475cc0dc1c8005b4aed7eda53237529de36cc319cb44d9e784a",
+    "sha256": "bcb1d210a736bfcd7fb83bcd3ad94f070a844f008ea7bc89b68d99fae8bc0a78",
     "inherits": [
       "ROOM"
     ],
@@ -1847,7 +1847,7 @@
     "file": "d/snow/wstreet2.c",
     "path": "/d/snow/wstreet2",
     "type": "room",
-    "sha256": "4439a7074323ae97f469800d2c305020501507d97a301ce5d73d803c3c1a2309",
+    "sha256": "f11690b7950f06746d1502f2cd6cae3ada57fd0b0124321d9ff471b1ad5fa329",
     "inherits": [
       "ROOM"
     ],
@@ -1882,7 +1882,7 @@
     "file": "d/snow/wstreet3.c",
     "path": "/d/snow/wstreet3",
     "type": "room",
-    "sha256": "415c81374e44eae51fd40eb8765955c8501175c6a25669e1b29f45d235d900bf",
+    "sha256": "903fee84605231ade136534bca2b34ef2d9fb449604902d55994dfbe3b7c6a21",
     "inherits": [
       "ROOM"
     ],

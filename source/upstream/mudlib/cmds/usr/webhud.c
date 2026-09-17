@@ -4,6 +4,15 @@
  */
 inherit F_CLEAN_UP;
 
+// MODIFIED: added missing create()/seteuid. Every other command file sets an
+// effective uid this way; webhud.c didn't, so its load_object() call below
+// (resolving an exit's destination room name) always failed with "Can't load
+// objects when no effective user" — caught and swallowed, but it delayed/
+// corrupted this HUD emission often enough that the client's silent-poll
+// timing got out of sync, leaking raw @@WEBHUD|...| lines into the visible
+// terminal text.
+private void create() { seteuid(getuid()); }
+
 private string field(string s)
 {
     if (!stringp(s)) return "";

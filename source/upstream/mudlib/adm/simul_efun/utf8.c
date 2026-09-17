@@ -44,3 +44,29 @@ varargs string cjk_wrap (string str, int width, int indent, int first_line_inden
 
     return result;
 }
+
+// cjk_pad()
+// NEW（非原始 ES2 內容，用來讓中英夾雜文字對齊成整齊欄位）
+//
+// Pads str with spaces to reach `width` visual columns, counting CJK
+// multi-byte characters as width 2 (matching cjk_wrap()'s own rule) instead
+// of raw byte/character count, so %-Ns style sprintf padding does not go
+// ragged when a string mixes Chinese and ASCII. If str is already >= width,
+// it is returned unchanged (never truncated). right_align pads on the left
+// instead of the right.
+varargs string cjk_pad (string str, int width, int right_align) {
+    string* mbch;
+    int w, pad;
+
+    mbch = explode (str, "");
+    w = 0;
+    foreach (string ch in mbch)
+        w += (strlen (ch) > 1) ? 2 : 1;
+
+    pad = width - w;
+    if (pad <= 0) return str;
+
+    return right_align
+        ? repeat_string (" ", pad) + str
+        : str + repeat_string (" ", pad);
+}

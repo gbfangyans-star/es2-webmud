@@ -3,7 +3,7 @@
     "file": "d/snow/skill/dragon_force.c",
     "path": "/d/snow/skill/dragon_force",
     "type": "skill",
-    "sha256": "5e35527c1b683e3abbf7c3eae1ed8018130352d855cb906b08c3b2f300c6eba4",
+    "sha256": "a0317b5e80f82f2fd3c13ba6287dd0dde135a6a8966da25540ca0acd8f14a93a",
     "inherits": [
       "SKILL"
     ],
@@ -62,7 +62,7 @@
     "file": "daemon/skill/sword.c",
     "path": "/daemon/skill/sword",
     "type": "skill",
-    "sha256": "a49d3c731511b80d5c9ef549a00a8c5375f4edb5dc8fa2ace65df086608b576e",
+    "sha256": "2a2fcfa679b88637b74de4cccb28d58a3c56c97ff1c6bf4ae6101d211aae5369",
     "inherits": [
       "SKILL"
     ],
@@ -106,7 +106,7 @@
     "file": "daemon/skill/unarmed.c",
     "path": "/daemon/skill/unarmed",
     "type": "skill",
-    "sha256": "1e1388e1d3774f44c5876818af4a604d96550718022b183df220ae507506ad8d",
+    "sha256": "907b449ae48e378b34e1454ee79abe76989a9ddc2efb4cc34befce6516009be6",
     "inherits": [
       "SKILL"
     ],
@@ -150,7 +150,7 @@
     "file": "obj/example/skill/fonxansword.c",
     "path": "/obj/example/skill/fonxansword",
     "type": "skill",
-    "sha256": "8ce7942fc80c15c7e4d6b4c2cd9ffec848feb0e6dca0a9e2dcefb092a3b8bd7c",
+    "sha256": "e1cf97892e7c947ed3a101cee2555b50c39a50588cb3e19584350eee06dfa586",
     "inherits": [
       "SKILL"
     ],
@@ -200,7 +200,7 @@
     "file": "std/char.c",
     "path": "/std/char",
     "type": "skill",
-    "sha256": "0a73b86125a42882dc2b7b43bdc83fa90fa01659ee59c3d87b96f91703046685",
+    "sha256": "3d96dea3a34a3b3c6562a8a84b6f9c6685c1388343c7d23716162761d61b65f5",
     "inherits": [
       "F_ACTION",
       "F_ATTACK",
@@ -377,7 +377,7 @@
     "file": "std/skill.c",
     "path": "/std/skill",
     "type": "skill",
-    "sha256": "828feff718e330861f4490326fcd3fa0498a775e83f37472e1f38edfab159a03",
+    "sha256": "a235a4df8811879acdf0ac069ef0ffa157c6cc47a908a11573ba752674a71fb5",
     "inherits": [
       "F_CLEAN_UP"
     ],

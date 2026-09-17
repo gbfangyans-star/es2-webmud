@@ -8,73 +8,73 @@
       "path": "/obj/login",
       "present": true,
       "type": "runtime",
-      "sha256": "60a4168b7b4e6f2d2a1747647fa417ea7957c1864d25ba8466b6b1e9695f243f"
+      "sha256": "d85c4cfe0397fb66c4f7f6bf7206de5360a1ba8d1815361cd05dad0737ac472e"
     },
     "player_object": {
       "path": "/obj/user",
       "present": true,
       "type": "runtime",
-      "sha256": "6971629b3ab5d93f481fe7db04323434c9f41cc1845e18eab0613f6019e7c50f"
+      "sha256": "a22d9a8a222d637ae85efa8c2865a9793237adf30ebc6dd1d8e2f963b188a5e0"
     },
     "character": {
       "path": "/std/char",
       "present": true,
       "type": "skill",
-      "sha256": "0a73b86125a42882dc2b7b43bdc83fa90fa01659ee59c3d87b96f91703046685"
+      "sha256": "3d96dea3a34a3b3c6562a8a84b6f9c6685c1388343c7d23716162761d61b65f5"
     },
     "char_attack": {
       "path": "/feature/char/attack",
       "present": true,
       "type": "feature",
-      "sha256": "35ccdb7048346e05d583a36ec38c1a4e937d04ddc3d9916fdfac56ff8054c873"
+      "sha256": "65cff4caea2c89e473c190b62a26a4a5ee24d9ef99cd5b4395f640fcb94866a2"
     },
     "char_combat": {
       "path": "/feature/char/combat",
       "present": true,
       "type": "feature",
-      "sha256": "c4687322959daebca80d740b42e33320d7eeda2905a352bf965b4d071569587f"
+      "sha256": "95bef48a7406d1b0726347953d0d3f64ef9ffb6ad812aaa248fc594594e2df53"
     },
     "char_skill": {
       "path": "/feature/char/skill",
       "present": true,
       "type": "feature",
-      "sha256": "019818125d56934d33b5453a0f8b6bcafeaf5e6ed5e9ee5ee0ab61631430e9c7"
+      "sha256": "0b9366f9ba05c0a242439605736ef4770dc2d1f17cd9ea03a1ad2d034abaf2f2"
     },
     "char_condition": {
       "path": "/feature/char/condition",
       "present": true,
       "type": "feature",
-      "sha256": "b5c4eb8ef39b7d3f0e8c857dadb63922ae80867ca90dd322ebe744ff580a9d13"
+      "sha256": "4bcef9e9ad1a49e829ef269819406c998dc57c4a119cee340e3b8fa463b6d830"
     },
     "char_statistic": {
       "path": "/feature/statistic",
       "present": true,
       "type": "feature",
-      "sha256": "40a941da7c276d64ec0bbbd391d6a9a30ac0bd43fadc500056019d11a4c3bd4b"
+      "sha256": "4bea96919c319a1cb085cd3833d3eecf46f054515797a8505504349a6acf671d"
     },
     "login_daemon": {
       "path": "/adm/daemons/logind",
       "present": true,
       "type": "daemon",
-      "sha256": "6a0d3fb4d50123fc344be4f104757e4171b14fe4af57e547d04c76978c3cd45e"
+      "sha256": "daadba1224c7e052f3bdb52a6831c7697b9997043700f9210493474880bfb7dc"
     },
     "enter_daemon": {
       "path": "/adm/daemons/enterd",
       "present": true,
       "type": "daemon",
-      "sha256": "2ddf2c745585f937293a530ab9979e3758415b521b2d3b68851f43fabb4fe85b"
+      "sha256": "9cb5a15ec8f39357305567d0bb9c9891a3a37031a09a8f305c4976d72257e9f7"
     },
     "combat_daemon": {
       "path": "/adm/daemons/combatd",
       "present": true,
       "type": "daemon",
-      "sha256": "afea27591bdc99ddaf7527f09d516e737d487599d12d23b1276e721b9b1b9a87"
+      "sha256": "49a4563d1798721d8e02ae113d5085e9d6f43e9a84aa9c78f3ac616c9291c9fb"
     },
     "character_daemon": {
       "path": "/adm/daemons/chard",
       "present": true,
       "type": "daemon",
-      "sha256": "12c0e45d085c3a3bebce484b766a37fac83bd1ceab3511372e1387e9609f29cd"
+      "sha256": "c583ed940d0c59e01af2e1b5c6eaddcfa1a222e3a14ef41cda45d6f9c178750d"
     }
   },
   "source_policy": "taedlar/es2_mudlib only"

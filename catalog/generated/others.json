@@ -3,7 +3,7 @@
     "file": "adm/guild/academy.c",
     "path": "/adm/guild/academy",
     "type": "other",
-    "sha256": "773eda3de934e4d84bc93bd48144c97299eed0df4f73b29484acb59d554b8de4",
+    "sha256": "930987bb9a8a8d26f8a3f0038078245e88dcceef9b36c2221f6308818d5c29a3",
     "inherits": [
       "ROOM"
     ],
@@ -34,7 +34,7 @@
     "file": "adm/guild/guildhall.c",
     "path": "/adm/guild/guildhall",
     "type": "other",
-    "sha256": "833881dab4bc7c327891c2375d83d4f5f017f58c1be936a04ba52bb581812666",
+    "sha256": "610b004a7efeceb76324c74e5fa6f4ecd49e32744a03bfab1c5d6abcddf1d32b",
     "inherits": [
       "ROOM"
     ],
@@ -73,7 +73,7 @@
     "file": "adm/guild/meetingroom.c",
     "path": "/adm/guild/meetingroom",
     "type": "other",
-    "sha256": "9904858489817cca146d606761b417ec6468834b817dcf10f7452ac9fd62f530",
+    "sha256": "5881011550dec6efd74470bfbc43caebb6bf4d32ea3252ad0d69c5b91144b9b6",
     "inherits": [
       "ROOM"
     ],
@@ -104,7 +104,7 @@
     "file": "adm/guild/portal.c",
     "path": "/adm/guild/portal",
     "type": "other",
-    "sha256": "c1005acfb0ca7e5fa6a773b39947ced8e93503ed4cc47f5acbd3f796c7c32ea9",
+    "sha256": "05930d8360b79883c325968e251f3ffbe473bebaa705e11d30797ced714145c6",
     "inherits": [
       "ROOM"
     ],
@@ -139,7 +139,7 @@
     "file": "adm/intermud/_gchannel.c",
     "path": "/adm/intermud/_gchannel",
     "type": "other",
-    "sha256": "4971bcb793280b4ab95a75c30970c59bd1fb5a181d8a3e242b1949302720174f",
+    "sha256": "00d4d8623c8e99e3291c30bbd18a9fc1c633d1a0e38903778c3738f93b1ee87b",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -165,7 +165,7 @@
     "file": "adm/intermud/_mudlist.c",
     "path": "/adm/intermud/_mudlist",
     "type": "other",
-    "sha256": "65c036d05b8b0f3f9cf9d7e8cb10ab573185e2b4033fd8e9580e1859df03413b",
+    "sha256": "3d24435482aca4bb7ea0e0ca4f4d19e61cd7329fc9a23352601b0a5141fd62e8",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -191,7 +191,7 @@
     "file": "adm/intermud/_ping.c",
     "path": "/adm/intermud/_ping",
     "type": "other",
-    "sha256": "b6af4666a2e4eb7613abfbf1a4ee6d7ceecde26a86787a35bfce872abda46976",
+    "sha256": "34eb6ce58e167bc5ef09d51200655aee2c4dd28bf7ae608fe2f51609a1594737",
     "inherits": [
       "F_CLEAN_UP",
       "F_DBASE"
@@ -223,7 +223,7 @@
     "file": "adm/intermud/i2d.c",
     "path": "/adm/intermud/i2d",
     "type": "other",
-    "sha256": "d09bb15915ddc24752118897aae40416d520a269409edb59e82dfb728d8c7f72",
+    "sha256": "47a4d0de4560045827e590238595a439fb2848eb24ed8957202a50cbc9802509",
     "inherits": [
       "F_DBASE",
       "F_SAVE"
@@ -284,7 +284,7 @@
     "file": "adm/simul_efun/atoi.c",
     "path": "/adm/simul_efun/atoi",
     "type": "other",
-    "sha256": "6cb8e6e07d31362637518d98f5d17ee159a07c56a77531843d10cc49ffb7e4b8",
+    "sha256": "b737a7f4109db854d8d981c4aa7d01832f0273b89c00bff0ceb433781ab7d152",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -299,7 +299,7 @@
     "file": "adm/simul_efun/chinese.c",
     "path": "/adm/simul_efun/chinese",
     "type": "other",
-    "sha256": "1b23ce2b3e0f9edbe8471db6851947c4dc4d175b174bd2ec215b50752d7ce42b",
+    "sha256": "96974dee40e2f6117967b85250db62feccec26f19ccb96a63f20fea6b5a4c7a7",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -317,12 +317,11 @@
     "file": "adm/simul_efun/cursor.c",
     "path": "/adm/simul_efun/cursor",
     "type": "other",
-    "sha256": "7e0c45064e7fca180feac7ced099d194895369a94502b8355434dc4a7f6e76b7",
+    "sha256": "cd2bbcea965d16e79c6a820904855cef45e7f1d3ebeb8377601dd5d7dda94ab9",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
-      "cursor_translate",
-      "option_value"
+      "cursor_translate"
     ],
     "runtime_traits": [],
     "combat_surface": [],
@@ -333,7 +332,7 @@
     "file": "adm/simul_efun/file.c",
     "path": "/adm/simul_efun/file",
     "type": "other",
-    "sha256": "84a7df0ccfec7e2d44b5f834b0c7f66ed1f03fb6a912a76304b1f1936664a97f",
+    "sha256": "8b04bb179e67e0a0ed0e2129de701b741c8030aca0390d22935d7c962ed2d414",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -351,7 +350,7 @@
     "file": "adm/simul_efun/gender.c",
     "path": "/adm/simul_efun/gender",
     "type": "other",
-    "sha256": "a12830b759a44124538138e08bfc81a143c85d1a5f42ef92729e232e50a1b589",
+    "sha256": "7ec5afbbadc2a57d42a809307b2cf093e4f1eb8a98504b9e658f2d5eb5032c41",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -367,7 +366,7 @@
     "file": "adm/simul_efun/message.c",
     "path": "/adm/simul_efun/message",
     "type": "other",
-    "sha256": "7abd6d49c6ac6f0ba44a7cca9f4fa1fcc9ef9f3ea8baa39c10c113843c158a52",
+    "sha256": "68e78dbac1d27506864e19f8ece8cdf4b388254954741af6eb8182c8e7a8dbcf",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -387,7 +386,7 @@
     "file": "adm/simul_efun/object.c",
     "path": "/adm/simul_efun/object",
     "type": "other",
-    "sha256": "8494153793fe0e1f01e23dcba1ddf19ad4c1616ecb870ee9cf44b6aa98f18c11",
+    "sha256": "f7e449335f00615c8c2d120a7c505ac26254652e8223c74dcdfbc9dadf02874f",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -411,7 +410,7 @@
     "file": "adm/simul_efun/path.c",
     "path": "/adm/simul_efun/path",
     "type": "other",
-    "sha256": "02bfed9852b85b541924bdd149af9bde82cbec7541dc684457c0302fd5fe4d19",
+    "sha256": "9953447e52ec7a7e7bf3b6a1dc2919fdb041f0ac23103ab0cfc0b21d9b94eb48",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -432,7 +431,7 @@
     "file": "adm/simul_efun/utf8.c",
     "path": "/adm/simul_efun/utf8",
     "type": "other",
-    "sha256": "a2294e5b0f85c97cccab4a4c4ea5da25f7f7d7acfe680b52e4b085e9e7bd1129",
+    "sha256": "d9c0319beb5ba2ce9e7d5a266f7198fcd50b11eb6ecdaa73265405ecd7d63862",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -447,7 +446,7 @@
     "file": "adm/simul_efun/wizard.c",
     "path": "/adm/simul_efun/wizard",
     "type": "other",
-    "sha256": "af7c2f4b70673354a64a602b74421ea18b4970cd5ec0e7daf6b2011d696ca4ae",
+    "sha256": "e65d210969976e79b6ef2bad1401bd31e2f4840c9888466f4b42e0ad5d5d3735",
     "inherits": [],
     "inherit_refs": [],
     "functions": [

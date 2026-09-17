@@ -113,3 +113,44 @@ Safety properties: canonical-path containment, exact pre-write SHA guard, duplic
 - Replaced fragile `present("*_money")` lookup with canonical MONEY/money_id inventory resolution.
 - Withdraw/convert now use a strict coin/silver/gold money factory instead of arbitrary path construction.
 - Added literal Chinese usage examples to the bank sign.
+
+### (unreleased) 李家村福祠 NPC additions
+- **NEW** (not sourced from original ES2 data — project-member-authored character for the
+  Li Village revival): `d/lee/npc/nee_cheng.c` — 聶晟, the village's only non-Lee-surname
+  resident, its 大夫 (doctor); human, level 15 (level chosen arbitrarily, not specified by
+  the requester — adjust freely), attrs spi(靈性) 30 / wis(慧根) 25 / int(悟性) 30 /
+  cps(定力) 28 explicitly set, other attrs left to default human randomization. Mechanically
+  `set_class("commoner")` — "方士" is flavor/profession text, not an implemented player
+  class in this codebase. Same convention already used by `d/snow/npc/alchemist.c`'s 陳維俠,
+  also described as "著名的方士".
+- **MODIFIED** (canonical-room addition, matching the existing `objects`-mapping pattern
+  used throughout `d/lee/*.c`): `d/lee/shrine.c` (福祠) now spawns 聶晟 ×1 and the existing
+  `d/lee/npc/child.c` (小孩) ×2 via `set("objects", ([...]))`.
+- Not yet committed/pushed; not live-walked to the room in-game to eyeball it (would need
+  either wizard `goto` — blocked by this session's own file-write guardrail on
+  `adm/etc/wizlist` — or a full manual room-by-room walk from Snow through Lee village).
+  Verified only by: (a) identical structural pattern to three already-working NPCs in this
+  same village/area, (b) no compile errors in `mudlib/log/debug.log` after a restart.
+
+### (unreleased) 李家村 topology fixes + NPCs + watermelon item (batched, not yet restarted/applied)
+- **MODIFIED** exit fixes (dangling/one-way connections, requester-directed):
+  `d/lee/pawnshop.c` north exit removed; `d/lee/square_s.c` south exit + matching prose
+  removed (was one-way into pawnshop after the first fix); `d/lee/square_c.c` east exit
+  and `d/lee/watermelon_n1.c` west exit removed (mutually disconnecting those two rooms).
+- **MODIFIED** `d/lee/gate_s.c` (村口大門): spawns existing `d/lee/npc/guard.c` (守衛) ×2.
+- **NEW** `d/lee/npc/traveller.c` (旅客) — human, lvl 5, commoner, age 20, attrs default
+  human random, wears `/obj/area/obj/cloth` + wields `/obj/area/obj/shortsword`. NOTE:
+  `obj/area/traveller.c` already exists under the same English name ("traveller") but is
+  a different, unrelated character (過路客 — female jiaojao thief, lvl 20, whip) — left
+  untouched, new file added instead of reusing/editing it.
+  `d/lee/entrance_s.c` (村口) spawns it ×3.
+- **MODIFIED** `d/lee/watermelon_n2.c`: added `detail/西瓜` + `detail/watermelon` room-look
+  text (native `do_look()` "detail/" mechanism, no custom look command needed) and a
+  `pick 西瓜` / `pick watermelon` action (mirrors `watermelon_n1.c`'s existing do_pick,
+  minus its double-move; both act independently of each other, as requested).
+- **NEW** `d/lee/obj/watermelon.c` rewritten from its prior F_FOOD-only placeholder to a
+  custom 4-bite item: `stuff_ob()` overridden (F_FOOD's single-value model can't restore
+  water or vary the message), each `eat` gives food+20/water+50, distinct message for
+  bites 1-3 vs the 4th/last bite, melon is consumed after bite 4.
+- Not committed/pushed; not restarted on the running server yet (batching per user's
+  request — will `update` the changed files or restart once this round is done).

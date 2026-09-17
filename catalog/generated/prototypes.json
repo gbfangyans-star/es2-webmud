@@ -3,7 +3,7 @@
     "file": "std/char/npc.c",
     "path": "/std/char/npc",
     "type": "prototype",
-    "sha256": "b6295069dfe697531f997fd425b69751529074e3caf9c03b760aa1b97e9d7776",
+    "sha256": "4bff425e724faa490683e5bd83094500c612851b43c882669a6a96d0f056b043",
     "inherits": [
       "CHARACTER",
       "F_CLEAN_UP"
@@ -106,7 +106,7 @@
     "file": "std/condition.c",
     "path": "/std/condition",
     "type": "prototype",
-    "sha256": "4575e392747eed984fa2609f9f06108d4381b3d5791a53fdaa9e3e88ba3e394a",
+    "sha256": "10cab44db88f3e7c787961db7abeb7c46316959a2e83b942a2640884a12ceb52",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -127,7 +127,7 @@
     "file": "std/item.c",
     "path": "/std/item",
     "type": "prototype",
-    "sha256": "7c923920659e702f222d52e66c83bc2852b472964b592a359df855b53b32e64f",
+    "sha256": "d6d6410875e8f92b113cc1556e0c7af76741489a6653fdf6cf89705d38daec93",
     "inherits": [
       "F_CLEAN_UP",
       "F_DBASE",
@@ -169,7 +169,7 @@
     "file": "std/race/humanoid.c",
     "path": "/std/race/humanoid",
     "type": "prototype",
-    "sha256": "79cd033f940779f8b871782d06d3bca1ecf12923ccc71e6b336cffd2294d4ecf",
+    "sha256": "c28addba80b56d270f9620a6371b287bf860d2667bbe068b66c1d08bbc7d2b1e",
     "inherits": [
       "F_DBASE"
     ],
@@ -222,7 +222,7 @@
     "file": "std/room.c",
     "path": "/std/room",
     "type": "prototype",
-    "sha256": "ab0f7ef4a5e575446aa952569bf743aff57b9119ce2d283a84237f61082d871d",
+    "sha256": "cd60af504de552da71a2cccf4b813b31fb9b072bfbbefbf238f6ed1369dc11cf",
     "inherits": [
       "F_DBASE",
       "F_CLEAN_UP"
@@ -294,7 +294,7 @@
     "file": "std/room/bank.c",
     "path": "/std/room/bank",
     "type": "prototype",
-    "sha256": "31a77f440ddfcefcf9c21e499ff85b832c2b9a79dcea3556a8fa8cff4b58256d",
+    "sha256": "91a4681abecaee2aa1e66580116f24de90c932723f04089713d168d2e532d2aa",
     "inherits": [
       "ROOM"
     ],
@@ -383,7 +383,7 @@
     "file": "std/room/hockshop.c",
     "path": "/std/room/hockshop",
     "type": "prototype",
-    "sha256": "727c6eaa01b5d28bf74a572df109a278e834fadba1c887873cf3d686398fbdb6",
+    "sha256": "b09027003063582558b9d2092e0c9781bf88b32551ac26566ed0e0a5906bec52",
     "inherits": [
       "ROOM"
     ],
@@ -507,7 +507,7 @@
     "file": "std/room/hockshop_storage.c",
     "path": "/std/room/hockshop_storage",
     "type": "prototype",
-    "sha256": "6ab3173f0f87ecf029767554647cb6969de3de3ac897dcbc509d4777e7f1436e",
+    "sha256": "7993f0c2136f0f22ade46e81e8ad58cd7c45e88508c82a80ea42e48626e815bb",
     "inherits": [
       "ROOM"
     ],
@@ -536,7 +536,7 @@
     "file": "std/room/inn.c",
     "path": "/std/room/inn",
     "type": "prototype",
-    "sha256": "27d27163ed96d2bfd79c94599b5ad96e7c221cc93b65866ac05ee318040a1183",
+    "sha256": "ec9b178a8ddc8e2e3c5bef4b024e12851dfdc65f2b820d36eec3f21b52d7ceda",
     "inherits": [
       "ROOM"
     ],
@@ -559,7 +559,7 @@
     "file": "std/room/journey.c",
     "path": "/std/room/journey",
     "type": "prototype",
-    "sha256": "2dad6d4c799083af05d909f1bef36fb867e38c1d96275039087c4935e9deedbf",
+    "sha256": "fac8f66dd395e45478d36536e34a9defd18b5ff31526e79e4f2d96c24efb6424",
     "inherits": [
       "ROOM"
     ],
@@ -628,7 +628,7 @@
     "file": "std/room/temple.c",
     "path": "/std/room/temple",
     "type": "prototype",
-    "sha256": "b52ca44efe63d189c260d9f1fd68c258d8c107802628b8fb8d483de44e6c1aaa",
+    "sha256": "b1df864334eba9f2318b36684f63744b050a87ab2abc43cc7204c46b1e7b9abb",
     "inherits": [
       "ROOM"
     ],

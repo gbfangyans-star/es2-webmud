@@ -3,7 +3,7 @@
     "file": "cmds/adm/chpass.c",
     "path": "/cmds/adm/chpass",
     "type": "command",
-    "sha256": "9a5ddaca13ec388f7d49a1302a0afa6e0a78aecea9140a84f6b416ea31cc4880",
+    "sha256": "1b0f21b6c8068da6c35f848dbfdc10e69407f1080abd435e8ad8eccb77918c2a",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -32,7 +32,7 @@
     "file": "cmds/adm/disassemble.c",
     "path": "/cmds/adm/disassemble",
     "type": "command",
-    "sha256": "91ca4c348bd20a74094377af846a4f9622be54e4c54f544e73e27b23eff901da",
+    "sha256": "0d05c53052434d2bc1c58f6b63ea38e347cbea71e92caa72107d05d9603f8a9a",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -60,7 +60,7 @@
     "file": "cmds/adm/dump.c",
     "path": "/cmds/adm/dump",
     "type": "command",
-    "sha256": "4696408d6cad4fb1751fd6ca754cf5df7c6a16c581f3a23a7686ddaa74840d70",
+    "sha256": "8b003cb556b2b3a51b1f899403b944d394b50da524886ff465933abb3d7fd76a",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -86,7 +86,7 @@
     "file": "cmds/adm/halt.c",
     "path": "/cmds/adm/halt",
     "type": "command",
-    "sha256": "25e604f586399d7fb2750f7ae63cd682b91a5869bf4f4634a8e781e625b39a0d",
+    "sha256": "a772ac8e26f06f12fc4dc6e854ec2d2045a84bb25c4d38ca36fcedd8e5247be5",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -112,7 +112,7 @@
     "file": "cmds/adm/profile.c",
     "path": "/cmds/adm/profile",
     "type": "command",
-    "sha256": "e299bc9ecb39666425bfdcacaf2f6b6ef908cce0fc8eae0f955bfcfc7496d521",
+    "sha256": "0fab6d4996738576c4b421fc6a8cf748586f27c41572dcf7dd1f1710028a1bea",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -133,7 +133,7 @@
     "file": "cmds/adm/renew.c",
     "path": "/cmds/adm/renew",
     "type": "command",
-    "sha256": "d5db45186b63b978953609e723e0d01561066e970a1c6317696adef0344213ac",
+    "sha256": "9cb5c1fcb9b1e67316c9149a2bc9755cbe5dc026e84e9bf0926d2136006f4fd4",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -158,7 +158,7 @@
     "file": "cmds/adm/resurrect.c",
     "path": "/cmds/adm/resurrect",
     "type": "command",
-    "sha256": "5bd4be6014a6b53551bbdd8280dff72baca830cf47bf543b851e3e7cfef9ae19",
+    "sha256": "576cefdebf518c2562a23719dfab57205dd02cc6478e505b6443f88ba28aef93",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -187,7 +187,7 @@
     "file": "cmds/adm/shutdown.c",
     "path": "/cmds/adm/shutdown",
     "type": "command",
-    "sha256": "7a9d31dd5b48e6778bfa2e5a306b654adba743cb5ee86becd5f727292bbead1a",
+    "sha256": "00324886288b0022d95471cf796e50baca4df42190afbf8851d7540e89669012",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -213,7 +213,7 @@
     "file": "cmds/adm/socket.c",
     "path": "/cmds/adm/socket",
     "type": "command",
-    "sha256": "98461023dd7d883e207016127be65ec73f1b4b6551271469c5225e596d86df9d",
+    "sha256": "163153ab5fc4932d0b64dfb379d4e05a7708cab720f393668651b6d8f908a3f5",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -238,7 +238,7 @@
     "file": "cmds/arch/callouts.c",
     "path": "/cmds/arch/callouts",
     "type": "command",
-    "sha256": "07fce4f2caa46d5b0310c52e3fb5ab61679ecb17a0487ba877be87c86e205fc1",
+    "sha256": "0b65dccb1abe5aa149c21ea1c2354cd314c8e9363078fcc2b32d7664e52d6b53",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -264,7 +264,7 @@
     "file": "cmds/arch/chinese.c",
     "path": "/cmds/arch/chinese",
     "type": "command",
-    "sha256": "38b659346d8ab26a990448eb960565dad337698f0e49afed8f6b342fd25729fd",
+    "sha256": "bcc5dc8f0e2b0643c2b72cf3a4353d29523b46fe7978c9aaf913387124dc44d2",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -290,7 +290,7 @@
     "file": "cmds/arch/cleanup.c",
     "path": "/cmds/arch/cleanup",
     "type": "command",
-    "sha256": "aa217a609f23331174220bfe1cac804d4b84e4940fa21101ed84c314b8d535df",
+    "sha256": "004681df30e4af13799720bfbed8d255cef1003a4225b6bcae8c6a24f30ed218",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -317,7 +317,7 @@
     "file": "cmds/arch/force.c",
     "path": "/cmds/arch/force",
     "type": "command",
-    "sha256": "2233326a52deac0f2c695ec34041d8741b84646515186895947157b8d436ac46",
+    "sha256": "cbaf38ffa1d1df726bb8793431306a9d3c1a4608c16fcee40c4dcb083ee988f0",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -344,7 +344,7 @@
     "file": "cmds/arch/heal.c",
     "path": "/cmds/arch/heal",
     "type": "command",
-    "sha256": "99f696dbc9e44804181db94c38b3a371fd298ad905f27a9a85ab7ffd3ed82519",
+    "sha256": "c722d692ef88f9c47cc46a816619125add5fefa631ee3c16104ba98fa1d1d9c2",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -373,7 +373,7 @@
     "file": "cmds/arch/overview.c",
     "path": "/cmds/arch/overview",
     "type": "command",
-    "sha256": "072d099943c23ad1ea48586edc07b85095452fe2e56ed96791f8178d9100f7d7",
+    "sha256": "e2c66308102422974fac3ab9d18e878507f55b91be6ec64be2cffdcefc8bd3d4",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -399,7 +399,7 @@
     "file": "cmds/arch/possess.c",
     "path": "/cmds/arch/possess",
     "type": "command",
-    "sha256": "fc4f1af60c8d72beac24e4086d6120d5420c7483c867ca3bc75faf0862911d58",
+    "sha256": "07452673906fa6a38e193b019b2ca27f7f461df49e363707d390e05b58013be6",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -428,7 +428,7 @@
     "file": "cmds/arch/promote.c",
     "path": "/cmds/arch/promote",
     "type": "command",
-    "sha256": "75c2bb887d6398773f9fde3cfe2d4e2a2572a3c76a983e7616503d22d394111c",
+    "sha256": "4dd82ac82b2ef3c46ad88d8f5b05c4d9c8b5f35a26bf1b54a1ae95f781c19764",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -461,7 +461,7 @@
     "file": "cmds/arch/purge.c",
     "path": "/cmds/arch/purge",
     "type": "command",
-    "sha256": "71a6088381f3e8111e0058042a796bcebcc82e46ee3e32779a966d73b75b0e89",
+    "sha256": "d5915cf19ebf3fef8543d6f7afb26e99c7386b9cb66abfc93837dbbb50e23149",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -491,7 +491,7 @@
     "file": "cmds/arch/reboot.c",
     "path": "/cmds/arch/reboot",
     "type": "command",
-    "sha256": "912b37ff9dacdec724209e4c46be6d0df3b62fde95e8997f2881ede103b6795b",
+    "sha256": "77f5e34566defbc8059a1d88a2026becca1939a59ab30145fab10f0f272d19fd",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -522,7 +522,7 @@
     "file": "cmds/arch/reclaim.c",
     "path": "/cmds/arch/reclaim",
     "type": "command",
-    "sha256": "130911ed446b98a33fa62fc8ccb05fa130794b1f488b5964d55fd356e7dcc605",
+    "sha256": "15d043b5327117632b86b0dd5bb3ae32e5ee8c7c57c5e31b716e765d43f76539",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -540,7 +540,7 @@
     "file": "cmds/arch/rehash.c",
     "path": "/cmds/arch/rehash",
     "type": "command",
-    "sha256": "59457efcb1828cda05f3279872e5f5a36a6173ded870eb65d8dc8cf394ce2cd6",
+    "sha256": "8305f76fe3cbcdcf64e8b99dc4b584ba23a059905b9338bb582d31b6cbdb8de3",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -566,7 +566,7 @@
     "file": "cmds/arch/reset_okip.c",
     "path": "/cmds/arch/reset_okip",
     "type": "command",
-    "sha256": "4b3a1543bc5e90ec12b0dec2e9ac141475083aa0c670cf574d2b0dcd6daae22e",
+    "sha256": "d0ab8def12698eaef7e6867cd5c10a10591ab6dd80f50dfd682fbe7a10c660d1",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -595,7 +595,7 @@
     "file": "cmds/arch/restore.c",
     "path": "/cmds/arch/restore",
     "type": "command",
-    "sha256": "84a778c86d6cbbb830d2f6a046517bd91b02cdd1266483a5331aa1ffe288d1bf",
+    "sha256": "d4ea7b9461eb1fc98e9564f1a9d6f409290c58a5dc3d8081e4346f92055fec0f",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -625,7 +625,7 @@
     "file": "cmds/arch/wizlock.c",
     "path": "/cmds/arch/wizlock",
     "type": "command",
-    "sha256": "610009828f77728c30d092f5a48ac99f02e9b5e1be24d08c2a5de0942f9f9107",
+    "sha256": "2257fd48f6cf2d77e36ffed71cbba64925e3f543acf9626a00b4885c07db95a6",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -654,7 +654,7 @@
     "file": "cmds/imm/cd.c",
     "path": "/cmds/imm/cd",
     "type": "command",
-    "sha256": "6d6981bca7cbe854543fa1a963a8a2b95714b11da63aa28e62ab34806cfe1627",
+    "sha256": "47b8f020b4fe892a1af57dfb4aa941bb9bd35e580b63db19b6b20fab7cf3a057",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -680,7 +680,7 @@
     "file": "cmds/imm/edemote.c",
     "path": "/cmds/imm/edemote",
     "type": "command",
-    "sha256": "fc5dcb4ab95c9743ee0c3cd8a2ea23393d62553ac6ecb35e6a2cd5a579587106",
+    "sha256": "78d6f4f5f5518c2bc8c28985de530c205bee23c95cf11911f970d3b147815004",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -740,7 +740,7 @@
     "file": "cmds/imm/goto.c",
     "path": "/cmds/imm/goto",
     "type": "command",
-    "sha256": "34430b104d61cb15671fc8717c60eb856f0f414c18dd26daef7954d73d996341",
+    "sha256": "230d1b2184cfcdda4d280d571a65f2504f52438c21cb5aa6942dca8155e8c0ea",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -769,7 +769,7 @@
     "file": "cmds/imm/ls.c",
     "path": "/cmds/imm/ls",
     "type": "command",
-    "sha256": "ec7a9fc7ad3355ee4cbefedbf091bab4598fd71892792c8fa82a18ea59f8b0fc",
+    "sha256": "b3ae9bca7e267fb476820645fe3fa3d6b396f2f0efe16b3c93fc6f608607144e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -799,7 +799,7 @@
     "file": "cmds/imm/mem.c",
     "path": "/cmds/imm/mem",
     "type": "command",
-    "sha256": "1304dbb67f74ae05d8d095d0d8aa458338d41226a3d4f1586acbddd6570d2cd0",
+    "sha256": "dc42bb423a09e03560a27d71c83a131a2b8d3cbe1f1465d9209439cd614ae26f",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -826,7 +826,7 @@
     "file": "cmds/imm/more.c",
     "path": "/cmds/imm/more",
     "type": "command",
-    "sha256": "92a39547429c772ae023726621eee4d4b3ed7def8d40a7f75aa31708ffecd4f1",
+    "sha256": "84ca13b6af9355a5d99d28847be9c8b856ba1f15d41350fd8d4f90c686b879f5",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -852,7 +852,7 @@
     "file": "cmds/imm/pwd.c",
     "path": "/cmds/imm/pwd",
     "type": "command",
-    "sha256": "089bf112290797901ab8699d5bb4177804130af6d657afc799e3be8396c22e39",
+    "sha256": "6b5005f81bb7bd597b71b0161ca2ae79bd8c16b573ddefe014a3365249316229",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -878,7 +878,7 @@
     "file": "cmds/imm/status.c",
     "path": "/cmds/imm/status",
     "type": "command",
-    "sha256": "0c42f138b72f7e661e9e2ad079539c5254dd78a3b62d72df6e70e2ca5fb2fb8c",
+    "sha256": "924b0a447acff6fc244297217886cdb15bcde3b854926bd564a4cbebee4090e7",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -907,7 +907,7 @@
     "file": "cmds/imm/where.c",
     "path": "/cmds/imm/where",
     "type": "command",
-    "sha256": "8b7f9c26dbd6294dcca3bfe69e22c9cc898aa834db89bc53b50f120805ac47fb",
+    "sha256": "154c9a86af68fd847f00752184a8c056e6499cb5d8b464238f89fe97a4734a47",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -933,7 +933,7 @@
     "file": "cmds/imm/which.c",
     "path": "/cmds/imm/which",
     "type": "command",
-    "sha256": "2949928eafaba0cf5a55b2b39c6d8f669023b9f8e8616a088565c86aa574344c",
+    "sha256": "e9c4323b5452353bd04b626acd7d8b49f20cd842bd9c7196ddb1831c5ce49f0c",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -962,7 +962,7 @@
     "file": "cmds/std/acquire.c",
     "path": "/cmds/std/acquire",
     "type": "command",
-    "sha256": "cd304b02dea02eb47d27bae374bd2db1057cdcdf468e124f150f72c4305ef1aa",
+    "sha256": "07c45a404b0308c48660a8f6b2676d6bf00c1dbc424c32dbeaf9f9ad1c38028e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -997,7 +997,7 @@
     "file": "cmds/std/acupuncture.c",
     "path": "/cmds/std/acupuncture",
     "type": "command",
-    "sha256": "4b1c962fa3849a448fffd297500409caa550b4db58cb9b5aeebf0214275f5f57",
+    "sha256": "082a19fe9bca11e8cfbf92ff73a9c7a073f7ccaf837b3a103b07552b48bdd324",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1036,7 +1036,7 @@
     "file": "cmds/std/apprentice.c",
     "path": "/cmds/std/apprentice",
     "type": "command",
-    "sha256": "a66071c81a10ee937a67c00e5ebc67541eb1d387d0e78becaea7437bfe455503",
+    "sha256": "a2808d8a307e913d858a7be57211c3e53943cd2226466d12c9eeb49fcf832606",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1065,7 +1065,7 @@
     "file": "cmds/std/ask.c",
     "path": "/cmds/std/ask",
     "type": "command",
-    "sha256": "c7198b7c62b058ca6d18882c6b90294129e4f5527f4ff0a25cd68cd6431b8172",
+    "sha256": "689342f5820ac3d60a85f8e20ae656a407ac15247056fd4a2c31298feb90d126",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1094,7 +1094,7 @@
     "file": "cmds/std/backstab.c",
     "path": "/cmds/std/backstab",
     "type": "command",
-    "sha256": "16214504865d5734def9d53b980549a1d745dbac7400cc34499c003e1653b706",
+    "sha256": "2d6724cac9d79dc2a26916b67907525aaacdbdbb93f2335c230c2d834b8d9c24",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1158,7 +1158,7 @@
     "file": "cmds/std/berserk.c",
     "path": "/cmds/std/berserk",
     "type": "command",
-    "sha256": "9af1b2b1810df2b26ba149d88ff6d751d61aac645fe15656aa047895b2a57903",
+    "sha256": "d29feac9debbd590cdb55f69d02fceb39f6bb88cd188206af5ef7368e85ef152",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1206,7 +1206,7 @@
     "file": "cmds/std/buy.c",
     "path": "/cmds/std/buy",
     "type": "command",
-    "sha256": "a8f59f4e959e54691fdf0b43d21e35de0f90d2802ea11b305c794af04dc6c627",
+    "sha256": "f087bd029bc84ab92b0fc9fdb84dfa61aa0efc2574ebd7ff80cfc5e52ffeccb4",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1242,7 +1242,7 @@
     "file": "cmds/std/cast.c",
     "path": "/cmds/std/cast",
     "type": "command",
-    "sha256": "7953badd37c49291950dfa651a067ae8c27c53650e58ea672a67f39bc895023a",
+    "sha256": "b41a28434f58771ff6fd6672f5f62b38418bf61ee16ead18d91f7ae29e07de44",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1283,7 +1283,7 @@
     "file": "cmds/std/ccmd.c",
     "path": "/cmds/std/ccmd",
     "type": "command",
-    "sha256": "2239f772838d10753523dce64e24019090bce240fde0a24c0743693677d64183",
+    "sha256": "e2a70a65f82aa18b3c1babcd3744db39a3194f3dff8559190172cdfb1644b083",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1324,7 +1324,7 @@
     "file": "cmds/std/cestablish.c",
     "path": "/cmds/std/cestablish",
     "type": "command",
-    "sha256": "2d8da8f42b8b405ff1b0de96804613a26dd73443b1f76963df79281f64fd24dd",
+    "sha256": "0c4e13e4c46321be2033c1dc5ba83954a0cfef96eeff4f9faed6ee243f1f9292",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1376,7 +1376,7 @@
     "file": "cmds/std/charge.c",
     "path": "/cmds/std/charge",
     "type": "command",
-    "sha256": "a5870e49625ed18f8ef0e5fc7ce9db5522acc1b6841db47e72c6c9820ab02271",
+    "sha256": "6911aed7af22de5f453d8797a69e3b37fe105223015d1913b48b4c58d2d4407b",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1407,7 +1407,7 @@
     "file": "cmds/std/close.c",
     "path": "/cmds/std/close",
     "type": "command",
-    "sha256": "d4ec6dfe9879b3090e74f59d0c845a79e1e7c08b61c23560e96853047437d2d4",
+    "sha256": "0f6d16e8da38ffccf9a24de8f08f40863ebee29a7d0b614a0b24ca7f5f806786",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1438,7 +1438,7 @@
     "file": "cmds/std/conjure.c",
     "path": "/cmds/std/conjure",
     "type": "command",
-    "sha256": "bdccc917c04f372b22ec338daa1e6131e448a58f7d157ef7fb8920ea9c863573",
+    "sha256": "15f27fd01b019144197cb72be7866cf501369d6ef867b358d74ef47de9283192",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1473,7 +1473,7 @@
     "file": "cmds/std/drink.c",
     "path": "/cmds/std/drink",
     "type": "command",
-    "sha256": "858c69b6b718d2eedb5d166cca0fab4a02f44d2ab1b4f89318a142c181d74bcc",
+    "sha256": "dc53b67a0681f5f0694d5faaa9575ab893cb0d43c58106b7159d7310eceb5f83",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1501,7 +1501,7 @@
     "file": "cmds/std/drop.c",
     "path": "/cmds/std/drop",
     "type": "command",
-    "sha256": "4ea7987e3ba3d396f8fa4f2e3e82f703e7e827319bf6e6915a053f1a0878c355",
+    "sha256": "7dbddab371ade061c0a8b2dce19fd8daec440bf43de8e3824c2a1cc6fcdca0e6",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1541,7 +1541,7 @@
     "file": "cmds/std/eat.c",
     "path": "/cmds/std/eat",
     "type": "command",
-    "sha256": "b35eb0c8ef5f7f2026e462d65207b0aab6187e37969f71a3f09950004265269b",
+    "sha256": "d216ffdd34061020fbe11843a54e97f6de2ff3b494d4e33cfa014201665b72b9",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1569,7 +1569,7 @@
     "file": "cmds/std/emote.c",
     "path": "/cmds/std/emote",
     "type": "command",
-    "sha256": "57b425cd937e691cd16543f7f6385dfe49cf506c7198b7649e945f8e8a46f077",
+    "sha256": "4c1c4b0620f11d80d2408f3feae4376226a939ae17d85b00691f1d3480092aec",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1598,7 +1598,7 @@
     "file": "cmds/std/enter.c",
     "path": "/cmds/std/enter",
     "type": "command",
-    "sha256": "da5b91bd2860f05d4191245d0e1c7c7dd1c8028c919bcd2ce94a7d5d2452162c",
+    "sha256": "f3ad60a5d85384bef56f92910a5176620e153cef142fbb412a9c74d289f82212",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1623,7 +1623,7 @@
     "file": "cmds/std/exert.c",
     "path": "/cmds/std/exert",
     "type": "command",
-    "sha256": "af1d0d1a75dcacb61a2a926822aa79713472d47d0517a3512f535a0246214763",
+    "sha256": "08e5b6c3c899198b4c27b32adf02e565c7e572f8401fb0c19106fd295fcd3003",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1664,7 +1664,7 @@
     "file": "cmds/std/fight.c",
     "path": "/cmds/std/fight",
     "type": "command",
-    "sha256": "be1a2837cd5a478c88efeced4ecd96d24ac409512a4915b6c180335aaa1a86e5",
+    "sha256": "df57e2dfdfea44575bbc87b6dce58473d3e3139180fa2532f1935f06dd861f01",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1707,7 +1707,7 @@
     "file": "cmds/std/fill.c",
     "path": "/cmds/std/fill",
     "type": "command",
-    "sha256": "82e2e8a6fac5418ff44c662068b55f22855ddde0e465c4970818ec4c2ca0f7d8",
+    "sha256": "1ff975041a1098b3e192823e518b9f6e3f3fb3df18d262d4ab8d62284ac96cd5",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1744,7 +1744,7 @@
     "file": "cmds/std/follow.c",
     "path": "/cmds/std/follow",
     "type": "command",
-    "sha256": "434ecf132fbf58c02a5913142a9acc683617e4d81666a95f815afbebafe2d340",
+    "sha256": "30572cf9f33c801193ac0315ee4fd5f333d9e7e692ab89dfad2910b5a294b646",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1779,7 +1779,7 @@
     "file": "cmds/std/get.c",
     "path": "/cmds/std/get",
     "type": "command",
-    "sha256": "af000871b9e25242a2b155fea86a40f40e3d7b844ce8eddeadc33c02870749b7",
+    "sha256": "f2b2ab3c68bf01f91fdb827f5ba7f139bdb2e048e62752f9966c7824019520e2",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1814,7 +1814,7 @@
     "file": "cmds/std/give.c",
     "path": "/cmds/std/give",
     "type": "command",
-    "sha256": "9600e7f933a22400351098f552ae0d3e53abae083603cb511082aa3c8f19a1c0",
+    "sha256": "47bcbbf879442d3481fca9d862619821be876da3a711f45c768527658c5ac5ac",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1853,7 +1853,7 @@
     "file": "cmds/std/go.c",
     "path": "/cmds/std/go",
     "type": "command",
-    "sha256": "5462cb726698f1b2e7507590d92d93f3d94c8a5d0ce892e4a19a32cf5884dcec",
+    "sha256": "c4505afe0bba3d879ff7da04d71e5fddb178472ef1f7e1ad4d53bbf943477e9b",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1901,7 +1901,7 @@
     "file": "cmds/std/guard.c",
     "path": "/cmds/std/guard",
     "type": "command",
-    "sha256": "c00da0920ab377cf1cc20c243679a3f1cc02d88da5b6449b9484f9f4c8a9b119",
+    "sha256": "d7431e1ab249de6c867fd7094a7fa48142769c243bda468e4dd27088b86430e7",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1932,7 +1932,7 @@
     "file": "cmds/std/halt.c",
     "path": "/cmds/std/halt",
     "type": "command",
-    "sha256": "14f0944a2eb99459770948acbd15e8aad9fb586b2459b50f5a0afc17ec8a6bde",
+    "sha256": "30c55d4815848a14f7a9ac45bf69fcdcbf1b9256f001e80da2790f13e2a1c177",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -1968,7 +1968,7 @@
     "file": "cmds/std/identify.c",
     "path": "/cmds/std/identify",
     "type": "command",
-    "sha256": "ec3d34ff1ba64cadfdb697276bb96529edfdde2ddffa2728844aa72f4e5fb58a",
+    "sha256": "1b41698f501b9d1331d2c9882de4abffe1d6838a2c4e5b05b9875aa19e097e34",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2005,7 +2005,7 @@
     "file": "cmds/std/ignore.c",
     "path": "/cmds/std/ignore",
     "type": "command",
-    "sha256": "10b0d6b067d29db0de3d793d8a489f4dfd40b4c0bfb6e003cc3febae26c780ff",
+    "sha256": "a88569d44d544257575ea422cb84b4fdab0100d5d412d908ad503941f9bc91b9",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2041,7 +2041,7 @@
     "file": "cmds/std/kill.c",
     "path": "/cmds/std/kill",
     "type": "command",
-    "sha256": "6b3c6e2beac159486d79d97dd8a034ab64ce568b6503ae6ce603a73a78e32b86",
+    "sha256": "211e23305b5bb9695f999be8c9f31632cbb20dcf1de5b02776c8aa73de89407e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2088,7 +2088,7 @@
     "file": "cmds/std/lock.c",
     "path": "/cmds/std/lock",
     "type": "command",
-    "sha256": "2bbf69efc448cc2bd472e17813dc1be55a1cacad4b505362a2721411ed7a8252",
+    "sha256": "d1ddddfc2148996107642ee657896b9c2342953ce5b6a49c3b6cdde277d5afad",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2117,7 +2117,7 @@
     "file": "cmds/std/look.c",
     "path": "/cmds/std/look",
     "type": "command",
-    "sha256": "f0d258678a085772348530c64822ec1958edf93e5c4debd7567c589c9ea71c95",
+    "sha256": "fc854f7aad20e113bf29f07ed2bda227b6c9efcc2374ada577d34e0e7707c3e3",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2153,7 +2153,7 @@
     "file": "cmds/std/open.c",
     "path": "/cmds/std/open",
     "type": "command",
-    "sha256": "17c688ed047f49aa570b24b9af690051b43f2fd0e5c93c47249850cfc2cb8b7c",
+    "sha256": "3309ab9fabfc2165914ccfc2c92c4c4df458085f020d7080e780e6e39ee5ee67",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2182,7 +2182,7 @@
     "file": "cmds/std/perform.c",
     "path": "/cmds/std/perform",
     "type": "command",
-    "sha256": "c50348bc6dae0c6d318b054cb653b61a567ecf18cfa1cad4ede17254ec7cc664",
+    "sha256": "7249972ffdcafae656a7bdd3d7ffe17e5cca66424cbd7af2fe30992336fc9d66",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2219,7 +2219,7 @@
     "file": "cmds/std/put.c",
     "path": "/cmds/std/put",
     "type": "command",
-    "sha256": "6032136f2efc45449f4eb05cf58361e341973ff3d787975b8d7a04283851a4e5",
+    "sha256": "bfe23f88b6ee36173461be55281b4af71b98be821b699165d692379cf2f9d9b4",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2258,7 +2258,7 @@
     "file": "cmds/std/remove.c",
     "path": "/cmds/std/remove",
     "type": "command",
-    "sha256": "fa9483389ed3f9656b870d893fa9bd46999da2973d63b7eab0d8a0490d9f7a6b",
+    "sha256": "4583689011e4714ad9e9e190a1203d070d924f3bb6d25c9354417e71915016c9",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2299,7 +2299,7 @@
     "file": "cmds/std/reply.c",
     "path": "/cmds/std/reply",
     "type": "command",
-    "sha256": "5bd10be23d056b0af7be18a09a2154420b0a8b0ea95bfcc828c3ff55ffadecf4",
+    "sha256": "2dece9335dba80e130543c94714efeb046cceac513c6e3afb24b8dfc5deb1cba",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2332,7 +2332,7 @@
     "file": "cmds/std/say.c",
     "path": "/cmds/std/say",
     "type": "command",
-    "sha256": "e2c77f374bb1a93610555bfa36e4e1b543ed3263c42d55ad92ea0f3601c14b42",
+    "sha256": "fedbd3f66a8cce6efa033cc02c584bbd972c5d3f3a0344319d0e279c8370f894",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2358,7 +2358,7 @@
     "file": "cmds/std/search.c",
     "path": "/cmds/std/search",
     "type": "command",
-    "sha256": "0a20553158ddb07ff902bcc44b7af283025416cfda9c5aa4c296fef12d8766e1",
+    "sha256": "7a3ca2c06a87728e59fde1ba427d3e5d3c15e337ba8e521f90cbfae8f8939a6e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2398,7 +2398,7 @@
     "file": "cmds/std/shout.c",
     "path": "/cmds/std/shout",
     "type": "command",
-    "sha256": "ebda46e63f6c9c8bc31c6e7d56069d0a7964e7b5f6c1a516ab112f69dfc89913",
+    "sha256": "90d03ababfe352cf52561387ca2656b308c7d5e442c7df772b4640efeb0b6e7e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2424,7 +2424,7 @@
     "file": "cmds/std/sneak.c",
     "path": "/cmds/std/sneak",
     "type": "command",
-    "sha256": "3970d2b07f2c5085a938f21a6f6f33e42ccfa3aaeb4b8b03d965a1746073013b",
+    "sha256": "3ce856ae05527338139584366606cc541232dcb78b57aa505e684573fc275006",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2472,7 +2472,7 @@
     "file": "cmds/std/steal.c",
     "path": "/cmds/std/steal",
     "type": "command",
-    "sha256": "5fec0ecd470c011224ead6b1195e8718706883b0b81a39be530f204a0bf2b277",
+    "sha256": "3c70084a7d780de9ba11993ade96a46cf2d9e96a4892c3e493fbf48b08deb219",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2536,7 +2536,7 @@
     "file": "cmds/std/study.c",
     "path": "/cmds/std/study",
     "type": "command",
-    "sha256": "1fa184ac01ae8f3f938373bdb7c63c778bfba52832d7aea894a0d33591aad0d5",
+    "sha256": "c5d488c4e7947fe0b2170d2fac0d1d499686e59c3e72410c5b49b481d6aec237",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2564,7 +2564,7 @@
     "file": "cmds/std/suicide.c",
     "path": "/cmds/std/suicide",
     "type": "command",
-    "sha256": "374887a8cef441c83a7e46fdcf9bf76bee0c61638b7861676da2ae7fe30a6287",
+    "sha256": "4a39ac453a6a991aca89526069d73521e60c994c4d007c1e6977a351f2bd0f6f",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2597,7 +2597,7 @@
     "file": "cmds/std/team.c",
     "path": "/cmds/std/team",
     "type": "command",
-    "sha256": "ab8e6103d0e16169cc6a995a3cc7f1fc92df27d27f9e4bc94df8e188b8222a32",
+    "sha256": "16987550a49df33b9a48c88ef63701dac0fbfc51add195fef0f41150538ee7d2",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2644,7 +2644,7 @@
     "file": "cmds/std/tell.c",
     "path": "/cmds/std/tell",
     "type": "command",
-    "sha256": "6f4ec765e71c0f84df837924de87e7c1ee3921725b449280aa2adae5fac0c3d4",
+    "sha256": "45d78e5c73fc214bcc63e8786cb5606df30db738ed5e70c1cc146590e7306064",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2678,7 +2678,7 @@
     "file": "cmds/std/unlock.c",
     "path": "/cmds/std/unlock",
     "type": "command",
-    "sha256": "4af12e7c89db13a20543648983d8ef1703081e07bba56ffb47f38cfe5809cfcd",
+    "sha256": "7398d704247463d073f0efa12b120265932b8383c2b93ff977773b6c46fa6ba8",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2707,7 +2707,7 @@
     "file": "cmds/std/unwield.c",
     "path": "/cmds/std/unwield",
     "type": "command",
-    "sha256": "b9afa08aa2d4e51d0f72f8a8b18685010de9a02dc3aabe690002b8a4ab25dd07",
+    "sha256": "15aa7405256a92f2cface25b6c11ba6e5d33143322aac2633a3e8c13878db44b",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2742,7 +2742,7 @@
     "file": "cmds/std/wear.c",
     "path": "/cmds/std/wear",
     "type": "command",
-    "sha256": "bf7ed03af411fdc71e79cda0163990c45ac8cbf1f54e879125230a7bbe0ceb17",
+    "sha256": "e14248f56329163a08bfe8f1d0909cbb0e97c8d0f85a82bce898952dcb5bf4d5",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2784,7 +2784,7 @@
     "file": "cmds/std/whisper.c",
     "path": "/cmds/std/whisper",
     "type": "command",
-    "sha256": "82e60eea7a885ffecdddfc8b24d68fbf945a04cb7b8638a8a1f51a724fc01776",
+    "sha256": "4a68b41b4919abfb37fbb997c8fbc73f06a7d753df83bcda27394c8bbee4a177",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2814,7 +2814,7 @@
     "file": "cmds/std/wield.c",
     "path": "/cmds/std/wield",
     "type": "command",
-    "sha256": "371ed279db402989a1c429b999787bcbe28d56989a219d9d5a7e672bbeb11483",
+    "sha256": "4a026c45e5b0535b20f6a1bfdede96a0cc08aba11db981c42830b7de61c66d5a",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2856,7 +2856,7 @@
     "file": "cmds/usr/abandon.c",
     "path": "/cmds/usr/abandon",
     "type": "command",
-    "sha256": "ff6e356bd759833b60678266b4ef3b8f1db75c4de4cf8ea826de759028a861e0",
+    "sha256": "de0b4e2155865cc0f6ed96dce6f89800b55228c54e103d85df2e20c072d1c968",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2886,7 +2886,7 @@
     "file": "cmds/usr/alias.c",
     "path": "/cmds/usr/alias",
     "type": "command",
-    "sha256": "f5d02c97ae15f759af52a7a99be4678ac9cfc8294e7979f8032f675fa2f65274",
+    "sha256": "1aa254fab53b3a5b8876ddb71c419bc4241040aa05b0d1e0cd7b4b1c9a2bcf5f",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2918,7 +2918,7 @@
     "file": "cmds/usr/backup.c",
     "path": "/cmds/usr/backup",
     "type": "command",
-    "sha256": "251578374af3a1f6c3e783948154dc7f3d191822effe81b5fa2040c7d5166a6c",
+    "sha256": "826100a4de15b621d797480e19847cc205897959c41dfcfc6299c771d853c46f",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2948,7 +2948,7 @@
     "file": "cmds/usr/chfn.c",
     "path": "/cmds/usr/chfn",
     "type": "command",
-    "sha256": "bf84fd4b4b95677233e61369b9fa39f486a0f7b5a4cfb9ad3525a35675c437f1",
+    "sha256": "9e869661b7e4738c53b1c0f3e150d6ac910d34ce8f5ebaa61358b5a2a34f1802",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -2987,7 +2987,7 @@
     "file": "cmds/usr/describe.c",
     "path": "/cmds/usr/describe",
     "type": "command",
-    "sha256": "bd9a7f47b1a839005965eae8b9aa1bbc87d3f2d18f36b576ad7bf9085ad01f75",
+    "sha256": "df1157dcecffe74db512475ee3238abec25677f28c322b2c789ce82556ddc729",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3017,7 +3017,7 @@
     "file": "cmds/usr/disable.c",
     "path": "/cmds/usr/disable",
     "type": "command",
-    "sha256": "655a79fe6e5a70b507cf6b9217447cd73af815b37ad969fbccd3bc570276cb1f",
+    "sha256": "dfe1194c2bbb5b5e42062e149c7729767de0088c0329f62ad08e08cf127c22f0",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3052,7 +3052,7 @@
     "file": "cmds/usr/enable.c",
     "path": "/cmds/usr/enable",
     "type": "command",
-    "sha256": "3805c87a9a6e8714cace28ac2691db7ced2ae300cacf32f85f3f141a80d21259",
+    "sha256": "4f108411a98e7dd2c46159fdd06fa18908405f212bebef91cbf27f99ed4884f9",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3106,7 +3106,7 @@
     "file": "cmds/usr/estimate.c",
     "path": "/cmds/usr/estimate",
     "type": "command",
-    "sha256": "2ccdfbd2400a6871e72c32d6e9b23a4ac1c03d83ca144b0bbf73968c9203f2ce",
+    "sha256": "eacbaf2a8c89dce929c5faf60fc525f9f81756fd362bbfd79c1ed2ff60abd35d",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3145,7 +3145,7 @@
     "file": "cmds/usr/finger.c",
     "path": "/cmds/usr/finger",
     "type": "command",
-    "sha256": "5e420915f442895d2396a3bb5c4f4ddb91d21295ac1fc26ebb7fd5492d585c07",
+    "sha256": "1cfebcc6026f81812ddfdc7e87e10b473c454e93310072e84e19c549390a3770",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3172,7 +3172,7 @@
     "file": "cmds/usr/gain.c",
     "path": "/cmds/usr/gain",
     "type": "command",
-    "sha256": "18f170598028f9c0ce368fcb66bcadc94868a11326dac506930d62e538f5b8be",
+    "sha256": "85c9969241a79d3db3aa70e32ea43a55581ee9757b200d3deb01ebbe0fa65662",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3198,7 +3198,7 @@
     "file": "cmds/usr/help.c",
     "path": "/cmds/usr/help",
     "type": "command",
-    "sha256": "803b3efce973b565a475b16570f168fd8a06ccd094d4b496a26a160e8ca9a9a6",
+    "sha256": "83e84118319e704ea93a9c2748aff074175d02bff3832dec37bf0d88e4bab98f",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3224,7 +3224,7 @@
     "file": "cmds/usr/hp.c",
     "path": "/cmds/usr/hp",
     "type": "command",
-    "sha256": "6204908d832d18d7f66508fa038ca197c699542d8daa0f09a03fb71a1eba4a08",
+    "sha256": "cdeb1e0bdbde1083718c000fba9ecb8f6d127250de81815f3bffe43fe0bf15cd",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3251,7 +3251,7 @@
     "file": "cmds/usr/id.c",
     "path": "/cmds/usr/id",
     "type": "command",
-    "sha256": "53a8198c700c8afbea1a9e1e5a01c1b1fb3938845a98ed7138276d223a8c4158",
+    "sha256": "79b7e81486e501187d8043646cd0c166d60c35fcc057e3351db0550b2b6ba06e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3281,7 +3281,7 @@
     "file": "cmds/usr/inventory.c",
     "path": "/cmds/usr/inventory",
     "type": "command",
-    "sha256": "01049edf41f3f7f0dfc89a10ecbb5bb10d73ae7b09af1e17225123dfd35e2b1d",
+    "sha256": "8e43f0b4c49fe43f15c73f936f433b4dc626929751b18d4a8397e1d88330e6a7",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3311,7 +3311,7 @@
     "file": "cmds/usr/keep.c",
     "path": "/cmds/usr/keep",
     "type": "command",
-    "sha256": "589172cc0a07b227b6cd529cab8d19ba454e302d9f8fdf13b0f578935d123111",
+    "sha256": "74b1b4a7dd4c6316060da7db34f53b9eafc84496ed226016d852c0a95c8b4762",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3342,7 +3342,7 @@
     "file": "cmds/usr/localtime.c",
     "path": "/cmds/usr/localtime",
     "type": "command",
-    "sha256": "82d5a7e983367b16dc50b3a24c3d1a062710616c2602b5c2e727594c210818e1",
+    "sha256": "d4d605ff26a2bdd1c8ccd368da4e9c99d623627b4dc41f8e7e02512c70c3fdbf",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3368,7 +3368,7 @@
     "file": "cmds/usr/nick.c",
     "path": "/cmds/usr/nick",
     "type": "command",
-    "sha256": "85307011f11c0fd16eefc1312905b49563b7e933c4d9d56cb1514d5d17fb869a",
+    "sha256": "6b4d5d9ea1755cad2c0f6d8035819481923ee53a967c593881fa78116a146e82",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3397,7 +3397,7 @@
     "file": "cmds/usr/okip.c",
     "path": "/cmds/usr/okip",
     "type": "command",
-    "sha256": "9c5d540f101c6b08b341e2dd0eb1fe95e4bd4eee246c8411528788c9494d750c",
+    "sha256": "a23e0767fe7fbe22363f3b18b9f9521d31391dc165d6cb1ffa67a2141acb7c63",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -3421,7 +3421,7 @@
     "file": "cmds/usr/option.c",
     "path": "/cmds/usr/option",
     "type": "command",
-    "sha256": "536cb2f285f0c2bf20cd0b82421d606fdbe88524064442348e0af5c80cf9cfff",
+    "sha256": "ccf3e1204ccd42eae1f6dbc330b20321249f9aab5194f09ae3462d0a55a5f58d",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3451,7 +3451,7 @@
     "file": "cmds/usr/order.c",
     "path": "/cmds/usr/order",
     "type": "command",
-    "sha256": "0f724921b8b8270ed6c790c5e7adf51abd4af30bae0343d472dd209da3645f04",
+    "sha256": "aa50c14d2dcca0af196df4d0f706d7d80f1563719d796b9e5b254b41888194d1",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3477,7 +3477,7 @@
     "file": "cmds/usr/passwd.c",
     "path": "/cmds/usr/passwd",
     "type": "command",
-    "sha256": "b5cde62df4af8f6825b45793946551ca9afb43b58c7666cbfd9ca5e99b26da7c",
+    "sha256": "3e86d4bdb154abe55901918d40f69a7750fa9924092a88e458a5580eac8b1dc7",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3522,7 +3522,7 @@
     "file": "cmds/usr/praise.c",
     "path": "/cmds/usr/praise",
     "type": "command",
-    "sha256": "a65f78f88a1fa090949ff9b6340da2857a34dc25cf4a64ddc1ddf86700926337",
+    "sha256": "506f70ce0cc1d35a9d9b5088f953369a2940c5034c7d1c868b6c709b68b9447e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3551,7 +3551,7 @@
     "file": "cmds/usr/quit.c",
     "path": "/cmds/usr/quit",
     "type": "command",
-    "sha256": "b671683e60e94e66141d1e36a5c8805356de36268f281a20f16e2591f8dcaff4",
+    "sha256": "4ae7260185a3d81aaee42dab87d36d7ba99cad8ea00ffd8cd3d4d7a21565cd78",
     "inherits": [
       "F_DBASE",
       "F_CLEAN_UP"
@@ -3593,7 +3593,7 @@
     "file": "cmds/usr/save.c",
     "path": "/cmds/usr/save",
     "type": "command",
-    "sha256": "83fbabceac20213c909513710631059a013d98f948a74f60c16296bf51bc29e0",
+    "sha256": "e9ad1e406eff7fe891316aa78d7d83301daa377b3fd4a0a45dd47c5f389e369e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3624,7 +3624,7 @@
     "file": "cmds/usr/score.c",
     "path": "/cmds/usr/score",
     "type": "command",
-    "sha256": "459ce204212ae8f8365bbfedd1af0369fa5219fc9250ee4ba107f3dcc7e37534",
+    "sha256": "626b7aa5a6c7854d737ba65c340f28ba6020c6c2f8530a570603b6d7d3fc4376",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3654,7 +3654,7 @@
     "file": "cmds/usr/semote.c",
     "path": "/cmds/usr/semote",
     "type": "command",
-    "sha256": "616139311f12edd3b7c0ae18873b6253a3c89e715b7dd507825b3b244d6813f3",
+    "sha256": "c6633e3bda833db5c06809a7eab7c037d8553fdbea1f26ad29ce4d2a30dcefab",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3680,7 +3680,7 @@
     "file": "cmds/usr/skills.c",
     "path": "/cmds/usr/skills",
     "type": "command",
-    "sha256": "abe6347cc34e847654bb5c646bf680a50dff94ab371022acf791cebe6594f5ba",
+    "sha256": "d7ff482638d7a29dc2ac2025b6ebab894812f17f9ca1589ccc8640c6f8a34399",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3724,7 +3724,7 @@
     "file": "cmds/usr/time.c",
     "path": "/cmds/usr/time",
     "type": "command",
-    "sha256": "4bb79d41b5305653bdfa09429ea50799c52fe4de9f7e759bd339a060c08e0299",
+    "sha256": "70421cdc9bfb37abeab3b02d1423a393470c5310c8f76161ea13620801f3fa60",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3750,7 +3750,7 @@
     "file": "cmds/usr/to.c",
     "path": "/cmds/usr/to",
     "type": "command",
-    "sha256": "bc841e37f8f00802655237fe46ad71c685345d3b1376f351f63cd5b137f5c7a3",
+    "sha256": "0a01db7fedcb4a35a4f4e2497b0db6d41328101393d8154adce8cad3752454b2",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -3769,7 +3769,7 @@
     "file": "cmds/usr/tune.c",
     "path": "/cmds/usr/tune",
     "type": "command",
-    "sha256": "1d6f35e70c7a7161bbc4a9d96a71f3cc279d91421acff96275679d9def0691ae",
+    "sha256": "c2281de6a52e93ac9f350a6b79c9a50d366dbda82998e0b7fee00d24e1470e18",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3800,7 +3800,7 @@
     "file": "cmds/usr/undescribe.c",
     "path": "/cmds/usr/undescribe",
     "type": "command",
-    "sha256": "083f0adcc57be964d0ec54f4935c912ad81f7c133b9ed00c4467fb980e064294",
+    "sha256": "42acfa776dd2f4e6f3b010e0d1bec468ed7d8623971de2390ad2c0920b806756",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3830,7 +3830,7 @@
     "file": "cmds/usr/uptime.c",
     "path": "/cmds/usr/uptime",
     "type": "command",
-    "sha256": "7460a585cbc3ec9181d18a06ecfb5234e5b00a4e06420160c9d72bb3d4011a5b",
+    "sha256": "b7627b01143b0817b8ca6a2fb70cf8581b1d08bf29db9b6900ae5bd3442957fb",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3856,7 +3856,7 @@
     "file": "cmds/usr/version.c",
     "path": "/cmds/usr/version",
     "type": "command",
-    "sha256": "9b2956cb6b5557511c89834fdd71b09f63f9e32a31b053893e63ba7e7d67cccc",
+    "sha256": "519c26a2f3dd29d30eb24678f3fdf70d7ad0f66ad2282f64c4e9a9bbef087d3b",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3882,7 +3882,7 @@
     "file": "cmds/usr/visitor.c",
     "path": "/cmds/usr/visitor",
     "type": "command",
-    "sha256": "1d0d749150b15a46aff99dd026df086855c011f3c536ead538bccaf8a744d848",
+    "sha256": "da42230617fc75d11ed2b9d8e23bfa23f8fb46b434d074e5d9ada5e199091b6c",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3908,7 +3908,7 @@
     "file": "cmds/usr/who.c",
     "path": "/cmds/usr/who",
     "type": "command",
-    "sha256": "3f6ec63346b0ae5dd0992c839207d9a96f8ae18b487c4068b3feb935e710dd80",
+    "sha256": "c1fa6d628b6a9c968b17b104ff7a18b57d367715f3e42b8e0d9639a6bcdfc014",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3940,7 +3940,7 @@
     "file": "cmds/usr/wimpy.c",
     "path": "/cmds/usr/wimpy",
     "type": "command",
-    "sha256": "99cdfeeb2d054cb5b30aaef05ca6168479e0e62042f819464c7da642627ac6d6",
+    "sha256": "5d8521c4cee4adb531302d56b36c5d72786ecdfff8e6d58d17db0cbfdf4ada76",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3972,7 +3972,7 @@
     "file": "cmds/usr/wizlist.c",
     "path": "/cmds/usr/wizlist",
     "type": "command",
-    "sha256": "987d92919fe9a20a1a72655824841478b07c5e1f423c1e06e4ff63fe7576ac35",
+    "sha256": "57a631db6a51c4f9a202027a9520034fd267fe043cb650ebddc413a54b9f62f1",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -3998,7 +3998,7 @@
     "file": "cmds/wiz/analyze.c",
     "path": "/cmds/wiz/analyze",
     "type": "command",
-    "sha256": "780740a5644587bbfa24865c094807a1c91cd9328de2c754a9ffc12ad7ef87a9",
+    "sha256": "6db0090973dc5c17b750ab2cc322c0494d487499fff07449263fea09afb5f543",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4036,7 +4036,7 @@
     "file": "cmds/wiz/arrest.c",
     "path": "/cmds/wiz/arrest",
     "type": "command",
-    "sha256": "2bc3ce2f8d5bc0b39eba2761900bccbabac30fee80343bd25dab95f5a2d46fd0",
+    "sha256": "182b8539d1045832c761794d546fc5d313b88415692d62cefb0607d4c258d5a4",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4065,7 +4065,7 @@
     "file": "cmds/wiz/call.c",
     "path": "/cmds/wiz/call",
     "type": "command",
-    "sha256": "d90aeef686f08e81f3b9683b31b0e46c45c54ada1fe43e6f40a62658f3af8bab",
+    "sha256": "a1154a843cf9bfdc4c27e0a2543af55edd3baf61c870107eccac3510ac59cd13",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4091,7 +4091,7 @@
     "file": "cmds/wiz/cat.c",
     "path": "/cmds/wiz/cat",
     "type": "command",
-    "sha256": "8d7e9d83f64d9b5a0a8454099e080d6011d689995b117c14c536059d03ab0aab",
+    "sha256": "3062397613c9f056430f3d13996f99fe055dbce0b38fcd945ed9f83c734031cd",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4117,7 +4117,7 @@
     "file": "cmds/wiz/clone.c",
     "path": "/cmds/wiz/clone",
     "type": "command",
-    "sha256": "5ccdd16b4a3548a7e8c66043ba51797b80c9890a05705c77efb6ae25833b420d",
+    "sha256": "7082ad55c3f113b2df2df7b04c9ab78c4ff544ecce837cd0e27f6248898c7b5a",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4148,7 +4148,7 @@
     "file": "cmds/wiz/cost.c",
     "path": "/cmds/wiz/cost",
     "type": "command",
-    "sha256": "6ee30f3ee05d4a2a9fcbd8d8ca193764e02ce43bbced670a5eb81d5654ff968a",
+    "sha256": "0f7e9159df72bd1bccda1d7a95b4f49da6ff99e5099f25ff307f6d9d4b89fbd7",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4174,7 +4174,7 @@
     "file": "cmds/wiz/cp.c",
     "path": "/cmds/wiz/cp",
     "type": "command",
-    "sha256": "7619c83994e61342f0b0e56341d8993c8b63379db568bf1f0b000057c7adb26c",
+    "sha256": "4410296aeea71ddc42da78f5964934fec1ef9406eb44c7bf7a8bea36344c4837",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4204,7 +4204,7 @@
     "file": "cmds/wiz/daemon.c",
     "path": "/cmds/wiz/daemon",
     "type": "command",
-    "sha256": "2dc75138e8c1005493a02e17caf0cd90ba316e6b1107f28faf501b6f093c19ee",
+    "sha256": "a362c1b942c12b161841d69481877a817778c61379c138ab77dad1fc15b76246",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4233,7 +4233,7 @@
     "file": "cmds/wiz/dest.c",
     "path": "/cmds/wiz/dest",
     "type": "command",
-    "sha256": "e12c8ea403fc23b91e63071ef795f926e4926408d1d7d560320360df62247f20",
+    "sha256": "6cb9050d6cd3dfbbe6f2d35008d1e4ccb7fcc1e028cab1faea422419fcca2e74",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4267,7 +4267,7 @@
     "file": "cmds/wiz/edit.c",
     "path": "/cmds/wiz/edit",
     "type": "command",
-    "sha256": "5214b9ac8dadeb98a4c9f0e8bb21435b973bd60896793519cc883ec86637f877",
+    "sha256": "1f04b0e60e4682fe9d970856eb3997c046adceceb5d44bc3904489613982c4fc",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4293,7 +4293,7 @@
     "file": "cmds/wiz/ff.c",
     "path": "/cmds/wiz/ff",
     "type": "command",
-    "sha256": "c54387d6289fa631cda00ddf80f2cc54b401e04646476434a9bc918e8841bf2d",
+    "sha256": "8e18f8d780cfd9d2d10558cbf6efea0cf9aebe290d125db58f2f44987a048c50",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4319,7 +4319,7 @@
     "file": "cmds/wiz/home.c",
     "path": "/cmds/wiz/home",
     "type": "command",
-    "sha256": "90f72b092ed8426cc409de001f9e5eff27db6240e6694977cc00aa69dbb3b350",
+    "sha256": "c892a0f21763a446b7115b94983c7e1b340ed5eb122d4c81c48cabffd0299f22",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4350,7 +4350,7 @@
     "file": "cmds/wiz/ilist.c",
     "path": "/cmds/wiz/ilist",
     "type": "command",
-    "sha256": "319dd2ee2578dca7317adbced038606eb73b0e814feb6f58746c7a30c3e98cfa",
+    "sha256": "1b1a664f4a28178627d7a9fb80098a77c4349922c6f99fb500ce9db8b9a49802",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4377,7 +4377,7 @@
     "file": "cmds/wiz/info.c",
     "path": "/cmds/wiz/info",
     "type": "command",
-    "sha256": "a4a21eaca8e2de63bf471504e34c5ee6ce07af4125cd8a201a25b0761b7a53c4",
+    "sha256": "e2913def62874c89ad0beb859404198728cfe99737c83a8271b54aa7c9f5e622",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4406,7 +4406,7 @@
     "file": "cmds/wiz/invis.c",
     "path": "/cmds/wiz/invis",
     "type": "command",
-    "sha256": "c92cbbcbd230fedbae6cf18e4bd800b2d9e8432872b97eeb2c1d755489725e23",
+    "sha256": "8367068fc16f88aafdeef0f81d39ee014396609f0dff1ff155c6dd3f52d5752d",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4435,7 +4435,7 @@
     "file": "cmds/wiz/localcmds.c",
     "path": "/cmds/wiz/localcmds",
     "type": "command",
-    "sha256": "4ad6ae1003d6b67117fbddadb4dd636349f48d9ba98775dc11484295ed28c738",
+    "sha256": "53c9fa369d311e17a77330a522c5f4ab7fbe5e5472d00bc2783ea919ece8bdcf",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4464,7 +4464,7 @@
     "file": "cmds/wiz/log.c",
     "path": "/cmds/wiz/log",
     "type": "command",
-    "sha256": "f49a1871938a7dc4b13f653431ca5a8cdbca3b9c745fa9d47c58485cd48a37ea",
+    "sha256": "43476105952ec7eb93408aaf71c68c87fa75f2182bf8d91a9afe79b0bd5551f6",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4493,7 +4493,7 @@
     "file": "cmds/wiz/mkdir.c",
     "path": "/cmds/wiz/mkdir",
     "type": "command",
-    "sha256": "06b3a092d72b02a7cdd56bf700f2ad4abf4ff0042e1bb79798d38e0ddb4771a5",
+    "sha256": "685bb4d18901d86761ddaab1215658bcf1b355da542abbc395ef7f78fa240c51",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4523,7 +4523,7 @@
     "file": "cmds/wiz/mudlist.c",
     "path": "/cmds/wiz/mudlist",
     "type": "command",
-    "sha256": "1de8e47b18064ff38301e8d4f1f5d57c79f857e77a483de29e98cfaf0f70c992",
+    "sha256": "f881af421e6984d3043a433a3788f9c4b2a387595a6dc4d21352b59a070bd544",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4550,7 +4550,7 @@
     "file": "cmds/wiz/mv.c",
     "path": "/cmds/wiz/mv",
     "type": "command",
-    "sha256": "5d50e2db900753ec5b447b1b55c548fa983bd47a4419f79afa85ebc969e6e0b1",
+    "sha256": "47188b9e533deb73b8c7937abcfb2d6c2840ea4c0569f36ae566e2ad9353b60c",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4580,7 +4580,7 @@
     "file": "cmds/wiz/ping.c",
     "path": "/cmds/wiz/ping",
     "type": "command",
-    "sha256": "19f2d94aed6077afb40ff19da94857208894b12f7d14a5e41482483a9ed53cd9",
+    "sha256": "00a26dc3119aac0d3b8cd3bac660dee162be1d696213af0cc1d6c114e92f062e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4610,7 +4610,7 @@
     "file": "cmds/wiz/qload.c",
     "path": "/cmds/wiz/qload",
     "type": "command",
-    "sha256": "524f69e0f92b375ccf7b4d6a168ef4804fce2851f69fd31a8342f72d753deaff",
+    "sha256": "eec65f48eef58c20557672c51c5fd45a0cf6d5ed2d4f288ab6de18ef1ffc88f5",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4636,7 +4636,7 @@
     "file": "cmds/wiz/quiet.c",
     "path": "/cmds/wiz/quiet",
     "type": "command",
-    "sha256": "bed09f297a5fd8c63ee4f1bf83fb01dc0941d39e32ba72c51b5438d8d68a04c1",
+    "sha256": "b7a92544fb7b9a0c2bb6c56df496b22858cb2f526675043c6cccc156a11432e3",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4665,7 +4665,7 @@
     "file": "cmds/wiz/rm.c",
     "path": "/cmds/wiz/rm",
     "type": "command",
-    "sha256": "5eff545ecbd1ee5cc9226c423af8fef4cb8f7ff1be74b304d1c72a072a98dc72",
+    "sha256": "0416ad98c16676b035dd678901fac7f273f71de4620c77041b87b4d5c2298201",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4695,7 +4695,7 @@
     "file": "cmds/wiz/rmdir.c",
     "path": "/cmds/wiz/rmdir",
     "type": "command",
-    "sha256": "d0657af6387f87b91929e296f558c96f1a3478ce51049ce3a1db317d27298833",
+    "sha256": "8fb79dce4e8d28a4a47c46141d5e190dc1eb3478e334441d130b2f0c8ce0872e",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4725,7 +4725,7 @@
     "file": "cmds/wiz/snoop.c",
     "path": "/cmds/wiz/snoop",
     "type": "command",
-    "sha256": "6816431739282dff4cace2934bd4a22a114d1f47c8b60094745d717cbb519053",
+    "sha256": "26fd87962c61cba77e60dd7e50895cc6b2a05c235afb74a4896e88f8c8c7c99c",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4757,7 +4757,7 @@
     "file": "cmds/wiz/summon.c",
     "path": "/cmds/wiz/summon",
     "type": "command",
-    "sha256": "512e3ac124fb28523223b3aef68f52833f43430e4bdda5e11e334683c1669349",
+    "sha256": "2b5f0c8cd00b5d1b089191d04889fa97b7d23affa9fce0cd0e2e06dad92ff07a",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4789,7 +4789,7 @@
     "file": "cmds/wiz/tail.c",
     "path": "/cmds/wiz/tail",
     "type": "command",
-    "sha256": "e8f1e1dd7a8b70b3dc2bc78e76d819c7dab5b2ca4d529e3b410039230607c971",
+    "sha256": "5b48e744c385417587f0792c5b9ec1526a9dba0d060c67025d6125b3ff033d12",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4815,7 +4815,7 @@
     "file": "cmds/wiz/ulist.c",
     "path": "/cmds/wiz/ulist",
     "type": "command",
-    "sha256": "f887c773ef5090395b07067fc269e78525cef288b1f5facfc557e707fc01ac8e",
+    "sha256": "41b5393797c3f6c1d4b576e20f0f727ab1c939414eb4f8debb94cd26a6e535c1",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4841,7 +4841,7 @@
     "file": "cmds/wiz/update.c",
     "path": "/cmds/wiz/update",
     "type": "command",
-    "sha256": "da45f13712966d5a2e61b7ddfebe1102946f41d5c2c46c426d1eaad6974fee76",
+    "sha256": "ad0f60dd1692db34b7e1b6ec75eaacdd5ba56875b133cdde530040747e4af8e1",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4875,7 +4875,7 @@
     "file": "cmds/wiz/userid.c",
     "path": "/cmds/wiz/userid",
     "type": "command",
-    "sha256": "10b3b6149a1d978e524c9bd82cc9e0cb4742de28e109dd31cd7b108eb0de87f3",
+    "sha256": "61b73a704a047d8b5eb00e7883f8efc26f2e5c8e22a6b8d57fbfd990dee95412",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -4901,7 +4901,7 @@
     "file": "cmds/wiz/whoami.c",
     "path": "/cmds/wiz/whoami",
     "type": "command",
-    "sha256": "7f02d256f4ffa02cc060c42cdc9d45f5653fc91d5e995497302366a42f790dda",
+    "sha256": "6c2faaa1f2653406bd248615c84e6510ce8abdcd7342b254a9df504835017024",
     "inherits": [],
     "inherit_refs": [],
     "functions": [

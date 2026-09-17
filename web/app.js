@@ -340,8 +340,32 @@ function hpLineKind(line){
 function isHpSummaryLine(line){
   return hpLineKind(line)==='summary';
 }
+// Strip @@WEBHUD|...| lines out of a buffer, keeping only real text.
+function stripWebHudLines(whole){
+  return String(whole).split(/\r\n|\n|\r/).filter(line=>{
+    const plain=cleanText(line).trim();
+    if(!plain)return false;
+    if(/^@@WEBHUD\|/.test(plain))return false;
+    if(/^>\s*$/.test(plain))return false;
+    if(/^webhud$/i.test(plain))return false;
+    return true;
+  });
+}
 function consumeHudPollOutput(s){
-  if(!hudPollInFlight)return {visible:String(s),done:false};
+  if(!hudPollInFlight){
+    // Defensive fallback: a @@WEBHUD block can still arrive here if the
+    // client's poll already timed out (hudPollInFlight reset) before this
+    // — now late — server response landed. These lines must never be shown
+    // as visible game text regardless of polling state, so still recognise
+    // and swallow a complete BEGIN..END block even when unexpected.
+    const str=String(s);
+    if(str.includes('@@WEBHUD|BEGIN') && /(?:^|\n)@@WEBHUD\|END(?:\n|$)/.test(cleanText(str))){
+      parseWebHud(str);
+      const kept=stripWebHudLines(str);
+      return {visible:kept.length?kept.join('\n')+'\n':'',done:true};
+    }
+    return {visible:str,done:false};
+  }
   hudPollBuffer += String(s);
   parseWebHud(hudPollBuffer);
   const clean=cleanText(hudPollBuffer);
@@ -352,14 +376,7 @@ function consumeHudPollOutput(s){
   hudPollInFlight=false;hudBootstrapInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
   if(hudResponseTimer){clearTimeout(hudResponseTimer);hudResponseTimer=null;}
   flushPendingUserCommands();
-  const kept=String(whole).split(/\r\n|\n|\r/).filter(line=>{
-    const plain=cleanText(line).trim();
-    if(!plain)return false;
-    if(/^@@WEBHUD\|/.test(plain))return false;
-    if(/^>\s*$/.test(plain))return false;
-    if(/^webhud$/i.test(plain))return false;
-    return true;
-  });
+  const kept=stripWebHudLines(whole);
   // HUD polling is a silent transport. Internal payload/prompt whitespace must never
   // create a visible terminal line. Real asynchronous text is still preserved.
   return {visible:kept.length?kept.join('\n')+'\n':'',done:true};

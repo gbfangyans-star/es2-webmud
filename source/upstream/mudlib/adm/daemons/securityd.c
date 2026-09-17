@@ -147,8 +147,14 @@ get_status(mixed ob)
     else return "(player)";
 }
 
+// MODIFIED: parameter widened from `object` to `mixed`. get_status() already
+// accepts a plain username string (its own stringp(ob) branch), but this
+// function declared `object ob` only — calling it with a string uid (as
+// logind.c's WIZ_LOCK_LEVEL check does) mismatched the type and crashed the
+// driver (segfault) instead of raising an ordinary LPC error. Logic
+// unchanged otherwise.
 int
-get_wiz_level(object ob)
+get_wiz_level(mixed ob)
 {
     return (int)member_array(get_status(ob), wiz_levels);
 }

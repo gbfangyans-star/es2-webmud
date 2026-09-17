@@ -3,7 +3,7 @@
     "file": "adm/obj/mailbox.c",
     "path": "/adm/obj/mailbox",
     "type": "item",
-    "sha256": "d8457509bd5cc749b92a10b970d0b17826ca4da27844c86e71dad1edc66906f9",
+    "sha256": "e7a9c5f088ba52fafbc7b7bb48bd30d7c9b1ca489d5234322903ff261bc5dd50",
     "inherits": [
       "ITEM",
       "F_SAVE"
@@ -130,7 +130,7 @@
     "file": "adm/obj/master.c",
     "path": "/adm/obj/master",
     "type": "item",
-    "sha256": "6c7a08681513e54994dbfcd131f9d06adafde341cbd6322d96949d1feea714d4",
+    "sha256": "0dd675ce27a48f3dc6340d8366c972717a8d63d79f311e836dada2f98674a847",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -175,7 +175,7 @@
     "file": "adm/obj/simul_efun.c",
     "path": "/adm/obj/simul_efun",
     "type": "item",
-    "sha256": "5f3e18265792e1d68819b556455f8211f76683c477256d45d37ce7ccb6c1f9ff",
+    "sha256": "8de8dc621ced3a2e34c92b54cf8a9bd8044a96f78d2fa39eff4395281d450cdf",
     "inherits": [],
     "inherit_refs": [],
     "functions": [],
@@ -188,7 +188,7 @@
     "file": "d/snow/obj/basic_book.c",
     "path": "/d/snow/obj/basic_book",
     "type": "item",
-    "sha256": "97f4bad34292d6902229e09dc889d4b63adc440d3667165034def0a268e79e90",
+    "sha256": "68c004265a89f0600866f53d81a4e9242846d8c107483e6da4e693a0fef5ce61",
     "inherits": [
       "ITEM",
       "F_STUDY"
@@ -234,7 +234,7 @@
     "file": "d/snow/obj/literate_book.c",
     "path": "/d/snow/obj/literate_book",
     "type": "item",
-    "sha256": "97f4bad34292d6902229e09dc889d4b63adc440d3667165034def0a268e79e90",
+    "sha256": "68c004265a89f0600866f53d81a4e9242846d8c107483e6da4e693a0fef5ce61",
     "inherits": [
       "ITEM",
       "F_STUDY"
@@ -280,7 +280,7 @@
     "file": "d/snow/obj/stone.c",
     "path": "/d/snow/obj/stone",
     "type": "item",
-    "sha256": "1c2468442f146a08a2f44be70d26077755238f3fc4d764e9b72d1e12e2698370",
+    "sha256": "0cf991f49a7894cacb46ef4881411ecff4b8ff34fc644b21e3d45b6f574f2a4a",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -333,7 +333,7 @@
     "file": "include/armor.h",
     "path": "/include/armor.h",
     "type": "item",
-    "sha256": "1d485633fe260ffaee951215a1d32e646f8785e12cf46ceb4ab28e56334b28c9",
+    "sha256": "620c686630a840abacc85c92a1e2f4ac8a590caca2db39f204786ca71a410cb9",
     "inherits": [
       "ITEM",
       "F_ATTRIBUTE",
@@ -372,7 +372,7 @@
     "file": "include/weapon.h",
     "path": "/include/weapon.h",
     "type": "item",
-    "sha256": "9799600bf7add3a027c34c8a3295d911cfb0325eb60e63dcb385083e100e8e59",
+    "sha256": "6a70f10c7ab07d37306218624332cfd5f9e0dfcedcf43e740fc67e38ece0b79f",
     "inherits": [
       "ITEM",
       "F_ATTRIBUTE",
@@ -411,7 +411,7 @@
     "file": "obj/area/man.c",
     "path": "/obj/area/man",
     "type": "item",
-    "sha256": "9766bd11c625e0de58c99bc31c8f00d158e6ae808b43b6c4e47abfcec6ba130f",
+    "sha256": "8616be9ad8bb444ff051ad72253cd6db8dc4b8f218f40ef722224e46b8e1a473",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -469,7 +469,7 @@
     "file": "obj/area/obj/axe.c",
     "path": "/obj/area/obj/axe",
     "type": "item",
-    "sha256": "7f8c5ff352111f0e63aed298f35f6677d6531f02058e368f691a0828b96ed150",
+    "sha256": "8c02a20ac900d0547a97dd36e61bb0003f099f80af30b3cb6ccdd2324c6c8655",
     "inherits": [
       "F_AXE"
     ],
@@ -509,7 +509,7 @@
     "file": "obj/area/obj/bag.c",
     "path": "/obj/area/obj/bag",
     "type": "item",
-    "sha256": "d86a0d0f61616f585f487b27128dbd13a1553dcb6c1f88d28098de59c262f543",
+    "sha256": "58ff50d5b4ad110a0a0fb0c2a637ef6ca34806944fb11002b7387738172c9e3e",
     "inherits": [
       "ITEM"
     ],
@@ -548,7 +548,7 @@
     "file": "obj/area/obj/bastardsword.c",
     "path": "/obj/area/obj/bastardsword",
     "type": "item",
-    "sha256": "8bd7e5d776699805ee88b0896581262d74a2893021cff4227ae6fbe81833ecec",
+    "sha256": "09f94cb8024152842b8204ce814cceccf20f6215153e41245e3bf770722ef543",
     "inherits": [
       "F_SWORD"
     ],
@@ -589,7 +589,7 @@
     "file": "obj/area/obj/belt.c",
     "path": "/obj/area/obj/belt",
     "type": "item",
-    "sha256": "71c67963e08cee90b3eaef4ba734a6eb936176a5bf7815e75bceb9e9c7a17f14",
+    "sha256": "a405ed03fe465db89302226abe857f4775dfffda38fffe8cae08113b9340997c",
     "inherits": [
       "F_WAIST_EQ"
     ],
@@ -642,7 +642,7 @@
     "file": "obj/area/obj/blade.c",
     "path": "/obj/area/obj/blade",
     "type": "item",
-    "sha256": "e62bfc4ecd52f4b0982dc1d8023cd803aa93129520d73d01edefab5cf34afc79",
+    "sha256": "16c568f811cd338bb32e615b178a2d3aa9c3b84de651c76a8fb849292ffaa6c8",
     "inherits": [
       "F_BLADE"
     ],
@@ -682,7 +682,7 @@
     "file": "obj/area/obj/broadaxe.c",
     "path": "/obj/area/obj/broadaxe",
     "type": "item",
-    "sha256": "006662952e2c8c7aa2181256d4b5a59d382623afdeda48eaf44c9acec554cde8",
+    "sha256": "a132663641adffec2d97dba0e889cf851bc1e57d2849a2733bc07bebbb93658b",
     "inherits": [
       "F_AXE"
     ],
@@ -724,7 +724,7 @@
     "file": "obj/area/obj/broadsword.c",
     "path": "/obj/area/obj/broadsword",
     "type": "item",
-    "sha256": "70f2eb4f16a28e962d9885129e4e30400a7539c30f14f2ceac982a3849956d2e",
+    "sha256": "8ec61beab0612d318d3bf4e71dd74e26df500fcdcb4af1118bc1ea0b699ad2d2",
     "inherits": [
       "F_SWORD"
     ],
@@ -766,7 +766,7 @@
     "file": "obj/area/obj/cloth.c",
     "path": "/obj/area/obj/cloth",
     "type": "item",
-    "sha256": "6360dc7dd309b5986cc254d82b95ce72132bb6982f630cf9cb23c4bf2d3d26e9",
+    "sha256": "dd59a3071b8dac01e404e34eff285617f3ee36af91dcc24f6fe6f55d41e79c46",
     "inherits": [
       "F_CLOTH"
     ],
@@ -820,7 +820,7 @@
     "file": "obj/area/obj/curved_blade.c",
     "path": "/obj/area/obj/curved_blade",
     "type": "item",
-    "sha256": "61ca2f67800b951e292c641b1ae2e3d37e98f73181a80a012960d3fce93ce454",
+    "sha256": "1c5f17eea181c60f388e856424582bb07a9aff3d3c4c30d33535559f23963bc6",
     "inherits": [
       "F_BLADE"
     ],
@@ -861,7 +861,7 @@
     "file": "obj/area/obj/dagger.c",
     "path": "/obj/area/obj/dagger",
     "type": "item",
-    "sha256": "f84110bc60faa352cf6198cbd70019e5600d92259496f2f5ff1b1d2c38ce0b85",
+    "sha256": "bd5831f68f68da80e9588121d54b8268ed811d43852381f02cc953b5d9e5db02",
     "inherits": [
       "F_DAGGER"
     ],
@@ -901,7 +901,7 @@
     "file": "obj/area/obj/dice.c",
     "path": "/obj/area/obj/dice",
     "type": "item",
-    "sha256": "c5d6668cc673c1bb4270928da6abfb36acbc01b931ad201446a87f0dfd27728a",
+    "sha256": "2e37c82e140a24cc6991700a120c3ffde16c1f5c70eeb74bdf890181e4cc24a8",
     "inherits": [
       "ITEM"
     ],
@@ -949,7 +949,7 @@
     "file": "obj/area/obj/glaive.c",
     "path": "/obj/area/obj/glaive",
     "type": "item",
-    "sha256": "448ac5d9e45538f94650b5226916fc1c97b00d1c0a7978331e89e9a4012243b7",
+    "sha256": "d352792f0663032d4441e47a07fdf5595c8fceac3a42379825a73d95fd808752",
     "inherits": [
       "F_BLADE"
     ],
@@ -991,7 +991,7 @@
     "file": "obj/area/obj/greatsword.c",
     "path": "/obj/area/obj/greatsword",
     "type": "item",
-    "sha256": "c3e1fded1764b93b9c143b59682c47e51a680af16abbc0b6811c3838d3b0ca12",
+    "sha256": "539f9b00227ce34f1ce3983ee95ddfeccd5e4f3453c5e5445109ca479bf5971b",
     "inherits": [
       "F_SWORD"
     ],
@@ -1031,7 +1031,7 @@
     "file": "obj/area/obj/knife.c",
     "path": "/obj/area/obj/knife",
     "type": "item",
-    "sha256": "9bcfa44e691e54963ae848dba206a940a4e11491964c00fe0b09997912fa9474",
+    "sha256": "5ca563aada8fb4502b93e897de66eb470629c76cc47bde39d16860fae9c23a6f",
     "inherits": [
       "F_DAGGER"
     ],
@@ -1071,7 +1071,7 @@
     "file": "obj/area/obj/kris.c",
     "path": "/obj/area/obj/kris",
     "type": "item",
-    "sha256": "4756b0811b11ead97b140715f0c193f94e756e6e2e71cbad40e59dc51a7ac61b",
+    "sha256": "709915742477ba4d0008172cbcdda2546dd383925c4b962983aae13a739b1a36",
     "inherits": [
       "F_BLADE"
     ],
@@ -1111,7 +1111,7 @@
     "file": "obj/area/obj/leather_boot.c",
     "path": "/obj/area/obj/leather_boot",
     "type": "item",
-    "sha256": "88133997b2f1d7be98b77e82f1c1651db0a803bcf1bb29a2fb1da6e079058749",
+    "sha256": "2102ffb90eb15538c005f4bba6ce0eef254dc8e0d443f7565e79cdf14107da05",
     "inherits": [
       "F_FEET_EQ"
     ],
@@ -1166,7 +1166,7 @@
     "file": "obj/area/obj/leather_whip.c",
     "path": "/obj/area/obj/leather_whip",
     "type": "item",
-    "sha256": "a0af4e7cc2b4067ad7d3de2477e5aa2b95782501fca2e43c2e18ed2ba752e2c6",
+    "sha256": "88718334e0707dc6ec633546d088906423be8c4e8ac21a0ddb24fd1ef6a06020",
     "inherits": [
       "F_WHIP"
     ],
@@ -1206,7 +1206,7 @@
     "file": "obj/area/obj/longsword.c",
     "path": "/obj/area/obj/longsword",
     "type": "item",
-    "sha256": "23f72e73010f6f4242b320e78e6ed839c64c39ca08a55f40d5e42365d3548ab2",
+    "sha256": "22e1a5f3e4a6684fcd31342b10e841a02ee04790dd2810e3fafbb2c95fb7fbb9",
     "inherits": [
       "F_SWORD"
     ],
@@ -1247,7 +1247,7 @@
     "file": "obj/area/obj/pen.c",
     "path": "/obj/area/obj/pen",
     "type": "item",
-    "sha256": "9685cc700538e3c367bd967c0819cb0e3a21adcb98618be818bd3393c1ce05ad",
+    "sha256": "55278a28f4d91bff7117b7bd074a1e37b41c8271852513df7bf206c839074a29",
     "inherits": [
       "F_DAGGER"
     ],
@@ -1287,7 +1287,7 @@
     "file": "obj/area/obj/pike.c",
     "path": "/obj/area/obj/pike",
     "type": "item",
-    "sha256": "9231d34398bc5c22c0bf9709d481425a4d1ff0fe7170e2e956d49b9df9813a35",
+    "sha256": "45745bf42f0dfdf6565f92df5955f48d20fa6e55ff2c031fdae65d8c8c34dd04",
     "inherits": [
       "F_PIKE"
     ],
@@ -1329,7 +1329,7 @@
     "file": "obj/area/obj/robe.c",
     "path": "/obj/area/obj/robe",
     "type": "item",
-    "sha256": "25cf2ef4db96976f425abd9797cb3e431a9e05d088dc620488bd93a798338c3c",
+    "sha256": "cd002481d2011636bda29a5951df4b5ec5cc8c6e517507467f1fefcdcc40fdc3",
     "inherits": [
       "F_CLOTH"
     ],
@@ -1383,7 +1383,7 @@
     "file": "obj/area/obj/rod.c",
     "path": "/obj/area/obj/rod",
     "type": "item",
-    "sha256": "0a2401439f7ae5cc97e628956517e05769c84a06dff34ad809865e4fe36455bc",
+    "sha256": "e66a13befa151261bec1799a9d731f33a2dc61a2a7f06363e1952c9b6b059927",
     "inherits": [
       "F_BLUNT"
     ],
@@ -1424,7 +1424,7 @@
     "file": "obj/area/obj/shortsword.c",
     "path": "/obj/area/obj/shortsword",
     "type": "item",
-    "sha256": "7d19d9a4b7848ef5243d34eeea1b769258715438be43c51fad8d7dfec0d9e3bc",
+    "sha256": "30bbf994281971f81d3db52f39799218374556dad9a4d1bcc1ff9d9948011e0d",
     "inherits": [
       "F_SWORD"
     ],
@@ -1466,7 +1466,7 @@
     "file": "obj/area/obj/weirblade.c",
     "path": "/obj/area/obj/weirblade",
     "type": "item",
-    "sha256": "5e85908fea4ff7afaee978856060d4d71f1e391c35740672b61589f4d6ab9435",
+    "sha256": "8fea0677fb96f4cc66a1459578aff17f30d8865760ced48bb8fb250aec18e22e",
     "inherits": [
       "F_BLADE"
     ],
@@ -1508,7 +1508,7 @@
     "file": "obj/area/obj/whip.c",
     "path": "/obj/area/obj/whip",
     "type": "item",
-    "sha256": "3b247f52e47d0cb7d07b554367176a90b0c334a40ea3f8e28864da0b2c959f27",
+    "sha256": "ab0bd21e2e3aea96a957ef9504bcd0077f542bfba25daa270f1ebeaaaff9c8f4",
     "inherits": [
       "F_WHIP"
     ],
@@ -1548,7 +1548,7 @@
     "file": "obj/area/obj/woodsword.c",
     "path": "/obj/area/obj/woodsword",
     "type": "item",
-    "sha256": "ad397649b9fc5a0fdd2642db5151e775a8a01a2e8fcd2ffa4e9ae043d2d979f6",
+    "sha256": "cd7222b386b71d49e9caff861e7e494f496d28721f992fa9b57f1873b9d37dc3",
     "inherits": [
       "F_SWORD"
     ],
@@ -1588,7 +1588,7 @@
     "file": "obj/area/traveller.c",
     "path": "/obj/area/traveller",
     "type": "item",
-    "sha256": "b153cefdfd2c6491119140ca9bc7fe7aab29b897d13c5b02765b571cff520087",
+    "sha256": "d6cc6374742a5b8ba24cd2130f1b28e189987f0b3a200b50fa8ee9ed7bb7685b",
     "inherits": [
       "F_VILLAGER"
     ],
@@ -1676,7 +1676,7 @@
     "file": "obj/area/vagabond.c",
     "path": "/obj/area/vagabond",
     "type": "item",
-    "sha256": "30ecb675a0da2cbad498a59849f22f03fc9d44fa5930aec653a0ab4282b4c117",
+    "sha256": "63b0b8ec622cebc6ac5acaeb99cd94c57c0e8106b5b89dbda735a817673be1fe",
     "inherits": [
       "F_BANDIT"
     ],
@@ -1746,7 +1746,7 @@
     "file": "obj/armor/cloth.c",
     "path": "/obj/armor/cloth",
     "type": "item",
-    "sha256": "6360dc7dd309b5986cc254d82b95ce72132bb6982f630cf9cb23c4bf2d3d26e9",
+    "sha256": "dd59a3071b8dac01e404e34eff285617f3ee36af91dcc24f6fe6f55d41e79c46",
     "inherits": [
       "F_CLOTH"
     ],
@@ -1800,7 +1800,7 @@
     "file": "obj/armor/fur_hat.c",
     "path": "/obj/armor/fur_hat",
     "type": "item",
-    "sha256": "44f75b501dcf465b203ee5ffc665a95786db23af0f5b953c3d059070bcf36692",
+    "sha256": "9ff839c032a61d8cb91a21605022d04ffa41f122092f147a7e90c2335b1dacc9",
     "inherits": [
       "F_HEAD_EQ"
     ],
@@ -1855,7 +1855,7 @@
     "file": "obj/bankbond.c",
     "path": "/obj/bankbond",
     "type": "item",
-    "sha256": "722dc7d49466f17e4b50942d620c88eaf45e28cceb8c6527e32a67f5a27d7306",
+    "sha256": "b60e69a3ec42cf09a255348cf9a9fbc55a7841331026a3791fcd6b30a7ab64f6",
     "inherits": [
       "ITEM"
     ],
@@ -1894,7 +1894,7 @@
     "file": "obj/block.c",
     "path": "/obj/block",
     "type": "item",
-    "sha256": "e44445426b33eff77d773621d6d8d618c754a5c3d47c307c61851649b2620b98",
+    "sha256": "0adb3a85f217508afe183b524eb688acb76e8811e1ef3b85aaaa2cdd45ab6e63",
     "inherits": [
       "ROOM"
     ],
@@ -1942,7 +1942,7 @@
     "file": "obj/block_robot.c",
     "path": "/obj/block_robot",
     "type": "item",
-    "sha256": "ce0f21e399f429bce5035eb9b76dcaadb83522fa727a2662728f2c5c63cc0ee3",
+    "sha256": "4efb48c1365871f5d633d8153aa127528d34e0cef4f596b05684eff5cd82ae2d",
     "inherits": [
       "ROOM"
     ],
@@ -1999,7 +1999,7 @@
     "file": "obj/bottle.c",
     "path": "/obj/bottle",
     "type": "item",
-    "sha256": "d9b186515d29353ffa60429560c47b6b17151028530eae184c05d1c94c1b0313",
+    "sha256": "9d626bb0b6bfc6947c301669f2ab3378de808d2046877caf77032246ecfa21d5",
     "inherits": [
       "ITEM"
     ],
@@ -2039,7 +2039,7 @@
     "file": "obj/clan_symbol.c",
     "path": "/obj/clan_symbol",
     "type": "item",
-    "sha256": "f46a560cab04166978dab11ddb8c3b79cce7a1089e76ce5c2906048f053db086",
+    "sha256": "ebb8f5ff97ebf0c0efabf11bec7fa42ea0857b2929eec4c1e78b67455dc9be45",
     "inherits": [
       "F_FINGER_EQ"
     ],
@@ -2179,7 +2179,7 @@
     "file": "obj/cloth.c",
     "path": "/obj/cloth",
     "type": "item",
-    "sha256": "57908d2de12ad730042245776dc8f83f45cf3f3ad8a3ecf5a879bc617efa70ec",
+    "sha256": "a1414b2ee746ae583b90a01410ac09dd0a490a7e2ab20f6a20e5b532b3f0c6c0",
     "inherits": [
       "F_CLOTH"
     ],
@@ -2233,7 +2233,7 @@
     "file": "obj/corpse.c",
     "path": "/obj/corpse",
     "type": "item",
-    "sha256": "31955b213a156181c17938795dc2e23c1bf43c71022959d74017141652413638",
+    "sha256": "c3dc5991cbaeb4f5a7c1eabd17be8553b99db58472ed705dbb63d3c80a0b3804",
     "inherits": [
       "ITEM"
     ],
@@ -2275,7 +2275,7 @@
     "file": "obj/drug/black_pill.c",
     "path": "/obj/drug/black_pill",
     "type": "item",
-    "sha256": "2c0b0d3005833c4ff16fad73fc2647626ba399bcc026b033b906f377ca0f9cb4",
+    "sha256": "740b80b8713e174c843663122ad1e60d7598c4665810289ad8f376146d8f9e11",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -2309,7 +2309,7 @@
     "file": "obj/drug/boar_berry.c",
     "path": "/obj/drug/boar_berry",
     "type": "item",
-    "sha256": "e7212c3112165ce6ef188e9d855046a471e9c277e002d54393af0f99f164ddab",
+    "sha256": "ca6847b144ac4b2564a7ab0f966239ee150264acf5ae2425f108a30f2ba7493b",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -2342,7 +2342,7 @@
     "file": "obj/drug/dragon_saliva.c",
     "path": "/obj/drug/dragon_saliva",
     "type": "item",
-    "sha256": "8b0e31fd63c7710cec37cf475058a71eef50fcb140d1af41405fa293c4711535",
+    "sha256": "a88d02671bd921d1a364fd53b3174603c0092bcd28731acf175311be24150fc1",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -2376,7 +2376,7 @@
     "file": "obj/drug/flower_pill.c",
     "path": "/obj/drug/flower_pill",
     "type": "item",
-    "sha256": "59ca179fa99a466065da2aedf2799be61af7fe61cdf215191c581f47b73bef4c",
+    "sha256": "19d3ad37e8be2ac07065aee76aeb4e36aaebd94bf2a25dadf15973cc07e5f7f5",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -2409,7 +2409,7 @@
     "file": "obj/drug/gray_mushroom.c",
     "path": "/obj/drug/gray_mushroom",
     "type": "item",
-    "sha256": "964ceab629b4247c81c58829e494743415970eb73450f7f66edaaec4cf24a8ce",
+    "sha256": "e2da2edb38ab6929827b014e301cf25f0de2697b64684f845eef892b08203bce",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -2442,7 +2442,7 @@
     "file": "obj/drug/wild_ginseng.c",
     "path": "/obj/drug/wild_ginseng",
     "type": "item",
-    "sha256": "720360c07c488421de79c7b25c069798f60704d46df9cf33fd4645564afb30bd",
+    "sha256": "12bf8cbf914aa6c57f8699bd86e78f60f42d1a08394238fdca8bee3ac0288d88",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -2475,7 +2475,7 @@
     "file": "obj/dust.c",
     "path": "/obj/dust",
     "type": "item",
-    "sha256": "dd6fc9faf617878636bd3d4495f982cb6978a5264efe8dcbc65450733561d9da",
+    "sha256": "219bdc486327bc3797c77c8d9df2b6c6a592f2ea2c4f23f7213db098af26ecfb",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -2531,7 +2531,7 @@
     "file": "obj/example/army.c",
     "path": "/obj/example/army",
     "type": "item",
-    "sha256": "37757a35c656f2169c9fd88233833ebcb9ec4aae46dc540af6ca95b4cdf69360",
+    "sha256": "61ea70262add84b582cc188a8205d03fb6859361e4d1f7685f85d3b8ee46b72c",
     "inherits": [
       "F_NAME",
       "F_MOVE",
@@ -2584,7 +2584,7 @@
     "file": "obj/example/es2_bottle.c",
     "path": "/obj/example/es2_bottle",
     "type": "item",
-    "sha256": "61acdb176242ada1f95c2dd28e768fa1f027a4a01caa1ad9cd06cf069b265654",
+    "sha256": "4172dec7e25459c4bb53585fac1e0047a5e5af87c45fe5f919063f6155403e0d",
     "inherits": [
       "ITEM"
     ],
@@ -2623,7 +2623,7 @@
     "file": "obj/example/infantry.c",
     "path": "/obj/example/infantry",
     "type": "item",
-    "sha256": "bebc122ebaa850eb2363954d34464ef9f2dfc88f3aa94f8d2a447928356f88e0",
+    "sha256": "c5222a2bc0ae90c1e4e4a83287f8d808fbdb61c541258f680f669c2021bbf549",
     "inherits": [
       "\"/obj/example/army.c\""
     ],
@@ -2650,7 +2650,7 @@
     "file": "obj/example/weapon/longsword.c",
     "path": "/obj/example/weapon/longsword",
     "type": "item",
-    "sha256": "4e7894203213b1edd640cb426edc8a988d8c9e8b444feadbc4c4d1275c8de8ed",
+    "sha256": "4aff9d1b8096f7ff4c98d2a86da427c8f882536b07024064e12b567c7c62ab97",
     "inherits": [
       "F_SWORD"
     ],
@@ -2690,7 +2690,7 @@
     "file": "obj/example/weapon/shortsword.c",
     "path": "/obj/example/weapon/shortsword",
     "type": "item",
-    "sha256": "6425c779c6839910a1768c20cbb4c3463384deefe4e4f042547d5e15b00e8cc0",
+    "sha256": "8747b577cc7da35eee5fe3701d750ea304bd9301b2aa44c1e6ae5c653cab8c58",
     "inherits": [
       "F_SWORD"
     ],
@@ -2731,7 +2731,7 @@
     "file": "obj/food/dumpling.c",
     "path": "/obj/food/dumpling",
     "type": "item",
-    "sha256": "0f437167c013ea6da1f4caabcaf9c4695cf1baa6deeaa7d46713a313e76c3043",
+    "sha256": "17d1830963f357be3b7e5fca818a6227c34c278eb5daf1eec9c8e430322a0406",
     "inherits": [
       "COMBINED_ITEM",
       "F_FOOD"
@@ -2767,7 +2767,7 @@
     "file": "obj/food/manto.c",
     "path": "/obj/food/manto",
     "type": "item",
-    "sha256": "3c4d49da88333287445862f95c0bc9ef57c00948f732558914dcfb91b3b11dee",
+    "sha256": "816044ad7dac6cb9369b572c3d8e93194696930c7e4d4bc3ae3e473b2b942938",
     "inherits": [
       "COMBINED_ITEM",
       "F_FOOD"
@@ -2802,7 +2802,7 @@
     "file": "obj/food/mooncake.c",
     "path": "/obj/food/mooncake",
     "type": "item",
-    "sha256": "0abdb326ebbdaf8e1b57eae2d7493ebf2b92eb23e7e3189dbf07849e086a2bce",
+    "sha256": "070d73100f3fb34be62cd41decab679fb0f35b2ee1c14f58ae5aec709c815b56",
     "inherits": [
       "COMBINED_ITEM",
       "F_FOOD"
@@ -2838,7 +2838,7 @@
     "file": "obj/food/pork.c",
     "path": "/obj/food/pork",
     "type": "item",
-    "sha256": "ba0d59727734ff7b6c9c0efb1a932c48fb383dc5fca1144b2db275adfbe69273",
+    "sha256": "2052e81e6853b6005be05004f96a69356ef95e188adc3681375e1c688a7b56cf",
     "inherits": [
       "COMBINED_ITEM",
       "F_FOOD"
@@ -2873,7 +2873,7 @@
     "file": "obj/food/ricedough.c",
     "path": "/obj/food/ricedough",
     "type": "item",
-    "sha256": "e257a95ed4672b57f70caf3792ada8ce44ba63725d64a63b99d7c97347965a72",
+    "sha256": "758d8016501cad27bddfbc9ca958c39a52a2ab7057b0459f7990f48d585e594a",
     "inherits": [
       "COMBINED_ITEM",
       "F_FOOD"
@@ -2910,7 +2910,7 @@
     "file": "obj/http.c",
     "path": "/obj/http",
     "type": "item",
-    "sha256": "baeeacbeeb802d3215bf7bbc5f8df10b894a0bf6a8f5bb4fb63eaa2e56dc8fc7",
+    "sha256": "11bc9b9a6e4286e8f0769715d8b42d1a214e6611504ff8d64ab47c87be35d90e",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -2940,7 +2940,7 @@
     "file": "obj/magic.c",
     "path": "/obj/magic",
     "type": "item",
-    "sha256": "59bfde88bd60c67f9eb1fc088545362d1ea296eeb44ed52a181389dbc9092b05",
+    "sha256": "73a2facb76aae7d43aac3667f3588fb50c173d86245175bd409e49cf34950c74",
     "inherits": [
       "ITEM"
     ],
@@ -2970,7 +2970,7 @@
     "file": "obj/map.c",
     "path": "/obj/map",
     "type": "item",
-    "sha256": "38a54d04f94bdfe2d105539b1cc00232af26c833727fb6e848f00a1a1f61cef9",
+    "sha256": "b97120682fe02510de511bdc5d42742070c199d74e27d7e0c6222716886d5766",
     "inherits": [
       "ITEM"
     ],
@@ -3026,7 +3026,7 @@
     "file": "obj/medication/alchemist/aquapill.c",
     "path": "/obj/medication/alchemist/aquapill",
     "type": "item",
-    "sha256": "0d1e05107919bbf5ae02eacaf74c9dabe7a4d926d52d231cf65de6337d895201",
+    "sha256": "5147491a6a2d00b256c723a1d1c73f30ca9ec15154d7af0e450bb84466b0972e",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3060,7 +3060,7 @@
     "file": "obj/medication/alchemist/black_pill.c",
     "path": "/obj/medication/alchemist/black_pill",
     "type": "item",
-    "sha256": "4c1f500ea216cfc34fd16185aa2411082d8366377a9fe5af7a069477758aefde",
+    "sha256": "050a8c6f519a51c034760c077e9fd0203ef79c1e932711c4028019f587a78e2f",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3094,7 +3094,7 @@
     "file": "obj/medication/alchemist/green_pill.c",
     "path": "/obj/medication/alchemist/green_pill",
     "type": "item",
-    "sha256": "2a1ae8f41dbfc842bb4c579be70e047d5238170b3e662d21e143bb3716379524",
+    "sha256": "bb775e60119e03cf160864bc1bbaedeb78e04d55fa50a34d46335647f75640e3",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3135,7 +3135,7 @@
     "file": "obj/medication/alchemist/major_heal_pill.c",
     "path": "/obj/medication/alchemist/major_heal_pill",
     "type": "item",
-    "sha256": "2f97f806e14bfd359730df4395f643e43bcdf4f555827bfd6d9c1999abaa3f39",
+    "sha256": "7b7396dab6373efe973c4828108cf6221e9dd2692558d9f1206ecf2806b967a6",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3165,7 +3165,7 @@
     "file": "obj/medication/alchemist/minor_heal_pill.c",
     "path": "/obj/medication/alchemist/minor_heal_pill",
     "type": "item",
-    "sha256": "c4a8fa204d63b23c666be69314d311c7df92df61cc037f77b037cef46b4bd7ca",
+    "sha256": "abd58d6b6473ba3cdf56808a74539aee4472a5ada344704d06d419a8957623e2",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3200,7 +3200,7 @@
     "file": "obj/medication/alchemist/mix_recipe.c",
     "path": "/obj/medication/alchemist/mix_recipe",
     "type": "item",
-    "sha256": "839c8e1e164346303214b877654b86493149128426cb4e3fd65dea2729570f51",
+    "sha256": "fdd548bbc5c15bc739f62bb3658f90b367c912a9e7aa829f615d79eff389a982",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3236,7 +3236,7 @@
     "file": "obj/medication/alchemist/mjp_1.c",
     "path": "/obj/medication/alchemist/mjp_1",
     "type": "item",
-    "sha256": "c071ed8f6b2769b55a393a193a7875af702575206de6724987274581750ee80c",
+    "sha256": "167a729041d6b4227e6362e2bb1fef1c4c3e8965dfb8d5d6f92f386581d7ec76",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3264,7 +3264,7 @@
     "file": "obj/medication/alchemist/mjp_2.c",
     "path": "/obj/medication/alchemist/mjp_2",
     "type": "item",
-    "sha256": "309df2a9248614fa2504314b68c46150e997722991084278183853bc4eb0b829",
+    "sha256": "5ac43f54e0da25ca85837cc797fe1ce3f9e3e6236dcb4e21607a65e210a91b63",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3292,7 +3292,7 @@
     "file": "obj/medication/alchemist/mjp_3.c",
     "path": "/obj/medication/alchemist/mjp_3",
     "type": "item",
-    "sha256": "ec287b8440e3f647fdddbb6474a89b37cce0020d5679d6bf424828f62e3f6563",
+    "sha256": "70a743ff8b23c888d169c6cd76d19ef4f416d11d5bd27a4df43e9c76972d7fb2",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3326,7 +3326,7 @@
     "file": "obj/medication/alchemist/refresh_pill.c",
     "path": "/obj/medication/alchemist/refresh_pill",
     "type": "item",
-    "sha256": "a536b4afb7b8fc9eee772c6a6bc47577c3917c930f074929b4a1b344f06857d2",
+    "sha256": "dd7f8f087a6a7433a8fe0306849a3afd0669669df653f8f493c0861cd76553e1",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3359,7 +3359,7 @@
     "file": "obj/medication/black_pill.c",
     "path": "/obj/medication/black_pill",
     "type": "item",
-    "sha256": "2c0b0d3005833c4ff16fad73fc2647626ba399bcc026b033b906f377ca0f9cb4",
+    "sha256": "740b80b8713e174c843663122ad1e60d7598c4665810289ad8f376146d8f9e11",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3393,7 +3393,7 @@
     "file": "obj/medication/boar_berry.c",
     "path": "/obj/medication/boar_berry",
     "type": "item",
-    "sha256": "e7212c3112165ce6ef188e9d855046a471e9c277e002d54393af0f99f164ddab",
+    "sha256": "ca6847b144ac4b2564a7ab0f966239ee150264acf5ae2425f108a30f2ba7493b",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3426,7 +3426,7 @@
     "file": "obj/medication/dragon_saliva.c",
     "path": "/obj/medication/dragon_saliva",
     "type": "item",
-    "sha256": "8b0e31fd63c7710cec37cf475058a71eef50fcb140d1af41405fa293c4711535",
+    "sha256": "a88d02671bd921d1a364fd53b3174603c0092bcd28731acf175311be24150fc1",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3460,7 +3460,7 @@
     "file": "obj/medication/flower_pill.c",
     "path": "/obj/medication/flower_pill",
     "type": "item",
-    "sha256": "59ca179fa99a466065da2aedf2799be61af7fe61cdf215191c581f47b73bef4c",
+    "sha256": "19d3ad37e8be2ac07065aee76aeb4e36aaebd94bf2a25dadf15973cc07e5f7f5",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3493,7 +3493,7 @@
     "file": "obj/medication/gray_mushroom.c",
     "path": "/obj/medication/gray_mushroom",
     "type": "item",
-    "sha256": "964ceab629b4247c81c58829e494743415970eb73450f7f66edaaec4cf24a8ce",
+    "sha256": "e2da2edb38ab6929827b014e301cf25f0de2697b64684f845eef892b08203bce",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3526,7 +3526,7 @@
     "file": "obj/medication/wild_ginseng.c",
     "path": "/obj/medication/wild_ginseng",
     "type": "item",
-    "sha256": "720360c07c488421de79c7b25c069798f60704d46df9cf33fd4645564afb30bd",
+    "sha256": "12bf8cbf914aa6c57f8699bd86e78f60f42d1a08394238fdca8bee3ac0288d88",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -3559,7 +3559,7 @@
     "file": "obj/money/coin.c",
     "path": "/obj/money/coin",
     "type": "item",
-    "sha256": "b92d6e54d743e0d987f3c9a2753203af705fa69fe9d5de8014bc76be6459a403",
+    "sha256": "aea86505c73bb33fa3e87bde97e07faff55fb8033080b51d80089b83f8e40758",
     "inherits": [
       "MONEY"
     ],
@@ -3591,7 +3591,7 @@
     "file": "obj/money/gold.c",
     "path": "/obj/money/gold",
     "type": "item",
-    "sha256": "cee6a763a43b73039c26172eeded78935b60443ffc7a047394fe0f70b9eb41ac",
+    "sha256": "84cfc5a6e8b2d2cbbd71b15c14af6da777a17f938886e1d49cb0cc805cd95d1d",
     "inherits": [
       "MONEY"
     ],
@@ -3623,7 +3623,7 @@
     "file": "obj/money/silver.c",
     "path": "/obj/money/silver",
     "type": "item",
-    "sha256": "ea728ac00f09ae3db678ab28341f04f2b2943c010ae119e5a08719d3d34354a8",
+    "sha256": "a2a23faea45173f9f1e18afa562190107a8b3d8fd90a19060c949c7313d2e867",
     "inherits": [
       "MONEY"
     ],
@@ -3654,7 +3654,7 @@
     "file": "obj/obj/firework.c",
     "path": "/obj/obj/firework",
     "type": "item",
-    "sha256": "15e6d86af0d9ab9f4119bb4b43cfe9c329d882e4d99459bab4b412629e06f588",
+    "sha256": "a555f2a0a1c49b37ca0ede66170f0eaa255ee7f9ddc07b4c3af567f1cbaeb7ca",
     "inherits": [
       "ITEM"
     ],
@@ -3708,7 +3708,7 @@
     "file": "obj/obj/ghostbaby.c",
     "path": "/obj/obj/ghostbaby",
     "type": "item",
-    "sha256": "a119dd42d6ac24ed72742f62ffad37298f98d69fdbc8e5da5abf2fa455261355",
+    "sha256": "3c56b8a654c6f7e4a96f94b96b124c5e6151752ac7df6eadc529437d2c95915a",
     "inherits": [
       "ITEM"
     ],
@@ -3743,7 +3743,7 @@
     "file": "obj/reagent/cinnabar.c",
     "path": "/obj/reagent/cinnabar",
     "type": "item",
-    "sha256": "ec7d66f9283a34e696564d1f09eb5b2a0c9234ad7ece29b902cf46becd62e570",
+    "sha256": "d3fc82f59a6ae388f39841776a003c2d74250a8981cf941881da9a9753e842e1",
     "inherits": [
       "REAGENT_ITEM"
     ],
@@ -3776,7 +3776,7 @@
     "file": "obj/reagent/crane_dye.c",
     "path": "/obj/reagent/crane_dye",
     "type": "item",
-    "sha256": "e30ac09e02294b7bcee36d498643a917fd940f4ceb348221c724889a267f3ed6",
+    "sha256": "28aeac79338bf0e3cb7654c95d4704ca20de2bb9fbc5b322e9425e3d70c86d79",
     "inherits": [
       "REAGENT_ITEM"
     ],
@@ -3810,7 +3810,7 @@
     "file": "obj/reagent/medlar.c",
     "path": "/obj/reagent/medlar",
     "type": "item",
-    "sha256": "0eb056176580fb633310031f6ee42787ea67628815dc63217a7c9743b80ef3fb",
+    "sha256": "12ba56dc76e07fd8d60a79b843d95b9c130503ef8555b253c2208b768d30dae6",
     "inherits": [
       "REAGENT_ITEM"
     ],
@@ -3843,7 +3843,7 @@
     "file": "obj/reagent/strychin.c",
     "path": "/obj/reagent/strychin",
     "type": "item",
-    "sha256": "313aefdad588a7608985e611c530d472baa19fc70825e4d53a60c18ebe631dfa",
+    "sha256": "90f4585befcc8016b2f7445abd82a325c1792c584bf61c26adb921b53a18d358",
     "inherits": [
       "REAGENT_ITEM"
     ],
@@ -3876,7 +3876,7 @@
     "file": "obj/roommaker.c",
     "path": "/obj/roommaker",
     "type": "item",
-    "sha256": "b08de74309a9ac11e33b4b2f4080f27d8eb4e76b5a22cb3a8de2f809e9e7633a",
+    "sha256": "edb21fc792f6b29be321c2f7e7f304d723e2326168324ecca8f7356bf40398ba",
     "inherits": [
       "ITEM",
       "ROOM",
@@ -3983,7 +3983,7 @@
     "file": "obj/spirit.c",
     "path": "/obj/spirit",
     "type": "item",
-    "sha256": "6ae446e6d708e1ac3ec9380220e836aa634e26f7d2b8c47135184c1ffad63a5d",
+    "sha256": "5df84ecde0440a6a8061f659db190c77ba1643a838fe69597ee6168eca184742",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -4072,7 +4072,7 @@
     "file": "obj/void.c",
     "path": "/obj/void",
     "type": "item",
-    "sha256": "083b3d84442c93d963bbf6ae1f5ae81befaefea94c783bb5161ff0b14bfd0274",
+    "sha256": "31a68f4f5f159a97f1493db42a0938eef04f23d9fa47500ccfe83d28221727e6",
     "inherits": [
       "F_DBASE"
     ],
@@ -4099,7 +4099,7 @@
     "file": "obj/water.c",
     "path": "/obj/water",
     "type": "item",
-    "sha256": "f9c2969d64d229b6c1cd70750b961332bb1389fc27456529c0dde5400cebc50d",
+    "sha256": "fbf403a47265cfbd3f3239f9cdb08d283cc3edcb69bdff512e0b5d220672b4da",
     "inherits": [
       "LIQUID_ITEM",
       "F_DRINK"
@@ -4133,7 +4133,7 @@
     "file": "std/bboard.c",
     "path": "/std/bboard",
     "type": "item",
-    "sha256": "e0ff2812269f1fdcf2d7c027dd22c9adfb012c87dc5db6527584834270589303",
+    "sha256": "9a3d3377cb2c1e321a2db0417699c210ce68433e8ce2daa1ef0e8b4bd8d1843f",
     "inherits": [
       "ITEM",
       "F_SAVE"
@@ -4242,7 +4242,7 @@
     "file": "std/item/combined.c",
     "path": "/std/item/combined",
     "type": "item",
-    "sha256": "977ba55e0b0d10368e1f0fba156a51e1f44e75d28cf41a5e02ba18382b5a3f5c",
+    "sha256": "56e9c28bda54f4282a0eeb3d4c71059e02cb4370af425545587725cd42b0797c",
     "inherits": [
       "ITEM"
     ],
@@ -4283,7 +4283,7 @@
     "file": "std/item/container.c",
     "path": "/std/item/container",
     "type": "item",
-    "sha256": "e228783ca766898b3843ffc1e694afec77df390441105f91e814836ccb73a23d",
+    "sha256": "1f17ce138d484243ede66d404d494e4055b5482a42209c45952fedcb715ea618",
     "inherits": [
       "ITEM"
     ],
@@ -4315,7 +4315,7 @@
     "file": "std/item/liquid.c",
     "path": "/std/item/liquid",
     "type": "item",
-    "sha256": "c61acc49e6114ff9497890dd296502c324aabbfb9ee400b308938e05d4849acc",
+    "sha256": "b8ad93146f45880ab9574dd8381da29e907235f672f0e6517779556e37a7cc4e",
     "inherits": [
       "ITEM"
     ],
@@ -4353,7 +4353,7 @@
     "file": "std/item/pharmacy.c",
     "path": "/std/item/pharmacy",
     "type": "item",
-    "sha256": "be732a118cf1a946dc72c05e351de3551c26a3dc08a8bc2d296141e10fc5131b",
+    "sha256": "1ec906e107d342115e982fb64d5472d22cdc33374615a86a35fd40a4b211dc46",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -4377,7 +4377,7 @@
     "file": "std/item/reagent.c",
     "path": "/std/item/reagent",
     "type": "item",
-    "sha256": "f3d1e9e4d36fc25ced626d9945d7ce858357b110bfc8bac3db35ab9a47c576c8",
+    "sha256": "c8ae4ba45421318ad5c808e4904e6794d18666ff96d7bf11d8e5de5cc64dc024",
     "inherits": [
       "ITEM"
     ],
@@ -4403,7 +4403,7 @@
     "file": "std/money.c",
     "path": "/std/money",
     "type": "item",
-    "sha256": "25a93e11a922d6e0eab3f040f0e67226eaa7c1e5240ec6f3290183416de38ff7",
+    "sha256": "9a7602c0c0b3ee90aec317fd1c1d4b7d01cbf101e449a31d7b161965379f8fca",
     "inherits": [
       "COMBINED_ITEM"
     ],
@@ -4429,7 +4429,7 @@
     "file": "std/room/obj/pawn_stamp.c",
     "path": "/std/room/obj/pawn_stamp",
     "type": "item",
-    "sha256": "a26a6d2f38f2de5d1f292c90e7ec3f387cd0f96270bfe4a0d4ff6f858a1f260a",
+    "sha256": "abb2bace765efce86b7755f18e44afd18c8ec6534e0857988cd3b942b702dbc1",
     "inherits": [
       "ITEM"
     ],

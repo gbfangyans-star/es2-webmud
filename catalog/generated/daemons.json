@@ -3,7 +3,7 @@
     "file": "adm/daemons/aliasd.c",
     "path": "/adm/daemons/aliasd",
     "type": "daemon",
-    "sha256": "0b4b7d7bd8a18ad03cdc8a55b663343fab41f9654e9d865b0623ce2f51cc9549",
+    "sha256": "9eb1c499c19cbeedb14b2b91469d1dbdc9d1379d4e71ee2b044716bfcb02bb2c",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -19,7 +19,7 @@
     "file": "adm/daemons/channeld.c",
     "path": "/adm/daemons/channeld",
     "type": "daemon",
-    "sha256": "72a0f73fe814168bd6700cbb224fa61286cdc891a5e0571aaba82dbe5a85e4c4",
+    "sha256": "b66caf06f24fc0c3902b6b78020a8d73a369dea5c34802360b124de69719a171",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -45,7 +45,7 @@
     "file": "adm/daemons/chard.c",
     "path": "/adm/daemons/chard",
     "type": "daemon",
-    "sha256": "12c0e45d085c3a3bebce484b766a37fac83bd1ceab3511372e1387e9609f29cd",
+    "sha256": "c583ed940d0c59e01af2e1b5c6eaddcfa1a222e3a14ef41cda45d6f9c178750d",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -99,7 +99,7 @@
     "file": "adm/daemons/chinesed.c",
     "path": "/adm/daemons/chinesed",
     "type": "daemon",
-    "sha256": "8886909692b8e22b83003ca6557fc79718ee8a17088ca6829a616adf2c281439",
+    "sha256": "c04d88ff2fbc00f1b7dbe73ae772d46567cbf1c87244ef8c9bbaccb5ac5d28c7",
     "inherits": [
       "F_CLEAN_UP",
       "F_SAVE"
@@ -144,7 +144,7 @@
     "file": "adm/daemons/cmd_d.c",
     "path": "/adm/daemons/cmd_d",
     "type": "daemon",
-    "sha256": "9b9aaf9bcfcfe7b07dda224d42fdf0a300221c66d06edd781df355c75d4549a5",
+    "sha256": "81307eaf9ba17ead6f18fc2b744f07cc1d1baed77673bbf967809160ab3fe496",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -169,7 +169,7 @@
     "file": "adm/daemons/combatd.c",
     "path": "/adm/daemons/combatd",
     "type": "daemon",
-    "sha256": "afea27591bdc99ddaf7527f09d516e737d487599d12d23b1276e721b9b1b9a87",
+    "sha256": "49a4563d1798721d8e02ae113d5085e9d6f43e9a84aa9c78f3ac616c9291c9fb",
     "inherits": [
       "F_CLEAN_UP",
       "F_DBASE"
@@ -251,7 +251,7 @@
     "file": "adm/daemons/daemond.c",
     "path": "/adm/daemons/daemond",
     "type": "daemon",
-    "sha256": "feebd0d50d100491a8a956e764c6ea6b7c99bb95b962a33750fa2d240d891463",
+    "sha256": "7746f7d2155ab949f546f432f00b668b6d20ef1e5f145fd9e5f89e96d7ab314a",
     "inherits": [
       "F_CLEAN_UP",
       "F_SAVE"
@@ -297,7 +297,7 @@
     "file": "adm/daemons/emoted.c",
     "path": "/adm/daemons/emoted",
     "type": "daemon",
-    "sha256": "289a50d39230682ba7bea9b4c7751190767fb1e1bd4c427e047d7fb6be8a8dff",
+    "sha256": "5fc3fb40449632460734089194d121e04024ef596363eef4ea732d40f61305ff",
     "inherits": [
       "F_CLEAN_UP",
       "F_SAVE"
@@ -339,7 +339,7 @@
     "file": "adm/daemons/enhanced.c",
     "path": "/adm/daemons/enhanced",
     "type": "daemon",
-    "sha256": "22a77ff32900dffc4af04f24188c6bfabfa01b0a4861c0a53c36b48997119465",
+    "sha256": "d9a3326aec4a6cbcad28e822929b8623807eb78520278b8a261d40c2a6622db5",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -358,7 +358,7 @@
     "file": "adm/daemons/enterd.c",
     "path": "/adm/daemons/enterd",
     "type": "daemon",
-    "sha256": "2ddf2c745585f937293a530ab9979e3758415b521b2d3b68851f43fabb4fe85b",
+    "sha256": "9cb5a15ec8f39357305567d0bb9c9891a3a37031a09a8f305c4976d72257e9f7",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -378,7 +378,7 @@
     "file": "adm/daemons/fingerd.c",
     "path": "/adm/daemons/fingerd",
     "type": "daemon",
-    "sha256": "b525a46efaa58b773194bcaf97dbba294263cd62ab4ac58c706f215cce60dad2",
+    "sha256": "a0eccabf72288e3ae6bb71387e14a0649e26964fae6d74f2ed372d0b9e4fdf4a",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -406,7 +406,7 @@
     "file": "adm/daemons/httpd.c",
     "path": "/adm/daemons/httpd",
     "type": "daemon",
-    "sha256": "342a0d74ab2f93ba17cb4dc0bd51003d22c8d4cea5fc6bbc6fd0d47d818a7a0c",
+    "sha256": "8966aaae2fcf7331a577ddcabfcf8fad55fcb99f865d9ca7e8a27b9dc21cf7b8",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -430,7 +430,7 @@
     "file": "adm/daemons/logind.c",
     "path": "/adm/daemons/logind",
     "type": "daemon",
-    "sha256": "6a0d3fb4d50123fc344be4f104757e4171b14fe4af57e547d04c76978c3cd45e",
+    "sha256": "daadba1224c7e052f3bdb52a6831c7697b9997043700f9210493474880bfb7dc",
     "inherits": [
       "F_CLEAN_UP",
       "F_DBASE"
@@ -516,8 +516,8 @@
       "目前線上已經有一位訪客了，請稍後再試。\\n",
       "您的顯示名稱: ",
       "現在可能有巫師正在修改使用者物件的程式﹐請稍候再試。\\n",
-      "您的使用者代號必須是 3 到 12 個英文字母或數字。\\n",
-      "您的使用者代號只能由 a 到 z 的英文字母或 0 到 9 的數字組成。\\n",
+      "您的使用者代號必須是 3 到 12 個英文字母。\\n",
+      "您的使用者代號只能由 a 到 z 的英文字母組成。\\n",
       "您的顯示名稱必須使用長度 3 到 18 的合法 UTF-8 文字。\\n",
       "顯示名稱不能含有控制字元。\\n",
       "顯示名稱不可以使用空白字元。\\n",
@@ -534,7 +534,7 @@
     "file": "adm/daemons/natured.c",
     "path": "/adm/daemons/natured",
     "type": "daemon",
-    "sha256": "e7100b2a281ce7272b0ab0d8edabbe06c16ba73cda667629b769e32a9bcb3e59",
+    "sha256": "9efd97047cb3794099f8fedafa31e18d088052dc03a1ba9490c62cc450ffe01f",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -564,7 +564,7 @@
     "file": "adm/daemons/profiled.c",
     "path": "/adm/daemons/profiled",
     "type": "daemon",
-    "sha256": "d496c9b3c8bbe36bdd4b551bef77904a9005f727491596db23c69cbb0614ce24",
+    "sha256": "bf1aa4ab81484b8c9b8a9bd44920d1bf1621c1f0d266f0eb9c0c7fad48a49a27",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -582,7 +582,7 @@
     "file": "adm/daemons/securityd.c",
     "path": "/adm/daemons/securityd",
     "type": "daemon",
-    "sha256": "92e36b761aa11fc975971f2933d8b3242557f7cd2c82d494a612425f9e633969",
+    "sha256": "88fa078dc78ab091070dc8ae8d1ea7da58be105679cde5fba6d070ebd9e829a8",
     "inherits": [
       "F_DBASE"
     ],
@@ -611,7 +611,7 @@
     "file": "adm/daemons/smtpd.c",
     "path": "/adm/daemons/smtpd",
     "type": "daemon",
-    "sha256": "1e4a21bc213fb21a81acdaeb56301e1ebcd1c83e3690417963ff9fc4c7c9a637",
+    "sha256": "8ecdfbdcc91dedfbdc9fed650a527623d45dcffacc04313a37419a4d644669c8",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -639,7 +639,7 @@
     "file": "adm/daemons/userid.c",
     "path": "/adm/daemons/userid",
     "type": "daemon",
-    "sha256": "3c91560956da1dfab46121963599b966b7b60370ff1ad9aa68e698500075d1e2",
+    "sha256": "271f9daef998b249f035a4a69d1b2246795996968dda29e4602c3eef46ad768d",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -669,7 +669,7 @@
     "file": "adm/daemons/virtuald.c",
     "path": "/adm/daemons/virtuald",
     "type": "daemon",
-    "sha256": "e7b4cd369916d9ba1256ffbd1c1533024f3bd56470b10aad4636f274019ec7e6",
+    "sha256": "0a785f37ac8be153973c05649b936dfb8cc1c4f068a962a6f39b640beeffb5a6",
     "inherits": [
       "F_CLEAN_UP"
     ],
@@ -693,7 +693,7 @@
     "file": "daemon/board/bug_board.c",
     "path": "/daemon/board/bug_board",
     "type": "daemon",
-    "sha256": "2d1184fa9b741a55858687eb30ca8f01356d12803fdee7201ea953c26c727c2e",
+    "sha256": "c5e3b6a57901b426bec16eae811e09b811d59d575da49055468944168940068d",
     "inherits": [
       "BULLETIN_BOARD"
     ],
@@ -722,7 +722,7 @@
     "file": "daemon/class/commoner.c",
     "path": "/daemon/class/commoner",
     "type": "daemon",
-    "sha256": "df325ad2fb812295331661260f406e08a8b6fd4a3eb3f1ad015b0efd1df7b8be",
+    "sha256": "5e2f700c2510a8b553c7778b2d90ca49a0cbed4f5962f5780e946d0ae8bb9cde",
     "inherits": [
       "F_DBASE"
     ],
@@ -746,7 +746,7 @@
     "file": "daemon/class/fighter.c",
     "path": "/daemon/class/fighter",
     "type": "daemon",
-    "sha256": "6ba339df30f9c20e3e89b058f0728b1d7400a9ddeb0e13b56c0a12d351a96e4f",
+    "sha256": "cd19b9336fe3d811850ac87324750165c9e707f8ec75b760f3847ff39f21526a",
     "inherits": [
       "F_DBASE"
     ],
@@ -770,7 +770,7 @@
     "file": "daemon/condition/drunk.c",
     "path": "/daemon/condition/drunk",
     "type": "daemon",
-    "sha256": "7b2e5aa5001e691b09c0da83c497ee4ade7cab2c07b033856ba987af3f0ca0b3",
+    "sha256": "b67ffe0f7e07da51d458229be62a183dcc461dced81c578d8bb18f6c60fe97b3",
     "inherits": [
       "CONDITION"
     ],
@@ -813,7 +813,7 @@
     "file": "daemon/condition/poison.c",
     "path": "/daemon/condition/poison",
     "type": "daemon",
-    "sha256": "89d0b1da5648bfec25db5492e61e3c509e0f7c1e0373d793cef0680dedce454c",
+    "sha256": "6f339c26a2824a7f852029ae2bca83a36a3381f70f0bf12c214e3dc1915efb69",
     "inherits": [
       "CONDITION"
     ],
@@ -846,7 +846,7 @@
     "file": "daemon/misc/traveler.c",
     "path": "/daemon/misc/traveler",
     "type": "daemon",
-    "sha256": "44073a3612e8aae0de1b84cc67c360f98821d1fd2a7c3d72bb035bd02ba956e4",
+    "sha256": "3c77c2d361c97f017d6e274178fef621e41396b593dd868a3c6894700b742ef5",
     "inherits": [
       "F_CLEAN_UP",
       "F_SAVE"
@@ -887,7 +887,7 @@
     "file": "daemon/race/avatar.c",
     "path": "/daemon/race/avatar",
     "type": "daemon",
-    "sha256": "0f42d31deda81a202fb33d6cb7fe48c3969cf99a280d30d57eecd61375e87058",
+    "sha256": "2def4357b28e9c64d4e6e8661ed6bd4e6452e18f342166cbe9c72e5b1ff9af6e",
     "inherits": [
       "HUMANOID"
     ],
@@ -912,7 +912,7 @@
     "file": "daemon/race/human.c",
     "path": "/daemon/race/human",
     "type": "daemon",
-    "sha256": "592ed4b681968bf05c2d136ce91b89e1b7a1b5b7535fd89ddcb01b57b84e8b01",
+    "sha256": "1b8191397fa515d79f1722845b816ce1cff8dcd8c03824e5fb0fb2ce5b798f72",
     "inherits": [
       "HUMANOID"
     ],
@@ -938,7 +938,7 @@
     "file": "daemon/virtual/field.c",
     "path": "/daemon/virtual/field",
     "type": "daemon",
-    "sha256": "190d950f347fafc683059f24e1e35c2a3e67084b3567f1ca41eb12279953a8ee",
+    "sha256": "8b9846621da278c6d3ce511292d64cb99c0e1930146bcf85d9ee410a8ff03cb8",
     "inherits": [],
     "inherit_refs": [],
     "functions": [

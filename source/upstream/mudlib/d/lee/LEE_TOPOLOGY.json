@@ -254,7 +254,7 @@
       }
     },
     "inn": {
-      "short": "小飯店",
+      "short": "小旅店",
       "status": "CONFIRMED_MIXED",
       "exits": {
         "east": "street2"

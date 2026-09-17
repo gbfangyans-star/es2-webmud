@@ -3,7 +3,7 @@
     "file": "feature/armor/armor.c",
     "path": "/feature/armor/armor",
     "type": "feature",
-    "sha256": "b9927ea5c053c79716e0ae391628c3ecfb6cfd0787b427888780daad9c00e61d",
+    "sha256": "2a84c8cf0124dbaf56040f0ece4cb1e3331ce19064766a782add7c5e626f7b2e",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -24,7 +24,7 @@
     "file": "feature/armor/cloth.c",
     "path": "/feature/armor/cloth",
     "type": "feature",
-    "sha256": "90403db106c6b32c0517e75f0b234cbf4e158a679859383b7b44c2e5357dbc9a",
+    "sha256": "1fa15762ea41bf6732513becb551eb6862ed68aeeed4bd7443091258f9e85226",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -42,7 +42,7 @@
     "file": "feature/armor/feet_eq.c",
     "path": "/feature/armor/feet_eq",
     "type": "feature",
-    "sha256": "11b37b80b44701faeed491598668034ada9735e7a09bf8ff35487dc8d169ade1",
+    "sha256": "d548ed9628ec07ead204ff2138fcfdaa61dd1f9a48183ca03113a6906697b86b",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -60,7 +60,7 @@
     "file": "feature/armor/finger_eq.c",
     "path": "/feature/armor/finger_eq",
     "type": "feature",
-    "sha256": "7f52f7a634f5718c70c0b77d3385f91a264d44764fe9cfa53e17f027ed35936b",
+    "sha256": "4fec004863df9b61bb457dcb39553b9c42ada5f5535e0b5b4cb5329227480da5",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -78,7 +78,7 @@
     "file": "feature/armor/hand_eq.c",
     "path": "/feature/armor/hand_eq",
     "type": "feature",
-    "sha256": "47a5e6647cc1aaf04db4f99d660e273c733e73482717cd30597c906827f91cb9",
+    "sha256": "1472046584b44b09d55376171c961bdb2130d5ba4ffd2b18cb0a9c1607f49065",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -96,7 +96,7 @@
     "file": "feature/armor/head_eq.c",
     "path": "/feature/armor/head_eq",
     "type": "feature",
-    "sha256": "b00e598172492ad7b78ea0d3c87b5f021b8ba4006993f07247cd4d30adad2c2b",
+    "sha256": "17357b0e2896d1c758bae5a72325c4725e01ff95452ef7402b44f28846536d63",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -114,7 +114,7 @@
     "file": "feature/armor/leg_eq.c",
     "path": "/feature/armor/leg_eq",
     "type": "feature",
-    "sha256": "daf8bacc72cbf3e258a902220cf4362b3e2ad7ee3943a7a0386fc4085dd1e205",
+    "sha256": "6886434f30c906d32faa857a7ed105f33abfb9e64d420d0673f7ecf5a0b4ced6",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -132,7 +132,7 @@
     "file": "feature/armor/neck_eq.c",
     "path": "/feature/armor/neck_eq",
     "type": "feature",
-    "sha256": "f4a3c4cb62fb2e232eced2b5262d76f36e6eafc8dc15395cb92a1bb03a900d57",
+    "sha256": "07af8f2e15c81b16a6644e22a5b1b386b6fa596b9fb8310df11e37b925773858",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -150,7 +150,7 @@
     "file": "feature/armor/waist_eq.c",
     "path": "/feature/armor/waist_eq",
     "type": "feature",
-    "sha256": "eab37f8713085079ac72351c305c45c20bb901134bf867d792abd3b519045d12",
+    "sha256": "39dd26b8e51c8946e8586eea29054e62707222c5abf2df0a66e1f3539e5e4ebe",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -168,7 +168,7 @@
     "file": "feature/attribute.c",
     "path": "/feature/attribute",
     "type": "feature",
-    "sha256": "56a9a2617ac87cf8361fc727c211c9baf7a6d4c11411283f3588af9da5fe3b54",
+    "sha256": "3e0028ac4f0683be36b4503474de5671ac285a878c9ee6adc453673340c142fd",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -189,7 +189,7 @@
     "file": "feature/char/action.c",
     "path": "/feature/char/action",
     "type": "feature",
-    "sha256": "3774a95391af530fc9757eee957ba1e4af2c2a049f8b664566e2e038d881db30",
+    "sha256": "032e2c28c3f5ed1c99c847c7993332f0893fd8da96da856237c08dcc60d7fbb9",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -221,7 +221,7 @@
     "file": "feature/char/attack.c",
     "path": "/feature/char/attack",
     "type": "feature",
-    "sha256": "35ccdb7048346e05d583a36ec38c1a4e937d04ddc3d9916fdfac56ff8054c873",
+    "sha256": "65cff4caea2c89e473c190b62a26a4a5ee24d9ef99cd5b4395f640fcb94866a2",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -302,7 +302,7 @@
     "file": "feature/char/combat.c",
     "path": "/feature/char/combat",
     "type": "feature",
-    "sha256": "c4687322959daebca80d740b42e33320d7eeda2905a352bf965b4d071569587f",
+    "sha256": "95bef48a7406d1b0726347953d0d3f64ef9ffb6ad812aaa248fc594594e2df53",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -399,7 +399,7 @@
     "file": "feature/char/command.c",
     "path": "/feature/char/command",
     "type": "feature",
-    "sha256": "0409ec6a894600e14438e2e60aab5877ee91191804ddcce5b3b7c87164420fb7",
+    "sha256": "e7b4960876115fb63a6af4791fd29f8de13f2a06a2db7f39795b1f1f78f15c08",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -450,7 +450,7 @@
     "file": "feature/char/condition.c",
     "path": "/feature/char/condition",
     "type": "feature",
-    "sha256": "b5c4eb8ef39b7d3f0e8c857dadb63922ae80867ca90dd322ebe744ff580a9d13",
+    "sha256": "4bcef9e9ad1a49e829ef269819406c998dc57c4a119cee340e3b8fa463b6d830",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -483,7 +483,7 @@
     "file": "feature/char/finance.c",
     "path": "/feature/char/finance",
     "type": "feature",
-    "sha256": "61833f3e956d672f381e356f91a0d070b5741e0b27b5c62c7af86f26d9e40cb1",
+    "sha256": "df01a0537247140abc7540ee84136561fa0c9dcd6bd11c8f2803d0a0c851ac48",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -499,7 +499,7 @@
     "file": "feature/char/message.c",
     "path": "/feature/char/message",
     "type": "feature",
-    "sha256": "a417d83ad3a4a1345956200e65e430217dcc6ec71ba8e6fbcb57135c52ec0768",
+    "sha256": "4f04e41ad7fa6d66aa5355cc907fce0925c59d25150fb4c2308881cd261701bb",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -516,7 +516,7 @@
     "file": "feature/char/relation.c",
     "path": "/feature/char/relation",
     "type": "feature",
-    "sha256": "3c4cdcae94c01db964073d00e052aecc51abddd6c3c1d6290cd045004eba8c79",
+    "sha256": "cfe1b7091b86eddd820d086c255c7a442e17125b56d13962bd4bad68c4a53f8a",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -539,7 +539,7 @@
     "file": "feature/char/score.c",
     "path": "/feature/char/score",
     "type": "feature",
-    "sha256": "a57b93a1654023f4f4bdc488ba2ab1141f29d355ddd81384a93dbc3f16acb5ea",
+    "sha256": "d8a00f8d83bc33dd3f0ad400fbb32e569ad825caf32d2100d7a7ea26e22d438a",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -565,7 +565,7 @@
     "file": "feature/char/skill.c",
     "path": "/feature/char/skill",
     "type": "feature",
-    "sha256": "019818125d56934d33b5453a0f8b6bcafeaf5e6ed5e9ee5ee0ab61631430e9c7",
+    "sha256": "0b9366f9ba05c0a242439605736ef4770dc2d1f17cd9ea03a1ad2d034abaf2f2",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -626,7 +626,7 @@
     "file": "feature/char/team.c",
     "path": "/feature/char/team",
     "type": "feature",
-    "sha256": "980c66f4b4b3f1309bf889bfd7f508d6c6f1fba576d47707fad1d9e060a9792d",
+    "sha256": "31daf0932e76bf8b7ceba30c670210f9829dcd509dc74d9e381ab9affbeebf0c",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -659,7 +659,7 @@
     "file": "feature/clean_up.c",
     "path": "/feature/clean_up",
     "type": "feature",
-    "sha256": "929f6dbbfd55b1ecfb6e9c911023ef08f763ac5809e8f456208f188e7c386e3b",
+    "sha256": "d8c5591c241fbdb773a11d92572b3859e9c3cf32ec89bcb69a10436b09257c49",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -674,7 +674,7 @@
     "file": "feature/dbase.c",
     "path": "/feature/dbase",
     "type": "feature",
-    "sha256": "1b6a966d35f5b57ca70a5d7beccab814b2d899d2fc7be94781c38c4e23511e55",
+    "sha256": "437be77b166f8e81b289386e8daaf9f9da69930e6c437b3886ea9308201457cf",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -704,7 +704,7 @@
     "file": "feature/drink.c",
     "path": "/feature/drink",
     "type": "feature",
-    "sha256": "bd395d2ef009167ba3cdb99d83df80b545b6a695d1a5d8f93e7e18186a714702",
+    "sha256": "66de92d0ed5493eda3626de12b3ca41c9cffd9380689460ad06216f0f6d1b083",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -724,7 +724,7 @@
     "file": "feature/equip.c",
     "path": "/feature/equip",
     "type": "feature",
-    "sha256": "bc4043746652a54a14640a90b0043c0e7371a5a3c50771ab306b62b527d16a7b",
+    "sha256": "2b76c9f6de716935e9b6b842f4d30e46ff3c81cc6aeffe0e6d49745a451739ae",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -799,7 +799,7 @@
     "file": "feature/food.c",
     "path": "/feature/food",
     "type": "feature",
-    "sha256": "5bf18f020b7e5d514b680188726ef5de117a8969a4faba83b2fe73411a7da9b2",
+    "sha256": "84102898ccf6a5d85f1684150de21447ce744b9796adcf5de927e46770db10ca",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -822,7 +822,7 @@
     "file": "feature/move.c",
     "path": "/feature/move",
     "type": "feature",
-    "sha256": "707eda14f5ae5a87c0d5656e6fbabac970c0eece0fc36122c26079ab52fd8f85",
+    "sha256": "ebe276ea6583967fdf5383a03955c425b27918dd7828bc552c0394e542b33816",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -863,7 +863,7 @@
     "file": "feature/name.c",
     "path": "/feature/name",
     "type": "feature",
-    "sha256": "45a3599deb4b34afc12d2aabf7dfe540c5caf0b975efc71c2e01b95264b3c2b2",
+    "sha256": "5b738cac8ab76a4c7249c757b66db3393012b86dcabd9fc4cb27ebbb97a4d078",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -886,7 +886,7 @@
     "file": "feature/save.c",
     "path": "/feature/save",
     "type": "feature",
-    "sha256": "df6eb4458317ad3926b8e4eda7d70c756ae0fb51d405a62c9718675249561699",
+    "sha256": "873e6b2323a33c57670842a8edf4b40263a79e99c648d852c8f3718a02d405e8",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -902,7 +902,7 @@
     "file": "feature/statistic.c",
     "path": "/feature/statistic",
     "type": "feature",
-    "sha256": "40a941da7c276d64ec0bbbd391d6a9a30ac0bd43fadc500056019d11a4c3bd4b",
+    "sha256": "4bea96919c319a1cb085cd3833d3eecf46f054515797a8505504349a6acf671d",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -947,7 +947,7 @@
     "file": "feature/study.c",
     "path": "/feature/study",
     "type": "feature",
-    "sha256": "eae0c0dc82ea9ce184bec1c89a8418e366a8f90be3f1793d2a721cb52f513186",
+    "sha256": "d485feca44dba6af2f94a32edf68f8be138ddb7de392a6820fb06c3a27da9b0a",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -981,7 +981,7 @@
     "file": "feature/unique.c",
     "path": "/feature/unique",
     "type": "feature",
-    "sha256": "5810720c1e3ac69789d65837ddb4335976bd6a9642571ca7c1dc18dcc8218f74",
+    "sha256": "15ade17c35a2baceaa747444fa6064d5037e9b91bc0d942c91addaff027783d4",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -997,7 +997,7 @@
     "file": "feature/user/alias.c",
     "path": "/feature/user/alias",
     "type": "feature",
-    "sha256": "0fe36aa2513f366424888897fd5271672077da661d393f05ded8cc37b5ff8b85",
+    "sha256": "4cbf3b11c802f9d10823dd31aa8eab52161af71f0f468832f8e5594c5942f417",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1015,7 +1015,7 @@
     "file": "feature/user/autoload.c",
     "path": "/feature/user/autoload",
     "type": "feature",
-    "sha256": "14592fc9ead2fb8db185d2609f0205215019fb3ebe8a41e3bce4bb633b11b580",
+    "sha256": "952bba6a8b0a9939caa86f81d1a1ebe893475b64ebd9c6cb06ea782b7d925550",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1037,7 +1037,7 @@
     "file": "feature/user/edit.c",
     "path": "/feature/user/edit",
     "type": "feature",
-    "sha256": "d7d3083a2be2889e43ff0aff245133afbfd8e6d8353bf68f2e4eab2c55dad820",
+    "sha256": "50b01dedf4f32d992de2123432737123c39dc3ae161a3f77ce2724063f99478c",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1062,7 +1062,7 @@
     "file": "feature/user/flag.c",
     "path": "/feature/user/flag",
     "type": "feature",
-    "sha256": "65068ac5e4515e60594fe560f8719f24a81c05775774a9e8b979a5b2bf42b737",
+    "sha256": "a9050e65031ee3f4a1bf6fac64ced47dc475bdbc3d49ad7dbc304d7dd97fe9ce",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1077,7 +1077,7 @@
     "file": "feature/user/input.c",
     "path": "/feature/user/input",
     "type": "feature",
-    "sha256": "e10ed9ce24cf684bd23b2d949351832eea8057923cc7ba6246d666a89a5b1901",
+    "sha256": "a7730d73c70313463bc16e436c135ed7c1dad4d5b633202dcbfab93b6c3f5ae2",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1090,8 +1090,8 @@
     "source_policy": "taedlar/es2_mudlib only",
     "uses_input_to": true,
     "literal_prompts": [
-      "Y. 是\\nN. 否\\n請輸入 Y 或 N: ",
-      "請輸入選項數字: "
+      "   ",
+      "\\n"
     ],
     "manual_review": []
   },
@@ -1099,7 +1099,7 @@
     "file": "feature/user/more.c",
     "path": "/feature/user/more",
     "type": "feature",
-    "sha256": "f91109ac2f38152827e2e7063bdaad08fe10f0f9c7a02b39366e8fb6fb658a5d",
+    "sha256": "afd1ea5deab55d11638e85900a874fd7dc1324b22ad9f86211bc9932bc6bc113",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1111,14 +1111,13 @@
     "runtime_traits": [],
     "combat_surface": [],
     "source_policy": "taedlar/es2_mudlib only",
-    "uses_input_to": true,
     "manual_review": []
   },
   {
     "file": "feature/weapon/axe.c",
     "path": "/feature/weapon/axe",
     "type": "feature",
-    "sha256": "193e49cc73bf9673f275bb97c02015b67cbb9f6b372ed305290b7cbac9393ee7",
+    "sha256": "ff2dccf07ee2f38d4e3fd3b1eeca89797e5646a2a66d8493de30b94cef180e5d",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1144,7 +1143,7 @@
     "file": "feature/weapon/blade.c",
     "path": "/feature/weapon/blade",
     "type": "feature",
-    "sha256": "720d77f816d4d8d73d5d1d7b193fc0fecc87731d65af3f6d6ad62d255d3b9c2e",
+    "sha256": "08d7c501a73ef743ffe23e8c208f10980b5499a919d72a7f5034daf03b21ab43",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1170,7 +1169,7 @@
     "file": "feature/weapon/blunt.c",
     "path": "/feature/weapon/blunt",
     "type": "feature",
-    "sha256": "cd8d4a0b36d709a84c56b1844412385ada37275c3d505c7e5649bd62205bf623",
+    "sha256": "a3735d3b3d67a01d53395e28da4ab8898c760c2d2c74444f4b7471cbb9cc7910",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1196,7 +1195,7 @@
     "file": "feature/weapon/dagger.c",
     "path": "/feature/weapon/dagger",
     "type": "feature",
-    "sha256": "f8d289c6994c2f4d5894a00debc39512c052a4a162a40b73410e0e988d66dddc",
+    "sha256": "c6089610477186a1069b3396591d8e7ec8e754f407bc5ab801939386a89166b2",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1221,7 +1220,7 @@
     "file": "feature/weapon/needle.c",
     "path": "/feature/weapon/needle",
     "type": "feature",
-    "sha256": "e925d1f1db70f0b978184c8f17290acc5ac99e7c1942c50bc2eefe2c5e452080",
+    "sha256": "77eb91646fc74c13ffffc7d89734df99831f6df3b0f9a17ba0c1208c48504c3d",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1246,7 +1245,7 @@
     "file": "feature/weapon/pike.c",
     "path": "/feature/weapon/pike",
     "type": "feature",
-    "sha256": "09c66944aa9ea6d04adc870d7e92c592ad7c46d07329a7f613d8c1e2efc243cc",
+    "sha256": "9e0de9f8f892a92cfcc96b89cdec196f1096520fe9b86d206d3bbe99ca3fcee9",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1272,7 +1271,7 @@
     "file": "feature/weapon/staff.c",
     "path": "/feature/weapon/staff",
     "type": "feature",
-    "sha256": "64c67cd127cc57fdebe6f811c82a04346132b139a2803f6df9756bbe68a68056",
+    "sha256": "fe7037b6e534f0a34fec77b24e46c3b6c010898cf9f105e78bbb03773995e8c0",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1298,7 +1297,7 @@
     "file": "feature/weapon/sword.c",
     "path": "/feature/weapon/sword",
     "type": "feature",
-    "sha256": "2697693aa3dff1bc23e411fe5c40f70b8e089e53139ba519ea594806693f1ec0",
+    "sha256": "353b024701f9122c203b04a32fdb5fe5b7c412ebe82cc8e6565c5e4e7d34d8b6",
     "inherits": [],
     "inherit_refs": [],
     "functions": [
@@ -1324,7 +1323,7 @@
     "file": "feature/weapon/whip.c",
     "path": "/feature/weapon/whip",
     "type": "feature",
-    "sha256": "4e0bb9c666a4535dd9748f85dbeeec73b3b9825a62cb807ad1f54d0198d1db6e",
+    "sha256": "c8920c78162e12e06dd73c257422f31c572e227e2b0795679e5a0075ef988619",
     "inherits": [],
     "inherit_refs": [],
     "functions": [

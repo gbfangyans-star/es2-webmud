@@ -3,7 +3,7 @@
     "file": "obj/login.c",
     "path": "/obj/login",
     "type": "runtime",
-    "sha256": "60a4168b7b4e6f2d2a1747647fa417ea7957c1864d25ba8466b6b1e9695f243f",
+    "sha256": "d85c4cfe0397fb66c4f7f6bf7206de5360a1ba8d1815361cd05dad0737ac472e",
     "inherits": [
       "F_ALIAS",
       "F_DBASE",
@@ -61,7 +61,7 @@
     "file": "obj/user.c",
     "path": "/obj/user",
     "type": "runtime",
-    "sha256": "6971629b3ab5d93f481fe7db04323434c9f41cc1845e18eab0613f6019e7c50f",
+    "sha256": "a22d9a8a222d637ae85efa8c2865a9793237adf30ebc6dd1d8e2f963b188a5e0",
     "inherits": [
       "CHARACTER",
       "F_AUTOLOAD",

@@ -119,9 +119,12 @@ do_vendor_list(string arg)
     list = "";
     foreach(item, count in goods) {
 	if( count < 1 ) continue;
-	list += sprintf("  %-30s：%s\n",
-	    item->short(1),
-	    price_string(item->query("value")) );
+	// MODIFIED: %-30s pads by raw char count, which goes ragged when a
+	// name mixes Chinese (double-width) and ASCII; cjk_pad() counts
+	// visual width instead so the "：" column and the price column both
+	// line up. Not original ES2 wording, only the alignment logic.
+	list += "  " + cjk_pad(item->short(1), 30) + "："
+	    + cjk_pad(price_string(item->query("value")), 12, 1) + "\n";
     }
     if( list=="" ) {
 	write( name() + "的貨物已經全部賣光了，下次早一點來吧！\n");

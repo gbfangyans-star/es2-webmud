@@ -524,15 +524,21 @@
     },
     {
       "id": "/d/lee/hunter",
-      "label": "獵戶",
+      "label": "木屋",
       "x": 81,
       "y": -11
     },
     {
       "id": "/d/lee/inn",
-      "label": "小飯店",
+      "label": "小旅店",
       "x": 84,
       "y": -7
+    },
+    {
+      "id": "/d/lee/nie_backroom",
+      "label": "丹房",
+      "x": 82,
+      "y": -12
     },
     {
       "id": "/d/lee/nroad1",
@@ -584,7 +590,7 @@
     },
     {
       "id": "/d/lee/shrine",
-      "label": "福祠",
+      "label": "醫館",
       "x": 82,
       "y": -11
     },
@@ -676,6 +682,12 @@
       "id": "/d/lee/wroad3",
       "label": "石子路",
       "x": 83,
+      "y": -10
+    },
+    {
+      "id": "/d/lee/wroad4",
+      "label": "石子路",
+      "x": 83.5,
       "y": -10
     },
     {
@@ -928,7 +940,7 @@
     },
     {
       "from": "/d/lee/creek",
-      "to": "/d/lee/watermelon_s3",
+      "to": "/d/lee/watermelon_n3",
       "direction": "west",
       "resolved": true
     },
@@ -975,9 +987,21 @@
       "resolved": true
     },
     {
+      "from": "/d/lee/farm_w1",
+      "to": "/d/lee/farm_w2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
       "from": "/d/lee/farm_w2",
       "to": "/d/lee/wroad3",
       "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/farm_w2",
+      "to": "/d/lee/farm_w1",
+      "direction": "west",
       "resolved": true
     },
     {
@@ -1041,6 +1065,12 @@
       "resolved": true
     },
     {
+      "from": "/d/lee/nie_backroom",
+      "to": "/d/lee/shrine",
+      "direction": "out",
+      "resolved": true
+    },
+    {
       "from": "/d/lee/nroad1",
       "to": "/d/lee/gate_n",
       "direction": "north",
@@ -1092,12 +1122,6 @@
       "from": "/d/lee/nroad3",
       "to": "/d/lee/school",
       "direction": "west",
-      "resolved": true
-    },
-    {
-      "from": "/d/lee/pawnshop",
-      "to": "/d/lee/square_s",
-      "direction": "north",
       "resolved": true
     },
     {
@@ -1179,12 +1203,6 @@
       "resolved": true
     },
     {
-      "from": "/d/lee/square_c",
-      "to": "/d/lee/watermelon_n1",
-      "direction": "east",
-      "resolved": true
-    },
-    {
       "from": "/d/lee/square_e",
       "to": "/d/lee/square_w",
       "direction": "west",
@@ -1215,12 +1233,6 @@
       "resolved": true
     },
     {
-      "from": "/d/lee/square_s",
-      "to": "/d/lee/pawnshop",
-      "direction": "south",
-      "resolved": true
-    },
-    {
       "from": "/d/lee/square_w",
       "to": "/d/lee/nroad3",
       "direction": "north",
@@ -1228,7 +1240,7 @@
     },
     {
       "from": "/d/lee/square_w",
-      "to": "/d/lee/wroad3",
+      "to": "/d/lee/wroad4",
       "direction": "west",
       "resolved": true
     },
@@ -1288,12 +1300,6 @@
     },
     {
       "from": "/d/lee/watermelon_n1",
-      "to": "/d/lee/square_c",
-      "direction": "west",
-      "resolved": true
-    },
-    {
-      "from": "/d/lee/watermelon_n1",
       "to": "/d/lee/watermelon_n2",
       "direction": "east",
       "resolved": true
@@ -1338,6 +1344,12 @@
       "from": "/d/lee/watermelon_n3",
       "to": "/d/lee/riverside_s",
       "direction": "northeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/watermelon_n3",
+      "to": "/d/lee/creek",
+      "direction": "east",
       "resolved": true
     },
     {
@@ -1389,12 +1401,6 @@
       "resolved": true
     },
     {
-      "from": "/d/lee/watermelon_s3",
-      "to": "/d/lee/creek",
-      "direction": "east",
-      "resolved": true
-    },
-    {
       "from": "/d/lee/wroad1",
       "to": "/d/lee/gate_w",
       "direction": "west",
@@ -1438,7 +1444,7 @@
     },
     {
       "from": "/d/lee/wroad3",
-      "to": "/d/lee/square_w",
+      "to": "/d/lee/wroad4",
       "direction": "east",
       "resolved": true
     },
@@ -1452,6 +1458,18 @@
       "from": "/d/lee/wroad3",
       "to": "/d/lee/farm_w2",
       "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/wroad4",
+      "to": "/d/lee/square_w",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/lee/wroad4",
+      "to": "/d/lee/wroad3",
+      "direction": "west",
       "resolved": true
     },
     {
