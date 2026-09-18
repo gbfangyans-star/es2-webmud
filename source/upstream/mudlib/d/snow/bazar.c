@@ -30,6 +30,7 @@ LONG
 		__DIR__"npc/yu": 1,
 	]));
 
-	setup();
+    setup();
 	replace_program(BANK);
+	set("map/area", "雪亭鎮");
 }

@@ -30,7 +30,8 @@ LONG
 	set("objects", ([
 		__DIR__"npc/girl" : 1
 	]) );
-	setup();
+	set("map/area", "雪亭鎮");
+    setup();
 }
 
 void init()

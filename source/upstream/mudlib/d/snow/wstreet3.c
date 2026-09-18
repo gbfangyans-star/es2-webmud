@@ -21,6 +21,7 @@ LONG
   ]));
   set("outdoors", "snow");
 
-  setup();
+    setup();
   replace_program(ROOM);
+  set("map/area", "雪亭鎮");
 }

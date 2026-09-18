@@ -18,6 +18,7 @@ LONG
         "south" : __DIR__"wroad2"
     ]));
     set("detail/破布", "破布底下鼓鼓的，似乎藏了什麼東西。");
+    set("map/area", "李家村");
     setup();
     // MODIFIED: no replace_program(ROOM) — this file defines its own
     // init()/do_search(); replacing the program to plain ROOM after create()

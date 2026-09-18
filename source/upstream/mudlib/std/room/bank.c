@@ -65,7 +65,23 @@ int do_new_account(string arg)
     if( present("bankbond", this_player()) )
         return notify_fail("你已經有一個戶頭了。\n");
     seteuid(geteuid(this_player()));
-    bankbond = new("/obj/bankbond");
+    // A bond created via plain new() ends up with no real owner (uid/euid
+    // both unset), and export_uid() only succeeds when called by an object
+    // running under its own genuine identity -- this room, having just
+    // seteuid()'d to borrow the player's identity, does not qualify. The
+    // bond's set_balance()/transact() then write to the player's protected
+    // "bank_account" property with that unset euid, which is silently
+    // rejected -- leaving the bond's own balance and the player's
+    // bank_account permanently out of sync, which the very next
+    // deposit/withdraw then detects and reacts to by confiscating the bond.
+    // Creating it via the player's own new_owned_object() sidesteps this:
+    // it runs with the player's genuine (non-delegated) identity, so
+    // export_uid() succeeds.
+    bankbond = this_player()->new_owned_object("/obj/bankbond");
+    if( !bankbond ) {
+        write("你的帳簿出了點問題, 請找巫師反應。\n");
+        return 1;
+    }
     if( !bankbond->move(this_player()) ) {
         write("你身上的東西太多了﹐帶不動錢莊金契。\n");
         destruct(bankbond);

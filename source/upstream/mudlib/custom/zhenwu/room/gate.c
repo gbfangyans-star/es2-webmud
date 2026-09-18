@@ -16,5 +16,6 @@ LONG
     set("objects", ([
         "/custom/zhenwu/npc/soldier" : 2,
     ]));
+    set("map/area", "振武軍營");
     setup();
 }

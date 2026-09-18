@@ -12,5 +12,6 @@ LONG
     set("exits", ([
         "east" : __DIR__"shed",
     ]));
+    set("map/area", "振武軍營");
     setup();
 }

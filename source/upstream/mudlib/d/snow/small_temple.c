@@ -24,4 +24,5 @@ LONG
 
     setup();
     replace_program (TEMPLE);
+    set("map/area", "雪亭鎮");
 }

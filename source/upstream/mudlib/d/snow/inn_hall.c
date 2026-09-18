@@ -47,4 +47,5 @@ LONG
     setup();
     //load_object("/daemon/board/wizard_board");
     replace_program (INN);
+    set("map/area", "雪亭鎮");
 }

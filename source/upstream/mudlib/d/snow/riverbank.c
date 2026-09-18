@@ -16,6 +16,7 @@ LONG
 		"south" : __DIR__"ruin2",
 ]));
 
-	setup();
+    setup();
 	replace_program(ROOM);
+	set("map/area", "雪亭鎮");
 }

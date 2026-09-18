@@ -32,4 +32,5 @@ LONG
     setup();
     // load_object("/daemon/board/common");
     replace_program (ROOM);
+    set("map/area", "雪亭鎮");
 }

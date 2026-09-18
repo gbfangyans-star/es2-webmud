@@ -20,7 +20,8 @@ LONG
 		"south" : __DIR__"herb_shop",
 	]));
 
-	setup();
+	set("map/area", "雪亭鎮");
+    setup();
 }
 
 void init()

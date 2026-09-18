@@ -16,6 +16,7 @@ LONG
 	set("objects", ([
 		__DIR__"npc/child": 1
 	]) );
-	setup();
+    setup();
 	replace_program(ROOM);
+	set("map/area", "雪亭鎮");
 }

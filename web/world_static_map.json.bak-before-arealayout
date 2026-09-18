@@ -93,328 +93,246 @@
     {
       "id": "/custom/oldpine_recovered/room/cave1",
       "label": "山洞",
-      "area": "老松林",
-      "layer": "洞穴",
       "x": 100,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/cave2",
       "label": "山洞",
-      "area": "老松林",
-      "layer": "洞穴",
       "x": 100,
       "y": -1
     },
     {
       "id": "/custom/oldpine_recovered/room/cave3",
       "label": "山洞",
-      "area": "老松林",
-      "layer": "洞穴",
       "x": 120,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/cave4",
       "label": "山洞",
-      "area": "老松林",
-      "layer": "洞穴",
       "x": 101,
       "y": -1
     },
     {
       "id": "/custom/oldpine_recovered/room/cave5",
       "label": "山洞",
-      "area": "老松林",
-      "layer": "洞穴",
       "x": 101,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/clearing",
       "label": "林间空地",
-      "area": "老松林",
-      "layer": "地面",
       "x": 89,
       "y": 1
     },
     {
       "id": "/custom/oldpine_recovered/room/cliff1",
       "label": "悬崖",
-      "area": "老松林",
-      "layer": "谷壁",
       "x": 140,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/cliff2",
       "label": "悬崖",
-      "area": "老松林",
-      "layer": "谷壁",
       "x": 160,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/cliffdown",
       "label": "悬崖顶",
-      "area": "老松林",
-      "layer": "松林迷宫",
       "x": 180,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/cliffside",
       "label": "悬崖边",
-      "area": "老松林",
-      "layer": "地面",
       "x": 200,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/epath1",
       "label": "林间小路",
-      "area": "老松林",
-      "layer": "地面",
       "x": 90,
       "y": 1
     },
     {
       "id": "/custom/oldpine_recovered/room/epath2",
       "label": "小石桥",
-      "area": "老松林",
-      "layer": "地面",
       "x": 91,
       "y": 1
     },
     {
       "id": "/custom/oldpine_recovered/room/epath3",
       "label": "林间小路",
-      "area": "老松林",
-      "layer": "地面",
       "x": 92,
       "y": 1
     },
     {
       "id": "/custom/oldpine_recovered/room/keep1",
       "label": "老松寨秘密入口",
-      "area": "老松林",
-      "layer": "老松寨",
       "x": 220,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/keep2",
       "label": "老松寨",
-      "area": "老松林",
-      "layer": "老松寨",
       "x": 221,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/keep3",
       "label": "老松寨大厅",
-      "area": "老松林",
-      "layer": "老松寨",
       "x": 222,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/lake",
       "label": "水潭",
-      "area": "老松林",
-      "layer": "谷底",
       "x": 240,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/npath1",
       "label": "林间小路",
-      "area": "老松林",
-      "layer": "地面",
       "x": 85,
       "y": -1
     },
     {
       "id": "/custom/oldpine_recovered/room/npath2",
       "label": "林间小路",
-      "area": "老松林",
-      "layer": "地面",
       "x": 87,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/npath3",
       "label": "林间小路",
-      "area": "老松林",
-      "layer": "地面",
       "x": 88,
       "y": 1
     },
     {
       "id": "/custom/oldpine_recovered/room/passage",
       "label": "秘密通道入口",
-      "area": "老松林",
-      "layer": "洞穴",
       "x": 260,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/path3",
       "label": "秘密通道",
-      "area": "老松林",
-      "layer": "洞穴",
       "x": 260,
       "y": -2
     },
     {
       "id": "/custom/oldpine_recovered/room/pine1",
       "label": "松树林",
-      "area": "老松林",
-      "layer": "松林迷宫",
       "x": 200,
       "y": -1
     },
     {
       "id": "/custom/oldpine_recovered/room/pine2",
       "label": "松树林",
-      "area": "老松林",
-      "layer": "松林迷宫",
       "x": 219,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/pine3",
       "label": "松树林",
-      "area": "老松林",
-      "layer": "松林迷宫",
       "x": 280,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/pine4",
       "label": "松树林",
-      "area": "老松林",
-      "layer": "松林迷宫",
       "x": 199,
       "y": -1
     },
     {
       "id": "/custom/oldpine_recovered/room/pine5",
       "label": "松树林",
-      "area": "老松林",
-      "layer": "松林迷宫",
       "x": 199,
       "y": -2
     },
     {
       "id": "/custom/oldpine_recovered/room/pine6",
       "label": "松树林",
-      "area": "老松林",
-      "layer": "松林迷宫",
       "x": 199,
       "y": -3
     },
     {
       "id": "/custom/oldpine_recovered/room/pine7",
       "label": "松树林",
-      "area": "老松林",
-      "layer": "松林迷宫",
       "x": 181,
       "y": -1
     },
     {
       "id": "/custom/oldpine_recovered/room/riverbank1",
       "label": "山涧之中",
-      "area": "老松林",
-      "layer": "谷底",
       "x": 240,
       "y": -1
     },
     {
       "id": "/custom/oldpine_recovered/room/riverbank2",
       "label": "山涧之中",
-      "area": "老松林",
-      "layer": "谷底",
       "x": 240,
       "y": -2
     },
     {
       "id": "/custom/oldpine_recovered/room/secrectpath1",
       "label": "秘密通道",
-      "area": "老松林",
-      "layer": "洞穴",
       "x": 260,
       "y": -1
     },
     {
       "id": "/custom/oldpine_recovered/room/spath1",
       "label": "林间小路",
-      "area": "老松林",
-      "layer": "地面",
       "x": 89,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/spath2",
       "label": "下坡道",
-      "area": "老松林",
-      "layer": "地面",
       "x": 89,
       "y": -1
     },
     {
       "id": "/custom/oldpine_recovered/room/spath3",
       "label": "下坡道",
-      "area": "老松林",
-      "layer": "地面",
       "x": 89,
       "y": -2
     },
     {
       "id": "/custom/oldpine_recovered/room/spath4",
       "label": "下坡道",
-      "area": "老松林",
-      "layer": "地面",
       "x": 89,
       "y": -3
     },
     {
       "id": "/custom/oldpine_recovered/room/stone",
       "label": "大青石上",
-      "area": "老松林",
-      "layer": "洞穴",
       "x": 300,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/tree1",
       "label": "大松树上",
-      "area": "老松林",
-      "layer": "树上",
       "x": 320,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/tree2",
       "label": "大松树上",
-      "area": "老松林",
-      "layer": "树上",
       "x": 340,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/tree3",
       "label": "大松树顶",
-      "area": "老松林",
-      "layer": "树上",
       "x": 360,
       "y": 0
     },
     {
       "id": "/custom/oldpine_recovered/room/waterfall",
       "label": "瀑布前",
-      "area": "老松林",
-      "layer": "谷底",
       "x": 240,
       "y": -3
     },
@@ -433,700 +351,600 @@
     {
       "id": "/custom/zhenwu/room/big_tent",
       "label": "大帳",
-      "area": "振武軍營",
       "x": -1,
       "y": -1
     },
     {
       "id": "/custom/zhenwu/room/camp",
       "label": "軍營",
-      "area": "振武軍營",
       "x": -3,
       "y": 2
     },
     {
       "id": "/custom/zhenwu/room/gate",
       "label": "振武軍營大門",
-      "area": "振武軍營",
       "x": 2,
       "y": 0
     },
     {
       "id": "/custom/zhenwu/room/shed",
       "label": "棚場",
-      "area": "振武軍營",
       "x": -2,
       "y": 2
     },
     {
       "id": "/custom/zhenwu/room/yard02",
       "label": "校場",
-      "area": "振武軍營",
       "x": 0,
       "y": -1
     },
     {
       "id": "/custom/zhenwu/room/yard03",
       "label": "校場",
-      "area": "振武軍營",
       "x": 1,
       "y": -1
     },
     {
       "id": "/custom/zhenwu/room/yard04",
       "label": "校場",
-      "area": "振武軍營",
       "x": -1,
       "y": 0
     },
     {
       "id": "/custom/zhenwu/room/yard05",
       "label": "校場",
-      "area": "振武軍營",
       "x": 0,
       "y": 0
     },
     {
       "id": "/custom/zhenwu/room/yard06",
       "label": "校場",
-      "area": "振武軍營",
       "x": 1,
       "y": 0
     },
     {
       "id": "/custom/zhenwu/room/yard07",
       "label": "校場",
-      "area": "振武軍營",
       "x": -1,
       "y": 1
     },
     {
       "id": "/custom/zhenwu/room/yard08",
       "label": "校場",
-      "area": "振武軍營",
       "x": 0,
       "y": 1
     },
     {
       "id": "/custom/zhenwu/room/yard09",
       "label": "校場",
-      "area": "振武軍營",
       "x": 1,
       "y": 1
     },
     {
       "id": "/custom/zhenwu/room/yard10",
       "label": "校場",
-      "area": "振武軍營",
       "x": -1,
       "y": 2
     },
     {
       "id": "/custom/zhenwu/room/yard11",
       "label": "校場",
-      "area": "振武軍營",
       "x": 0,
       "y": 2
     },
     {
       "id": "/custom/zhenwu/room/yard12",
       "label": "校場",
-      "area": "振武軍營",
       "x": 1,
       "y": 2
     },
     {
       "id": "/custom/zhenwu/room/yard13",
       "label": "校場",
-      "area": "振武軍營",
       "x": -1,
       "y": 3
     },
     {
       "id": "/custom/zhenwu/room/yard14",
       "label": "校場",
-      "area": "振武軍營",
       "x": 0,
       "y": 3
     },
     {
       "id": "/d/lee/creek",
       "label": "小溪",
-      "area": "李家村",
       "x": 5,
       "y": 1
     },
     {
       "id": "/d/lee/entrance_s",
       "label": "村口",
-      "area": "李家村",
       "x": 1,
       "y": 5
     },
     {
       "id": "/d/lee/eroad1",
       "label": "石子路",
-      "area": "李家村",
       "x": 2,
       "y": 0
     },
     {
       "id": "/d/lee/eroad2",
       "label": "石子路",
-      "area": "李家村",
       "x": 3,
       "y": 0
     },
     {
       "id": "/d/lee/farm_w1",
       "label": "農家",
-      "area": "李家村",
       "x": -3,
       "y": 1
     },
     {
       "id": "/d/lee/farm_w2",
       "label": "農家",
-      "area": "李家村",
       "x": -2,
       "y": 1
     },
     {
       "id": "/d/lee/gate_e",
       "label": "村口大門",
-      "area": "李家村",
       "x": 4,
       "y": 0
     },
     {
       "id": "/d/lee/gate_n",
       "label": "村口大門",
-      "area": "李家村",
       "x": 0,
       "y": -4
     },
     {
       "id": "/d/lee/gate_s",
       "label": "村口大門",
-      "area": "李家村",
       "x": 1,
       "y": 4
     },
     {
       "id": "/d/lee/gate_w",
       "label": "村口大門",
-      "area": "李家村",
       "x": -5,
       "y": 0
     },
     {
       "id": "/d/lee/grocery",
       "label": "雜貨鋪",
-      "area": "李家村",
       "x": -1,
       "y": -2
     },
     {
       "id": "/d/lee/herb_shop",
       "label": "藥鋪",
-      "area": "李家村",
       "x": -1,
       "y": -3
     },
     {
       "id": "/d/lee/hunter",
       "label": "木屋",
-      "area": "李家村",
       "x": -3,
       "y": -1
     },
     {
       "id": "/d/lee/inn",
       "label": "小旅店",
-      "area": "李家村",
       "x": 0,
       "y": 3
     },
     {
       "id": "/d/lee/nie_backroom",
       "label": "丹房",
-      "area": "李家村",
       "x": -2,
       "y": -2
     },
     {
       "id": "/d/lee/nroad1",
       "label": "石子路",
-      "area": "李家村",
       "x": 0,
       "y": -3
     },
     {
       "id": "/d/lee/nroad2",
       "label": "石子路",
-      "area": "李家村",
       "x": 0,
       "y": -2
     },
     {
       "id": "/d/lee/nroad3",
       "label": "石子路",
-      "area": "李家村",
       "x": 0,
       "y": -1
     },
     {
       "id": "/d/lee/pawnshop",
       "label": "李記當鋪",
-      "area": "李家村",
       "x": 0,
       "y": 2
     },
     {
       "id": "/d/lee/riverside_n1",
       "label": "溪邊小路",
-      "area": "李家村",
       "x": 5,
       "y": -1
     },
     {
       "id": "/d/lee/riverside_n2",
       "label": "溪邊小路",
-      "area": "李家村",
       "x": 5,
       "y": -2
     },
     {
       "id": "/d/lee/riverside_s",
       "label": "溪邊小路",
-      "area": "李家村",
       "x": 5,
       "y": 0
     },
     {
       "id": "/d/lee/school",
       "label": "私塾",
-      "area": "李家村",
       "x": -1,
       "y": -1
     },
     {
       "id": "/d/lee/shrine",
       "label": "醫館",
-      "area": "李家村",
       "x": -2,
       "y": -1
     },
     {
       "id": "/d/lee/square_c",
       "label": "廣場中央",
-      "area": "李家村",
       "x": 1,
       "y": 1
     },
     {
       "id": "/d/lee/square_e",
       "label": "廣場",
-      "area": "李家村",
       "x": 1,
       "y": 0
     },
     {
       "id": "/d/lee/square_s",
       "label": "廣場",
-      "area": "李家村",
       "x": 0,
       "y": 1
     },
     {
       "id": "/d/lee/square_w",
       "label": "廣場",
-      "area": "李家村",
       "x": 0,
       "y": 0
     },
     {
       "id": "/d/lee/street1",
       "label": "街道",
-      "area": "李家村",
       "x": 1,
       "y": 2
     },
     {
       "id": "/d/lee/street2",
       "label": "街道",
-      "area": "李家村",
       "x": 1,
       "y": 3
     },
     {
       "id": "/d/lee/watermelon_n1",
       "label": "西瓜田",
-      "area": "李家村",
       "x": 2,
       "y": 1
     },
     {
       "id": "/d/lee/watermelon_n2",
       "label": "西瓜田",
-      "area": "李家村",
       "x": 3,
       "y": 1
     },
     {
       "id": "/d/lee/watermelon_n3",
       "label": "西瓜田",
-      "area": "李家村",
       "x": 4,
       "y": 1
     },
     {
       "id": "/d/lee/watermelon_s1",
       "label": "西瓜田",
-      "area": "李家村",
       "x": 2,
       "y": 2
     },
     {
       "id": "/d/lee/watermelon_s2",
       "label": "西瓜田",
-      "area": "李家村",
       "x": 3,
       "y": 2
     },
     {
       "id": "/d/lee/watermelon_s3",
       "label": "西瓜田",
-      "area": "李家村",
       "x": 4,
       "y": 2
     },
     {
       "id": "/d/lee/wroad1",
       "label": "石子路",
-      "area": "李家村",
       "x": -4,
       "y": 0
     },
     {
       "id": "/d/lee/wroad2",
       "label": "石子路",
-      "area": "李家村",
       "x": -3,
       "y": 0
     },
     {
       "id": "/d/lee/wroad3",
       "label": "石子路",
-      "area": "李家村",
       "x": -2,
       "y": 0
     },
     {
       "id": "/d/lee/wroad4",
       "label": "石子路",
-      "area": "李家村",
       "x": -1,
       "y": 0
     },
     {
       "id": "/d/snow/bazar",
       "label": "魚記小鋪",
-      "area": "雪亭鎮",
       "x": 1,
       "y": 5
     },
     {
       "id": "/d/snow/bug_room",
       "label": "小廣場",
-      "area": "雪亭鎮",
       "x": -1,
       "y": 2
     },
     {
       "id": "/d/snow/court",
       "label": "鄉校",
-      "area": "雪亭鎮",
       "x": -4,
       "y": 3
     },
     {
       "id": "/d/snow/ebridge",
-      "label": "木橋",
-      "area": "雪亭鎮",
+      "label": "ebridge",
       "x": 4,
       "y": 1
     },
     {
       "id": "/d/snow/egate",
       "label": "河邊",
-      "area": "雪亭鎮",
       "x": 5,
       "y": 3
     },
     {
       "id": "/d/snow/epath",
       "label": "僻靜小巷",
-      "area": "雪亭鎮",
       "x": 2,
       "y": 3
     },
     {
       "id": "/d/snow/fireplace",
       "label": "大灶內",
-      "area": "雪亭鎮",
       "x": -3,
       "y": 2
     },
     {
       "id": "/d/snow/herb_shop",
       "label": "小藥鋪",
-      "area": "雪亭鎮",
       "x": 2,
       "y": 4
     },
     {
       "id": "/d/snow/inn_hall",
-      "label": "客棧大堂",
-      "area": "雪亭鎮",
+      "label": "inn_hall",
       "x": -2,
       "y": 3
     },
     {
       "id": "/d/snow/inn_kitchen",
       "label": "廚房",
-      "area": "雪亭鎮",
       "x": -3,
       "y": 3
     },
     {
       "id": "/d/snow/inn_staff_room",
-      "label": "客棧人員休息室",
-      "area": "雪亭鎮",
+      "label": "inn_staff_room",
       "x": 210,
       "y": 200
     },
     {
       "id": "/d/snow/kitchen",
       "label": "廚房",
-      "area": "雪亭鎮",
       "x": 210,
       "y": 201
     },
     {
       "id": "/d/snow/lane1",
       "label": "僻靜小巷",
-      "area": "雪亭鎮",
       "x": 3,
       "y": 3
     },
     {
       "id": "/d/snow/lane2",
       "label": "溪邊小路",
-      "area": "雪亭鎮",
       "x": 3,
       "y": 2
     },
     {
       "id": "/d/snow/mill",
       "label": "磨坊",
-      "area": "雪亭鎮",
       "x": 3,
       "y": 1
     },
     {
       "id": "/d/snow/ngate",
       "label": "山路",
-      "area": "雪亭鎮",
       "x": 0,
       "y": -1
     },
     {
       "id": "/d/snow/npath1",
       "label": "小路",
-      "area": "雪亭鎮",
       "x": 1,
       "y": 0
     },
     {
       "id": "/d/snow/npath2",
       "label": "溪邊小路",
-      "area": "雪亭鎮",
       "x": 2,
       "y": 0
     },
     {
       "id": "/d/snow/npath3",
       "label": "溪邊小路",
-      "area": "雪亭鎮",
       "x": 3,
       "y": 1
     },
     {
       "id": "/d/snow/nstreet1",
       "label": "街道",
-      "area": "雪亭鎮",
       "x": 0,
       "y": 1
     },
     {
       "id": "/d/snow/nstreet2",
       "label": "街道",
-      "area": "雪亭鎮",
       "x": 0,
       "y": 0
     },
     {
       "id": "/d/snow/post_office",
       "label": "雪亭驛",
-      "area": "雪亭鎮",
       "x": -1,
       "y": 0
     },
     {
       "id": "/d/snow/river1",
       "label": "溪邊",
-      "area": "雪亭鎮",
       "x": 3,
       "y": 0
     },
     {
       "id": "/d/snow/riverbank",
       "label": "河邊空地",
-      "area": "雪亭鎮",
       "x": 200,
       "y": 200
     },
     {
       "id": "/d/snow/ruin1",
       "label": "破舊大宅",
-      "area": "雪亭鎮",
       "x": 4,
       "y": 3
     },
     {
       "id": "/d/snow/ruin2",
       "label": "破舊大宅正廳",
-      "area": "雪亭鎮",
       "x": 200,
       "y": 201
     },
     {
       "id": "/d/snow/school",
       "label": "私塾",
-      "area": "雪亭鎮",
       "x": -2,
       "y": 5
     },
     {
       "id": "/d/snow/sgate",
       "label": "草棚",
-      "area": "雪亭鎮",
       "x": 0,
       "y": 6
     },
     {
       "id": "/d/snow/small_temple",
-      "label": "土地公廟",
-      "area": "雪亭鎮",
+      "label": "small_temple",
       "x": 1,
       "y": 1
     },
     {
       "id": "/d/snow/smithy",
       "label": "打鐵鋪子",
-      "area": "雪亭鎮",
       "x": 1,
       "y": 4
     },
     {
       "id": "/d/snow/square",
       "label": "廣場中央",
-      "area": "雪亭鎮",
       "x": 0,
       "y": 3
     },
     {
       "id": "/d/snow/square_e",
       "label": "廣場",
-      "area": "雪亭鎮",
       "x": 1,
       "y": 3
     },
     {
       "id": "/d/snow/square_n",
       "label": "廣場",
-      "area": "雪亭鎮",
       "x": 0,
       "y": 2
     },
     {
       "id": "/d/snow/square_s",
       "label": "廣場",
-      "area": "雪亭鎮",
       "x": 0,
       "y": 4
     },
     {
       "id": "/d/snow/square_sw",
       "label": "廣場",
-      "area": "雪亭鎮",
       "x": -1,
       "y": 4
     },
     {
       "id": "/d/snow/square_w",
-      "label": "廣場",
-      "area": "雪亭鎮",
+      "label": "square_w",
       "x": -1,
       "y": 3
     },
     {
       "id": "/d/snow/sstreet1",
       "label": "街道",
-      "area": "雪亭鎮",
       "x": 0,
       "y": 5
     },
     {
       "id": "/d/snow/store",
       "label": "貨棧",
-      "area": "雪亭鎮",
       "x": -1,
       "y": 5
     },
     {
       "id": "/d/snow/tree",
       "label": "榕樹上",
-      "area": "雪亭鎮",
       "x": 0,
       "y": 2
     },
     {
       "id": "/d/snow/wgate",
       "label": "雪亭鎮",
-      "area": "雪亭鎮",
       "x": -5,
       "y": 4
     },
     {
       "id": "/d/snow/wstreet1",
       "label": "街道",
-      "area": "雪亭鎮",
       "x": -2,
       "y": 4
     },
     {
       "id": "/d/snow/wstreet2",
       "label": "街道",
-      "area": "雪亭鎮",
       "x": -3,
       "y": 4
     },
     {
       "id": "/d/snow/wstreet3",
       "label": "街道",
-      "area": "雪亭鎮",
       "x": -4,
       "y": 4
     }
@@ -2759,12 +2577,6 @@
       "resolved": true
     },
     {
-      "from": "/custom/zhenwu/room/yard07",
-      "to": "/custom/zhenwu/room/yard08",
-      "direction": "east",
-      "resolved": true
-    },
-    {
       "from": "/custom/zhenwu/room/yard08",
       "to": "/custom/zhenwu/room/yard05",
       "direction": "north",
@@ -2777,18 +2589,6 @@
       "resolved": true
     },
     {
-      "from": "/custom/zhenwu/room/yard08",
-      "to": "/custom/zhenwu/room/yard07",
-      "direction": "west",
-      "resolved": true
-    },
-    {
-      "from": "/custom/zhenwu/room/yard08",
-      "to": "/custom/zhenwu/room/yard09",
-      "direction": "east",
-      "resolved": true
-    },
-    {
       "from": "/custom/zhenwu/room/yard09",
       "to": "/custom/zhenwu/room/yard06",
       "direction": "north",
@@ -2798,12 +2598,6 @@
       "from": "/custom/zhenwu/room/yard09",
       "to": "/custom/zhenwu/room/yard12",
       "direction": "south",
-      "resolved": true
-    },
-    {
-      "from": "/custom/zhenwu/room/yard09",
-      "to": "/custom/zhenwu/room/yard08",
-      "direction": "west",
       "resolved": true
     },
     {

@@ -20,4 +20,5 @@ LONG
     ]));
     setup();
     replace_program(ROOM);
+    set("map/area", "李家村");
 }

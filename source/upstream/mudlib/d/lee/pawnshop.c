@@ -26,4 +26,5 @@ LONG
     ]));
     setup();
     replace_program(HOCKSHOP);
+    set("map/area", "李家村");
 }

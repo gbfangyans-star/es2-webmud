@@ -12,6 +12,9 @@ LONG
     set("exits", ([
         "north" : __DIR__"yard05",
         "south" : __DIR__"yard11",
+        "west" : __DIR__"yard07",
+        "east" : __DIR__"yard09",
     ]));
+    set("map/area", "振武軍營");
     setup();
 }

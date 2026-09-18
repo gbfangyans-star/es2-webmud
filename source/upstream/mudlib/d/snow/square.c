@@ -30,7 +30,8 @@ LONG
 		"south" : __DIR__"square_s",
 	]));
 
-	setup();
+	set("map/area", "雪亭鎮");
+    setup();
 }
 
 void init()

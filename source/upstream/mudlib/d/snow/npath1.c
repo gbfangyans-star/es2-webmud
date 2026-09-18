@@ -17,6 +17,7 @@ LONG
 		"west" : __DIR__"nstreet2",
 ]));
 
-	setup();
+    setup();
 	replace_program(ROOM);
+	set("map/area", "雪亭鎮");
 }

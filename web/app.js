@@ -29,6 +29,7 @@ let hudKickTimer = null;
 let hudResponseTimer = null;
 let hudPollBuffer = '';
 let hudPollStartedAt = 0;
+let hudFallbackBuffer = '';
 let pendingUserCommands = [];
 let lastReceiveAt = 0;
 let welcomeStyled = false;
@@ -358,13 +359,28 @@ function consumeHudPollOutput(s){
     // — now late — server response landed. These lines must never be shown
     // as visible game text regardless of polling state, so still recognise
     // and swallow a complete BEGIN..END block even when unexpected.
+    //
+    // A single WebSocket message is not guaranteed to carry the whole block —
+    // BEGIN and END can land in separate onmessage calls. Buffer fragments
+    // (bounded, so a block that never closes cannot grow unbounded) until a
+    // complete block is seen, mirroring the in-flight branch below; text with
+    // no BEGIN in play still passes straight through so ordinary output is
+    // never delayed.
     const str=String(s);
-    if(str.includes('@@WEBHUD|BEGIN') && /(?:^|\n)@@WEBHUD\|END(?:\n|$)/.test(cleanText(str))){
-      parseWebHud(str);
-      const kept=stripWebHudLines(str);
-      return {visible:kept.length?kept.join('\n')+'\n':'',done:true};
+    if(!hudFallbackBuffer && !str.includes('@@WEBHUD|BEGIN'))return {visible:str,done:false};
+    hudFallbackBuffer+=str;
+    if(hudFallbackBuffer.length>20000){
+      // Pathological: never saw a closing END. Give up buffering and show
+      // it rather than silently swallowing real game text forever.
+      const flushed=hudFallbackBuffer;hudFallbackBuffer='';
+      return {visible:flushed,done:false};
     }
-    return {visible:str,done:false};
+    const cleanFallback=cleanText(hudFallbackBuffer);
+    if(!/(?:^|\n)@@WEBHUD\|END(?:\n|$)/.test(cleanFallback))return {visible:'',done:false};
+    const whole=hudFallbackBuffer;hudFallbackBuffer='';
+    parseWebHud(whole);
+    const kept=stripWebHudLines(whole);
+    return {visible:kept.length?kept.join('\n')+'\n':'',done:true};
   }
   hudPollBuffer += String(s);
   parseWebHud(hudPollBuffer);
@@ -575,8 +591,22 @@ function setRoomMapMeta(id,area,layer,mode){
   scheduleTopologyCacheSave();
   if(id===currentRoomId&&!runtimeSnapshot)renderLocalMap();
 }
-function mapMeta(id){return roomMapMeta.get(id)||{area:'',layer:'地面',mode:''};}
-function sameMapLayer(a,b){const ma=mapMeta(a),mb=roomMapMeta.get(b);return !mb||!ma.layer||!mb.layer||ma.layer===mb.layer;}
+function mapMeta(id){
+  // The packaged Map DB now carries each room's area/layer baked in at build
+  // time, so this is available the instant a room id is known -- including
+  // during the optimistic (pre-server-confirmation) move -- with no need to
+  // wait for the live WEBHUD round-trip. Live MAPMETA data, once it arrives,
+  // still takes precedence (kept as the authoritative/most current source).
+  const live=roomMapMeta.get(id);
+  const node=nodeById.get(id);
+  return {
+    area:(live&&live.area)||(node&&node.area)||'',
+    layer:(live&&live.layer)||(node&&node.layer)||'地面',
+    mode:(live&&live.mode)||''
+  };
+}
+function sameMapLayer(a,b){const ma=mapMeta(a),mb=mapMeta(b);return !ma.layer||!mb.layer||ma.layer===mb.layer;}
+function sameMapArea(a,b){const ma=mapMeta(a);if(!ma.area)return true;const mb=mapMeta(b);return !mb.area?false:ma.area===mb.area;}
 
 function beginRuntimeRoomSnapshot(id,label){
   const rawId=String(id||'').replace(/#\d+$/,'');
@@ -714,8 +744,21 @@ function renderLocalMap(){
   if(layerHud)layerHud.textContent=`MAP V8 唯讀全圖 ｜ ${meta.area?meta.area+' ｜ ':''}${meta.layer||'地面'}`;
   const visible=new Map();
   for(const [id,p] of stableWorldPos){
-    if(!nodeById.has(id)||!sameMapLayer(currentRoomId,id))continue;
+    if(!nodeById.has(id)||!sameMapLayer(currentRoomId,id)||!sameMapArea(currentRoomId,id))continue;
     const dx=p[0]-center[0],dy=p[1]-center[1];if(Math.abs(dx)<=radius&&Math.abs(dy)<=radius)visible.set(id,[dx,dy]);
+  }
+  // Cross-area exits (e.g. the snow-town gate that leads into the Zhenwu camp)
+  // don't carry a meaningful shared x/y with the current area -- each area is
+  // laid out independently -- so the neighbour room is placed one grid step in
+  // the exit's own direction instead of at its stored coordinates, and only
+  // that single adjacent room is pulled in, not the rest of the other area.
+  const boundarySet=new Set();
+  for(const [id,p] of [...visible]){
+    for(const e of adjacency.get(id)||[]){
+      if(!vec[e.direction]||!sameMapLayer(currentRoomId,e.to)||sameMapArea(currentRoomId,e.to))continue;
+      if(!visible.has(e.to)){const v=vec[e.direction];visible.set(e.to,[p[0]+v[0],p[1]+v[1]]);}
+      boundarySet.add(id);boundarySet.add(e.to);
+    }
   }
   const NS='http://www.w3.org/2000/svg',W=360,H=314,cx=W/2,cy=H/2,sx=54,sy=46;
   const svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('class','topology-svg');svg.style.transform=`scale(${mapZoom})`;
@@ -728,7 +771,7 @@ function renderLocalMap(){
   }
   for(const [id] of visible){
     const [x,y]=xy(id),raw=nodeById.get(id)?.label||'',label=twoCharMapLabel(raw),g=document.createElementNS(NS,'g');
-    const cls=id===currentRoomId?'map-node-current':mapNodeClass(raw);g.setAttribute('class',`map-node ${cls}`);
+    const cls=id===currentRoomId?'map-node-current':(boundarySet.has(id)?'map-node-boundary':mapNodeClass(raw));g.setAttribute('class',`map-node ${cls}`);
     // Two-character labels live inside a fixed-size room tile. This prevents labels
     // from colliding with neighbouring rooms and makes every visible room readable.
     const tileW=34,tileH=22;
@@ -776,6 +819,7 @@ function connect(){
     hudPollInFlight=false;
     hudPollBuffer='';
     hudPollStartedAt=0;
+    hudFallbackBuffer='';
     pendingUserCommands=[];
     mapRefreshPending=false;hudBootstrapInFlight=false;hudBootstrapAttempts=0;
     retry=0;conn.textContent='LIVE';sessionRecorder.markTransportOpen();

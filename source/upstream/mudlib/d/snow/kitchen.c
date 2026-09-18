@@ -16,7 +16,8 @@ LONG
 	set("objects", ([
 		"/obj/food/dumpling" : 2
 	]) );
-	setup();
+	set("map/area", "雪亭鎮");
+    setup();
 }
 
 void init()

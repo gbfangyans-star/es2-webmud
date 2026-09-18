@@ -22,4 +22,5 @@ LONG
     create_door("south", "柴門", "north", DOOR_CLOSED);
     setup();
     replace_program(ROOM);
+    set("map/area", "李家村");
 }

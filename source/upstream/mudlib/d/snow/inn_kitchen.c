@@ -22,7 +22,8 @@ LONG
 		"east" : __DIR__"inn_hall",
 	]));
 
-	setup();
+	set("map/area", "雪亭鎮");
+    setup();
 	create_door("east", "木板門", "west", 0);
 }
 

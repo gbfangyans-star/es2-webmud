@@ -23,6 +23,7 @@ LONG
   set("outdoors", "snow");
   set("no_fight", 1);			// prevent pk when post
 
-  setup();
+  set("map/area", "雪亭鎮");
+    setup();
   load_object("/daemon/board/bug_board");
 }

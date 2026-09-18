@@ -28,7 +28,8 @@ LONG
 ]));
 	set("outdoors", "snow");
 
-	setup();
+	set("map/area", "雪亭鎮");
+    setup();
 }
 
 void init()

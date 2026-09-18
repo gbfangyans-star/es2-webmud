@@ -18,5 +18,6 @@ LONG
     set("objects", ([
         "/custom/zhenwu/npc/lu_xinien" : 1,
     ]));
+    set("map/area", "振武軍營");
     setup();
 }

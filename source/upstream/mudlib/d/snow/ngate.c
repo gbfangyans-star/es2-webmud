@@ -25,6 +25,7 @@ LONG
 	__DIR__"npc/lieutenant": 1,
   ]) );
 
-  setup();
+    setup();
   replace_program(ROOM);
+  set("map/area", "雪亭鎮");
 }

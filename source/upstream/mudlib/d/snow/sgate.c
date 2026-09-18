@@ -25,5 +25,6 @@ LONG
 	"west" : "/custom/zhenwu/room/gate",
   ]));
 
-  setup();
+  set("map/area", "雪亭鎮");
+    setup();
 }

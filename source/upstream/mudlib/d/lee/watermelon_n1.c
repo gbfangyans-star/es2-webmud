@@ -20,6 +20,7 @@ LONG
     ]));
     set("detail/西瓜", "圓滾滾的大西瓜，或許可以趁農夫不注意的時候摘（pick）幾個？");
     set("detail/watermelon", "圓滾滾的大西瓜，或許可以趁農夫不注意的時候摘（pick）幾個？");
+    set("map/area", "李家村");
     setup();
 }
 

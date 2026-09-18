@@ -15,5 +15,6 @@ LONG
         "west" : __DIR__"yard10",
         "east" : __DIR__"yard12",
     ]));
+    set("map/area", "振武軍營");
     setup();
 }

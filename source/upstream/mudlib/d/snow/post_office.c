@@ -20,6 +20,7 @@ LONG
     set("post_office", 1);    // mailbox checks this flag.
     set("no_fight", 1);
 
+    set("map/area", "雪亭鎮");
     setup();
 }
 

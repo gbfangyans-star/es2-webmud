@@ -30,7 +30,8 @@ LONG
 		"east" : __DIR__"egate",
 ]));
 
-	setup();
+	set("map/area", "雪亭鎮");
+    setup();
 }
 
 void init()

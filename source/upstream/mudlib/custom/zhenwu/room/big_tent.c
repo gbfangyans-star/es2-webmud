@@ -14,5 +14,6 @@ LONG
     set("objects", ([
         "/custom/zhenwu/npc/mee_pei" : 1,
     ]));
+    set("map/area", "振武軍營");
     setup();
 }

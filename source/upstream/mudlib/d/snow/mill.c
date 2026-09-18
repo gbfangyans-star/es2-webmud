@@ -18,6 +18,7 @@ LONG
 		__DIR__"npc/miller": 1
 	]));
 
-	setup();
+    setup();
 	replace_program(ROOM);
+	set("map/area", "雪亭鎮");
 }
