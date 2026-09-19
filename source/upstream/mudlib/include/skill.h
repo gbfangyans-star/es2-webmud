@@ -7,5 +7,6 @@
 varargs int query_skill(string, int);
 string skill_mapped(string);
 varargs void improve_skill(string skill, int amount);
+int query_learn(string);
 
 #endif

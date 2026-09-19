@@ -260,13 +260,36 @@ function terminalSafe(s){
     .replace(/\x1b[78]/g,'')
     .replace(/\x1b\[[0-?]*[ -\/]*[@-~]/g,m=>m.endsWith('m')?m:'');
 }
+// A "bar run" is a solid-colored chunk of nothing but ■/□/space -- the raw
+// material the score/hp status bars are built from (tribar_graph() in
+// cmds/usr/score.c). Rendered as ordinary text they inherit the terminal's
+// own (proportional, non-square) font metrics, so they come out thin and
+// undersized next to the reference client's blocky bars. Instead each unit
+// becomes its own fixed-size square cell: ■ / a colored space becomes a
+// solid-filled cell, □ becomes a hollow (border-only) cell so the
+// filled/unfilled distinction the original glyphs conveyed still reads.
+function isBarRun(text,fg,bg){ return (fg||bg) && /^[■□ ]+$/.test(text); }
+function barCells(text,fg,bg){
+  let html='';
+  for(const ch of text){
+    html+= ch==='□'
+      ? `<span class="stat-cell stat-cell-empty" style="border-color:${fg||'currentColor'}"></span>`
+      : `<span class="stat-cell" style="background:${bg||fg}"></span>`;
+  }
+  return html;
+}
 function ansi(s){
   s=terminalSafe(s);
-  let html='',last=0,open=false,bold=false,underline=false,fg='',bg='';
+  let html='',last=0,bold=false,underline=false,fg='',bg='';
   const re=/\x1b\[([0-9;]*)m/g;let m;
-  const close=()=>{if(open){html+='</span>';open=false;}};
+  const emit=(text,fg,bg,bold,underline)=>{
+    if(!text)return;
+    if(isBarRun(text,fg,bg)){ html+=barCells(text,fg,bg); return; }
+    const st=(bold?'font-weight:700;':'')+(underline?'text-decoration:underline;':'')+(fg?`color:${fg};`:'')+(bg?`background:${bg};`:'');
+    html+= st? `<span style="${st}">${esc(text)}</span>` : esc(text);
+  };
   while((m=re.exec(s))){
-    html+=esc(s.slice(last,m.index));close();
+    emit(s.slice(last,m.index),fg,bg,bold,underline);
     const cs=(m[1]||'0').split(';').filter(x=>x!=='').map(Number);if(!cs.length)cs.push(0);
     for(let i=0;i<cs.length;i++){
       const c=cs[i];
@@ -281,11 +304,10 @@ function ansi(s){
       else if(bgColors[c])bg=bgColors[c];
       else if((c===38||c===48) && cs[i+1]===5 && Number.isFinite(cs[i+2])){const col=xterm256(cs[i+2]);if(c===38)fg=col;else bg=col;i+=2;}
     }
-    const st=(bold?'font-weight:700;':'')+(underline?'text-decoration:underline;':'')+(fg?`color:${fg};`:'')+(bg?`background:${bg};`:'');
-    if(st){html+=`<span style="${st}">`;open=true;}
     last=re.lastIndex;
   }
-  html+=esc(s.slice(last));close();return html;
+  emit(s.slice(last),fg,bg,bold,underline);
+  return html;
 }
 function cleanText(s){return terminalSafe(String(s)).replace(/\x1b\[[0-9;]*m/g,'').replace(/\r/g,'');}
 

@@ -169,13 +169,26 @@ int uses_restored_skill_threshold(string skill)
     if( skill == "unarmed" ) return 1;
     if( skill == "parry" ) return 1;
     if( skill == "dodge" ) return 1;
-    if( skill == "blade" ) return 1;
-    if( skill == "twohanded blade" ) return 1;
-    if( skill == "secondhand blade" ) return 1;
     if( skill == "force" ) return 1;
     if( skill == "tiger-steps" ) return 1;
     if( skill == "tiger-blade" ) return 1;
     if( skill == "sanmeendo" ) return 1;
+
+    // Every base weapon-strike skill uses the same threshold progression
+    // as blade -- previously only "blade" (and its twohanded/secondhand
+    // forms) was listed here, so improve_skill_exact() could pile up
+    // "learned" progress for axe/sword/pike/staff/etc. that never actually
+    // converted into a skill level.
+    if( skill == "axe" || skill == "twohanded axe" || skill == "secondhand axe" ) return 1;
+    if( skill == "sword" || skill == "twohanded sword" || skill == "secondhand sword" ) return 1;
+    if( skill == "pike" || skill == "twohanded pike" || skill == "secondhand pike" ) return 1;
+    if( skill == "staff" || skill == "twohanded staff" || skill == "secondhand staff" ) return 1;
+    if( skill == "blade" || skill == "twohanded blade" || skill == "secondhand blade" ) return 1;
+    if( skill == "blunt" || skill == "twohanded blunt" || skill == "secondhand blunt" ) return 1;
+    if( skill == "dagger" || skill == "secondhand dagger" ) return 1;
+    if( skill == "needle" || skill == "secondhand needle" ) return 1;
+    if( skill == "whip" ) return 1;
+
     return 0;
 }
 

@@ -227,6 +227,9 @@ absorb (int ability, int strength, object from)
         absorbed = SKILL_D(sk)->parry_using(
             this_object(), ability, strength, from);
         if( absorbed > 0 ) {
+            // 重擋(heavy_parry): whenever a normal parry lands, a soldier who
+            // knows this technique turns it into a much harder block.
+            if( query_learn("heavy_parry") ) absorbed *= 5;
             if( from->is_character() ) COMBAT_D->restored_parry_gain(this_object(), from);
             else if( environment(from) && environment(from)->is_character() )
                 COMBAT_D->restored_parry_gain(this_object(), environment(from));
@@ -255,10 +258,19 @@ inflict_damage (int strength, object victim)
 
     // Convert strength to damage. If we are using force, use force formula.
     // Otherwise use default.
+    // NOTE: skill_mapped("force") always returns a truthy string ("force"
+    // itself, when nothing is mapped) -- it is not a valid "does this
+    // character actually have force trained" test. Gating on query_skill()
+    // as well is what actually restricts this branch to characters who
+    // have force trained; without it every unarmed hit, from every
+    // character, silently fell into this branch and always computed 0
+    // damage (no /daemon/force.c skill exists to answer inflict_damage()),
+    // which also meant unarmed hits never registered as amount > 0 and so
+    // never triggered restored_hit_gain()'s "unarmed" experience gain.
     force_sk = skill_mapped("force");
 
     // If using force, call force skill to inflict damage
-    if( force_sk ) {
+    if( force_sk && query_skill("force") > 0 ) {
 	damage = SKILL_D(force_sk)->inflict_damage(strength, victim);
 
 	// Call default force skill in case the special force doesn't define

@@ -75,7 +75,13 @@ do_berserk(object me)
 	return;
     }
 
-    message_vision(HIR "\n$N一聲怒吼，大喊：「殺～～～～～！」\n\n" NOR,
+    // The leading blank line must stay OUTSIDE the color span: the web
+    // client's renderer splits each message on "\n" and colors each
+    // resulting piece independently, so a color code followed immediately
+    // by "\n" opens/closes its span around an empty line and the visible
+    // text on the next line is left uncolored. Put the escape codes right
+    // against the text itself instead.
+    message_vision("\n" HIR "$N一聲怒吼「殺～～～～～」，隨即發起瘋狂的進攻！" NOR "\n\n",
         me);
 
 
@@ -107,6 +113,10 @@ do_berserk(object me)
 	    if( --max_attack < 1 ) break;
 	}
     }
+
+    // Blank line to visually separate berserk's own burst of attacks from
+    // whatever normal combat narration follows next.
+    message_vision("\n", me);
 
     me->add_temp("apply/attack", - skill/4);
     me->add_temp("apply/strength", - power);

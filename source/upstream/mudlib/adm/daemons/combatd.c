@@ -206,7 +206,12 @@ private void restored_hit_gain(object me, object victim, string skill)
 
     if( skill == "tiger-blade" ) base = "twohanded blade";
     else if( skill == "sanmeendo" ) base = "blade";
-    else if( skill == "blade" || skill == "twohanded blade" || skill == "secondhand blade" ) base = skill;
+    // Every other weapon skill (axe, sword, pike, staff, blade, their
+    // twohanded/secondhand variants, dagger, needle, blunt, whip, ...)
+    // gains its own experience directly -- this used to be a narrow
+    // blade-only allowlist, so any other weapon skill got hits registered
+    // but no learned progress at all.
+    else base = skill;
 
     if( stringp(base) ) {
         exp = (random(me->query_attr("int")) + 1) * ib;
@@ -389,7 +394,7 @@ fight (object me, object victim, string skill, mapping action, object weapon)
         }
         if( weapon ) msg = replace_string(msg, "$w", weapon->name());
 
-        message_vision( msg, me, victim);
+        message_vision( msg, me, victim, 1);
         if( damage > 0 ) report_status(victim);
     }
 
