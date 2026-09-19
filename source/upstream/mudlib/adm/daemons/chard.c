@@ -65,28 +65,30 @@ void setup_char (object ob) {
         ob->delete_stat ("sen");
         ob->set_stat_regenerate ("gin", TYPE_HEALTH);
         ob->set_stat_regenerate ("kee", TYPE_HEALTH);
-        ob->set_stat_regenerate ("food", TYPE_WASTING);
-        ob->set_stat_regenerate ("water", TYPE_WASTING);
         break;
     case "living":
     default:
         ob->set_stat_regenerate ("gin", TYPE_HEALTH);
         ob->set_stat_regenerate ("kee", TYPE_HEALTH);
         ob->set_stat_regenerate ("sen", TYPE_HEALTH);
-        ob->set_stat_regenerate ("food", TYPE_WASTING);
-        ob->set_stat_regenerate ("water", TYPE_WASTING);
         break;
-    }
-
-    // wizards are immortal, no need for food and water.
-    if (wizardp(ob)) {
-        ob->set_stat_regenerate ("food", TYPE_STATIC);
-        ob->set_stat_regenerate ("water", TYPE_STATIC);
     }
 
     // delegate to race/class daemon for further setup.
     RACE_D(ob->query_race())->setup (ob);
     CLASS_D(ob->query_class())->setup (ob);
+
+    // Food/water's maximums are only established just above, by the race
+    // daemon (e.g. humanoid.c's setup()) -- set_stat_regenerate() silently
+    // no-ops when a stat has no maximum yet, so registering food/water here
+    // (previously done above, before the race daemon ran) could never
+    // actually take effect, and they never wasted away over time. Ghosts
+    // delete_stat() food/water above, which leaves their maximum at 0 too,
+    // so this remains a safe no-op for them without needing a special case.
+    // Wizards are immortal and don't need to eat or drink.
+    ob->set_stat_regenerate ("food", wizardp(ob) ? TYPE_STATIC : TYPE_WASTING);
+    ob->set_stat_regenerate ("water", wizardp(ob) ? TYPE_STATIC : TYPE_WASTING);
+
     ob->add_path ("/daemon/race/" + ob->query_race() + "/");
     ob->add_path ("/daemon/class/" + ob->query_class() + "/");
 }

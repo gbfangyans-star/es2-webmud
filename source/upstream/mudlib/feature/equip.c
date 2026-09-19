@@ -244,9 +244,13 @@ inflict_damage(int strength, object victim)
     if( bonus > max_bonus ) bonus = max_bonus;
 
 
-    if( bonus < max_bonus
-    &&	owner->query_learn("powerblow")
-    &&	random(max_bonus - owner->query_skill("powerblow")) < bonus )
+    // Trigger chance is a flat function of skill alone (10% at 0, +1% per 5
+    // skill, capping at 50% at the skill ceiling of 200) -- deliberately
+    // decoupled from `bonus`/`max_bonus` so neither weapon choice nor a
+    // player's own strength/kee (and anything that might boost them, e.g.
+    // berserk) can push the trigger rate past this ceiling.
+    if( owner->query_learn("powerblow")
+    &&	random(100) < 10 + owner->query_skill("powerblow")/5 )
     {
         bonus = max_bonus;
         damage = dam->multipler * dam->range;
