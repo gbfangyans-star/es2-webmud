@@ -103,7 +103,7 @@ private void heart_beat() {
         last_age_set = time();
     add ("time_aged", time() - last_age_set);
     last_age_set = time();
-    if ((int)query("time_aged") >= 86400) {
+    if ((int)query("time_aged") >= 43200) {
         add("age", 1);
         delete("time_aged");
     }

@@ -12,7 +12,16 @@ author: Annihilator <taedlar@gmail.com>
 #define WIZ_PATH ({"/cmds/imm/", "/cmds/usr/", "/cmds/std/", "/cmds/wiz/"})
 #define APR_PATH ({"/cmds/imm/", "/cmds/usr/", "/cmds/std/", "/cmds/wiz/"})
 #define IMM_PATH ({"/cmds/imm/", "/cmds/usr/", "/cmds/std/"})
-#define PLR_PATH ({"/cmds/std/", "/cmds/usr/"})
+// The 7 race-specific active abilities (resurge/radiate/gnaw/breathe/hide/
+// replete/hoof) each self-check the caller's race in main() and reject a
+// mismatch, so it's safe for every player's path to include all 7 --
+// only the matching race's file ever actually does anything for a given
+// player. Added here (this session) to make these commands reachable at
+// all; the files already existed but were never wired into any path.
+#define PLR_PATH ({"/cmds/std/", "/cmds/usr/", \
+	"/daemon/race/human/", "/daemon/race/avatar/", "/daemon/race/blackteeth/", \
+	"/daemon/race/yenhold/", "/daemon/race/jiaojao/", "/daemon/race/woochan/", \
+	"/daemon/race/dingling/"})
 #define NPC_PATH ({"/cmds/std/"})
 
 // These are command objects that will also be called in those
