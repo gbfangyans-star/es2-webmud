@@ -515,7 +515,21 @@ function print(s,system=false){
     shown=consumeHudPollOutput(shown).visible;
   }
   if(prefix)term.insertAdjacentHTML('beforeend',prefix);
-  if(shown)term.insertAdjacentHTML('beforeend',`<span class="${system?'sys':''}">${renderChunk(shown)}</span>`);
+  let rendered=shown?renderChunk(shown):'';
+  if(!system&&pendingTrimLeadingBlank){
+    // Server output can arrive split across several WebSocket frames -- e.g.
+    // a stray driver prompt fragment renders (after compactGameOutput strips
+    // the literal "&gt;") as pure "<br>"s with no real text of its own, in a
+    // frame all by itself before the actual response text. Strip leading
+    // line breaks from the RENDERED html (so this works regardless of which
+    // frame the server happened to split the leading blank line into), and
+    // suppress a frame that turns out to be nothing but those breaks rather
+    // than inserting a visible gap, staying armed for the next frame.
+    const strippedRendered=rendered.replace(/^(?:<br>)+/,'');
+    if(strippedRendered.trim()){rendered=strippedRendered;pendingTrimLeadingBlank=false;}
+    else rendered='';
+  }
+  if(rendered)term.insertAdjacentHTML('beforeend',`<span class="${system?'sys':''}">${rendered}</span>`);
   if(stick)term.scrollTop=term.scrollHeight;
 }
 
@@ -759,11 +773,15 @@ function renderLocalMap(){
   const layerHud=document.querySelector('#mapLayerHud'),trans=document.querySelector('#mapTransitions');
   if(!currentRoomId||!nodeById.has(currentRoomId)){
     const msg=lastMissingMapRoomId?`固定地圖未收錄此房：${esc(lastMissingMapRoomId)}`:'正在定位所在房間…';
-    el.innerHTML=`<div class="map-empty">${msg}</div>`;if(trans)trans.hidden=true;return;
+    el.innerHTML=`<div class="map-empty">${msg}</div>`;if(trans)trans.hidden=true;
+    const areaTitle=document.querySelector('#mapAreaTitle');if(areaTitle)areaTitle.textContent='';
+    return;
   }
   exploredRooms.add(currentRoomId);
   const meta=mapMeta(currentRoomId),center=stableWorldPos.get(currentRoomId)||[0,0],radius=3;
   if(layerHud)layerHud.textContent=`MAP V8 唯讀全圖 ｜ ${meta.area?meta.area+' ｜ ':''}${meta.layer||'地面'}`;
+  const areaTitle=document.querySelector('#mapAreaTitle');
+  if(areaTitle)areaTitle.textContent=meta.area?` - ${meta.area}`:'';
   const visible=new Map();
   for(const [id,p] of stableWorldPos){
     if(!nodeById.has(id)||!sameMapLayer(currentRoomId,id)||!sameMapArea(currentRoomId,id))continue;
@@ -861,7 +879,28 @@ function connect(){
   ws.onclose=e=>{stopHudPolling();if(mapBootstrapRetryTimer){clearTimeout(mapBootstrapRetryTimer);mapBootstrapRetryTimer=null;}pendingUserCommands=[];mapRefreshPending=false;hudBootstrapInFlight=false;hudBootstrapAttempts=0;currentRoomId=null;runtimeSnapshot=null;tail='';sessionRecorder.finishResponse();sessionRecorder.markTransportClose(e?.code??null,e?.reason||'');sessionRecorder.markReconnect();conn.textContent='DISCONNECTED';if(!started)return;const wait=Math.min(10000,1000*2**Math.min(retry++,3));print(`\n[${wait/1000} 秒後重新連線]\n`,true);setTimeout(connect,wait);};
   ws.onerror=()=>conn.textContent='ERROR';
 }
+// Echo the player's own command into the transcript as its own line, the
+// way a real terminal locally echoes what you typed -- otherwise the log
+// jumps straight from one room's text to the next with no record of what
+// command caused the move. Skipped for password entry so a plaintext
+// password never lands in the visible scrollback.
+//
+// Many server responses are themselves written with a leading blank line
+// (e.g. "\n你再也喝不下東西了。\n"), meant to separate them from whatever
+// came before when there was no echoed command line acting as that
+// separator. Now that the echo line already marks the boundary, that
+// leading blank line just leaves a gap between "> command" and its own
+// response, so the next non-system print() after an echo has it trimmed.
+let pendingTrimLeadingBlank=false;
+function echoCommand(c){
+  if(!c)return;
+  const stick=shouldStick();
+  term.insertAdjacentHTML('beforeend',`<span class="cmd">&gt; ${esc(c)}</span><br>`);
+  pendingTrimLeadingBlank=true;
+  if(stick)term.scrollTop=term.scrollHeight;
+}
 function transmitUserCommand(c,sensitive=false){
+  if(!sensitive)echoCommand(c);
   const op=c.split(/\s+/)[0];
   if(!sensitive && /^(?:n|s|e|w|ne|nw|se|sw|u|d|north|south|east|west|northeast|northwest|southeast|southwest|up|down|go|enter|out)$/i.test(op)){
     // Catworld-style feel: move the marker immediately using already-known topology;
@@ -915,13 +954,14 @@ document.querySelector('#enterGame')?.addEventListener('click',async()=>{
 });
 document.querySelector('#form')?.addEventListener('submit',e=>{e.preventDefault();send(input.value);input.value='';input.focus();});
 
-// Command focus hot-zone: the whole main console (the large transcript area plus
-// the command bar background) acts as an easy target for returning to command
-// entry after the player has clicked the map, status panel, chat, etc.  Real
-// controls keep their own click behaviour; only non-interactive console space
-// redirects focus to #command.
-const consolePanel=document.querySelector('.console-panel');
-consolePanel?.addEventListener('click',e=>{
+// Command focus hot-zone: clicking anywhere in the game window -- the nav
+// rail, the console, the map/status/quick-action sidebar, the chat panel --
+// returns focus to #command, so the player never has to click back into the
+// input box just to keep typing. Real controls (buttons, links, other inputs,
+// the settings dialog which lives outside .game-shell) keep their own click
+// behaviour; only non-interactive space redirects focus.
+const commandHotZone=document.querySelector('.game-shell');
+commandHotZone?.addEventListener('click',e=>{
   if(!input||input.disabled)return;
   const target=e.target instanceof Element?e.target:null;
   if(!target)return;

@@ -20,26 +20,45 @@ void input_prompt (mixed func, int flags, mixed data, mixed arg1) {
         string prompt = data["prompt"] || "你的選擇：";
         int pos = 1;
 
+        /* Binary yes/no and male/female prompts collapse onto the same line
+         * as the question itself -- "...嗎？(Yes / No) " -- instead of the
+         * numbered-menu block below, which is reserved for lists with more
+         * than two options (race selection etc). Checked first so the
+         * generic "\n"+prompt+"\n" write below never fires for these. */
+        if (sizeof(data["options"]) == 2
+        &&  data["options"][0] == "Y) 是"
+        &&  data["options"][1] == "N) 否") {
+            write ("\n" + prompt + "(Yes / No) ");
+            return;
+        }
+        if (sizeof(data["options"]) == 2
+        &&  data["options"][0] == "M) 男性"
+        &&  data["options"][1] == "F) 女性") {
+            write ("\n" + prompt + "(Male / Female) ");
+            return;
+        }
+
         /* Browser/telnet compatible numbered menu. No VT100 cursor movement is
          * required: enter 1, 2, 3... and press Enter. The callback still uses
          * cursor_translate(), so canonical option values and rules are unchanged. */
         write ("\n" + prompt + "\n");
-
-        /* Binary yes/no prompts are deliberately keyboard-first in WebMUD:
-         * Y = yes, N = no. Other canonical option lists remain numbered. */
-        if (sizeof(data["options"]) == 2
-        &&  data["options"][0] == "Y) 是"
-        &&  data["options"][1] == "N) 否") {
-            write ("Y. 是\nN. 否\n請輸入 Y 或 N: ");
-            return;
-        }
 
         foreach (string opt in data["options"]) {
             string label = opt;
             if (opt == "human")
                 label = "人類 (human)";
             else if (opt == "avatar")
-                label = "化身神 (avatar)";
+                label = "人類族 (avatar)";
+            else if (opt == "blackteeth")
+                label = "黑齒 (Blackteeth)";
+            else if (opt == "yenhold")
+                label = "厭火 (Yenhold)";
+            else if (opt == "jiaojao")
+                label = "焦僥 (Jiaojao)";
+            else if (opt == "woochan")
+                label = "無腸 (Woochan)";
+            else if (opt == "dingling")
+                label = "釘靈 (Dingling)";
             else if (opt.len() > 2 && opt[1] == ')') {
                 if (opt.len() > 3 && opt[2] == ' ')
                     label = opt[3..];

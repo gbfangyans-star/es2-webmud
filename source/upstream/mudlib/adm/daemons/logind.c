@@ -205,7 +205,7 @@ private void get_id (string arg, object ob) {
     }
 
     mapping opts = ([
-        "prompt": "使用 " + arg + " 這個代號將會創造一個新的人物﹐您確定嗎? ",
+        "prompt": "使用 " + arg + " 這個代號將會創造一個新的人物﹐您確定嗎？",
         "options": ({ "Y) 是", "N) 否" }),
         "cursor": 1
     ]);
@@ -508,8 +508,8 @@ private void get_race (string race, mixed opts, object ob) {
     ob->add ("karma", kar);
 
     mapping gender_opts = ([
-        "prompt": "您要扮演的哪種性別(外觀)的角色? ",
-        "options": ({ "F) 女性", "M) 男性", "N) 無法判斷" }),
+        "prompt": "您要扮演的哪種性別的角色? ",
+        "options": ({ "M) 男性", "F) 女性" }),
         "cursor": 0
     ]);
     input_to ("get_gender", gender_opts, ob, race);
@@ -526,9 +526,6 @@ private void get_gender (string gender, mapping opts, object ob, string race) {
             break;
         case "F": case "f":
             gender = "female";
-            break;
-        case "N": case "n":
-            gender = "unknown-gender";
             break;
         default:
             input_to ("get_gender", opts, ob, race);
