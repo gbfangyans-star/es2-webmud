@@ -4,7 +4,7 @@ inherit F_ARMOR;
 
 void create()
 {
-    set_name("精鋼戰甲", ({ "steel armor", "armor" }));
+    set_name("精鋼戰甲", ({ "steel armor", "steel", "armor" }));
     set_weight(12000);
     setup_armor();
 

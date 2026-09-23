@@ -160,7 +160,7 @@ function bindCommandButtons(root){
     // innerHTML frequently, so listen on the persistent panel instead of
     // relying on handlers attached to transient button nodes.
     send(command);
-    if(input){input.value='';input.focus();}
+    if(input){input.value='';repeatArmed=false;input.focus();}
   });
 }
 function bindContextActions(){bindCommandButtons(contextBody);}
@@ -315,7 +315,14 @@ const passwordPrompts=['請輸入密碼:','請設定您的密碼:','請重設您
 function updateInputMode(chunk){
   tail=(tail+cleanText(chunk)).slice(-700);
   const secret=passwordPrompts.some(x=>tail.includes(x));
+  const wasSecret=input.type==='password';
   input.type=secret?'password':'text';input.autocomplete=secret?'current-password':'off';
+  // The "keep last command in the box" feature (see #form submit) leaves
+  // whatever was just typed sitting in the field -- fine between ordinary
+  // commands, but if the very next prompt turns out to be a password, that
+  // leftover text (e.g. the username just entered) must not sit there
+  // pre-filled/selected in the masked field.
+  if(secret&&!wasSecret){input.value='';repeatArmed=false;}
   const mode=document.querySelector('#inputMode');if(mode){mode.textContent=secret?'密碼輸入':'指令輸入';mode.classList.toggle('secret',secret);}
 }
 
@@ -952,7 +959,44 @@ document.querySelector('#enterGame')?.addEventListener('click',async()=>{
   started=true;landing.classList.add('leaving');setTimeout(()=>{landing.hidden=true;gameApp.hidden=false;input.focus();},180);
   await loadGraph();connect();
 });
-document.querySelector('#form')?.addEventListener('submit',e=>{e.preventDefault();send(input.value);input.value='';input.focus();});
+// Set once the box holds a "kept" command (see #form submit below) so a bare
+// Enter repeats it. A plain input.select() only survives until the next
+// click, because a mouse click on a focused field always collapses the
+// selection to the click point first -- so typing right after clicking back
+// into the box would insert into the kept text instead of replacing it
+// (e.g. kept "w;e" + click + type "score" => "w;escore"). The mousedown
+// handler below intercepts that click while armed and re-selects everything
+// instead of letting the browser place a caret.
+let repeatArmed=false;
+input?.addEventListener('mousedown',e=>{
+  if(repeatArmed){e.preventDefault();input.focus();input.select();}
+});
+input?.addEventListener('input',()=>{repeatArmed=false;});
+document.querySelector('#form')?.addEventListener('submit',e=>{
+  e.preventDefault();
+  const raw=input.value;
+  if(input.type==='password'){
+    // Password entry never stays in the box or gets echoed/repeated.
+    send(raw);input.value='';repeatArmed=false;input.focus();return;
+  }
+  // ';' chains several commands from one line, e.g. "e;e;e;n" walks east
+  // three times then north. No inter-command delay -- fired back to back.
+  let parts=raw.includes(';')?raw.split(';').map(s=>s.trim()).filter(s=>s.length):[raw];
+  if(!parts.length)parts.push('');
+  // Cap at 9 actions per submit -- roughly what a tick should hold -- so a
+  // long ';' chain can't dump an unbounded burst of actions into one instant.
+  // Only the first 9 run; the rest are silently dropped with a local notice.
+  const MAX_CHAIN_COMMANDS=9;
+  if(parts.length>MAX_CHAIN_COMMANDS){
+    parts=parts.slice(0,MAX_CHAIN_COMMANDS);
+    print('\n你的動作太快了...\n',true);
+  }
+  for(const part of parts)send(part);
+  // Keep the line in the box (selected, not cleared) so a bare Enter repeats
+  // it -- handy for walking a corridor by holding Enter -- while typing
+  // anything just overwrites the selection like normal.
+  input.value=raw;input.focus();input.select();repeatArmed=true;
+});
 
 // Command focus hot-zone: clicking anywhere in the game window -- the nav
 // rail, the console, the map/status/quick-action sidebar, the chat panel --

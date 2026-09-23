@@ -17,6 +17,12 @@ LONG
   set("resource", ([ /* sizeof() == 1 */
 	"water" : "1",
   ]));
+  set("objects", ([
+    "/custom/taoism/npc/fire_taoist": 1,
+    "/custom/taoism/npc/freeze_taoist": 1,
+    "/custom/taoism/npc/storm_taoist": 1,
+    "/custom/taoism/npc/thunder_taoist": 1
+  ]));
   set("outdoors", "snow");
   set("exits", ([ /* sizeof() == 1 */
 	"south" : __DIR__"npath3",

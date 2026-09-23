@@ -10,6 +10,13 @@ mapping skill_map       = ([]);         // The links of mapped skill.
 mapping skill_flag      = ([]);         // Ultra skill flags.
 
 string best_skill = "";
+void refresh_taoist_spell_mastery(string skill)
+{
+    if( skill != "taoism-fire" && skill != "taoism-freeze"
+    && skill != "taoism-storm" && skill != "taoism-thunder" ) return;
+    if( this_object()->query_class() != "taoist" ) return;
+    CLASS_D("taoist")->refresh_spell_mastery(this_object());
+}
 
 /* Old Neolith LPC needs inherited function prototypes visible at compile time. */
 varargs int query_attr(string attr, int raw);
@@ -60,6 +67,7 @@ void set_skill(string skill, int val)
 {
     if( val > 200 ) val = 200;
     skills[skill] = val;
+    refresh_taoist_spell_mastery(skill);
 }
 
 int set_learn(string skill, int lrn)
@@ -77,6 +85,7 @@ int delete_skill(string skill)
     string s1, s2;
 
     map_delete(skills, skill);
+    refresh_taoist_spell_mastery(skill);
     map_delete(learned, skill);
     foreach(s1, s2 in skill_map)
 	if( s2==skill ) map_delete(skill_map, s1);
@@ -166,6 +175,8 @@ int restored_skill_threshold(int level)
 
 int uses_restored_skill_threshold(string skill)
 {
+    if( skill == "literate" || skill == "archaic attainment"
+    || skill == "mysticism" ) return 1;
     if( skill == "unarmed" ) return 1;
     if( skill == "parry" ) return 1;
     if( skill == "dodge" ) return 1;
@@ -299,6 +310,7 @@ varargs void advance_skill(string skill, int amount)
     SKILL_D(skill)->skill_advanced(this_object(), skill);
 
     if( skills[skill] > skills[best_skill] ) best_skill = skill;
+    refresh_taoist_spell_mastery(skill);
 }
 
 // abandon_skill()

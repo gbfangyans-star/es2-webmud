@@ -4,7 +4,7 @@ inherit F_AXE;
 
 void create()
 {
-    set_name("萬夫莫敵", ({ "great axe of mighty", "great axe", "mighty axe" }));
+    set_name("萬夫莫敵", ({ "great axe of mighty", "great axe", "mighty axe", "great", "mighty", "axe" }));
     set_weight(15000);
     setup_axe(3, 20, 113, 8);
 

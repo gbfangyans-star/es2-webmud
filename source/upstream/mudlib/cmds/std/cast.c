@@ -33,7 +33,7 @@ int main(object me, string arg)
 
     if( environment(me)->query("no_magic")
     && !me->is_fighting(target)
-    && !target->query("unprotect_mark") ) {
+    && !(objectp(target) && target->query("unprotect_mark")) ) {
 	    tell_object(me, "這裡不准戰鬥。\n");
 	    return 1;
     }
@@ -57,8 +57,10 @@ int help (object me)
 在你使用某一個咒文之前，你必須先用 enable 指令來指定你要使用的咒文系，並
 使用的該咒文系中的咒文，咒文名稱可參考 help taoism。
 
-大多數的法術從你開始吟誦咒文，到完成法術會需要一段時間。這段時間施法者會
-無法移動或攻擊。
+天師四系攻擊咒術在施展時立即結算命中與傷害，之後才進入行動延遲。
+以 enable spells with taoism-fire 等指令選擇火、冰、風、雷系，
+每系只有四道咒文。請輸入 cast <咒文英文名> on <目標>，
+也可用 cast 1 至 cast 4 作為該系四道咒文的簡寫。
 HELP
     );
     return 1;

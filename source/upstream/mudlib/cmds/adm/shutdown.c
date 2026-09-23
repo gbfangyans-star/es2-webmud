@@ -15,7 +15,7 @@ main(object me, string arg)
 
     seteuid(geteuid(this_player(1)));
 
-    message("system", "遊戲重新啟動﹐請稍候一分鐘再 login 。\n", users() );
+    message("system", "遊戲關閉。\n", users() );
 
     user = users();
     for(i=0; i<sizeof(user); i++) {
@@ -23,7 +23,7 @@ main(object me, string arg)
         user[i]->save();
     }
 
-    shutdown();
+    shutdown(-1);
     return 1;
 }
 int help (object me)
@@ -31,7 +31,7 @@ int help (object me)
         write(@HELP
 指令格式: shutdown
  
-馬上重新起動遊戲。
+馬上關閉遊戲。
  
 HELP
 );

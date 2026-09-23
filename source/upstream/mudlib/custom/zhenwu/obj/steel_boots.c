@@ -4,7 +4,7 @@ inherit F_FEET_EQ;
 
 void create()
 {
-    set_name("精鋼戰靴", ({ "steel boots", "boots" }));
+    set_name("精鋼戰靴", ({ "steel boots", "steel", "boots" }));
     set_weight(3000);
     setup_feet_eq();
 

@@ -4,7 +4,7 @@ inherit F_HAND_EQ;
 
 void create()
 {
-    set_name("冶磺套", ({ "fire gauntlets", "gauntlets" }));
+    set_name("冶磺套", ({ "fire gauntlets", "fire", "gauntlets" }));
     set_weight(3000);
     setup_hand_eq();
 
