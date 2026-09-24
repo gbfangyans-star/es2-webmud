@@ -21,7 +21,7 @@ author: Annihilator <taedlar@gmail.com>
 #define PLR_PATH ({"/cmds/std/", "/cmds/usr/", \
 	"/daemon/race/human/", "/daemon/race/avatar/", "/daemon/race/blackteeth/", \
 	"/daemon/race/yenhold/", "/daemon/race/jiaojao/", "/daemon/race/woochan/", \
-	"/daemon/race/dingling/"})
+	"/daemon/race/dingling/", "/daemon/race/headless/"})
 #define NPC_PATH ({"/cmds/std/"})
 
 // These are command objects that will also be called in those

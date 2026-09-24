@@ -324,5 +324,8 @@ void hint_user_race (string race) {
         case "dingling":
             write (CHA(20) + "釘靈行動迅捷，能以 hoof 踢擊敵人並造成短暫遲滯。");
             break;
+        case "headless":
+            write (CHA(20) + "刑天無首，以乳為目、以臍為口，天生戰士，會透過各種戰舞提升或恢復戰力。");
+            break;
     }
 }
