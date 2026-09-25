@@ -12,6 +12,7 @@ Implemented race set:
 - woochan / 無腸
 - dingling / 釘靈
 - headless / 刑天
+- rainner / 雨師妾
 
 ## Source priority
 
@@ -44,3 +45,31 @@ Neolith `HEARTBEAT_INTERVAL` is 2,000,000 microseconds, so 1 tick = one 2-second
   - `sorrow` 哀傷之舞: each application restores 3~5 of a random one of gin/kee/sen, lowers the other two by 1~2 (never below 1), and costs food and water 1 each.
   - `rite` 祭舞: each application restores gin 2~3, kee 3~5, or sen 1~2 (random).
   - sorrow / rite apply once immediately, then once per tick for wis/2 more ticks, with a dance message each tick. They stop when the dancer enters combat, leaves the room, or stops wielding an axe.
+
+## 雨師妾 (rainner) snakes
+
+- Race numbers follow the original data. Hidden 法力值 10 maps to `apply/spell` (the 法力 ability); there is no skill named 法力.
+- On each level-up a rainner has a 1/2 chance to receive a snake of a colour it does not own yet, up to five snakes.
+- Snake experience is stored on the player (`rainner/snake/<colour>`), and worn state in `rainner/worn/<colour>`. The race `setup()` recreates the snake objects at every login and re-wears the ones that were worn, so snakes never disappear on logout.
+- Snakes (`custom/race/obj/rainner_snake.c`) weigh 0 and refuse any move away from their owner. They cannot be dropped, given, put, stolen or sold, and they stay with the owner on death. Only the owner can wear them.
+- Spots: the largest n with n² x 10 <= accumulated experience, max 120. Bonuses scale linearly as full value x spots / 120.
+
+| Snake | Slot | Full bonus at 120 spots |
+|---|---|---|
+| 白蛇 white viper | 腰帶 waist | 根骨 5, 防禦力 25, 守勢等級 25, 冰屬性防禦 100 |
+| 黑蛇 black viper | 護腿 leg | 機敏 5, 攻勢等級 30, 攻擊能力值 50, 警覺 100 |
+| 青蛇 green viper | 頭飾 head | 靈性 5, 咒術 (`spells`) 20, 法術 (`magic`) 20, 風屬性防禦 100 |
+| 赤蛇 red viper | 手套 hand | 膂力 5, 傷害力 20, 攻勢等級 30, 火屬性防禦 100 |
+| 黃蛇 yellow viper | 項鍊 neck | 定力 5, 行動力 50, 防禦能力值 50, 雷屬性防禦 100 |
+
+- `feed <snake>`: each feed gives 20 + random(spots) experience, busy 1 tick, no cooldown. Refused at 120 spots.
+
+| Snake | Requires | Costs |
+|---|---|---|
+| white | gin > 1, kee > 10, sen > 10 | gin spots x 2 + 5, kee 10, sen 10 |
+| black | gin > spots x 3 + 7, kee > 10, sen > 10 | gin spots x 3 + 7, kee 10, sen 10 |
+| green | gin > spots x 2 + 7, kee > 15, sen > 5 | gin spots x 2 + 7, kee 15, sen 5 |
+| red | gin > spots x 2 + 8, kee > 10, sen > 5 | gin spots x 2 + 8, kee 10, sen 5 |
+| yellow | gin > spots x 2 + 8, kee > 10, sen > 5 | gin spots x 2 + 8, kee 10, sen 5 |
+
+- If gin is below the cost the feed still happens; gin bottoms out and the character falls unconscious.

@@ -3,7 +3,7 @@ import json, sys
 ROOT=Path(__file__).resolve().parents[1]
 M=ROOT/'source/upstream/mudlib'
 read=lambda p:(M/p).read_text(encoding='utf-8')
-races={r:read(f'daemon/race/{r}.c') for r in ['human','avatar','blackteeth','yenhold','jiaojao','woochan','dingling','headless']}
+races={r:read(f'daemon/race/{r}.c') for r in ['human','avatar','blackteeth','yenhold','jiaojao','woochan','dingling','headless','rainner']}
 cmds={
  'resurge':read('daemon/race/human/resurge.c'),
  'radiate':read('daemon/race/avatar/radiate.c'),
@@ -13,12 +13,13 @@ cmds={
  'replete':read('daemon/race/woochan/replete.c'),
  'hoof':read('daemon/race/dingling/hoof.c'),
  'dance':read('daemon/race/headless/dance.c'),
+ 'feed':read('daemon/race/rainner/feed.c'),
 }
 cond={c:read(f'custom/race/condition/{c}.c') for c in ['blackteeth_gnaw','headless_dance','headless_ritual']}
 soldier=read('daemon/class/soldier.c'); taoist=read('daemon/class/taoist.c')
 login=read('adm/daemons/logind.c'); chard=read('adm/daemons/chard.c'); score=read('feature/char/score.c'); chinese=read('data/chinese.o')
 checks={
- 'all_eight_races_selectable': all(f'"{r}"' in login for r in races if r != 'avatar'),
+ 'all_races_selectable': all(f'"{r}"' in login for r in races if r != 'avatar'),
  'avatar_named_human_clan': '"avatar":"人類族"' in chinese,
  'dingling_chinese': '"dingling":"釘靈"' in chinese,
  'human_birth_stats_35': all(x in races['human'] for x in ['"gin":35','"kee":35','"sen":35']),
@@ -27,7 +28,7 @@ checks={
  'commoner_cap_1': all('"commoner":1,' in s for s in races.values()),
  'headless_cannot_join_monk': '"monk":-1' in races['headless'] and '< 0 )' in score,
  'score_base_values': all(f'"commoner_score_base", {v})' in races[r] or f'"commoner_score_base",{v})' in races[r] for r,v in
-     {'human':100,'avatar':100,'blackteeth':120,'yenhold':115,'jiaojao':95,'woochan':100,'dingling':95,'headless':160}.items()),
+     {'human':100,'avatar':100,'blackteeth':120,'yenhold':115,'jiaojao':95,'woochan':100,'dingling':95,'headless':160,'rainner':100}.items()),
  'score_base_used_by_classes': all('query("commoner_score_base")' in c for c in (soldier, taoist)),
  'jiaojao_awareness_dodge': 'add_temp("apply/awarness",100)' in races['jiaojao'] and 'add_temp("apply/dodge",15)' in races['jiaojao'],
  'yenhold_parry': 'add_temp("apply/parry",10)' in races['yenhold'],
@@ -49,6 +50,10 @@ checks={
  'class_caps_present': all('class_level_cap' in s for s in races.values()),
  'class_caps_enforced': 'query("class_level_cap/" + query_class())' in score,
  'race_hints_present': all(f'case "{r}"' in chard for r in races),
+ 'rainner_on_command_path': '"/daemon/race/rainner/"' in read('include/command.h'),
+ 'rainner_snake_bound': all(x in read('custom/race/obj/rainner_snake.c') for x in ['varargs int move(','set_weight(0)','"hand_eq"','* spots / MAX_SPOTS']),
+ 'rainner_feed_rules': all(x in cmds['feed'] for x in ['20 + random(spots)','"white":  ({ 2, 5, 10, 10 })','"black":  ({ 3, 7, 10, 10 })','start_busy(1)']),
+ 'rainner_snake_on_levelup': 'random(2)' in races['rainner'] and 'give_snake' in races['rainner'],
 }
 fail=[k for k,v in checks.items() if not v]
 out={'version':(ROOT/'VERSION').read_text().strip(),'checks':checks,'failures':fail,'passed':not fail}

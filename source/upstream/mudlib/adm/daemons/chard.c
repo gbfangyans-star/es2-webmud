@@ -324,6 +324,9 @@ void hint_user_race (string race) {
         case "dingling":
             write (CHA(20) + "釘靈天生強健，能以 hoof 踢翻敵人，令其數回合無法行動。");
             break;
+        case "rainner":
+            write (CHA(20) + "雨師妾天生靈性過人，升級時有機會得到小蛇，以 feed 餵養鮮血讓牠們成長。");
+            break;
         case "headless":
             write (CHA(20) + "刑天無首，以乳為目、以臍為口，天生戰士，手持斧頭時能以五種戰舞提升或恢復戰力。");
             break;

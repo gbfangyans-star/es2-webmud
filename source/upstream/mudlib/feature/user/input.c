@@ -61,6 +61,8 @@ void input_prompt (mixed func, int flags, mixed data, mixed arg1) {
                 label = "釘靈 (Dingling)";
             else if (opt == "headless")
                 label = "刑天 (Headless)";
+            else if (opt == "rainner")
+                label = "雨師妾 (Rainner)";
             else if (opt.len() > 2 && opt[1] == ')') {
                 if (opt.len() > 3 && opt[2] == ' ')
                     label = opt[3..];
