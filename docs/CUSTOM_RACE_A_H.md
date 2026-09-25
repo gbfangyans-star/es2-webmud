@@ -32,7 +32,7 @@ Neolith `HEARTBEAT_INTERVAL` is 2,000,000 microseconds, so 1 tick = one 2-second
 ## Race skills
 
 - human `resurge`, avatar `radiate`, jiaojao `hide`: unchanged earlier design. The original's 焦僥 steal/anti-steal advantage is represented by 警覺性 100.
-- yenhold `breathe`: every enemy in the room takes HP damage = current kee / 10 + cor x 2. No self damage. Costs sen 10, cooldown 1 tick.
+- yenhold `breathe`: every enemy in the room takes kee damage = current kee / 10 + cor x 2. No self damage. Costs sen 10, cooldown 1 tick.
 - dingling `hoof`: success roll unchanged (行動力 ratio). On success the target loses kee = dingling str and is busy 2~3 ticks; self busy 1. On failure, self busy 2.
 - woochan `replete`: costs sen 20, water maximum / 6 (clamped at zero), busy 1 tick, no cooldown (unchanged). Heals damaged gin/kee/sen bars by age. HP current and maximum +(1 + age/20). Fatigue -(1 + age/20).
 - blackteeth `gnaw`: bite and poison rolls unchanged. The bite deals kee 1 + age/20. The poison deals kee 5 + age/15 (max 15) every tick for 1 + age/10 ticks (max 12). All divisions are integer divisions.

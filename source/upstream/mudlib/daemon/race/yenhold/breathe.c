@@ -17,7 +17,7 @@ int main(object me, string arg) {
     message_vision(HIR "$N胸口猛然鼓起，張口朝四周敵人噴出灼熱烈焰！\n" NOR, me);
     foreach (ob in enemy) {
         if (!objectp(ob) || environment(ob) != environment(me)) continue;
-        ob->consume_stat("HP", damage, me); hit++;
+        ob->consume_stat("kee", damage, me); hit++;
     }
     if (!hit) return notify_fail("附近沒有可被火焰擊中的敵人。\n");
     me->consume_stat("sen", 10);
@@ -25,4 +25,4 @@ int main(object me, string arg) {
     if (userp(me)) me->save();
     return 1;
 }
-int help(object me) { write("指令格式：breathe\n攻擊同房所有敵人；傷害為 氣目前值/10 + 膽識x2，消耗神 10，冷卻 1 tick。\n"); return 1; }
+int help(object me) { write("指令格式：breathe\n攻擊同房所有敵人；對每個敵人造成 氣傷害 = 氣目前值/10 + 膽識x2，消耗神 10，冷卻 1 tick。\n"); return 1; }

@@ -38,7 +38,7 @@ checks={
  'replete_busy1_no_cd': 'start_busy(1)' in cmds['replete'] and 'cooldown' not in cmds['replete'].lower(),
  'woochan_food_only_exempt': all(x in races['woochan'] for x in ['set_stat_regenerate("food", TYPE_STATIC)','set_stat_current("food", 0)','set_stat_effective("food", 0)','set_stat_maximum("food", 0)']) and 'set_stat_regenerate("water", TYPE_STATIC)' not in races['woochan'],
  'gnaw_formula': 'damage = 1 + age / 20;' in cmds['gnaw'] and 'duration > 12' in cmds['gnaw'] and 'damage > 15' in cmds['gnaw'],
- 'breathe_formula': 'query_stat("kee") / 10 + me->query_attr("cor") * 2' in cmds['breathe'] and 'consume_stat("kee"' not in cmds['breathe'],
+ 'breathe_formula': 'query_stat("kee") / 10 + me->query_attr("cor") * 2' in cmds['breathe'] and 'ob->consume_stat("kee", damage, me)' in cmds['breathe'] and 'me->consume_stat("kee"' not in cmds['breathe'],
  'breathe_cooldown_one_tick': '#define BREATHE_COOLDOWN 2' in cmds['breathe'],
  'hoof_formula': 'consume_stat("kee", damage, me)' in cmds['hoof'] and 'start_busy(2 + random(2))' in cmds['hoof'],
  'dance_five_modes': all(f'case "{m}"' in cmds['dance'] for m in ['glory','fury','axe','sorrow','rite']),
