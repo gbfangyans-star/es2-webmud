@@ -30,28 +30,14 @@ string query_rank(object obj, string politeness)
 }
 
 // Per-race multiplier on the leveling thresholds below, as a percentage
-// (100 = human baseline). Races not listed here have not had their
-// coefficient designed yet -- add them once they are, they default to
-// 100% (human baseline) until then.
-private mapping race_level_coef = ([
-    "human"      : 100,
-    "dingling"   :  95,
-    "jiaojao"    :  95,
-    "woochan"    : 100,
-    "rainner"    : 100,
-    "yenhold"    : 115,
-    "blackteeth" : 120,
-    "yaksa"      : 140,
-    "mailk"      : 150,
-    "headless"   : 160,
-    "ashura"     : 180,
-]);
-
+// (100 = human baseline). This is the race's 基數, stored on the race daemon
+// as "commoner_score_base"; races that don't set it count as 100. It only
+// scales character level-up thresholds, never skill experience.
 private int race_coef(object ob)
 {
     int coef;
-    coef = race_level_coef[ob->query_race()];
-    return coef ? coef : 100;
+    coef = RACE_D(ob->query_race())->query("commoner_score_base");
+    return coef > 0 ? coef : 100;
 }
 
 // Leveling thresholds: 兵刃精熟(weapon mastery) and 實戰經驗(combat) both need

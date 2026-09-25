@@ -5,10 +5,10 @@ inherit HUMANOID;
 
 private void create() {
     ::create(); seteuid(getuid());
-    set("karma", 25); set("civilized", 1); set("commoner_score_base", 100);
+    set("karma", 25); set("civilized", 1); set("commoner_score_base", 160);
     set("class_level_cap", ([
-        "commoner":50, "fighter":65, "taoist":50, "alchemist":50,
-        "soldier":70, "scholar":50, "monk":1, "thief":50
+        "commoner":1, "fighter":65, "taoist":40, "alchemist":40,
+        "soldier":60, "scholar":50, "monk":-1, "thief":50
     ]));
     // 天生戰士，沒有頭部、頸部可供攻擊或裝飾。
     set("limbs", ({
@@ -21,16 +21,15 @@ private void create() {
 void setup(object ob) {
     ::setup(ob); ob->set_default_object(__FILE__);
     if (!ob->query_weight()) ob->set_weight(BASE_WEIGHT + ((int)ob->query_attr("str",1)-13)*5000);
-    ob->add_temp("apply/attack", 50);
-    ob->add_temp("apply/defense", 100);
-    ob->add_temp("apply/armor", 100);
-    ob->add_temp("apply/move", 50);
+    ob->add_temp("apply/armor", 50);
+    ob->add_temp("apply/attack", 30);
+    ob->add_temp("apply/defense", 20);
 }
 void initialize(object ob) {
     ::initialize(ob);
     ob->init_attribute(([
-        "str":25+random(6), "cor":15+random(6), "int":6+random(4), "spi":12+random(5),
-        "cps":12+random(5), "dex":18+random(7), "con":24+random(5), "wis":14+random(5)
+        "str":25+random(6), "cor":15+random(6), "int":8+random(6), "spi":5+random(6),
+        "cps":11+random(6), "dex":19+random(6), "con":23+random(6), "wis":13+random(6)
     ]));
     ob->init_statistic(([ "gin":80, "kee":100, "sen":30 ]));
     if (!ob->query("age")) ob->set("age",14+random(4));

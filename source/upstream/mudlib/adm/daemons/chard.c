@@ -322,10 +322,10 @@ void hint_user_race (string race) {
             write (CHA(20) + "無腸不需要食物，並能使用 replete 恢復受損的精氣神格子。");
             break;
         case "dingling":
-            write (CHA(20) + "釘靈行動迅捷，能以 hoof 踢擊敵人並造成短暫遲滯。");
+            write (CHA(20) + "釘靈天生強健，能以 hoof 踢翻敵人，令其數回合無法行動。");
             break;
         case "headless":
-            write (CHA(20) + "刑天無首，以乳為目、以臍為口，天生戰士，會透過各種戰舞提升或恢復戰力。");
+            write (CHA(20) + "刑天無首，以乳為目、以臍為口，天生戰士，手持斧頭時能以五種戰舞提升或恢復戰力。");
             break;
     }
 }

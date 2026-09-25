@@ -19,8 +19,8 @@ private void create() {
     set("civilized", 1);
     set("commoner_score_base", 100);
     set("class_level_cap", ([
-        "commoner":70, "fighter":70, "taoist":70, "alchemist":70,
-        "soldier":70, "scholar":70, "monk":70, "thief":70
+        "commoner":1, "fighter":70, "taoist":70, "alchemist":70,
+        "soldier":70, "scholar":70, "monk":65, "thief":70
     ]));
 
     DAEMON_D->register_race_daemon("avatar");

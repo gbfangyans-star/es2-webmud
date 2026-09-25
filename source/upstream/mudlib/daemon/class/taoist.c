@@ -15,21 +15,31 @@ string query_rank(object ob, string politeness)
     }
 }
 
+// Race 基數 as a percentage (100 = human baseline), read from the race
+// daemon's "commoner_score_base"; only scales character level-up thresholds.
+private int race_coef(object ob)
+{
+    int coef;
+    coef = RACE_D(ob->query_race())->query("commoner_score_base");
+    return coef > 0 ? coef : 100;
+}
+
 // cur_lv is the level being left; thresholds target cur_lv + 1.
 void set_next_target(object ob, int cur_lv)
 {
-    int lv, n;
+    int lv, n, coef;
 
     if( cur_lv < 1 ) cur_lv = 1;
     lv = cur_lv + 1;
     n = lv - 1;
+    coef = race_coef(ob);
 
-    ob->set_target_score("survive", n*n*100);
-    ob->set_target_score("magic", n*n*150);
+    ob->set_target_score("survive", n*n*100 * coef / 100);
+    ob->set_target_score("magic", n*n*150 * coef / 100);
     ob->set_target_score("spell mastery",
-        lv > 10 ? (lv-10)*(lv-10)*100 : 0);
+        lv > 10 ? (lv-10)*(lv-10)*100 * coef / 100 : 0);
     ob->set_target_score("combat",
-        lv > 11 ? (lv-11)*(lv-11)*100 : 0);
+        lv > 11 ? (lv-11)*(lv-11)*100 * coef / 100 : 0);
 }
 
 int spell_mastery_score(object ob)

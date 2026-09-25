@@ -6,9 +6,15 @@ string query_class() { return query("class"); }
 string query_race() { return query("race"); }
 int query_level() {    return query("level"); }
 
-void set_class(string new_class)
+int set_class(string new_class)
 {
     int lvl;
+
+    /* CUSTOM A-H RACE RULE: class_level_cap < 0 means this race cannot join
+     * the class at all (原始種族資料的「無」). */
+    if( new_class && query_race()
+    &&  RACE_D(query_race())->query("class_level_cap/" + new_class) < 0 )
+	return 0;
 
     set("class", new_class);
     if( query_level() && query_race() ) {
@@ -16,6 +22,7 @@ void set_class(string new_class)
 	RACE_D(query_race())->initialize(this_object());
 	CLASS_D(new_class)->initialize(this_object());
     }
+    return 1;
 }
 
 void set_race(string new_race)
@@ -74,7 +81,7 @@ gain_score(string course, int xp)
 
     /* CUSTOM A-H RACE RULE: per-race class level cap from race daemon. */
     v = RACE_D(query_race())->query("class_level_cap/" + query_class());
-    if( v > 0 && query_level() >= v ) {
+    if( v != 0 && query_level() >= v ) {
         receive(HIY "你目前的種族與職業組合已達等級上限。\n" NOR);
         return;
     }
