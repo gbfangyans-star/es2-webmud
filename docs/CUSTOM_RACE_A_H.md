@@ -127,7 +127,7 @@ Soldier and taoist keep their earlier formulas. Joining thief / alchemist / scho
 
 ## Ghost NPCs (for yaksa `devour`)
 
-`custom/ghost/std_ghost.c` is the base: human race, `life_form` ghost (no kee, only visible with 陰陽眼, ordinary attacks pass through), peaceful, refuses `fight`. Every 10 ticks it says one of its two lines at random, every 15 ticks it moves to a random exit. It does neither while busy (for example while being devoured) or fighting.
+`custom/ghost/std_ghost.c` is the base: human race, `life_form` ghost (no kee, only visible with 陰陽眼, ordinary attacks pass through), peaceful, refuses `fight`. Talking and moving work like 瞎眼老太婆 (`d/snow/npc/gammer.c`): `chat_chance` 16 gives a 17% chance each tick to act, then one of five `chat_msg` entries is picked (three say one of its two lines, two do `random_move`). On average it talks every ~10 ticks and moves every ~15 ticks, at random times. It does neither while busy (for example while being devoured).
 
 | NPC | File | id | gin / sen |
 |---|---|---|---|
@@ -138,6 +138,6 @@ Soldier and taoist keep their earlier formulas. Joining thief / alchemist / scho
 | 魑魅 | `custom/ghost/npc/mountain_sprite.c` | mountain sprite | 100 / 20 |
 | 魍魎 | `custom/ghost/npc/water_goblin.c` | water goblin | 100 / 20 |
 
-All of them also answer to `ghost`. Each ghost's tick counter starts at a random offset, so ghosts spawned together do not talk or move in step.
+All of them also answer to `ghost`.
 
 Placement (room `objects`, 雪亭鎮): 餓鬼 x2 in `/d/snow/square`; 遊魂 x1 each in `/d/snow/nstreet1` and `/d/snow/ruin1`; 枉死鬼 in `/d/snow/ebridge`; 倀鬼 in `/d/snow/ngate`; 魑魅 in `/d/snow/wgate`; 魍魎 in `/d/snow/river1`. A room only replaces a ghost it spawned once that ghost is destroyed (for example devoured), at the room's next reset, so wandering ghosts are never duplicated.

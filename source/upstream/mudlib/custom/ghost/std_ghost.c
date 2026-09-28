@@ -1,27 +1,41 @@
 /* CUSTOM GHOST NPC BASE: 鬼魂類 NPC（魂魄狀態），以人類為基礎。
  *
  * 只有陰陽眼（apply/vision_of_ghost）看得見；一般攻擊會從身上穿透。
- * 每 10 tick 隨機說一句台詞，每 15 tick 隨機移動一次（1 tick = 一次心跳 2 秒）。
- * 夜叉可以 devour 吞食。
+ * 說話與移動比照瞎眼老太婆（d/snow/npc/gammer.c），用 chat_chance / chat_msg
+ * 隨機觸發：平均約 10 tick 說一句台詞、約 15 tick 移動一次
+ * （1 tick = 一次心跳 2 秒）。夜叉可以 devour 吞食。
  */
 #include <ansi.h>
 
 inherit NPC;
 
-#define CHAT_TICKS  10
-#define MOVE_TICKS  15
+// NPC 的 chat() 每 tick 有 (chat_chance + 1)% = 17% 的機率行動，再從 chat_msg
+// 五項裡隨機選一項：三項說話、兩項移動。平均每 tick 說話 17% x 3/5 ≈ 1/10，
+// 移動 17% x 2/5 ≈ 1/15。
+#define GHOST_CHAT_CHANCE  16
 
-static int ghost_ticks;
+void ghost_say()
+{
+    string *msg = query("ghost_chat");
 
-// 子類別在 create() 最後呼叫：設定魂魄狀態與精、神。
+    if( arrayp(msg) && sizeof(msg) )
+        say(CYN + msg[random(sizeof(msg))] + NOR);
+}
+
+// 子類別在 create() 最後呼叫：設定魂魄狀態、說話與移動、精與神。
 void setup_ghost(int gin, int sen)
 {
-    // 計數器從隨機位置起跳，同時生出的鬼魂才不會同時說話、同時移動。
-    ghost_ticks = random(CHAT_TICKS * MOVE_TICKS);
-
     set_race("human");
     set("life_form", "ghost");
     set("attitude", "peaceful");
+    set("chat_chance", GHOST_CHAT_CHANCE);
+    set("chat_msg", ({
+        (: ghost_say :),
+        (: ghost_say :),
+        (: ghost_say :),
+        (: random_move :),
+        (: random_move :),
+    }));
     setup();
 
     set_stat_maximum("gin", gin);
@@ -30,22 +44,6 @@ void setup_ghost(int gin, int sen)
     set_stat_maximum("sen", sen);
     set_stat_effective("sen", sen);
     set_stat_current("sen", sen);
-}
-
-static void heart_beat()
-{
-    string *msg;
-
-    ::heart_beat();
-    if( !this_object() || !living(this_object()) || !environment() ) return;
-    if( is_busy() || is_fighting() ) return;
-
-    ghost_ticks++;
-    if( ghost_ticks % CHAT_TICKS == 0
-    &&  arrayp(msg = query("ghost_chat")) && sizeof(msg) )
-        say(CYN + msg[random(sizeof(msg))] + NOR);
-    if( ghost_ticks % MOVE_TICKS == 0 )
-        random_move();
 }
 
 int accept_fight(object who)
