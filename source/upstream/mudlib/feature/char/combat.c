@@ -105,9 +105,11 @@ query_ability (string application)
      * 魔力。
      */
     case "magic":
+	/* MODIFIED (WebMUD): the extra term uses its own key so it does not
+	 * also raise the "magic" skill level (query_skill reads apply/<skill>). */
 	return query_attr("spi") * query_attr("int") / 10
 		+ (query_stat("sen") >> 5)
-		+ query_temp("apply/magic");
+		+ query_temp("apply/magic_ability");
 
     /* spell:
      *

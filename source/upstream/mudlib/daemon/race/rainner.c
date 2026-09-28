@@ -50,7 +50,7 @@ void setup(object ob) {
     ::setup(ob); ob->set_default_object(__FILE__);
     if (!ob->query_weight()) ob->set_weight(BASE_WEIGHT + ((int)ob->query_attr("str",1)-13)*5000);
     ob->add_temp("apply/armor", 5);
-    ob->add_temp("apply/magic", 10);     // 法力值 +10 = 法術技巧額外附加
+    ob->add_temp("apply/magic_ability", 10);     // 法力值 +10 = 法術技巧額外附加
 
     if (userp(ob) && mapp(snakes = ob->query("rainner/snake")))
         foreach (color in keys(snakes)) give_snake(ob, color);
