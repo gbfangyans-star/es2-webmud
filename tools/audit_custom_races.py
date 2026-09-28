@@ -3,7 +3,7 @@ import json, sys
 ROOT=Path(__file__).resolve().parents[1]
 M=ROOT/'source/upstream/mudlib'
 read=lambda p:(M/p).read_text(encoding='utf-8')
-races={r:read(f'daemon/race/{r}.c') for r in ['human','avatar','blackteeth','yenhold','jiaojao','woochan','dingling','headless','rainner']}
+races={r:read(f'daemon/race/{r}.c') for r in ['human','avatar','blackteeth','yenhold','jiaojao','woochan','dingling','headless','rainner','malik']}
 cmds={
  'resurge':read('daemon/race/human/resurge.c'),
  'radiate':read('daemon/race/avatar/radiate.c'),
@@ -28,7 +28,7 @@ checks={
  'commoner_cap_1': all('"commoner":1,' in s for s in races.values()),
  'headless_cannot_join_monk': '"monk":-1' in races['headless'] and '< 0 )' in score,
  'score_base_values': all(f'"commoner_score_base", {v})' in races[r] or f'"commoner_score_base",{v})' in races[r] for r,v in
-     {'human':100,'avatar':100,'blackteeth':120,'yenhold':115,'jiaojao':95,'woochan':100,'dingling':95,'headless':160,'rainner':100}.items()),
+     {'human':100,'avatar':100,'blackteeth':120,'yenhold':115,'jiaojao':95,'woochan':100,'dingling':95,'headless':160,'rainner':100,'malik':150}.items()),
  'score_base_used_by_classes': all('query("commoner_score_base")' in c for c in (soldier, taoist)),
  'jiaojao_awareness_dodge': 'add_temp("apply/awarness",100)' in races['jiaojao'] and 'add_temp("apply/dodge",15)' in races['jiaojao'],
  'yenhold_parry': 'add_temp("apply/parry",10)' in races['yenhold'],
@@ -53,6 +53,8 @@ checks={
  'rainner_on_command_path': '"/daemon/race/rainner/"' in read('include/command.h'),
  'rainner_snake_bound': all(x in read('custom/race/obj/rainner_snake.c') for x in ['varargs int move(','set_weight(0)','"hand_eq"','* spots / MAX_SPOTS']),
  'rainner_feed_rules': all(x in cmds['feed'] for x in ['20 + random(spots)','"white":  ({ 2, 5, 10, 10 })','"black":  ({ 3, 7, 10, 10 })','start_busy(1)']),
+ 'malik_chinese': '"malik":"巫首"' in chinese,
+ 'malik_numbers': all(x in races['malik'] for x in ['set("karma", 30)','"gin":70, "kee":40, "sen":100','"int":25+random(6)','"cps":23+random(6)','"monk":65','add_temp("apply/armor", 40)','add_temp("apply/attack", 30)','add_temp("apply/defense", 30)']),
  'rainner_snake_on_levelup': 'random(2)' in races['rainner'] and 'give_snake' in races['rainner'],
 }
 fail=[k for k,v in checks.items() if not v]

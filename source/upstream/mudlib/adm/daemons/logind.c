@@ -23,6 +23,7 @@ string *user_race = ({
     "dingling",
     "headless",
     "rainner",
+    "malik",
 });
 
 string *banned_name = ({
@@ -505,6 +506,9 @@ private void get_race (string race, mixed opts, object ob) {
             break;
         case "rainner":
             race = "rainner";
+            break;
+        case "malik":
+            race = "malik";
             break;
         default:
             input_to ("get_race", opts, ob);

@@ -330,5 +330,8 @@ void hint_user_race (string race) {
         case "headless":
             write (CHA(20) + "刑天無首，以乳為目、以臍為口，天生戰士，手持斧頭時能以五種戰舞提升或恢復戰力。");
             break;
+        case "malik":
+            write (CHA(20) + "巫首悟性與靈性極高，天生防禦力強，沒有特殊種族能力。");
+            break;
     }
 }

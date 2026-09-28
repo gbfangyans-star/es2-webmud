@@ -13,6 +13,7 @@ Implemented race set:
 - dingling / 釘靈
 - headless / 刑天
 - rainner / 雨師妾
+- malik / 巫首
 
 ## Source priority
 
@@ -73,3 +74,11 @@ Neolith `HEARTBEAT_INTERVAL` is 2,000,000 microseconds, so 1 tick = one 2-second
 | yellow | gin > spots x 2 + 8, kee > 10, sen > 5 | gin spots x 2 + 8, kee 10, sen 5 |
 
 - If gin is below the cost the feed still happens; gin bottoms out and the character falls unconscious.
+
+## 巫首 (malik)
+
+- Race numbers follow the original data: gin/kee/sen 70/40/100, karma 30, 基數 150.
+- Class caps: fighter 50, alchemist 50, scholar 60, taoist 60, soldier 50, thief 50, monk 65, commoner 1.
+- Attributes: str 8-11, cor 8-11, int 25-30, spi 25-30, cps 23-28, dex 20-25, con 10-15, wis 20-25.
+- Hidden bonuses: 防禦力 40 (`apply/armor`), 攻擊能力值 30 (`apply/attack`), 防禦能力值 30 (`apply/defense`).
+- No race skill. The internal id `malik` matches the existing `who -ml` filter and the `data/chinese.o` entry.
