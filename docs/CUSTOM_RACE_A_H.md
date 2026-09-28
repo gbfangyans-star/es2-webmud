@@ -48,7 +48,7 @@ Neolith `HEARTBEAT_INTERVAL` is 2,000,000 microseconds, so 1 tick = one 2-second
 
 ## 雨師妾 (rainner) snakes
 
-- Race numbers follow the original data. Hidden 法力值 10 maps to `apply/spell` (the 法力 ability); there is no skill named 法力.
+- Race numbers follow the original data. Hidden 法力值 10 is the extra term of 法術技巧 (`query_ability("magic")` = spi x int / 10 + sen / 32 + `apply/magic`).
 - On each level-up a rainner has a 1/2 chance to receive a snake of a colour it does not own yet, up to five snakes.
 - Snake experience is stored on the player (`rainner/snake/<colour>`), and worn state in `rainner/worn/<colour>`. The race `setup()` recreates the snake objects at every login and re-wears the ones that were worn, so snakes never disappear on logout.
 - Snakes (`custom/race/obj/rainner_snake.c`) weigh 0 and refuse any move away from their owner. They cannot be dropped, given, put, stolen or sold, and they stay with the owner on death. Only the owner can wear them.
@@ -58,7 +58,7 @@ Neolith `HEARTBEAT_INTERVAL` is 2,000,000 microseconds, so 1 tick = one 2-second
 |---|---|---|
 | 白蛇 white viper | 腰帶 waist | 根骨 5, 防禦力 25, 守勢等級 25, 冰屬性防禦 100 |
 | 黑蛇 black viper | 護腿 leg | 機敏 5, 攻勢等級 30, 攻擊能力值 50, 警覺 100 |
-| 青蛇 green viper | 頭飾 head | 靈性 5, 咒術 (`spells`) 20, 法術 (`magic`) 20, 風屬性防禦 100 |
+| 青蛇 green viper | 頭飾 head | 靈性 5, 咒術技巧 (`apply/spell`) 20, 法術技巧 (`apply/magic`) 20, 風屬性防禦 100 |
 | 赤蛇 red viper | 手套 hand | 膂力 5, 傷害力 20, 攻勢等級 30, 火屬性防禦 100 |
 | 黃蛇 yellow viper | 項鍊 neck | 定力 5, 行動力 50, 防禦能力值 50, 雷屬性防禦 100 |
 

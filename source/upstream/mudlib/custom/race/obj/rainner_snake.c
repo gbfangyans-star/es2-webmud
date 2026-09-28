@@ -13,13 +13,14 @@ private string owner_id, color;
 private int destructing;
 
 // 顏色 : ({ 中文名, 英文名, 部位, 滿級能力 })
+// 青蛇的 spell / magic 是咒術技巧 / 法術技巧的額外附加（query_ability）。
 private mapping snake_data = ([
     "white":  ({ "白蛇", "white viper",  "waist_eq",
         ([ "con":5, "armor":25, "wittiness":25, "armor_vs_ice":100 ]) }),
     "black":  ({ "黑蛇", "black viper",  "leg_eq",
         ([ "dex":5, "intimidate":30, "attack":50, "awarness":100 ]) }),
     "green":  ({ "青蛇", "green viper",  "head_eq",
-        ([ "spi":5, "spells":20, "magic":20, "armor_vs_wind":100 ]) }),
+        ([ "spi":5, "spell":20, "magic":20, "armor_vs_wind":100 ]) }),
     "red":    ({ "赤蛇", "red viper",    "hand_eq",
         ([ "str":5, "damage":20, "intimidate":30, "armor_vs_fire":100 ]) }),
     "yellow": ({ "黃蛇", "yellow viper", "neck_eq",
