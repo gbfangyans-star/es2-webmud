@@ -129,6 +129,8 @@ Soldier and taoist keep their earlier formulas. Joining thief / alchemist / scho
 
 `custom/ghost/std_ghost.c` is the base: human race, `life_form` ghost (no kee, only visible with 陰陽眼, ordinary attacks pass through), peaceful, refuses `fight`. Talking and moving work like 瞎眼老太婆 (`d/snow/npc/gammer.c`): `chat_chance` 16 gives a 17% chance each tick to act, then one of five `chat_msg` entries is picked (three say one of its two lines, two do `random_move`). On average it talks every ~10 ticks and moves every ~15 ticks, at random times. It does neither while busy (for example while being devoured).
 
+Color rule: every ghost is shown in dark gray (`HIK`, the same color as a dead player's ghost). The base colors the ghost's name (`name()`, so movement and `$N` action messages), its room short description and its chat lines. All future ghost NPCs must inherit `custom/ghost/std_ghost.c` so they follow this rule.
+
 | NPC | File | id | gin / sen |
 |---|---|---|---|
 | 餓鬼 | `custom/ghost/npc/hungry_ghost.c` | hungry ghost | 20 / 20 |
