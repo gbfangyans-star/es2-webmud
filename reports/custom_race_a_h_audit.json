@@ -11,6 +11,8 @@
     "headless_cannot_join_monk": true,
     "score_base_values": true,
     "score_base_used_by_classes": true,
+    "class_level_formulas": true,
+    "class_targets_refreshed_at_login": true,
     "jiaojao_awareness_dodge": true,
     "yenhold_parry": true,
     "hide_highest_awareness": true,

@@ -108,3 +108,19 @@ Neolith `HEARTBEAT_INTERVAL` is 2,000,000 microseconds, so 1 tick = one 2-second
 ## Character creation limit
 
 `adm/daemons/logind.c` (`ENABLE_ANTISPAM`): new characters no longer lose attribute points. Each IP may create at most 10 characters within 30 minutes of its first creation. The 11th new ID from that IP inside the window is refused at the "create this ID?" step. Existing characters can always log in. Reincarnation (re-creating after 魂飛魄散) counts toward the 10 but is not blocked.
+
+## Class level-up
+
+Every class level-up threshold is multiplied by the race 基數 (`commoner_score_base` / 100). A threshold `(lv-N)` or `(lv-N)^2` is 0 until the level passes N. `lv` is the level being reached. Shared helpers live in `include/class_level.h`. Player thresholds are recomputed at every login (`CHAR_D->setup_char()`), so formula changes apply to existing characters.
+
+On level-up, gin / kee / sen maximums grow by base dex / con / spi divided by the class divisor, each +1, +0 or -1 at random, never below 0.
+
+| Class | Thresholds (x 基數) | gin / kee / sen growth |
+|---|---|---|
+| 武者 fighter | 實戰經驗 combat (lv-1)^2x150, 武術造詣 martial art (lv-1)^2x150, 武學之道 martial mastery (lv-10)^2x100 | dex/4, con/2, spi/8 |
+| 盜賊 thief | 江湖歷練 survive (lv-1)x100, 實戰經驗 combat (lv-1)^2x100, 偷盜伎倆 thievery (lv-1)^2x100, 黑道聲望 negative fame (lv-31)x100 | dex/2, con/4, spi/8 |
+| 方士 alchemist | 江湖歷練 survive (lv-1)^2x100, 法術道行 magic mastery (lv-16)^2x100, 丹道修養 alchemy (lv-1)^2x100, 法術修為 magic (lv-6)^2x100 | dex/4, con/4, spi/4 |
+| 書生 scholar | 江湖歷練 survive (lv-1)^2x100, 實戰經驗 combat (lv-1)^2x100, 文書能力 literature (lv-1)^2x50, 文學造詣 literature mastery (lv-10)^2x50, 聲望 reputation (lv-10)^2x50 | dex/5, con/3, spi/3 |
+| 和尚 monk | 江湖歷練 survive (lv-1)^2x100, 佛學修為 buddhology (lv-1)^2x100, 禪定修養 cultivation (lv-10)^2x100, 文書能力 literature (lv-10)^2x100, 聲望 reputation (lv-30)^2x100 | dex/6, con/6, spi/6 |
+
+Soldier and taoist keep their earlier formulas. Joining thief / alchemist / scholar / monk is not implemented yet.

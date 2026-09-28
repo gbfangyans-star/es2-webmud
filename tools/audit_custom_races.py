@@ -18,6 +18,7 @@ cmds={
 }
 cond={c:read(f'custom/race/condition/{c}.c') for c in ['blackteeth_gnaw','headless_dance','headless_ritual']}
 soldier=read('daemon/class/soldier.c'); taoist=read('daemon/class/taoist.c')
+newcls={c:read(f'daemon/class/{c}.c') for c in ['fighter','thief','alchemist','scholar','monk']}
 login=read('adm/daemons/logind.c'); chard=read('adm/daemons/chard.c'); score=read('feature/char/score.c'); chinese=read('data/chinese.o')
 checks={
  'all_races_selectable': all(f'"{r}"' in login for r in races if r != 'avatar'),
@@ -30,7 +31,13 @@ checks={
  'headless_cannot_join_monk': '"monk":-1' in races['headless'] and '< 0 )' in score,
  'score_base_values': all(f'"commoner_score_base", {v})' in races[r] or f'"commoner_score_base",{v})' in races[r] for r,v in
      {'human':100,'avatar':100,'blackteeth':120,'yenhold':115,'jiaojao':95,'woochan':100,'dingling':95,'headless':160,'rainner':100,'malik':150,'yaksa':140,'ashura':180}.items()),
- 'score_base_used_by_classes': all('query("commoner_score_base")' in c for c in (soldier, taoist)),
+ 'score_base_used_by_classes': all('query("commoner_score_base")' in c for c in (soldier, taoist)) and 'query("commoner_score_base")' in read('include/class_level.h') and all('* coef / 100' in c for c in newcls.values()),
+ 'class_level_formulas': all(x in newcls['fighter'] for x in ['"combat", sq_from(lv, 1) * 150','"martial art", sq_from(lv, 1) * 150','"martial mastery", sq_from(lv, 10) * 100','grow_stats(ob, 4, 2, 8,'])
+     and all(x in newcls['thief'] for x in ['"survive", lin_from(lv, 1) * 100','"combat", sq_from(lv, 1) * 100','"thievery", sq_from(lv, 1) * 100','"negative fame", lin_from(lv, 31) * 100','grow_stats(ob, 2, 4, 8,'])
+     and all(x in newcls['alchemist'] for x in ['"survive", sq_from(lv, 1) * 100','"magic mastery", sq_from(lv, 16) * 100','"alchemy", sq_from(lv, 1) * 100','"magic", sq_from(lv, 6) * 100','grow_stats(ob, 4, 4, 4,'])
+     and all(x in newcls['scholar'] for x in ['"survive", sq_from(lv, 1) * 100','"combat", sq_from(lv, 1) * 100','"literature", sq_from(lv, 1) * 50','"literature mastery", sq_from(lv, 10) * 50','"reputation", sq_from(lv, 10) * 50','grow_stats(ob, 5, 3, 3,'])
+     and all(x in newcls['monk'] for x in ['"survive", sq_from(lv, 1) * 100','"buddhology", sq_from(lv, 1) * 100','"cultivation", sq_from(lv, 10) * 100','"literature", sq_from(lv, 10) * 100','"reputation", sq_from(lv, 30) * 100','grow_stats(ob, 6, 6, 6,']),
+ 'class_targets_refreshed_at_login': 'CLASS_D(ob->query_class())->initialize (ob);' in chard,
  'jiaojao_awareness_dodge': 'add_temp("apply/awarness",100)' in races['jiaojao'] and 'add_temp("apply/dodge",15)' in races['jiaojao'],
  'yenhold_parry': 'add_temp("apply/parry",10)' in races['yenhold'],
  'hide_highest_awareness': 'if (aw > highest) highest = aw;' in cmds['hide'],

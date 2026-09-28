@@ -78,6 +78,12 @@ void setup_char (object ob) {
     RACE_D(ob->query_race())->setup (ob);
     CLASS_D(ob->query_class())->setup (ob);
 
+    // 玩家每次登入依目前的職業公式重算升級門檻，公式調整後既有角色也會套用。
+    if (userp(ob)) {
+        ob->delete ("target_score");
+        CLASS_D(ob->query_class())->initialize (ob);
+    }
+
     // Food/water's maximums are only established just above, by the race
     // daemon (e.g. humanoid.c's setup()) -- set_stat_regenerate() silently
     // no-ops when a stat has no maximum yet, so registering food/water here
