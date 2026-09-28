@@ -3,7 +3,7 @@ import json, sys
 ROOT=Path(__file__).resolve().parents[1]
 M=ROOT/'source/upstream/mudlib'
 read=lambda p:(M/p).read_text(encoding='utf-8')
-races={r:read(f'daemon/race/{r}.c') for r in ['human','avatar','blackteeth','yenhold','jiaojao','woochan','dingling','headless','rainner','malik']}
+races={r:read(f'daemon/race/{r}.c') for r in ['human','avatar','blackteeth','yenhold','jiaojao','woochan','dingling','headless','rainner','malik','yaksa','ashura']}
 cmds={
  'resurge':read('daemon/race/human/resurge.c'),
  'radiate':read('daemon/race/avatar/radiate.c'),
@@ -14,6 +14,7 @@ cmds={
  'hoof':read('daemon/race/dingling/hoof.c'),
  'dance':read('daemon/race/headless/dance.c'),
  'feed':read('daemon/race/rainner/feed.c'),
+ 'devour':read('daemon/race/yaksa/devour.c'),
 }
 cond={c:read(f'custom/race/condition/{c}.c') for c in ['blackteeth_gnaw','headless_dance','headless_ritual']}
 soldier=read('daemon/class/soldier.c'); taoist=read('daemon/class/taoist.c')
@@ -28,7 +29,7 @@ checks={
  'commoner_cap_1': all('"commoner":1,' in s for s in races.values()),
  'headless_cannot_join_monk': '"monk":-1' in races['headless'] and '< 0 )' in score,
  'score_base_values': all(f'"commoner_score_base", {v})' in races[r] or f'"commoner_score_base",{v})' in races[r] for r,v in
-     {'human':100,'avatar':100,'blackteeth':120,'yenhold':115,'jiaojao':95,'woochan':100,'dingling':95,'headless':160,'rainner':100,'malik':150}.items()),
+     {'human':100,'avatar':100,'blackteeth':120,'yenhold':115,'jiaojao':95,'woochan':100,'dingling':95,'headless':160,'rainner':100,'malik':150,'yaksa':140,'ashura':180}.items()),
  'score_base_used_by_classes': all('query("commoner_score_base")' in c for c in (soldier, taoist)),
  'jiaojao_awareness_dodge': 'add_temp("apply/awarness",100)' in races['jiaojao'] and 'add_temp("apply/dodge",15)' in races['jiaojao'],
  'yenhold_parry': 'add_temp("apply/parry",10)' in races['yenhold'],
@@ -55,6 +56,12 @@ checks={
  'rainner_feed_rules': all(x in cmds['feed'] for x in ['20 + random(spots)','"white":  ({ 2, 5, 10, 10 })','"black":  ({ 3, 7, 10, 10 })','start_busy(1)']),
  'malik_chinese': '"malik":"巫首"' in chinese,
  'malik_numbers': all(x in races['malik'] for x in ['set("karma", 30)','"gin":70, "kee":40, "sen":100','"int":25+random(6)','"cps":23+random(6)','"monk":65','add_temp("apply/armor", 40)','add_temp("apply/attack", 30)','add_temp("apply/defense", 30)']),
+ 'yaksa_numbers': all(x in races['yaksa'] for x in ['set("karma", 50)','"gin":140, "kee":70, "sen":70','"scholar":-1','"monk":-1','"thief":70','add_temp("apply/armor", 15)','add_temp("apply/attack", 10)','apply/vision_of_ghost']),
+ 'ashura_numbers': all(x in races['ashura'] for x in ['set("karma", 40)','"gin":80, "kee":80, "sen":80','"scholar":-1','"monk":-1','"soldier":70','"cor":25+random(16)','add_temp("apply/attack", 40)','add_temp("apply/intimidate", 30)','add_temp("apply/spells", 15)','apply/vision_of_ghost']),
+ 'yaksa_on_command_path': '"/daemon/race/yaksa/"' in read('include/command.h'),
+ 'devour_rules': all(x in cmds['devour'] for x in ['query_attr("cor") * me->query_attr("dex")','1 + ghost_gin / 40','1 + rnd(ghost_gin / 40)','1 + rnd(ghost_gin / 80)','count < 10 || random(10 + rnd(count)) < 10','ghost_gin *= 2','CHAR_D->make_mist(victim)','call_out("devour_tick", TICK_SECONDS']),
+ 'ashura_autofight': 'start_ashura' in read('adm/daemons/combatd.c') and 'query_attr("cps") * 3' in read('adm/daemons/combatd.c') and 'chance < 30' in read('adm/daemons/combatd.c') and '"ashura")' in read('feature/char/attack.c'),
+ 'who_rainner_filter': 'query_race()=="rainner"' in read('cmds/usr/who.c'),
  'rainner_snake_on_levelup': 'random(2)' in races['rainner'] and 'give_snake' in races['rainner'],
 }
 fail=[k for k,v in checks.items() if not v]

@@ -36,6 +36,12 @@
     "rainner_feed_rules": true,
     "malik_chinese": true,
     "malik_numbers": true,
+    "yaksa_numbers": true,
+    "ashura_numbers": true,
+    "yaksa_on_command_path": true,
+    "devour_rules": true,
+    "ashura_autofight": true,
+    "who_rainner_filter": true,
     "rainner_snake_on_levelup": true
   },
   "failures": [],

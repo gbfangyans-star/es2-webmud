@@ -118,7 +118,7 @@ main(object me, string arg, int remote)
             msg_format("50");
             break;
         case "-rr":
-            target = filter(all, (: $1->query_race()=="rainnar" :));
+            target = filter(all, (: $1->query_race()=="rainner" :));
             msg_format("50");
             break;
         case "-aa":
@@ -286,7 +286,7 @@ int help(object me)
 
     write("-hn    列出 race 為 human 之使用者。bh => blackteeth\n");
     write("hn => human    av => avatar    wn => woochan    jo => jiaojao\n");
-    write("yd => yenhold  dl => dingling  rr => rainnar   aa => ashura\n");
+    write("yd => yenhold  dl => dingling  rr => rainner   aa => ashura\n");
     write("hs => headless ya => yaksa     ml => malik\n");
     write("\n");
 
