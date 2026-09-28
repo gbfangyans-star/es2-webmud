@@ -333,5 +333,11 @@ void hint_user_race (string race) {
         case "malik":
             write (CHA(20) + "巫首悟性與靈性極高，天生防禦力強，沒有特殊種族能力。");
             break;
+        case "yaksa":
+            write (CHA(20) + "夜叉天生陰陽眼，能以 devour 吞食鬼魂，吞食玩家的鬼魂可以永久提升精氣神。");
+            break;
+        case "ashura":
+            write (CHA(20) + "阿修羅天生好戰，遇到 NPC 時常會忍不住出手，定力越高越能克制。");
+            break;
     }
 }
