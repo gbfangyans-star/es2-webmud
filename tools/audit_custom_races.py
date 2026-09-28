@@ -70,6 +70,9 @@ checks={
  'ashura_autofight': 'start_ashura' in read('adm/daemons/combatd.c') and 'query_attr("cps") * 3' in read('adm/daemons/combatd.c') and 'chance < 30' in read('adm/daemons/combatd.c') and '"ashura")' in read('feature/char/attack.c'),
  'yaksa_no_backlash': 'ghost_gin >=' not in cmds['devour'],
  'antispam_no_penalty': 'penalty_attr' not in login and 'SPAM_WINDOW\t1800' in login and 'SPAM_LIMIT\t10' in login,
+ 'ghost_npcs': all(f'setup_ghost({g}, {s})' in read(f'custom/ghost/npc/{f}.c') and read(f'custom/ghost/npc/{f}.c').count('」\\n",')+read(f'custom/ghost/npc/{f}.c').count('。\\n",') >= 2 for f,g,s in
+     [('hungry_ghost',20,20),('wandering_soul',40,20),('wronged_ghost',50,25),('tiger_thrall',60,30),('mountain_sprite',100,20),('water_goblin',100,20)])
+     and all(x in read('custom/ghost/std_ghost.c') for x in ['#define CHAT_TICKS  10','#define MOVE_TICKS  15','set("life_form", "ghost")','set_race("human")']),
  'who_rainner_filter': 'query_race()=="rainner"' in read('cmds/usr/who.c'),
  'rainner_snake_on_levelup': 'random(2)' in races['rainner'] and 'give_snake' in races['rainner'],
 }

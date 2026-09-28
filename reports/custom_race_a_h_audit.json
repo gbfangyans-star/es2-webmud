@@ -45,6 +45,7 @@
     "ashura_autofight": true,
     "yaksa_no_backlash": true,
     "antispam_no_penalty": true,
+    "ghost_npcs": true,
     "who_rainner_filter": true,
     "rainner_snake_on_levelup": true
   },

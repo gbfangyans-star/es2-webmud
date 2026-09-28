@@ -124,3 +124,18 @@ On level-up, gin / kee / sen maximums grow by base dex / con / spi divided by th
 | 和尚 monk | 江湖歷練 survive (lv-1)^2x100, 佛學修為 buddhology (lv-1)^2x100, 禪定修養 cultivation (lv-10)^2x100, 文書能力 literature (lv-10)^2x100, 聲望 reputation (lv-30)^2x100 | dex/6, con/6, spi/6 |
 
 Soldier and taoist keep their earlier formulas. Joining thief / alchemist / scholar / monk is not implemented yet.
+
+## Ghost NPCs (for yaksa `devour`)
+
+`custom/ghost/std_ghost.c` is the base: human race, `life_form` ghost (no kee, only visible with 陰陽眼, ordinary attacks pass through), peaceful, refuses `fight`. Every 10 ticks it says one of its two lines at random, every 15 ticks it moves to a random exit. It does neither while busy (for example while being devoured) or fighting.
+
+| NPC | File | id | gin / sen |
+|---|---|---|---|
+| 餓鬼 | `custom/ghost/npc/hungry_ghost.c` | hungry ghost | 20 / 20 |
+| 遊魂 | `custom/ghost/npc/wandering_soul.c` | wandering soul | 40 / 20 |
+| 枉死鬼 | `custom/ghost/npc/wronged_ghost.c` | wronged ghost | 50 / 25 |
+| 倀鬼 | `custom/ghost/npc/tiger_thrall.c` | tiger thrall | 60 / 30 |
+| 魑魅 | `custom/ghost/npc/mountain_sprite.c` | mountain sprite | 100 / 20 |
+| 魍魎 | `custom/ghost/npc/water_goblin.c` | water goblin | 100 / 20 |
+
+All of them also answer to `ghost`. They are not placed in any room yet.
