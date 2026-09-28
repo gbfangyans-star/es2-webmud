@@ -24,6 +24,9 @@ LONG
 	"east": __DIR__"small_temple",
   ]));
   set("outdoors", "snow");
+  set("objects", ([
+	"/custom/ghost/npc/wandering_soul": 1,
+  ]));
 
     setup();
   replace_program(ROOM);

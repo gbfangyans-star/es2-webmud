@@ -138,4 +138,6 @@ Soldier and taoist keep their earlier formulas. Joining thief / alchemist / scho
 | 魑魅 | `custom/ghost/npc/mountain_sprite.c` | mountain sprite | 100 / 20 |
 | 魍魎 | `custom/ghost/npc/water_goblin.c` | water goblin | 100 / 20 |
 
-All of them also answer to `ghost`. They are not placed in any room yet.
+All of them also answer to `ghost`. Each ghost's tick counter starts at a random offset, so ghosts spawned together do not talk or move in step.
+
+Placement (room `objects`, 雪亭鎮): 餓鬼 x2 in `/d/snow/square`; 遊魂 x1 each in `/d/snow/nstreet1` and `/d/snow/ruin1`; 枉死鬼 in `/d/snow/ebridge`; 倀鬼 in `/d/snow/ngate`; 魑魅 in `/d/snow/wgate`; 魍魎 in `/d/snow/river1`. A room only replaces a ghost it spawned once that ghost is destroyed (for example devoured), at the room's next reset, so wandering ghosts are never duplicated.

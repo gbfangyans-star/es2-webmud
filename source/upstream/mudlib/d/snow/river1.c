@@ -21,7 +21,8 @@ LONG
     "/custom/taoism/npc/fire_taoist": 1,
     "/custom/taoism/npc/freeze_taoist": 1,
     "/custom/taoism/npc/storm_taoist": 1,
-    "/custom/taoism/npc/thunder_taoist": 1
+    "/custom/taoism/npc/thunder_taoist": 1,
+    "/custom/ghost/npc/water_goblin": 1
   ]));
   set("outdoors", "snow");
   set("exits", ([ /* sizeof() == 1 */

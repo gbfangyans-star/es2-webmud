@@ -16,6 +16,9 @@ static int ghost_ticks;
 // 子類別在 create() 最後呼叫：設定魂魄狀態與精、神。
 void setup_ghost(int gin, int sen)
 {
+    // 計數器從隨機位置起跳，同時生出的鬼魂才不會同時說話、同時移動。
+    ghost_ticks = random(CHAT_TICKS * MOVE_TICKS);
+
     set_race("human");
     set("life_form", "ghost");
     set("attitude", "peaceful");
