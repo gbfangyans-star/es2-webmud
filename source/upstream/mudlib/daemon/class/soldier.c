@@ -66,9 +66,9 @@ void initialize(object ob)
 }
 
 // advance_level() runs *before* gain_score() increments the player's level,
-// so query_level() here is still the level the character is leaving --
-// set_next_target() turns that into the threshold for the level they're
-// about to become.
+// so query_level() here is still the level the character is leaving. The
+// new level is query_level() + 1, and set_next_target() turns that into the
+// threshold for the level after it.
 void advance_level(object ob)
 {
     int gin_gain, kee_gain, sen_gain;
@@ -86,5 +86,5 @@ void advance_level(object ob)
 
     tell_object(ob, HIY "常年的軍旅操練讓你的精氣神更加充沛！\n" NOR);
 
-    set_next_target(ob, ob->query_level());
+    set_next_target(ob, ob->query_level() + 1);
 }
