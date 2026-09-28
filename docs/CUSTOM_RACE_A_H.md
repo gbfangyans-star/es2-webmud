@@ -92,10 +92,10 @@ Neolith `HEARTBEAT_INTERVAL` is 2,000,000 microseconds, so 1 tick = one 2-second
 - Attributes: str 16-25, cor 17-25, int 13-18, spi 13-18, cps 13-18, dex 13-18, con 16-25, wis 13-18.
 - Hidden bonuses: 防禦力 15 (`apply/armor`), 攻擊能力值 10 (`apply/attack`), 陰陽眼 (`apply/vision_of_ghost`).
 - `devour <ghost>` (`daemon/race/yaksa/devour.c`): targets anything whose `life_form` is `ghost` (ghost NPCs and dead players). Not in combat, not in no_fight rooms, not on wizards.
-  - One bite per tick. Bite = cor x dex + random(own current gin), taken from the ghost's current gin. At 0 the ghost is devoured. Both sides are busy while devouring. It stops if the yaksa enters combat, dies, or either side leaves the room.
+  - One bite per tick. Bite = cor + dex + random(own current gin) / 10, taken from the ghost's current gin. At 0 the ghost is devoured. The yaksa and a ghost NPC are busy while devouring. A player ghost can still move and escapes by leaving the room. It stops if the yaksa enters combat, dies, or either side leaves the room.
   - Ghost NPC: destroyed. The yaksa heals gin and sen (current and damaged maximum) by the total amount devoured.
   - Player ghost: 魂飛魄散 through the existing `CHAR_D->make_mist()` reincarnation. The account (id, password, total online time `time_aged`) is kept, the character file is deleted, and the player picks a race again.
-  - Player ghost reward (backlash removed): "ghost gin" = the ghost's current gin when devouring started, doubled for a yaksa ghost. If it is lower than the higher of the yaksa's gin/kee maximum, the yaksa permanently gains maximum gin 1 + G/40, kee 1 + random(G/40), sen 1 + random(G/80). The first 10 player devours always give this large gain. After that the chance is 10 / (10 + random(count)); otherwise the gain is gin 1~2, kee 0~1. If the ghost is not weaker, there is no gain. The count is stored in `yaksa/devoured_players`.
+  - Player ghost reward (no backlash, even when the ghost is stronger): "ghost gin" G = the ghost's current gin when devouring started, doubled for a yaksa ghost. The yaksa permanently gains maximum gin 1 + G/40, kee 1 + random(G/40), sen 1 + random(G/80). The first 10 player devours always give this large gain. After that the chance is 10 / (10 + random(count)); otherwise the gain is gin 1~2, kee 0~1. The count is stored in `yaksa/devoured_players`.
 
 ## 阿修羅 (ashura)
 
@@ -104,3 +104,7 @@ Neolith `HEARTBEAT_INTERVAL` is 2,000,000 microseconds, so 1 tick = one 2-second
 - Attributes: str 20-25, cor 25-40, int 13-18, spi 14-22, cps 5-10, dex 15-20, con 17-22, wis 13-18.
 - Hidden bonuses: 攻擊能力值 40 (`apply/attack`), 攻勢等級 30 (`apply/intimidate`), 咒術 15 (`apply/spells`, skill level), 陰陽眼 (`apply/vision_of_ghost`).
 - Auto fight: when an ashura player and an NPC first meet (either one walks into the room), `feature/char/attack.c` `init()` calls `COMBAT_D->start_ashura()`. Chance = 100 - cps x 3, minimum 30%. It uses `fight`, not `kill`, on both sides, so the loser only falls unconscious and the player can `halt`. Skipped when the ashura is already fighting, unconscious, net-dead or a ghost, when the NPC is unconscious, a ghost or not visible, and in no_fight rooms. Players are never targeted. It cannot be turned off.
+
+## Character creation limit
+
+`adm/daemons/logind.c` (`ENABLE_ANTISPAM`): new characters no longer lose attribute points. Each IP may create at most 10 characters within 30 minutes of its first creation. The 11th new ID from that IP inside the window is refused at the "create this ID?" step. Existing characters can always log in. Reincarnation (re-creating after 魂飛魄散) counts toward the 10 but is not blocked.
