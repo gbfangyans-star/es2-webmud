@@ -11,7 +11,7 @@ def read(p):
 
 def test_every_blade_answers_to_blade_and_has_damage():
     files = sorted(BLADE.glob('*.c'))
-    assert len(files) == 39
+    assert len(files) == 40
     for f in files:
         s = read(f)
         assert re.search(r'set_name\("[^"]*", \(\{ "[^"]+", "blade" \}\)\);', s), f.name
@@ -52,3 +52,11 @@ def test_blue_poison_blade_venom():
               'me->consume_stat("HP", 2, from);', 'data["left"] = DURATION_TICKS;']:
         assert x in v
     assert 'weapon->hit_ob(me, victim, damage);' in read(MUD / 'adm' / 'daemons' / 'combatd.c')
+
+
+def test_purple_dragon_blade_properties_in_both_hands():
+    s = read(BLADE / 'purple_dragon_blade.c')
+    assert 'set("apply_weapon/blade"' in s
+    assert 'set("apply_weapon/secondhand blade"' in s
+    assert 'init_damage(3, 12, 90, 5, "blade");' in s
+    assert 'init_damage(3, 6, 90, 5, "secondhand blade");' in s

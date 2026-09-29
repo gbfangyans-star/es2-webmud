@@ -28,7 +28,9 @@
   同房間的人看到把「你」換成名字的版本。
   戰鬥系統在武器命中並造成傷害後呼叫武器的 `hit_ob(攻擊者, 目標, 傷害)`（`adm/daemons/combatd.c`），
   之後其他特殊武器也可以使用。
-- **未製作**：單刀（Poison blade）依使用者指示不製作；紫薇伏龍刀的特性屬於哪種用法待確認。
+- **紫薇伏龍刀**：原資料只列一次傷害（8-41，刀法）與一組特性；依使用者指定，特性在刀法與左手刀法都生效。
+  左手刀法的傷害依 `setup_blade()` 的比例（範圍減半）為 8-23。
+- **未製作**：單刀（Poison blade）依使用者指示不製作。
 
 ## 一覽
 
@@ -44,6 +46,7 @@
 | 玄鐵斬崩刀 | `blade_of_strange_iron.c` | blade of strange-iron | 8300 | blade 16 | 250 |  |
 | 靈刀祭血 | `blood_blade.c` | blood blade | 6100 | blade 12 | 950 |  |
 | 藍涎刀 | `blue_poison_blade.c` | blue_poison blade | 6100 | blade 12、secondhand blade 24 | 750 |  |
+| 紫薇伏龍刀 | `purple_dragon_blade.c` | purple dragon blade | 6100 | secondhand blade 24、blade 12 | 40 |  |
 | 井中月 | `ceremonial_moon.c` | ceremonial moon | 8300 | blade 16 | 250 |  |
 | 紫雲朱寰 | `cloudy_ring_blade.c` | cloudy ring blade | 12000 | blade 24 | 750 | 是 |
 | 巨刀 | `colosus_blade.c` | colosus blade | 18800 | twohanded blade 18 | 500 |  |
