@@ -116,9 +116,9 @@ int main(object me, string arg)
             if( member_array(s, mapped) >= 0 ) continue;
         }
 
-        // 「ˇ」在畫面上只佔半格，後面補一個半形空白，和沒有裝備時的兩格空白同寬。
+        // 已裝備的武功以全形「Ｖ」標示，和沒有裝備時的兩格空白同寬。
         // 名稱與等級依顯示寬度補齊（中文字佔兩格），欄位才會對齊。
-        line += (member_array(s, mapped)==-1? "  ": HIY "ˇ ")
+        line += (member_array(s, mapped)==-1? "  ": HIY "Ｖ")
             + cjk_pad(to_chinese(s) + " (" + s + ")", 50) + NOR
             + " - " + cjk_pad(skill_level(SKILL_D(s)->type(), skl[s]), 10)
             + sprintf(" %3d", _skill[s]);

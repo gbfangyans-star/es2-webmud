@@ -38,8 +38,8 @@ string inventory_desc(object ob)
     if( ob->query("keep_this")) desc += "◎";
 //    else desc = "  " + desc;
 
-    // 「ˇ」只佔半格，補一個半形空白，和沒有裝備時的兩格空白同寬。
-    if( ob->query("equipped"))  desc = HIY "ˇ " + desc + NOR;
+    // 已裝備以全形「Ｖ」標示，和沒有裝備時的兩格空白同寬。
+    if( ob->query("equipped"))  desc = HIY "Ｖ" + desc + NOR;
     else desc = "  " + desc;
 
     return desc;
@@ -51,7 +51,7 @@ int help (object me)
 指令格式: inventory
  
 可列出你(妳)目前身上所攜帶的所有物品。
-ˇ  記號及亮黃色表示已在使用， ◎ 記號表示已 keep。
+Ｖ 記號及亮黃色表示已在使用， ◎ 記號表示已 keep。
 註 : 此指令可以 " i " 代替。
  
 HELP
