@@ -24,7 +24,18 @@ a{color:#9bd7a6}
 .brand{display:flex;align-items:baseline;gap:12px;min-width:0}.brand strong{font-family:"Noto Serif TC","PMingLiU",serif;color:#eccb79;font-size:20px;letter-spacing:.12em}.brand span{color:#d6ba70}.brand small{color:#7f9187;letter-spacing:.15em}.connection{color:#9bc7a6;font-size:12px}
 .game-shell{min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 440px}
 .console-panel{min-width:0;min-height:0;display:grid;grid-template-rows:minmax(0,1fr) auto;padding:12px 10px 10px 12px;border-right:1px solid #294238;background:#070b09}
-#terminal{min-height:0;overflow:auto;white-space:pre-wrap;word-break:break-word;line-height:1.58;padding:8px 12px 18px 4px;font-size:15px;scrollbar-color:#445e53 #0a100d}
+#terminal{min-height:0;overflow:auto;white-space:pre-wrap;word-break:break-word;line-height:1.58;padding:8px 12px 18px 4px;font-size:15px}
+/* 訊息欄捲動條加寬（約原本兩倍）。Chrome 設了 scrollbar-color 就不能自訂寬度，
+   所以 scrollbar-color 只給不支援 ::-webkit-scrollbar 的瀏覽器（Firefox）。 */
+#terminal::-webkit-scrollbar{width:24px}
+#terminal::-webkit-scrollbar-track{background:#0a100d}
+#terminal::-webkit-scrollbar-thumb{background:#445e53;border:4px solid #0a100d;border-radius:12px;min-height:40px}
+#terminal::-webkit-scrollbar-thumb:hover{background:#5b7d6f}
+@supports not selector(::-webkit-scrollbar){#terminal{scrollbar-color:#445e53 #0a100d}}
+.console-panel{position:relative}
+.scroll-latest{position:absolute;right:40px;bottom:78px;z-index:5;padding:6px 12px;border:1px solid #4a7a66;border-radius:16px;background:rgba(10,24,18,.92);color:#cfe8da;font-size:13px;box-shadow:0 2px 10px rgba(0,0,0,.45)}
+.scroll-latest:hover{background:#1b3a2d;color:#fff}
+.scroll-latest[hidden]{display:none}
 #terminal .room-line{color:#43e48b;font-weight:700;font-size:1.05em}
 #terminal .exit-line{color:#f0c95f;font-weight:600}
 #terminal .combat-hot{color:#ff6f6f}
