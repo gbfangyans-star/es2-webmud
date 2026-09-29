@@ -11,10 +11,10 @@ def test_bank_accepts_chinese_and_english_currency_names():
     assert 'from = normalize_money_id(from);' in s
     assert 'to = normalize_money_id(to);' in s
 
-def test_bank_bond_lookup_uses_unambiguous_assignment():
+def test_bank_no_longer_requires_a_bond():
     s=read("source/upstream/mudlib/std/room/bank.c")
-    assert 'if( !(bond = present("bankbond", this_player())) )' in s
-    assert 'if( !bond = present("bankbond", this_player()) )' not in s
+    assert 'if( !(bond = present("bankbond", this_player())) )' not in s
+    assert '請你先開一個戶頭' not in s
 
 def test_combat_hud_uses_ten_segments():
     s=read("web/app.js")
