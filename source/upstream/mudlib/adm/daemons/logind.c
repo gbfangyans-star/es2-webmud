@@ -22,6 +22,10 @@ string *user_race = ({
     "woochan",
     "dingling",
     "headless",
+    "rainner",
+    "malik",
+    "yaksa",
+    "ashura",
 });
 
 string *banned_name = ({
@@ -36,11 +40,24 @@ string *banned_hostname = ({
 });
 
 #ifdef ENABLE_ANTISPAM
-mapping spammer_player = ([]);
+// 同一個 IP 從建立第一個角色起算 30 分鐘內，最多建立 10 個角色。
+// 不再扣新角色的屬性。ip : ({ 第一個角色的建立時間, 建立數量 })
+#define SPAM_WINDOW	1800
+#define SPAM_LIMIT	10
 mapping spammer_ip = ([]);
-string *penalty_attr = ({
-    "str", "int", "dex", "con", "spi", "cps", "wis", "cor"
-});
+
+private int create_limited(string ip) {
+    mixed *rec = spammer_ip[ip];
+    return arrayp(rec) && time() - rec[0] < SPAM_WINDOW && rec[1] >= SPAM_LIMIT;
+}
+
+private void count_creation(string ip) {
+    mixed *rec = spammer_ip[ip];
+    if (!arrayp(rec) || time() - rec[0] >= SPAM_WINDOW)
+        spammer_ip[ip] = ({ time(), 1 });
+    else
+        rec[1]++;
+}
 #endif
 
 private void get_id(string arg, object ob);
@@ -65,8 +82,7 @@ private void create() {
 private void reset() {
     log_file ("USRGRAPH", sprintf ("[%s] %d users\n", ctime(time()), sizeof(users())));
 #ifdef ENABLE_ANTISPAM
-    spammer_player = ([]);
-    spammer_ip = ([]);
+    spammer_ip = filter(spammer_ip, (: time() - $2[0] < SPAM_WINDOW :));
 #endif
 }
 
@@ -76,14 +92,6 @@ void logon (object ob) {
 
     if (ob.getuid() != ROOT_UID)
         error ("Insecure user object."); // only allow new user object created with ROOT_UID.
-
-#ifdef ENABLE_ANTISPAM
-    if (spammer_ip[query_ip_number(ob)] >= 10) {
-        write("從您連線的主機創造的人物太多了﹐您的主機將被拒絕往來一段時間。\n");
-        destruct (ob);
-        return;
-    }
-#endif
 
     seteuid (getuid());
     write (read_file (WELCOME) + "\n");
@@ -370,14 +378,11 @@ private void confirm_id (string yn, mapping opts, object ob) {
     }
 
 #ifdef ENABLE_ANTISPAM
-    if (spammer_player[ob->query("id")])
-        spammer_player[ob->query("id")]++;
-    else
-        spammer_player[ob->query("id")] = 1;
-    if (spammer_ip[query_ip_number(ob)])
-        spammer_ip[query_ip_number(ob)]++;
-    else
-        spammer_ip[query_ip_number(ob)] = 1;
+    if (create_limited(query_ip_number(ob))) {
+        write("\r" CLR "從您連線的主機創造的人物太多了﹐請過一段時間再來創造新人物。\n");
+        destruct (ob);
+        return;
+    }
 #endif
     seteuid (ob->query("id"));
     export_uid (ob);
@@ -501,6 +506,18 @@ private void get_race (string race, mixed opts, object ob) {
             break;
         case "headless":
             race = "headless";
+            break;
+        case "rainner":
+            race = "rainner";
+            break;
+        case "malik":
+            race = "malik";
+            break;
+        case "yaksa":
+            race = "yaksa";
+            break;
+        case "ashura":
+            race = "ashura";
             break;
         default:
             input_to ("get_race", opts, ob);
@@ -666,24 +683,12 @@ private int check_ip(object link) {
 }
 
 private void init_new_body(object link, object user) {
-#ifdef ENABLE_ANTISPAM
-    int penalty;
-    string a;
-#endif
-
     user->set("birthday", time() );
     user->set_class("commoner");
     user->set_level(1);
 
 #ifdef ENABLE_ANTISPAM
-    penalty = spammer_player[user->query("id")] - 1;
-    if( penalty < spammer_ip[query_ip_number(link)] )
-        penalty = spammer_ip[query_ip_number(link)];
-        while(penalty-- > 0) {
-            a = penalty_attr[random(sizeof(penalty_attr))];
-            if( user->query_attr(a) > 1 )
-                user->set_attr(a, user->query_attr(a)-1);
-        }
+    count_creation(query_ip_number(link));
 #endif
 
     CHAR_D->setup_char(user);

@@ -78,6 +78,12 @@ void setup_char (object ob) {
     RACE_D(ob->query_race())->setup (ob);
     CLASS_D(ob->query_class())->setup (ob);
 
+    // 玩家每次登入依目前的職業公式重算升級門檻，公式調整後既有角色也會套用。
+    if (userp(ob)) {
+        ob->delete ("target_score");
+        CLASS_D(ob->query_class())->initialize (ob);
+    }
+
     // Food/water's maximums are only established just above, by the race
     // daemon (e.g. humanoid.c's setup()) -- set_stat_regenerate() silently
     // no-ops when a stat has no maximum yet, so registering food/water here
@@ -322,10 +328,22 @@ void hint_user_race (string race) {
             write (CHA(20) + "無腸不需要食物，並能使用 replete 恢復受損的精氣神格子。");
             break;
         case "dingling":
-            write (CHA(20) + "釘靈行動迅捷，能以 hoof 踢擊敵人並造成短暫遲滯。");
+            write (CHA(20) + "釘靈天生強健，能以 hoof 踢翻敵人，令其數回合無法行動。");
+            break;
+        case "rainner":
+            write (CHA(20) + "雨師妾天生靈性過人，升級時有機會得到小蛇，以 feed 餵養鮮血讓牠們成長。");
             break;
         case "headless":
-            write (CHA(20) + "刑天無首，以乳為目、以臍為口，天生戰士，會透過各種戰舞提升或恢復戰力。");
+            write (CHA(20) + "刑天無首，以乳為目、以臍為口，天生戰士，手持斧頭時能以五種戰舞提升或恢復戰力。");
+            break;
+        case "malik":
+            write (CHA(20) + "巫首悟性與靈性極高，天生防禦力強，沒有特殊種族能力。");
+            break;
+        case "yaksa":
+            write (CHA(20) + "夜叉天生陰陽眼，能以 devour 吞食鬼魂，吞食玩家的鬼魂可以永久提升精氣神。");
+            break;
+        case "ashura":
+            write (CHA(20) + "阿修羅天生好戰，遇到 NPC 時常會忍不住出手，定力越高越能克制。");
             break;
     }
 }

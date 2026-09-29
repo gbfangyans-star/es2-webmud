@@ -502,6 +502,36 @@ start_aggressive (object me, object obj)
     me->attack(obj);
 }
 
+// 阿修羅與 NPC 相遇時主動出手：出手機率 = 100 - 定力 x 3（最低 30%）。
+// 只用 fight，不用 kill：雙方都不會下死手，打輸只會昏倒，玩家可以 halt 停手。
+void
+start_ashura (object me, object obj)
+{
+    int chance;
+
+    if( !me || !obj ) return;
+
+    if( !userp(me) || userp(obj)                // 只有阿修羅玩家對 NPC
+    ||  me->is_fighting()                       // Are we busy fighting?
+    ||  !living(me) || !living(obj)             // Are we capable for a fight?
+    ||  !interactive(me)                        // Is player net dead?
+    ||  environment(me)!=environment(obj)       // Are we still in the same room?
+    ||  environment(me)->query("no_fight")      // Are we in a peace room?
+    ||  me->query("life_form") == "ghost"
+    ||  obj->query("life_form") == "ghost"
+    ||  !obj->visible(me)                       // 看不見的對象不會出手
+    )   return;
+
+    chance = 100 - (int)me->query_attr("cps") * 3;
+    if( chance < 30 ) chance = 30;
+    if( random(100) >= chance ) return;
+
+    message_vision( catch_hunt_msg[random(sizeof(catch_hunt_msg))], me, obj);
+    me->fight_ob(obj);
+    obj->fight_ob(me);
+    me->attack(obj);
+}
+
 // This function is to announce the special events of the combat.
 // This should be moved to another daemon in the future.
 void

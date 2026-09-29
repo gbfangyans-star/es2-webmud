@@ -15,21 +15,31 @@ string query_rank(object ob, string politeness)
     }
 }
 
+// Race 基數 as a percentage (100 = human baseline), read from the race
+// daemon's "commoner_score_base"; only scales character level-up thresholds.
+private int race_coef(object ob)
+{
+    int coef;
+    coef = RACE_D(ob->query_race())->query("commoner_score_base");
+    return coef > 0 ? coef : 100;
+}
+
 // cur_lv is the level being left; thresholds target cur_lv + 1.
 void set_next_target(object ob, int cur_lv)
 {
-    int lv, n;
+    int lv, n, coef;
 
     if( cur_lv < 1 ) cur_lv = 1;
     lv = cur_lv + 1;
     n = lv - 1;
+    coef = race_coef(ob);
 
-    ob->set_target_score("survive", n*n*100);
-    ob->set_target_score("magic", n*n*150);
+    ob->set_target_score("survive", n*n*100 * coef / 100);
+    ob->set_target_score("magic", n*n*150 * coef / 100);
     ob->set_target_score("spell mastery",
-        lv > 10 ? (lv-10)*(lv-10)*100 : 0);
+        lv > 10 ? (lv-10)*(lv-10)*100 * coef / 100 : 0);
     ob->set_target_score("combat",
-        lv > 11 ? (lv-11)*(lv-11)*100 : 0);
+        lv > 11 ? (lv-11)*(lv-11)*100 * coef / 100 : 0);
 }
 
 int spell_mastery_score(object ob)
@@ -74,6 +84,7 @@ void advance_level(object ob)
     ob->set_stat_maximum("sen", ob->query_stat_maximum("sen") + sen_gain);
 
     tell_object(ob, HIY "你對天地氣機的體悟更深，精氣神隨之增長。\n" NOR);
-    set_next_target(ob, ob->query_level());
+    // advance_level() 在等級加 1 之前執行，新等級是 query_level() + 1。
+    set_next_target(ob, ob->query_level() + 1);
     ob->set("score/spell mastery", spell_mastery_score(ob));
 }

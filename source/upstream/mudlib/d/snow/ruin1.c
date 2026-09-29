@@ -31,6 +31,9 @@ LONG
 ]));
 
 	set("map/area", "雪亭鎮");
+	set("objects", ([
+		"/custom/ghost/npc/wandering_soul": 1,
+	]));
     setup();
 }
 

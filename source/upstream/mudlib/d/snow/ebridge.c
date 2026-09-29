@@ -17,6 +17,7 @@ LONG
     set ("no_clean_up", 0);
     set ("objects", ([
         __DIR__"npc/guard" : 2,
+        "/custom/ghost/npc/wronged_ghost" : 1,
     ]));
     set ("outdoors", "snow");
     set ("exits", ([

@@ -370,6 +370,12 @@ attack (object opponent)
 
 void init()
 {
+    /* 阿修羅玩家與 NPC 相遇（任一方走進房間）時，可能主動 fight 對方。
+     * 雙方走進同一房間時 init() 會雙向呼叫，只在阿修羅這一側判定一次。 */
+    if( userp(this_object()) && !userp(this_player())
+    &&  this_object()->query_race() == "ashura" )
+	COMBAT_D->auto_fight(this_object(), this_player(), "ashura");
+
 // 這個check似乎與/adm/daemon/combatd.c裏重複, 造成一些異常
 //   取消測試 -Dragoon
 //    /* 若這個物件被移動到非戰區，則不引發戰鬥。 */

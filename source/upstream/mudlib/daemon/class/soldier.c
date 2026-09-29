@@ -30,28 +30,14 @@ string query_rank(object obj, string politeness)
 }
 
 // Per-race multiplier on the leveling thresholds below, as a percentage
-// (100 = human baseline). Races not listed here have not had their
-// coefficient designed yet -- add them once they are, they default to
-// 100% (human baseline) until then.
-private mapping race_level_coef = ([
-    "human"      : 100,
-    "dingling"   :  95,
-    "jiaojao"    :  95,
-    "woochan"    : 100,
-    "rainner"    : 100,
-    "yenhold"    : 115,
-    "blackteeth" : 120,
-    "yaksa"      : 140,
-    "mailk"      : 150,
-    "headless"   : 160,
-    "ashura"     : 180,
-]);
-
+// (100 = human baseline). This is the race's 基數, stored on the race daemon
+// as "commoner_score_base"; races that don't set it count as 100. It only
+// scales character level-up thresholds, never skill experience.
 private int race_coef(object ob)
 {
     int coef;
-    coef = race_level_coef[ob->query_race()];
-    return coef ? coef : 100;
+    coef = RACE_D(ob->query_race())->query("commoner_score_base");
+    return coef > 0 ? coef : 100;
 }
 
 // Leveling thresholds: 兵刃精熟(weapon mastery) and 實戰經驗(combat) both need
@@ -80,9 +66,9 @@ void initialize(object ob)
 }
 
 // advance_level() runs *before* gain_score() increments the player's level,
-// so query_level() here is still the level the character is leaving --
-// set_next_target() turns that into the threshold for the level they're
-// about to become.
+// so query_level() here is still the level the character is leaving. The
+// new level is query_level() + 1, and set_next_target() turns that into the
+// threshold for the level after it.
 void advance_level(object ob)
 {
     int gin_gain, kee_gain, sen_gain;
@@ -100,5 +86,5 @@ void advance_level(object ob)
 
     tell_object(ob, HIY "常年的軍旅操練讓你的精氣神更加充沛！\n" NOR);
 
-    set_next_target(ob, ob->query_level());
+    set_next_target(ob, ob->query_level() + 1);
 }

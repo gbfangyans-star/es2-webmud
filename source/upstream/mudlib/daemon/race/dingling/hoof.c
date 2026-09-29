@@ -13,9 +13,10 @@ int main(object me, string arg) {
     mine = me->query_ability("move"); theirs = victim->query_ability("move"); if (theirs < 1) theirs = 1;
     ratio = (mine * 3 / 2) / theirs; roll = 1 + random(5);
     if (roll < ratio) {
-        damage = me->query("age") + mine / 10;
-        victim->consume_stat("HP", damage, me);
-        victim->start_busy(2);
+        // 原始種族資料：對手 2~3 回合不能行動，並受到 氣 = 釘靈膂力 的傷害。
+        damage = me->query_attr("str");
+        victim->consume_stat("kee", damage, me);
+        victim->start_busy(2 + random(2));
         me->start_busy(1);
         message_vision(HIY "$N猛然揚蹄踢中$n，強勁衝力令$n一時站立不穩！\n" NOR, me, victim);
         return 1;
@@ -24,4 +25,4 @@ int main(object me, string arg) {
     message_vision("$N一蹄踢空，身形失衡。\n", me);
     return 1;
 }
-int help(object me) { write("指令格式：hoof <人物>\n成功造成「年紀 + 行動力/10」傷害並令目標 busy 2 tick，自己也 busy 1 tick；失敗自己 busy 2 tick。\n"); return 1; }
+int help(object me) { write("指令格式：hoof <人物>\n成功時對手受到 氣 = 膂力 的傷害，並 2~3 tick 不能行動，自己 busy 1 tick；失敗自己 busy 2 tick。\n"); return 1; }

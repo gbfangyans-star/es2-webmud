@@ -41,8 +41,8 @@ author: Annihilator <taedlar@gmail.com>
 
 #define SAVE_USER
 
-// Define this to give penalty to those create character again and again
-// to choose good attributes.
+// Define this to limit character creation per IP: at most 10 characters
+// within 30 minutes of the first one.
 #define ENABLE_ANTISPAM
 
 #endif

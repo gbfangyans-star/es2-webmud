@@ -20,6 +20,9 @@ LONG
 	"east" : __DIR__"wstreet3",
 //	"northwest" : "/d/graveyard/grave1",
   ]));
+  set("objects", ([
+	"/custom/ghost/npc/mountain_sprite": 1,
+  ]));
 
     setup();
   replace_program(ROOM);

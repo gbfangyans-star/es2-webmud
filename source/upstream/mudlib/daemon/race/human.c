@@ -19,8 +19,8 @@ private void create() {
     set("civilized", 1);
     set("commoner_score_base", 100);
     set("class_level_cap", ([
-        "commoner":50, "fighter":60, "taoist":50, "alchemist":60,
-        "soldier":50, "scholar":70, "monk":65, "thief":50
+        "commoner":1, "fighter":50, "taoist":50, "alchemist":55,
+        "soldier":50, "scholar":60, "monk":65, "thief":50
     ]));
 
     DAEMON_D->register_race_daemon("human");
@@ -46,10 +46,10 @@ void initialize(object ob) {
     }
 
     ob->init_attribute(([
-        "str":12 + random(7), "cor":12 + random(7),
-        "int":12 + random(7), "spi":12 + random(7),
-        "cps":12 + random(7), "dex":12 + random(7),
-        "con":12 + random(7), "wis":12 + random(7)
+        "str":13 + random(6), "cor":13 + random(6),
+        "int":13 + random(6), "spi":13 + random(6),
+        "cps":13 + random(6), "dex":13 + random(6),
+        "con":13 + random(6), "wis":13 + random(6)
     ]));
 
     ob->init_statistic(([ "gin":35, "kee":35, "sen":35 ]));
