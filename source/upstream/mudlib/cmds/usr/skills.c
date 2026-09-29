@@ -5,6 +5,10 @@
 
 inherit F_CLEAN_UP;
 
+// 技能名稱欄：全形字補到 14 個、半形字補到 24 個（見 cjk_align()）。
+#define NAME_WIDE    14
+#define NAME_NARROW  24
+
 string *skill_level_desc = ({
     "初學乍練",
     "粗通皮毛",
@@ -104,9 +108,9 @@ int main(object me, string arg)
 
         if( !show_all ) {
             if( !undefinedp(map[s]) ) {
-                line += HIY "  " + cjk_pad(to_chinese(s) + " - " + to_chinese(map[s])
-                        + " (" + map[s] + ")", 50) + NOR
-                    + " - " + cjk_pad(skill_level(SKILL_D(s)->type(), skl[s]), 10)
+                line += HIY "　" + cjk_align(to_chinese(s) + " - " + to_chinese(map[s])
+                        + " (" + map[s] + ")", NAME_WIDE, NAME_NARROW) + NOR
+                    + " - " + cjk_align(skill_level(SKILL_D(s)->type(), skl[s]), 4, 0)
                     + sprintf(" %3d", _skill[s]);
                 if( _skill[s] != skl[s] )
                     line += sprintf( HIW " (%+d)" NOR, _skill[s] - skl[s]);
@@ -116,11 +120,12 @@ int main(object me, string arg)
             if( member_array(s, mapped) >= 0 ) continue;
         }
 
-        // 已裝備的武功以全形「Ｖ」標示，和沒有裝備時的兩格空白同寬。
-        // 名稱與等級依顯示寬度補齊（中文字佔兩格），欄位才會對齊。
-        line += (member_array(s, mapped)==-1? "  ": HIY "Ｖ")
-            + cjk_pad(to_chinese(s) + " (" + s + ")", 50) + NOR
-            + " - " + cjk_pad(skill_level(SKILL_D(s)->type(), skl[s]), 10)
+        // 已裝備的武功以全形「Ｖ」標示，沒有裝備時是一個全形空白，兩者同寬。
+        // 名稱用 cjk_align() 把全形字數與半形字數分別補齊，不論瀏覽器用什麼
+        // 字型顯示中文，欄位都會對齊。
+        line += (member_array(s, mapped)==-1? "　": HIY "Ｖ")
+            + cjk_align(to_chinese(s) + " (" + s + ")", NAME_WIDE, NAME_NARROW) + NOR
+            + " - " + cjk_align(skill_level(SKILL_D(s)->type(), skl[s]), 4, 0)
             + sprintf(" %3d", _skill[s]);
         if( _skill[s] != skl[s] )
             line += sprintf( HIW " (%+d)" NOR, _skill[s] - skl[s]);

@@ -115,7 +115,7 @@ string inventory_look(object obj, int flag) {
     if (obj->query("equipped"))
         str = HIY "Ｖ" + str + NOR;
     else if( !flag )
-        str = "  " + str;
+        str = "　" + str;
     else
         return 0;
 

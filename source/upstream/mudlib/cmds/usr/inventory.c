@@ -38,9 +38,9 @@ string inventory_desc(object ob)
     if( ob->query("keep_this")) desc += "◎";
 //    else desc = "  " + desc;
 
-    // 已裝備以全形「Ｖ」標示，和沒有裝備時的兩格空白同寬。
+    // 已裝備以全形「Ｖ」標示，沒有裝備時是一個全形空白，兩者同寬。
     if( ob->query("equipped"))  desc = HIY "Ｖ" + desc + NOR;
-    else desc = "  " + desc;
+    else desc = "　" + desc;
 
     return desc;
 }
