@@ -33,7 +33,7 @@ a{color:#9bd7a6}
 #terminal::-webkit-scrollbar-thumb:hover{background:#5b7d6f}
 @supports not selector(::-webkit-scrollbar){#terminal{scrollbar-color:#445e53 #0a100d}}
 .console-panel{position:relative}
-.scroll-latest{position:absolute;right:40px;bottom:78px;z-index:5;padding:6px 12px;border:1px solid #4a7a66;border-radius:16px;background:rgba(10,24,18,.92);color:#cfe8da;font-size:13px;box-shadow:0 2px 10px rgba(0,0,0,.45)}
+.scroll-latest{position:absolute;right:40px;bottom:78px;z-index:5;width:34px;height:34px;padding:0;display:flex;align-items:center;justify-content:center;border:1px solid #4a7a66;border-radius:50%;background:rgba(10,24,18,.92);color:#cfe8da;font-size:13px;box-shadow:0 2px 10px rgba(0,0,0,.45)}
 .scroll-latest:hover{background:#1b3a2d;color:#fff}
 .scroll-latest[hidden]{display:none}
 #terminal .room-line{color:#43e48b;font-weight:700;font-size:1.05em}

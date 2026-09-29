@@ -1105,7 +1105,7 @@ input?.addEventListener('keydown',e=>{
   }
 });
 
-// 訊息欄往上翻時出現「最新」按鈕，按下直接捲到最新的訊息。
+// 訊息欄往上翻時出現「▼」按鈕，按下直接捲到最新的訊息。
 const scrollLatest=document.querySelector('#scrollLatest');
 function updateScrollLatest(){if(scrollLatest)scrollLatest.hidden=shouldStick();}
 term?.addEventListener('scroll',updateScrollLatest);
