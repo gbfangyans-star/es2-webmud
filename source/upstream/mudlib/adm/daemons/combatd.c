@@ -349,6 +349,10 @@ fight (object me, object victim, string skill, mapping action, object weapon)
         if( strength > 0 ) {
             if( weapon ) {
                 damage = weapon->inflict_damage(strength, victim);
+                // 武器命中並造成傷害後的特殊效果（例如藍涎刀上毒）。
+                // 武器沒有定義 hit_ob() 時，這個呼叫什麼都不做。
+                if( damage > 0 && objectp(victim) )
+                    weapon->hit_ob(me, victim, damage);
                 me->gain_score("weapon mastery", random(me->query_attr("int")/3));
             } else {
                 damage = me->inflict_damage(strength, victim);
