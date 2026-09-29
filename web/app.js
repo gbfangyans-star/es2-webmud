@@ -11,8 +11,28 @@ const gameApp = document.querySelector('#gameApp');
 
 let ws = null;
 let started = false;
+// 指令紀錄：只保存超過 3 個字元的指令、最新 100 個，存在瀏覽器（localStorage），
+// 重新整理或下次開啟仍在。重複的指令會移到最新，不會重複佔位。
+const HISTORY_KEY = 'es2-cmd-history';
+const HISTORY_MAX = 100;
+const HISTORY_MIN_LEN = 4;
 let history = [];
-let hi = 0;
+try {
+  const saved = JSON.parse(localStorage.getItem(HISTORY_KEY) || '[]');
+  if (Array.isArray(saved)) history = saved.filter(x => typeof x === 'string').slice(-HISTORY_MAX);
+} catch (_) {}
+let hi = history.length;
+// 上下鍵翻指令時，以按下第一次上鍵當時輸入欄的文字為開頭來找（例如輸入 c 再按上，
+// 只會翻到 c 開頭的指令）。開始打字或送出後重設。
+let historyPrefix = null;
+function rememberCommand(c){
+  c = String(c ?? '').trim();
+  if (c.length < HISTORY_MIN_LEN) return;
+  history = history.filter(x => x !== c);
+  history.push(c);
+  if (history.length > HISTORY_MAX) history = history.slice(-HISTORY_MAX);
+  try { localStorage.setItem(HISTORY_KEY, JSON.stringify(history)); } catch (_) {}
+}
 let retry = 0;
 let tail = '';
 let graph = {nodes:[], edges:[]};
@@ -333,6 +353,9 @@ function classifyLine(line){
   if(/^出口\s*[:：]/.test(plain)||/明顯的出口|唯一的出口/.test(plain))return 'exit-line';
   if(/受了傷|受到.*傷害|受傷|擊中|砍中|刺中|轟中|死亡|死了|斃命/.test(plain))return 'combat-hot';
   if(/經脈|內力|真氣|氣血|恢復|療傷/.test(plain))return 'combat-cool';
+  // skills 清單的每一行（「刀法 (blade) - 駕輕就熟  70」）含有刀法、內功等字，
+  // 但顏色由伺服器決定（只有已裝備的武功是黃色），不套用關鍵字上色。
+  if(/\([a-z][\w '\-]*\)[\s　]*-\s*\S+\s+\d+/i.test(plain))return '';
   if(/施展|神功|內功|招式|劍法|刀法|掌法/.test(plain))return 'system-highlight';
   return '';
 }
@@ -917,8 +940,6 @@ function transmitUserCommand(c,sensitive=false){
   if(!sensitive&&['score','hp','skills','inventory','look','go'].includes(op))observer.begin(op,c);
   sessionRecorder.beginCommand(c,{sensitive});
   ws.send(c+'\r\n');
-  if(!sensitive&&c)history.push(c);
-  hi=history.length;
   input.type='text';input.autocomplete='off';tail='';
 }
 function flushPendingUserCommands(){
@@ -971,7 +992,7 @@ let repeatArmed=false;
 input?.addEventListener('mousedown',e=>{
   if(repeatArmed){e.preventDefault();input.focus();input.select();}
 });
-input?.addEventListener('input',()=>{repeatArmed=false;});
+input?.addEventListener('input',()=>{repeatArmed=false;historyPrefix=null;hi=history.length;});
 document.querySelector('#form')?.addEventListener('submit',e=>{
   e.preventDefault();
   const raw=input.value;
@@ -981,6 +1002,7 @@ document.querySelector('#form')?.addEventListener('submit',e=>{
   }
   // ';' chains several commands from one line, e.g. "e;e;e;n" walks east
   // three times then north. No inter-command delay -- fired back to back.
+  rememberCommand(raw);hi=history.length;historyPrefix=null;
   let parts=raw.includes(';')?raw.split(';').map(s=>s.trim()).filter(s=>s.length):[raw];
   if(!parts.length)parts.push('');
   // Cap at 9 actions per submit -- roughly what a tick should hold -- so a
@@ -1063,7 +1085,28 @@ async function bootPreviewMode(){
 }
 bootPreviewMode();
 
+function historyMatch(cmd){return cmd.toLowerCase().startsWith(historyPrefix.toLowerCase());}
+function showHistory(value){input.value=value;repeatArmed=false;const n=value.length;input.setSelectionRange(n,n);}
 input?.addEventListener('keydown',e=>{
-  if(e.key==='ArrowUp'){e.preventDefault();hi=Math.max(0,hi-1);input.value=history[hi]||'';}
-  else if(e.key==='ArrowDown'){e.preventDefault();hi=Math.min(history.length,hi+1);input.value=history[hi]||'';}
+  if(e.key==='ArrowUp'){
+    e.preventDefault();
+    if(historyPrefix===null){
+      // 剛送出、指令還反白留在欄位時，視為沒有輸入，從頭翻。
+      historyPrefix=repeatArmed?'':input.value;hi=history.length;
+    }
+    for(let i=hi-1;i>=0;i--)if(historyMatch(history[i])){hi=i;showHistory(history[i]);return;}
+  }
+  else if(e.key==='ArrowDown'){
+    e.preventDefault();
+    if(historyPrefix===null)return;
+    for(let i=hi+1;i<history.length;i++)if(historyMatch(history[i])){hi=i;showHistory(history[i]);return;}
+    // 翻到底：回到當初輸入的文字。
+    hi=history.length;showHistory(historyPrefix);historyPrefix=null;
+  }
 });
+
+// 訊息欄往上翻時出現「▼」按鈕，按下直接捲到最新的訊息。
+const scrollLatest=document.querySelector('#scrollLatest');
+function updateScrollLatest(){if(scrollLatest)scrollLatest.hidden=shouldStick();}
+term?.addEventListener('scroll',updateScrollLatest);
+scrollLatest?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();term.scrollTop=term.scrollHeight;updateScrollLatest();input?.focus();});

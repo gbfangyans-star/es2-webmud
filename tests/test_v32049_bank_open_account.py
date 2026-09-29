@@ -30,15 +30,16 @@ def test_bank_init_keeps_room_init_and_registers_commands():
     assert 'add_action("do_convert", "convert")' in text
 
 
-def test_snow_bazar_is_bank_and_documents_open_account():
+def test_snow_bazar_is_bank_and_documents_account_free_banking():
     text = BAZAR.read_text(encoding="utf-8")
     assert 'inherit BANK;' in text
-    assert 'open account' in text
+    assert 'balance' in text
+    assert 'open account' not in text
+    assert '不需開戶' in text
 
 
-def test_new_account_creates_bond_and_sets_owner_balance():
+def test_open_account_no_longer_creates_a_bond():
     text = BANK.read_text(encoding="utf-8")
-    assert 'new("/obj/bankbond")' in text
-    assert 'bankbond->move(this_player())' in text
-    assert 'bankbond->set("owner_id", geteuid(this_player()))' in text
-    assert 'bankbond->set_balance(0)' in text
+    block = text[text.index('int do_new_account'):text.index('int do_convert')]
+    assert 'bankbond' not in block.replace('retire_bankbond', '')
+    assert '不需要開戶' in block

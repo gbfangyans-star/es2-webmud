@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>東方故事二 · 天朝帝國</title>
-  <link rel="stylesheet" href="/styles.css?v=mapv8-focus-bootstrap">
+  <link rel="stylesheet" href="/styles.css?v=input-history-v2">
 </head>
 <body class="game-body">
   <section id="landing" class="landing" aria-label="東方故事二登入首頁">
@@ -47,6 +47,7 @@
             <span>原生 ES2 指令輸出</span>
           </div>
           <div id="terminal" aria-live="polite"></div>
+          <button type="button" id="scrollLatest" class="scroll-latest" title="捲到最新訊息" aria-label="捲到最新訊息" hidden>▼</button>
           <form class="commandbar" id="form">
             <span class="command-prompt">›</span>
             <span id="inputMode" class="input-mode">指令輸入</span>
@@ -141,6 +142,6 @@
     </dialog>
   </div>
 
-  <script type="module" src="/app.js?v=mapv8-focus-bootstrap"></script>
+  <script type="module" src="/app.js?v=input-history-v2"></script>
 </body>
 </html>

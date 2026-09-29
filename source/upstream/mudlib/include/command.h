@@ -27,6 +27,7 @@ author: Annihilator <taedlar@gmail.com>
 // These are command objects that will also be called in those
 // non-player objects.
 
+#define BALANCE_CMD		"/cmds/std/balance"
 #define DROP_CMD		"/cmds/std/drop"
 #define GET_CMD			"/cmds/std/get"
 #define GO_CMD			"/cmds/std/go"

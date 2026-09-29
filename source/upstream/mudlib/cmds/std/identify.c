@@ -67,7 +67,7 @@ int main(object me, string arg)
                     prop = named_apply[prop];
                 else
                     prop = to_chinese(prop);
-                printf("  %-30s %O\n", prop, value);
+                printf("  %s%s\n", cjk_align(prop, 10, 8), cjk_pad(sprintf("%O", value), 6, 1));
             }
         }
     }
@@ -81,7 +81,7 @@ int main(object me, string arg)
             foreach(prop, value in apply) {
                 if( !undefinedp(named_apply[prop]) )
                     prop = named_apply[prop];
-                printf("  %-30s %O\n", to_chinese(prop), value);
+                printf("  %s%s\n", cjk_align(to_chinese(prop), 10, 8), cjk_pad(sprintf("%O", value), 6, 1));
             }
         }
     }

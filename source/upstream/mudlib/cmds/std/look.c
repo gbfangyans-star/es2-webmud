@@ -111,10 +111,11 @@ string inventory_look(object obj, int flag) {
     string str;
 
     str = obj->short();
+    // 已裝備的物品以全形「Ｖ」標示，和 inventory 一致。
     if (obj->query("equipped"))
-        str = HIY "[v] " + str + NOR;
+        str = HIY "Ｖ" + str + NOR;
     else if( !flag )
-        str = "    " + str;
+        str = "　" + str;
     else
         return 0;
 

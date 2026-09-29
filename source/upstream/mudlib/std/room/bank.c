@@ -1,4 +1,12 @@
 // bank.c
+//
+// 錢莊：存款直接記在角色身上（"bank_account"，單位為文），不需要開戶，
+// 也不需要金契。deposit 存款、withdraw 提款、convert 兌換；
+// 查詢存款用全域的 balance 指令（cmds/std/balance.c），任何地方都能查。
+// 以前發出的錢莊金契已經不再使用，玩家在錢莊存提款或查詢時會被收回，
+// 帳上的存款不受影響。
+
+#include <command.h>
 
 inherit ROOM;
 
@@ -47,6 +55,29 @@ string money_file(string money)
     return "/obj/money/" + id;
 }
 
+// 存款的顯示格式與 balance 指令共用。
+string money_string(int amount)
+{
+    return BALANCE_CMD->money_string(amount);
+}
+
+// 收回舊的錢莊金契並存檔（讓金契從登入自動載入清單中移除）。
+// 存款本來就記在角色身上，收回金契不影響帳上的錢。
+void retire_bankbond(object who)
+{
+    object bond;
+    int retired;
+
+    while( (bond = present("bankbond", who)) ) {
+        destruct(bond);
+        retired++;
+    }
+    if( retired ) {
+        tell_object(who, "錢莊收回了你的舊金契﹐以後存款直接記在你的名下。\n");
+        who->save();
+    }
+}
+
 void init()
 {
     ::init();
@@ -56,50 +87,12 @@ void init()
     add_action("do_new_account", "open");
 }
 
+// 舊的開戶指令：現在不需要開戶了。
 int do_new_account(string arg)
 {
-    int bal;
-    object bankbond;
-
     if( !arg || arg!="account" ) return 0;
-    if( present("bankbond", this_player()) )
-        return notify_fail("你已經有一個戶頭了。\n");
-    seteuid(geteuid(this_player()));
-    // A bond created via plain new() ends up with no real owner (uid/euid
-    // both unset), and export_uid() only succeeds when called by an object
-    // running under its own genuine identity -- this room, having just
-    // seteuid()'d to borrow the player's identity, does not qualify. The
-    // bond's set_balance()/transact() then write to the player's protected
-    // "bank_account" property with that unset euid, which is silently
-    // rejected -- leaving the bond's own balance and the player's
-    // bank_account permanently out of sync, which the very next
-    // deposit/withdraw then detects and reacts to by confiscating the bond.
-    // Creating it via the player's own new_owned_object() sidesteps this:
-    // it runs with the player's genuine (non-delegated) identity, so
-    // export_uid() succeeds.
-    bankbond = this_player()->new_owned_object("/obj/bankbond");
-    if( !bankbond ) {
-        write("你的帳簿出了點問題, 請找巫師反應。\n");
-        return 1;
-    }
-    if( !bankbond->move(this_player()) ) {
-        write("你身上的東西太多了﹐帶不動錢莊金契。\n");
-        destruct(bankbond);
-        return 1;
-    }
-    bankbond->set("owner_id", geteuid(this_player()));
-    bal = this_player()->query("bank_account");
-    if( bal>0 ) {
-        write("錢莊查對帳簿﹐扣掉一成的保證金﹐重新發給你一張新的金契。\n");
-        bankbond->set_balance(bal*9/10);
-    } else if( bal==0 ) {
-        write("你和錢莊共同畫了個花押﹐作為以後金錢往來的憑據。\n");
-        write("錢莊給你一張金契﹐上面記著你現在戶頭還餘下多少錢。\n");
-        bankbond->set_balance(0);
-    } else {
-        write("你的帳簿出了點問題, 請找巫師反應。\n");
-        destruct(bankbond);
-    }
+    retire_bankbond(this_player());
+    write("錢莊的存款直接記在你的名下﹐不需要開戶﹐直接用 deposit 存款即可。\n");
     return 1;
 }
 
@@ -123,7 +116,7 @@ int do_convert(string arg)
 
     if( !from_ob )        return notify_fail("你身上沒有這種貨幣。\n");
     if( amount < 1 )    return notify_fail("兌換貨幣一次至少要兌換一個。\n");
-        
+
     if( (int)from_ob->query_amount() < amount )
         return notify_fail("你身上沒有那麼多" + from_ob->name() + "。\n");
 
@@ -155,25 +148,12 @@ int do_convert(string arg)
 
 int do_deposit(string arg)
 {
-    int amount;
+    int amount, value;
     string money;
-    object money_ob, bond;
+    object money_ob;
 
     seteuid(getuid());
-    if( !(bond = present("bankbond", this_player())) )
-        return notify_fail("請你先開一個戶頭。\n");
-
-    if( geteuid(this_player()) != bond->query("owner_id") ) {
-        write("錢莊發現你的花押不對﹐沒收了你的金契。\n");
-        destruct(bond);
-        return 1;
-    }
-
-    if( bond->query_balance() != this_player()->query("bank_account") ) {
-        write("錢莊發現金契上的帳目不對﹐沒收了你的金契。\n");
-        destruct(bond);
-        return 1;
-    }
+    retire_bankbond(this_player());
 
     if( !arg || sscanf(arg, "%d %s", amount, money)!=2 )
         return notify_fail("指令格式﹕deposit <數量> <貨幣種類>。\n");
@@ -188,12 +168,14 @@ int do_deposit(string arg)
     if( money_ob->query_amount() < amount )
         return notify_fail("你身上沒有這麼多的" + money_ob->name() + "。\n");
 
-    bond->transact(amount * money_ob->query("base_value"));
-    money_ob->add_amount( - amount );
+    value = amount * money_ob->query("base_value");
     write("你將" + chinese_number(amount) + money_ob->query("base_unit")
-        + money_ob->name() + "交割給錢莊﹐錢莊重新發給你一張新的金契。\n");
-    this_player()->save_autoload();
-        this_player()->save();
+        + money_ob->name() + "存進錢莊。\n");
+    this_player()->add("bank_account", value);
+    money_ob->add_amount( - amount );
+    write("你在錢莊的存款共有" + money_string(this_player()->query("bank_account"))
+        + "。\n");
+    this_player()->save();
     return 1;
 }
 
@@ -201,23 +183,10 @@ int do_withdraw(string arg)
 {
     int amount;
     string money;
-    object money_ob, bond;
+    object money_ob;
 
     seteuid(getuid());
-    if( !(bond = present("bankbond", this_player())) )
-        return notify_fail("請你先開一個戶頭。\n");
-
-    if( geteuid(this_player()) != bond->query("owner_id") ) {
-        write("錢莊發現你的花押不對﹐沒收了你的金契。\n");
-        destruct(bond);
-        return 1;
-    }
-
-    if( bond->query_balance() != this_player()->query("bank_account") ) {
-        write("錢莊發現金契上的帳目不對﹐沒收了你的金契。\n");
-        destruct(bond);
-        return 1;
-    }
+    retire_bankbond(this_player());
 
     if( !arg || sscanf(arg, "%d %s", amount, money)!=2 )
         return notify_fail("指令格式﹕withdraw <數量> <貨幣種類>。\n");
@@ -226,8 +195,8 @@ int do_withdraw(string arg)
         return notify_fail("你至少要提領一個錢幣。\n");
 
     money = normalize_money_id(money);
-    if( amount > 30000) 
-        return notify_fail("你不能一次領太多。\n");    
+    if( amount > 30000)
+        return notify_fail("你不能一次領太多。\n");
 
     if( !money_file(money) )
         return notify_fail("你要提領哪一種錢﹖可用：文錢、碎銀、黃金。\n");
@@ -236,21 +205,22 @@ int do_withdraw(string arg)
         return notify_fail("錢莊暫時無法取出這種貨幣，請通知管理員。\n");
 
     money_ob->set_amount(amount);
-    if( bond->query_balance() < money_ob->value() ) {
+    if( this_player()->query("bank_account") < money_ob->value() ) {
         destruct(money_ob);
-        return notify_fail("你的戶頭裡沒有這麼多錢。\n");
+        return notify_fail("你的存款沒有這麼多錢。\n");
     }
 
-    bond->transact(- money_ob->value());
+    this_player()->add("bank_account", - money_ob->value());
     if( !money_ob->move(this_player()) ) {
-        bond->transact(money_ob->value());
+        this_player()->add("bank_account", money_ob->value());
         destruct(money_ob);
         return notify_fail("你身上帶不了這許多錢﹐提少一點吧。\n");
     }
 
     write("錢莊將" + chinese_number(amount) + money_ob->query("base_unit")
-        + money_ob->name() + "交割給你﹐並重新發給你一張新的金契。\n");
-        this_player()->save_autoload();
-        this_player()->save();
+        + money_ob->name() + "交給你。\n");
+    write("你在錢莊的存款還有" + money_string(this_player()->query("bank_account"))
+        + "。\n");
+    this_player()->save();
     return 1;
 }

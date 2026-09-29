@@ -70,3 +70,25 @@ varargs string cjk_pad (string str, int width, int right_align) {
         ? repeat_string (" ", pad) + str
         : str + repeat_string (" ", pad);
 }
+
+// cjk_align()
+// NEW（非原始 ES2 內容，讓中英夾雜的欄位在任何字型下都能對齊）
+//
+// 網頁版的中文字與英文字常來自不同字型，中文字寬不一定剛好等於兩個英文字，
+// 只用「中文算兩格」補空白（cjk_pad）時，中文字越多的行仍會偏移。這個函式
+// 把 str 的全形字數補到 wide 個（用全形空白「　」），半形字數補到 narrow 個
+// （用半形空白），每一行的全形字數與半形字數都相同，不論字型都會對齊。
+// 全形字：U+2E80 以後的字元（中日韓文字、全形符號、全形空白等）；
+// 其餘（英數、ˇ、• 等）算半形。任一部分已經超過時不截斷。
+string cjk_align (string str, int wide, int narrow) {
+    int w = 0, n = 0;
+
+    foreach (string ch in explode (str, "")) {
+        if (strlen (ch) > 1 && ch >= "⺀") w++;
+        else n++;
+    }
+
+    if (wide > w) str += repeat_string ("　", wide - w);
+    if (narrow > n) str += repeat_string (" ", narrow - n);
+    return str;
+}

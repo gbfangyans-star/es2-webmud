@@ -2,7 +2,7 @@
  *
  * 只有陰陽眼（apply/vision_of_ghost）看得見；一般攻擊會從身上穿透。
  * 說話與移動比照瞎眼老太婆（d/snow/npc/gammer.c），用 chat_chance / chat_msg
- * 隨機觸發：平均約 10 tick 說一句台詞、約 15 tick 移動一次
+ * 隨機觸發：平均約 30 tick 說一句台詞、約 15 tick 移動一次
  * （1 tick = 一次心跳 2 秒）。夜叉可以 devour 吞食。
  *
  * 顏色規則：所有鬼魂一律用暗灰色（HIK）顯示名字、房間中的簡短敘述與台詞，
@@ -12,10 +12,10 @@
 
 inherit NPC;
 
-// NPC 的 chat() 每 tick 有 (chat_chance + 1)% = 17% 的機率行動，再從 chat_msg
-// 五項裡隨機選一項：三項說話、兩項移動。平均每 tick 說話 17% x 3/5 ≈ 1/10，
-// 移動 17% x 2/5 ≈ 1/15。
-#define GHOST_CHAT_CHANCE  16
+// NPC 的 chat() 每 tick 有 (chat_chance + 1)% = 10% 的機率行動，再從 chat_msg
+// 三項裡隨機選一項：一項說話、兩項移動。平均每 tick 說話 10% x 1/3 = 1/30，
+// 移動 10% x 2/3 = 1/15。
+#define GHOST_CHAT_CHANCE  9
 
 void ghost_say()
 {
@@ -47,8 +47,6 @@ void setup_ghost(int gin, int sen)
     set("attitude", "peaceful");
     set("chat_chance", GHOST_CHAT_CHANCE);
     set("chat_msg", ({
-        (: ghost_say :),
-        (: ghost_say :),
         (: ghost_say :),
         (: random_move :),
         (: random_move :),
