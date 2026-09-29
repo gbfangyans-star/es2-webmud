@@ -111,10 +111,11 @@ string inventory_look(object obj, int flag) {
     string str;
 
     str = obj->short();
+    // 已裝備的物品以「ˇ」標示（補一個半形空白成全形寬），和 inventory 一致。
     if (obj->query("equipped"))
-        str = HIY "[v] " + str + NOR;
+        str = HIY "ˇ " + str + NOR;
     else if( !flag )
-        str = "    " + str;
+        str = "  " + str;
     else
         return 0;
 

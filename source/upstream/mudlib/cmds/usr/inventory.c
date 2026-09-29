@@ -38,7 +38,8 @@ string inventory_desc(object ob)
     if( ob->query("keep_this")) desc += "◎";
 //    else desc = "  " + desc;
 
-    if( ob->query("equipped"))  desc = HIY "ˇ" + desc + NOR;
+    // 「ˇ」只佔半格，補一個半形空白，和沒有裝備時的兩格空白同寬。
+    if( ob->query("equipped"))  desc = HIY "ˇ " + desc + NOR;
     else desc = "  " + desc;
 
     return desc;
