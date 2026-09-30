@@ -19,7 +19,7 @@ void create()
         set("apply_armor/armor", ([
             "armor": 10,
             "magic": 10,
-            "taoism-taoshan": 10,
+            "taoism of conviction": 10,
         ]));
     }
     setup();

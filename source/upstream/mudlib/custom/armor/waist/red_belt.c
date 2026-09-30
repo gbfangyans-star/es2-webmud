@@ -19,7 +19,7 @@ void create()
         set("wear_as", "waist_eq");
         set("apply_armor/waist_eq", ([
             "armor": 5,
-            "maoshan-illusion": 10,
+            "taoism of nature": 10,
         ]));
     }
     setup();

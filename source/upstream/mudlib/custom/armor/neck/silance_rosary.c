@@ -18,7 +18,7 @@ void create()
         set("wear_as", "neck_eq");
         set("apply_armor/neck_eq", ([
             "cps": 2,
-            "dhyana-essence": 5,
+            "absorption": 5,
             "armor": 10,
         ]));
     }
