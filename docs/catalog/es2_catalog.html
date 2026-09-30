@@ -124,7 +124,9 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
 .overlay { position: fixed; inset: 0; background: rgba(10, 16, 13, 0.45); z-index: 50; display: grid; place-items: center; padding: 16px; }
 .dialog { background: var(--panel); color: var(--fg); border-radius: 10px; border: 1px solid var(--line); width: min(640px, 100%); max-height: 88vh; overflow: auto; padding: 18px 20px 20px; display: grid; gap: 12px; }
 .dialog h2 { margin: 0; font-family: var(--serif); font-size: 1.35rem; }
-.dialog .close { justify-self: end; margin-bottom: -34px; }
+.dlg-head { display: flex; align-items: flex-start; gap: 12px; }
+.dlg-head h2 { flex: 1 1 auto; min-width: 0; }
+.dialog .close { flex: none; margin: 0; min-width: 4.5em; min-height: 32px; padding: 4px 12px; font-size: 0.85rem; line-height: 1.2; }
 /* 遊戲裡的 ANSI 顏色 */
 .a1 { font-weight: 700; }
 .a30 { color: var(--c-black); } .a31 { color: var(--c-red); } .a32 { color: var(--c-green); } .a33 { color: var(--c-yellow); }
@@ -418,8 +420,8 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
     const rooms = n.rooms.length ? n.rooms.map(([r, c]) => roomLink(r) + (c > 1 ? ` ×${c}` : '')).join('、') : '<span class="hint">沒有房間固定放置（由劇情或其他程式產生）</span>';
     const tags = [n.wander ? '走動' : '', n.ghost ? '鬼魂' : ''].filter(Boolean).map(t => `<span class="tag">${t}</span>`).join('');
     const o = $('#overlay');
-    o.innerHTML = `<div class="dialog" role="dialog" aria-modal="true" aria-label="${esc(plain(n.name))}"><button class="copy close" data-close>關閉</button>` +
-      `<h2>${ansi(n.name)}${tags}</h2><span class="hint">${esc((n.ids || []).join('、'))}</span>` +
+    o.innerHTML = `<div class="dialog" role="dialog" aria-modal="true" aria-label="${esc(plain(n.name))}">` +
+      `<div class="dlg-head"><h2>${ansi(n.name)}${tags}</h2><button class="copy close" data-close>關閉</button></div><span class="hint">${esc((n.ids || []).join('、'))}</span>` +
       (n.long ? `<p class="long">${ansi(n.long)}</p>` : '') +
       `<dl class="kv">${n.title ? `<dt>稱號</dt><dd>${ansi(n.title)}</dd>` : ''}<dt>種族／職業</dt><dd>${esc([n.race, n.class].filter(Boolean).join('／') || '—')}</dd><dt>等級</dt><dd>${n.level != null ? n.level : '—'}</dd><dt>所在格子</dt><dd>${rooms}</dd><dt>檔案</dt><dd>${fileLine(n.file)}</dd></dl>` +
       `<div><h4 class="hint" style="margin:0 0 4px">裝備</h4>${eq ? `<div class="tbl-wrap"><table><tbody>${eq}</tbody></table></div>` : '<span class="hint">沒有裝備</span>'}</div>` +
