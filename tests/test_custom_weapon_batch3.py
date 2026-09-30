@@ -36,16 +36,18 @@ def test_unique():
 def test_poisons():
     base = read(MUD / 'custom' / 'condition' / 'weapon_poison.c')
     assert '你中的毒發作了！' in base and 'data["left"] = burst_count();' in base
+    # 使用者數值 A/B：A = 目前值扣、B = 最大值扣；檔案裡是 ({ 屬性, 最大值, 目前值 })
     for w, c, t, n, dm in [('blunt/skull_heart', 'skull_heart_poison', 2, 4, [('gin', 5, 3), ('kee', 8, 5), ('sen', 2, 1)]),
                            ('dagger/wicked_dagger', 'rain_poison', 2, 4, [('gin', 8, 4), ('kee', 8, 4), ('sen', 2, 1)]),
                            ('sword/hundreds_poison_sword', 'hundred_poison', 3, 3, [('gin', 7, 3), ('kee', 10, 5), ('sen', 2, 1)]),
                            ('pike/wraith_of_warlord', 'wraith_poison', 2, 5, [('gin', 4, 2), ('kee', 5, 3)]),
-                           ('pike/gin_pike', 'phoenix_poison', 2, 5, [('gin', 4, 2), ('kee', 5, 3)])]:
+                           ('pike/gin_pike', 'phoenix_poison', 2, 5, [('gin', 4, 2), ('kee', 5, 3)]),
+                           ('needle/needle_of_bone_maggot', 'maggot_poison', 2, 5, [('gin', 10, 8), ('kee', 8, 5), ('sen', 4, 3)])]:
         assert f'CONDITION_D("{c}")->poison(victim, me);' in read(W / f'{w}.c'), w
         s = read(MUD / 'daemon' / 'condition' / f'{c}.c')
         assert f'int burst_ticks() {{ return {t}; }}' in s and f'int burst_count() {{ return {n}; }}' in s, c
-        for st, a, b in dm:
-            assert f'({{ "{st}", {a}, {b} }})' in s, (c, st)
+        for st, cur, mx in dm:
+            assert f'({{ "{st}", {mx}, {cur} }})' in s, (c, st)
 
 
 def test_special_cases():

@@ -13,8 +13,9 @@
 - **兩個版本**：「穿靈」（未合劍，`celestial_sword`）與『穿靈』（四劍合一，`celestial_sword_awakened`）照原資料；
   兩把不同的易羅大劍（`broadsword`、`yiluo_sword`）。
 - **洗銀劍**：另做一把依原資料、亮白色的 `sword/silver_sword.c`；雪亭鎮方士身上的 `d/snow/npc/obj/silversword.c` 不變。
-- **劇毒**（共用規則 `custom/condition/weapon_poison.c`）：命中並造成傷害時上毒；再次命中只把剩餘次數重設為滿；
-  每次發作「你中的毒發作了！」。「最大值／目前值」表示每次扣的最大值與目前值。
+- **劇毒**（萬骨枯心、「雨毒」、百鬒寒鳩劍、憤怒明王槍、紫金鳳頭錐、附骨之蛆；共用規則 `custom/condition/weapon_poison.c`）：命中並造成傷害時上毒；再次命中只把剩餘次數重設為滿；
+  每次發作「你中的毒發作了！」。表中「A/B」依使用者指定：A 為每次扣的**目前值**、B 為每次扣的**最大值**。
+  （藍涎刀的毒另依當時指定，見 `docs/CUSTOM_WEAPON_BLADE.md`。）
 
 | 武器 | 毒（daemon/condition） | 中毒敘述 | 發作 | 每次 精 | 每次 氣 | 每次 神 |
 |---|---|---|---|---|---|---|
@@ -23,6 +24,7 @@
 | 百鬒寒鳩劍 | `hundred_poison` | 你感到萬毒啐骨, 五臟六腑血氣翻騰！ | 3 tick × 3 次 | 7/3 | 10/5 | 2/1 |
 | 憤怒明王槍 | `wraith_poison` | 你感到傷口一陣灼熱，恐是中毒了。 | 2 tick × 5 次 | 4/2 | 5/3 | 0/0 |
 | 紫金鳳頭錐 | `phoenix_poison` | 你的傷口一陣痠麻，一股黑血從傷口湧出 | 2 tick × 5 次 | 4/2 | 5/3 | 0/0 |
+| 附骨之蛆（針） | `maggot_poison` | 你感到一陣噁心，嘔出一灘帶血的膿痰，裡面竟然有幾隻蛆蟲蠕蠕而動！ | 2 tick × 5 次 | 10/8 | 8/5 | 4/3 |
 
 ## 鞭
 
@@ -47,7 +49,7 @@
 | 盤龍針 | `needle/dragon_needle.c` | dragon needle | 500 | 150 | needle、secondhand needle | 價值隨機 |
 | 繡花針 | `needle/embroidery_needle.c` | embroidery needle | 500 | 550 | needle、secondhand needle | 價值隨機 |
 | 透骨釘 | `needle/iron_needle.c` | iron needle | 500 | 600 | needle、secondhand needle | 價值隨機 |
-| 附骨之蛆 | `needle/needle_of_bone_maggot.c` | needle of bone maggot | 500 | 1000 | needle | 唯一 |
+| 附骨之蛆 | `needle/needle_of_bone_maggot.c` | needle of bone maggot | 500 | 1000 | needle | 唯一、劇毒 |
 | 銀針 | `needle/silver_needle.c` | silver needle | 500 | 800 | needle、secondhand needle | 價值隨機 |
 | 鋼針 | `needle/steel_needle.c` | steel needle | 500 | 3 | needle、secondhand needle |  |
 

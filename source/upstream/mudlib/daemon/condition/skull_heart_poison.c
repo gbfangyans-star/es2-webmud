@@ -1,6 +1,6 @@
 /* CUSTOM WEAPON CONDITION: 萬骨枯心之毒 (skull_heart_poison)
  *
- * 2 tick 發作一次，共 4 次。每次：gin 最大值 -5、目前值 -3、kee 最大值 -8、目前值 -5、sen 最大值 -2、目前值 -1。
+ * 2 tick 發作一次，共 4 次。每次：gin 目前值 -5、最大值 -3、kee 目前值 -8、最大值 -5、sen 目前值 -2、最大值 -1。
  * 共用規則見 custom/condition/weapon_poison.c。
  */
 inherit "/custom/condition/weapon_poison";
@@ -10,9 +10,10 @@ int burst_ticks() { return 2; }
 int burst_count() { return 4; }
 mixed *burst_damage()
 {
+    // ({ 屬性, 最大值扣, 目前值扣 })
     return ({
-        ({ "gin", 5, 3 }),
-        ({ "kee", 8, 5 }),
-        ({ "sen", 2, 1 }),
+        ({ "gin", 3, 5 }),
+        ({ "kee", 5, 8 }),
+        ({ "sen", 1, 2 }),
     });
 }
