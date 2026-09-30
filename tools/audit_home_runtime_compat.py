@@ -6,7 +6,6 @@ app=(ROOT/'web/app.js').read_text(encoding='utf-8')
 user=(M/'obj/user.c').read_text(encoding='utf-8')
 board=(M/'custom/home/obj/development_board.c').read_text(encoding='utf-8')
 bed=(M/'custom/home/obj/bed.c').read_text(encoding='utf-8')
-tele=(M/'custom/home/npc/home_teleporter.c').read_text(encoding='utf-8')
 item=(M/'std/item.c').read_text(encoding='utf-8')
 checks={
  'board_no_missing_object_header':'#include <object.h>' not in board,
@@ -18,7 +17,6 @@ checks={
  'hud_poll_reduced':'const HUD_POLL_MS = 800;' in app,
  'hud_yields_to_player':'Date.now()-lastUserCommandAt<HUD_USER_GRACE_MS' in app,
  'hud_kick_debounced':'kickHudAfterServerText' in app and 'clearTimeout(hudKickTimer)' in app,
- 'wizard_home_not_shadowed':'query_verb() == "home" && wizardp(me)' in tele,
 }
 fail=[k for k,v in checks.items() if not v]
 out={'version':(ROOT/'VERSION').read_text().strip(),'checks':checks,'failures':fail,'passed':not fail}

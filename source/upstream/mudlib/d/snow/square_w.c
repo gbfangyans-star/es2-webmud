@@ -24,7 +24,6 @@ LONG
     create_door("west", "客棧大門", "east", DOOR_CLOSED);
     set("objects", ([
         __DIR__"obj/stone" : 1,
-        "/custom/snow/npc/zhenghe_zhongzai" : 1,
     ]));
     set("outdoors", "snow");
     set("no_fight", 1);	// prevent pk when post
