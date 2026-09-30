@@ -4,6 +4,24 @@
 
 inherit F_CLEAN_UP;
 
+// NEW（非原始 ES2 內容）：附加值的名稱與 identify 一致，數值類附加不顯示英文代碼。
+mapping named_apply = ([
+    "attack" : "攻擊能力值",
+    "defense" : "防禦能力值",
+    "str" : "膂力",
+    "cor" : "膽識",
+    "cps" : "定力",
+    "int" : "悟性",
+    "wis" : "慧根",
+    "spi" : "靈性",
+    "con" : "根骨",
+    "dex" : "機敏",
+    "damage" : "傷害力",
+    "armor" : "防禦力",
+    "spell" : "咒文能力",
+    "magic_ability" : "魔力",
+]);
+
 int main(object me, string arg)
 {
     object ob;
@@ -60,8 +78,10 @@ int main(object me, string arg)
         foreach(term, prop in apply) {
             if( !intp(prop) ) continue;
             if( prop ) {
-                str += sprintf("  %-16s %+d%s", to_chinese(term), prop,
-                    k%2==0 ? "\t" : "\n");
+                // 用 cjk_align 補齊，中英夾雜的名稱在網頁字型下也能對齊。
+                str += sprintf("  %s%-6s%s",
+                    cjk_align(undefinedp(named_apply[term]) ? to_chinese(term) : named_apply[term], 10, 2),
+                    sprintf("%+d", prop), k%2==0 ? "  " : "\n");
                 k++;
             }
         }
