@@ -23,5 +23,7 @@
 | 劍術、左手劍術 | 茅山劍法 | `mao-shan sword` | |
 | 其他 | 大悲咒 | `compassion` | 無相福田 |
 | 其他 | 善想禪要 | `absorption` | 金線僧袍 |
+| 其他 | 暗器技巧 | `throwing` | 混天白龍 |
+| 其他 | 天邪神掌 | `celestial palm` | 天邪虎爪 |
 
 代碼一律小寫（遊戲的技能代碼都是小寫）。

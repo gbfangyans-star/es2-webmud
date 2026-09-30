@@ -1,3 +1,4 @@
+// 特性與價值依 ES2 原始護具資料「冶磺套(Fire gauntlets)」（所有者米沛）。
 #include <armor.h>
 
 inherit F_HAND_EQ;
@@ -10,15 +11,15 @@ void create()
 
     if( !clonep() ) {
         set("unit", "副");
-        set("value", 4000);
+        set("value", 20000);
         set("long",
             "一副外觀十分精巧之手套, 數片黃色金屬覆蓋其上, 內襯為某種皮毛, 據聞為某得道\n"
             "高人苦思練丹之法時, 所特別裁出之防具, 可防高熱。\n");
         set("wear_as", "hand_eq");
         set("apply_armor/hand_eq", ([
-            "armor_vs_fire": 50,
-            "armor": 30,
-            "damage_vs_fire": 20,
+            "armor": 5,
+            "armor_vs_fire": 15,
+            "twohanded axe": 10,
         ]));
     }
 

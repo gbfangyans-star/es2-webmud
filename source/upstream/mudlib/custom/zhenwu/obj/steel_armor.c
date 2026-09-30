@@ -1,3 +1,4 @@
+// 特性依 ES2 原始護具資料「精鋼戰甲(Steel armor)」（所有者米沛等）。
 #include <armor.h>
 
 inherit F_ARMOR;
@@ -16,8 +17,9 @@ void create()
             "的上品戰甲，有著強大的防護力。\n");
         set("wear_as", "armor");
         set("apply_armor/armor", ([
-            "armor": 25,
             "cor": 2,
+            "damage": 5,
+            "armor": 25,
         ]));
     }
 
