@@ -38,7 +38,7 @@ def test_cowhide_vest_renamed():
 def test_skill_names_and_spell_label():
     zh = read(MUD / 'data' / 'chinese.o')
     names = re.findall(r'^\| [^|]+ \| ([^|]+) \| `([^`]+)` \|', read(MUD.parents[2] / 'docs' / 'SKILL_NAMES.md'), re.M)
-    assert len(names) == 17
+    assert len(names) == 19
     for v, k in names:
         assert f'"{k}":"{v.strip()}"' in zh, k
     for f, k in [('animitta_kasaya', 'compassion'), ('gold_robe', 'absorption'),
