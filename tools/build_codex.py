@@ -436,6 +436,32 @@ def parse_npc(p, src, code):
     return it
 
 
+def func_body(code, fn):
+    m = re.search(r'\b%s\s*\([^)]*\)\s*\{' % re.escape(fn), code)
+    if not m:
+        return ''
+    depth, i = 1, m.end()
+    while i < len(code) and depth:
+        depth += {'{': 1, '}': -1}.get(code[i], 0)
+        i += 1
+    return code[m.end():i]
+
+
+def special_moves(code, rid):
+    """用指令進出的路線：add_action 的處理函式裡把玩家 move 到其他房間，例如 climb 圍牆。"""
+    out = []
+    for m in re.finditer(r'add_action\(\s*"(\w+)"\s*,\s*(\(\{[^}]*\}\)|"[^"]*")\s*\)', code):
+        body = func_body(code, m.group(1))
+        verbs = re.findall(r'"([^"]+)"', m.group(2))
+        args = re.findall(r'\barg\s*(?:!=|==)\s*"([^"]+)"', body)
+        for t in re.finditer(r'(?:this_player\(\)|\bme|\bwho|\bob)\s*->\s*move\(\s*((?:__DIR__\s*)?"[^"]*")\s*\)', body):
+            to = resolve(t.group(1), rid)
+            if to:
+                cmd = verbs[0] + (' ' + args[0] if args else '')
+                out.append({'cmd': cmd, 'to': to})
+    return out
+
+
 def parse_room(p, src, code):
     rid = mud_path(p)
     ex = {}
@@ -451,6 +477,7 @@ def parse_room(p, src, code):
         'long': (set_str(code, 'long') or '').rstrip('\n'),
         'exits': ex,
         'objects': path_mapping(set_value(code, 'objects'), rid),
+        'special': special_moves(code, rid),
         'area': set_str(code, 'map/area'),
         'layer': set_str(code, 'map/layer'),
     }
@@ -591,6 +618,8 @@ def main(out):
     areas = defaultdict(list)
     for rid in [r for r in rooms if r.startswith('/obj/') or r.startswith(tuple(HIDDEN_DIRS))]:
         del rooms[rid]  # 系統用的空房間與不公開區域
+    for r in rooms.values():
+        r['special'] = [m for m in r['special'] if m['to'] in rooms]
     hidden = lambda i: i.startswith(tuple(HIDDEN_DIRS))
     placed = {p for r in rooms.values() for p in r['objects']}
     for nid in [n for n in npcs if hidden(n) and n not in placed]:

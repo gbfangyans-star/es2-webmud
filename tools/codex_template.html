@@ -111,6 +111,7 @@ svg.map .room.hl rect { stroke: var(--seal); stroke-width: 2.4; }
 svg.map .room { cursor: pointer; }
 svg.map .room:focus-visible rect { stroke: var(--seal); stroke-width: 2.4; }
 svg.map line { stroke: var(--room-line); stroke-width: 2; }
+svg.map line.cmd { stroke: var(--accent); stroke-width: 1.6; stroke-dasharray: 5 4; }
 svg.map .dot { fill: var(--accent); }
 svg.map .ud { font-size: 10px; fill: var(--muted); }
 .side { display: grid; gap: 16px; min-width: 0; }
@@ -358,6 +359,15 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
       rs.forEach(r => inLayer[r.id] = r);
       let lines = '';
       const seen = new Set();
+      // 用指令進出的路線畫虛線（例如 climb 圍牆）；只要一個方向要用指令就算
+      rs.forEach(r => (r.special || []).forEach(m => {
+        const o = inLayer[m.to];
+        if (!o) return;
+        const k = [r.id, m.to].sort().join('|');
+        if (seen.has(k)) return;
+        seen.add(k);
+        lines += `<line class="cmd" x1="${px(r) + CW / 2}" y1="${py(r) + CH / 2}" x2="${px(o) + CW / 2}" y2="${py(o) + CH / 2}"><title>${esc(r.short)}：${esc(m.cmd)}</title></line>`;
+      }));
       rs.forEach(r => Object.entries(r.exits).forEach(([d, t]) => {
         const o = inLayer[t];
         if (!o) return;
@@ -381,11 +391,12 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
       const title = zs.length > 1 || names.length ? `<div class="layer-title">${names.length ? esc(names.join('／')) : ''}${zs.length > 1 ? `（樓層 ${z >= 0 ? '+' : ''}${z}）` : ''}</div>` : '';
       return `${title}<div class="map-scroll"><svg class="map" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(area.name)} 地圖">${lines}${cells}</svg></div>`;
     }).join('');
-    const legend = `<div class="map-legend"><span>● 有 NPC</span><span>↑↓ 上下樓</span><span>⇢ 通往其他區域</span><span>點房間看內容</span></div>`;
+    const legend = `<div class="map-legend"><span>● 有 NPC</span><span>↑↓ 上下樓</span><span>┅ 用指令進出（例如 climb 圍牆）</span><span>⇢ 通往其他區域</span><span>點房間看內容</span></div>`;
     const room = state.room && D.rooms[state.room] && areaOfRoom[state.room] === area.key ? D.rooms[state.room] : null;
     const roomPanel = room ? `<div class="panel"><h3>${esc(room.short)}</h3>` +
       (room.long ? `<p class="long" style="font-size:0.92rem">${ansi(room.long)}</p>` : '') +
       `<dl class="kv"><dt>出口</dt><dd>${Object.entries(room.exits).map(([d, t]) => `${esc(d)}：${roomLink(t)}`).join('<br>') || '—'}</dd>` +
+      ((room.special || []).length ? `<dt>指令進出</dt><dd>${room.special.map(m => `<code>${esc(m.cmd)}</code>：${roomLink(m.to)}`).join('<br>')}</dd>` : '') +
       `<dt>NPC</dt><dd>${Object.entries(room.objects).filter(([p]) => D.npcs[p]).map(([p, n]) => `<button class="linkish" data-npc="${esc(p)}">${ansi(D.npcs[p].name)}</button>${n > 1 ? ' ×' + n : ''}`).join('、') || '—'}</dd>` +
       `<dt>物品</dt><dd>${Object.entries(room.objects).filter(([p]) => !D.npcs[p]).map(([p, n]) => (byId[p] ? `<button class="linkish" data-item="${esc(p)}">${ansi(byId[p].it.name)}</button>` : `<code>${esc(p)}</code>`) + (n > 1 ? ' ×' + n : '')).join('、') || '—'}</dd>` +
       `<dt>檔案</dt><dd>${fileLine(room.file)}</dd></dl></div>`
