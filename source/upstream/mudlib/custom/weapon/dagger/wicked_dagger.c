@@ -34,3 +34,10 @@ void create()
     }
     setup();
 }
+
+// 劇毒：命中並造成傷害時上毒（見 daemon/condition/rain_poison.c）。
+void hit_ob(object me, object victim, int damage)
+{
+    if( victim->query("life_form") == "ghost" ) return;
+    CONDITION_D("rain_poison")->poison(victim, me);
+}

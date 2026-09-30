@@ -9,7 +9,7 @@ def read(p):
 
 
 def test_counts_and_features():
-    for d, feat, n in [('staff', 'F_STAFF', 21), ('axe', 'F_AXE', 15), ('dagger', 'F_DAGGER', 21)]:
+    for d, feat, n in [('staff', 'F_STAFF', 21), ('axe', 'F_AXE', 15), ('dagger', 'F_DAGGER', 22)]:
         files = sorted((W / d).glob('*.c'))
         assert len(files) == n, d
         for f in files:
