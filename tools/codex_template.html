@@ -56,7 +56,7 @@ nav.tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
 nav.tabs button { flex: 0 0 auto; border: 0; background: none; color: var(--muted); font: 500 0.98rem var(--sans); padding: 8px 14px; border-bottom: 2px solid transparent; cursor: pointer; }
 nav.tabs button[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--accent); }
 nav.tabs button:focus-visible, .chip:focus-visible, .row-head:focus-visible, .linkish:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.tools { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding-block: 16px 8px; }
+.tools { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding-block: 16px 10px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--hdr, 100px)); z-index: 15; background: var(--bg); border-bottom: 1px solid var(--line); }
 .search { flex: 1 1 260px; min-width: 0; font: 0.95rem var(--sans); padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); color: var(--fg); }
 .search:focus { outline: 2px solid var(--accent); outline-offset: 0; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -65,7 +65,7 @@ nav.tabs button:focus-visible, .chip:focus-visible, .row-head:focus-visible, .li
 .chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--panel); }
 .chip[aria-pressed="true"] .n { color: var(--panel); opacity: 0.8; }
 .hint { color: var(--muted); font-size: 0.85rem; }
-.list { border-top: 1px solid var(--line); }
+.list { }
 .row { border-bottom: 1px solid var(--line); }
 .row-head { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr) 7.5em; gap: 4px 16px; align-items: baseline; padding: 9px 4px; cursor: pointer; width: 100%; text-align: left; border: 0; background: none; color: inherit; font: inherit; }
 .row-head:hover { background: var(--sunk); }
@@ -477,6 +477,12 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
     const g = e.target.closest && e.target.closest('g[data-room]');
     if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); g.dispatchEvent(new MouseEvent('click', { bubbles: true })); }
   });
+
+  // 搜尋列固定在頁首下方：依頁首實際高度設定位置
+  const hdr = document.querySelector('header.top');
+  const setHdr = () => document.documentElement.style.setProperty('--hdr', hdr.offsetHeight + 'px');
+  setHdr();
+  if (window.ResizeObserver) new ResizeObserver(setHdr).observe(hdr); else window.addEventListener('resize', setHdr);
 
   drawTabs();
   render();
