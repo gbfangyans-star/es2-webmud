@@ -17,6 +17,7 @@ mapping named_apply = ([
     "dex" : "機敏",
     "damage" : "傷害力",
     "armor" : "防禦力",
+    "spell" : "咒文能力",
 ]);
 
 int main(object me, string arg)
