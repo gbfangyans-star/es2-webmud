@@ -6,7 +6,7 @@ inherit F_CLOTH;
 
 void create()
 {
-    set_name("天之哀思", ({ "cloth of sorrow", "sorrow" }));
+    set_name("天之哀思", ({ "cloth of sorrow", "cloth" }));
     set_weight(2000);
     setup_cloth();
 
