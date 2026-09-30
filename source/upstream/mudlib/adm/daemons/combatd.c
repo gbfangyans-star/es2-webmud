@@ -402,9 +402,9 @@ fight (object me, object victim, string skill, mapping action, object weapon)
         if( damage > 0 ) report_status(victim);
     }
 
-    // 武器攻擊被閃躲或格擋後的特殊效果（例如冥魔杖的特攻）。
-    // 武器沒有定義 miss_ob() 時，這個呼叫什麼都不做。
-    if( damage < 0 && weapon && objectp(victim) )
+    // 武器攻擊被閃躲、格擋，或命中但力道被完全吸收（沒造成傷害）後的
+    // 特殊效果（例如冥魔杖的特攻）。武器沒有定義 miss_ob() 時，這個呼叫什麼都不做。
+    if( damage <= 0 && weapon && objectp(victim) )
         weapon->miss_ob(me, victim);
 
     /* 傳回非零值(傷害力)表示攻擊者可獲得經驗 */

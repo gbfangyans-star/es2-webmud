@@ -7,7 +7,8 @@
 inherit F_UNIQUE;
 inherit F_STAFF;
 
-// 原資料「殺孽越重，特攻越多」：攻擊被閃躲或格擋時有 30% 機率發動特攻，
+// 原資料「殺孽越重，特攻越多」：攻擊被閃躲、格擋，或命中但力道被完全吸收時，
+// 有 10% 機率發動特攻，
 // 不經任何防禦直接扣對方的氣：(10 + (膽識 + 膂力) / 3) x (1 + 10% x 殺人數)。
 // 殺人數用 PK 紀錄 pk_record（adm/daemons/chard.c）。
 
@@ -32,12 +33,12 @@ void create()
     setup();
 }
 
-// 由 combatd 在武器攻擊被閃躲或格擋後呼叫。
+// 由 combatd 在武器攻擊沒造成傷害（閃躲、格擋、力道被完全吸收）後呼叫。
 void miss_ob(object me, object victim)
 {
     int damage;
 
-    if( random(100) >= 30 ) return;
+    if( random(100) >= 10 ) return;
     damage = (10 + (me->query_attr("cor") + me->query_attr("str")) / 3)
         * (10 + me->query("pk_record")) / 10;
     message_vision(HIR "冥魔杖上的蛇頭突然睜開雙眼，一股血腥之氣直撲$n而去！\n" NOR, me, victim);

@@ -28,7 +28,7 @@ def test_unique_and_existing():
 def test_serpent_cane_special():
     s = read(W / 'staff' / 'serpent_cane.c')
     assert 'void miss_ob(object me, object victim)' in s
-    assert 'if( random(100) >= 30 ) return;' in s
+    assert 'if( random(100) >= 10 ) return;' in s
     assert '(10 + (me->query_attr("cor") + me->query_attr("str")) / 3)' in s
     assert '* (10 + me->query("pk_record")) / 10;' in s
     assert 'victim->consume_stat("kee", damage, me);' in s
