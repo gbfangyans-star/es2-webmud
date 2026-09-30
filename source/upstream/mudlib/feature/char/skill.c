@@ -303,6 +303,7 @@ improve_skill(string skill, int amount)
  * 技能等級每到 5 的倍數擲一次，成功則該屬性（裸值）+1，上限 50。
  *   基礎機率：屬性 30 以下 40%、30~39 30%、40~44 20%、45~49 10%
  *   技能等級倍率：(50 + 等級/2)%，lv5 約 0.5 倍、lv100 1 倍、lv200 1.5 倍
+ *   以上再整體 ×1.2
  * 每個門檻一生只擲一次，擲過的最高門檻記在 attr_growth/<技能>。
  * 已經練過的等級不補擲。只對玩家生效。
  */
@@ -335,8 +336,8 @@ private void roll_attr_growth(string skill, int old_level, int new_level)
         this_object()->set("attr_growth/" + skill, lv);
         value = query_attr(attr, 1);
         if( value >= ATTR_GROWTH_MAX ) continue;
-        // 機率以萬分之一計：基礎% × (50 + lv/2)%
-        if( random(10000) >= attr_growth_base(value) * (100 + lv) / 2 ) continue;
+        // 機率以萬分之一計：基礎% × (50 + lv/2)% × 1.2
+        if( random(10000) >= attr_growth_base(value) * (100 + lv) * 3 / 5 ) continue;
         if( !set_attr(attr, value + 1) ) continue;
         cname = ([ "str": "膂力", "cor": "膽識", "int": "悟性", "spi": "靈性",
                    "cps": "定力", "dex": "機敏", "con": "根骨", "wis": "慧根" ])[attr];

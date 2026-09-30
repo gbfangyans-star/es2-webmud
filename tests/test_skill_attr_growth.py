@@ -22,7 +22,7 @@ def test_growth_table_and_message():
     for line in ['if( value >= 45 ) return 10;', 'if( value >= 40 ) return 20;',
                  'if( value >= 30 ) return 30;', 'return 40;']:
         assert line in s
-    assert 'attr_growth_base(value) * (100 + lv) / 2' in s
+    assert 'attr_growth_base(value) * (100 + lv) * 3 / 5' in s
     assert '"attr_growth/" + skill' in s
     assert 'if( !userp(this_object()) ) return;' in s
     assert '"提高了！' in s
