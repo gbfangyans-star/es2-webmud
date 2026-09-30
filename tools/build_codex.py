@@ -42,6 +42,16 @@ DIR_AREA = {  # 沒有 map/area 的房間，依目錄給區域名稱
 # 不公開的目錄：這些目錄的房間不列入區域；裡面的 NPC 與物品只有被公開房間放置或
 # 公開 NPC 攜帶時才列出（例如家園傳送師放在雪亭鎮客棧）。
 HIDDEN_DIRS = ['/custom/wizroom/', '/custom/home/']
+# 地圖手動調整（只影響圖鑑顯示）：房間 -> (參考房間, 往東格數, 往南格數)
+MAP_POS = {
+    '/d/snow/fireplace': ('/d/snow/inn_kitchen', 0, -1),   # 大灶：客棧廚房上方
+    '/d/snow/tree': ('/d/snow/square', 1, -1),             # 榕樹上：廣場中央右上
+    '/d/snow/mill': ('/d/snow/ruin1', 0, -1),              # 磨坊：破舊大宅上方
+    '/d/snow/riverbank': ('/d/snow/ruin1', 0, 1),          # 河邊空地：破舊大宅下方
+    '/d/snow/ruin2': ('/d/snow/riverbank', 0, 1),          # 破舊大宅正廳：河邊空地下方
+}
+MAP_HIDE = {'/d/snow/inn_staff_room'}  # 不在地圖上顯示的房間
+
 DIRS = {  # 地圖座標：x 往東、y 往南、z 往上
     'north': (0, -1, 0), 'south': (0, 1, 0), 'east': (1, 0, 0), 'west': (-1, 0, 0),
     'northeast': (1, -1, 0), 'northwest': (-1, -1, 0), 'southeast': (1, 1, 0), 'southwest': (-1, 1, 0),
@@ -603,8 +613,26 @@ def main(out):
     for n in npcs.values():
         n['rooms'] = npc_rooms.get(n['id'], [])
     area_list = []
+    for key in list(areas):
+        areas[key] = [r for r in areas[key] if r not in MAP_HIDE]
     for key, ids in areas.items():
-        pos = layout(rooms, set(ids))
+        manual = {r for r in ids if r in MAP_POS}
+        pos = layout(rooms, set(ids) - manual)
+        pending = sorted(manual)
+        while pending:  # 參考房間也可能是手動指定的，依序解開
+            left = []
+            for rid in pending:
+                ref, dx, dy = MAP_POS[rid]
+                if ref in pos:
+                    x, y, z = pos[ref]
+                    pos[rid] = (x + dx, y + dy, z)
+                else:
+                    left.append(rid)
+            if len(left) == len(pending):
+                for rid in left:
+                    pos[rid] = (0, 0, 0)
+                break
+            pending = left
         for rid in ids:
             rooms[rid]['pos'] = pos[rid]
         npc_ids = sorted({p for rid in ids for p in rooms[rid]['objects'] if p in npcs})
