@@ -1,5 +1,8 @@
+// 價值與唯一性依 ES2 原始武器資料「萬夫莫敵(Great axe of mighty)」（所有者米沛）。
 #include <weapon.h>
 
+// 唯一性：世上只會有一把；NPC 重生時若它還在，NPC 就不會拿到。
+inherit F_UNIQUE;
 inherit F_AXE;
 
 void create()
@@ -10,7 +13,7 @@ void create()
 
     if( !clonep() ) {
         set("unit", "把");
-        set("value", 12000);
+        set("value", 200000);
         set("long",
             "一把閃閃發亮的精鋼巨斧，拿在手裡極其沉重，若非膂力過人，恐怕揮不動這\n"
             "把號稱「萬夫莫敵」的重兵器。\n");
