@@ -28,6 +28,13 @@ def test_growth_table_and_message():
     assert '"提高了！' in s
 
 
-def test_skill_daemons():
-    assert re.search(r'string growth_attr\(\)\s*\{\s*return 0;', read('std/skill.c'))
-    assert re.search(r'string growth_attr\(\)\s*\{\s*return "str";', read('daemon/skill/unarmed.c'))
+def test_growth_mapping():
+    s = read('feature/char/skill.c')
+    table = s[s.index('static mapping ATTR_GROWTH = (['):]
+    table = table[:table.index(']);')]
+    got = dict(re.findall(r'"([^"]+)":\s*"([a-z]+)"', table))
+    assert got == {
+        'unarmed': 'str', 'force': 'con', 'dodge': 'dex', 'parry': 'cps',
+        'spells': 'spi', 'magic': 'spi', 'backstab': 'cor', 'killerhood': 'cor',
+        'literate': 'int', 'archaic attainment': 'int',
+    }

@@ -81,11 +81,6 @@ void attack_using (object me, object opponent, string skill) {
   damage = COMBAT_D->fight(me, opponent, "unarmed", actions[random(sizeof(actions))]);
 }
 
-// 每 5 級有機會增加膂力。
-string growth_attr() {
-  return "str";
-}
-
 int valid_enable (string usage) {
   return 0;
 }

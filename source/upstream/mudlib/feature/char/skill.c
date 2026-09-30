@@ -299,7 +299,7 @@ improve_skill(string skill, int amount)
 
 /* 技能成長屬性
  *
- * 技能 daemon 定義 growth_attr() 傳回屬性代碼（例如 unarmed 傳回 "str"）。
+ * 對應表 ATTR_GROWTH：技能代碼 → 屬性代碼。
  * 技能等級每到 5 的倍數擲一次，成功則該屬性（裸值）+1，上限 50。
  *   基礎機率：屬性 30 以下 40%、30~39 30%、40~44 20%、45~49 10%
  *   技能等級倍率：(50 + 等級/2)%，lv5 約 0.5 倍、lv100 1 倍、lv200 1.5 倍
@@ -308,6 +308,19 @@ improve_skill(string skill, int amount)
  * 已經練過的等級不補擲。只對玩家生效。
  */
 #define ATTR_GROWTH_MAX 50
+
+static mapping ATTR_GROWTH = ([
+    "unarmed":              "str",
+    "force":                "con",
+    "dodge":                "dex",
+    "parry":                "cps",
+    "spells":               "spi",
+    "magic":                "spi",
+    "backstab":             "cor",
+    "killerhood":           "cor",
+    "literate":             "int",
+    "archaic attainment":   "int",
+]);
 
 private int attr_growth_base(int value)
 {
@@ -319,15 +332,11 @@ private int attr_growth_base(int value)
 
 private void roll_attr_growth(string skill, int old_level, int new_level)
 {
-    object daemon;
     string attr, cname;
     int last, lv, value;
 
     if( !userp(this_object()) ) return;
-    daemon = SKILL_D(skill);
-    if( !objectp(daemon) ) return;
-    attr = daemon->growth_attr();
-    if( !stringp(attr) ) return;
+    if( !stringp(attr = ATTR_GROWTH[skill]) ) return;
 
     last = this_object()->query("attr_growth/" + skill);
     if( last < old_level ) last = old_level;

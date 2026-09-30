@@ -38,8 +38,17 @@
 
 ## 對應表
 
-技能 daemon 定義 `string growth_attr()` 傳回屬性代碼即可加入，預設（`std/skill.c`）傳回 0。
+寫在 `feature/char/skill.c` 的 `ATTR_GROWTH`，加技能只要加一行。
 
 | 技能 | 屬性 |
 |---|---|
 | unarmed 徒手格鬥 | str 膂力 |
+| force 基本內功 | con 根骨 |
+| dodge 閃躲 | dex 機敏 |
+| parry 招架 | cps 定力 |
+| spells 咒術 | spi 靈性 |
+| magic 法術 | spi 靈性 |
+| backstab 偷襲 | cor 膽識 |
+| killerhood 殺手本能 | cor 膽識 |
+| literate 讀書識字 | int 悟性 |
+| archaic attainment 古文造詣 | int 悟性 |
