@@ -52,3 +52,12 @@ def test_skill_names_and_spell_label():
 def test_tight_cloth_follows_source_data():
     s = read(MUD / 'd' / 'lee' / 'obj' / 'tight_cloth.c')
     assert '"defense": 5,' in s and '"armor": 4,' in s
+
+
+def test_no_retired_skill_codes():
+    # 技能代碼改名後（docs/SKILL_NAMES.md），裝備與武器不能再用舊的暫定代碼
+    old = ['"great-compassion"', '"dhyana-essence"', '"maoshan-illusion"', '"taoism-taoshan"']
+    for d in ['armor', 'weapon']:
+        for f in (MUD / 'custom' / d).rglob('*.c'):
+            s = read(f)
+            assert not any(o in s for o in old), f

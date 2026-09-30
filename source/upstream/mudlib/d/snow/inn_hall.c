@@ -22,8 +22,6 @@ LONG
         "/d/snow/npc/waiter" : 1,
         "/d/snow/npc/innkeeper" : 1,
         /* CUSTOM WEBMUD EXTENSIONS: not canonical taedlar/es2_mudlib content. */
-        "/custom/home/npc/home_teleporter" : 1,
-        "/custom/home/npc/iron_hand_lin" : 1,
         "/custom/test/obj/infinite_100_gold" : 1,
     ]));
     set ("valid_startroom", 1);

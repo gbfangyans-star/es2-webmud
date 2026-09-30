@@ -1,0 +1,503 @@
+<title>ES2 江湖圖鑑</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* 版面：頂部名稱與分頁固定，下方為可搜尋的清單；區域分頁左為地圖、右為房間與 NPC。
+   色彩取自青瓷與朱砂印泥：青瓷綠為主色，朱砂只用在唯一、劇毒這類警示標記。 */
+:root {
+  --bg: #edf1ee;
+  --panel: #f8faf8;
+  --sunk: #e3e9e5;
+  --fg: #1b2420;
+  --muted: #5b6a63;
+  --line: #cdd7d1;
+  --accent: #2c6a58;
+  --accent-soft: #d5e6de;
+  --seal: #a3372a;
+  --seal-soft: #f3dcd7;
+  --gold: #7d6310;
+  --room: #ffffff;
+  --room-line: #9fb3a9;
+  --c-black: #6b7470; --c-red: #b3261e; --c-green: #1f7a3d; --c-yellow: #8a6a00;
+  --c-blue: #1f4fb3; --c-magenta: #8e2f8e; --c-cyan: #0b7385; --c-white: #4f5b66;
+  --serif: "Noto Serif TC", "Songti TC", "PMingLiU", serif;
+  --sans: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111614; --panel: #171e1b; --sunk: #0d1210; --fg: #e1e8e4; --muted: #92a39a; --line: #2a3530;
+    --accent: #72c2a6; --accent-soft: #1d3530; --seal: #e57866; --seal-soft: #3a1f1b; --gold: #d8b64f;
+    --room: #1d2622; --room-line: #3d4f47;
+    --c-black: #8d9894; --c-red: #ff7b72; --c-green: #6fd08c; --c-yellow: #e8c547;
+    --c-blue: #7aa7ff; --c-magenta: #e08ae0; --c-cyan: #5fd3e0; --c-white: #f2f5f4;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #111614; --panel: #171e1b; --sunk: #0d1210; --fg: #e1e8e4; --muted: #92a39a; --line: #2a3530;
+  --accent: #72c2a6; --accent-soft: #1d3530; --seal: #e57866; --seal-soft: #3a1f1b; --gold: #d8b64f;
+  --room: #1d2622; --room-line: #3d4f47;
+  --c-black: #8d9894; --c-red: #ff7b72; --c-green: #6fd08c; --c-yellow: #e8c547;
+  --c-blue: #7aa7ff; --c-magenta: #e08ae0; --c-cyan: #5fd3e0; --c-white: #f2f5f4;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--fg); font-family: var(--sans); font-size: 15px; line-height: 1.6; }
+.wrap { max-width: 1180px; margin: 0 auto; padding-inline: 16px; padding-block: 0 48px; }
+header.top .wrap { padding-block: 0; }
+header.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 20; background: var(--bg); border-bottom: 1px solid var(--line); }
+.brand { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; padding-block: 14px 8px; }
+.brand h1 { margin: 0; font-family: var(--serif); font-size: 1.55rem; letter-spacing: 0.08em; }
+.brand .tally { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+nav.tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; }
+nav.tabs button { flex: 0 0 auto; border: 0; background: none; color: var(--muted); font: 500 0.98rem var(--sans); padding: 8px 14px; border-bottom: 2px solid transparent; cursor: pointer; }
+nav.tabs button[aria-selected="true"] { color: var(--fg); border-bottom-color: var(--accent); }
+nav.tabs button:focus-visible, .chip:focus-visible, .row-head:focus-visible, .linkish:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.tools { display: flex; flex-wrap: wrap; gap: 8px 12px; align-items: center; padding-block: 16px 10px; position: sticky; top: calc(env(safe-area-inset-top, 0px) + var(--hdr, 100px)); z-index: 15; background: var(--bg); border-bottom: 1px solid var(--line); }
+.search { flex: 1 1 260px; min-width: 0; font: 0.95rem var(--sans); padding: 8px 12px; border: 1px solid var(--line); border-radius: 6px; background: var(--panel); color: var(--fg); }
+.search:focus { outline: 2px solid var(--accent); outline-offset: 0; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { border: 1px solid var(--line); background: var(--panel); color: var(--fg); border-radius: 999px; padding: 3px 12px; font: 0.88rem var(--sans); cursor: pointer; }
+.chip .n { color: var(--muted); font-variant-numeric: tabular-nums; margin-left: 4px; font-size: 0.8rem; }
+.chip[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--panel); }
+.chip[aria-pressed="true"] .n { color: var(--panel); opacity: 0.8; }
+.hint { color: var(--muted); font-size: 0.85rem; }
+.list { }
+.row { border-bottom: 1px solid var(--line); }
+.row-head { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr) 7.5em; gap: 4px 16px; align-items: baseline; padding: 9px 4px; cursor: pointer; width: 100%; text-align: left; border: 0; background: none; color: inherit; font: inherit; }
+.row-head:hover { background: var(--sunk); }
+.row.open > .row-head { background: var(--accent-soft); }
+.nm { font-weight: 700; min-width: 0; overflow-wrap: anywhere; }
+.nm .en { font-weight: 400; color: var(--muted); font-size: 0.82rem; margin-left: 6px; }
+.sum { color: var(--muted); font-size: 0.88rem; min-width: 0; overflow-wrap: anywhere; }
+.num { text-align: right; font-variant-numeric: tabular-nums; font-size: 0.88rem; color: var(--muted); }
+.tag { display: inline-block; font-size: 0.72rem; letter-spacing: 0.04em; padding: 0 6px; border-radius: 3px; margin-left: 6px; vertical-align: 2px; border: 1px solid var(--line); color: var(--muted); font-weight: 500; }
+.tag.seal { border-color: var(--seal); color: var(--seal); background: var(--seal-soft); }
+.tag.gold { border-color: var(--gold); color: var(--gold); }
+.tag.ok { border-color: var(--accent); color: var(--accent); }
+.detail { padding: 4px 4px 18px; display: grid; gap: 14px; }
+.detail .long { white-space: pre-wrap; font-family: var(--serif); line-height: 1.8; max-width: 44em; margin: 0; }
+.kv { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 3px 14px; font-size: 0.9rem; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.tbl-wrap { overflow-x: auto; }
+table { border-collapse: collapse; font-size: 0.88rem; min-width: 18em; }
+th, td { text-align: left; padding: 4px 14px 4px 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--muted); font-weight: 500; }
+td.v { font-variant-numeric: tabular-nums; text-align: right; padding-right: 20px; }
+.traits { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.trait-group h4 { margin: 0 0 4px; font: 500 0.82rem var(--sans); color: var(--muted); letter-spacing: 0.05em; }
+code, .file { font-family: var(--mono); font-size: 0.82rem; }
+.file { color: var(--muted); overflow-wrap: anywhere; }
+pre.code { font-family: var(--mono); font-size: 0.8rem; background: var(--sunk); padding: 10px 12px; border-radius: 6px; overflow-x: auto; margin: 0; white-space: pre; }
+.linkish { color: var(--accent); background: none; border: 0; padding: 0; font: inherit; cursor: pointer; text-decoration: underline; text-underline-offset: 3px; }
+.copy { font: 0.75rem var(--sans); border: 1px solid var(--line); background: var(--panel); color: var(--muted); border-radius: 4px; padding: 0 6px; margin-left: 8px; cursor: pointer; }
+.empty { color: var(--muted); padding: 24px 4px; }
+/* 區域 */
+.area-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 20px; align-items: start; }
+.map-box { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px; min-width: 0; }
+.map-scroll { overflow: auto; max-height: 70vh; }
+.map-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; color: var(--muted); font-size: 0.8rem; padding: 6px 2px 0; }
+.layer-title { font: 600 0.9rem var(--serif); color: var(--muted); margin: 6px 2px 2px; }
+svg.map text { font-family: var(--sans); font-size: 12px; fill: var(--fg); pointer-events: none; }
+svg.map .room rect { fill: var(--room); stroke: var(--room-line); stroke-width: 1; rx: 5; }
+svg.map .room.has-npc rect { stroke: var(--accent); stroke-width: 1.6; }
+svg.map .room.sel rect { fill: var(--accent); stroke: var(--accent); }
+svg.map .room.sel text { fill: var(--panel); }
+svg.map .room.hl rect { stroke: var(--seal); stroke-width: 2.4; }
+svg.map .room { cursor: pointer; }
+svg.map .room:focus-visible rect { stroke: var(--seal); stroke-width: 2.4; }
+svg.map line { stroke: var(--room-line); stroke-width: 2; }
+svg.map line.cmd { stroke: var(--accent); stroke-width: 1.6; stroke-dasharray: 5 4; }
+svg.map .dot { fill: var(--accent); }
+svg.map .ud { font-size: 10px; fill: var(--muted); }
+.side { display: grid; gap: 16px; min-width: 0; }
+.panel { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px 14px; min-width: 0; }
+.panel h3 { margin: 0 0 6px; font-family: var(--serif); font-size: 1.1rem; }
+.npc-list { display: flex; flex-wrap: wrap; gap: 6px; }
+.npc-list .chip { font-size: 0.85rem; }
+.stats { display: flex; flex-wrap: wrap; gap: 4px 18px; color: var(--muted); font-size: 0.88rem; font-variant-numeric: tabular-nums; }
+/* NPC 視窗 */
+.overlay { position: fixed; inset: 0; background: rgba(10, 16, 13, 0.45); z-index: 50; display: grid; place-items: center; padding: 16px; }
+.dialog { background: var(--panel); color: var(--fg); border-radius: 10px; border: 1px solid var(--line); width: min(640px, 100%); max-height: 88vh; overflow: auto; padding: 18px 20px 20px; display: grid; gap: 12px; }
+.dialog h2 { margin: 0; font-family: var(--serif); font-size: 1.35rem; }
+.dlg-head { display: flex; align-items: flex-start; gap: 12px; }
+.dlg-head h2 { flex: 1 1 auto; min-width: 0; }
+.dialog .close { flex: none; margin: 0; min-width: 4.5em; min-height: 32px; padding: 4px 12px; font-size: 0.85rem; line-height: 1.2; }
+/* 遊戲裡的 ANSI 顏色 */
+.a1 { font-weight: 700; }
+.a30 { color: var(--c-black); } .a31 { color: var(--c-red); } .a32 { color: var(--c-green); } .a33 { color: var(--c-yellow); }
+.a34 { color: var(--c-blue); } .a35 { color: var(--c-magenta); } .a36 { color: var(--c-cyan); } .a37 { color: var(--c-white); }
+@media (max-width: 760px) {
+  .area-grid { grid-template-columns: minmax(0, 1fr); }
+  .row-head { grid-template-columns: minmax(0, 1fr) auto; }
+  .row-head .sum { grid-column: 1 / -1; grid-row: 2; }
+}
+@media (prefers-reduced-motion: no-preference) { .row-head { transition: background 0.12s; } }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brand">
+      <h1>ES2 江湖圖鑑</h1>
+      <span class="tally" id="tally"></span>
+    </div>
+    <nav class="tabs" role="tablist" id="tabs"></nav>
+  </div>
+</header>
+<main class="wrap" id="main"></main>
+<div class="overlay" id="overlay" hidden></div>
+
+<script id="catalog-data" type="application/json">/*__CATALOG_DATA__*/null</script>
+<script>
+(function () {
+  const D = JSON.parse(document.getElementById('catalog-data').textContent);
+  const $ = (s, el) => (el || document).querySelector(s);
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const plain = s => String(s || '').replace(/\x1b\[[0-9;]*m/g, '');
+
+  // 把遊戲的 ANSI 色碼轉成 span
+  function ansi(s) {
+    s = String(s || '');
+    let out = '', open = false;
+    const re = /\x1b\[([0-9;]*)m/g;
+    let last = 0, m;
+    while ((m = re.exec(s))) {
+      out += esc(s.slice(last, m.index));
+      last = re.lastIndex;
+      const codes = m[1].split(';').filter(Boolean).map(Number);
+      if (open) { out += '</span>'; open = false; }
+      const cls = codes.filter(c => c === 1 || (c >= 30 && c <= 37)).map(c => 'a' + c);
+      if (cls.length && !(codes.length === 1 && codes[0] === 0)) { out += '<span class="' + cls.join(' ') + '">'; open = true; }
+    }
+    out += esc(s.slice(last));
+    if (open) out += '</span>';
+    return out;
+  }
+
+  // 索引：誰帶著這件裝備、放在哪些房間
+  const holders = {};
+  Object.values(D.npcs).forEach(n => (n.equip || []).forEach(e => { (holders[e.path] = holders[e.path] || []).push(n.id); }));
+  const byId = {};
+  D.weapons.forEach(w => byId[w.id] = { tab: 'weapons', it: w });
+  D.armors.forEach(a => byId[a.id] = { tab: 'armors', it: a });
+  D.items.forEach(i => byId[i.id] = { tab: 'items', it: i });
+  const areaOfRoom = {};
+  D.areas.forEach(a => a.rooms.forEach(r => areaOfRoom[r] = a.key));
+
+  const TABS = [
+    { key: 'skills', label: '技能', n: D.skills.length },
+    { key: 'weapons', label: '武器', n: D.weapons.length },
+    { key: 'armors', label: '防具', n: D.armors.length },
+    { key: 'items', label: '物品', n: D.items.length },
+    { key: 'areas', label: '區域', n: D.areas.length },
+  ];
+  const state = { tab: 'weapons', q: '', sub: {}, open: null, area: D.areas[0] && D.areas[0].key, room: null, hl: null };
+  try { const t = localStorage.getItem('es2cat-tab'); if (t && TABS.some(x => x.key === t)) state.tab = t; } catch (e) {}
+  const hash = location.hash.replace('#', '');
+  if (TABS.some(x => x.key === hash)) state.tab = hash;
+
+  const c = D.counts;
+  $('#tally').textContent = `技能 ${c.skills}・武器 ${c.weapons}・防具 ${c.armors}・物品 ${c.items}・NPC ${c.npcs}・房間 ${c.rooms}`;
+
+  function drawTabs() {
+    $('#tabs').innerHTML = TABS.map(t => `<button role="tab" data-tab="${t.key}" aria-selected="${t.key === state.tab}">${t.label}</button>`).join('');
+  }
+  $('#tabs').addEventListener('click', e => {
+    const b = e.target.closest('button[data-tab]');
+    if (!b) return;
+    go(b.dataset.tab);
+  });
+  function go(tab, opts) {
+    state.tab = tab; state.open = null; state.q = '';
+    Object.assign(state, opts || {});
+    try { localStorage.setItem('es2cat-tab', tab); } catch (e) {}
+    drawTabs(); render();
+    if (state.open) {
+      const el = document.querySelector(`[data-row="${CSS.escape(state.open)}"]`);
+      if (el) el.scrollIntoView({ block: 'center' });
+    } else window.scrollTo(0, 0);
+  }
+
+  // ---------------------------------------------------------------- 共用
+  function flagsHtml(flags) {
+    return (flags || []).map(f => `<span class="tag ${f === '唯一' || f === '劇毒' || f === '特攻' ? 'seal' : f.startsWith('限') ? 'gold' : ''}">${esc(f)}</span>`).join('');
+  }
+  function traitText(list) { return (list || []).map(([k, v]) => `${k} ${v > 0 ? '+' : ''}${v}`).join('、'); }
+  function fileLine(file) {
+    return file ? `<span class="file">${esc(file)}</span><button class="copy" data-copy="${esc(file)}">複製</button>` : '';
+  }
+  function whereHtml(id) {
+    const hs = holders[id] || [];
+    const rs = D.itemRooms[id] || [];
+    const parts = [];
+    if (hs.length) parts.push('持有者：' + hs.map(n => `<button class="linkish" data-npc="${esc(n)}">${ansi(D.npcs[n].name)}</button>`).join('、'));
+    if (rs.length) parts.push('放置：' + rs.map(([r, n]) => roomLink(r) + (n > 1 ? ` ×${n}` : '')).join('、'));
+    return parts.join('<br>') || '<span class="hint">目前沒有 NPC 攜帶或房間放置</span>';
+  }
+  function roomLink(r) {
+    const room = D.rooms[r];
+    return room ? `<button class="linkish" data-room="${esc(r)}">${esc(room.short)}</button><span class="hint">（${esc(areaOfRoom[r] || '')}）</span>` : esc(r);
+  }
+  function subChips(key, groups) {
+    const cur = state.sub[key] || 'all';
+    return `<div class="chips" role="group" aria-label="分類">` + groups.map(([k, label, n]) =>
+      `<button class="chip" data-sub="${esc(k)}" aria-pressed="${cur === k}">${esc(label)}<span class="n">${n}</span></button>`).join('') + '</div>';
+  }
+  function matches(it, extra) {
+    if (!state.q) return true;
+    const q = state.q.toLowerCase();
+    return (plain(it.name) + ' ' + (it.ids || []).join(' ') + ' ' + (it.file || it.id || '') + ' ' + (extra || '')).toLowerCase().includes(q);
+  }
+  function listShell(tools, rows, hint) {
+    return `<div class="tools"><input class="search" id="q" type="search" placeholder="搜尋名稱、英文代碼、特性或檔案" value="${esc(state.q)}" aria-label="搜尋">${tools || ''}</div>` +
+      (hint ? `<p class="hint">${hint}</p>` : '') +
+      `<div class="list">${rows.length ? rows.join('') : '<p class="empty">沒有符合的項目。換個關鍵字或分類試試。</p>'}</div>`;
+  }
+  function row(id, head, body) {
+    const open = state.open === id;
+    return `<div class="row${open ? ' open' : ''}" data-row="${esc(id)}"><button class="row-head" aria-expanded="${open}">${head}</button>${open ? `<div class="detail">${body()}</div>` : ''}</div>`;
+  }
+
+  // ---------------------------------------------------------------- 技能
+  function renderSkills() {
+    const groups = [['all', '全部', D.skills.length], ['impl', '已實作', D.skills.filter(s => s.impl).length], ['code', '只有代碼', D.skills.filter(s => !s.impl).length]];
+    const cur = state.sub.skills || 'all';
+    const rows = D.skills.filter(s => (cur === 'all' || (cur === 'impl') === s.impl) && matches({ name: s.name, ids: [s.code], file: s.file }, s.cat))
+      .map(s => row(s.code,
+        `<span class="nm">${esc(s.name)}<span class="en">${esc(s.code)}</span></span><span class="sum">${esc(s.cat || '')}${s.growth.length ? '・成長 ' + esc(s.growth.join('、')) : ''}</span><span class="num">${s.impl ? '<span class="tag ok">已實作</span>' : '<span class="tag">只有代碼</span>'}</span>`,
+        () => `<dl class="kv"><dt>英文代碼</dt><dd><code>${esc(s.code)}</code></dd>` +
+          (s.cat ? `<dt>分類</dt><dd>${esc(s.cat)}</dd>` : '') +
+          (s.desc ? `<dt>說明</dt><dd>${esc(s.desc)}</dd>` : '') +
+          `<dt>精氣神與屬性</dt><dd>${s.growth.length ? esc(s.growth.join('、')) + '（每升一級，細節見下方註解）' : '無'}</dd>` +
+          (s.file ? `<dt>檔案</dt><dd>${fileLine(s.file)}</dd>` : '') + `</dl>` +
+          `<div><h4 class="hint" style="margin:0 0 4px">升級公式</h4>${/\n/.test(s.formula) ? `<pre class="code">${esc(s.formula)}</pre>` : `<p style="margin:0">${esc(s.formula)}</p>`}</div>` +
+          (s.notes.length ? `<div><h4 class="hint" style="margin:0 0 4px">程式註解</h4><pre class="code">${esc(s.notes.join('\n\n'))}</pre></div>` : '')));
+    return listShell(subChips('skills', groups), rows, '已實作的技能列出程式裡的升級規則；只有代碼的技能已登記名稱，裝備或 NPC 會用到，但還沒有技能程式。');
+  }
+
+  // ---------------------------------------------------------------- 武器
+  function renderWeapons() {
+    const kinds = Object.keys(D.weaponKinds).filter(k => D.weapons.some(w => w.kind === k));
+    const groups = [['all', '全部', D.weapons.length]].concat(kinds.map(k => [k, D.weaponKinds[k], D.weapons.filter(w => w.kind === k).length]));
+    const cur = state.sub.weapons || 'all';
+    const rows = D.weapons.filter(w => (cur === 'all' || w.kind === cur) && matches(w, Object.values(w.traits).flat().map(t => t[0]).join(' ') + ' ' + w.flags.join(' ')))
+      .map(w => {
+        const u = w.usages[0] || {};
+        const sum = w.usages.map(x => `${x.skill} ${x.dmg || ''}`).join('・');
+        return row(w.id,
+          `<span class="nm">${ansi(w.name)}<span class="en">${esc(w.ids[0] || '')}</span>${flagsHtml(w.flags)}</span><span class="sum">${esc(sum)}${Object.keys(w.traits).length ? '・' + esc(traitText(Object.values(w.traits)[0])) : ''}</span><span class="num">${esc(w.value || '')}</span>`,
+          () => weaponDetail(w));
+      });
+    return listShell(subChips('weapons', groups), rows);
+  }
+  function weaponDetail(w) {
+    const tr = Object.entries(w.traits);
+    return (w.long ? `<p class="long">${ansi(w.long)}</p>` : '') +
+      `<div class="tbl-wrap"><table><thead><tr><th>可用技能</th><th>傷害</th><th>力量修正</th><th>乘數等級</th></tr></thead><tbody>` +
+      w.usages.map(u => `<tr><td>${esc(u.skill)} <code>${esc(u.code)}</code></td><td class="v">${esc(u.dmg || '—')}</td><td class="v">${esc(u.bonus || '—')}</td><td class="v">${esc(u.mult || '—')}</td></tr>`).join('') +
+      `</tbody></table></div>` +
+      (tr.length ? `<div class="traits">${tr.map(([sk, l]) => `<div class="trait-group"><h4>武器特性・${esc(sk)}</h4><div class="tbl-wrap"><table><tbody>${l.map(([k, v]) => `<tr><td>${esc(k)}</td><td class="v">${v > 0 ? '+' : ''}${v}</td></tr>`).join('')}</tbody></table></div></div>`).join('')}</div>` : '') +
+      commonKv(w);
+  }
+  function commonKv(it) {
+    return `<dl class="kv"><dt>英文名稱</dt><dd>${esc((it.ids || []).join('、') || '—')}</dd><dt>重量</dt><dd>${it.weight != null ? it.weight : '—'}</dd><dt>價值</dt><dd>${esc(it.value || '—')}</dd>` +
+      (it.poison ? `<dt>劇毒</dt><dd><code>daemon/condition/${esc(it.poison)}.c</code></dd>` : '') +
+      (it.verbs ? `<dt>指令</dt><dd>${it.verbs.map(v => `<code>${esc(v)}</code>`).join('、')}</dd>` : '') +
+      (it.effects ? `<dt>效果</dt><dd>${esc(it.effects.join('、'))}</dd>` : '') +
+      (it.study ? `<dt>研讀</dt><dd>${esc(it.study.map(([k, v]) => `${k} 最高 ${v}`).join('、'))}</dd>` : '') +
+      `<dt>出處</dt><dd>${whereHtml(it.id)}</dd><dt>檔案</dt><dd>${fileLine(it.file)}</dd></dl>`;
+  }
+
+  // ---------------------------------------------------------------- 防具
+  function renderArmors() {
+    const slots = Object.keys(D.slots).filter(k => D.armors.some(a => a.slot === k));
+    const groups = [['all', '全部', D.armors.length]].concat(slots.map(k => [k, D.slots[k], D.armors.filter(a => a.slot === k).length]));
+    const cur = state.sub.armors || 'all';
+    const rows = D.armors.filter(a => (cur === 'all' || a.slot === cur) && matches(a, Object.values(a.traits).flat().map(t => t[0]).join(' ') + ' ' + a.flags.join(' ')))
+      .map(a => row(a.id,
+        `<span class="nm">${ansi(a.name)}<span class="en">${esc(a.ids[0] || '')}</span>${flagsHtml(a.flags)}</span><span class="sum">${esc(D.slots[a.slot] || a.slot)}・${esc(traitText(Object.values(a.traits)[0]) || '沒有特性')}</span><span class="num">${esc(a.value || '')}</span>`,
+        () => (a.long ? `<p class="long">${ansi(a.long)}</p>` : '') +
+          `<div class="traits">${Object.entries(a.traits).map(([sl, l]) => `<div class="trait-group"><h4>護具特性・${esc(sl)}</h4><div class="tbl-wrap"><table><tbody>${l.map(([k, v]) => `<tr><td>${esc(k)}</td><td class="v">${v > 0 ? '+' : ''}${v}</td></tr>`).join('')}</tbody></table></div></div>`).join('') || '<span class="hint">沒有護具特性</span>'}</div>` +
+          commonKv(a)));
+    return listShell(subChips('armors', groups), rows);
+  }
+
+  // ---------------------------------------------------------------- 物品
+  function renderItems() {
+    const cats = [...new Set(D.items.map(i => i.cat))];
+    const groups = [['all', '全部', D.items.length]].concat(cats.map(k => [k, k, D.items.filter(i => i.cat === k).length]));
+    const cur = state.sub.items || 'all';
+    const rows = D.items.filter(i => (cur === 'all' || i.cat === cur) && matches(i, (i.effects || []).join(' ')))
+      .map(i => row(i.id,
+        `<span class="nm">${ansi(i.name)}<span class="en">${esc(i.ids[0] || '')}</span>${flagsHtml(i.flags)}</span><span class="sum">${esc(i.cat)}${i.effects ? '・' + esc(i.effects.join('、')) : ''}</span><span class="num">${esc(i.value || '')}</span>`,
+        () => (i.long ? `<p class="long">${ansi(i.long)}</p>` : '') + commonKv(i)));
+    return listShell(subChips('items', groups), rows);
+  }
+
+  // ---------------------------------------------------------------- 區域
+  const CW = 108, CH = 38, GX = 26, GY = 26;
+  function renderAreas() {
+    const area = D.areas.find(a => a.key === state.area) || D.areas[0];
+    if (!area) return '<p class="empty">沒有區域資料。</p>';
+    const chips = `<div class="chips" role="group" aria-label="區域">` + D.areas.map(a =>
+      `<button class="chip" data-area="${esc(a.key)}" aria-pressed="${a.key === area.key}">${esc(a.name)}<span class="n">${a.rooms.length}</span></button>`).join('') + '</div>';
+    const rooms = area.rooms.map(r => D.rooms[r]);
+    // 依 z（上下樓層）分層繪製
+    const layers = {};
+    rooms.forEach(r => { const z = r.pos ? r.pos[2] : 0; (layers[z] = layers[z] || []).push(r); });
+    const zs = Object.keys(layers).map(Number).sort((a, b) => b - a);
+    const maps = zs.map(z => {
+      const rs = layers[z];
+      const names = [...new Set(rs.map(r => r.layer).filter(Boolean))];
+      const xs = rs.map(r => r.pos[0]), ys = rs.map(r => r.pos[1]);
+      const minx = Math.min(...xs), miny = Math.min(...ys);
+      const W = (Math.max(...xs) - minx + 1) * (CW + GX) + GX, H = (Math.max(...ys) - miny + 1) * (CH + GY) + GY;
+      const px = r => GX + (r.pos[0] - minx) * (CW + GX), py = r => GY + (r.pos[1] - miny) * (CH + GY);
+      const inLayer = {};
+      rs.forEach(r => inLayer[r.id] = r);
+      let lines = '';
+      const seen = new Set();
+      // 用指令進出的路線畫虛線（例如 climb 圍牆）；只要一個方向要用指令就算
+      rs.forEach(r => (r.special || []).forEach(m => {
+        const o = inLayer[m.to];
+        if (!o) return;
+        const k = [r.id, m.to].sort().join('|');
+        if (seen.has(k)) return;
+        seen.add(k);
+        lines += `<line class="cmd" x1="${px(r) + CW / 2}" y1="${py(r) + CH / 2}" x2="${px(o) + CW / 2}" y2="${py(o) + CH / 2}"><title>${esc(r.short)}：${esc(m.cmd)}</title></line>`;
+      }));
+      rs.forEach(r => Object.entries(r.exits).forEach(([d, t]) => {
+        const o = inLayer[t];
+        if (!o) return;
+        const k = [r.id, t].sort().join('|');
+        if (seen.has(k)) return;
+        seen.add(k);
+        lines += `<line x1="${px(r) + CW / 2}" y1="${py(r) + CH / 2}" x2="${px(o) + CW / 2}" y2="${py(o) + CH / 2}"/>`;
+      }));
+      const npcRoom = new Set();
+      rs.forEach(r => Object.keys(r.objects).forEach(p => { if (D.npcs[p]) npcRoom.add(r.id); }));
+      const cells = rs.map(r => {
+        const ud = (r.exits.up ? '↑' : '') + (r.exits.down ? '↓' : '');
+        const out = Object.values(r.exits).some(t => areaOfRoom[t] && areaOfRoom[t] !== area.key);
+        const label = r.short.length > 7 ? r.short.slice(0, 7) + '…' : r.short;
+        const cls = ['room', npcRoom.has(r.id) ? 'has-npc' : '', state.room === r.id ? 'sel' : '', state.hl && state.hl.includes(r.id) ? 'hl' : ''].join(' ');
+        return `<g class="${cls}" data-room="${esc(r.id)}" tabindex="0" role="button" aria-label="${esc(r.short)}"><title>${esc(r.short)}</title><rect x="${px(r)}" y="${py(r)}" width="${CW}" height="${CH}"/>` +
+          `<text x="${px(r) + CW / 2}" y="${py(r) + CH / 2 + 4}" text-anchor="middle">${esc(label)}</text>` +
+          (npcRoom.has(r.id) ? `<circle class="dot" cx="${px(r) + 8}" cy="${py(r) + 8}" r="3"/>` : '') +
+          (ud || out ? `<text class="ud" x="${px(r) + CW - 6}" y="${py(r) + 12}" text-anchor="end">${ud}${out ? '⇢' : ''}</text>` : '') + '</g>';
+      }).join('');
+      const title = zs.length > 1 || names.length ? `<div class="layer-title">${names.length ? esc(names.join('／')) : ''}${zs.length > 1 ? `（樓層 ${z >= 0 ? '+' : ''}${z}）` : ''}</div>` : '';
+      return `${title}<div class="map-scroll"><svg class="map" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-label="${esc(area.name)} 地圖">${lines}${cells}</svg></div>`;
+    }).join('');
+    const legend = `<div class="map-legend"><span>● 有 NPC</span><span>↑↓ 上下樓</span><span>┅ 用指令進出（例如 climb 圍牆）</span><span>⇢ 通往其他區域</span><span>點房間看內容</span></div>`;
+    const room = state.room && D.rooms[state.room] && areaOfRoom[state.room] === area.key ? D.rooms[state.room] : null;
+    const roomPanel = room ? `<div class="panel"><h3>${esc(room.short)}</h3>` +
+      (room.long ? `<p class="long" style="font-size:0.92rem">${ansi(room.long)}</p>` : '') +
+      `<dl class="kv"><dt>出口</dt><dd>${Object.entries(room.exits).map(([d, t]) => `${esc(d)}：${roomLink(t)}`).join('<br>') || '—'}</dd>` +
+      ((room.special || []).length ? `<dt>指令進出</dt><dd>${room.special.map(m => `<code>${esc(m.cmd)}</code>：${roomLink(m.to)}`).join('<br>')}</dd>` : '') +
+      `<dt>NPC</dt><dd>${Object.entries(room.objects).filter(([p]) => D.npcs[p]).map(([p, n]) => `<button class="linkish" data-npc="${esc(p)}">${ansi(D.npcs[p].name)}</button>${n > 1 ? ' ×' + n : ''}`).join('、') || '—'}</dd>` +
+      `<dt>物品</dt><dd>${Object.entries(room.objects).filter(([p]) => !D.npcs[p]).map(([p, n]) => (byId[p] ? `<button class="linkish" data-item="${esc(p)}">${ansi(byId[p].it.name)}</button>` : `<code>${esc(p)}</code>`) + (n > 1 ? ' ×' + n : '')).join('、') || '—'}</dd>` +
+      `<dt>檔案</dt><dd>${fileLine(room.file)}</dd></dl></div>`
+      : `<div class="panel"><h3>房間</h3><p class="hint" style="margin:0">點地圖上的房間，這裡會顯示敘述、出口、NPC 與物品。</p></div>`;
+    const npcs = area.npcs.map(p => D.npcs[p]);
+    const npcPanel = `<div class="panel"><h3>NPC</h3>${npcs.length ? `<div class="npc-list">${npcs.map(n => `<button class="chip" data-npc="${esc(n.id)}">${ansi(n.name)}</button>`).join('')}</div>` : '<p class="hint" style="margin:0">這個區域的房間沒有固定放置 NPC。</p>'}</div>`;
+    const stats = `<div class="stats"><span>房間 ${area.rooms.length} 格</span><span>NPC ${area.npcs.length} 種</span><span>NPC 以出生房間標示；會走動的 NPC 標有「走動」</span></div>`;
+    return `<div class="tools">${chips}</div>${stats}<div class="area-grid" style="margin-top:12px"><div class="map-box">${maps}${legend}</div><div class="side">${roomPanel}${npcPanel}</div></div>`;
+  }
+
+  // ---------------------------------------------------------------- NPC 視窗
+  function openNpc(id) {
+    const n = D.npcs[id];
+    if (!n) return;
+    const eq = (n.equip || []).map(e => {
+      const x = byId[e.path];
+      return `<tr><td>${x ? `<button class="linkish" data-item="${esc(e.path)}">${ansi(x.it.name)}</button>` : `<code>${esc(e.path)}</code>`}</td><td>${e.use === 'wield' ? '裝備武器' : e.use === 'wear' ? '穿戴' : '攜帶'}</td></tr>`;
+    }).join('');
+    const rooms = n.rooms.length ? n.rooms.map(([r, c]) => roomLink(r) + (c > 1 ? ` ×${c}` : '')).join('、') : '<span class="hint">沒有房間固定放置（由劇情或其他程式產生）</span>';
+    const tags = [n.wander ? '走動' : '', n.ghost ? '鬼魂' : ''].filter(Boolean).map(t => `<span class="tag">${t}</span>`).join('');
+    const o = $('#overlay');
+    o.innerHTML = `<div class="dialog" role="dialog" aria-modal="true" aria-label="${esc(plain(n.name))}">` +
+      `<div class="dlg-head"><h2>${ansi(n.name)}${tags}</h2><button class="copy close" data-close>關閉</button></div><span class="hint">${esc((n.ids || []).join('、'))}</span>` +
+      (n.long ? `<p class="long">${ansi(n.long)}</p>` : '') +
+      `<dl class="kv">${n.title ? `<dt>稱號</dt><dd>${ansi(n.title)}</dd>` : ''}<dt>種族／職業</dt><dd>${esc([n.race, n.class].filter(Boolean).join('／') || '—')}</dd><dt>等級</dt><dd>${n.level != null ? n.level : '—'}</dd><dt>所在格子</dt><dd>${rooms}</dd><dt>檔案</dt><dd>${fileLine(n.file)}</dd></dl>` +
+      `<div><h4 class="hint" style="margin:0 0 4px">裝備</h4>${eq ? `<div class="tbl-wrap"><table><tbody>${eq}</tbody></table></div>` : '<span class="hint">沒有裝備</span>'}</div>` +
+      (n.skills.length ? `<div><h4 class="hint" style="margin:0 0 4px">技能</h4><div class="tbl-wrap"><table><tbody>${n.skills.map(([k, v, c]) => `<tr><td>${esc(k)} <code>${esc(c)}</code></td><td class="v">${v}</td></tr>`).join('')}</tbody></table></div></div>` : '') +
+      `</div>`;
+    o.hidden = false;
+    const b = o.querySelector('[data-close]');
+    if (b) b.focus();
+  }
+  function closeNpc() { $('#overlay').hidden = true; $('#overlay').innerHTML = ''; }
+  $('#overlay').addEventListener('click', e => { if (e.target.id === 'overlay' || e.target.closest('[data-close]')) closeNpc(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('#overlay').hidden) closeNpc(); });
+
+  // ---------------------------------------------------------------- 事件
+  function render() {
+    const f = { skills: renderSkills, weapons: renderWeapons, armors: renderArmors, items: renderItems, areas: renderAreas }[state.tab];
+    const hadFocus = document.activeElement && document.activeElement.id === 'q';
+    const pos = hadFocus ? document.activeElement.selectionStart : 0;
+    $('#main').innerHTML = f();
+    if (hadFocus && $('#q')) { $('#q').focus(); $('#q').setSelectionRange(pos, pos); }
+  }
+  document.addEventListener('input', e => { if (e.target.id === 'q') { state.q = e.target.value; state.open = null; render(); } });
+  document.addEventListener('click', e => {
+    const t = e.target;
+    const copy = t.closest('[data-copy]');
+    if (copy) {
+      const txt = copy.dataset.copy;
+      const done = () => { copy.textContent = '已複製'; setTimeout(() => copy.textContent = '複製', 1200); };
+      try { navigator.clipboard.writeText(txt).then(done, () => {}); } catch (err) {}
+      return;
+    }
+    const npc = t.closest('[data-npc]');
+    if (npc) { openNpc(npc.dataset.npc); return; }
+    const item = t.closest('[data-item]');
+    if (item && byId[item.dataset.item]) {
+      closeNpc();
+      const x = byId[item.dataset.item];
+      const sub = x.tab === 'weapons' ? { weapons: 'all' } : x.tab === 'armors' ? { armors: 'all' } : { items: 'all' };
+      go(x.tab, { open: x.it.id, sub: Object.assign(state.sub, sub) });
+      return;
+    }
+    const room = t.closest('[data-room]');
+    if (room) {
+      const rid = room.dataset.room;
+      closeNpc();
+      if (areaOfRoom[rid]) {
+        state.area = areaOfRoom[rid]; state.room = rid; state.hl = null;
+        if (state.tab !== 'areas') go('areas', { area: state.area, room: rid }); else render();
+      }
+      return;
+    }
+    const sub = t.closest('[data-sub]');
+    if (sub) { state.sub[state.tab] = sub.dataset.sub; state.open = null; render(); return; }
+    const area = t.closest('[data-area]');
+    if (area) { state.area = area.dataset.area; state.room = null; state.hl = null; render(); return; }
+    const head = t.closest('.row-head');
+    if (head) {
+      const id = head.parentElement.dataset.row;
+      state.open = state.open === id ? null : id;
+      render();
+      const el = document.querySelector(`[data-row="${CSS.escape(id)}"] .row-head`);
+      if (el) el.focus({ preventScroll: true });
+    }
+  });
+  document.addEventListener('keydown', e => {
+    const g = e.target.closest && e.target.closest('g[data-room]');
+    if (g && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); g.dispatchEvent(new MouseEvent('click', { bubbles: true })); }
+  });
+
+  // 搜尋列固定在頁首下方：依頁首實際高度設定位置
+  const hdr = document.querySelector('header.top');
+  const setHdr = () => document.documentElement.style.setProperty('--hdr', hdr.offsetHeight + 'px');
+  setHdr();
+  if (window.ResizeObserver) new ResizeObserver(setHdr).observe(hdr); else window.addEventListener('resize', setHdr);
+
+  drawTabs();
+  render();
+})();
+</script>
