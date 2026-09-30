@@ -36,6 +36,8 @@ def test_unique():
 def test_poisons():
     base = read(MUD / 'custom' / 'condition' / 'weapon_poison.c')
     assert '你中的毒發作了！' in base and 'data["left"] = burst_count();' in base
+    # 先扣目前值、再扣實格（500/500 -> 490/492）
+    assert base.index('me->consume_stat(d[0], d[2], from);') < base.index('me->damage_stat(d[0], d[1], from);')
     # 使用者數值 A/B：A = 目前值扣、B = 最大值扣；檔案裡是 ({ 屬性, 最大值, 目前值 })
     for w, c, t, n, dm in [('blunt/skull_heart', 'skull_heart_poison', 2, 4, [('gin', 5, 3), ('kee', 8, 5), ('sen', 2, 1)]),
                            ('dagger/wicked_dagger', 'rain_poison', 2, 4, [('gin', 8, 4), ('kee', 8, 4), ('sen', 2, 1)]),

@@ -4,7 +4,10 @@
  *   poison_msg()   中毒時的敘述（以「你」開頭，同房間的人看到把「你」換成名字）
  *   burst_ticks()  幾 tick 發作一次（1 tick = 一次心跳 2 秒）
  *   burst_count()  共發作幾次
- *   burst_damage() 每次發作的傷害：({ ({ 屬性, 最大值扣, 目前值扣 }), ... })
+ *   burst_damage() 每次發作的傷害：({ ({ 屬性, 實格扣, 目前值扣 }), ... })
+ *
+ * 實格（heal 值）是可隨時間恢復的上限，不是永久扣除。每次發作先扣目前值、
+ * 再扣實格，例如 500/500 每次目前值 -10、實格 -8：490/492、480/484、470/476。
  *
  * 武器命中並造成傷害時呼叫 poison(目標, 攻擊者)。已中毒時再被命中，只把剩餘
  * 次數重設為滿，發作節奏不變。發作敘述固定為「你中的毒發作了！」。
@@ -34,8 +37,8 @@ private void burst(object me, object from)
         message("vision", me->name() + "中的毒發作了！\n", environment(me), me);
 
     foreach(mixed *d in burst_damage()) {
-        if( d[1] ) me->damage_stat(d[0], d[1], from);
-        if( objectp(me) && d[2] ) me->consume_stat(d[0], d[2], from);
+        if( d[2] ) me->consume_stat(d[0], d[2], from);
+        if( objectp(me) && d[1] ) me->damage_stat(d[0], d[1], from);
         if( !objectp(me) ) return;
     }
 }

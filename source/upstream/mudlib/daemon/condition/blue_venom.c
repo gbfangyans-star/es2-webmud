@@ -29,10 +29,11 @@ private void burst(object me, object from)
     if( environment(me) )
         message("vision", me->name() + "中的毒發作了！\n", environment(me), me);
 
-    me->damage_stat("gin", 3, from);
+    // 先扣目前值，再扣實格（可隨時間恢復的上限）。
     me->consume_stat("gin", 5, from);
-    me->damage_stat("kee", 2, from);
+    me->damage_stat("gin", 3, from);
     me->consume_stat("kee", 4, from);
+    me->damage_stat("kee", 2, from);
     me->consume_stat("HP", 2, from);
 }
 
