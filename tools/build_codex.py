@@ -38,7 +38,7 @@ CLASS_NAME = {'soldier': '軍人', 'fighter': '武者', 'thief': '盜賊', 'taoi
               'scholar': '書生', 'monk': '和尚', 'commoner': '平民'}
 RACE_NAME = {'headless': '形天族', 'human': '人類', 'malik': '巫首', 'yaksa': '夜叉', 'ashura': '阿修羅'}
 DIR_AREA = {  # 沒有 map/area 的房間，依目錄給區域名稱
-    'custom/oldpine': '老松林小徑', 'custom/home': '家園', 'custom/wizroom/w/windstory': '巫師房間',
+    'custom/home': '家園', 'custom/wizroom/w/windstory': '巫師房間',
 }
 DIRS = {  # 地圖座標：x 往東、y 往南、z 往上
     'north': (0, -1, 0), 'south': (0, 1, 0), 'east': (1, 0, 0), 'west': (-1, 0, 0),

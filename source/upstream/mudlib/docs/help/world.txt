@@ -2,7 +2,6 @@
 
 目前 HELP 只列出已在本專案中落地、可確認的區域與功能：
   help snowkeep        雪亭
-  help oldpine         老松林
   help inn             客棧
   help home_help       私人家園
   help recall          返回功能

@@ -17,7 +17,7 @@
 
 【 世界功能 】
   world        世界與探索        snowkeep     雪亭
-  oldpine      老松林            inn          客棧
+  inn          客棧
   home_help    私人家園          recall       返回功能
 
 【 連線與其他 】

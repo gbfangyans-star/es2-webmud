@@ -20,6 +20,3 @@ def test_vendor_and_home_actions_are_real_commands():
     assert '|商品|list %s' in HUD
     assert '|傳送至家園|home' in HUD
 
-def test_oldpine_real_actions_preserved():
-    for cmd in ['look vine','hold vine','look footprints','climb pine','climb up','climb down','climb cliff']:
-        assert cmd in HUD

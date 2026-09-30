@@ -21,7 +21,6 @@ LONG
   set("connect-p", 1);
   set("exits", ([ /* sizeof() == 1 */
 	"north" : __DIR__"sstreet1",
-	"southeast" : "/custom/oldpine/room/path01",
 	"west" : "/custom/zhenwu/room/gate",
   ]));
 

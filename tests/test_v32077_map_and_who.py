@@ -27,13 +27,6 @@ def test_runtime_room_label_is_authoritative_even_for_seed_nodes():
     assert 'labelIndex.delete(oldKey)' in APP
     assert 'labelIndex.get(authoritativeLabel).push(id)' in APP
 
-def test_recovered_oldpine_all_seeded_with_room_names():
-    nodes=[n for n in GRAPH['nodes'] if n['id'].startswith('/custom/oldpine_recovered/')]
-    assert len(nodes) == 41
-    assert all(str(n.get('label','')).strip() for n in nodes)
-    ids={n['id'] for n in nodes}
-    assert '/custom/oldpine_recovered/room/clearing' in ids
-    assert '/custom/oldpine_recovered/room/cliffside' in ids
 
 def test_who_functionality_stays_present():
     for token in ['users()', 'case "-l":', 'case "-w":', 'case "-i":', 'case "-n":', 'start_more_if_needed', 'query_load_average()']:
