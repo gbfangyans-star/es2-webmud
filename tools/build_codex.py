@@ -38,8 +38,10 @@ CLASS_NAME = {'soldier': '軍人', 'fighter': '武者', 'thief': '盜賊', 'taoi
               'scholar': '書生', 'monk': '和尚', 'commoner': '平民'}
 RACE_NAME = {'headless': '形天族', 'human': '人類', 'malik': '巫首', 'yaksa': '夜叉', 'ashura': '阿修羅'}
 DIR_AREA = {  # 沒有 map/area 的房間，依目錄給區域名稱
-    'custom/home': '家園', 'custom/wizroom/w/windstory': '巫師房間',
 }
+# 不公開的目錄：這些目錄的房間不列入區域；裡面的 NPC 與物品只有被公開房間放置或
+# 公開 NPC 攜帶時才列出（例如家園傳送師放在雪亭鎮客棧）。
+HIDDEN_DIRS = ['/custom/wizroom/', '/custom/home/']
 DIRS = {  # 地圖座標：x 往東、y 往南、z 往上
     'north': (0, -1, 0), 'south': (0, 1, 0), 'east': (1, 0, 0), 'west': (-1, 0, 0),
     'northeast': (1, -1, 0), 'northwest': (-1, -1, 0), 'southeast': (1, 1, 0), 'southwest': (-1, 1, 0),
@@ -70,7 +72,9 @@ def read(p):
 
 def strip_comments(s):
     s = re.sub(r'/\*.*?\*/', '', s, flags=re.S)
-    return re.sub(r'(?m)^\s*//.*$', '', s)
+    s = re.sub(r'(?m)^\s*//.*$', '', s)
+    # 有些檔案寫成 set_name ("x", ...)：函式名稱與括號之間的空白統一拿掉
+    return re.sub(r'\b(set\w*|carry_object|init_damage|setup_\w+|advance_stat|map_skill)\s+\(', r'\1(', s)
 
 
 def mud_path(p):
@@ -96,12 +100,22 @@ def resolve(expr, here):
     return re.sub(r'/+', '/', out)
 
 
+ANSI_MACRO = {'NOR': '0', 'BLK': '30', 'RED': '31', 'GRN': '32', 'YEL': '33', 'BLU': '34', 'MAG': '35', 'CYN': '36',
+              'WHT': '37', 'HIK': '1;30', 'HIR': '1;31', 'HIG': '1;32', 'HIY': '1;33', 'HIB': '1;34', 'HIM': '1;35',
+              'HIC': '1;36', 'HIW': '1;37'}
+
+
 def lpc_string(expr):
-    """把 "a" "b" 或 @LONG...LONG 這類字串運算式合併成文字。"""
+    """把 "a" "b"、HIC "a" NOR 或 @LONG...LONG 這類字串運算式合併成文字。"""
     m = re.match(r'\s*@(\w+)\n(.*?)\n\1', expr, re.S)
     if m:
         return m.group(2) + '\n'
-    parts = re.findall(r'"((?:[^"\\]|\\.)*)"', expr)
+    parts = []
+    for tok in re.finditer(r'"((?:[^"\\]|\\.)*)"|\b([A-Z]{3})\b', expr):
+        if tok.group(1) is not None:
+            parts.append(tok.group(1))
+        elif tok.group(2) in ANSI_MACRO:
+            parts.append('\x1b[%sm' % ANSI_MACRO[tok.group(2)])
     s = ''.join(parts)
     s = s.replace('\\n', '\n').replace('\\"', '"').replace('\\x1b', '\x1b').replace('\\t', '  ')
     return s
@@ -109,7 +123,7 @@ def lpc_string(expr):
 
 def set_value(src, key):
     """取 set("key", ...) 的原始運算式文字。"""
-    m = re.search(r'set\(\s*"%s"\s*,' % re.escape(key), src)
+    m = re.search(r'\bset\s*\(\s*"%s"\s*,' % re.escape(key), src)
     if not m:
         return None
     i, depth, j = m.end(), 1, m.end()
@@ -168,7 +182,7 @@ def path_mapping(expr, here):
 
 
 def name_ids(src):
-    m = re.search(r'set_name\(\s*("(?:[^"\\]|\\.)*")\s*,\s*(\(\{.*?\}\)|"[^"]*")', src, re.S)
+    m = re.search(r'set_name\(\s*((?:[A-Z]{3}\s*\+?\s*)*"(?:[^"\\]|\\.)*"(?:\s*\+?\s*[A-Z]{3})*)\s*,\s*(\(\{.*?\}\)|"[^"]*")', src, re.S)
     if not m:
         m2 = re.search(r'set_name\(\s*((?:\w+\s*\+\s*)?"(?:[^"\\]|\\.)*"(?:\s*\+\s*\w+)?)', src)
         if not m2:
@@ -274,9 +288,9 @@ def common(p, src, code):
 
 def traits(code, prefix):
     out = {}
-    for m in re.finditer(r'set\(\s*"%s/([^"]+)"\s*,\s*\(\[(.*?)\]\)\s*\)' % prefix, code, re.S):
+    for m in re.finditer(r'\bset\s*\(\s*"%s/([^"]+)"\s*,\s*\(\[(.*?)\]\)\s*\)' % prefix, code, re.S):
         out[m.group(1)] = [[zh(k), v, k] for k, v in mapping_pairs(m.group(2))]
-    for m in re.finditer(r'set\(\s*"%s/([^"/]+)/([^"]+)"\s*,\s*(-?\d+)\s*\)' % prefix, code):
+    for m in re.finditer(r'\bset\s*\(\s*"%s/([^"/]+)/([^"]+)"\s*,\s*(-?\d+)\s*\)' % prefix, code):
         out.setdefault(m.group(1), []).append([zh(m.group(2)), int(m.group(3)), m.group(2)])
     return out
 
@@ -290,7 +304,7 @@ ARMOR_INHERIT = re.compile(r'inherit\s+(F_(ARMOR|CLOTH|HEAD_EQ|HAND_EQ|FEET_EQ|N
 
 
 def classify(code):
-    if ROOM_INHERIT.search(code) or (re.search(r'set\(\s*"exits"', code) and re.search(r'set\(\s*"short"', code) and 'set_name' not in code):
+    if ROOM_INHERIT.search(code) or (re.search(r'\bset\s*\(\s*"exits"', code) and re.search(r'\bset\s*\(\s*"short"', code) and 'set_name' not in code):
         return 'room'
     if NPC_INHERIT.search(code) or re.search(r'set_race\(', code):
         return 'npc'
@@ -564,8 +578,16 @@ def main(out):
 
     # 區域：有 map/area 的依名稱分組，沒有的依所在目錄
     areas = defaultdict(list)
-    for rid in [r for r in rooms if r.startswith('/obj/')]:  # 系統用的空房間，不是地圖
-        del rooms[rid]
+    for rid in [r for r in rooms if r.startswith('/obj/') or r.startswith(tuple(HIDDEN_DIRS))]:
+        del rooms[rid]  # 系統用的空房間與不公開區域
+    hidden = lambda i: i.startswith(tuple(HIDDEN_DIRS))
+    placed = {p for r in rooms.values() for p in r['objects']}
+    for nid in [n for n in npcs if hidden(n) and n not in placed]:
+        del npcs[nid]
+    carried = placed | {e['path'] for n in npcs.values() for e in n['equip']}
+    weapons[:] = [w for w in weapons if not hidden(w['id']) or w['id'] in carried]
+    armors[:] = [a for a in armors if not hidden(a['id']) or a['id'] in carried]
+    items[:] = [i for i in items if not hidden(i['id']) or i['id'] in carried]
     for r in rooms.values():
         key = r['area'] or DIR_AREA.get(r['id'].rsplit('/', 2)[0].lstrip('/'), r['id'].rsplit('/', 2)[0].lstrip('/'))
         r['areaKey'] = key
