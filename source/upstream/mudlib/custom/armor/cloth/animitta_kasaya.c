@@ -18,7 +18,7 @@ void create()
         set("wear_as", "cloth");
         set("apply_armor/cloth", ([
             "cps": 2,
-            "great-compassion": 10,
+            "compassion": 10,
         ]));
     }
     setup();

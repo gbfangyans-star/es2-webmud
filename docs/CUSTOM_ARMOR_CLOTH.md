@@ -16,9 +16,10 @@
     絲 300～450、布 450～600、皮鱗 600～800、金屬 800～1000 兩
 - **咒文能力**：即法力（`query_ability("spell")` = 靈性 × 慧根 / 10 + 神 / 32 + 額外附加）的額外附加，
   代碼 `spell`。`identify` 顯示為「咒文能力」。
-- **遊戲中尚未實作的技能**：先定好代碼與中文名稱（`data/chinese.o`），技能做出來後沿用同一代碼即生效：
-  大悲咒 `great-compassion`、善想禪要 `dhyana-essence`、茅山幻術 `maoshan-illusion`、
-  天師道法【桃山密籙】 `taoism-taoshan`；幽冥三箭沿用 `youmin`、天師道法【素雲書】用 `su cloudy`。
+- **遊戲中尚未實作的技能**：代碼與中文名稱依 `docs/SKILL_NAMES.md`（已登記到 `data/chinese.o`），
+  技能做出來後沿用同一代碼即生效：大悲咒 `compassion`、善想禪要 `absorption`、
+  茅山幻術 `taoism of nature`、天師道法【桃山密籙】 `taoism of conviction`、
+  幽冥三箭 `taoism of purify`、天師道法【素雲書】 `taoism-cloud`。
 - **闇之絲衣**：原資料「職業限制：盜賊」，只有盜賊能穿。
 - **西巫袍**：敘述提到其他種族穿起來不便，依使用者指定不另加限制。
 - **皮背心**：原資料有兩件同名；防禦力 7 的改名為「牛皮背心」（`cowhide_vest.c`）。

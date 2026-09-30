@@ -17,7 +17,7 @@ void create()
             "一件樣式頗為簡單的道袍，袍上寫滿了道籙天書、密宗心經等奇異的文字。\n");
         set("wear_as", "cloth");
         set("apply_armor/cloth", ([
-            "youmin": 10,
+            "taoism of purify": 10,
             "armor": 10,
         ]));
     }

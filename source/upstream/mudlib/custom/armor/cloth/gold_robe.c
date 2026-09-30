@@ -19,7 +19,7 @@ void create()
             "的金褸衣，看來用一般的武器可能還不容易劃破這件僧袍呢。\n");
         set("wear_as", "cloth");
         set("apply_armor/cloth", ([
-            "dhyana-essence": 15,
+            "absorption": 15,
             "armor": 25,
         ]));
     }

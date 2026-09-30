@@ -21,7 +21,7 @@ void create()
             "armor_vs_fire": 50,
             "taoism-fire": 10,
             "armor": 5,
-            "su cloudy": 10,
+            "taoism-cloud": 10,
         ]));
     }
     setup();

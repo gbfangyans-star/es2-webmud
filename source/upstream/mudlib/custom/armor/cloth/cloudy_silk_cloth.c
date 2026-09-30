@@ -20,7 +20,7 @@ void create()
         set("apply_armor/cloth", ([
             "armor": 5,
             "armor_vs_ice": 10,
-            "maoshan-illusion": 10,
+            "taoism of nature": 10,
         ]));
     }
     setup();

@@ -19,7 +19,7 @@ void create()
         set("apply_armor/cloth", ([
             "armor": 5,
             "spell": 35,
-            "taoism-taoshan": 20,
+            "taoism of conviction": 20,
         ]));
     }
     setup();

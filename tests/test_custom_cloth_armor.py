@@ -37,9 +37,14 @@ def test_cowhide_vest_renamed():
 
 def test_skill_names_and_spell_label():
     zh = read(MUD / 'data' / 'chinese.o')
-    for k, v in [('great-compassion', '大悲咒'), ('dhyana-essence', '善想禪要'),
-                 ('maoshan-illusion', '茅山幻術'), ('taoism-taoshan', '天師道法【桃山密籙】')]:
-        assert f'"{k}":"{v}"' in zh
+    names = re.findall(r'^\| [^|]+ \| ([^|]+) \| `([^`]+)` \|', read(MUD.parents[2] / 'docs' / 'SKILL_NAMES.md'), re.M)
+    assert len(names) == 17
+    for v, k in names:
+        assert f'"{k}":"{v.strip()}"' in zh, k
+    for f, k in [('animitta_kasaya', 'compassion'), ('gold_robe', 'absorption'),
+                 ('cloudy_silk_cloth', 'taoism of nature'), ('sky_earth_cloth', 'taoism of conviction'),
+                 ('charm_robe', 'taoism of purify'), ('firewu_cloth', 'taoism-cloud')]:
+        assert f'"{k}": ' in read(CLOTH / f'{f}.c'), f
     assert '"spell" : "咒文能力",' in read(MUD / 'cmds' / 'std' / 'identify.c')
     assert '"spell": 25,' in read(CLOTH / 'malik_robe.c')
 
