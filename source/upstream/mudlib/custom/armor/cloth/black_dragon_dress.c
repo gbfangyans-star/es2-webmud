@@ -14,7 +14,7 @@ void create()
         set("unit", "件");
         set("value", 30000);
         set("long",
-            "一件黑龍戰袍。\n");
+            "墨黑的綢緞繡上黑龍麟作為裝飾，具有相當的殺傷力與保護效果。\n");
         set("wear_as", "cloth");
         set("apply_armor/cloth", ([
             "damage": 5,
