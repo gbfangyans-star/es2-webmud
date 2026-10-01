@@ -1,4 +1,4 @@
-<title>ES2 江湖圖鑑</title>
+<title>ES2 天朝圖鑑</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;700&family=Noto+Sans+TC:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -142,7 +142,7 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
 <header class="top">
   <div class="wrap">
     <div class="brand">
-      <h1>ES2 江湖圖鑑</h1>
+      <h1>ES2 天朝圖鑑</h1>
       <span class="tally" id="tally"></span>
     </div>
     <nav class="tabs" role="tablist" id="tabs"></nav>
@@ -193,6 +193,7 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
     { key: 'weapons', label: '武器', n: D.weapons.length },
     { key: 'armors', label: '防具', n: D.armors.length },
     { key: 'items', label: '物品', n: D.items.length },
+    { key: 'npcs', label: 'NPC', n: Object.keys(D.npcs).length },
     { key: 'areas', label: '區域', n: D.areas.length },
   ];
   const state = { tab: 'weapons', q: '', sub: {}, open: null, area: D.areas[0] && D.areas[0].key, room: null, hl: null };
@@ -338,6 +339,23 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
     return listShell(subChips('items', groups), rows);
   }
 
+  // ---------------------------------------------------------------- NPC
+  function npcAreas(n) { return [...new Set(n.rooms.map(([r]) => areaOfRoom[r]).filter(Boolean))]; }
+  function renderNpcs() {
+    const all = Object.values(D.npcs).sort((a, b) => (npcAreas(a)[0] || '\uffff').localeCompare(npcAreas(b)[0] || '\uffff') || (a.level || 0) - (b.level || 0));
+    const keys = D.areas.map(a => a.key).filter(k => all.some(n => npcAreas(n).includes(k)));
+    const none = all.filter(n => !npcAreas(n).length).length;
+    const groups = [['all', '全部', all.length]].concat(keys.map(k => [k, k, all.filter(n => npcAreas(n).includes(k)).length]), none ? [['none', '未放置', none]] : []);
+    const cur = state.sub.npcs || 'all';
+    const rows = all.filter(n => (cur === 'all' || (cur === 'none' ? !npcAreas(n).length : npcAreas(n).includes(cur))) &&
+        matches(n, [plain(n.title || ''), n.race, n.class, n.skills.map(s => s[0]).join(' ')].join(' ')))
+      .map(n => row(n.id,
+        `<span class="nm">${n.title ? `<span class="en" style="margin:0 6px 0 0">${ansi(n.title)}</span>` : ''}${ansi(n.name)}<span class="en">${esc((n.ids || [])[0] || '')}</span>${n.wander ? '<span class="tag">走動</span>' : ''}${n.ghost ? '<span class="tag">鬼魂</span>' : ''}</span>` +
+        `<span class="sum">${esc(npcAreas(n).join('、') || '未放置')}${n.race || n.class ? '・' + esc([n.race, n.class].filter(Boolean).join('／')) : ''}${n.equip && n.equip.length ? '・裝備 ' + n.equip.length + ' 件' : ''}</span><span class="num">${n.level != null ? 'Lv ' + n.level : ''}</span>`,
+        () => npcBody(n)));
+    return listShell(subChips('npcs', groups), rows);
+  }
+
   // ---------------------------------------------------------------- 區域
   const CW = 108, CH = 38, GX = 26, GY = 26;
   function renderAreas() {
@@ -428,23 +446,25 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
   function openNpc(id) {
     const n = D.npcs[id];
     if (!n) return;
+    const tags = [n.wander ? '走動' : '', n.ghost ? '鬼魂' : ''].filter(Boolean).map(t => `<span class="tag">${t}</span>`).join('');
+    const o = $('#overlay');
+    o.innerHTML = `<div class="dialog" role="dialog" aria-modal="true" aria-label="${esc(plain(n.name))}">` +
+      `<div class="dlg-head"><h2>${ansi(n.name)}${tags}</h2><button class="copy close" data-close>關閉</button></div><span class="hint">${esc((n.ids || []).join('、'))}</span>` +
+      npcBody(n) + `</div>`;
+    o.hidden = false;
+    const b = o.querySelector('[data-close]');
+    if (b) b.focus();
+  }
+  function npcBody(n) {
     const eq = (n.equip || []).map(e => {
       const x = byId[e.path];
       return `<tr><td>${x ? `<button class="linkish" data-item="${esc(e.path)}">${ansi(x.it.name)}</button>` : `<code>${esc(e.path)}</code>`}</td><td>${e.use === 'wield' ? '裝備武器' : e.use === 'wear' ? '穿戴' : '攜帶'}</td></tr>`;
     }).join('');
     const rooms = n.rooms.length ? n.rooms.map(([r, c]) => roomLink(r) + (c > 1 ? ` ×${c}` : '')).join('、') : '<span class="hint">沒有房間固定放置（由劇情或其他程式產生）</span>';
-    const tags = [n.wander ? '走動' : '', n.ghost ? '鬼魂' : ''].filter(Boolean).map(t => `<span class="tag">${t}</span>`).join('');
-    const o = $('#overlay');
-    o.innerHTML = `<div class="dialog" role="dialog" aria-modal="true" aria-label="${esc(plain(n.name))}">` +
-      `<div class="dlg-head"><h2>${ansi(n.name)}${tags}</h2><button class="copy close" data-close>關閉</button></div><span class="hint">${esc((n.ids || []).join('、'))}</span>` +
-      (n.long ? `<p class="long">${ansi(n.long)}</p>` : '') +
+    return (n.long ? `<p class="long">${ansi(n.long)}</p>` : '') +
       `<dl class="kv">${n.title ? `<dt>稱號</dt><dd>${ansi(n.title)}</dd>` : ''}<dt>種族／職業</dt><dd>${esc([n.race, n.class].filter(Boolean).join('／') || '—')}</dd><dt>等級</dt><dd>${n.level != null ? n.level : '—'}</dd><dt>所在格子</dt><dd>${rooms}</dd><dt>檔案</dt><dd>${fileLine(n.file)}</dd></dl>` +
       `<div><h4 class="hint" style="margin:0 0 4px">裝備</h4>${eq ? `<div class="tbl-wrap"><table><tbody>${eq}</tbody></table></div>` : '<span class="hint">沒有裝備</span>'}</div>` +
-      (n.skills.length ? `<div><h4 class="hint" style="margin:0 0 4px">技能</h4><div class="tbl-wrap"><table><tbody>${n.skills.map(([k, v, c]) => `<tr><td>${esc(k)} <code>${esc(c)}</code></td><td class="v">${v}</td></tr>`).join('')}</tbody></table></div></div>` : '') +
-      `</div>`;
-    o.hidden = false;
-    const b = o.querySelector('[data-close]');
-    if (b) b.focus();
+      (n.skills.length ? `<div><h4 class="hint" style="margin:0 0 4px">技能</h4><div class="tbl-wrap"><table><tbody>${n.skills.map(([k, v, c]) => `<tr><td>${esc(k)} <code>${esc(c)}</code></td><td class="v">${v}</td></tr>`).join('')}</tbody></table></div></div>` : '');
   }
   function closeNpc() { $('#overlay').hidden = true; $('#overlay').innerHTML = ''; }
   $('#overlay').addEventListener('click', e => { if (e.target.id === 'overlay' || e.target.closest('[data-close]')) closeNpc(); });
@@ -452,7 +472,7 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
 
   // ---------------------------------------------------------------- 事件
   function render() {
-    const f = { skills: renderSkills, weapons: renderWeapons, armors: renderArmors, items: renderItems, areas: renderAreas }[state.tab];
+    const f = { skills: renderSkills, weapons: renderWeapons, armors: renderArmors, items: renderItems, npcs: renderNpcs, areas: renderAreas }[state.tab];
     const hadFocus = document.activeElement && document.activeElement.id === 'q';
     const pos = hadFocus ? document.activeElement.selectionStart : 0;
     $('#main').innerHTML = f();

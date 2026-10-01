@@ -19,8 +19,7 @@
 - **唯一性**：虎紋刀、邪門歪刀、長刀僉白、紫雲朱寰繼承 `F_UNIQUE`。這把刀存在於世上任何地方
   （玩家身上、容器、地上、當鋪儲藏室）時，NPC 重生不會拿到，也沒有替代品；刀消失後，原持有的
   NPC 下次重生時重新帶著它。
-- **兩個版本**：軒轅龍骨刀（一般版 `blade_of_dragon`、南宮恨事件後 `blade_of_dragon_awakened`）、
-  妄焱兵絕（一般版 `flame_weapon`、范老兒淬鍊後 `flame_weapon_forged`）。取得劇情另行製作。
+- **兩個版本**：妄焱兵絕（一般版 `flame_weapon`、范老兒淬鍊後 `flame_weapon_forged`）。取得劇情另行製作。
 - **藍涎刀的毒**（`daemon/condition/blue_venom.c`）：單手或左手使用時每次命中都上毒，持續 10 tick，
   每 2 tick 發作一次（共 5 次）。每次發作先扣目前值、再扣實格（可隨時間恢復的上限）：精目前值 -5、精實格 -3、氣目前值 -4、氣實格 -2、
   形體 -2。再次命中只重設剩餘時間，發作節奏不變。昏倒時照樣發作，形體扣到 0 即死亡。
@@ -38,7 +37,6 @@
 |---|---|---|---|---|---|---|
 | 黑風刀 | `black_kris.c` | black kris | 8500 | blade 17、secondhand blade 34 | 850 |  |
 | 軒轅龍骨刀 | `blade_of_dragon.c` | blade of dragon | 19400 | twohanded blade 19 | 700 |  |
-| 軒轅龍骨刀 | `blade_of_dragon_awakened.c` | blade of dragon | 19400 | twohanded blade 19 | 400 |  |
 | 邪刀•焱靈 | `blade_of_fire_spirit.c` | blade of fire spirit | 25500 | twohanded blade 25 | 150 |  |
 | 蛟骨刀 | `blade_of_hydra_bone.c` | blade of hydra bone | 9200 | blade 18 | 250 |  |
 | 煉獄 | `blade_of_inferno.c` | blade of inferno | 19400 | twohanded blade 19 | 850 |  |
