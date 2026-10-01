@@ -47,8 +47,8 @@ MAP_POS = {
     '/d/snow/fireplace': ('/d/snow/inn_kitchen', 0, -1),   # 大灶：客棧廚房上方
     '/d/snow/tree': ('/d/snow/square', 1, -1),             # 榕樹上：廣場中央右上
     '/d/snow/mill': ('/d/snow/ruin1', 0, -1),              # 磨坊：破舊大宅上方
-    '/d/snow/riverbank': ('/d/snow/ruin1', 0, 1),          # 河邊空地：破舊大宅下方
-    '/d/snow/ruin2': ('/d/snow/riverbank', 0, 1),          # 破舊大宅正廳：河邊空地下方
+    '/d/snow/riverbank': ('/d/snow/egate', 0, -2),         # 河邊空地：河邊上方第二格
+    '/d/snow/ruin2': ('/d/snow/riverbank', 0, 1),          # 破舊大宅正廳：河邊空地下方（緊貼河邊上方）
     '/d/snow/kitchen': ('/d/snow/epath', 0, -1),           # 有錢人家廚房：僻靜小巷上方（climb 圍牆）
 }
 MAP_HIDE = {'/d/snow/inn_staff_room'}  # 不在地圖上顯示的房間
