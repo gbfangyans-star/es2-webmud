@@ -19,6 +19,7 @@ LONG
         __DIR__"npc/young_scholar" : 1,
     ]));
     set("map/area", "五堂鎮");
+    set("map/layer", "三樓");
     setup();
     replace_program(ROOM);
 }

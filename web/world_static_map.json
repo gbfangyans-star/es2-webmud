@@ -8,25 +8,25 @@
   "nodes": [
     {
       "id": "/custom/home/room/bedroom",
-      "label": "bedroom",
+      "label": "寢室",
       "x": 0,
       "y": 0
     },
     {
       "id": "/custom/home/room/future_room",
-      "label": "future_room",
+      "label": "家園房間",
       "x": 20,
       "y": 0
     },
     {
       "id": "/custom/home/room/home_hall",
-      "label": "home_hall",
+      "label": "家園大廳",
       "x": 40,
       "y": 0
     },
     {
       "id": "/custom/home/room/study_room",
-      "label": "study_room",
+      "label": "書房",
       "x": 60,
       "y": 0
     },

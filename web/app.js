@@ -349,7 +349,8 @@ function updateInputMode(chunk){
 function classifyLine(line){
   const plain=cleanText(line).trim();
   if(!plain)return '';
-  if(isRoomLabel(plain))return 'room-line';
+  // 巫師看得到的「房間名 - /路徑」格式直接視為房間標題，不依賴地圖資料是否已收錄。
+  if(isRoomLabel(plain)||/^\S+ - \/[\w\/.-]+$/.test(plain))return 'room-line';
   if(/^出口\s*[:：]/.test(plain)||/明顯的出口|唯一的出口/.test(plain))return 'exit-line';
   if(/受了傷|受到.*傷害|受傷|擊中|砍中|刺中|轟中|死亡|死了|斃命/.test(plain))return 'combat-hot';
   if(/經脈|內力|真氣|氣血|恢復|療傷/.test(plain))return 'combat-cool';

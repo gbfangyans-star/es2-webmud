@@ -20,6 +20,7 @@ LONG
         __DIR__"npc/red_taoist" : 3,
     ]));
     set("map/area", "五堂鎮");
+    set("map/layer", "二樓");
     setup();
     replace_program(ROOM);
 }
