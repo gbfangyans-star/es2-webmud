@@ -63,5 +63,28 @@ def test_scrolls_and_bag():
 def test_identify_labels():
     for p in ('cmds/std/identify.c', 'cmds/wiz/analyze.c'):
         s = read(MUD / p)
-        for k in ('"move" : "行動力"', '"fire_damage" : "火焰傷害力"', '"wind_damage" : "風擊傷害力"'):
+        for k in ('"move" : "行動力"', '"damage_vs_fire" : "火焰傷害力"', '"damage_vs_wind" : "風擊傷害力"'):
             assert k in s, (p, k)
+
+
+def test_elemental_damage():
+    s = read(MUD / 'daemon/skill/taoism-spells.c')
+    assert '(power + elemental_bonus(me, kind)) * 100 / (100 + resist)' in s
+    assert 'damage += me->query_temp("apply/damage_vs_fire");' in read(MUD / 'daemon/race/yenhold/breathe.c')
+    s = read(MUD / 'adm/daemons/combatd.c')
+    assert 'int elemental_extra(object me, object victim, string element)' in s
+    assert 'damage += elemental_extra(me, victim, action["element"]);' in s
+    s = read(C / 'weapon/dagger/dimensional_dagger.c')
+    assert '"damage_vs_fire": 25' in s and 'fire_damage' not in s
+
+
+def test_race_items():
+    for p, race in (('feet/jiaojao_boots', 'jiaojao'), ('leg/dingling_legs', 'dingling'), ('hand/yenhold_gauntlets', 'yenhold'),
+                    ('neck/malik_necklace', 'malik'), ('finger/woochan_ring', 'woochan')):
+        s = read(C / 'armor' / (p + '.c'))
+        assert f'owner->query_race() != "{race}"' in s, p
+
+
+def test_corrupt_merges_silver():
+    s = read(C / 'armor/hand/corrosive_hands.c')
+    assert 'amount += inv->query_amount();' in s and 'silver->add_amount(amount);' in s

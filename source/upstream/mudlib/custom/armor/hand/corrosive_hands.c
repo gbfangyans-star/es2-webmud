@@ -5,7 +5,8 @@
 inherit F_HAND_EQ;
 
 // 腐蝕之手：戴著時 corrupt <屍體>，把 NPC 的屍體化成碎銀，
-// 銀兩 10 ～（慧根＋定力）× 3 兩；屍體身上的東西掉在原地。玩家的屍體不行。
+// 銀兩 10 ～（慧根＋定力）× 3 兩，放在地上；屍體裡的碎銀一併合在一起，
+// 地上原本有碎銀也疊在一起；其他東西掉在原地。玩家的屍體不行。
 void init()
 {
     if( this_player() == environment() )
@@ -28,16 +29,30 @@ int do_corrupt(string arg)
     if( corpse->query("player_corpse") )
         return notify_fail("一股莫名的力量阻止了你，玩家的屍體碰不得。\n");
 
-    where = environment(corpse);
-    foreach(inv in all_inventory(corpse)) inv->move(where);
-
     top = (me->query_attr("wis") + me->query_attr("cps")) * 3;
     amount = top > 10 ? 10 + random(top - 9) : 10;
+
+    // 屍體裡的碎銀併進化出來的碎銀，其他東西掉在原地。
+    where = environment(corpse);
+    foreach(inv in all_inventory(corpse)) {
+        if( base_name(inv) == "/obj/money/silver" ) {
+            amount += inv->query_amount();
+            destruct(inv);
+        } else inv->move(where);
+    }
+
+    // 地上已經有碎銀就疊在一起。
+    silver = present("silver_money", where);
+    if( objectp(silver) && base_name(silver) != "/obj/money/silver" ) silver = 0;
+
     message_vision("$N伸出正在腐爛的雙手，摸了$n一下，伴隨著一股惡臭的黑煙，$n只剩下一些碎銀。\n", me, corpse);
-    silver = new("/obj/money/silver");
-    silver->set_amount(amount);
     destruct(corpse);
-    silver->move(where);
+    if( objectp(silver) ) silver->add_amount(amount);
+    else {
+        silver = new("/obj/money/silver");
+        silver->set_amount(amount);
+        silver->move(where);
+    }
     return 1;
 }
 

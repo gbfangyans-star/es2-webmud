@@ -18,12 +18,12 @@ void create()
         set("long",
             "一把細長的軟劍，劍刃就不斷抖動迎風做響。\n");
         set("apply_weapon/sword", ([
-            "wind_damage": 25,
+            "damage_vs_wind": 25,
             "intimidate": 50,
             "cor": 1,
         ]));
         set("apply_weapon/secondhand sword", ([
-            "wind_damage": 25,
+            "damage_vs_wind": 25,
             "intimidate": 50,
             "cor": 1,
         ]));

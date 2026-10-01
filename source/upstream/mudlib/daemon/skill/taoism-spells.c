@@ -128,19 +128,26 @@ int spell_hits(object me, object target, string kind, int technique,
     return 0;
 }
 
-int elemental_damage(object me, object target, string kind, int power,
-    int ignore_resistance)
+// 裝備的元素傷害力（apply/damage_vs_<元素>）：在抗性判定前直接加到咒文威力上。
+// 火術 fire、冰咒 freeze（ice）、風符 storm（wind）、雷法 thunder（lightning）。
+int elemental_bonus(object me, string kind)
 {
-    int resist, bonus, damage;
+    int bonus;
 
-    resist = ignore_resistance ? 0 : resistance(target, kind);
     bonus = me->query_temp("apply/damage_vs_" + kind);
     if( kind == "storm" ) bonus += me->query_temp("apply/damage_vs_wind");
     if( kind == "freeze" ) bonus += me->query_temp("apply/damage_vs_ice");
     if( kind == "thunder" ) bonus += me->query_temp("apply/damage_vs_lightning");
-    if( bonus < -90 ) bonus = -90;
-    if( bonus > 200 ) bonus = 200;
-    damage = power * (100 + bonus) / (100 + resist);
+    return bonus;
+}
+
+int elemental_damage(object me, object target, string kind, int power,
+    int ignore_resistance)
+{
+    int resist, damage;
+
+    resist = ignore_resistance ? 0 : resistance(target, kind);
+    damage = (power + elemental_bonus(me, kind)) * 100 / (100 + resist);
     if( damage < 1 ) damage = 1;
     return damage;
 }

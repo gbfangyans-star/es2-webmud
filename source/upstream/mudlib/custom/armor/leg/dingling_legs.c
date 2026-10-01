@@ -4,6 +4,16 @@
 
 inherit F_LEG_EQ;
 
+// 種族裝備：只有釘靈族能穿戴（使用者指定）。
+varargs int wear(string on_part)
+{
+    object owner = environment();
+
+    if( objectp(owner) && owner->query_race() != "dingling" )
+        return notify_fail("只有釘靈族才能穿戴這樣東西。\n");
+    return ::wear(on_part);
+}
+
 void create()
 {
     set_name("釘靈腿護", ({ "dingling legs", "legs" }));

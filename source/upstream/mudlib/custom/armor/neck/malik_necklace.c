@@ -4,6 +4,16 @@
 
 inherit F_NECK_EQ;
 
+// 種族裝備：只有巫首族能穿戴（使用者指定）。
+varargs int wear(string on_part)
+{
+    object owner = environment();
+
+    if( objectp(owner) && owner->query_race() != "malik" )
+        return notify_fail("只有巫首族才能穿戴這樣東西。\n");
+    return ::wear(on_part);
+}
+
 void create()
 {
     set_name("巫首項鍊", ({ "malik necklace", "necklace" }));

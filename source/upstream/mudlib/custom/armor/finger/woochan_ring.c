@@ -4,6 +4,16 @@
 
 inherit F_FINGER_EQ;
 
+// 種族裝備：只有無腸族能穿戴（使用者指定）。
+varargs int wear(string on_part)
+{
+    object owner = environment();
+
+    if( objectp(owner) && owner->query_race() != "woochan" )
+        return notify_fail("只有無腸族才能穿戴這樣東西。\n");
+    return ::wear(on_part);
+}
+
 void create()
 {
     set_name("無腸寶珠", ({ "woochan ring", "ring" }));

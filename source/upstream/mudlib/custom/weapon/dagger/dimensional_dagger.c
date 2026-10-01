@@ -20,19 +20,19 @@ void create()
             "匕首用的話，還是相當合適的。\n");
         set("apply_weapon/dagger", ([
             "intimidate": 25,
-            "fire_damage": 25,
-            "ice_damage": 25,
-            "lightning_damage": 25,
+            "damage_vs_fire": 25,
+            "damage_vs_ice": 25,
+            "damage_vs_lightning": 25,
             "damage": 50,
-            "wind_damage": 25,
+            "damage_vs_wind": 25,
         ]));
         set("apply_weapon/secondhand dagger", ([
             "intimidate": 25,
-            "fire_damage": 25,
-            "ice_damage": 25,
-            "lightning_damage": 25,
+            "damage_vs_fire": 25,
+            "damage_vs_ice": 25,
+            "damage_vs_lightning": 25,
             "damage": 50,
-            "wind_damage": 25,
+            "damage_vs_wind": 25,
         ]));
     }
     setup();
