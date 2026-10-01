@@ -13,7 +13,7 @@ def test_counts_and_features():
     for d, feat, n in [('whip', 'F_WHIP', 10), ('needle', 'F_NEEDLE', 7), ('blunt', 'F_BLUNT', 7),
                        ('pike', 'F_PIKE', 19), ('sword', 'F_SWORD', 56), ('dagger', 'F_DAGGER', 22)]:
         files = sorted((W / d).glob('*.c'))
-        assert len(files) == n, d
+        assert len(files) >= n, d  # 之後的批次會再增加
         for f in files:
             s = read(f)
             assert f'inherit {feat};' in s and 'init_damage(' in s and 'set("wield_as"' in s, f.name

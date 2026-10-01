@@ -11,7 +11,7 @@ def read(p):
 
 def test_every_cloth_is_worn_as_cloth():
     files = sorted(CLOTH.glob('*.c'))
-    assert len(files) == 63
+    assert len(files) >= 63  # 之後的批次會再增加
     for f in files:
         s = read(f)
         assert 'inherit F_CLOTH;' in s, f.name

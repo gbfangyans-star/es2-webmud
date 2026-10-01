@@ -12,7 +12,7 @@ def test_counts_and_slots():
     for d, slot, feat, n in [('neck', 'neck_eq', 'F_NECK_EQ', 13), ('feet', 'feet_eq', 'F_FEET_EQ', 25),
                              ('head', 'head_eq', 'F_HEAD_EQ', 27)]:
         files = sorted((ARMOR / d).glob('*.c'))
-        assert len(files) == n, d
+        assert len(files) >= n, d  # 之後的批次會再增加
         for f in files:
             s = read(f)
             assert f'inherit {feat};' in s and f'set("wear_as", "{slot}");' in s, f.name

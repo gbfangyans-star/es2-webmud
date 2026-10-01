@@ -12,7 +12,7 @@ def read(p):
 
 def test_rings_and_belts():
     rings, belts = sorted(RING.glob('*.c')), sorted(BELT.glob('*.c'))
-    assert len(rings) == 39 and len(belts) == 20
+    assert len(rings) >= 39 and len(belts) >= 20  # 之後的批次會再增加
     for files, slot, feat in [(rings, 'finger_eq', 'F_FINGER_EQ'), (belts, 'waist_eq', 'F_WAIST_EQ')]:
         for f in files:
             s = read(f)

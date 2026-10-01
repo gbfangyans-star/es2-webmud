@@ -20,6 +20,11 @@ mapping named_apply = ([
     "armor" : "防禦力",
     "spell" : "咒文能力",
     "magic_ability" : "魔力",
+    "move" : "行動力",
+    "fire_damage" : "火焰傷害力",
+    "ice_damage" : "冰寒傷害力",
+    "lightning_damage" : "雷電傷害力",
+    "wind_damage" : "風擊傷害力",
 ]);
 
 int main(object me, string arg)
