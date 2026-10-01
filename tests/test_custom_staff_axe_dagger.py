@@ -11,7 +11,7 @@ def read(p):
 def test_counts_and_features():
     for d, feat, n in [('staff', 'F_STAFF', 21), ('axe', 'F_AXE', 15), ('dagger', 'F_DAGGER', 22)]:
         files = sorted((W / d).glob('*.c'))
-        assert len(files) == n, d
+        assert len(files) >= n, d  # 之後的批次會再增加
         for f in files:
             s = read(f)
             assert f'inherit {feat};' in s and 'init_damage(' in s and 'set("wield_as"' in s, f.name

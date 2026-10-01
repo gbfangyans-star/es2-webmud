@@ -230,6 +230,20 @@ private void restored_hit_gain(object me, object victim, string skill)
     }
 }
 
+// 招式的元素追加傷害，見 fight()。
+int elemental_extra(object me, object victim, string element)
+{
+    int extra, resist;
+
+    extra = me->query_temp("apply/damage_vs_" + element);
+    if( extra <= 0 ) return 0;
+    resist = victim->query_temp("apply/armor_vs_" + element);
+    if( resist < 0 ) resist = 0;
+    extra = extra * 100 / (100 + resist);
+    if( extra < 1 ) return 0;
+    return victim->receive_damage(extra, me, me);
+}
+
 // fight()
 //
 // This function serves as a lowest level routine for combat system and
@@ -361,6 +375,13 @@ fight (object me, object victim, string skill, mapping action, object weapon)
         }
         else damage = 0;
     }
+
+    /* 招式帶有元素屬性（action["element"]：fire、ice、lightning、wind）時，
+     * 命中並造成傷害後，另外加上攻擊者裝備的同元素傷害力
+     * （apply/damage_vs_<元素>），再以目標的同元素防禦力（armor_vs_<元素>）減免。
+     * 不同元素的傷害力不會加成。 */
+    if( damage > 0 && stringp(action["element"]) && objectp(victim) )
+        damage += elemental_extra(me, victim, action["element"]);
 
     /* 成功命中後才取得 restored skill learned。 */
     if( damage > 0 ) restored_hit_gain(me, victim, skill);

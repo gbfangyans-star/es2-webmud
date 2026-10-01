@@ -144,6 +144,9 @@ varargs object make_corpse (object victim, object killer) {
     corpse->set ("age", victim->query("age"));
     corpse->set ("gender", victim->query("gender"));
     corpse->set ("victim_name", victim->name(1));
+    // 玩家的屍體做記號（腐蝕之手等不能用在玩家屍體上）。
+    if (userp (victim))
+        corpse->set ("player_corpse", 1);
 
     // relate victim with hir corpse.
     victim->set_temp ("corpse", corpse);

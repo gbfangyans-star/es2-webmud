@@ -20,6 +20,7 @@ void refresh_taoist_spell_mastery(string skill)
 
 /* Old Neolith LPC needs inherited function prototypes visible at compile time. */
 varargs int query_attr(string attr, int raw);
+int set_attr(string what, int value);
 varargs void advance_skill(string skill, int amount);
 
 // implementations
@@ -296,9 +297,69 @@ improve_skill(string skill, int amount)
 // This function advances the level of a skill by adding specific amount
 // to the skill level.
 
+/* 技能成長屬性
+ *
+ * 對應表 ATTR_GROWTH：技能代碼 → 屬性代碼。
+ * 技能等級每到 5 的倍數擲一次，成功則該屬性（裸值）+1，上限 50。
+ *   基礎機率：屬性 30 以下 40%、30~39 30%、40~44 20%、45~49 10%
+ *   技能等級倍率：(50 + 等級/2)%，lv5 約 0.5 倍、lv100 1 倍、lv200 1.5 倍
+ *   以上再整體 ×1.2
+ * 每個門檻一生只擲一次，擲過的最高門檻記在 attr_growth/<技能>。
+ * 已經練過的等級不補擲。只對玩家生效。
+ */
+#define ATTR_GROWTH_MAX 50
+
+static mapping ATTR_GROWTH = ([
+    "unarmed":              "str",
+    "force":                "con",
+    "dodge":                "dex",
+    "parry":                "cps",
+    "spells":               "spi",
+    "magic":                "spi",
+    "backstab":             "cor",
+    "killerhood":           "cor",
+    "literate":             "int",
+    "archaic attainment":   "int",
+]);
+
+private int attr_growth_base(int value)
+{
+    if( value >= 45 ) return 10;
+    if( value >= 40 ) return 20;
+    if( value >= 30 ) return 30;
+    return 40;
+}
+
+private void roll_attr_growth(string skill, int old_level, int new_level)
+{
+    string attr, cname;
+    int last, lv, value;
+
+    if( !userp(this_object()) ) return;
+    if( !stringp(attr = ATTR_GROWTH[skill]) ) return;
+
+    last = this_object()->query("attr_growth/" + skill);
+    if( last < old_level ) last = old_level;
+
+    for(lv = (last / 5 + 1) * 5; lv <= new_level; lv += 5) {
+        this_object()->set("attr_growth/" + skill, lv);
+        value = query_attr(attr, 1);
+        if( value >= ATTR_GROWTH_MAX ) continue;
+        // 機率以萬分之一計：基礎% × (50 + lv/2)% × 1.2
+        if( random(10000) >= attr_growth_base(value) * (100 + lv) * 3 / 5 ) continue;
+        if( !set_attr(attr, value + 1) ) continue;
+        cname = ([ "str": "膂力", "cor": "膽識", "int": "悟性", "spi": "靈性",
+                   "cps": "定力", "dex": "機敏", "con": "根骨", "wis": "慧根" ])[attr];
+        tell_object(this_object(), HIY "你的" + (cname ? cname : attr) + "提高了！\n" NOR);
+    }
+}
+
 varargs void advance_skill(string skill, int amount)
 {
+    int old_level;
+
     if( !amount ) amount = 1;
+    old_level = skills[skill];
 
     if( undefinedp(skills[skill]) )
 	skills[skill] = amount;
@@ -308,6 +369,7 @@ varargs void advance_skill(string skill, int amount)
     if( skills[skill] > 200 ) skills[skill] = 200;
 
     SKILL_D(skill)->skill_advanced(this_object(), skill);
+    roll_attr_growth(skill, old_level, skills[skill]);
 
     if( skills[skill] > skills[best_skill] ) best_skill = skill;
     refresh_taoist_spell_mastery(skill);
