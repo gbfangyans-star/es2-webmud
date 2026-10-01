@@ -741,6 +741,400 @@
       "area": "雪亭鎮",
       "x": -4,
       "y": 4
+    },
+    {
+      "id": "/d/wutang/temple",
+      "label": "鎮天神廟",
+      "area": "五堂鎮",
+      "x": 5,
+      "y": -2
+    },
+    {
+      "id": "/d/wutang/temple_yard",
+      "label": "後院",
+      "area": "五堂鎮",
+      "x": 6,
+      "y": -2
+    },
+    {
+      "id": "/d/wutang/temple_road_n",
+      "label": "廟口小路",
+      "area": "五堂鎮",
+      "x": 5,
+      "y": -1
+    },
+    {
+      "id": "/d/wutang/path_e",
+      "label": "小路",
+      "area": "五堂鎮",
+      "x": 6,
+      "y": -1
+    },
+    {
+      "id": "/d/wutang/backyard",
+      "label": "後院",
+      "area": "五堂鎮",
+      "x": 6,
+      "y": 0
+    },
+    {
+      "id": "/d/wutang/temple_road_s",
+      "label": "廟口小路",
+      "area": "五堂鎮",
+      "x": 5,
+      "y": 0
+    },
+    {
+      "id": "/d/wutang/market_square",
+      "label": "雲棧市集廣場",
+      "area": "五堂鎮",
+      "x": 5,
+      "y": 1
+    },
+    {
+      "id": "/d/wutang/yan_hall",
+      "label": "大廳",
+      "area": "五堂鎮",
+      "x": 4,
+      "y": -2
+    },
+    {
+      "id": "/d/wutang/yan_mansion",
+      "label": "顏家大宅",
+      "area": "五堂鎮",
+      "x": 4,
+      "y": -1
+    },
+    {
+      "id": "/d/wutang/yan_gate",
+      "label": "前門",
+      "area": "五堂鎮",
+      "x": 4,
+      "y": 0
+    },
+    {
+      "id": "/d/wutang/dark_alley_e",
+      "label": "暗巷",
+      "area": "五堂鎮",
+      "x": 3,
+      "y": 0
+    },
+    {
+      "id": "/d/wutang/dark_alley_w",
+      "label": "暗巷",
+      "area": "五堂鎮",
+      "x": 2,
+      "y": 0
+    },
+    {
+      "id": "/d/wutang/entrance",
+      "label": "五堂鎮口",
+      "area": "五堂鎮",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "id": "/d/wutang/school",
+      "label": "鄉校",
+      "area": "五堂鎮",
+      "x": -2,
+      "y": 1
+    },
+    {
+      "id": "/d/wutang/pawnshop",
+      "label": "和豐當鋪",
+      "area": "五堂鎮",
+      "x": -1,
+      "y": 1
+    },
+    {
+      "id": "/d/wutang/north_street",
+      "label": "五堂鎮",
+      "area": "五堂鎮",
+      "x": 0,
+      "y": 1
+    },
+    {
+      "id": "/d/wutang/inn",
+      "label": "醇雨樓客棧",
+      "area": "五堂鎮",
+      "x": 2,
+      "y": 1
+    },
+    {
+      "id": "/d/wutang/inn2",
+      "label": "醇雨樓客棧二樓",
+      "area": "五堂鎮",
+      "x": 2,
+      "y": 1,
+      "layer": "二樓"
+    },
+    {
+      "id": "/d/wutang/inn3",
+      "label": "醇雨樓客棧三樓",
+      "area": "五堂鎮",
+      "x": 2,
+      "y": 1,
+      "layer": "三樓"
+    },
+    {
+      "id": "/d/wutang/cloth_shop",
+      "label": "布莊",
+      "area": "五堂鎮",
+      "x": 3,
+      "y": 1
+    },
+    {
+      "id": "/d/wutang/pavilion",
+      "label": "涼亭",
+      "area": "五堂鎮",
+      "x": -4,
+      "y": 2
+    },
+    {
+      "id": "/d/wutang/gravel_road_n",
+      "label": "碎石路",
+      "area": "五堂鎮",
+      "x": -3,
+      "y": 2
+    },
+    {
+      "id": "/d/wutang/west_street2",
+      "label": "街道",
+      "area": "五堂鎮",
+      "x": -2,
+      "y": 2
+    },
+    {
+      "id": "/d/wutang/west_street1",
+      "label": "街道",
+      "area": "五堂鎮",
+      "x": -1,
+      "y": 2
+    },
+    {
+      "id": "/d/wutang/crossroad",
+      "label": "交叉路口",
+      "area": "五堂鎮",
+      "x": 0,
+      "y": 2
+    },
+    {
+      "id": "/d/wutang/east_street1",
+      "label": "街道",
+      "area": "五堂鎮",
+      "x": 1,
+      "y": 2
+    },
+    {
+      "id": "/d/wutang/east_street2",
+      "label": "街道",
+      "area": "五堂鎮",
+      "x": 2,
+      "y": 2
+    },
+    {
+      "id": "/d/wutang/east_street3",
+      "label": "街道",
+      "area": "五堂鎮",
+      "x": 3,
+      "y": 2
+    },
+    {
+      "id": "/d/wutang/east_street4",
+      "label": "街道",
+      "area": "五堂鎮",
+      "x": 4,
+      "y": 2
+    },
+    {
+      "id": "/d/wutang/city_god_temple",
+      "label": "城隍廟",
+      "area": "五堂鎮",
+      "x": 5,
+      "y": 2
+    },
+    {
+      "id": "/d/wutang/gravel_road_s",
+      "label": "碎石路",
+      "area": "五堂鎮",
+      "x": -4,
+      "y": 3
+    },
+    {
+      "id": "/d/wutang/bamboo_hall",
+      "label": "主廳",
+      "area": "五堂鎮",
+      "x": -3,
+      "y": 3
+    },
+    {
+      "id": "/d/wutang/riverside",
+      "label": "河邊",
+      "area": "五堂鎮",
+      "x": -5,
+      "y": 3
+    },
+    {
+      "id": "/d/wutang/south_street1",
+      "label": "街道",
+      "area": "五堂鎮",
+      "x": 0,
+      "y": 3
+    },
+    {
+      "id": "/d/wutang/bank",
+      "label": "景隆錢莊",
+      "area": "五堂鎮",
+      "x": 1,
+      "y": 3
+    },
+    {
+      "id": "/d/wutang/guesthouse",
+      "label": "五堂別館",
+      "area": "五堂鎮",
+      "x": 3,
+      "y": 3
+    },
+    {
+      "id": "/d/wutang/boat",
+      "label": "小船上",
+      "area": "五堂鎮",
+      "x": -5,
+      "y": 4
+    },
+    {
+      "id": "/d/wutang/bamboo_grove",
+      "label": "綠竹林",
+      "area": "五堂鎮",
+      "x": -3,
+      "y": 4
+    },
+    {
+      "id": "/d/wutang/south_street2",
+      "label": "街道",
+      "area": "五堂鎮",
+      "x": 0,
+      "y": 4
+    },
+    {
+      "id": "/d/wutang/three_way",
+      "label": "三岔路口",
+      "area": "五堂鎮",
+      "x": 0,
+      "y": 5
+    },
+    {
+      "id": "/d/wutang/grass_nw",
+      "label": "草原",
+      "area": "五堂鎮",
+      "x": -2,
+      "y": 3
+    },
+    {
+      "id": "/d/wutang/grass_ne",
+      "label": "草原",
+      "area": "五堂鎮",
+      "x": -1,
+      "y": 3
+    },
+    {
+      "id": "/d/wutang/grass_sw",
+      "label": "草原",
+      "area": "五堂鎮",
+      "x": -2,
+      "y": 4
+    },
+    {
+      "id": "/d/wutang/grass_se",
+      "label": "草原",
+      "area": "五堂鎮",
+      "x": -1,
+      "y": 4
+    },
+    {
+      "id": "/d/wutang/ferry",
+      "label": "鯉君渡",
+      "area": "五堂鎮",
+      "x": -3,
+      "y": 5
+    },
+    {
+      "id": "/d/wutang/boardwalk_w",
+      "label": "木道",
+      "area": "五堂鎮",
+      "x": -2,
+      "y": 5
+    },
+    {
+      "id": "/d/wutang/boardwalk_e",
+      "label": "木道",
+      "area": "五堂鎮",
+      "x": -1,
+      "y": 5
+    },
+    {
+      "id": "/d/wutang/ferry_dock",
+      "label": "鯉君渡口",
+      "area": "五堂鎮",
+      "x": -3,
+      "y": 6
+    },
+    {
+      "id": "/d/wutang/river_bank",
+      "label": "羿水河邊",
+      "area": "五堂鎮",
+      "x": -2,
+      "y": 7
+    },
+    {
+      "id": "/d/wutang/hut",
+      "label": "草屋",
+      "area": "五堂鎮",
+      "x": -6,
+      "y": -1
+    },
+    {
+      "id": "/d/wutang/field1",
+      "label": "菜田",
+      "area": "五堂鎮",
+      "x": -5,
+      "y": -1
+    },
+    {
+      "id": "/d/wutang/field2",
+      "label": "菜田",
+      "area": "五堂鎮",
+      "x": -5,
+      "y": 0
+    },
+    {
+      "id": "/d/wutang/field3",
+      "label": "菜田",
+      "area": "五堂鎮",
+      "x": -4,
+      "y": 0
+    },
+    {
+      "id": "/d/wutang/field4",
+      "label": "菜田",
+      "area": "五堂鎮",
+      "x": -5,
+      "y": 1
+    },
+    {
+      "id": "/d/wutang/field5",
+      "label": "菜田",
+      "area": "五堂鎮",
+      "x": -4,
+      "y": 1
+    },
+    {
+      "id": "/d/wutang/clearing",
+      "label": "空地",
+      "area": "五堂鎮",
+      "x": -3,
+      "y": 1
     }
   ],
   "edges": [
@@ -2062,6 +2456,702 @@
       "from": "/custom/zhenwu/room/yard14",
       "to": "/custom/zhenwu/room/yard13",
       "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/temple",
+      "to": "/d/wutang/temple_road_n",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/temple",
+      "to": "/d/wutang/temple_yard",
+      "direction": "enter",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/temple_yard",
+      "to": "/d/wutang/temple",
+      "direction": "out",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/temple_road_n",
+      "to": "/d/wutang/temple",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/temple_road_n",
+      "to": "/d/wutang/temple_road_s",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/temple_road_n",
+      "to": "/d/wutang/path_e",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/temple_road_n",
+      "to": "/d/wutang/yan_gate",
+      "direction": "enter",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/path_e",
+      "to": "/d/wutang/temple_road_n",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/path_e",
+      "to": "/d/wutang/backyard",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/backyard",
+      "to": "/d/wutang/path_e",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/temple_road_s",
+      "to": "/d/wutang/temple_road_n",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/temple_road_s",
+      "to": "/d/wutang/market_square",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/temple_road_s",
+      "to": "/d/wutang/dark_alley_e",
+      "direction": "enter",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/market_square",
+      "to": "/d/wutang/temple_road_s",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/market_square",
+      "to": "/d/wutang/east_street4",
+      "direction": "southwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/yan_hall",
+      "to": "/d/wutang/yan_mansion",
+      "direction": "out",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/yan_mansion",
+      "to": "/d/wutang/yan_hall",
+      "direction": "in",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/yan_mansion",
+      "to": "/d/wutang/yan_gate",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/yan_gate",
+      "to": "/d/wutang/yan_mansion",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/yan_gate",
+      "to": "/d/wutang/temple_road_n",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/dark_alley_e",
+      "to": "/d/wutang/temple_road_s",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/dark_alley_e",
+      "to": "/d/wutang/dark_alley_w",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/dark_alley_w",
+      "to": "/d/wutang/dark_alley_e",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/entrance",
+      "to": "/custom/zhenwu/room/gate",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/entrance",
+      "to": "/d/wutang/north_street",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/school",
+      "to": "/d/wutang/west_street2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/pawnshop",
+      "to": "/d/wutang/north_street",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/north_street",
+      "to": "/d/wutang/entrance",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/north_street",
+      "to": "/d/wutang/pawnshop",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/north_street",
+      "to": "/d/wutang/crossroad",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/inn",
+      "to": "/d/wutang/east_street2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/inn",
+      "to": "/d/wutang/inn2",
+      "direction": "up",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/inn2",
+      "to": "/d/wutang/inn",
+      "direction": "down",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/inn2",
+      "to": "/d/wutang/inn3",
+      "direction": "up",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/inn3",
+      "to": "/d/wutang/inn2",
+      "direction": "down",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/cloth_shop",
+      "to": "/d/wutang/east_street3",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/pavilion",
+      "to": "/d/wutang/gravel_road_n",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/gravel_road_n",
+      "to": "/d/wutang/pavilion",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/gravel_road_n",
+      "to": "/d/wutang/west_street2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/gravel_road_n",
+      "to": "/d/wutang/clearing",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/gravel_road_n",
+      "to": "/d/wutang/gravel_road_s",
+      "direction": "southwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/gravel_road_n",
+      "to": "/d/wutang/bamboo_grove",
+      "direction": "pass",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/west_street2",
+      "to": "/d/wutang/gravel_road_n",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/west_street2",
+      "to": "/d/wutang/west_street1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/west_street2",
+      "to": "/d/wutang/school",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/west_street1",
+      "to": "/d/wutang/west_street2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/west_street1",
+      "to": "/d/wutang/crossroad",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/crossroad",
+      "to": "/d/wutang/west_street1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/crossroad",
+      "to": "/d/wutang/east_street1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/crossroad",
+      "to": "/d/wutang/north_street",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/crossroad",
+      "to": "/d/wutang/south_street1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/east_street1",
+      "to": "/d/wutang/crossroad",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/east_street1",
+      "to": "/d/wutang/east_street2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/east_street1",
+      "to": "/d/wutang/bank",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/east_street2",
+      "to": "/d/wutang/east_street1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/east_street2",
+      "to": "/d/wutang/east_street3",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/east_street2",
+      "to": "/d/wutang/inn",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/east_street3",
+      "to": "/d/wutang/east_street2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/east_street3",
+      "to": "/d/wutang/east_street4",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/east_street3",
+      "to": "/d/wutang/cloth_shop",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/east_street3",
+      "to": "/d/wutang/guesthouse",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/east_street4",
+      "to": "/d/wutang/east_street3",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/east_street4",
+      "to": "/d/wutang/city_god_temple",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/east_street4",
+      "to": "/d/wutang/market_square",
+      "direction": "northeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/city_god_temple",
+      "to": "/d/wutang/east_street4",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/gravel_road_s",
+      "to": "/d/wutang/riverside",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/gravel_road_s",
+      "to": "/d/wutang/gravel_road_n",
+      "direction": "northeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/bamboo_hall",
+      "to": "/d/wutang/bamboo_grove",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/riverside",
+      "to": "/d/wutang/gravel_road_s",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/riverside",
+      "to": "/d/wutang/boat",
+      "direction": "swim",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/south_street1",
+      "to": "/d/wutang/crossroad",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/south_street1",
+      "to": "/d/wutang/south_street2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/bank",
+      "to": "/d/wutang/east_street1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/guesthouse",
+      "to": "/d/wutang/east_street3",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/boat",
+      "to": "/d/wutang/riverside",
+      "direction": "swim",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/bamboo_grove",
+      "to": "/d/wutang/bamboo_hall",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/bamboo_grove",
+      "to": "/d/wutang/gravel_road_n",
+      "direction": "pass",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/south_street2",
+      "to": "/d/wutang/south_street1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/south_street2",
+      "to": "/d/wutang/three_way",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/three_way",
+      "to": "/d/wutang/south_street2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/three_way",
+      "to": "/d/wutang/boardwalk_e",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/grass_nw",
+      "to": "/d/wutang/grass_ne",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/grass_nw",
+      "to": "/d/wutang/grass_sw",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/grass_ne",
+      "to": "/d/wutang/grass_nw",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/grass_ne",
+      "to": "/d/wutang/grass_se",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/grass_sw",
+      "to": "/d/wutang/grass_nw",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/grass_sw",
+      "to": "/d/wutang/grass_se",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/grass_se",
+      "to": "/d/wutang/grass_sw",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/grass_se",
+      "to": "/d/wutang/grass_ne",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/grass_se",
+      "to": "/d/wutang/boardwalk_e",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/ferry",
+      "to": "/d/wutang/boardwalk_w",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/ferry",
+      "to": "/d/wutang/ferry_dock",
+      "direction": "northdown",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/boardwalk_w",
+      "to": "/d/wutang/ferry",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/boardwalk_w",
+      "to": "/d/wutang/boardwalk_e",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/boardwalk_e",
+      "to": "/d/wutang/boardwalk_w",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/boardwalk_e",
+      "to": "/d/wutang/three_way",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/boardwalk_e",
+      "to": "/d/wutang/grass_se",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/ferry_dock",
+      "to": "/d/wutang/ferry",
+      "direction": "southup",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/ferry_dock",
+      "to": "/d/wutang/river_bank",
+      "direction": "southeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/river_bank",
+      "to": "/d/wutang/ferry_dock",
+      "direction": "northwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/hut",
+      "to": "/d/wutang/field1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/field1",
+      "to": "/d/wutang/hut",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/field1",
+      "to": "/d/wutang/field2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/field2",
+      "to": "/d/wutang/field1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/field2",
+      "to": "/d/wutang/field3",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/field2",
+      "to": "/d/wutang/field4",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/field3",
+      "to": "/d/wutang/field2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/field3",
+      "to": "/d/wutang/field5",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/field4",
+      "to": "/d/wutang/field2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/field4",
+      "to": "/d/wutang/field5",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/field5",
+      "to": "/d/wutang/field4",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/field5",
+      "to": "/d/wutang/field3",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/field5",
+      "to": "/d/wutang/clearing",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/clearing",
+      "to": "/d/wutang/field5",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/clearing",
+      "to": "/d/wutang/gravel_road_n",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/custom/zhenwu/room/gate",
+      "to": "/d/wutang/entrance",
+      "direction": "south",
       "resolved": true
     }
   ],
