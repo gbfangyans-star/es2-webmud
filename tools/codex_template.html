@@ -478,7 +478,10 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
     $('#main').innerHTML = f();
     if (hadFocus && $('#q')) { $('#q').focus(); $('#q').setSelectionRange(pos, pos); }
   }
-  document.addEventListener('input', e => { if (e.target.id === 'q') { state.q = e.target.value; state.open = null; render(); } });
+  // 注音等輸入法組字時不重繪，否則組字中的注音符號會被當成已輸入的字；組字完成再搜尋。
+  function onSearch(e) { if (e.target.id !== 'q' || e.isComposing) return; state.q = e.target.value; state.open = null; render(); }
+  document.addEventListener('input', onSearch);
+  document.addEventListener('compositionend', onSearch);
   document.addEventListener('click', e => {
     const t = e.target;
     const copy = t.closest('[data-copy]');
