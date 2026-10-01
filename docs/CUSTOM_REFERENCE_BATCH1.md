@@ -55,6 +55,13 @@
 | 金龍豹紋槍 | `pike/golden_beast_lance.c` | golden beast lance | 23000 | 550 | twohanded pike |
 | 黑鐵大槌 | `blunt/black_iron_hammer.c` | black iron hammer | 41000 | 50 | twohanded blunt |
 
+## 補充：追風劍任務的兩把武器
+
+| 名稱 | 檔案 | 英文 | 重量 | 價值（兩） | 備註 |
+|---|---|---|---|---|---|
+| 追風劍 | `sword/storm_chasers_sword.c` | storm chaser's sword | 8700 | 50 | sword；冰寒傷害力 50、傷害力 10、攻擊能力值 50 |
+| 青絲釣竿 | `whip/silk_fishing_stick.c` | fishing stick | 6300 | 1000 | whip；捕魚技巧 10。英文與生鐵釣竿相同，照原資料保留。crash（把河魚碾成魚餌）等遊戲有河魚、魚餌後再做 |
+
 ## 護具
 
 | 名稱 | 檔案 | 英文 | 重量 | 價值（兩） | 備註 |

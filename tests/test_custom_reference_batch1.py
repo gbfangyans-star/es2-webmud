@@ -88,3 +88,10 @@ def test_race_items():
 def test_corrupt_merges_silver():
     s = read(C / 'armor/hand/corrosive_hands.c')
     assert 'amount += inv->query_amount();' in s and 'silver->add_amount(amount);' in s
+
+
+def test_storm_chaser_quest_weapons():
+    s = read(C / 'weapon/sword/storm_chasers_sword.c')
+    assert 'init_damage(3, 18, 100, 6, "sword");' in s and '"damage_vs_ice": 50' in s and '"attack": 50' in s
+    s = read(C / 'weapon/whip/silk_fishing_stick.c')
+    assert 'init_damage(3, 12, 100, 7, "whip");' in s and '"halieutics": 10' in s
