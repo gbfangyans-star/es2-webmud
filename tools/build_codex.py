@@ -44,6 +44,62 @@ DIR_AREA = {  # 沒有 map/area 的房間，依目錄給區域名稱
 HIDDEN_DIRS = ['/custom/wizroom/', '/custom/home/']
 # 地圖手動調整（只影響圖鑑顯示）：房間 -> (參考房間, 往東格數, 往南格數)
 MAP_POS = {
+    # 五堂鎮：依設計表格子座標（相對於五堂鎮口 N8）；第四個數字是樓層（客棧二、三樓）。
+    '/d/wutang/inn2': ('/d/wutang/inn', 0, 0, 1),
+    '/d/wutang/inn3': ('/d/wutang/inn', 0, 0, 2),
+    '/d/wutang/temple': ('/d/wutang/entrance', 5, -2),
+    '/d/wutang/temple_yard': ('/d/wutang/entrance', 6, -2),
+    '/d/wutang/temple_road_n': ('/d/wutang/entrance', 5, -1),
+    '/d/wutang/path_e': ('/d/wutang/entrance', 6, -1),
+    '/d/wutang/backyard': ('/d/wutang/entrance', 6, 0),
+    '/d/wutang/temple_road_s': ('/d/wutang/entrance', 5, 0),
+    '/d/wutang/market_square': ('/d/wutang/entrance', 5, 1),
+    '/d/wutang/yan_hall': ('/d/wutang/entrance', 4, -2),
+    '/d/wutang/yan_mansion': ('/d/wutang/entrance', 4, -1),
+    '/d/wutang/yan_gate': ('/d/wutang/entrance', 4, 0),
+    '/d/wutang/dark_alley_e': ('/d/wutang/entrance', 3, 0),
+    '/d/wutang/dark_alley_w': ('/d/wutang/entrance', 2, 0),
+    '/d/wutang/school': ('/d/wutang/entrance', -2, 1),
+    '/d/wutang/pawnshop': ('/d/wutang/entrance', -1, 1),
+    '/d/wutang/north_street': ('/d/wutang/entrance', 0, 1),
+    '/d/wutang/inn': ('/d/wutang/entrance', 2, 1),
+    '/d/wutang/cloth_shop': ('/d/wutang/entrance', 3, 1),
+    '/d/wutang/pavilion': ('/d/wutang/entrance', -4, 2),
+    '/d/wutang/gravel_road_n': ('/d/wutang/entrance', -3, 2),
+    '/d/wutang/west_street2': ('/d/wutang/entrance', -2, 2),
+    '/d/wutang/west_street1': ('/d/wutang/entrance', -1, 2),
+    '/d/wutang/crossroad': ('/d/wutang/entrance', 0, 2),
+    '/d/wutang/east_street1': ('/d/wutang/entrance', 1, 2),
+    '/d/wutang/east_street2': ('/d/wutang/entrance', 2, 2),
+    '/d/wutang/east_street3': ('/d/wutang/entrance', 3, 2),
+    '/d/wutang/east_street4': ('/d/wutang/entrance', 4, 2),
+    '/d/wutang/city_god_temple': ('/d/wutang/entrance', 5, 2),
+    '/d/wutang/gravel_road_s': ('/d/wutang/entrance', -4, 3),
+    '/d/wutang/bamboo_hall': ('/d/wutang/entrance', -3, 3),
+    '/d/wutang/riverside': ('/d/wutang/entrance', -5, 3),
+    '/d/wutang/south_street1': ('/d/wutang/entrance', 0, 3),
+    '/d/wutang/bank': ('/d/wutang/entrance', 1, 3),
+    '/d/wutang/guesthouse': ('/d/wutang/entrance', 3, 3),
+    '/d/wutang/boat': ('/d/wutang/entrance', -5, 4),
+    '/d/wutang/bamboo_grove': ('/d/wutang/entrance', -3, 4),
+    '/d/wutang/south_street2': ('/d/wutang/entrance', 0, 4),
+    '/d/wutang/three_way': ('/d/wutang/entrance', 0, 5),
+    '/d/wutang/grass_nw': ('/d/wutang/entrance', -2, 3),
+    '/d/wutang/grass_ne': ('/d/wutang/entrance', -1, 3),
+    '/d/wutang/grass_sw': ('/d/wutang/entrance', -2, 4),
+    '/d/wutang/grass_se': ('/d/wutang/entrance', -1, 4),
+    '/d/wutang/ferry': ('/d/wutang/entrance', -3, 5),
+    '/d/wutang/boardwalk_w': ('/d/wutang/entrance', -2, 5),
+    '/d/wutang/boardwalk_e': ('/d/wutang/entrance', -1, 5),
+    '/d/wutang/ferry_dock': ('/d/wutang/entrance', -3, 6),
+    '/d/wutang/river_bank': ('/d/wutang/entrance', -2, 7),
+    '/d/wutang/hut': ('/d/wutang/entrance', -6, -1),
+    '/d/wutang/field1': ('/d/wutang/entrance', -5, -1),
+    '/d/wutang/field2': ('/d/wutang/entrance', -5, 0),
+    '/d/wutang/field3': ('/d/wutang/entrance', -4, 0),
+    '/d/wutang/field4': ('/d/wutang/entrance', -5, 1),
+    '/d/wutang/field5': ('/d/wutang/entrance', -4, 1),
+    '/d/wutang/clearing': ('/d/wutang/entrance', -3, 1),
     '/d/snow/fireplace': ('/d/snow/inn_kitchen', 0, -1),   # 大灶：客棧廚房上方
     '/d/snow/tree': ('/d/snow/square', 1, -1),             # 榕樹上：廣場中央右上
     '/d/snow/mill': ('/d/snow/ruin1', 0, -1),              # 磨坊：破舊大宅上方
@@ -652,10 +708,10 @@ def main(out):
         while pending:  # 參考房間也可能是手動指定的，依序解開
             left = []
             for rid in pending:
-                ref, dx, dy = MAP_POS[rid]
+                ref, dx, dy, *dz = MAP_POS[rid]
                 if ref in pos:
                     x, y, z = pos[ref]
-                    pos[rid] = (x + dx, y + dy, z)
+                    pos[rid] = (x + dx, y + dy, z + (dz[0] if dz else 0))
                 else:
                     left.append(rid)
             if len(left) == len(pending):
