@@ -39,10 +39,15 @@ object find_player_money(object who, string money)
     string id;
 
     id = normalize_money_id(money);
+    // 以貨幣代碼（money_id，/obj/money/*.c 都有設定）辨認真正的錢幣，不依賴 inherits()：
+    // 有些環境下 inherits(MONEY, ob) 對真的黃金也回傳 0，導致完全無法存款。
+    // 任務物品即使 id 剛好叫 coin，也沒有 money_id，所以不會被當成錢。
     foreach(ob in all_inventory(who)) {
-        if( !inherits(MONEY, ob) ) continue;
         if( ob->query("money_id") == id ) return ob;
-        if( ob->id(id + "_money") ) return ob;
+    }
+    foreach(ob in all_inventory(who)) {
+        if( ob->id(id + "_money") && function_exists("query_amount", ob)
+        &&  ob->query("base_value") ) return ob;
     }
     return 0;
 }
