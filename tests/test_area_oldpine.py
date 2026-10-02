@@ -20,7 +20,7 @@ def exits(name):
 
 def test_rooms_npcs_and_areas():
     rooms = sorted(p.stem for p in O.glob('*.c'))
-    assert len(rooms) == 45
+    assert len(rooms) == 49   # 45 間房間，蘆葦叢迷宮多出 reeds2～reeds5 四間
     assert len(list((O / 'npc').glob('*.c'))) == 17
     areas = {}
     for r in rooms:
@@ -29,12 +29,12 @@ def test_rooms_npcs_and_areas():
         areas[a] = areas.get(a, 0) + 1
         for npc in re.findall(r'__DIR__"npc/([a-z_]+)"', s):
             assert (O / 'npc' / (npc + '.c')).exists(), (r, npc)
-    assert areas == {'老松林': 21, '迷霧森林': 24}
+    assert areas == {'老松林': 21, '迷霧森林': 28}
 
 
 def test_exits_are_two_way():
     # 一般出口都要能走回來；蘆葦叢（迷宮）與出口房、指令出口除外。
-    skip = {'reeds', 'reeds_exit', 'wood3', 'ledge'}
+    skip = {'reeds', 'reeds2', 'reeds3', 'reeds4', 'reeds5', 'reeds_exit', 'wood3', 'ledge'}
     for p in O.glob('*.c'):
         for d, t in exits(p.stem).items():
             if d not in OPP or t.startswith('/') or p.stem in skip:
@@ -47,18 +47,29 @@ def test_entrance_from_snow_south_gate():
     assert exits('entrance')['northwest'] == '/d/snow/sgate'
 
 
-def test_reed_maze_sequence_and_layers():
-    s = read(O / 'reeds.c')
-    assert '({ "north", "north", "east", "west", "north" })' in s
-    assert 'set("map/layer", "蘆葦叢");' in s
-    assert set(exits('reeds')) == {'north', 'south', 'east', 'west'}
-    assert set(exits('reeds_exit')) == {'east'}
+def test_reed_maze_rooms():
+    # 五間一模一樣的蘆葦叢用一般出口串起來：n、n、e、w、n 走到出口房，走錯回到 reeds。
+    seq = ['north', 'north', 'east', 'west', 'north']
+    rooms = ['reeds', 'reeds2', 'reeds3', 'reeds4', 'reeds5']
+    longs = {re.search(r'@LONG\n(.*?)\nLONG', read(O / (r + '.c')), re.S).group(1) for r in rooms}
+    assert len(longs) == 1
+    for k, r in enumerate(rooms):
+        ex = exits(r)
+        assert set(ex) == {'north', 'south', 'east', 'west'}
+        assert ex[seq[k]] == (rooms[k + 1] if k + 1 < len(rooms) else 'reeds_exit')
+        for d in set(ex) - {seq[k]}:
+            assert ex[d] == ('wood3' if (k == 0 and d == 'east') else 'reeds'), (r, d)
+        assert 'set("map/layer", "蘆葦叢");' in read(O / (r + '.c'))
+    assert exits('reeds_exit') == {'east': 'wood3'}
     assert exits('wood3')['west'] == 'reeds'
 
 
 def test_command_exits_and_inn():
     assert 'add_action("do_cave", "cave")' in read(O / 'grass2.c')
-    assert 'add_action("do_enter", "enter")' in read(O / 'inn.c') and 'inherit INN;' in read(O / 'inn.c')
+    assert exits('inn')['enter'] == 'kitchen' and 'inherit INN;' in read(O / 'inn.c')
+    assert exits('entrance')['south'] == 'clearing_w' and exits('clearing_w')['north'] == 'entrance'
+    assert exits('clearing_n') == {'south': 'grass1'} and exits('grass1')['north'] == 'clearing_n'
+    assert 'north' not in exits('forest_n3')
     assert 'add_action("do_climb", "climb")' in read(O / 'cave_deep.c')
     assert exits('ledge') == {'down': 'cave_deep'}
     assert exits('kitchen') == {'out': 'inn'}
@@ -87,6 +98,6 @@ def test_beast_strengths():
 def test_web_map_has_both_areas():
     g = json.loads(read(ROOT / 'web/world_static_map.json'))
     ids = [n for n in g['nodes'] if n['id'].startswith('/d/oldpine/')]
-    assert len(ids) == 45
+    assert len(ids) == 49
     assert {n['area'] for n in ids} == {'老松林', '迷霧森林'}
     assert any(e['from'] == '/d/snow/sgate' and e['to'] == '/d/oldpine/entrance' for e in g['edges'])

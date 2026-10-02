@@ -1,9 +1,11 @@
 // /d/oldpine/inn.c — 迷霧森林（R14）。房間敘述依設計表提示撰寫。
 
 #include <room.h>
+#include <command.h>
 
 inherit INN;
 
+// enter 當成一般出口（和 east 這類方向一樣）；系統的 enter 指令會先攔下，所以這裡轉給 go。
 void init()
 {
     ::init();
@@ -12,14 +14,8 @@ void init()
 
 int do_enter(string arg)
 {
-    object me = this_player();
-
-    if( me->is_busy() || me->is_fighting() )
-        return notify_fail("你現在沒有辦法這麼做。\n");
-    message_vision("$N掀開布簾，走進了後頭的廚房。\n", me);
-    if( !me->move("/d/oldpine/kitchen") ) return 0;
-    message("vision", replace_string("$N從前頭的店裡走了進來。", "$N", me->name()) + "\n", environment(me), me);
-    return 1;
+    if( arg && arg != "" ) return 0;
+    return GO_CMD->main(this_player(), "enter");
 }
 
 void create()
@@ -31,6 +27,7 @@ LONG
     );
     set("exits", ([
         "east" : __DIR__"glade",
+        "enter" : __DIR__"kitchen",
     ]));
     set("objects", ([
         __DIR__"npc/waiter" : 1,

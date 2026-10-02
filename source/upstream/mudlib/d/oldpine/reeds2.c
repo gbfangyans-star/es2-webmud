@@ -1,4 +1,4 @@
-// /d/oldpine/reeds.c — 迷霧森林（T18）。房間敘述依設計表提示撰寫。
+// /d/oldpine/reeds2.c — 迷霧森林（T18）。蘆葦叢迷宮第 2 段（外觀與 reeds 相同）。
 
 #include <room.h>
 
@@ -12,9 +12,9 @@ void create()
 LONG
     );
     set("exits", ([
-        "north" : __DIR__"reeds2",
+        "north" : __DIR__"reeds3",
         "south" : __DIR__"reeds",
-        "east" : __DIR__"wood3",
+        "east" : __DIR__"reeds",
         "west" : __DIR__"reeds",
     ]));
     set("map/area", "迷霧森林");
