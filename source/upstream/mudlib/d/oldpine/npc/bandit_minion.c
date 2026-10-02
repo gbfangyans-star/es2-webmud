@@ -5,18 +5,6 @@
 inherit F_FIGHTER;
 
 
-// 看到玩家就下殺手（kill），玩家昏倒後也會繼續攻擊直到死亡。
-void init()
-{
-    object ob = this_player();
-
-    ::init();
-    if( objectp(ob) && userp(ob) && living(this_object()) && !is_fighting(ob)
-    &&  !environment()->query("no_fight") && visible(ob) ) {
-        kill_ob(ob);
-    }
-}
-
 void create()
 {
     seteuid(getuid());

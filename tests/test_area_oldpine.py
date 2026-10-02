@@ -76,10 +76,11 @@ def test_command_exits_and_inn():
 
 
 def test_bandit_bounty_and_aggression():
-    for f, n in [('bandit', 15), ('bandit_minion', 5), ('xue_biao', 110)]:
+    # 土匪、徐彪看到玩家就下殺手；土匪嘍囉不主動攻擊。
+    for f, n, aggro in [('bandit', 15, True), ('bandit_minion', 5, False), ('xue_biao', 110, True)]:
         s = read(O / 'npc' / (f + '.c'))
         assert 'set("bounty", ([ "military service": %d ]));' % n in s
-        assert 'kill_ob(ob);' in s
+        assert ('kill_ob(ob);' in s) == aggro, f
     # 懸賞只由 CHAR_D->make_corpse() 發一次。
     die = read(MUD / 'std/char/npc.c').split('void\ndie()', 1)[1].split('\n}', 1)[0]
     assert 'bounty' not in die and 'gain_score' not in die
