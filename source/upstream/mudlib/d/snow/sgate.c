@@ -22,6 +22,7 @@ LONG
   set("exits", ([ /* sizeof() == 1 */
 	"north" : __DIR__"sstreet1",
 	"west" : "/custom/zhenwu/room/gate",
+	"southeast" : "/d/oldpine/entrance",
   ]));
 
   set("map/area", "雪亭鎮");

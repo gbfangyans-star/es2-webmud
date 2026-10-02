@@ -64,7 +64,7 @@ def test_special_caps_are_enforced_in_core_progression():
     assert 'while( level < cap )' in s
 
 def test_tiger_force_seed_matches_cumulative_level20_floor():
-    g=src('source/upstream/mudlib/custom/oldpine/npc/gao_shen.c')
+    g=src('source/upstream/mudlib/d/oldpine/npc/kao_shen.c')
     assert 'me->query_learn(skill) < 40000' in g
     assert 'me->set_learn(skill, 40000)' in g
     assert tiger_force_threshold(20) == 40_000
@@ -72,7 +72,7 @@ def test_tiger_force_seed_matches_cumulative_level20_floor():
     assert tiger_force_threshold(21)-tiger_force_threshold(20) == 4_100
 
 def test_level_one_teacher_seed_matches_common_cumulative_floor():
-    g=src('source/upstream/mudlib/custom/oldpine/npc/gao_shen.c')
+    g=src('source/upstream/mudlib/d/oldpine/npc/kao_shen.c')
     assert 'me->query_learn(skill) < 100' in g
     assert 'me->set_learn(skill, 100)' in g
 

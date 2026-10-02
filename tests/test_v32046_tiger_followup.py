@@ -2,7 +2,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 MUD=ROOT/'source/upstream/mudlib'
 def test_gao_shen_contract():
- s=(MUD/'custom/oldpine/npc/gao_shen.c').read_text()
+ s=(MUD/'d/oldpine/npc/kao_shen.c').read_text()
  for x in ['"tiger-force"','"tiger-blade"','"tiger-steps"','"sanmeendo"']:
   assert x in s
  assert 'query_level() < 15' in s and 'query_skill("tiger-force", 1) < 30' in s

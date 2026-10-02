@@ -36,7 +36,7 @@ def test_tiger_force_user_growth_table_and_powerup_formula():
 
 
 def test_gao_shen_tiger_force_starts_at_twenty_and_grants_root_bonus():
-    s = text("custom/oldpine/npc/gao_shen.c")
+    s = text("d/oldpine/npc/kao_shen.c")
     assert 'if( skill == "tiger-force" )' in s
     assert 'me->set_skill(skill, 20)' in s
     assert 'query_attr("con", 1) + 1' in s

@@ -12,7 +12,7 @@ void create()
 
     if( !clonep() ) {
         set("unit", "件");
-        set("value", 0);
+        set("value", 200);
         set("long", "一套普通的棉布衣褲。\n");
         set("wear_as", "cloth");
         set("apply_armor/cloth", ([

@@ -12,6 +12,7 @@ LONG
     set("exits", ([
         "west" : __DIR__"yard06",
         "east" : "/d/snow/sgate",
+        "south" : "/d/wutang/entrance",
     ]));
     set("objects", ([
         "/custom/zhenwu/npc/soldier" : 2,

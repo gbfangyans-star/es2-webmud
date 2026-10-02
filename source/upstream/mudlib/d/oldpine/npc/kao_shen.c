@@ -1,3 +1,4 @@
+// /d/oldpine/npc/kao_shen.c — 老松林 NPC：虎刀門長老 高慎（放在老松林北緣的空地）。
 /*
 CUSTOM LEGACY-RESEARCH NPC PLACEMENT.
 Identity/description grounded in user-authorized legacy ES2 research.
@@ -11,6 +12,7 @@ inherit F_VILLAGER;
 void create()
 {
     set_name("高慎", ({ "kao shen", "kao", "shen"}));
+    set("title", "虎刀門長老");
     set_race("human");
     set("gender", "male");
     set_class("fighter");

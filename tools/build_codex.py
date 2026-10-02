@@ -44,6 +44,106 @@ DIR_AREA = {  # 沒有 map/area 的房間，依目錄給區域名稱
 HIDDEN_DIRS = ['/custom/wizroom/', '/custom/home/']
 # 地圖手動調整（只影響圖鑑顯示）：房間 -> (參考房間, 往東格數, 往南格數)
 MAP_POS = {
+    # 五堂鎮：依設計表格子座標（相對於五堂鎮口 N8）；第四個數字是樓層（客棧二、三樓）。
+    # 老松林／迷霧森林（d/oldpine）：依設計表格位，以各區入口為原點。
+    '/d/oldpine/clearing_n': ('/d/oldpine/entrance', 7, 0),
+    '/d/oldpine/forest_n1': ('/d/oldpine/entrance', 4, 0),
+    '/d/oldpine/forest_n2': ('/d/oldpine/entrance', 5, 0),
+    '/d/oldpine/forest_n3': ('/d/oldpine/entrance', 6, 0),
+    '/d/oldpine/clearing_w': ('/d/oldpine/entrance', 0, 1),
+    '/d/oldpine/path1': ('/d/oldpine/entrance', 1, 1),
+    '/d/oldpine/forest_w': ('/d/oldpine/entrance', 3, 1),
+    '/d/oldpine/grass1': ('/d/oldpine/entrance', 7, 1),
+    '/d/oldpine/bear_cave': ('/d/oldpine/entrance', 8, 1),
+    '/d/oldpine/path2': ('/d/oldpine/entrance', 2, 2),
+    '/d/oldpine/crossing': ('/d/oldpine/entrance', 3, 2),
+    '/d/oldpine/grass2': ('/d/oldpine/entrance', 8, 2),
+    '/d/oldpine/hideout': ('/d/oldpine/entrance', 2, 3),
+    '/d/oldpine/side_hall_w': ('/d/oldpine/entrance', -1, 3),
+    '/d/oldpine/main_hall': ('/d/oldpine/entrance', 0, 3),
+    '/d/oldpine/side_hall_e': ('/d/oldpine/entrance', 1, 3),
+    '/d/oldpine/temple_square': ('/d/oldpine/entrance', 0, 4),
+    '/d/oldpine/temple_gate': ('/d/oldpine/entrance', 1, 4),
+    '/d/oldpine/gravel_road': ('/d/oldpine/entrance', 2, 4),
+    '/d/oldpine/highway': ('/d/oldpine/entrance', 2, 5),
+    '/d/oldpine/mist1': ('/d/oldpine/mist_entrance', 1, 0),
+    '/d/oldpine/mist2': ('/d/oldpine/mist_entrance', 2, 0),
+    '/d/oldpine/mist3': ('/d/oldpine/mist_entrance', 2, 1),
+    '/d/oldpine/mist4': ('/d/oldpine/mist_entrance', 3, 1),
+    '/d/oldpine/kitchen': ('/d/oldpine/mist_entrance', 1, 2),
+    '/d/oldpine/inn': ('/d/oldpine/mist_entrance', 2, 2),
+    '/d/oldpine/glade': ('/d/oldpine/mist_entrance', 3, 2),
+    '/d/oldpine/wood1': ('/d/oldpine/mist_entrance', 4, 2),
+    '/d/oldpine/beast_trail': ('/d/oldpine/mist_entrance', 5, 1),
+    '/d/oldpine/cave_mouth': ('/d/oldpine/mist_entrance', 6, 1),
+    '/d/oldpine/cave1': ('/d/oldpine/mist_entrance', 7, 1),
+    '/d/oldpine/cave2': ('/d/oldpine/mist_entrance', 8, 1),
+    '/d/oldpine/cave3': ('/d/oldpine/mist_entrance', 7, 2),
+    '/d/oldpine/cave_deep': ('/d/oldpine/mist_entrance', 8, 2),
+    '/d/oldpine/ledge': ('/d/oldpine/mist_entrance', 8, 3),
+    '/d/oldpine/shrubs': ('/d/oldpine/mist_entrance', 3, 3),
+    '/d/oldpine/wood2': ('/d/oldpine/mist_entrance', 4, 3),
+    '/d/oldpine/bandit_clearing': ('/d/oldpine/mist_entrance', 2, 4),
+    '/d/oldpine/reeds': ('/d/oldpine/mist_entrance', 3, 4, -1),
+    '/d/oldpine/reeds_exit': ('/d/oldpine/mist_entrance', 3, 4, 1),
+    '/d/oldpine/wood3': ('/d/oldpine/mist_entrance', 4, 4),
+    '/d/oldpine/wood4': ('/d/oldpine/mist_entrance', 3, 5),
+    '/d/oldpine/wood_deep': ('/d/oldpine/mist_entrance', 3, 6),
+    '/d/wutang/inn2': ('/d/wutang/inn', 0, 0, 1),
+    '/d/wutang/inn3': ('/d/wutang/inn', 0, 0, 2),
+    '/d/wutang/temple': ('/d/wutang/entrance', 5, -2),
+    '/d/wutang/temple_yard': ('/d/wutang/entrance', 6, -2),
+    '/d/wutang/temple_road_n': ('/d/wutang/entrance', 5, -1),
+    '/d/wutang/path_e': ('/d/wutang/entrance', 6, -1),
+    '/d/wutang/backyard': ('/d/wutang/entrance', 6, 0),
+    '/d/wutang/temple_road_s': ('/d/wutang/entrance', 5, 0),
+    '/d/wutang/market_square': ('/d/wutang/entrance', 5, 1),
+    '/d/wutang/yan_hall': ('/d/wutang/entrance', 4, -2),
+    '/d/wutang/yan_mansion': ('/d/wutang/entrance', 4, -1),
+    '/d/wutang/yan_gate': ('/d/wutang/entrance', 4, 0),
+    '/d/wutang/dark_alley_e': ('/d/wutang/entrance', 3, 0),
+    '/d/wutang/dark_alley_w': ('/d/wutang/entrance', 2, 0),
+    '/d/wutang/school': ('/d/wutang/entrance', -2, 1),
+    '/d/wutang/pawnshop': ('/d/wutang/entrance', -1, 1),
+    '/d/wutang/north_street': ('/d/wutang/entrance', 0, 1),
+    '/d/wutang/inn': ('/d/wutang/entrance', 2, 1),
+    '/d/wutang/cloth_shop': ('/d/wutang/entrance', 3, 1),
+    '/d/wutang/pavilion': ('/d/wutang/entrance', -4, 2),
+    '/d/wutang/gravel_road_n': ('/d/wutang/entrance', -3, 2),
+    '/d/wutang/west_street2': ('/d/wutang/entrance', -2, 2),
+    '/d/wutang/west_street1': ('/d/wutang/entrance', -1, 2),
+    '/d/wutang/crossroad': ('/d/wutang/entrance', 0, 2),
+    '/d/wutang/east_street1': ('/d/wutang/entrance', 1, 2),
+    '/d/wutang/east_street2': ('/d/wutang/entrance', 2, 2),
+    '/d/wutang/east_street3': ('/d/wutang/entrance', 3, 2),
+    '/d/wutang/east_street4': ('/d/wutang/entrance', 4, 2),
+    '/d/wutang/city_god_temple': ('/d/wutang/entrance', 5, 2),
+    '/d/wutang/gravel_road_s': ('/d/wutang/entrance', -4, 3),
+    '/d/wutang/bamboo_hall': ('/d/wutang/entrance', -3, 3),
+    '/d/wutang/riverside': ('/d/wutang/entrance', -5, 3),
+    '/d/wutang/south_street1': ('/d/wutang/entrance', 0, 3),
+    '/d/wutang/bank': ('/d/wutang/entrance', 1, 3),
+    '/d/wutang/guesthouse': ('/d/wutang/entrance', 3, 3),
+    '/d/wutang/boat': ('/d/wutang/entrance', -5, 4),
+    '/d/wutang/bamboo_grove': ('/d/wutang/entrance', -3, 4),
+    '/d/wutang/south_street2': ('/d/wutang/entrance', 0, 4),
+    '/d/wutang/three_way': ('/d/wutang/entrance', 0, 5),
+    '/d/wutang/grass_nw': ('/d/wutang/entrance', -2, 3),
+    '/d/wutang/grass_ne': ('/d/wutang/entrance', -1, 3),
+    '/d/wutang/grass_sw': ('/d/wutang/entrance', -2, 4),
+    '/d/wutang/grass_se': ('/d/wutang/entrance', -1, 4),
+    '/d/wutang/ferry': ('/d/wutang/entrance', -3, 5),
+    '/d/wutang/boardwalk_w': ('/d/wutang/entrance', -2, 5),
+    '/d/wutang/boardwalk_e': ('/d/wutang/entrance', -1, 5),
+    '/d/wutang/ferry_dock': ('/d/wutang/entrance', -3, 6),
+    '/d/wutang/river_bank': ('/d/wutang/entrance', -2, 7),
+    '/d/wutang/hut': ('/d/wutang/entrance', -6, -1),
+    '/d/wutang/field1': ('/d/wutang/entrance', -5, -1),
+    '/d/wutang/field2': ('/d/wutang/entrance', -5, 0),
+    '/d/wutang/field3': ('/d/wutang/entrance', -4, 0),
+    '/d/wutang/field4': ('/d/wutang/entrance', -5, 1),
+    '/d/wutang/field5': ('/d/wutang/entrance', -4, 1),
+    '/d/wutang/clearing': ('/d/wutang/entrance', -3, 1),
     '/d/snow/fireplace': ('/d/snow/inn_kitchen', 0, -1),   # 大灶：客棧廚房上方
     '/d/snow/tree': ('/d/snow/square', 1, -1),             # 榕樹上：廣場中央右上
     '/d/snow/mill': ('/d/snow/ruin1', 0, -1),              # 磨坊：破舊大宅上方
@@ -51,7 +151,7 @@ MAP_POS = {
     '/d/snow/ruin2': ('/d/snow/riverbank', 0, 1),          # 破舊大宅正廳：河邊空地下方（緊貼河邊上方）
     '/d/snow/kitchen': ('/d/snow/epath', 0, -1),           # 有錢人家廚房：僻靜小巷上方（climb 圍牆）
 }
-MAP_HIDE = {'/d/snow/inn_staff_room'}  # 不在地圖上顯示的房間
+MAP_HIDE = {'/d/snow/inn_staff_room', '/d/oldpine/reeds2', '/d/oldpine/reeds3', '/d/oldpine/reeds4', '/d/oldpine/reeds5'}  # 不在地圖上顯示的房間
 
 DIRS = {  # 地圖座標：x 往東、y 往南、z 往上
     'north': (0, -1, 0), 'south': (0, 1, 0), 'east': (1, 0, 0), 'west': (-1, 0, 0),
@@ -652,10 +752,10 @@ def main(out):
         while pending:  # 參考房間也可能是手動指定的，依序解開
             left = []
             for rid in pending:
-                ref, dx, dy = MAP_POS[rid]
+                ref, dx, dy, *dz = MAP_POS[rid]
                 if ref in pos:
                     x, y, z = pos[ref]
-                    pos[rid] = (x + dx, y + dy, z)
+                    pos[rid] = (x + dx, y + dy, z + (dz[0] if dz else 0))
                 else:
                     left.append(rid)
             if len(left) == len(pending):
