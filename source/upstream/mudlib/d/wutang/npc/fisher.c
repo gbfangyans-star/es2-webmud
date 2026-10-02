@@ -19,4 +19,5 @@ LONG
     set_skill("dodge", 2);
     set_skill("parry", 2);
     setup();
+    carry_object("/custom/weapon/whip/bamboo_fishing_rod")->wield();
 }

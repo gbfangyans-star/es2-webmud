@@ -381,7 +381,15 @@ void apply_affix(object ob, mapping affix)
     if( stringp(wield_as) ) wield_as = ({ wield_as });
     if( arrayp(wield_as) )
         foreach(k in wield_as) {
-            if( sizeof(apply) ) ob->set("apply_weapon/" + k, apply);
+            mapping base, merged;
+            string key;
+            // 武器原本的特性（例如釣竿的捕魚技巧）先記下來，詞綴加在它上面，不會蓋掉。
+            if( undefinedp(ob->query("affix_base_apply/" + k)) )
+                ob->set("affix_base_apply/" + k,
+                    mapp(base = ob->query("apply_weapon/" + k)) ? copy(base) : ([]));
+            merged = copy(ob->query("affix_base_apply/" + k));
+            foreach(key, v in apply) merged[key] += v;
+            if( sizeof(merged) ) ob->set("apply_weapon/" + k, merged);
             else ob->delete("apply_weapon/" + k);
         }
 }

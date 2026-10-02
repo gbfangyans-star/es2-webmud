@@ -36,3 +36,11 @@ def test_all_area_weapons_roll_on_creation():
 def test_storage_chest_keeps_affix():
     s = (MUD / 'custom/home/obj/storage_chest.c').read_text(encoding='utf-8')
     assert 'data["affix"]' in s and 'ENHANCE_D->apply_affix(ob, data["affix"]);' in s
+
+
+def test_bamboo_fishing_rod_keeps_base_trait():
+    s = (MUD / 'custom/weapon/whip/bamboo_fishing_rod.c').read_text(encoding='utf-8')
+    assert '"halieutics": 3,' in s and 'ENHANCE_D->roll_affix(this_object());' in s
+    d = (MUD / 'adm/daemons/enhanced.c').read_text(encoding='utf-8')
+    assert 'affix_base_apply/' in d   # 詞綴加在原本特性上，不會蓋掉
+    assert 'bamboo_fishing_rod' in (MUD / 'd/wutang/npc/fisher.c').read_text(encoding='utf-8')
