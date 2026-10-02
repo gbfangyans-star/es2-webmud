@@ -14,7 +14,7 @@ int do_cave(string arg)
 {
     object me = this_player();
 
-    if( me->is_busy() || me->is_fighting() )
+    if( me->is_busy() )
         return notify_fail("你現在沒有辦法這麼做。\n");
     message_vision("$N撥開長草，彎身鑽進了山壁下的洞穴。\n", me);
     if( !me->move("/d/oldpine/bear_cave") ) return 0;

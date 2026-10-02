@@ -13,7 +13,6 @@ void init()
     ::init();
     if( objectp(ob) && userp(ob) && living(this_object()) && !is_fighting(ob)
     &&  !environment()->query("no_fight") && visible(ob) ) {
-        message_vision("$N扯著嗓子大喊：「打、打劫！把值錢的東西統統交出來！」\n", this_object());
         kill_ob(ob);
     }
 }

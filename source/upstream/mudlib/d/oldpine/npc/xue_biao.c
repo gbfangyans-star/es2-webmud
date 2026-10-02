@@ -13,7 +13,6 @@ void init()
     ::init();
     if( objectp(ob) && userp(ob) && living(this_object()) && !is_fighting(ob)
     &&  !environment()->query("no_fight") && visible(ob) ) {
-        message_vision("$N摸了摸臉上的傷疤，獰笑道：「又一頭送上門的肥羊！」\n", this_object());
         kill_ob(ob);
     }
 }
