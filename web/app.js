@@ -352,14 +352,8 @@ function classifyLine(line){
   // 巫師看得到的「房間名 - /路徑」格式直接視為房間標題，不依賴地圖資料是否已收錄。
   if(isRoomLabel(plain)||/^\S+ - \/[\w\/.-]+$/.test(plain))return 'room-line';
   if(/^出口\s*[:：]/.test(plain)||/明顯的出口|唯一的出口/.test(plain))return 'exit-line';
-  // 房間裡的人物或物品清單（「受傷的旅客 (Injured traveller)」）不套戰鬥關鍵字的顏色。
-  if(/^\S.*\s\([A-Z][\w' .-]*\)(\s*<[^>]*>)?$/.test(plain))return '';
-  if(/受了傷|受到.*傷害|受傷|擊中|砍中|刺中|轟中|死亡|死了|斃命/.test(plain))return 'combat-hot';
-  if(/經脈|內力|真氣|氣血|恢復|療傷/.test(plain))return 'combat-cool';
-  // skills 清單的每一行（「刀法 (blade) - 駕輕就熟  70」）含有刀法、內功等字，
-  // 但顏色由伺服器決定（只有已裝備的武功是黃色），不套用關鍵字上色。
-  if(/\([a-z][\w '\-]*\)[\s　]*-\s*\S+\s+\d+/i.test(plain))return '';
-  if(/施展|神功|內功|招式|劍法|刀法|掌法/.test(plain))return 'system-highlight';
+  // 其他文字的顏色一律由遊戲（伺服器送來的 ANSI 顏色）決定，網頁不再依關鍵字替整行上色；
+  // 例如攻擊敘述含「擊中」、人物名稱含「受傷」，都不該因字面被染成紅色。
   return '';
 }
 function compactGameOutput(s){
