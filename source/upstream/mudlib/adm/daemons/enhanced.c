@@ -224,7 +224,7 @@ string enhance_weapon(object ob, int bonus, string weapon_type)
 
 
 /* =====================================================================
- * 武器附加屬性（使用者提供的「武器附加屬性表」，長劍、短劍、單刀、鬼頭刀使用）
+ * 武器附加屬性（使用者提供的「武器附加屬性表」，obj/area/obj 的 12 種一般武器使用）
  *
  * 武器產生時擲一次：普通 60%、只有前綴 30%、前綴加後綴 10%（必須有前綴才會有後綴）。
  * 前綴來自表一、表二（同名的效果合併），後綴來自表三。名稱為「前綴＋後綴＋原名」，
@@ -282,8 +282,8 @@ private mapping AFFIX_SUFFIX = ([
     "天鷹": ([ "awarness": 50 ]),
 ]);
 
-// 修飾文字的顏色（表上的顏色）。AFFIX_COLOR 為 0 時名稱不上色。
-#define AFFIX_COLOR 0
+// 前綴、後綴各用表上的顏色，原名不上色。AFFIX_COLOR 設為 0 則全部不上色。
+#define AFFIX_COLOR 1
 private mapping AFFIX_COLOR_CODE = ([
     "形天": HIY,
     "雕花": HIM,

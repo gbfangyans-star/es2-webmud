@@ -22,10 +22,12 @@ def test_affix_tables_match_design():
     # 必須有前綴才會有後綴；機率 60／30／10。
     assert 'if( r >= 60 ) affix["prefix"]' in src and 'if( r >= 90 ) affix["suffix"]' in src
     assert 'if( !prefix || !stringp(suffix)' in src
+    assert '#define AFFIX_COLOR 1' in src
 
 
-def test_four_weapons_roll_on_creation():
-    for f in ('longsword', 'shortsword', 'blade', 'glaive'):
+def test_all_area_weapons_roll_on_creation():
+    for f in ('longsword', 'shortsword', 'blade', 'glaive', 'bastardsword', 'broadsword', 'greatsword',
+              'curved_blade', 'weirblade', 'broadaxe', 'pike', 'rod'):
         s = (MUD / 'obj/area/obj' / (f + '.c')).read_text(encoding='utf-8')
         assert 'if( clonep() ) ENHANCE_D->roll_affix(this_object());' in s, f
         assert 'enhance_weapon' not in s, f
