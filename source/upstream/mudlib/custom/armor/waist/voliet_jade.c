@@ -21,10 +21,9 @@ void create()
             "能配帶，玉珮上雕刻著鳳凰的圖案。\n");
         set("wear_as", "waist_eq");
         set("apply_armor/waist_eq", ([
-            "spi": 2,
-            "int": 1,
             "armor": 5,
-            "defense": 20,
+            "spi": 1,
+            "int": 1,
         ]));
     }
     setup();
