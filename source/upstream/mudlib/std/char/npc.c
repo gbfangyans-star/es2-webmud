@@ -45,23 +45,11 @@ heart_beat()
     }
 }
 
+// 懸賞（bounty）由 CHAR_D->make_corpse() 發給擊殺者；這裡不再重複發放，
+// 否則擊殺者會拿到兩倍。
 void
 die()
 {
-    object ob;
-    mapping bounty;
-
-    if( objectp(ob = last_damage_giver())
-    &&	ob != this_object()
-    &&	mapp(bounty = query("bounty")) )
-    {
-        string score;
-        int amount;
-
-        foreach(score, amount in bounty)
-            ob->gain_score(score, amount);
-    }
-
     ::die();
 }
 

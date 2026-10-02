@@ -25,8 +25,50 @@ private void create() {
     DAEMON_D->register_race_daemon("beast");
 }
 
-mapping query_action() {
+// NPC 可以用 set("beast_actions", ({ ... })) 指定自己的攻擊動作（例如熊用掌拍、狼用撲咬），
+// 沒有指定就用預設的咬、撞、踢。
+varargs mapping query_action(object me) {
+    mixed acts;
+
+    if( objectp(me) && arrayp(acts = me->query("beast_actions")) && sizeof(acts) )
+        return acts[random(sizeof(acts))];
     return beast_action[random(sizeof(beast_action))];
+}
+
+/* 野獸強度 1～10（野豬為 4）：精、氣、野獸技能、傷害加成。
+ * 用法：在 NPC 的 create() 裡 setup() 之後呼叫
+ *       RACE_D("beast")->set_strength(this_object(), 強度);
+ */
+private mapping *strength_table = ({
+    0,
+    ([ "gin":  20, "kee":  30, "skill":  0, "damage":  0 ]),
+    ([ "gin":  35, "kee":  55, "skill":  0, "damage":  0 ]),
+    ([ "gin":  50, "kee":  80, "skill":  5, "damage":  0 ]),
+    ([ "gin":  65, "kee": 105, "skill": 10, "damage":  0 ]),
+    ([ "gin":  80, "kee": 130, "skill": 15, "damage":  3 ]),
+    ([ "gin":  95, "kee": 150, "skill": 20, "damage":  6 ]),
+    ([ "gin": 105, "kee": 175, "skill": 30, "damage": 10 ]),
+    ([ "gin": 120, "kee": 200, "skill": 40, "damage": 15 ]),
+    ([ "gin": 135, "kee": 225, "skill": 50, "damage": 20 ]),
+    ([ "gin": 150, "kee": 250, "skill": 60, "damage": 25 ]),
+});
+
+void set_strength(object ob, int level) {
+    mapping t;
+    string st;
+
+    if( !objectp(ob) ) return;
+    if( level < 1 ) level = 1;
+    if( level > 10 ) level = 10;
+    t = strength_table[level];
+    foreach(st in ({ "gin", "kee" })) {
+        ob->set_stat_maximum(st, t[st]);
+        ob->set_stat_effective(st, t[st]);
+        ob->set_stat_current(st, t[st]);
+    }
+    if( t["skill"] ) ob->set_skill("beast", t["skill"]);
+    if( t["damage"] ) ob->set_temp("apply/damage", t["damage"]);
+    ob->set("beast_strength", level);
 }
 
 void setup(object ob) {

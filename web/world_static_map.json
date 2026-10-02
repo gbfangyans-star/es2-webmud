@@ -1135,6 +1135,323 @@
       "area": "五堂鎮",
       "x": -3,
       "y": 1
+    },
+    {
+      "id": "/d/oldpine/clearing_n",
+      "label": "空地",
+      "area": "老松林",
+      "x": 8,
+      "y": 5
+    },
+    {
+      "id": "/d/oldpine/entrance",
+      "label": "老松林",
+      "area": "老松林",
+      "x": 1,
+      "y": 6
+    },
+    {
+      "id": "/d/oldpine/forest_n1",
+      "label": "樹林",
+      "area": "老松林",
+      "x": 6,
+      "y": 6
+    },
+    {
+      "id": "/d/oldpine/forest_n2",
+      "label": "樹林",
+      "area": "老松林",
+      "x": 7,
+      "y": 6
+    },
+    {
+      "id": "/d/oldpine/forest_n3",
+      "label": "樹林",
+      "area": "老松林",
+      "x": 8,
+      "y": 6
+    },
+    {
+      "id": "/d/oldpine/clearing_w",
+      "label": "林間空地",
+      "area": "老松林",
+      "x": 2,
+      "y": 7
+    },
+    {
+      "id": "/d/oldpine/path1",
+      "label": "林間小路",
+      "area": "老松林",
+      "x": 3,
+      "y": 7
+    },
+    {
+      "id": "/d/oldpine/forest_w",
+      "label": "樹林",
+      "area": "老松林",
+      "x": 5,
+      "y": 7
+    },
+    {
+      "id": "/d/oldpine/grass1",
+      "label": "草叢",
+      "area": "老松林",
+      "x": 9,
+      "y": 7
+    },
+    {
+      "id": "/d/oldpine/bear_cave",
+      "label": "山洞",
+      "area": "老松林",
+      "x": 10,
+      "y": 7
+    },
+    {
+      "id": "/d/oldpine/path2",
+      "label": "林間小路",
+      "area": "老松林",
+      "x": 4,
+      "y": 8
+    },
+    {
+      "id": "/d/oldpine/crossing",
+      "label": "空地",
+      "area": "老松林",
+      "x": 5,
+      "y": 8
+    },
+    {
+      "id": "/d/oldpine/grass2",
+      "label": "草叢",
+      "area": "老松林",
+      "x": 10,
+      "y": 8
+    },
+    {
+      "id": "/d/oldpine/hideout",
+      "label": "林間空地",
+      "area": "老松林",
+      "x": 4,
+      "y": 9
+    },
+    {
+      "id": "/d/oldpine/side_hall_w",
+      "label": "側殿",
+      "area": "老松林",
+      "x": 1,
+      "y": 9
+    },
+    {
+      "id": "/d/oldpine/main_hall",
+      "label": "大雄寶殿",
+      "area": "老松林",
+      "x": 2,
+      "y": 9
+    },
+    {
+      "id": "/d/oldpine/side_hall_e",
+      "label": "側殿",
+      "area": "老松林",
+      "x": 3,
+      "y": 9
+    },
+    {
+      "id": "/d/oldpine/temple_square",
+      "label": "彤雲寺",
+      "area": "老松林",
+      "x": 2,
+      "y": 10
+    },
+    {
+      "id": "/d/oldpine/temple_gate",
+      "label": "彤雲寺",
+      "area": "老松林",
+      "x": 3,
+      "y": 10
+    },
+    {
+      "id": "/d/oldpine/gravel_road",
+      "label": "碎石路",
+      "area": "老松林",
+      "x": 4,
+      "y": 10
+    },
+    {
+      "id": "/d/oldpine/highway",
+      "label": "官道",
+      "area": "老松林",
+      "x": 4,
+      "y": 11
+    },
+    {
+      "id": "/d/oldpine/mist_entrance",
+      "label": "森林入口",
+      "area": "迷霧森林",
+      "x": 6,
+      "y": 8
+    },
+    {
+      "id": "/d/oldpine/mist1",
+      "label": "迷霧森林",
+      "area": "迷霧森林",
+      "x": 7,
+      "y": 8
+    },
+    {
+      "id": "/d/oldpine/mist2",
+      "label": "迷霧森林",
+      "area": "迷霧森林",
+      "x": 8,
+      "y": 8
+    },
+    {
+      "id": "/d/oldpine/mist3",
+      "label": "迷霧森林",
+      "area": "迷霧森林",
+      "x": 8,
+      "y": 9
+    },
+    {
+      "id": "/d/oldpine/mist4",
+      "label": "迷霧森林",
+      "area": "迷霧森林",
+      "x": 9,
+      "y": 9
+    },
+    {
+      "id": "/d/oldpine/kitchen",
+      "label": "廚房",
+      "area": "迷霧森林",
+      "x": 7,
+      "y": 10
+    },
+    {
+      "id": "/d/oldpine/inn",
+      "label": "野店",
+      "area": "迷霧森林",
+      "x": 8,
+      "y": 10
+    },
+    {
+      "id": "/d/oldpine/glade",
+      "label": "林間空地",
+      "area": "迷霧森林",
+      "x": 9,
+      "y": 10
+    },
+    {
+      "id": "/d/oldpine/wood1",
+      "label": "樹林",
+      "area": "迷霧森林",
+      "x": 10,
+      "y": 10
+    },
+    {
+      "id": "/d/oldpine/beast_trail",
+      "label": "獸徑",
+      "area": "迷霧森林",
+      "x": 11,
+      "y": 9
+    },
+    {
+      "id": "/d/oldpine/cave_mouth",
+      "label": "山洞口",
+      "area": "迷霧森林",
+      "x": 12,
+      "y": 9
+    },
+    {
+      "id": "/d/oldpine/cave1",
+      "label": "山洞",
+      "area": "迷霧森林",
+      "x": 13,
+      "y": 9
+    },
+    {
+      "id": "/d/oldpine/cave2",
+      "label": "山洞",
+      "area": "迷霧森林",
+      "x": 14,
+      "y": 9
+    },
+    {
+      "id": "/d/oldpine/cave3",
+      "label": "山洞",
+      "area": "迷霧森林",
+      "x": 13,
+      "y": 10
+    },
+    {
+      "id": "/d/oldpine/cave_deep",
+      "label": "山洞深處",
+      "area": "迷霧森林",
+      "x": 14,
+      "y": 10
+    },
+    {
+      "id": "/d/oldpine/ledge",
+      "label": "平台",
+      "area": "迷霧森林",
+      "x": 14,
+      "y": 11
+    },
+    {
+      "id": "/d/oldpine/shrubs",
+      "label": "矮樹叢",
+      "area": "迷霧森林",
+      "x": 9,
+      "y": 11
+    },
+    {
+      "id": "/d/oldpine/wood2",
+      "label": "樹林",
+      "area": "迷霧森林",
+      "x": 10,
+      "y": 11
+    },
+    {
+      "id": "/d/oldpine/bandit_clearing",
+      "label": "空地",
+      "area": "迷霧森林",
+      "x": 8,
+      "y": 12
+    },
+    {
+      "id": "/d/oldpine/reeds",
+      "label": "蘆葦叢",
+      "area": "迷霧森林",
+      "x": 9,
+      "y": 12,
+      "layer": "蘆葦叢"
+    },
+    {
+      "id": "/d/oldpine/reeds_exit",
+      "label": "蘆葦叢",
+      "area": "迷霧森林",
+      "x": 9,
+      "y": 12,
+      "layer": "蘆葦叢邊緣"
+    },
+    {
+      "id": "/d/oldpine/wood3",
+      "label": "樹林",
+      "area": "迷霧森林",
+      "x": 10,
+      "y": 12
+    },
+    {
+      "id": "/d/oldpine/wood4",
+      "label": "樹林",
+      "area": "迷霧森林",
+      "x": 9,
+      "y": 13
+    },
+    {
+      "id": "/d/oldpine/wood_deep",
+      "label": "樹林深處",
+      "area": "迷霧森林",
+      "x": 9,
+      "y": 14
     }
   ],
   "edges": [
@@ -3152,6 +3469,546 @@
       "from": "/custom/zhenwu/room/gate",
       "to": "/d/wutang/entrance",
       "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/clearing_n",
+      "to": "/d/oldpine/forest_n3",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/entrance",
+      "to": "/d/snow/sgate",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/entrance",
+      "to": "/d/oldpine/clearing_w",
+      "direction": "southeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/forest_n1",
+      "to": "/d/oldpine/forest_n2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/forest_n1",
+      "to": "/d/oldpine/forest_w",
+      "direction": "southwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/forest_n2",
+      "to": "/d/oldpine/forest_n1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/forest_n2",
+      "to": "/d/oldpine/forest_n3",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/forest_n3",
+      "to": "/d/oldpine/forest_n2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/forest_n3",
+      "to": "/d/oldpine/clearing_n",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/forest_n3",
+      "to": "/d/oldpine/grass1",
+      "direction": "southeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/clearing_w",
+      "to": "/d/oldpine/entrance",
+      "direction": "northwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/clearing_w",
+      "to": "/d/oldpine/path1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/path1",
+      "to": "/d/oldpine/clearing_w",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/path1",
+      "to": "/d/oldpine/path2",
+      "direction": "southeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/forest_w",
+      "to": "/d/oldpine/forest_n1",
+      "direction": "northeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/forest_w",
+      "to": "/d/oldpine/crossing",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/grass1",
+      "to": "/d/oldpine/forest_n3",
+      "direction": "northwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/grass1",
+      "to": "/d/oldpine/grass2",
+      "direction": "southeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/bear_cave",
+      "to": "/d/oldpine/grass2",
+      "direction": "out",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/path2",
+      "to": "/d/oldpine/path1",
+      "direction": "northwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/path2",
+      "to": "/d/oldpine/crossing",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/crossing",
+      "to": "/d/oldpine/forest_w",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/crossing",
+      "to": "/d/oldpine/path2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/crossing",
+      "to": "/d/oldpine/mist_entrance",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/crossing",
+      "to": "/d/oldpine/hideout",
+      "direction": "southwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/grass2",
+      "to": "/d/oldpine/grass1",
+      "direction": "northwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/grass2",
+      "to": "/d/oldpine/bear_cave",
+      "direction": "cave",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/hideout",
+      "to": "/d/oldpine/crossing",
+      "direction": "northeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/hideout",
+      "to": "/d/oldpine/gravel_road",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/side_hall_w",
+      "to": "/d/oldpine/main_hall",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/main_hall",
+      "to": "/d/oldpine/side_hall_w",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/main_hall",
+      "to": "/d/oldpine/side_hall_e",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/main_hall",
+      "to": "/d/oldpine/temple_square",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/side_hall_e",
+      "to": "/d/oldpine/main_hall",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/temple_square",
+      "to": "/d/oldpine/main_hall",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/temple_square",
+      "to": "/d/oldpine/temple_gate",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/temple_gate",
+      "to": "/d/oldpine/temple_square",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/temple_gate",
+      "to": "/d/oldpine/gravel_road",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/gravel_road",
+      "to": "/d/oldpine/temple_gate",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/gravel_road",
+      "to": "/d/oldpine/hideout",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/gravel_road",
+      "to": "/d/oldpine/highway",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/highway",
+      "to": "/d/oldpine/gravel_road",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/mist_entrance",
+      "to": "/d/oldpine/crossing",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/mist_entrance",
+      "to": "/d/oldpine/mist1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/mist1",
+      "to": "/d/oldpine/mist_entrance",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/mist1",
+      "to": "/d/oldpine/mist2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/mist2",
+      "to": "/d/oldpine/mist1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/mist2",
+      "to": "/d/oldpine/mist3",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/mist3",
+      "to": "/d/oldpine/mist2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/mist3",
+      "to": "/d/oldpine/glade",
+      "direction": "southeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/mist4",
+      "to": "/d/oldpine/glade",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/kitchen",
+      "to": "/d/oldpine/inn",
+      "direction": "out",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/inn",
+      "to": "/d/oldpine/glade",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/inn",
+      "to": "/d/oldpine/kitchen",
+      "direction": "enter",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/glade",
+      "to": "/d/oldpine/inn",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/glade",
+      "to": "/d/oldpine/mist4",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/glade",
+      "to": "/d/oldpine/mist3",
+      "direction": "northwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/glade",
+      "to": "/d/oldpine/wood1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/glade",
+      "to": "/d/oldpine/shrubs",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/wood1",
+      "to": "/d/oldpine/glade",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/wood1",
+      "to": "/d/oldpine/beast_trail",
+      "direction": "northeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/wood1",
+      "to": "/d/oldpine/wood2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/beast_trail",
+      "to": "/d/oldpine/wood1",
+      "direction": "southwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/beast_trail",
+      "to": "/d/oldpine/cave_mouth",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/cave_mouth",
+      "to": "/d/oldpine/beast_trail",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/cave_mouth",
+      "to": "/d/oldpine/cave1",
+      "direction": "enter",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/cave1",
+      "to": "/d/oldpine/cave2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/cave1",
+      "to": "/d/oldpine/cave3",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/cave1",
+      "to": "/d/oldpine/cave_mouth",
+      "direction": "out",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/cave2",
+      "to": "/d/oldpine/cave1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/cave2",
+      "to": "/d/oldpine/cave_deep",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/cave3",
+      "to": "/d/oldpine/cave1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/cave3",
+      "to": "/d/oldpine/cave_deep",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/cave_deep",
+      "to": "/d/oldpine/cave2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/cave_deep",
+      "to": "/d/oldpine/cave3",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/cave_deep",
+      "to": "/d/oldpine/ledge",
+      "direction": "climb",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/ledge",
+      "to": "/d/oldpine/cave_deep",
+      "direction": "down",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/shrubs",
+      "to": "/d/oldpine/glade",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/shrubs",
+      "to": "/d/oldpine/bandit_clearing",
+      "direction": "southwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/wood2",
+      "to": "/d/oldpine/wood1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/wood2",
+      "to": "/d/oldpine/wood3",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/bandit_clearing",
+      "to": "/d/oldpine/shrubs",
+      "direction": "northeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/reeds_exit",
+      "to": "/d/oldpine/wood3",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/wood3",
+      "to": "/d/oldpine/wood2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/wood3",
+      "to": "/d/oldpine/reeds",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/wood3",
+      "to": "/d/oldpine/wood4",
+      "direction": "southwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/wood4",
+      "to": "/d/oldpine/wood3",
+      "direction": "northeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/wood4",
+      "to": "/d/oldpine/wood_deep",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/wood_deep",
+      "to": "/d/oldpine/wood4",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/snow/sgate",
+      "to": "/d/oldpine/entrance",
+      "direction": "east",
       "resolved": true
     }
   ],

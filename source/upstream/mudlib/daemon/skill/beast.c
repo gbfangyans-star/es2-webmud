@@ -14,7 +14,7 @@ private void create() {
 
 void attack_using(object me, object opponent, string skill) {
     if( !opponent ) return;
-    COMBAT_D->fight(me, opponent, "unarmed", RACE_D(me->query_race())->query_action());
+    COMBAT_D->fight(me, opponent, "unarmed", RACE_D(me->query_race())->query_action(me));
 }
 
 int valid_enable(string usage) { return usage == "unarmed"; }

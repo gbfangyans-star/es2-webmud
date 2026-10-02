@@ -41,10 +41,6 @@ void create()
 LONG
     );
     setup();
-    set_stat_maximum("gin", 30);
-    set_stat_effective("gin", 30);
-    set_stat_current("gin", 30);
-    set_stat_maximum("kee", 80);
-    set_stat_effective("kee", 80);
-    set_stat_current("kee", 80);
+    // 野獸強度（1～10，野豬為 4），數值見 daemon/race/beast.c。
+    RACE_D("beast")->set_strength(this_object(), 5);
 }
