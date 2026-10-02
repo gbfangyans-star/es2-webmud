@@ -1140,8 +1140,8 @@
       "id": "/d/oldpine/clearing_n",
       "label": "空地",
       "area": "老松林",
-      "x": 8,
-      "y": 6
+      "x": 9,
+      "y": 7
     },
     {
       "id": "/d/oldpine/entrance",
@@ -1154,22 +1154,22 @@
       "id": "/d/oldpine/forest_n1",
       "label": "樹林",
       "area": "老松林",
-      "x": 5,
-      "y": 6
+      "x": 6,
+      "y": 7
     },
     {
       "id": "/d/oldpine/forest_n2",
       "label": "樹林",
       "area": "老松林",
-      "x": 6,
-      "y": 6
+      "x": 7,
+      "y": 7
     },
     {
       "id": "/d/oldpine/forest_n3",
       "label": "樹林",
       "area": "老松林",
-      "x": 7,
-      "y": 6
+      "x": 8,
+      "y": 7
     },
     {
       "id": "/d/oldpine/clearing_w",
@@ -1179,310 +1179,317 @@
       "y": 7
     },
     {
-      "id": "/d/oldpine/path1",
+      "id": "/d/oldpine/path0",
       "label": "林間小路",
       "area": "老松林",
       "x": 2,
-      "y": 7
+      "y": 8
+    },
+    {
+      "id": "/d/oldpine/path1",
+      "label": "林間小路",
+      "area": "老松林",
+      "x": 3,
+      "y": 8
     },
     {
       "id": "/d/oldpine/forest_w",
       "label": "樹林",
       "area": "老松林",
-      "x": 4,
-      "y": 7
+      "x": 5,
+      "y": 8
     },
     {
       "id": "/d/oldpine/grass1",
       "label": "草叢",
       "area": "老松林",
-      "x": 8,
-      "y": 7
+      "x": 9,
+      "y": 8
     },
     {
       "id": "/d/oldpine/bear_cave",
       "label": "山洞",
       "area": "老松林",
-      "x": 9,
-      "y": 7
+      "x": 10,
+      "y": 8
     },
     {
       "id": "/d/oldpine/path2",
       "label": "林間小路",
       "area": "老松林",
-      "x": 3,
-      "y": 8
+      "x": 4,
+      "y": 9
     },
     {
       "id": "/d/oldpine/crossing",
       "label": "空地",
       "area": "老松林",
-      "x": 4,
-      "y": 8
+      "x": 5,
+      "y": 9
     },
     {
       "id": "/d/oldpine/grass2",
       "label": "草叢",
       "area": "老松林",
-      "x": 9,
-      "y": 8
+      "x": 10,
+      "y": 9
     },
     {
       "id": "/d/oldpine/hideout",
       "label": "林間空地",
       "area": "老松林",
-      "x": 3,
-      "y": 9
+      "x": 4,
+      "y": 10
     },
     {
       "id": "/d/oldpine/side_hall_w",
       "label": "側殿",
       "area": "老松林",
-      "x": 0,
-      "y": 9
+      "x": 1,
+      "y": 10
     },
     {
       "id": "/d/oldpine/main_hall",
       "label": "大雄寶殿",
       "area": "老松林",
-      "x": 1,
-      "y": 9
+      "x": 2,
+      "y": 10
     },
     {
       "id": "/d/oldpine/side_hall_e",
       "label": "側殿",
       "area": "老松林",
-      "x": 2,
-      "y": 9
+      "x": 3,
+      "y": 10
     },
     {
       "id": "/d/oldpine/temple_square",
       "label": "彤雲寺",
       "area": "老松林",
-      "x": 1,
-      "y": 10
+      "x": 2,
+      "y": 11
     },
     {
       "id": "/d/oldpine/temple_gate",
       "label": "彤雲寺",
       "area": "老松林",
-      "x": 2,
-      "y": 10
+      "x": 3,
+      "y": 11
     },
     {
       "id": "/d/oldpine/gravel_road",
       "label": "碎石路",
       "area": "老松林",
-      "x": 3,
-      "y": 10
+      "x": 4,
+      "y": 11
     },
     {
       "id": "/d/oldpine/highway",
       "label": "官道",
       "area": "老松林",
-      "x": 3,
-      "y": 11
+      "x": 4,
+      "y": 12
     },
     {
       "id": "/d/oldpine/mist_entrance",
       "label": "森林入口",
       "area": "迷霧森林",
-      "x": 5,
-      "y": 8
+      "x": 6,
+      "y": 9
     },
     {
       "id": "/d/oldpine/mist1",
       "label": "迷霧森林",
       "area": "迷霧森林",
-      "x": 6,
-      "y": 8
+      "x": 7,
+      "y": 9
     },
     {
       "id": "/d/oldpine/mist2",
       "label": "迷霧森林",
       "area": "迷霧森林",
-      "x": 7,
-      "y": 8
+      "x": 8,
+      "y": 9
     },
     {
       "id": "/d/oldpine/mist3",
       "label": "迷霧森林",
       "area": "迷霧森林",
-      "x": 7,
-      "y": 9
+      "x": 8,
+      "y": 10
     },
     {
       "id": "/d/oldpine/mist4",
       "label": "迷霧森林",
       "area": "迷霧森林",
-      "x": 8,
-      "y": 9
+      "x": 9,
+      "y": 10
     },
     {
       "id": "/d/oldpine/kitchen",
       "label": "廚房",
       "area": "迷霧森林",
-      "x": 6,
-      "y": 10
+      "x": 7,
+      "y": 11
     },
     {
       "id": "/d/oldpine/inn",
       "label": "野店",
       "area": "迷霧森林",
-      "x": 7,
-      "y": 10
+      "x": 8,
+      "y": 11
     },
     {
       "id": "/d/oldpine/glade",
       "label": "林間空地",
       "area": "迷霧森林",
-      "x": 8,
-      "y": 10
+      "x": 9,
+      "y": 11
     },
     {
       "id": "/d/oldpine/wood1",
       "label": "樹林",
       "area": "迷霧森林",
-      "x": 9,
-      "y": 10
+      "x": 10,
+      "y": 11
     },
     {
       "id": "/d/oldpine/beast_trail",
       "label": "獸徑",
       "area": "迷霧森林",
-      "x": 10,
-      "y": 9
+      "x": 11,
+      "y": 10
     },
     {
       "id": "/d/oldpine/cave_mouth",
       "label": "山洞口",
       "area": "迷霧森林",
-      "x": 11,
-      "y": 9
+      "x": 12,
+      "y": 10
     },
     {
       "id": "/d/oldpine/cave1",
       "label": "山洞",
       "area": "迷霧森林",
-      "x": 12,
-      "y": 9
+      "x": 13,
+      "y": 10
     },
     {
       "id": "/d/oldpine/cave2",
       "label": "山洞",
       "area": "迷霧森林",
-      "x": 13,
-      "y": 9
+      "x": 14,
+      "y": 10
     },
     {
       "id": "/d/oldpine/cave3",
       "label": "山洞",
       "area": "迷霧森林",
-      "x": 12,
-      "y": 10
+      "x": 13,
+      "y": 11
     },
     {
       "id": "/d/oldpine/cave_deep",
       "label": "山洞深處",
       "area": "迷霧森林",
-      "x": 13,
-      "y": 10
+      "x": 14,
+      "y": 11
     },
     {
       "id": "/d/oldpine/ledge",
       "label": "平台",
       "area": "迷霧森林",
-      "x": 13,
-      "y": 11
+      "x": 14,
+      "y": 12
     },
     {
       "id": "/d/oldpine/shrubs",
       "label": "矮樹叢",
       "area": "迷霧森林",
-      "x": 8,
-      "y": 11
+      "x": 9,
+      "y": 12
     },
     {
       "id": "/d/oldpine/wood2",
       "label": "樹林",
       "area": "迷霧森林",
-      "x": 9,
-      "y": 11
+      "x": 10,
+      "y": 12
     },
     {
       "id": "/d/oldpine/bandit_clearing",
       "label": "空地",
       "area": "迷霧森林",
-      "x": 7,
-      "y": 12
+      "x": 8,
+      "y": 13
     },
     {
       "id": "/d/oldpine/reeds",
       "label": "蘆葦叢",
       "area": "迷霧森林",
-      "x": 8,
-      "y": 12,
+      "x": 9,
+      "y": 13,
       "layer": "蘆葦叢"
     },
     {
       "id": "/d/oldpine/reeds_exit",
       "label": "蘆葦叢",
       "area": "迷霧森林",
-      "x": 8,
-      "y": 12,
+      "x": 9,
+      "y": 13,
       "layer": "蘆葦叢邊緣"
     },
     {
       "id": "/d/oldpine/wood3",
       "label": "樹林",
       "area": "迷霧森林",
-      "x": 9,
-      "y": 12
+      "x": 10,
+      "y": 13
     },
     {
       "id": "/d/oldpine/wood4",
       "label": "樹林",
       "area": "迷霧森林",
-      "x": 8,
-      "y": 13
+      "x": 9,
+      "y": 14
     },
     {
       "id": "/d/oldpine/wood_deep",
       "label": "樹林深處",
       "area": "迷霧森林",
-      "x": 8,
-      "y": 14
+      "x": 9,
+      "y": 15
     },
     {
       "id": "/d/oldpine/reeds2",
       "label": "蘆葦叢",
       "area": "迷霧森林",
-      "x": 8,
-      "y": 12,
+      "x": 9,
+      "y": 13,
       "layer": "蘆葦叢"
     },
     {
       "id": "/d/oldpine/reeds3",
       "label": "蘆葦叢",
       "area": "迷霧森林",
-      "x": 8,
-      "y": 12,
+      "x": 9,
+      "y": 13,
       "layer": "蘆葦叢"
     },
     {
       "id": "/d/oldpine/reeds4",
       "label": "蘆葦叢",
       "area": "迷霧森林",
-      "x": 8,
-      "y": 12,
+      "x": 9,
+      "y": 13,
       "layer": "蘆葦叢"
     },
     {
       "id": "/d/oldpine/reeds5",
       "label": "蘆葦叢",
       "area": "迷霧森林",
-      "x": 8,
-      "y": 12,
+      "x": 9,
+      "y": 13,
       "layer": "蘆葦叢"
     }
   ],
@@ -3565,13 +3572,25 @@
     },
     {
       "from": "/d/oldpine/clearing_w",
+      "to": "/d/oldpine/path0",
+      "direction": "southeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/path0",
+      "to": "/d/oldpine/clearing_w",
+      "direction": "northwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/path0",
       "to": "/d/oldpine/path1",
       "direction": "east",
       "resolved": true
     },
     {
       "from": "/d/oldpine/path1",
-      "to": "/d/oldpine/clearing_w",
+      "to": "/d/oldpine/path0",
       "direction": "west",
       "resolved": true
     },

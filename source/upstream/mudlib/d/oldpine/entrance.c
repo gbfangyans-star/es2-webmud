@@ -1,4 +1,4 @@
-// /d/oldpine/entrance.c — 老松林（F6）。房間敘述依設計表提示撰寫。
+// /d/oldpine/entrance.c — 老松林（D4）。房間敘述依設計表提示撰寫。
 
 #include <room.h>
 

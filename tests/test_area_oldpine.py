@@ -20,7 +20,7 @@ def exits(name):
 
 def test_rooms_npcs_and_areas():
     rooms = sorted(p.stem for p in O.glob('*.c'))
-    assert len(rooms) == 49   # 45 間房間，蘆葦叢迷宮多出 reeds2～reeds5 四間
+    assert len(rooms) == 50   # 46 間房間，蘆葦叢迷宮多出 reeds2～reeds5 四間
     assert len(list((O / 'npc').glob('*.c'))) == 17
     areas = {}
     for r in rooms:
@@ -29,7 +29,7 @@ def test_rooms_npcs_and_areas():
         areas[a] = areas.get(a, 0) + 1
         for npc in re.findall(r'__DIR__"npc/([a-z_]+)"', s):
             assert (O / 'npc' / (npc + '.c')).exists(), (r, npc)
-    assert areas == {'老松林': 21, '迷霧森林': 28}
+    assert areas == {'老松林': 22, '迷霧森林': 28}
 
 
 def test_exits_are_two_way():
@@ -68,6 +68,8 @@ def test_command_exits_and_inn():
     assert 'add_action("do_cave", "cave")' in read(O / 'grass2.c')
     assert exits('inn')['enter'] == 'kitchen' and 'inherit INN;' in read(O / 'inn.c')
     assert exits('entrance')['south'] == 'clearing_w' and exits('clearing_w')['north'] == 'entrance'
+    assert exits('clearing_w')['southeast'] == 'path0' and exits('path0') == {'northwest': 'clearing_w', 'east': 'path1'}
+    assert exits('path1')['west'] == 'path0'
     assert exits('clearing_n') == {'south': 'grass1'} and exits('grass1')['north'] == 'clearing_n'
     assert 'north' not in exits('forest_n3')
     assert 'add_action("do_climb", "climb")' in read(O / 'cave_deep.c')
@@ -99,7 +101,7 @@ def test_beast_strengths():
 def test_web_map_has_both_areas():
     g = json.loads(read(ROOT / 'web/world_static_map.json'))
     ids = [n for n in g['nodes'] if n['id'].startswith('/d/oldpine/')]
-    assert len(ids) == 49
+    assert len(ids) == 50
     assert {n['area'] for n in ids} == {'老松林', '迷霧森林'}
     assert any(e['from'] == '/d/snow/sgate' and e['to'] == '/d/oldpine/entrance' for e in g['edges'])
 
