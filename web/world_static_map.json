@@ -3480,7 +3480,7 @@
     {
       "from": "/d/oldpine/entrance",
       "to": "/d/snow/sgate",
-      "direction": "west",
+      "direction": "northwest",
       "resolved": true
     },
     {
@@ -4008,7 +4008,7 @@
     {
       "from": "/d/snow/sgate",
       "to": "/d/oldpine/entrance",
-      "direction": "east",
+      "direction": "southeast",
       "resolved": true
     }
   ],

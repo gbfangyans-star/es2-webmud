@@ -43,8 +43,8 @@ def test_exits_are_two_way():
 
 
 def test_entrance_from_snow_south_gate():
-    assert '"east" : "/d/oldpine/entrance"' in read(MUD / 'd/snow/sgate.c')
-    assert exits('entrance')['west'] == '/d/snow/sgate'
+    assert '"southeast" : "/d/oldpine/entrance"' in read(MUD / 'd/snow/sgate.c')
+    assert exits('entrance')['northwest'] == '/d/snow/sgate'
 
 
 def test_reed_maze_sequence_and_layers():
