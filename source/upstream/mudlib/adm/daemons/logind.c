@@ -817,8 +817,9 @@ int check_legal_name(string name) {
 
     i = sizeof(mbcs);
 
-    if ((i < 3) || (i > 18 )) {
-        write("您的顯示名稱必須使用長度 3 到 18 的合法 UTF-8 文字。\n");
+    // 顯示名稱最少一個字（例如單名「熊」），最多 18 個字。
+    if ((i < 1) || (i > 18 )) {
+        write("您的顯示名稱必須使用長度 1 到 18 的合法 UTF-8 文字。\n");
         return 0;
     }
     while (i--) {
