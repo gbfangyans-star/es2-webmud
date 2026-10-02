@@ -101,3 +101,12 @@ def test_web_map_has_both_areas():
     assert len(ids) == 49
     assert {n['area'] for n in ids} == {'老松林', '迷霧森林'}
     assert any(e['from'] == '/d/snow/sgate' and e['to'] == '/d/oldpine/entrance' for e in g['edges'])
+
+
+def test_room_descriptions_have_no_command_hints():
+    # 房間敘述不用括號提示指令或方向（例如「（climb 石頭）」「(暗巷)」），由敘述本身暗示。
+    hint = re.compile(r'[（(][^（）()\n]{1,14}[）)]')
+    for base in (O, MUD / 'd' / 'wutang'):
+        for p in base.glob('*.c'):
+            m = re.search(r'@LONG\n(.*?)\nLONG', read(p), re.S)
+            assert not (m and hint.search(m.group(1))), (p.name, hint.findall(m.group(1)))
