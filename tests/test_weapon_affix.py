@@ -54,7 +54,7 @@ def test_affix_name_uses_weapon_kind_and_one_color():
     assert 'affix_color(suffix ? suffix : prefix)' in src
     assert 'name = affix_short_name(ob, name);' in src
     assert 'set("affix_short_name", "鞭");' in (MUD / 'obj/area/obj/rod.c').read_text(encoding='utf-8')
-    assert 'set("affix_short_name", "釣竿");' in (MUD / 'custom/weapon/whip/bamboo_fishing_rod.c').read_text(encoding='utf-8')
+    assert 'set("affix_short_name", "竿");' in (MUD / 'custom/weapon/whip/bamboo_fishing_rod.c').read_text(encoding='utf-8')
 
 
 def test_wutang_guard_wields_blade():
