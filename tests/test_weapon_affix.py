@@ -49,7 +49,7 @@ def test_bamboo_fishing_rod_keeps_base_trait():
 def test_affix_name_uses_weapon_kind_and_one_color():
     src = (MUD / 'adm/daemons/enhanced.c').read_text(encoding='utf-8')
     short = dict(re.findall(r'"(\w+)": "([^"]+)",', src.split('private mapping AFFIX_BASE_SHORT = ([', 1)[1].split(']);', 1)[0]))
-    assert short['sword'] == '劍' and short['blade'] == '刀' and short['dagger'] == '匕首' and short['staff'] == '杖'
+    assert short['sword'] == '劍' and short['blade'] == '刀' and short['dagger'] == '匕' and short['staff'] == '杖'
     # 整把同色：有後綴用後綴的顏色，否則用前綴的顏色。
     assert 'affix_color(suffix ? suffix : prefix)' in src
     assert 'name = affix_short_name(ob, name);' in src

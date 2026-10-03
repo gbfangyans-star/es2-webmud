@@ -337,7 +337,7 @@ private mapping AFFIX_COLOR_CODE = ([
 private mapping AFFIX_BASE_SHORT = ([
     "sword": "劍",
     "blade": "刀",
-    "dagger": "匕首",
+    "dagger": "匕",
     "staff": "杖",
     "axe": "斧",
     "pike": "槍",
