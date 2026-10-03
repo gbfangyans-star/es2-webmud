@@ -61,3 +61,12 @@ def test_wutang_guard_wields_blade():
     s = (MUD / 'd/wutang/npc/guard.c').read_text(encoding='utf-8')
     assert 'set_skill("blade", 40);' in s
     assert 'carry_object("/obj/area/obj/blade")->wield();' in s
+
+
+def test_dagger_and_staffs_roll_affix():
+    for f, short in (('obj/area/obj/dagger.c', None), ('d/lee/obj/brow_staff.c', '棍'),
+                     ('custom/weapon/staff/long_staff.c', None), ('custom/weapon/staff/zenstaff.c', '禪杖')):
+        s = (MUD / f).read_text(encoding='utf-8')
+        assert 'if( clonep() ) ENHANCE_D->roll_affix(this_object());' in s, f
+        if short:
+            assert 'set("affix_short_name", "%s");' % short in s, f
