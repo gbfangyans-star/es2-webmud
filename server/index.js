@@ -28,7 +28,7 @@ const WS_MAX_BUFFERED_BYTES=Math.max(65536,Number(process.env.WS_MAX_BUFFERED_BY
 const HEARTBEAT_MS=Math.max(5000,Number(process.env.HEARTBEAT_MS||30000));
 const bridgeStats={startedAt:Date.now(),accepted:0,rejectedCapacity:0,tcpErrors:0,wsErrors:0,peakSessions:0};
 const adminJobs=new AdminJobState();
-const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.c':'text/plain; charset=utf-8','.h':'text/plain; charset=utf-8'};
+const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.c':'text/plain; charset=utf-8','.h':'text/plain; charset=utf-8','.woff2':'font/woff2','.txt':'text/plain; charset=utf-8','.md':'text/plain; charset=utf-8'};
 
 
 // 經過反向代理或 Tunnel（Caddy、cloudflared）轉送的請求，來源看起來也是本機，
