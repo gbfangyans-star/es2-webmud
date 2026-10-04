@@ -295,11 +295,20 @@ int make_living (object ob) {
     /* 恢復生物的基本數值 */
     if (mapp (living_stat))
         foreach (stat, max in living_stat) {
-            if (!corpse)
-                max -= max/10;
             ob->set_stat_maximum (stat, max);
             ob->set_stat_effective (stat, max);
             ob->set_stat_current (stat, max);
+        }
+
+    /* 屍體已經消失才復活：精、氣、神的最大值超過 100 的，各扣 1%（使用者核准，原本只扣氣 10%）。 */
+    if (!corpse)
+        foreach (stat in ({ "gin", "kee", "sen" })) {
+            max = ob->query_stat_maximum (stat);
+            if (max <= 100) continue;
+            max -= max / 100;
+            ob->set_stat_maximum (stat, max);
+            if (ob->query_stat_effective (stat) > max) ob->set_stat_effective (stat, max);
+            if (ob->query_stat_current (stat) > max) ob->set_stat_current (stat, max);
         }
 
     ob->set ("life_form", "living");

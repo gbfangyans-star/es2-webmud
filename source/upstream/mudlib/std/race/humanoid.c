@@ -246,20 +246,17 @@ statistic_destroyed(object ob, mapping flag)
 {
 
     if( flag["gin"] ) {
-	if( ob->query_stat_maximum("gin") > ob->query_attr("dex") )
-	    ob->advance_stat("gin", -1);
+	// 重傷（有效值歸零）不再扣最大值，只回復一點並昏迷（使用者核准的調整）。
 	ob->heal_stat("gin", ob->query_attr("dex"));
     }
 
     if( flag["kee"] ) {
-	if( ob->query_stat_maximum("kee") > ob->query_attr("con") )
-	    ob->advance_stat("kee", -1);
+	// 重傷（有效值歸零）不再扣最大值，只回復一點並昏迷（使用者核准的調整）。
 	ob->heal_stat("kee", ob->query_attr("con"));
     }
 
     if( flag["sen"] ) {
-	if( ob->query_stat_maximum("sen") > ob->query_attr("spi") )
-	    ob->advance_stat("sen", -1);
+	// 重傷（有效值歸零）不再扣最大值，只回復一點並昏迷（使用者核准的調整）。
 	ob->heal_stat("sen", ob->query_attr("spi"));
     }
 
