@@ -36,6 +36,9 @@ if [ "$(node -p 'process.versions.node.split(".")[0]' 2>/dev/null || echo 0)" -l
     sudo apt-get install -y nodejs
 fi
 
+# 遊戲顯示的時間跟著主機時區；雲端主機預設是 UTC，改成台灣時間。
+sudo timedatectl set-timezone "${TIMEZONE:-Asia/Taipei}" || true
+
 step "2/7 記憶體不足 2GB 時加開 2GB swap（編譯時需要）"
 MEM_MB=$(awk '/MemTotal/ {print int($2/1024)}' /proc/meminfo)
 if [ "$MEM_MB" -lt 2000 ] && ! swapon --show | grep -q /swapfile; then

@@ -6,7 +6,6 @@ const observer = new PlayerStateObserver();
 const term = document.querySelector('#terminal');
 const input = document.querySelector('#command');
 const conn = document.querySelector('#conn');
-const landing = document.querySelector('#landing');
 const gameApp = document.querySelector('#gameApp');
 
 let ws = null;
@@ -52,8 +51,7 @@ let hudPollStartedAt = 0;
 let hudFallbackBuffer = '';
 let pendingUserCommands = [];
 let lastReceiveAt = 0;
-let welcomeStyled = false;
-let welcomeBuffer = '';
+let welcomeStyled = true;
 let mapRefreshPending = false;
 let hudBootstrapInFlight = false;
 let hudBootstrapAttempts = 0;
@@ -359,7 +357,7 @@ function classifyLine(line){
 function compactGameOutput(s){
   // Keep deliberate paragraph spacing, but prevent MUD output from turning repeated
   // empty lines into large blank vertical gaps in the browser terminal.
-  let out=String(s).replace(/(?:\r?\n[ \t]*){3,}/g,'\n\n');
+  let out=String(s).replace(/\r?\n(?:[ \t]*\r?\n){2,}/g,'\n\n');  // 連續空行縮成一行，但保留下一行開頭的空白（置中排版用）
   // Once login is complete, the classic standalone MUD prompt is redundant because
   // WebMUD already has a command input box. Remove it regardless of current room state.
   if(welcomeStyled)out=out.replace(/(^|\r?\n)[ \t]*>[ \t]*(?=\r?\n|$)/g,'$1');
@@ -491,42 +489,6 @@ function kickHudAfterServerText(force=false){
   if(hudKickTimer)clearTimeout(hudKickTimer);
   hudKickTimer=setTimeout(()=>{hudKickTimer=null;pollHud(force);},HUD_KICK_DELAY_MS);
 }
-function renderWelcomeIfPresent(s){
-  if(welcomeStyled)return {html:'',rest:String(s),hold:false};
-  welcomeBuffer+=String(s);
-  const clean=cleanText(welcomeBuffer);
-  const connected=/\[ES2 connected\]/i.test(clean);
-  const prompt=/使用者代號|您的使用者代號|請輸入密碼/.exec(clean);
-  const statusLines=clean.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).filter(line=>
-    /已經執行了|現在時間|目前共有/.test(line)
-  ).map(line=>line.replace(/^東方故事(?:Ⅱ|II)?/, '東方故事'));
-  const statusPanel=statusLines.length?`<div class="login-server-status" aria-label="伺服器狀態">${statusLines.map(line=>`<div>${escContext(line)}</div>`).join('')}</div>`:'';
-  const card=`<div class="login-welcome login-welcome-art" aria-label="東方故事 II 天朝帝國 Celestial Empire">
-    <img src="/login_title_v3185.png" alt="東方故事 II 天朝帝國 Celestial Empire" class="login-title-art">
-    ${statusPanel}
-  </div>`;
-
-  // Browser presentation only. The canonical Neolith bytes are still received,
-  // recorded and parsed; the original pre-login title block is hidden in WebMUD.
-  // Do not depend on title spacing, ANSI, II/Ⅱ, source line, or TCP chunk boundaries.
-  if(connected && !term.querySelector('.login-welcome-art')){
-    const after=clean.replace(/^\s*\[ES2 connected\]\s*/i,'');
-    welcomeBuffer=after;
-    return {html:`<span class="sys">[ES2 connected]</span><br>${card}`,rest:'',hold:true};
-  }
-  if(prompt){
-    welcomeStyled=true;
-    const rest=clean.slice(prompt.index);
-    welcomeBuffer='';
-    return {html:term.querySelector('.login-welcome-art')?'':card,rest,hold:false};
-  }
-  if(welcomeBuffer.length>24000){
-    welcomeStyled=true;
-    const rest=welcomeBuffer;welcomeBuffer='';
-    return {html:'',rest,hold:false};
-  }
-  return {html:'',rest:'',hold:true};
-}
 function print(s,system=false){
   const stick=shouldStick();
   lastReceiveAt=Date.now();
@@ -536,9 +498,6 @@ function print(s,system=false){
   let shown=String(s);
   let prefix='';
   if(!system){
-    const welcome=renderWelcomeIfPresent(shown);
-    prefix=welcome.html||'';shown=welcome.rest;
-    if(welcome.hold)return;
     shown=consumeHudPollOutput(shown).visible;
   }
   if(prefix)term.insertAdjacentHTML('beforeend',prefix);
@@ -973,10 +932,12 @@ function send(c){
   transmitUserCommand(c,sensitive);
 }
 
-document.querySelector('#enterGame')?.addEventListener('click',async()=>{
-  started=true;landing.classList.add('leaving');setTimeout(()=>{landing.hidden=true;gameApp.hidden=false;input.focus();},180);
+// 打開網頁就直接連線（不再顯示封面）。
+async function startGame(){
+  if(started)return;
+  started=true;gameApp.hidden=false;input.focus();
   await loadGraph();connect();
-});
+}
 // Set once the box holds a "kept" command (see #form submit below) so a bare
 // Enter repeats it. A plain input.select() only survives until the next
 // click, because a mouse click on a focused field always collapses the
@@ -1067,7 +1028,7 @@ try{const f=localStorage.getItem('es2-ui-font');if(f&&fontRange){fontRange.value
 
 async function bootPreviewMode(){
   const p=new URLSearchParams(location.search);if(!p.has('preview'))return false;
-  started=true;landing.hidden=true;gameApp.hidden=false;conn.textContent='PREVIEW';
+  started=true;gameApp.hidden=false;conn.textContent='PREVIEW';
   graph={nodes:[
     {id:'/preview/main',label:'中央大街'},{id:'/preview/wuguan',label:'武館'},{id:'/preview/yaopu',label:'藥舖'},{id:'/preview/qianzhuang',label:'錢莊'},{id:'/preview/kelou',label:'客棧'},{id:'/preview/nanjie',label:'南街'},{id:'/preview/xiaoxiang',label:'小巷'},{id:'/preview/caopeng',label:'草棚'},{id:'/preview/yingdi',label:'振武軍營'}
   ],edges:[]};indexGraph();
@@ -1080,7 +1041,7 @@ async function bootPreviewMode(){
   document.querySelector('#contextChatLog').innerHTML='<div class="context-line"><b>[CHAT]</b> 測試玩家：新版介面預覽。</div>';
   return true;
 }
-bootPreviewMode();
+bootPreviewMode().then(()=>startGame());
 
 function historyMatch(cmd){return cmd.toLowerCase().startsWith(historyPrefix.toLowerCase());}
 function showHistory(value){input.value=value;repeatArmed=false;const n=value.length;input.setSelectionRange(n,n);}
