@@ -268,3 +268,7 @@ body.context-compact .center-stack{grid-template-rows:minmax(0,1fr) 120px}body.c
 #scoreHud .hud-need{display:flex;gap:6px;white-space:nowrap}
 #scoreHud .hud-cell.gone{visibility:hidden}
 #scoreHud .hud-hp .hud-cell:not(.filled){background:#532020;border-color:#7a3030}
+/* 食物／飲水／疲勞：中文字與等寬數字字型不同，以基線對齊才會在同一條線上。 */
+#scoreHud .hud-need{align-items:baseline;line-height:1.4}
+#scoreHud .hud-need .hud-label,#scoreHud .hud-need .hud-num{font-size:13px;line-height:1.4}
+#scoreHud .hud-vital{grid-template-columns:2.4em 9ch 1fr}
