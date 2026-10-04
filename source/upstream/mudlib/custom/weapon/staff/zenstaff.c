@@ -12,10 +12,13 @@ void create()
 
     if( !clonep() ) {
         set("wield_as", "twohanded staff");
+        set("affix_short_name", "禪杖");
         set("unit", "把");
         set("value", 60000);
         set("long",
             "一把青銅鑄成的禪杖，拿在手中相當沉重。\n");
     }
     setup();
+    // 武器附加屬性：每把新產生的武器擲一次前綴／後綴（adm/daemons/enhanced.c）。
+    if( clonep() ) ENHANCE_D->roll_affix(this_object());
 }

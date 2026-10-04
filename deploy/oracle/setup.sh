@@ -56,7 +56,9 @@ else
     git clone --branch "$BRANCH" "$REPO_URL" "$APP_DIR"
 fi
 
-step "4/7 編譯 Neolith（第一次約 5～15 分鐘）"
+step "4/7 編譯 Neolith（第一次約 5～15 分鐘，1GB 主機約 20～30 分鐘）"
+# 記憶體不足 2GB 時一次只編譯一個檔案，避免記憶體用光而中斷。
+[ "$MEM_MB" -lt 2000 ] && export CMAKE_BUILD_PARALLEL_LEVEL="${CMAKE_BUILD_PARALLEL_LEVEL:-1}"
 cd "$APP_DIR/source/upstream/neolith"
 cmake --preset linux
 cmake --build --preset pr-linux --target neolith

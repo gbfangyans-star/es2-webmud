@@ -31,7 +31,11 @@ const adminJobs=new AdminJobState();
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.c':'text/plain; charset=utf-8','.h':'text/plain; charset=utf-8'};
 
 
+// 經過反向代理或 Tunnel（Caddy、cloudflared）轉送的請求，來源看起來也是本機，
+// 但會帶轉送標頭；這種請求一律視為外部連線，管理功能不開放。
+const PROXY_HEADERS=['x-forwarded-for','forwarded','x-real-ip','cf-connecting-ip','cf-ray'];
 function isLocal(req){
+  if(PROXY_HEADERS.some(h=>req.headers[h]!==undefined))return false;
   return ['127.0.0.1','::1','::ffff:127.0.0.1'].includes(req.socket.remoteAddress||'');
 }
 function runProcess(cmd,args,{cwd=ROOT,timeout=120000}={}){

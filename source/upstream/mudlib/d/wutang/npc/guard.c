@@ -16,6 +16,7 @@ void create()
 LONG
     );
     set_skill("unarmed", 40);
+    set_skill("blade", 40);
     set_skill("dodge", 40);
     set_skill("parry", 40);
     setup();
@@ -29,4 +30,5 @@ LONG
     set_stat_effective("sen", 23);
     set_stat_current("sen", 23);
     carry_object("/custom/armor/cloth/cowhide_vest")->wear();
+    carry_object("/obj/area/obj/blade")->wield();
 }

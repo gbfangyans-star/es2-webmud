@@ -12,6 +12,7 @@ void create()
 
     if( !clonep() ) {
         set("wield_as", ({ "blunt" }));
+        set("affix_short_name", "鞭");
         set("unit", "把");
         set("value", 5200);
         set("rigidity", 25);

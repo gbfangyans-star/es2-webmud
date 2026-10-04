@@ -11,6 +11,7 @@ void create()
 
     if( !clonep() ) {
         set("wield_as", "whip");
+        set("affix_short_name", "竿");
         set("unit", "支");
         set("value", 2000);
         set("long",
