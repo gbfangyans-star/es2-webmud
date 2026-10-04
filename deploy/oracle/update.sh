@@ -23,6 +23,9 @@ NEW=$(git -C "$APP_DIR" rev-parse HEAD)
 
 echo "==== 3/4 Neolith 原始碼有變動才重新編譯 ===="
 if [ "$OLD" != "$NEW" ] && git -C "$APP_DIR" diff --name-only "$OLD" "$NEW" | grep -q '^source/upstream/neolith/'; then
+    # 記憶體不足 2GB 時一次只編譯一個檔案，避免記憶體用光而中斷。
+    MEM_MB=$(awk '/MemTotal/ {print int($2/1024)}' /proc/meminfo)
+    [ "$MEM_MB" -lt 2000 ] && export CMAKE_BUILD_PARALLEL_LEVEL="${CMAKE_BUILD_PARALLEL_LEVEL:-1}"
     cd "$APP_DIR/source/upstream/neolith"
     cmake --preset linux
     cmake --build --preset pr-linux --target neolith

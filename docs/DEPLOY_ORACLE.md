@@ -22,9 +22,15 @@
    - 一定要 24.04，22.04 的 CMake 版本太舊，編譯會失敗。
 4. **Shape**：按「Change shape」：
    - 優先選 **Ampere** → **VM.Standard.A1.Flex**，設 **2 OCPU、12 GB 記憶體**（標示 Always Free-eligible）。
-   - 如果顯示容量不足（Out of capacity），可以晚點再試，或改選 **AMD** → **VM.Standard.E2.1.Micro**（1 GB 記憶體，也能跑，安裝腳本會自動加開 swap）。
+   - 如果按 Create 時出現 **Out of capacity**，先試著把 OCPU 降成 1（記憶體 6 GB）；還是不行就晚點再試，或改選
+     **Specialty and previous generation** → **VM.Standard.E2.1.Micro**（AMD，1 GB 記憶體，也能跑；安裝腳本會自動加開 swap，
+     並改成一次只編譯一個檔案，編譯約 20～30 分鐘）。
 5. **Networking**：用預設的「Create new virtual cloud network」和「Create new public subnet」，並確認
    「**Assign a public IPv4 address**」是勾選的。
+   - 新版介面是分步驟的（Basic information → Security → Networking → Storage → Review），Security、Storage 維持預設即可。
+   - 如果 Public IPv4 的開關按不了（提示 You must select a public subnet），先另開分頁：**Networking → Virtual cloud networks →
+     Start VCN Wizard → Create VCN with Internet Connectivity**，名稱填 `es2-vcn`、其他預設建立；再回來選
+     「Select existing virtual cloud network」→ `es2-vcn`，子網路選名稱有 public 的那個。
 6. **Add SSH keys**：選「**Generate a key pair for me**」，按「**Save private key**」把私鑰存到電腦上
    （例如 `C:\Users\你的名字\.ssh\es2.key`）。**這個檔案遺失就登入不了主機，請妥善保存。**
 7. 按「**Create**」。等狀態變成綠色的 **Running**，記下頁面上的 **Public IP address**。
