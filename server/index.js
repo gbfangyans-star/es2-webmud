@@ -199,6 +199,8 @@ const server=http.createServer(async(req,res)=>{
       return hit?send(res,200,JSON.stringify(hit,null,2),'application/json; charset=utf-8'):send(res,404,'not found');
     }
     if(u.pathname==='/api/source'&&req.method==='GET'){
+      // 原始碼與 mudlib/data（玩家存檔，含密碼雜湊和 email）只給主機本機的管理頁讀取。
+      if(!isLocal(req))return send(res,403,'Source viewing is localhost-only');
       const rel=u.searchParams.get('path')||'';
       if(!rel.startsWith('mudlib/'))return send(res,400,'Only mudlib/* is editable');
       return send(res,200,await fs.readFile(safeWithin(UPSTREAM,rel),'utf8'),'text/plain; charset=utf-8');
