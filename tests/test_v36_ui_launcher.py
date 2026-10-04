@@ -14,7 +14,7 @@ def test_hud_poll_is_silent_and_colored():
     assert "hudPollInFlight" in js
     assert "return {visible:'',done:false}" in js
     assert "consumeHudPollOutput" in js
-    assert "const colors={hp:'#ef6262'" in js
+    assert "const colors={hp:'#2f7a4a'" in js  # 右欄角色狀態的顏色跟 score 一致
     assert "hud-shen" not in js  # class is generated dynamically by key, not hard-coded markup
     css=text("web/styles.css")
     assert "--hud-color" in css

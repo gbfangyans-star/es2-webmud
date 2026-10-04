@@ -272,3 +272,14 @@ body.context-compact .center-stack{grid-template-rows:minmax(0,1fr) 120px}body.c
 #scoreHud .hud-need{align-items:baseline;line-height:1.4}
 #scoreHud .hud-need .hud-label,#scoreHud .hud-need .hud-num{font-size:13px;line-height:1.4}
 #scoreHud .hud-vital{grid-template-columns:2.4em 9ch 1fr}
+
+/* 終端機字型：英文／數字／符號用 ES2 Mono（更紗黑體，半形 0.5em），中文用 Noto Sans TC（全形 1em），
+   一個中文字剛好等於兩個英文字，who、score 等排版才會對齊。中文字型沒載入時退回細明體或其他中文字型，
+   中文仍是 1em 寬，對齊不受影響。 */
+@font-face{font-family:"ES2 Mono";src:url("/fonts/es2-mono-regular.woff2") format("woff2");font-weight:400;font-display:swap;unicode-range:U+0020-007E,U+00A0-024F,U+2000-206F,U+2100-21FF,U+2500-26FF}
+@font-face{font-family:"ES2 Mono";src:url("/fonts/es2-mono-bold.woff2") format("woff2");font-weight:700;font-display:swap;unicode-range:U+0020-007E,U+00A0-024F,U+2000-206F,U+2100-21FF,U+2500-26FF}
+:root{--term-font:"ES2 Mono","Noto Sans TC","MingLiU","Noto Sans Mono CJK TC","Microsoft JhengHei",monospace}
+#terminal{font-family:var(--term-font);font-variant-ligatures:none}
+#scoreHud .hud-num{font-family:var(--term-font)}
+/* score 的進度格：每格剛好一個中文字寬（兩個英文字），跟文字格線對齊。 */
+#terminal .stat-cell{width:calc(1em - 2px);margin-right:2px}
