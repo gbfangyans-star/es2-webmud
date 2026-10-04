@@ -130,3 +130,16 @@ bash ~/es2-webmud/deploy/oracle/update.sh
    可以把 Security List 的 8080 規則刪掉。
 
 > 網頁橋接程式會把帶有轉送標頭（Caddy、Cloudflare Tunnel 都會加）的請求視為外部連線，所以管理功能不會因為加了 HTTPS 而對外開放。
+
+## 十、新內容的上線流程
+
+1. Claude 在開發分支 `claude/epic-ramanujan-wuyis3` 上修改並推送。
+2. 家裡電腦（WSL）先測試：
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/gbfangyans-star/es2-webmud/claude/epic-ramanujan-wuyis3/deploy/local/try_branch.sh | bash
+   ```
+   打開 `http://127.0.0.1:8080/` 試玩。有問題就回報 Claude 修改，修好後再跑一次同一行。
+3. 確認沒問題後，用合併連結開 PR 並合併進 main：
+   <https://github.com/wolfer168/es2-webmud/compare/main...gbfangyans-star:es2-webmud:claude/epic-ramanujan-wuyis3>
+4. 登入雲端主機執行 `bash ~/es2-webmud/deploy/oracle/update.sh`。
+5. 家裡電腦想切回正式版：把第 2 步那行最後的 `| bash` 改成 `| bash -s main`。
