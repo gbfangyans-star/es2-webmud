@@ -19,10 +19,9 @@ def test_logind_allows_lowercase_letters_and_digits():
  assert "id[i]>='0'" in s and "id[i]<='9'" in s
  assert '英文字母或 0 到 9 的數字' in s
 
-def test_landing_click_target_matches_baked_button():
- s=(R/'web/styles.css').read_text(encoding='utf-8')
- assert 'aspect-ratio:1312/1199' in s
- m=re.search(r'\.landing-enter-target\{[^}]*left:([0-9.]+)%;top:([0-9.]+)%[^}]*width:([0-9.]+)%;height:([0-9.]+)%',s)
- assert m
- left,top,width,height=map(float,m.groups())
- assert 48.5<left<50.5 and 63.5<top<66.0 and width>=29 and height>=8
+def test_login_screen_lines():
+ s=(R/'source/upstream/mudlib/adm/daemons/logind.c').read_text(encoding='utf-8')
+ assert '現在時間 %s, 東方故事Ⅱ已經執行了%s。' in s
+ assert '從 %s 以來累計上線人次：%d 人次。' in s
+ assert '如果您是第一次使用，請輸入您喜歡的使用者代號以註冊角色' in s
+ assert 'write ("您的使用者代號：");' in s

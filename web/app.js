@@ -6,7 +6,6 @@ const observer = new PlayerStateObserver();
 const term = document.querySelector('#terminal');
 const input = document.querySelector('#command');
 const conn = document.querySelector('#conn');
-const landing = document.querySelector('#landing');
 const gameApp = document.querySelector('#gameApp');
 
 let ws = null;
@@ -52,8 +51,7 @@ let hudPollStartedAt = 0;
 let hudFallbackBuffer = '';
 let pendingUserCommands = [];
 let lastReceiveAt = 0;
-let welcomeStyled = false;
-let welcomeBuffer = '';
+let welcomeStyled = true;
 let mapRefreshPending = false;
 let hudBootstrapInFlight = false;
 let hudBootstrapAttempts = 0;
@@ -244,10 +242,12 @@ function parseWebHud(raw){
     if(a[1]==='SELF'){
       // The silent LPC HUD feed is also the browser side-panel source, so the
       // role status no longer waits for the player to type hp/score manually.
-      observer.state.vitals.hp={current:side.hp,limit:side.hpmax,limitKind:'effective'};
-      observer.state.vitals.jing={current:side.gin,limit:side.ginmax,limitKind:'effective'};
-      observer.state.vitals.qi={current:side.kee,limit:side.keemax,limitKind:'effective'};
-      observer.state.vitals.shen={current:side.sen,limit:side.senmax,limitKind:'effective'};
+      // a[19..22] 是最大值（score 的分母）；舊版伺服器沒有這四欄時退回用有效上限。
+      const mx=i=>a.length>=23?+a[i]:0;
+      observer.state.vitals.hp={current:side.hp,limit:mx(19)||side.hpmax,effective:side.hpmax,limitKind:'maximum'};
+      observer.state.vitals.jing={current:side.gin,limit:mx(20)||side.ginmax,effective:side.ginmax,limitKind:'maximum'};
+      observer.state.vitals.qi={current:side.kee,limit:mx(21)||side.keemax,effective:side.keemax,limitKind:'maximum'};
+      observer.state.vitals.shen={current:side.sen,limit:mx(22)||side.senmax,effective:side.senmax,limitKind:'maximum'};
       if(a.length>=19){
         observer.state.score.level=+a[12];
         observer.state.vitals.food={current:+a[13],limit:+a[14],limitKind:'maximum'};
@@ -359,7 +359,7 @@ function classifyLine(line){
 function compactGameOutput(s){
   // Keep deliberate paragraph spacing, but prevent MUD output from turning repeated
   // empty lines into large blank vertical gaps in the browser terminal.
-  let out=String(s).replace(/(?:\r?\n[ \t]*){3,}/g,'\n\n');
+  let out=String(s).replace(/\r?\n(?:[ \t]*\r?\n){2,}/g,'\n\n');  // 連續空行縮成一行，但保留下一行開頭的空白（置中排版用）
   // Once login is complete, the classic standalone MUD prompt is redundant because
   // WebMUD already has a command input box. Remove it regardless of current room state.
   if(welcomeStyled)out=out.replace(/(^|\r?\n)[ \t]*>[ \t]*(?=\r?\n|$)/g,'$1');
@@ -491,42 +491,6 @@ function kickHudAfterServerText(force=false){
   if(hudKickTimer)clearTimeout(hudKickTimer);
   hudKickTimer=setTimeout(()=>{hudKickTimer=null;pollHud(force);},HUD_KICK_DELAY_MS);
 }
-function renderWelcomeIfPresent(s){
-  if(welcomeStyled)return {html:'',rest:String(s),hold:false};
-  welcomeBuffer+=String(s);
-  const clean=cleanText(welcomeBuffer);
-  const connected=/\[ES2 connected\]/i.test(clean);
-  const prompt=/使用者代號|您的使用者代號|請輸入密碼/.exec(clean);
-  const statusLines=clean.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).filter(line=>
-    /已經執行了|現在時間|目前共有/.test(line)
-  ).map(line=>line.replace(/^東方故事(?:Ⅱ|II)?/, '東方故事'));
-  const statusPanel=statusLines.length?`<div class="login-server-status" aria-label="伺服器狀態">${statusLines.map(line=>`<div>${escContext(line)}</div>`).join('')}</div>`:'';
-  const card=`<div class="login-welcome login-welcome-art" aria-label="東方故事 II 天朝帝國 Celestial Empire">
-    <img src="/login_title_v3185.png" alt="東方故事 II 天朝帝國 Celestial Empire" class="login-title-art">
-    ${statusPanel}
-  </div>`;
-
-  // Browser presentation only. The canonical Neolith bytes are still received,
-  // recorded and parsed; the original pre-login title block is hidden in WebMUD.
-  // Do not depend on title spacing, ANSI, II/Ⅱ, source line, or TCP chunk boundaries.
-  if(connected && !term.querySelector('.login-welcome-art')){
-    const after=clean.replace(/^\s*\[ES2 connected\]\s*/i,'');
-    welcomeBuffer=after;
-    return {html:`<span class="sys">[ES2 connected]</span><br>${card}`,rest:'',hold:true};
-  }
-  if(prompt){
-    welcomeStyled=true;
-    const rest=clean.slice(prompt.index);
-    welcomeBuffer='';
-    return {html:term.querySelector('.login-welcome-art')?'':card,rest,hold:false};
-  }
-  if(welcomeBuffer.length>24000){
-    welcomeStyled=true;
-    const rest=welcomeBuffer;welcomeBuffer='';
-    return {html:'',rest,hold:false};
-  }
-  return {html:'',rest:'',hold:true};
-}
 function print(s,system=false){
   const stick=shouldStick();
   lastReceiveAt=Date.now();
@@ -536,9 +500,8 @@ function print(s,system=false){
   let shown=String(s);
   let prefix='';
   if(!system){
-    const welcome=renderWelcomeIfPresent(shown);
-    prefix=welcome.html||'';shown=welcome.rest;
-    if(welcome.hold)return;
+    // 橋接程式連上遊戲時送出的「[ES2 connected]」只給工具判斷用，畫面上不顯示。
+    shown=shown.replace(/^[\r\n]*\[ES2 connected\][ \t]*\r?\n?/,'');
     shown=consumeHudPollOutput(shown).visible;
   }
   if(prefix)term.insertAdjacentHTML('beforeend',prefix);
@@ -563,24 +526,38 @@ function print(s,system=false){
 function parsePairFromState(key){
   // Silent webhud is the live source. Manual score output is only a fallback, never
   // allowed to override newer background vitals with stale values.
-  const live=observer.state.vitals?.[key];if(live)return {current:live.current,max:live.limit};
-  const detail=observer.state.scoreDetail?.stats?.[key];if(detail)return {current:detail.current,max:detail.maximum};
+  const live=observer.state.vitals?.[key];if(live)return {current:live.current,max:live.limit,eff:live.effective??live.limit};
+  const detail=observer.state.scoreDetail?.stats?.[key];if(detail)return {current:detail.current,max:detail.maximum,eff:detail.effective??detail.maximum};
   return null;
 }
 function renderScoreHUD(){ renderObserved(); }
 
 function renderObserved(){
+  // 版面跟 score 一致：形體／精／氣／神是「名稱 數字 方格」一行；食物／飲水／疲勞只顯示文字，排在最下面一行。
   const labels={hp:'形體',jing:'精',qi:'氣',shen:'神',food:'食物',water:'飲水',fatigue:'疲勞'};
-  const rows=[];
-  for(const key of ['hp','jing','qi','shen','food','water','fatigue']){
+  const colors={hp:'#2f7a4a',jing:'#efd06b',qi:'#ff7474',shen:'#76a9ff'};
+  const CELLS=15;
+  const num=v=>`${String(v.current).padStart(3)}/${String(v.max).padStart(4)}`;
+  const vitals=[],needs=[];
+  for(const key of ['hp','jing','qi','shen']){
     const v=parsePairFromState(key);if(!v)continue;
     const pct=v.max>0?Math.max(0,Math.min(100,Math.round(v.current*100/v.max))):0;
-    const colors={hp:'#ef6262',jing:'#70c7ff',qi:'#70d99b',shen:'#b89cff',food:'#e9a45f',water:'#68b9e8',fatigue:'#8b9690'};
-    const filled=Math.max(0,Math.min(10,Math.round(pct/10)));
-    const segments=Array.from({length:10},(_,i)=>`<i class="hud-segment${i<filled?' filled':''}" aria-hidden="true"></i>`).join('');
-    rows.push(`<div class="hudstat hud-${key}" style="--hud-color:${colors[key]}"><div><span>${labels[key]}</span><b>${v.current}/${v.max}</b></div><div class="hud-segments" role="img" aria-label="${labels[key]} ${pct}%">${segments}</div></div>`);
+    // 跟 score 的 tribar 一樣：目前值是實心格，目前值到有效上限是空心格（形體為暗紅），有效上限以上不畫。
+    const clamp=n=>Math.max(0,Math.min(CELLS,n));
+    const filled=v.max>0?clamp(Math.floor(v.current*CELLS/v.max)):0;
+    const effCells=v.max>0?clamp(Math.floor((v.eff??v.max)*CELLS/v.max)):0;
+    const cells=Array.from({length:CELLS},(_,i)=>`<i class="hud-cell${i<filled?' filled':i<effCells?'':' gone'}" aria-hidden="true"></i>`).join('');
+    vitals.push(`<div class="hud-vital hud-${key}" style="--hud-color:${colors[key]}"><span class="hud-label">${labels[key]}</span><b class="hud-num">${num(v)}</b><div class="hud-cells" role="img" aria-label="${labels[key]} ${pct}%">${cells}</div></div>`);
   }
-  const hud=document.querySelector('#scoreHud');if(hud&&rows.length){hud.innerHTML=rows.join('');hud.classList.remove('muted');}
+  for(const key of ['food','water','fatigue']){
+    const v=parsePairFromState(key);if(!v)continue;
+    needs.push(`<span class="hud-need hud-${key}"><span class="hud-label">${labels[key]}</span><b class="hud-num">${num(v)}</b></span>`);
+  }
+  const hud=document.querySelector('#scoreHud');
+  if(hud&&(vitals.length||needs.length)){
+    hud.innerHTML=`<div class="hud-vitals">${vitals.join('')}</div>${needs.length?`<div class="hud-needs">${needs.join('')}</div>`:''}`;
+    hud.classList.remove('muted');
+  }
   const level=observer.state.scoreDetail?.level ?? observer.state.score?.level;
   const lev=document.querySelector('#levelHud');if(lev)lev.textContent=level!==undefined?`Lv.${level}`:'Lv.--';
 }
@@ -973,10 +950,12 @@ function send(c){
   transmitUserCommand(c,sensitive);
 }
 
-document.querySelector('#enterGame')?.addEventListener('click',async()=>{
-  started=true;landing.classList.add('leaving');setTimeout(()=>{landing.hidden=true;gameApp.hidden=false;input.focus();},180);
+// 打開網頁就直接連線（不再顯示封面）。
+async function startGame(){
+  if(started)return;
+  started=true;gameApp.hidden=false;input.focus();
   await loadGraph();connect();
-});
+}
 // Set once the box holds a "kept" command (see #form submit below) so a bare
 // Enter repeats it. A plain input.select() only survives until the next
 // click, because a mouse click on a focused field always collapses the
@@ -1067,7 +1046,7 @@ try{const f=localStorage.getItem('es2-ui-font');if(f&&fontRange){fontRange.value
 
 async function bootPreviewMode(){
   const p=new URLSearchParams(location.search);if(!p.has('preview'))return false;
-  started=true;landing.hidden=true;gameApp.hidden=false;conn.textContent='PREVIEW';
+  started=true;gameApp.hidden=false;conn.textContent='PREVIEW';
   graph={nodes:[
     {id:'/preview/main',label:'中央大街'},{id:'/preview/wuguan',label:'武館'},{id:'/preview/yaopu',label:'藥舖'},{id:'/preview/qianzhuang',label:'錢莊'},{id:'/preview/kelou',label:'客棧'},{id:'/preview/nanjie',label:'南街'},{id:'/preview/xiaoxiang',label:'小巷'},{id:'/preview/caopeng',label:'草棚'},{id:'/preview/yingdi',label:'振武軍營'}
   ],edges:[]};indexGraph();
@@ -1080,7 +1059,7 @@ async function bootPreviewMode(){
   document.querySelector('#contextChatLog').innerHTML='<div class="context-line"><b>[CHAT]</b> 測試玩家：新版介面預覽。</div>';
   return true;
 }
-bootPreviewMode();
+bootPreviewMode().then(()=>startGame());
 
 function historyMatch(cmd){return cmd.toLowerCase().startsWith(historyPrefix.toLowerCase());}
 function showHistory(value){input.value=value;repeatArmed=false;const n=value.length;input.setSelectionRange(n,n);}
