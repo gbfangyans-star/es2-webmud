@@ -498,6 +498,8 @@ function print(s,system=false){
   let shown=String(s);
   let prefix='';
   if(!system){
+    // 橋接程式連上遊戲時送出的「[ES2 connected]」只給工具判斷用，畫面上不顯示。
+    shown=shown.replace(/^[\r\n]*\[ES2 connected\][ \t]*\r?\n?/,'');
     shown=consumeHudPollOutput(shown).visible;
   }
   if(prefix)term.insertAdjacentHTML('beforeend',prefix);

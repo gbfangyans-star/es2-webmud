@@ -26,7 +26,7 @@ def test_welcome_is_presentation_styled_only():
     welcome=text("source/upstream/mudlib/adm/etc/welcome")
     assert "東 方 故 事 Ⅱ" in welcome
     assert "github.com/taedlar/es2_mudlib" in welcome
-    assert "fangyan<gbfangyans@gmail.com>" in welcome
+    assert "fangyan <gbfangyans@gmail.com>" in welcome
 
 def test_launchers_are_separated():
     start=text("START_ES2.bat", "ascii")
