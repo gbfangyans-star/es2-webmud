@@ -242,10 +242,12 @@ function parseWebHud(raw){
     if(a[1]==='SELF'){
       // The silent LPC HUD feed is also the browser side-panel source, so the
       // role status no longer waits for the player to type hp/score manually.
-      observer.state.vitals.hp={current:side.hp,limit:side.hpmax,limitKind:'effective'};
-      observer.state.vitals.jing={current:side.gin,limit:side.ginmax,limitKind:'effective'};
-      observer.state.vitals.qi={current:side.kee,limit:side.keemax,limitKind:'effective'};
-      observer.state.vitals.shen={current:side.sen,limit:side.senmax,limitKind:'effective'};
+      // a[19..22] 是最大值（score 的分母）；舊版伺服器沒有這四欄時退回用有效上限。
+      const mx=i=>a.length>=23?+a[i]:0;
+      observer.state.vitals.hp={current:side.hp,limit:mx(19)||side.hpmax,effective:side.hpmax,limitKind:'maximum'};
+      observer.state.vitals.jing={current:side.gin,limit:mx(20)||side.ginmax,effective:side.ginmax,limitKind:'maximum'};
+      observer.state.vitals.qi={current:side.kee,limit:mx(21)||side.keemax,effective:side.keemax,limitKind:'maximum'};
+      observer.state.vitals.shen={current:side.sen,limit:mx(22)||side.senmax,effective:side.senmax,limitKind:'maximum'};
       if(a.length>=19){
         observer.state.score.level=+a[12];
         observer.state.vitals.food={current:+a[13],limit:+a[14],limitKind:'maximum'};
@@ -524,24 +526,38 @@ function print(s,system=false){
 function parsePairFromState(key){
   // Silent webhud is the live source. Manual score output is only a fallback, never
   // allowed to override newer background vitals with stale values.
-  const live=observer.state.vitals?.[key];if(live)return {current:live.current,max:live.limit};
-  const detail=observer.state.scoreDetail?.stats?.[key];if(detail)return {current:detail.current,max:detail.maximum};
+  const live=observer.state.vitals?.[key];if(live)return {current:live.current,max:live.limit,eff:live.effective??live.limit};
+  const detail=observer.state.scoreDetail?.stats?.[key];if(detail)return {current:detail.current,max:detail.maximum,eff:detail.effective??detail.maximum};
   return null;
 }
 function renderScoreHUD(){ renderObserved(); }
 
 function renderObserved(){
+  // 版面跟 score 一致：形體／精／氣／神是「名稱 數字 方格」一行；食物／飲水／疲勞只顯示文字，排在最下面一行。
   const labels={hp:'形體',jing:'精',qi:'氣',shen:'神',food:'食物',water:'飲水',fatigue:'疲勞'};
-  const rows=[];
-  for(const key of ['hp','jing','qi','shen','food','water','fatigue']){
+  const colors={hp:'#2f7a4a',jing:'#efd06b',qi:'#ff7474',shen:'#76a9ff'};
+  const CELLS=15;
+  const num=v=>`${String(v.current).padStart(3)}/${String(v.max).padStart(4)}`;
+  const vitals=[],needs=[];
+  for(const key of ['hp','jing','qi','shen']){
     const v=parsePairFromState(key);if(!v)continue;
     const pct=v.max>0?Math.max(0,Math.min(100,Math.round(v.current*100/v.max))):0;
-    const colors={hp:'#ef6262',jing:'#70c7ff',qi:'#70d99b',shen:'#b89cff',food:'#e9a45f',water:'#68b9e8',fatigue:'#8b9690'};
-    const filled=Math.max(0,Math.min(10,Math.round(pct/10)));
-    const segments=Array.from({length:10},(_,i)=>`<i class="hud-segment${i<filled?' filled':''}" aria-hidden="true"></i>`).join('');
-    rows.push(`<div class="hudstat hud-${key}" style="--hud-color:${colors[key]}"><div><span>${labels[key]}</span><b>${v.current}/${v.max}</b></div><div class="hud-segments" role="img" aria-label="${labels[key]} ${pct}%">${segments}</div></div>`);
+    // 跟 score 的 tribar 一樣：目前值是實心格，目前值到有效上限是空心格（形體為暗紅），有效上限以上不畫。
+    const clamp=n=>Math.max(0,Math.min(CELLS,n));
+    const filled=v.max>0?clamp(Math.floor(v.current*CELLS/v.max)):0;
+    const effCells=v.max>0?clamp(Math.floor((v.eff??v.max)*CELLS/v.max)):0;
+    const cells=Array.from({length:CELLS},(_,i)=>`<i class="hud-cell${i<filled?' filled':i<effCells?'':' gone'}" aria-hidden="true"></i>`).join('');
+    vitals.push(`<div class="hud-vital hud-${key}" style="--hud-color:${colors[key]}"><span class="hud-label">${labels[key]}</span><b class="hud-num">${num(v)}</b><div class="hud-cells" role="img" aria-label="${labels[key]} ${pct}%">${cells}</div></div>`);
   }
-  const hud=document.querySelector('#scoreHud');if(hud&&rows.length){hud.innerHTML=rows.join('');hud.classList.remove('muted');}
+  for(const key of ['food','water','fatigue']){
+    const v=parsePairFromState(key);if(!v)continue;
+    needs.push(`<span class="hud-need hud-${key}"><span class="hud-label">${labels[key]}</span><b class="hud-num">${num(v)}</b></span>`);
+  }
+  const hud=document.querySelector('#scoreHud');
+  if(hud&&(vitals.length||needs.length)){
+    hud.innerHTML=`<div class="hud-vitals">${vitals.join('')}</div>${needs.length?`<div class="hud-needs">${needs.join('')}</div>`:''}`;
+    hud.classList.remove('muted');
+  }
   const level=observer.state.scoreDetail?.level ?? observer.state.score?.level;
   const lev=document.querySelector('#levelHud');if(lev)lev.textContent=level!==undefined?`Lv.${level}`:'Lv.--';
 }

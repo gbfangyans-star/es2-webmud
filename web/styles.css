@@ -253,3 +253,18 @@ body.context-compact .center-stack{grid-template-rows:minmax(0,1fr) 120px}body.c
 .map-node-current .map-node-label-inside{fill:#ffd95f!important;font-weight:900!important}
 .map-node-special .map-node-label-inside{fill:#8ce1c1!important}
 .map-node-boundary .map-node-label-inside{fill:#c792ea!important}
+
+/* 角色狀態：版面跟 score 一致。名稱與數字在左、正方形格子在右；食物／飲水／疲勞只顯示文字放在最下面一行，整體寬度以這一行為準。 */
+#scoreHud.hud-grid{display:block}
+#scoreHud .hud-vitals{display:flex;flex-direction:column;gap:6px}
+#scoreHud .hud-vital{display:grid;grid-template-columns:2.4em 8.5ch 1fr;align-items:center;column-gap:6px;font-size:13px}
+#scoreHud .hud-label{color:#e5ece7;white-space:nowrap}
+#scoreHud .hud-num{color:#65df8b;font-weight:500;font-family:ui-monospace,Consolas,"Courier New",monospace;white-space:pre;font-variant-numeric:tabular-nums}
+#scoreHud .hud-cells{display:grid;grid-template-columns:repeat(15,1fr);gap:2px;min-width:0}
+#scoreHud .hud-cell{display:block;aspect-ratio:1/1;border:1px solid color-mix(in srgb,var(--hud-color) 60%,#203129);background:#101a16;box-sizing:border-box}
+#scoreHud .hud-cell.filled{background:var(--hud-color);border-color:var(--hud-color)}
+#scoreHud .hud-hp .hud-cell{border-color:#3f8f5c}
+#scoreHud .hud-needs{display:flex;justify-content:space-between;gap:8px;margin-top:10px;font-size:13px}
+#scoreHud .hud-need{display:flex;gap:6px;white-space:nowrap}
+#scoreHud .hud-cell.gone{visibility:hidden}
+#scoreHud .hud-hp .hud-cell:not(.filled){background:#532020;border-color:#7a3030}
