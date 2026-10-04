@@ -591,7 +591,7 @@ def write_outputs(rooms, npcs):
     js = {"rooms": [], "npcs": []}
     for r in rooms.values():
         js["rooms"].append({"area": r["area"], "area_basis": r["area_basis"], "short": r["short"],
-                            "long": r["long"], "exits": r["exits"],
+                            "long": r["long"], "extra": r["extra"], "exits": r["exits"],
                             "occupants": [o["display"] for o in r["occupants"].values()],
                             "sources": list(r["sources"].values())})
     for e in npcs.values():
