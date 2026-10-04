@@ -114,4 +114,19 @@ bash ~/es2-webmud/deploy/oracle/update.sh
 - **公開範圍**：網址任何人都能連。網頁橋接程式的管理功能（重建目錄、還原備份、編輯原始碼）只接受主機本機的連線，外面連不到。
 - **備份**：玩家存檔在 `~/es2-webmud/source/upstream/mudlib/data/`。除了更新時的自動備份，偶爾也可以用 `scp` 下載 `~/es2-backups/` 到自己電腦。
 - **閒置回收**：Oracle 可能回收長期幾乎沒有使用的免費主機。MUD 一直在跑通常不會被判定閒置，但不是絕對保證，所以備份很重要。
-- **網址與 HTTPS**：目前是 `http://IP:8080`。之後想用自己的網域或 HTTPS，可以再加 Caddy 或 Cloudflare，需要時再處理。
+- **網址與 HTTPS**：見下一節。
+
+## 九、改成 HTTPS
+
+1. Oracle 主控台 → 子網路的 **Security List** → **Add Ingress Rules**，新增兩條：Source `0.0.0.0/0`、TCP、Destination Port `80`；
+   另一條一樣但 Port 填 `443`。（80 是申請憑證時驗證用的，不能省。）
+2. 在主機上執行：
+   ```bash
+   bash ~/es2-webmud/deploy/oracle/https.sh
+   ```
+   沒有網域時會用 `sslip.io` 這個免費服務，網址長得像 `https://161-118-234-100.sslip.io/`，只要主機 IP 不變就一直有效。
+   之後買了自己的網域，把 DNS 的 A 記錄指到主機 IP，再執行 `bash ~/es2-webmud/deploy/oracle/https.sh 你的網域` 即可。
+3. 憑證由 Caddy 自動申請、自動續約，不用管。原本的 `http://IP:8080/` 仍可使用；確定大家都改用 HTTPS 後，
+   可以把 Security List 的 8080 規則刪掉。
+
+> 網頁橋接程式會把帶有轉送標頭（Caddy、Cloudflare Tunnel 都會加）的請求視為外部連線，所以管理功能不會因為加了 HTTPS 而對外開放。
