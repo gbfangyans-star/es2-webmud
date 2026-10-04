@@ -9,6 +9,7 @@ void create()
 {
     object water;
 
+    seteuid(getuid());   // 產生時要放一井清水，需要有效 UID 才能 new()
     set_name("水井", ({ "well" }));
     set_max_encumbrance(180000);
     set("long", "一口普通的水井，井口以石塊砌成，井中有清水，可供村民取用。\n");
