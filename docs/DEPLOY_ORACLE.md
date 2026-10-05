@@ -22,9 +22,15 @@
    - 一定要 24.04，22.04 的 CMake 版本太舊，編譯會失敗。
 4. **Shape**：按「Change shape」：
    - 優先選 **Ampere** → **VM.Standard.A1.Flex**，設 **2 OCPU、12 GB 記憶體**（標示 Always Free-eligible）。
-   - 如果顯示容量不足（Out of capacity），可以晚點再試，或改選 **AMD** → **VM.Standard.E2.1.Micro**（1 GB 記憶體，也能跑，安裝腳本會自動加開 swap）。
+   - 如果按 Create 時出現 **Out of capacity**，先試著把 OCPU 降成 1（記憶體 6 GB）；還是不行就晚點再試，或改選
+     **Specialty and previous generation** → **VM.Standard.E2.1.Micro**（AMD，1 GB 記憶體，也能跑；安裝腳本會自動加開 swap，
+     並改成一次只編譯一個檔案，編譯約 20～30 分鐘）。
 5. **Networking**：用預設的「Create new virtual cloud network」和「Create new public subnet」，並確認
    「**Assign a public IPv4 address**」是勾選的。
+   - 新版介面是分步驟的（Basic information → Security → Networking → Storage → Review），Security、Storage 維持預設即可。
+   - 如果 Public IPv4 的開關按不了（提示 You must select a public subnet），先另開分頁：**Networking → Virtual cloud networks →
+     Start VCN Wizard → Create VCN with Internet Connectivity**，名稱填 `es2-vcn`、其他預設建立；再回來選
+     「Select existing virtual cloud network」→ `es2-vcn`，子網路選名稱有 public 的那個。
 6. **Add SSH keys**：選「**Generate a key pair for me**」，按「**Save private key**」把私鑰存到電腦上
    （例如 `C:\Users\你的名字\.ssh\es2.key`）。**這個檔案遺失就登入不了主機，請妥善保存。**
 7. 按「**Create**」。等狀態變成綠色的 **Running**，記下頁面上的 **Public IP address**。
@@ -108,4 +114,32 @@ bash ~/es2-webmud/deploy/oracle/update.sh
 - **公開範圍**：網址任何人都能連。網頁橋接程式的管理功能（重建目錄、還原備份、編輯原始碼）只接受主機本機的連線，外面連不到。
 - **備份**：玩家存檔在 `~/es2-webmud/source/upstream/mudlib/data/`。除了更新時的自動備份，偶爾也可以用 `scp` 下載 `~/es2-backups/` 到自己電腦。
 - **閒置回收**：Oracle 可能回收長期幾乎沒有使用的免費主機。MUD 一直在跑通常不會被判定閒置，但不是絕對保證，所以備份很重要。
-- **網址與 HTTPS**：目前是 `http://IP:8080`。之後想用自己的網域或 HTTPS，可以再加 Caddy 或 Cloudflare，需要時再處理。
+- **網址與 HTTPS**：見下一節。
+
+## 九、改成 HTTPS
+
+1. Oracle 主控台 → 子網路的 **Security List** → **Add Ingress Rules**，新增兩條：Source `0.0.0.0/0`、TCP、Destination Port `80`；
+   另一條一樣但 Port 填 `443`。（80 是申請憑證時驗證用的，不能省。）
+2. 在主機上執行：
+   ```bash
+   bash ~/es2-webmud/deploy/oracle/https.sh
+   ```
+   沒有網域時會用 `sslip.io` 這個免費服務，網址長得像 `https://161-118-234-100.sslip.io/`，只要主機 IP 不變就一直有效。
+   之後買了自己的網域，把 DNS 的 A 記錄指到主機 IP，再執行 `bash ~/es2-webmud/deploy/oracle/https.sh 你的網域` 即可。
+3. 憑證由 Caddy 自動申請、自動續約，不用管。原本的 `http://IP:8080/` 仍可使用；確定大家都改用 HTTPS 後，
+   可以把 Security List 的 8080 規則刪掉。
+
+> 網頁橋接程式會把帶有轉送標頭（Caddy、Cloudflare Tunnel 都會加）的請求視為外部連線，所以管理功能不會因為加了 HTTPS 而對外開放。
+
+## 十、新內容的上線流程
+
+1. Claude 在開發分支 `claude/epic-ramanujan-wuyis3` 上修改並推送。
+2. 家裡電腦（WSL）先測試：
+   ```bash
+   curl -fsSL https://raw.githubusercontent.com/gbfangyans-star/es2-webmud/claude/epic-ramanujan-wuyis3/deploy/local/try_branch.sh | bash
+   ```
+   打開 `http://127.0.0.1:8080/` 試玩。有問題就回報 Claude 修改，修好後再跑一次同一行。
+3. 確認沒問題後，用合併連結開 PR 並合併進 main：
+   <https://github.com/wolfer168/es2-webmud/compare/main...gbfangyans-star:es2-webmud:claude/epic-ramanujan-wuyis3>
+4. 登入雲端主機執行 `bash ~/es2-webmud/deploy/oracle/update.sh`。
+5. 家裡電腦想切回正式版：把第 2 步那行最後的 `| bash` 改成 `| bash -s main`。

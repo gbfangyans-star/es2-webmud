@@ -253,3 +253,33 @@ body.context-compact .center-stack{grid-template-rows:minmax(0,1fr) 120px}body.c
 .map-node-current .map-node-label-inside{fill:#ffd95f!important;font-weight:900!important}
 .map-node-special .map-node-label-inside{fill:#8ce1c1!important}
 .map-node-boundary .map-node-label-inside{fill:#c792ea!important}
+
+/* 角色狀態：版面跟 score 一致。名稱與數字在左、正方形格子在右；食物／飲水／疲勞只顯示文字放在最下面一行，整體寬度以這一行為準。 */
+#scoreHud.hud-grid{display:block}
+#scoreHud .hud-vitals{display:flex;flex-direction:column;gap:6px}
+#scoreHud .hud-vital{display:grid;grid-template-columns:2.4em 8.5ch 1fr;align-items:center;column-gap:6px;font-size:13px}
+#scoreHud .hud-label{color:#e5ece7;white-space:nowrap}
+#scoreHud .hud-num{color:#65df8b;font-weight:500;font-family:ui-monospace,Consolas,"Courier New",monospace;white-space:pre;font-variant-numeric:tabular-nums}
+#scoreHud .hud-cells{display:grid;grid-template-columns:repeat(15,1fr);gap:2px;min-width:0}
+#scoreHud .hud-cell{display:block;aspect-ratio:1/1;border:1px solid color-mix(in srgb,var(--hud-color) 60%,#203129);background:#101a16;box-sizing:border-box}
+#scoreHud .hud-cell.filled{background:var(--hud-color);border-color:var(--hud-color)}
+#scoreHud .hud-hp .hud-cell{border-color:#3f8f5c}
+#scoreHud .hud-needs{display:flex;justify-content:space-between;gap:8px;margin-top:10px;font-size:13px}
+#scoreHud .hud-need{display:flex;gap:6px;white-space:nowrap}
+#scoreHud .hud-cell.gone{visibility:hidden}
+#scoreHud .hud-hp .hud-cell:not(.filled){background:#532020;border-color:#7a3030}
+/* 食物／飲水／疲勞：中文字與等寬數字字型不同，以基線對齊才會在同一條線上。 */
+#scoreHud .hud-need{align-items:baseline;line-height:1.4}
+#scoreHud .hud-need .hud-label,#scoreHud .hud-need .hud-num{font-size:13px;line-height:1.4}
+#scoreHud .hud-vital{grid-template-columns:2.4em 9ch 1fr}
+
+/* 終端機字型：英文／數字／符號用 ES2 Mono（更紗黑體，半形 0.5em），中文用 Noto Sans TC（全形 1em），
+   一個中文字剛好等於兩個英文字，who、score 等排版才會對齊。中文字型沒載入時退回細明體或其他中文字型，
+   中文仍是 1em 寬，對齊不受影響。 */
+@font-face{font-family:"ES2 Mono";src:url("/fonts/es2-mono-regular.woff2") format("woff2");font-weight:400;font-display:swap;unicode-range:U+0020-007E,U+00A0-024F,U+2000-206F,U+2100-21FF,U+2500-26FF}
+@font-face{font-family:"ES2 Mono";src:url("/fonts/es2-mono-bold.woff2") format("woff2");font-weight:700;font-display:swap;unicode-range:U+0020-007E,U+00A0-024F,U+2000-206F,U+2100-21FF,U+2500-26FF}
+:root{--term-font:"ES2 Mono","Noto Sans TC","MingLiU","Noto Sans Mono CJK TC","Microsoft JhengHei",monospace}
+#terminal{font-family:var(--term-font);font-variant-ligatures:none}
+#scoreHud .hud-num{font-family:var(--term-font)}
+/* score 的進度格：每格剛好一個中文字寬（兩個英文字），跟文字格線對齊。 */
+#terminal .stat-cell{width:calc(1em - 2px);margin-right:2px}

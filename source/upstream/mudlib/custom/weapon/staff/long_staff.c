@@ -18,4 +18,6 @@ void create()
             "一根用木頭削成的柺杖。\n");
     }
     setup();
+    // 武器附加屬性：每把新產生的武器擲一次前綴／後綴（adm/daemons/enhanced.c）。
+    if( clonep() ) ENHANCE_D->roll_affix(this_object());
 }

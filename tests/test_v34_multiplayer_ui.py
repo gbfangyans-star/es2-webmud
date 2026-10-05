@@ -7,7 +7,7 @@ def test_landing_has_no_duplicate_html_title():
     s=text('web/index.html')
     assert 'landing-title' not in s
     assert 'landing-subtitle' not in s
-    assert 'landing-enter-target' in s
+    assert 'landing-enter-target' not in s
 
 def test_hud_is_polled_from_canonical_hp_command():
     s=text('web/app.js')

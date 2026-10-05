@@ -24,7 +24,8 @@ private string field(string s)
 
 private void emit_side(string side, object ob)
 {
-    printf("@@WEBHUD|%s|%s|STAT|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d\n",
+    // 最後四欄是形體／精／氣／神的最大值（score 顯示的分母），加在尾端以相容舊版網頁。
+    printf("@@WEBHUD|%s|%s|STAT|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d\n",
         side, field(ob->name()),
         ob->query_stat("HP"), ob->query_stat_effective("HP"),
         ob->query_stat("gin"), ob->query_stat_effective("gin"),
@@ -33,7 +34,9 @@ private void emit_side(string side, object ob)
         ob->query_level(),
         ob->query_stat("food"), ob->query_stat_maximum("food"),
         ob->query_stat("water"), ob->query_stat_maximum("water"),
-        ob->query_stat("fatigue"), ob->query_stat_maximum("fatigue"));
+        ob->query_stat("fatigue"), ob->query_stat_maximum("fatigue"),
+        ob->query_stat_maximum("HP"), ob->query_stat_maximum("gin"),
+        ob->query_stat_maximum("kee"), ob->query_stat_maximum("sen"));
 }
 
 private string item_action(object ob)

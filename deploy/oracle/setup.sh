@@ -36,6 +36,9 @@ if [ "$(node -p 'process.versions.node.split(".")[0]' 2>/dev/null || echo 0)" -l
     sudo apt-get install -y nodejs
 fi
 
+# 遊戲顯示的時間跟著主機時區；雲端主機預設是 UTC，改成台灣時間。
+sudo timedatectl set-timezone "${TIMEZONE:-Asia/Taipei}" || true
+
 step "2/7 記憶體不足 2GB 時加開 2GB swap（編譯時需要）"
 MEM_MB=$(awk '/MemTotal/ {print int($2/1024)}' /proc/meminfo)
 if [ "$MEM_MB" -lt 2000 ] && ! swapon --show | grep -q /swapfile; then
@@ -56,7 +59,9 @@ else
     git clone --branch "$BRANCH" "$REPO_URL" "$APP_DIR"
 fi
 
-step "4/7 編譯 Neolith（第一次約 5～15 分鐘）"
+step "4/7 編譯 Neolith（第一次約 5～15 分鐘，1GB 主機約 20～30 分鐘）"
+# 記憶體不足 2GB 時一次只編譯一個檔案，避免記憶體用光而中斷。
+[ "$MEM_MB" -lt 2000 ] && export CMAKE_BUILD_PARALLEL_LEVEL="${CMAKE_BUILD_PARALLEL_LEVEL:-1}"
 cd "$APP_DIR/source/upstream/neolith"
 cmake --preset linux
 cmake --build --preset pr-linux --target neolith
@@ -64,7 +69,7 @@ test -x "$NEOLITH_BIN"
 
 step "5/7 建立遊戲執行時需要的資料夾、安裝網頁橋接程式"
 MUD="$APP_DIR/source/upstream/mudlib"
-mkdir -p "$MUD/log" "$MUD/bin"
+mkdir -p "$MUD/log" "$MUD/bin" "$MUD/data/board"   # data/board：留言板存檔（不放在 git 裡）
 for d in login user mail; do
     for c in a b c d e f g h i j k l m n o p q r s t u v w x y z; do
         mkdir -p "$MUD/data/$d/$c"
