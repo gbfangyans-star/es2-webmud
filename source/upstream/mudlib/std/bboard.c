@@ -53,6 +53,37 @@ query_save_file()
     return DATA_DIR + "board/" + id + ".o";
 }
 
+// 已讀紀錄：每個留言板記下讀過的留言時間（留言的時間就是它的識別）。
+// 原本只記「讀過最新那篇的時間」，先讀了後面的留言，read new 就會跳過前面還沒讀的。
+private mixed *read_list(object me)
+{
+    mixed r;
+    if( !me || !me->link() ) return ({});
+    r = me->link()->query("board_read/" + (string)query("board_id"));
+    return arrayp(r) ? r : ({});
+}
+
+int note_is_read(object me, int time)
+{
+    return member_array(time, read_list(me)) != -1;
+}
+
+private void mark_read(object me, int time)
+{
+    mapping *notes = query("notes");
+    mixed *list, *keep = ({});
+    int i;
+
+    if( !me || !me->link() ) return;
+    list = read_list(me);
+    if( member_array(time, list) == -1 ) list += ({ time });
+    // 只保留目前還在板上的留言，紀錄不會無限變大。
+    if( pointerp(notes) )
+        for(i = 0; i < sizeof(notes); i++)
+            if( member_array(notes[i]["time"], list) != -1 ) keep += ({ notes[i]["time"] });
+    me->link()->set("board_read/" + (string)query("board_id"), keep);
+}
+
 string
 short()
 {
@@ -63,11 +94,9 @@ short()
     if( !pointerp(notes) || !sizeof(notes) )
         return ::short() + " [沒有任何留言]";
 
-    if( this_player() && this_player()->link() ) {
-        last_read_time = (int)this_player()->link()->query("board_last_read/" + (string)query("board_id"));
-        for(unread = 0, i=sizeof(notes)-1; i>=0; i--, unread ++)
-            if( notes[i]["time"] <= last_read_time ) break;
-    }
+    if( this_player() && this_player()->link() )
+        for(i = 0; i < sizeof(notes); i++)
+            if( !note_is_read(this_player(), notes[i]["time"]) ) unread++;
     if( unread )
         return sprintf("%s [%d 張留言﹐%d 張未讀]", ::short(), sizeof(notes), unread);
     else
@@ -87,13 +116,13 @@ long()
     if( !pointerp(notes) || !sizeof(notes) )
         return msg += query("name") + "使用方法請見 help board，留言板約可容納 " +BOARD_CAPACITY+ " 篇留言。\n";
 
-    last_time_read = this_player()->link()->query("board_last_read/" + (string)query("board_id"));
+    // 未讀的留言編號以亮黃色標示；標題、作者依畫面寬度對齊。
     for(i=0; i<sizeof(notes); i++)
-        msg += sprintf("%s[%2d]" NOR "  %-34s %+22s - %s\n",
-            ( notes[i]["time"] > last_time_read ? HIY: ""),
+        msg += sprintf("%s[%2d]" NOR "  %s %s - %s\n",
+            ( note_is_read(this_player(), notes[i]["time"]) ? "" : HIY ),
             i+1,
-            notes[i]["title"],
-            notes[i]["author"],
+            cjk_pad(notes[i]["title"], 34),
+            cjk_pad(notes[i]["author"], 22, 1),
             ctime(notes[i]["time"])[0..9]
         );
     return msg += "\n=== " + query("name") + "使用方法請見 help board，留言版約可容納 " +BOARD_CAPACITY+ " 篇留言 ===\n";
@@ -176,22 +205,22 @@ do_read(string arg)
 
     if( !arg ) return notify_fail("指令格式﹕read <留言編號>|new|next\n");
     if( arg=="new" || arg=="next" ) {
-        if( !mapp(last_read_time) || undefinedp(last_read_time[myid]) )
-            num = 1;
-        else
-            for(num = 1; num<=sizeof(notes); num++)
-                if( notes[num-1]["time"] > last_read_time[myid] ) break;
-                        
+        // 從編號最小、還沒讀過的留言開始，一次讀一篇。
+        for(num = 1; num<=sizeof(notes); num++)
+            if( !note_is_read(this_player(), notes[num-1]["time"]) ) break;
+        if( num > sizeof(notes) )
+            return notify_fail("沒有未讀的留言了。\n");
     } else if( !sscanf(arg, "%d", num) )
         return notify_fail("你要讀第幾張留言﹖\n");
 
     if( num < 1 || num > sizeof(notes) )
         return notify_fail("沒有這張留言。\n");
     num--;
-    this_player()->start_more_if_needed (sprintf("[%2d]  %-34s %+26s%s%s%s\n",
+    // 標題、作者依畫面寬度補空白（sprintf 會把中文字算成 3 格，標題長短不同時作者欄就對不齊）。
+    this_player()->start_more_if_needed (sprintf("[%2d]  %s %s%s%s%s\n",
         num + 1,
-        notes[num]["title"],
-        notes[num]["author"],
+        cjk_pad(notes[num]["title"], 34),
+        cjk_pad(notes[num]["author"], 26, 1),
         "(" + ctime(notes[num]["time"])[0..9] + ")",
         "\n---------------------------------------------------------------------------\n",
         notes[num]["msg"]));
@@ -203,6 +232,7 @@ do_read(string arg)
     else 
         if( undefinedp(last_read_time[myid]) || notes[num]["time"] > last_read_time[myid] )
             last_read_time[myid] = notes[num]["time"];
+    mark_read(this_player(), notes[num]["time"]);
 
     return 1;
 }

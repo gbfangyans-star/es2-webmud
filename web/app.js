@@ -396,69 +396,65 @@ function isHpSummaryLine(line){
 }
 // Strip @@WEBHUD|...| lines out of a buffer, keeping only real text.
 // 標記也可能接在同一行的提示字元「> 」或其他文字後面，所以從標記處截斷，只保留前面的真正文字。
-function cutWebHudMarker(line){
-  const at=line.indexOf('@@WEBHUD|');
-  return at<0?line:line.slice(0,at);
+// 內部狀態資料的判斷：只有在「行首」（前面最多是提示字元「> 」）出現 @@WEBHUD| 的一整行才算。
+// 文章、聊天內容中間提到 @@WEBHUD|BEGIN 這串字時是一般文字，照常顯示，也不會讓網頁誤以為資料開始而卡住。
+const HUD_LINE_RE=/^[ \t]*(?:>[ \t]*)*@@WEBHUD\|/;
+function isHudLine(line){ return HUD_LINE_RE.test(cleanText(line)); }
+function hasHudLine(text,tag){
+  return new RegExp('(?:^|\\n)[ \\t]*(?:>[ \\t]*)*@@WEBHUD\\|'+tag).test(cleanText(text));
+}
+// 只刪除內部狀態資料行，其他文字（包含空行）原樣保留。
+function removeHudLines(text){
+  const parts=String(text).split(/(\r\n|\n|\r)/);
+  let out='';
+  for(let i=0;i<parts.length;i+=2){
+    const line=parts[i], sep=parts[i+1]||'';
+    if(isHudLine(line))continue;
+    out+=line+sep;
+  }
+  return out;
 }
 function stripWebHudLines(whole){
-  return String(whole).split(/\r\n|\n|\r/).map(cutWebHudMarker).filter(line=>{
+  return String(whole).split(/\r\n|\n|\r/).filter(line=>{
+    if(isHudLine(line))return false;
     const plain=cleanText(line).trim();
     if(!plain)return false;
-    if(/^@@WEBHUD\|/.test(plain))return false;
     if(/^>\s*$/.test(plain))return false;
     if(/^webhud$/i.test(plain))return false;
     return true;
   });
 }
-// 最後一道防線：不論輪詢狀態如何（逾時後才到的半段回覆、被拆成兩段的區塊、接在提示字元後面的標記），
-// 只要畫面文字裡還有 @@WEBHUD|，先解析資料再整行移除，絕不顯示在終端機上。
+// 最後一道防線：畫面文字裡若還有行首的 @@WEBHUD| 資料行，先解析再刪掉，絕不顯示在終端機上。
 function consumeHudPollOutput(s){
   const r=consumeHudPollOutputRaw(s);
-  if(r.visible&&r.visible.includes('@@WEBHUD|')){
+  if(r.visible&&hasHudLine(r.visible,'')){
     parseWebHud(r.visible);
-    const kept=String(r.visible).split(/\r\n|\n|\r/).map(line=>{
-      if(!line.includes('@@WEBHUD|'))return line;
-      const rest=cutWebHudMarker(line);
-      return /^\s*>?\s*$/.test(cleanText(rest))?null:rest;
-    }).filter(line=>line!==null);
-    r.visible=kept.join('\n');
+    r.visible=removeHudLines(r.visible);
   }
   return r;
 }
 function consumeHudPollOutputRaw(s){
   if(!hudPollInFlight){
-    // Defensive fallback: a @@WEBHUD block can still arrive here if the
-    // client's poll already timed out (hudPollInFlight reset) before this
-    // — now late — server response landed. These lines must never be shown
-    // as visible game text regardless of polling state, so still recognise
-    // and swallow a complete BEGIN..END block even when unexpected.
-    //
-    // A single WebSocket message is not guaranteed to carry the whole block —
-    // BEGIN and END can land in separate onmessage calls. Buffer fragments
-    // (bounded, so a block that never closes cannot grow unbounded) until a
-    // complete block is seen, mirroring the in-flight branch below; text with
-    // no BEGIN in play still passes straight through so ordinary output is
-    // never delayed.
-    const str=String(s);
-    if(!hudFallbackBuffer && !str.includes('@@WEBHUD|BEGIN'))return {visible:str,done:false};
-    hudFallbackBuffer+=str;
-    if(hudFallbackBuffer.length>20000){
-      // Pathological: never saw a closing END. Give up buffering and show
-      // it rather than silently swallowing real game text forever.
-      const flushed=hudFallbackBuffer;hudFallbackBuffer='';
-      return {visible:flushed,done:false};
+    // 不在輪詢中：逾時後才到的半段回覆也可能出現在這裡。逐段處理、立刻顯示一般文字，
+    // 只把行首的資料行刪掉，不再整段暫存等結尾（文章內文提到標記時會因此卡住）。
+    // 唯一暫存的是「被拆在兩段傳輸之間、還沒收完的那一行資料」。
+    let str=hudFallbackBuffer+String(s);
+    hudFallbackBuffer='';
+    if(!str.includes('@@WEB'))return {visible:str,done:false};
+    const nl=Math.max(str.lastIndexOf('\n'),str.lastIndexOf('\r'));
+    const last=str.slice(nl+1);
+    const lastPlain=cleanText(last).replace(/^[ \t]*(?:>[ \t]*)*/,'');
+    if(lastPlain && ('@@WEBHUD|'.startsWith(lastPlain)||lastPlain.startsWith('@@WEBHUD|'))){
+      hudFallbackBuffer=last;
+      str=str.slice(0,nl+1);
     }
-    const cleanFallback=cleanText(hudFallbackBuffer);
-    if(!/@@WEBHUD\|END(?:\n|$)/.test(cleanFallback))return {visible:'',done:false};
-    const whole=hudFallbackBuffer;hudFallbackBuffer='';
-    parseWebHud(whole);
-    const kept=stripWebHudLines(whole);
-    return {visible:kept.length?kept.join('\n')+'\n':'',done:true};
+    if(hasHudLine(str,''))parseWebHud(str);
+    return {visible:removeHudLines(str),done:false};
   }
   hudPollBuffer += String(s);
   parseWebHud(hudPollBuffer);
   const clean=cleanText(hudPollBuffer);
-  const hasEnd=/@@WEBHUD\|END(?:\n|$)/.test(clean);
+  const hasEnd=hasHudLine(hudPollBuffer,'END(?:[ \\t]*)(?:\\n|$)');
   const timedOut=Date.now()-hudPollStartedAt>HUD_POLL_TIMEOUT_MS;
   if(!hasEnd && !timedOut)return {visible:'',done:false};
   const whole=hudPollBuffer;
