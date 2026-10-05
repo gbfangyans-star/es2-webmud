@@ -6,6 +6,9 @@ inherit ITEM;
 
 void setup()
 {
+	// 一定要先呼叫 ITEM 的 setup()：它會讓複製出來的物品讀到原型上用 set() 設定的
+	// 單位、價值、說明。少了這行，容器類物品的單位會變成 0、價值變成 0（丟在地上會被當成不值錢而消失）。
+	::setup();
 	if( !query("exits") )
 		set("exits/out", (: environment :));
 }
