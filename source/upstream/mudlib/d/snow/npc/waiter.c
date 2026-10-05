@@ -47,13 +47,13 @@ int accept_fight (object ob) {
     return 0;
 }
 
-mixed affirm_merchandise (object customer, string item_name) {
+varargs mixed affirm_merchandise (object customer, string item_name, int amount) {
     if (on_service)
         return notify_fail ("店小二正忙著招呼其他客人﹐請你等一會兒。\n");
-    return ::affirm_merchandise (customer, item_name);
+    return ::affirm_merchandise (customer, item_name, amount);
 }
 
-private void handover (object customer, mixed item) {
+private void handover (object customer, mixed item, int amount) {
     on_service = 0;
     if (!customer || environment(customer)!=environment()) {
         command ("say 咦﹖剛剛那位客倌人呢﹖怎麼付了錢人又不見了 ...");
@@ -63,12 +63,13 @@ private void handover (object customer, mixed item) {
     command ("say 客倌﹐您的" + item->name() + "來啦﹗");
     message_vision ("$N把剛從廚房端出來的" + item->name()
         + "送到$n面前。\n", this_object(), customer);
-    ::deliver_merchandise (customer, item);
+    ::deliver_merchandise (customer, item, amount);
 }
 
-void deliver_merchandise (object customer, mixed item) {
+varargs void deliver_merchandise (object customer, mixed item, int amount) {
+    if (amount < 1) amount = 1;
     command ("say " + item->name() + "是吧﹖馬上來﹗");
-    say ("店小二對著廚房喊道﹕" + item->name() + "一份﹗\n");
+    say ("店小二對著廚房喊道﹕" + item->name() + chinese_number(amount) + "份﹗\n");
     on_service = 1;
-    do_chat ((: handover, customer, item :));
+    do_chat ((: handover, customer, item, amount :));
 }

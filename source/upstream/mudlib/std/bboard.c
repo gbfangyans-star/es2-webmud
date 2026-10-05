@@ -7,6 +7,8 @@ author: Annihilator <taedlar@gmail.com>
 
 #define	BOARD_CAPACITY	query("capacity")
 #define	NO_PLAYER_POST	query("NO_PLAYER_POST")
+// 發文需要的最低巫師等級（見 securityd 的 wiz_levels：1 immortal、2 apprentice、3 wizard…）。
+#define	POST_WIZ_LEVEL	query("post_wiz_level")
 
 inherit ITEM;
 inherit F_SAVE;
@@ -142,6 +144,8 @@ do_post(string arg)
     if(!arg) return notify_fail("留言請指定一個標題。\n");
 
     // add by ueiren ..
+    if ( POST_WIZ_LEVEL && wiz_level(this_player()) < POST_WIZ_LEVEL )
+        return notify_fail("只有巫師才能在這個公佈欄張貼。\n");
     if ( NO_PLAYER_POST && (!wizardp(this_player())))
     return notify_fail("玩家不可在此公佈欄留言。\n");
 
@@ -258,6 +262,8 @@ do_followup(string str)
     int i, num;
         
     // add by dragoon
+    if ( POST_WIZ_LEVEL && wiz_level(this_player()) < POST_WIZ_LEVEL )
+        return notify_fail("只有巫師才能在這個公佈欄張貼。\n");
     if ( NO_PLAYER_POST && (!wizardp(this_player())))
         return notify_fail("玩家不可在此公佈欄留言。\n");
 

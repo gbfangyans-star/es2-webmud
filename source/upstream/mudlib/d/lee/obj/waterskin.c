@@ -9,6 +9,7 @@ inherit CONTAINER_ITEM;
 
 void create()
 {
+    seteuid(getuid());   // 產生時要順便裝一袋清水，需要有效 UID 才能 new()
     set_name("牛皮水袋", ({ "water skin", "waterskin", "skin" }));
     set_weight(500);
     set_max_encumbrance(SKIN_CAPACITY);

@@ -332,7 +332,11 @@ function ansi(s){
 function cleanText(s){return terminalSafe(String(s)).replace(/\x1b\[[0-9;]*m/g,'').replace(/\r/g,'');}
 
 const passwordPrompts=['請輸入密碼:','請設定您的密碼:','請重設您的密碼:','請再輸入一次您的密碼﹐以確認您沒記錯:','您兩次輸入的密碼並不一樣﹐請重新設定一次密碼:'];
+// 留言／寫信的逐行編輯器：期間每一行輸入都會被收進內容，背景狀態查詢必須暫停，
+// 直到玩家輸入「.」（完成）或「~q」（取消）。
+let editorActive=false;
 function updateInputMode(chunk){
+  if(cleanText(chunk).includes("結束離開用 '.'"))editorActive=true;
   tail=(tail+cleanText(chunk)).slice(-700);
   const secret=passwordPrompts.some(x=>tail.includes(x));
   const wasSecret=input.type==='password';
@@ -391,8 +395,13 @@ function isHpSummaryLine(line){
   return hpLineKind(line)==='summary';
 }
 // Strip @@WEBHUD|...| lines out of a buffer, keeping only real text.
+// 標記也可能接在同一行的提示字元「> 」或其他文字後面，所以從標記處截斷，只保留前面的真正文字。
+function cutWebHudMarker(line){
+  const at=line.indexOf('@@WEBHUD|');
+  return at<0?line:line.slice(0,at);
+}
 function stripWebHudLines(whole){
-  return String(whole).split(/\r\n|\n|\r/).filter(line=>{
+  return String(whole).split(/\r\n|\n|\r/).map(cutWebHudMarker).filter(line=>{
     const plain=cleanText(line).trim();
     if(!plain)return false;
     if(/^@@WEBHUD\|/.test(plain))return false;
@@ -401,7 +410,22 @@ function stripWebHudLines(whole){
     return true;
   });
 }
+// 最後一道防線：不論輪詢狀態如何（逾時後才到的半段回覆、被拆成兩段的區塊、接在提示字元後面的標記），
+// 只要畫面文字裡還有 @@WEBHUD|，先解析資料再整行移除，絕不顯示在終端機上。
 function consumeHudPollOutput(s){
+  const r=consumeHudPollOutputRaw(s);
+  if(r.visible&&r.visible.includes('@@WEBHUD|')){
+    parseWebHud(r.visible);
+    const kept=String(r.visible).split(/\r\n|\n|\r/).map(line=>{
+      if(!line.includes('@@WEBHUD|'))return line;
+      const rest=cutWebHudMarker(line);
+      return /^\s*>?\s*$/.test(cleanText(rest))?null:rest;
+    }).filter(line=>line!==null);
+    r.visible=kept.join('\n');
+  }
+  return r;
+}
+function consumeHudPollOutputRaw(s){
   if(!hudPollInFlight){
     // Defensive fallback: a @@WEBHUD block can still arrive here if the
     // client's poll already timed out (hudPollInFlight reset) before this
@@ -425,7 +449,7 @@ function consumeHudPollOutput(s){
       return {visible:flushed,done:false};
     }
     const cleanFallback=cleanText(hudFallbackBuffer);
-    if(!/(?:^|\n)@@WEBHUD\|END(?:\n|$)/.test(cleanFallback))return {visible:'',done:false};
+    if(!/@@WEBHUD\|END(?:\n|$)/.test(cleanFallback))return {visible:'',done:false};
     const whole=hudFallbackBuffer;hudFallbackBuffer='';
     parseWebHud(whole);
     const kept=stripWebHudLines(whole);
@@ -434,7 +458,7 @@ function consumeHudPollOutput(s){
   hudPollBuffer += String(s);
   parseWebHud(hudPollBuffer);
   const clean=cleanText(hudPollBuffer);
-  const hasEnd=/(?:^|\n)@@WEBHUD\|END(?:\n|$)/.test(clean);
+  const hasEnd=/@@WEBHUD\|END(?:\n|$)/.test(clean);
   const timedOut=Date.now()-hudPollStartedAt>HUD_POLL_TIMEOUT_MS;
   if(!hasEnd && !timedOut)return {visible:'',done:false};
   const whole=hudPollBuffer;
@@ -448,6 +472,7 @@ function consumeHudPollOutput(s){
 }
 function hudPollReady(force=false,allowNoRoom=false){
   if((!currentRoomId&&!allowNoRoom)||input.type==='password'||ws?.readyState!==1||hudPollInFlight)return false;
+  if(editorActive)return false;
   // Real player input has priority over internal HUD telemetry.
   if(!force && Date.now()-lastUserCommandAt<HUD_USER_GRACE_MS)return false;
   // HUD must continue updating during combat even when no classic ">" prompt is emitted.
@@ -880,7 +905,7 @@ function connect(){
       kickHudAfterServerText(forceMapRefresh);
     }
   };
-  ws.onclose=e=>{stopHudPolling();if(mapBootstrapRetryTimer){clearTimeout(mapBootstrapRetryTimer);mapBootstrapRetryTimer=null;}pendingUserCommands=[];mapRefreshPending=false;hudBootstrapInFlight=false;hudBootstrapAttempts=0;currentRoomId=null;runtimeSnapshot=null;tail='';sessionRecorder.finishResponse();sessionRecorder.markTransportClose(e?.code??null,e?.reason||'');sessionRecorder.markReconnect();conn.textContent='DISCONNECTED';if(!started)return;const wait=Math.min(10000,1000*2**Math.min(retry++,3));print(`\n[${wait/1000} 秒後重新連線]\n`,true);setTimeout(connect,wait);};
+  ws.onclose=e=>{stopHudPolling();editorActive=false;if(mapBootstrapRetryTimer){clearTimeout(mapBootstrapRetryTimer);mapBootstrapRetryTimer=null;}pendingUserCommands=[];mapRefreshPending=false;hudBootstrapInFlight=false;hudBootstrapAttempts=0;currentRoomId=null;runtimeSnapshot=null;tail='';sessionRecorder.finishResponse();sessionRecorder.markTransportClose(e?.code??null,e?.reason||'');sessionRecorder.markReconnect();conn.textContent='DISCONNECTED';if(!started)return;const wait=Math.min(10000,1000*2**Math.min(retry++,3));print(`\n[${wait/1000} 秒後重新連線]\n`,true);setTimeout(connect,wait);};
   ws.onerror=()=>conn.textContent='ERROR';
 }
 // Echo the player's own command into the transcript as its own line, the
@@ -914,6 +939,7 @@ function transmitUserCommand(c,sensitive=false){
   if(!sensitive&&['score','hp','skills','inventory','look','go'].includes(op))observer.begin(op,c);
   sessionRecorder.beginCommand(c,{sensitive});
   ws.send(c+'\r\n');
+  if(editorActive&&(c.trim()==='.'||c.trim()==='~q'))editorActive=false;
   input.type='text';input.autocomplete='off';tail='';
 }
 function flushPendingUserCommands(){
