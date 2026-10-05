@@ -513,11 +513,25 @@ function pollHud(force=false,allowNoRoom=false){
     hudResponseTimer=null;
     if(!hudPollInFlight)return;
     // Never let a missing/split HUD END marker hold real player clicks forever.
-    hudPollInFlight=false;hudBootstrapInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
+    hudBootstrapInFlight=false;
+    releaseHudPoll();
     flushPendingUserCommands();
     if(!currentRoomId&&!exactRoomTrackingReady)scheduleMapBootstrapRetry(180);
   },HUD_POLL_TIMEOUT_MS);
   return true;
+}
+// 放棄等待一個逾時（或被玩家指令搶先）的 webhud 回覆。等待期間收到的文字可能混著
+// 真正的遊戲輸出（例如 read 1 的文章內容、別人說話），以前直接連同緩衝一起丟掉，
+// 畫面上就只剩「> read 1」而沒有任何回應。現在只拿掉 @@WEBHUD 資料，其餘照常顯示；
+// 之後才到的半段 HUD 回覆由 consumeHudPollOutput 的最後防線過濾。
+function releaseHudPoll(){
+  const whole=hudPollBuffer;
+  hudPollInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
+  if(hudResponseTimer){clearTimeout(hudResponseTimer);hudResponseTimer=null;}
+  if(!whole)return;
+  parseWebHud(whole);
+  const kept=stripWebHudLines(whole);
+  if(kept.length)renderVisible(kept.join('\n')+'\n',false,shouldStick());
 }
 function startHudPolling(){
   if(hudTimer)return;
@@ -554,6 +568,9 @@ function print(s,system=false){
     shown=consumeHudPollOutput(shown).visible;
   }
   if(prefix)appendTerminalHtml(prefix,true);
+  renderVisible(shown,system,stick);
+}
+function renderVisible(shown,system,stick){
   let rendered=shown?renderChunk(shown):'';
   if(!system&&pendingTrimLeadingBlank){
     // Server output can arrive split across several WebSocket frames -- e.g.
@@ -1028,10 +1045,7 @@ function send(c){
     // grace period, then release the queued player action.
     setTimeout(()=>{
       if(!pendingUserCommands.length)return;
-      if(hudPollInFlight){
-        hudPollInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
-        if(hudResponseTimer){clearTimeout(hudResponseTimer);hudResponseTimer=null;}
-      }
+      if(hudPollInFlight)releaseHudPoll();
       flushPendingUserCommands();
     },HUD_ACTION_FLUSH_MS);
     return;
