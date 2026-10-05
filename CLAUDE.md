@@ -6,6 +6,7 @@
 
 - 武功的技能檔（例如 `source/upstream/mudlib/daemon/skill/sanmeendo.c`）
 - 武功設計文件與強度表（`docs/martial_arts/`）
+- 新版武功共用引擎（`source/upstream/mudlib/std/martial_art.c`）
 
 **其他系統面的東西一律不要修改**，例如戰鬥程式（`adm/daemons/combatd.c`）、
 技能系統（`feature/char/skill.c`）、經驗與升級規則、職業、種族、NPC、指令、網頁介面等。

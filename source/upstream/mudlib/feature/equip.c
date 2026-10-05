@@ -262,6 +262,10 @@ inflict_damage(int strength, object victim)
     damage += bonus;
     damage += environment()->query_temp("apply/damage");
 
+    // 新版武功的傷害百分比（見 COMBAT_D->fight()），在扣防具之前套用。
+    if( owner->query_temp("martial_damage_pct") > 0 )
+        damage = damage * owner->query_temp("martial_damage_pct") / 100;
+
     damage -= random(victim->resist_damage(damage, this_object()));
 
     if( damage > 0 ) 

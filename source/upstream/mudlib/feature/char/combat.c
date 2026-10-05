@@ -286,6 +286,10 @@ inflict_damage (int strength, object victim)
     damage = 1 + strength/10000 + random(strength/10000);
     damage += query_temp("apply/damage");
 
+    // 新版武功的傷害百分比（見 COMBAT_D->fight()），在扣防具之前套用。
+    if( query_temp("martial_damage_pct") > 0 )
+        damage = damage * query_temp("martial_damage_pct") / 100;
+
     // Call victim to resist this.
     damage -= victim->resist_damage(damage, this_object());
 

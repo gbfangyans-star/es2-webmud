@@ -369,7 +369,9 @@ fight (object me, object victim, string skill, mapping action, object weapon)
 
     /* 要求攻擊對象進行防禦。 */
     me->set_temp("defend_message", 0);
-    if( !victim->is_busy()
+    /* 招式帶 must_hit（例如三門齊開）時不讓對方閃躲或格擋，防具照樣減傷。 */
+    if( !action["must_hit"]
+    &&  !victim->is_busy()
     &&  victim->defend(ability, strength, weapon ? weapon : me) )
     {
         string defend_msg;
@@ -387,8 +389,9 @@ fight (object me, object victim, string skill, mapping action, object weapon)
 
         /* 防禦失敗﹐給予攻擊對象吸收力道的機會。 */
         me->set_temp("absorb_message", 0);
-        strength -= (int)victim->absorb(ability, strength,
-                weapon ? weapon : me);
+        if( !action["must_hit"] )
+            strength -= (int)victim->absorb(ability, strength,
+                    weapon ? weapon : me);
         absorb_msg = me->query_temp("absorb_message");
         me->add_combat_message( "﹐" );
         me->add_combat_message( stringp(absorb_msg) ? absorb_msg
@@ -396,6 +399,10 @@ fight (object me, object victim, string skill, mapping action, object weapon)
 
         /* 若力道未完全被吸收﹐則產生傷害。 */
         /* 產生傷害﹐則視攻擊方式給予少數精熟度 -Dragoon */
+        /* 新版武功的傷害百分比（action["damage_pct"]，100 = 不變），
+         * 由 inflict_damage() 在扣防具之前套用。 */
+        if( action["damage_pct"] > 0 )
+            me->set_temp("martial_damage_pct", action["damage_pct"]);
         if( strength > 0 ) {
             if( weapon ) {
                 damage = weapon->inflict_damage(strength, victim);
@@ -410,6 +417,7 @@ fight (object me, object victim, string skill, mapping action, object weapon)
             }
         }
         else damage = 0;
+        me->delete_temp("martial_damage_pct");
     }
 
     /* 招式帶有元素屬性（action["element"]：fire、ice、lightning、wind）時，
@@ -444,6 +452,9 @@ fight (object me, object victim, string skill, mapping action, object weapon)
 
     /* 送出戰鬥訊息。 */
     msg = me->get_combat_message();
+    /* 招式帶 brief 時只顯示出招敘述，不接防禦與傷害訊息，也不報體力狀態
+     * （由武功自行處理，例如三門齊開）。 */
+    if( action["brief"] ) msg = action["action"] + "\n";
     if( stringp(msg) )
     {
         string *limbs = victim->query("limbs");
@@ -456,7 +467,7 @@ fight (object me, object victim, string skill, mapping action, object weapon)
         if( weapon ) msg = replace_string(msg, "$w", weapon->name());
 
         message_vision( msg, me, victim, 1);
-        if( damage > 0 ) report_status(victim);
+        if( damage > 0 && !action["brief"] ) report_status(victim);
     }
 
     // 武器攻擊被閃躲、格擋，或命中但力道被完全吸收（沒造成傷害）後的
