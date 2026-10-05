@@ -50,13 +50,18 @@ void more (string cmd, string *text, int line) {
 }
 /*
  * Start the pager with the given text.
+ *
+ * WebMUD：取消強制分頁，長文章一次顯示完整（使用者核准）。網頁終端機可以自己捲動，
+ * 分頁反而會被背景狀態查詢打斷。上面的 more() 保留給仍直接呼叫它的程式。
  */
 varargs void start_more (mixed msg, int start_line) {
     if (stringp (msg))
         msg = explode (msg, "\n");
     else if (!arrayp (msg))
         error ("Invalid argument to start_more: expected string or array of strings.");
-    more (" ", msg, start_line ? start_line : 0);
+    if (start_line > 0 && start_line < sizeof (msg))
+        msg = msg[start_line..];
+    write (implode (msg, "\n") + "\n");
 }
 
 void start_more_if_needed (mixed msg) {
@@ -64,9 +69,5 @@ void start_more_if_needed (mixed msg) {
         msg = explode (msg, "\n");
     else if (!arrayp (msg))
         error ("Invalid argument to start_more_if_needed: expected string or array of strings.");
-    int page_size = this_object()->query("page_size") || 22;
-    if (sizeof (msg) > page_size)
-        start_more (msg);
-    else
-        write (implode (msg, "\n") + "\n");
+    write (implode (msg, "\n") + "\n");
 }
