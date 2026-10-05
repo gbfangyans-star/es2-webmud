@@ -88,28 +88,28 @@ int acquire_skill(object me, string skill)
     if( !me->is_apprentice_of(this_object()) ) return 0;
 
     switch(skill) {
-    case "unarmed": cap = 120; break;
-    case "parry": cap = 120; break;
-    case "dodge": cap = 120; break;
-    case "tiger-steps": cap = 120; break;
-    case "sanmeendo": cap = 200; break;
-    case "blade": cap = 120; break;
-    case "twohanded blade": cap = 120; break;
-    case "secondhand blade": cap = 120; break;
+    case "unarmed": cap = 1; break;
+    case "parry": cap = 1; break;
+    case "dodge": cap = 1; break;
+    case "tiger-steps": cap = 1; break;
+    case "sanmeendo": cap = 1; break;
+    case "blade": cap = 1; break;
+    case "twohanded blade": cap = 1; break;
+    case "secondhand blade": cap = 1; break;
     case "force":
         if( me->query_level() < 15 )
             return notify_fail("高慎搖頭道：你根基未穩，還是多練練吧。\n");
-        cap = 120;
+        cap = 1;
         break;
     case "tiger-force":
         if( me->query_level() < 15 )
             return notify_fail("高慎搖頭道：你根基未穩，還是多練練吧。\n");
-        cap = 120;
+        cap = 1;
         break;
     case "tiger-blade":
         if( me->query_skill("tiger-force", 1) < 30 )
             return notify_fail("高慎喝道：瘋虎功不到三十級，也敢妄學瘋虎刀法？\n");
-        cap = 140;
+        cap = 1;
         break;
     default:
         return 0;
