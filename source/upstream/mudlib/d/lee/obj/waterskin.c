@@ -5,7 +5,7 @@
 inherit CONTAINER_ITEM;
 
 // 液體 volume 單位：1000 = 1 升（見 std/item/liquid.c 的 short() 換算）
-#define SKIN_CAPACITY 35000
+#define SKIN_CAPACITY 10000   // 10 公升
 
 void create()
 {
