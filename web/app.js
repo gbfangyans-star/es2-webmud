@@ -332,7 +332,11 @@ function ansi(s){
 function cleanText(s){return terminalSafe(String(s)).replace(/\x1b\[[0-9;]*m/g,'').replace(/\r/g,'');}
 
 const passwordPrompts=['請輸入密碼:','請設定您的密碼:','請重設您的密碼:','請再輸入一次您的密碼﹐以確認您沒記錯:','您兩次輸入的密碼並不一樣﹐請重新設定一次密碼:'];
+// 留言／寫信的逐行編輯器：期間每一行輸入都會被收進內容，背景狀態查詢必須暫停，
+// 直到玩家輸入「.」（完成）或「~q」（取消）。
+let editorActive=false;
 function updateInputMode(chunk){
+  if(cleanText(chunk).includes("結束離開用 '.'"))editorActive=true;
   tail=(tail+cleanText(chunk)).slice(-700);
   const secret=passwordPrompts.some(x=>tail.includes(x));
   const wasSecret=input.type==='password';
@@ -468,6 +472,7 @@ function consumeHudPollOutputRaw(s){
 }
 function hudPollReady(force=false,allowNoRoom=false){
   if((!currentRoomId&&!allowNoRoom)||input.type==='password'||ws?.readyState!==1||hudPollInFlight)return false;
+  if(editorActive)return false;
   // Real player input has priority over internal HUD telemetry.
   if(!force && Date.now()-lastUserCommandAt<HUD_USER_GRACE_MS)return false;
   // HUD must continue updating during combat even when no classic ">" prompt is emitted.
@@ -900,7 +905,7 @@ function connect(){
       kickHudAfterServerText(forceMapRefresh);
     }
   };
-  ws.onclose=e=>{stopHudPolling();if(mapBootstrapRetryTimer){clearTimeout(mapBootstrapRetryTimer);mapBootstrapRetryTimer=null;}pendingUserCommands=[];mapRefreshPending=false;hudBootstrapInFlight=false;hudBootstrapAttempts=0;currentRoomId=null;runtimeSnapshot=null;tail='';sessionRecorder.finishResponse();sessionRecorder.markTransportClose(e?.code??null,e?.reason||'');sessionRecorder.markReconnect();conn.textContent='DISCONNECTED';if(!started)return;const wait=Math.min(10000,1000*2**Math.min(retry++,3));print(`\n[${wait/1000} 秒後重新連線]\n`,true);setTimeout(connect,wait);};
+  ws.onclose=e=>{stopHudPolling();editorActive=false;if(mapBootstrapRetryTimer){clearTimeout(mapBootstrapRetryTimer);mapBootstrapRetryTimer=null;}pendingUserCommands=[];mapRefreshPending=false;hudBootstrapInFlight=false;hudBootstrapAttempts=0;currentRoomId=null;runtimeSnapshot=null;tail='';sessionRecorder.finishResponse();sessionRecorder.markTransportClose(e?.code??null,e?.reason||'');sessionRecorder.markReconnect();conn.textContent='DISCONNECTED';if(!started)return;const wait=Math.min(10000,1000*2**Math.min(retry++,3));print(`\n[${wait/1000} 秒後重新連線]\n`,true);setTimeout(connect,wait);};
   ws.onerror=()=>conn.textContent='ERROR';
 }
 // Echo the player's own command into the transcript as its own line, the
@@ -934,6 +939,7 @@ function transmitUserCommand(c,sensitive=false){
   if(!sensitive&&['score','hp','skills','inventory','look','go'].includes(op))observer.begin(op,c);
   sessionRecorder.beginCommand(c,{sensitive});
   ws.send(c+'\r\n');
+  if(editorActive&&(c.trim()==='.'||c.trim()==='~q'))editorActive=false;
   input.type='text';input.autocomplete='off';tail='';
 }
 function flushPendingUserCommands(){

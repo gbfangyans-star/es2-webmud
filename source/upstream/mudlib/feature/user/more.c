@@ -35,6 +35,11 @@ void more (string cmd, string *text, int line) {
         line += page_size;
         input_to ("more", text, line);
         return;
+    case "webhud":
+        /* 網頁背景狀態查詢：照常回傳狀態，但分頁停在原處，不要因此結束。 */
+        command(cmd);
+        input_to ("more", text, line);
+        return;
     default:
         /* Release input_to before dispatching, otherwise the next command can
          * be swallowed by the pager again. */
