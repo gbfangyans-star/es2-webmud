@@ -116,7 +116,7 @@ int acquire_skill(object me, string skill)
     }
 
     if( me->query_skill(skill, 1) >= cap )
-        return notify_fail("高慎說道：這門功夫老夫能教你的，已經到頂了。\n");
+        return notify_fail("高慎說道：滾你奶奶的! 自己好好修練去!\n");
 
     if( !me->query_skill(skill, 1) ) {
         if( skill == "tiger-force" ) {
