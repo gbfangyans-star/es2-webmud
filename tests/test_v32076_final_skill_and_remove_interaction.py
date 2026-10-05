@@ -38,7 +38,7 @@ def test_final_skill_stack_keeps_old_neolith_compat_and_special_progression():
     assert 'call_other(daemon, \"skill_improved\", this_object(), skill);' in skill
     assert "apply_restored_skill_progression(skill);" in skill
     assert 'if( skill == "tiger-steps" ) return 120;' in skill
-    assert 'skill == "tiger-blade" || skill == "sanmeendo"' in skill
+    assert 'if( skill == "tiger-blade" ) return 140;' in skill  # sanmeendo uses the default 200 cap
     assert 'me->improve_skill_exact("tiger-force", exp);' in combatd
     assert 'me->improve_skill_exact("tiger-blade", exp);' in combatd
     assert 'me->improve_skill_exact("sanmeendo", exp);' in combatd

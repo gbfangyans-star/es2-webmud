@@ -59,7 +59,7 @@ def test_formula_ranges_and_floor_int_base():
 def test_special_caps_are_enforced_in_core_progression():
     s=src('source/upstream/mudlib/feature/char/skill.c')
     assert 'if( skill == "tiger-steps" ) return 120;' in s
-    assert 'skill == "tiger-blade" || skill == "sanmeendo"' in s
+    assert 'if( skill == "tiger-blade" ) return 140;' in s  # sanmeendo uses the default 200 cap
     assert 'return 140;' in s
     assert 'while( level < cap )' in s
 
