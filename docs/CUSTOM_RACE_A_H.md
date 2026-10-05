@@ -125,6 +125,13 @@ On level-up, gin / kee / sen maximums grow by base dex / con / spi divided by th
 
 Soldier and taoist keep their earlier formulas. Joining thief / alchemist / scholar / monk is not implemented yet.
 
+### Combat score gains (NEW)
+
+`adm/daemons/combatd.c`, players only:
+
+- Successful dodge (`restored_dodge_gain`) or parry (`restored_parry_gain`) gives 實戰經驗 `combat`. Against a player: `random(2)` (0 or 1). Against an NPC whose level is not above yours: 1. NPC n levels above you: `1 + random(n)`, n capped at 10. An NPC without a level counts as level 0.
+- A hit that deals damage (`restored_hit_gain`) with an enabled martial art gives 1 武術造詣 `martial art`. Hits made with a basic attack skill (unarmed, beast, and every blade / sword / axe / pike / staff / blunt / dagger / needle / whip form) give none.
+
 ## Ghost NPCs (for yaksa `devour`)
 
 `custom/ghost/std_ghost.c` is the base: human race, `life_form` ghost (no kee, only visible with 陰陽眼, ordinary attacks pass through), peaceful, refuses `fight`. Talking and moving work like 瞎眼老太婆 (`d/snow/npc/gammer.c`): `chat_chance` 9 gives a 10% chance each tick to act, then one of three `chat_msg` entries is picked (one says one of its two lines, two do `random_move`). On average it talks every ~30 ticks and moves every ~15 ticks, at random times. It does neither while busy (for example while being devoured).
