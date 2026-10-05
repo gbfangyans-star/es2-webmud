@@ -38,6 +38,7 @@ int do_enlist(string arg)
         return notify_fail("振武軍營目前只招募男丁入伍。\n");
 
     me->set_class("soldier");
+    me->set("title", "振武軍營軍人");
 
     // Only a fresh commoner recruit gets the signature soldier skills. A
     // fighter who enlists already has their own combat background, so they
