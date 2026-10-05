@@ -207,7 +207,7 @@ int uses_restored_skill_threshold(string skill)
 int restored_skill_cap(string skill)
 {
     if( skill == "tiger-steps" ) return 120;
-    if( skill == "tiger-blade" || skill == "sanmeendo" ) return 140;
+    if( skill == "tiger-blade" ) return 140;
     return 200;
 }
 
@@ -354,6 +354,34 @@ private void roll_attr_growth(string skill, int old_level, int new_level)
     }
 }
 
+/* 基本技能升級給武術造詣（NEW）
+ *
+ * 基本兵器技能（含雙手、副手）、徒手、閃躲、招架，每升到第 sk 級給
+ * sk × 10 點武術造詣（martial art）。一次升多級時每一級都給。只對玩家生效。
+ */
+static mapping MARTIAL_ART_BASIC = ([
+    "unarmed": 1, "dodge": 1, "parry": 1,
+    "blade": 1, "twohanded blade": 1, "secondhand blade": 1,
+    "sword": 1, "twohanded sword": 1, "secondhand sword": 1,
+    "axe": 1, "twohanded axe": 1, "secondhand axe": 1,
+    "pike": 1, "twohanded pike": 1, "secondhand pike": 1,
+    "staff": 1, "twohanded staff": 1, "secondhand staff": 1,
+    "blunt": 1, "twohanded blunt": 1, "secondhand blunt": 1,
+    "dagger": 1, "secondhand dagger": 1, "needle": 1, "secondhand needle": 1,
+    "whip": 1,
+]);
+
+private void basic_skill_martial_art(string skill, int old_level, int new_level)
+{
+    int lv, gain;
+
+    if( !userp(this_object()) ) return;
+    if( !MARTIAL_ART_BASIC[skill] ) return;
+
+    for(lv = old_level + 1; lv <= new_level; lv++) gain += lv * 10;
+    if( gain > 0 ) this_object()->gain_score("martial art", gain);
+}
+
 varargs void advance_skill(string skill, int amount)
 {
     int old_level;
@@ -370,6 +398,7 @@ varargs void advance_skill(string skill, int amount)
 
     SKILL_D(skill)->skill_advanced(this_object(), skill);
     roll_attr_growth(skill, old_level, skills[skill]);
+    basic_skill_martial_art(skill, old_level, skills[skill]);
 
     if( skills[skill] > skills[best_skill] ) best_skill = skill;
     refresh_taoist_spell_mastery(skill);

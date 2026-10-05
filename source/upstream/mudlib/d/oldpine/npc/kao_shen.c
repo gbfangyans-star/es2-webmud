@@ -92,7 +92,7 @@ int acquire_skill(object me, string skill)
     case "parry": cap = 120; break;
     case "dodge": cap = 120; break;
     case "tiger-steps": cap = 120; break;
-    case "sanmeendo": cap = 140; break;
+    case "sanmeendo": cap = 200; break;
     case "blade": cap = 120; break;
     case "twohanded blade": cap = 120; break;
     case "secondhand blade": cap = 120; break;

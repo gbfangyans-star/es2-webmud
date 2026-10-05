@@ -131,6 +131,7 @@ Soldier and taoist keep their earlier formulas. Joining thief / alchemist / scho
 
 - Successful dodge (`restored_dodge_gain`) or parry (`restored_parry_gain`) gives 實戰經驗 `combat`. Against a player: `random(2)` (0 or 1). Against an NPC whose level is not above yours: 1. NPC n levels above you: `1 + random(n)`, n capped at 10. An NPC without a level counts as level 0.
 - A hit that deals damage (`restored_hit_gain`) with an enabled martial art gives 1 武術造詣 `martial art`. Hits made with a basic attack skill (unarmed, beast, and every blade / sword / axe / pike / staff / blunt / dagger / needle / whip form) give none.
+- `feature/char/skill.c` `advance_skill()`: when a basic skill reaches level sk it gives sk x 10 武術造詣 (every level counts when several are gained at once). Basic skills: unarmed, dodge, parry, and every blade / sword / axe / pike / staff / blunt / dagger / needle / whip form.
 
 ## Ghost NPCs (for yaksa `devour`)
 
