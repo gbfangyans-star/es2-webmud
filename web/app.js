@@ -391,8 +391,13 @@ function isHpSummaryLine(line){
   return hpLineKind(line)==='summary';
 }
 // Strip @@WEBHUD|...| lines out of a buffer, keeping only real text.
+// 標記也可能接在同一行的提示字元「> 」或其他文字後面，所以從標記處截斷，只保留前面的真正文字。
+function cutWebHudMarker(line){
+  const at=line.indexOf('@@WEBHUD|');
+  return at<0?line:line.slice(0,at);
+}
 function stripWebHudLines(whole){
-  return String(whole).split(/\r\n|\n|\r/).filter(line=>{
+  return String(whole).split(/\r\n|\n|\r/).map(cutWebHudMarker).filter(line=>{
     const plain=cleanText(line).trim();
     if(!plain)return false;
     if(/^@@WEBHUD\|/.test(plain))return false;
@@ -401,7 +406,22 @@ function stripWebHudLines(whole){
     return true;
   });
 }
+// 最後一道防線：不論輪詢狀態如何（逾時後才到的半段回覆、被拆成兩段的區塊、接在提示字元後面的標記），
+// 只要畫面文字裡還有 @@WEBHUD|，先解析資料再整行移除，絕不顯示在終端機上。
 function consumeHudPollOutput(s){
+  const r=consumeHudPollOutputRaw(s);
+  if(r.visible&&r.visible.includes('@@WEBHUD|')){
+    parseWebHud(r.visible);
+    const kept=String(r.visible).split(/\r\n|\n|\r/).map(line=>{
+      if(!line.includes('@@WEBHUD|'))return line;
+      const rest=cutWebHudMarker(line);
+      return /^\s*>?\s*$/.test(cleanText(rest))?null:rest;
+    }).filter(line=>line!==null);
+    r.visible=kept.join('\n');
+  }
+  return r;
+}
+function consumeHudPollOutputRaw(s){
   if(!hudPollInFlight){
     // Defensive fallback: a @@WEBHUD block can still arrive here if the
     // client's poll already timed out (hudPollInFlight reset) before this
@@ -425,7 +445,7 @@ function consumeHudPollOutput(s){
       return {visible:flushed,done:false};
     }
     const cleanFallback=cleanText(hudFallbackBuffer);
-    if(!/(?:^|\n)@@WEBHUD\|END(?:\n|$)/.test(cleanFallback))return {visible:'',done:false};
+    if(!/@@WEBHUD\|END(?:\n|$)/.test(cleanFallback))return {visible:'',done:false};
     const whole=hudFallbackBuffer;hudFallbackBuffer='';
     parseWebHud(whole);
     const kept=stripWebHudLines(whole);
@@ -434,7 +454,7 @@ function consumeHudPollOutput(s){
   hudPollBuffer += String(s);
   parseWebHud(hudPollBuffer);
   const clean=cleanText(hudPollBuffer);
-  const hasEnd=/(?:^|\n)@@WEBHUD\|END(?:\n|$)/.test(clean);
+  const hasEnd=/@@WEBHUD\|END(?:\n|$)/.test(clean);
   const timedOut=Date.now()-hudPollStartedAt>HUD_POLL_TIMEOUT_MS;
   if(!hasEnd && !timedOut)return {visible:'',done:false};
   const whole=hudPollBuffer;
