@@ -20,6 +20,14 @@ mapping *moves = ({});  // 招式：name action lvl attack defense force bonus w
 int ma_coef, mm_start, mm_minus, mm_coef;
 string mm_first_msg;    // 第一次獲得武學之道時的訊息（可留空）
 
+/* 學成（配合技能升級的 gain 規則，見 feature/char/skill.c）：
+ *   art_entry       學成等級，0 或 1 表示一般從 1 級開始
+ *   art_entry_msg   從 0 級學成時的訊息
+ *   level_msgs      升到特定等級時的訊息，([ 等級: 訊息 ]) */
+int art_entry;
+string art_entry_msg;
+mapping level_msgs = ([]);
+
 int is_martial_art() { return 1; }
 string query_art_name() { return art_name; }
 string query_base_skill() { return art_usage; }
@@ -27,6 +35,14 @@ string query_description() { return art_desc; }
 mapping *query_moves() { return moves; }
 
 int valid_enable(string usage) { return usage == art_usage; }
+
+int query_entry_level() { return art_entry > 1 ? art_entry : 1; }
+
+/* 從 0 級學成時呼叫一次（在升級之前）。 */
+void skill_completed(object me, string skill)
+{
+    if( stringp(art_entry_msg) ) tell_object(me, HIY + art_entry_msg + NOR);
+}
 
 /* 目前等級可以使出的招式；一招都不夠格時至少給第一招。 */
 mapping *usable_moves(object me)
@@ -88,12 +104,20 @@ void attack_using(object me, object opponent, object weapon)
     after_strike(me, opponent, weapon, m, damage);
 }
 
+/* 每次升級後呼叫；學成時一次跳多級也只呼叫一次。
+ * 每級獎勵只給超過學成等級的部分（學成等級為 1 時從 1 級開始給）。 */
 void skill_advanced(object me, string skill)
 {
     int lv;
+    string msg;
+
+    lv = me->query_skill(art_id, 1);
+
+    if( mapp(level_msgs) && stringp(msg = level_msgs[lv]) )
+        tell_object(me, HIY + msg + NOR);
 
     if( !userp(me) ) return;
-    lv = me->query_skill(art_id, 1);
+    if( art_entry > 1 && lv <= art_entry ) return;
 
     if( ma_coef > 0 ) me->gain_score("martial art", lv * ma_coef);
 

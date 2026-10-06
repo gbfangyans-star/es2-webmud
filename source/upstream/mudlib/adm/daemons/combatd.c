@@ -198,13 +198,20 @@ void restored_dodge_gain(object me, object opponent)
     if( mapped == "tiger-steps" ) me->improve_skill_exact("tiger-steps", exp);
 }
 
+/* 格擋成功（含完全擋下）時呼叫：招架經驗 = 閃躲的基礎公式 + random(定力)，
+ * enable 在招架上的武功一起漲同樣的點數。 */
 void restored_parry_gain(object me, object opponent)
 {
-    int exp;
+    int exp, cps;
+    string art;
     if( !userp(me) || !objectp(opponent) ) return;
     defense_combat_gain(me, opponent);
     exp = restored_defense_exp(me, opponent);
+    cps = me->query_attr("cps");
+    if( cps > 0 ) exp += random(cps);
     me->improve_skill_exact("parry", exp);
+    art = me->skill_mapped("parry");
+    if( stringp(art) && art != "parry" ) me->improve_skill_exact(art, exp);
 }
 
 /* 基本攻擊技能：命中時不給武術造詣。 */
@@ -382,7 +389,10 @@ fight (object me, object victim, string skill, mapping action, object weapon)
         string absorb_msg;
 
         /* 防禦失敗﹐給予攻擊對象吸收力道的機會。 */
+        int pct, parry_result;
+
         me->set_temp("absorb_message", 0);
+        victim->delete_temp("parry_result");
         if( !action["must_hit"] )
             strength -= (int)victim->absorb(ability, strength,
                     weapon ? weapon : me);
@@ -391,13 +401,23 @@ fight (object me, object victim, string skill, mapping action, object weapon)
         me->add_combat_message( stringp(absorb_msg) ? absorb_msg
                 : "$n嘗試將$N這一擊格開");
 
+        /* 招架結果（見 F_COMBAT 的 absorb()）：1 格擋減傷、2 完全擋下。 */
+        parry_result = victim->query_temp("parry_result");
+
         /* 若力道未完全被吸收﹐則產生傷害。 */
         /* 產生傷害﹐則視攻擊方式給予少數精熟度 -Dragoon */
         /* 新版武功的傷害百分比（action["damage_pct"]，100 = 不變），
-         * 由 inflict_damage() 在扣防具之前套用。 */
-        if( action["damage_pct"] > 0 )
-            me->set_temp("martial_damage_pct", action["damage_pct"]);
-        if( strength > 0 ) {
+         * 加上格擋減傷，由 inflict_damage() 在扣防具之前套用。 */
+        pct = action["damage_pct"] > 0 ? action["damage_pct"] : 100;
+        if( parry_result == 1 )
+            pct = pct * (100 - victim->query_temp("parry_reduce")) / 100;
+        if( pct != 100 )
+            me->set_temp("martial_damage_pct", pct > 0 ? pct : 1);
+        if( parry_result == 2 ) {
+            /* 完全擋下：不受傷，也不接傷害訊息。 */
+            damage = -1;
+        }
+        else if( strength > 0 ) {
             if( weapon ) {
                 damage = weapon->inflict_damage(strength, victim);
                 // 武器命中並造成傷害後的特殊效果（例如藍涎刀上毒）。
