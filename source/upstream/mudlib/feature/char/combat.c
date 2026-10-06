@@ -354,7 +354,8 @@ inflict_damage (int strength, object victim)
         damage = damage * query_temp("martial_damage_pct") / 100;
 
     // Call victim to resist this.
-    damage -= victim->resist_damage(damage, this_object());
+    if( !query_temp("martial_no_armor") )
+        damage -= victim->resist_damage(damage, this_object());
 
     return damage > 0 ? victim->receive_damage(damage, this_object(), this_object()) : 0;
 }

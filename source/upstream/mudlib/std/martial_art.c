@@ -3,6 +3,7 @@ description: 新版武功共用引擎（NEW）。武功檔只填資料，選招�
              升級給武術造詣／武學之道都在這裡處理。設計見 docs/martial_arts/。
 ---*/
 #include <ansi.h>
+#include "/std/martial_art.h"
 
 inherit SKILL;
 
@@ -86,6 +87,46 @@ mapping make_action(mapping m, int pct)
         "damage_type": m["damage_type"] ? m["damage_type"] : "割傷",
         "damage_pct":  (100 + art_bonus + m["bonus"]) * pct / 100,
     ]);
+}
+
+/* 特效用的一擊。flags：HIT_MUST 不能閃躲格擋、HIT_NO_ARMOR 不扣防具、
+ * HIT_SILENT 不顯示敘述與體力狀態（由武功自己顯示）。
+ * pct 是傷害百分比（以該招平常傷害為準），gin_pct 是耗精百分比（0 不耗精）。
+ * 傳回 fight() 的結果。 */
+varargs int special_hit(object me, object victim, object weapon, mapping m,
+    int pct, int gin_pct, int flags)
+{
+    mapping act;
+
+    if( !mapp(m) ) m = moves[random(sizeof(moves))];
+    act = make_action(m, pct);
+    act["gin_pct"] = gin_pct;
+    if( flags & HIT_MUST ) act["must_hit"] = 1;
+    if( flags & HIT_NO_ARMOR ) act["no_armor"] = 1;
+    if( flags & HIT_SILENT ) act["silent"] = 1;
+    return COMBAT_D->fight(me, victim, art_id, act, weapon);
+}
+
+/* 目前體力狀態的比例（給 COMBAT_D->status_msg() 用）；不是生物時傳回 -1。 */
+int kee_ratio(object ob)
+{
+    int max;
+
+    if( !objectp(ob) ) return -1;
+    max = ob->query_stat_maximum("kee");
+    if( !max ) return -1;
+    return ob->query_stat("kee") * 100 / max;
+}
+
+void show_status(object ob, int ratio)
+{
+    if( objectp(ob) && ratio >= 0 ) message_vision(COMBAT_D->status_msg(ratio), ob);
+}
+
+/* 依技能等級成長的機率：200 級時達到 max（%）。 */
+int scaled_chance(object me, int max)
+{
+    return max * me->query_skill(art_id, 1) / 200;
 }
 
 /* 武功檔可以覆寫，處理整套特效。damage 是 fight() 的傳回值。 */

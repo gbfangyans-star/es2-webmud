@@ -226,10 +226,11 @@ private string *basic_attack_skills = ({
     "whip", "beast"
 });
 
-private void restored_hit_gain(object me, object victim, string skill)
+private void restored_hit_gain(object me, object victim, string skill, object weapon)
 {
     int exp, ib, str;
-    string base;
+    string base, equipped, art;
+    object daemon;
 
     if( !userp(me) || !objectp(victim) ) return;
     ib = restored_int_base(me);
@@ -249,6 +250,15 @@ private void restored_hit_gain(object me, object victim, string skill)
 
     if( skill == "tiger-blade" ) base = "twohanded blade";
     else if( skill == "sanmeendo" ) base = "blade";
+    /* 新版武功引擎做的武功（std/martial_art.c）：基本技能取武器裝備的位置，
+     * 武功本身漲同樣的點數。 */
+    else if( objectp(daemon = SKILL_D(skill))
+         &&  function_exists("is_martial_art", daemon) ) {
+        equipped = objectp(weapon) ? weapon->query("equipped") : 0;
+        if( stringp(equipped) && equipped[0..6] == "weapon/" ) base = equipped[7..];
+        else base = daemon->query_base_skill();
+        art = skill;
+    }
     // Every other weapon skill (axe, sword, pike, staff, blade, their
     // twohanded/secondhand variants, dagger, needle, blunt, whip, ...)
     // gains its own experience directly -- this used to be a narrow
@@ -260,6 +270,7 @@ private void restored_hit_gain(object me, object victim, string skill)
         exp = (random(me->query_attr("int")) + 1) * ib;
         me->improve_skill_exact(base, exp);
         if( skill == "sanmeendo" ) me->improve_skill_exact("sanmeendo", exp);
+        else if( stringp(art) ) me->improve_skill_exact(art, exp);
         else if( skill == "tiger-blade" ) {
             exp += random(me->query_attr("cor"));
             me->improve_skill_exact("tiger-blade", exp);
@@ -339,6 +350,10 @@ fight (object me, object victim, string skill, mapping action, object weapon)
         gin_cost = random(2 + force_bonus/30000);
     }
 
+    /* 招式耗精比例（action["gin_pct"]，100 = 一般，0 = 不耗精），新版武功的特效用。 */
+    if( !undefinedp(action["gin_pct"]) )
+        gin_cost = gin_cost * action["gin_pct"] / 100;
+
     /* 命中率: 攻擊能力 + 攻擊技能 + 招式係數 */
     ability = me->query_ability("attack")
         + me->query_skill(skill)
@@ -413,6 +428,8 @@ fight (object me, object victim, string skill, mapping action, object weapon)
             pct = pct * (100 - victim->query_temp("parry_reduce")) / 100;
         if( pct != 100 )
             me->set_temp("martial_damage_pct", pct > 0 ? pct : 1);
+        /* 招式帶 no_armor 時傷害不扣防具（例如愛霜恨雪）。 */
+        if( action["no_armor"] ) me->set_temp("martial_no_armor", 1);
         if( parry_result == 2 ) {
             /* 完全擋下：不受傷，也不接傷害訊息。 */
             damage = -1;
@@ -432,6 +449,7 @@ fight (object me, object victim, string skill, mapping action, object weapon)
         }
         else damage = 0;
         me->delete_temp("martial_damage_pct");
+        me->delete_temp("martial_no_armor");
     }
 
     /* 招式帶有元素屬性（action["element"]：fire、ice、lightning、wind）時，
@@ -442,7 +460,7 @@ fight (object me, object victim, string skill, mapping action, object weapon)
         damage += elemental_extra(me, victim, action["element"]);
 
     /* 成功命中後才取得 restored skill learned。 */
-    if( damage > 0 ) restored_hit_gain(me, victim, skill);
+    if( damage > 0 ) restored_hit_gain(me, victim, skill, weapon);
 
     /* 將傷害程度的訊息加入戰鬥訊息。 */
     if( damage >= 0 ) {
@@ -469,6 +487,8 @@ fight (object me, object victim, string skill, mapping action, object weapon)
     /* 招式帶 brief 時只顯示出招敘述，不接防禦與傷害訊息，也不報體力狀態
      * （由武功自行處理，例如三門齊開）。 */
     if( action["brief"] ) msg = action["action"] + "\n";
+    /* 招式帶 silent 時完全不顯示（連擊由武功自行顯示敘述與體力狀態）。 */
+    if( action["silent"] ) msg = 0;
     if( stringp(msg) )
     {
         string *limbs = victim->query("limbs");
