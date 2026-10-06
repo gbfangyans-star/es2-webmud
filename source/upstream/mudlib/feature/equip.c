@@ -266,7 +266,8 @@ inflict_damage(int strength, object victim)
     if( owner->query_temp("martial_damage_pct") > 0 )
         damage = damage * owner->query_temp("martial_damage_pct") / 100;
 
-    damage -= random(victim->resist_damage(damage, this_object()));
+    if( !owner->query_temp("martial_no_armor") )
+        damage -= random(victim->resist_damage(damage, this_object()));
 
     if( damage > 0 ) 
         return (int)victim->receive_damage(damage, this_object(), owner);

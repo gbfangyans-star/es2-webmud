@@ -235,6 +235,7 @@ absorb (int ability, int strength, object from)
  * 每一刀從 1 到上限隨機取值，跟對方這一刀的攻擊力道比：
  *   超過對方         → 格擋，傷害減少（1 + 招架等級 / 20）%
  *   達到對方 2.5 倍  → 完全擋下，不受傷
+ * 學過重擋（heavy_parry）時格擋力道上限放大：對方有內功 ×5，沒有 ×2。
  * 空手也可以格擋。招架等級沿用 query_skill("parry")（有 enable 招架武功時取平均）。
  * 結果記在自己的 temp：parry_result（1 格擋、2 完全擋下）、parry_reduce（減傷 %），
  * 由 COMBAT_D->fight() 讀取。
@@ -266,8 +267,14 @@ private int parry_attack(int strength, object from)
 
     if( strength < 1 ) return 0;
 
+    attacker = from->is_character() ? from : environment(from);
+
     sk = query_skill("parry");
     max = (query_strength("defense") + parry_force_bonus()) * (100 + sk) / 100;
+
+    // 重擋(heavy_parry，軍人技巧)：格擋力道上限放大，對方有內功時 ×5，沒有時 ×2。
+    if( query_learn("heavy_parry") )
+        max *= (objectp(attacker) && attacker->query_skill("force") > 0) ? 5 : 2;
     if( max < 1 ) return 0;
 
     block = 1 + random(max);
@@ -275,14 +282,9 @@ private int parry_attack(int strength, object from)
 
     full = block * 2 >= strength * 5;
     reduce = 1 + sk / 20;
-    // 重擋(heavy_parry)：原本是格擋量 ×5，改為減傷 ×5（最多 100%）。
-    if( query_learn("heavy_parry") ) reduce *= 5;
-    if( reduce > 100 ) reduce = 100;
 
     set_temp("parry_result", full ? 2 : 1);
     set_temp("parry_reduce", reduce);
-
-    attacker = from->is_character() ? from : environment(from);
 
     art = skill_mapped("parry");
     if( stringp(art) && art != "parry" ) daemon = SKILL_D(art);
@@ -352,7 +354,8 @@ inflict_damage (int strength, object victim)
         damage = damage * query_temp("martial_damage_pct") / 100;
 
     // Call victim to resist this.
-    damage -= victim->resist_damage(damage, this_object());
+    if( !query_temp("martial_no_armor") )
+        damage -= victim->resist_damage(damage, this_object());
 
     return damage > 0 ? victim->receive_damage(damage, this_object(), this_object()) : 0;
 }
