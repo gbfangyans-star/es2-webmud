@@ -258,12 +258,6 @@ private void restored_hit_gain(object me, object victim, string skill)
             me->improve_skill_exact("tiger-blade", exp);
         }
     }
-
-    if( me->skill_mapped("force") == "tiger-force" ) {
-        exp = (random(me->query_attr("int")) + 1) * ib
-            + random(me->query_attr("cps"));
-        me->improve_skill_exact("tiger-force", exp);
-    }
 }
 
 // 招式的元素追加傷害，見 fight()。

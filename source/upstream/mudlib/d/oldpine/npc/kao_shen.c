@@ -116,33 +116,18 @@ int acquire_skill(object me, string skill)
         return 0;
     }
 
-    if( me->query_skill(skill, 1) >= cap )
+    /* 只傳授入門：累積點數還不到 1 級的門檻才教，一次補足到門檻。
+     * 等級要玩家下 gain 才會提升；瘋虎功要自己修習到 20 級的門檻才練成。 */
+    if( me->query_learn(skill) >= me->skill_threshold(skill, cap) )
         return notify_fail("高慎說道：滾你奶奶的! 自己好好修練去!\n");
 
-    if( !me->query_skill(skill, 1) ) {
-        if( skill == "tiger-force" ) {
-            /* User-provided rule: Tiger Force is completed directly at Lv20. */
-            me->set_skill(skill, 20);
-            /* The learned table is cumulative.  A skill granted directly at
-             * Lv20 therefore starts at the Lv20 cumulative floor, otherwise
-             * the first 20->21 step would incorrectly require the entire
-             * Lv21 total from zero. */
-            if( me->query_learn(skill) < 40000 ) me->set_learn(skill, 40000);
-            if( !me->query("tiger_force/initial_con_bonus") ) {
-                me->set_attr("con", me->query_attr("con", 1) + 1);
-                me->set("tiger_force/initial_con_bonus", 1);
-            }
-            me->set("tiger_force/growth_level", 20);
-            tell_object(me, "高慎將瘋虎功的入門心訣一氣傳下，你依法運轉數周天後豁然貫通，瘋虎功已練成二十級，根骨也隨之增長一點。\n");
-            return 1;
-        }
-        me->set_skill(skill, 1);
-        /* Common restored learned is cumulative: Lv1's floor is 100. */
-        if( me->query_learn(skill) < 100 ) me->set_learn(skill, 100);
+    me->improve_skill_exact(skill,
+        me->skill_threshold(skill, cap) - me->query_learn(skill));
+    if( skill == "tiger-force" )
+        tell_object(me, "高慎將瘋虎功的入門心訣傳授給你，接下來就得靠你自己運功修習了。\n");
+    else
         tell_object(me, "高慎將「" + to_chinese(skill) + "」的入門要訣傳授給你。\n");
-        return 1;
-    }
-    return 0;
+    return 1;
 }
 
 int accept_fight()

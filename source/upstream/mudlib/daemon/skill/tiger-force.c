@@ -15,7 +15,7 @@ int valid_enable(string usage)
 
 /*
  * User-provided Tiger Force growth table.
- * Initial completion is handled by Gao Shen: level 20 + CON 1.
+ * Initial completion (gain at the Lv20 threshold): level 20 + CON 1.
  * Thereafter every actually gained level permanently grants:
  *   21-140 : gin +2, kee +2
  *   141-160: gin +3, kee +4
@@ -66,27 +66,18 @@ void skill_advanced(object me, string sk)
     apply_growth_to(me, me->query_skill("tiger-force", 1));
 }
 
-private int tiger_force_threshold(int level)
-{
-    int base;
-    if( level < 20 ) return 0;
-    if( level <= 100 ) base = 100;
-    else if( level <= 140 ) base = 150;
-    else if( level <= 180 ) base = 200;
-    else base = 250;
-    return level * level * base;
-}
+// 學成等級：累積點數到 20 級的門檻前一直是 0 級，gain 時直接練成 20 級。
+int query_entry_level() { return 20; }
 
-void skill_improved(object me, string sk)
+void skill_completed(object me, string sk)
 {
-    int level, next;
-    level = me->query_skill("tiger-force", 1);
-    while( level < 200 ) {
-        next = level + 1;
-        if( me->query_learn("tiger-force") < tiger_force_threshold(next) ) break;
-        me->advance_skill("tiger-force", 1);
-        level++;
+    tell_object(me, HIY "你依法運轉數周天後豁然貫通，終於練成了瘋虎功！根骨也隨之增長一點。\n" NOR);
+    if( !me->query("tiger_force/initial_con_bonus") ) {
+        me->set_attr("con", me->query_attr("con", 1) + 1);
+        me->set("tiger_force/initial_con_bonus", 1);
     }
+    if( me->query("tiger_force/growth_level") < 20 )
+        me->set("tiger_force/growth_level", 20);
 }
 
 /*
@@ -107,10 +98,12 @@ int do_exercise(object me)
     me->consume_stat("gin", 3);
     me->damage_stat("gin", 1);
 
-    /* Basic force learned is evaluated once per valid exercise tick by the
-     * shared restored formula.  Tiger Force itself is learned from successful
-     * combat hits, not from this exercise tick. */
+    /* 每次運功同時累積基本內功與瘋虎功的點數；瘋虎功只能靠修習取得，
+     * 戰鬥中不會增加。 */
     me->improve_restored_force_tick();
+    me->improve_skill_exact("tiger-force",
+        (random(me->query_attr("int")) + 1) * (me->query_attr("int") / 7)
+        + random(me->query_attr("cps")));
     return 1;
 }
 
