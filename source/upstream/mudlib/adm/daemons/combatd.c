@@ -168,11 +168,30 @@ private int restored_defense_exp(object me, object opponent)
     return (random(d) + 1) * (random(d) + 1) * restored_int_base(me);
 }
 
+/* 成功閃躲、格擋時取得實戰經驗（combat）。
+ * 對手是玩家：random(2)，即 0 或 1。
+ * 對手等級不高於自己：1 點；高 n 級：1 + random(n)，n 最多 10。 */
+private void defense_combat_gain(object me, object opponent)
+{
+    int n;
+
+    if( userp(opponent) ) {
+        n = random(2);
+        if( n > 0 ) me->gain_score("combat", n);
+        return;
+    }
+
+    n = opponent->query_level() - me->query_level();
+    if( n > 10 ) n = 10;
+    me->gain_score("combat", n > 0 ? 1 + random(n) : 1);
+}
+
 void restored_dodge_gain(object me, object opponent)
 {
     string mapped;
     int exp;
     if( !userp(me) || !objectp(opponent) ) return;
+    defense_combat_gain(me, opponent);
     exp = restored_defense_exp(me, opponent);
     me->improve_skill_exact("dodge", exp);
     mapped = me->skill_mapped("dodge");
@@ -183,9 +202,22 @@ void restored_parry_gain(object me, object opponent)
 {
     int exp;
     if( !userp(me) || !objectp(opponent) ) return;
+    defense_combat_gain(me, opponent);
     exp = restored_defense_exp(me, opponent);
     me->improve_skill_exact("parry", exp);
 }
+
+/* 基本攻擊技能：命中時不給武術造詣。 */
+private string *basic_attack_skills = ({
+    "unarmed", "blade", "twohanded blade", "secondhand blade",
+    "sword", "twohanded sword", "secondhand sword",
+    "axe", "twohanded axe", "secondhand axe",
+    "pike", "twohanded pike", "secondhand pike",
+    "staff", "twohanded staff", "secondhand staff",
+    "blunt", "twohanded blunt", "secondhand blunt",
+    "dagger", "secondhand dagger", "needle", "secondhand needle",
+    "whip", "beast"
+});
 
 private void restored_hit_gain(object me, object victim, string skill)
 {
@@ -194,6 +226,10 @@ private void restored_hit_gain(object me, object victim, string skill)
 
     if( !userp(me) || !objectp(victim) ) return;
     ib = restored_int_base(me);
+
+    /* 用 enable 的武功（非基本技能）造成傷害，每次 1 點武術造詣。 */
+    if( member_array(skill, basic_attack_skills) < 0 )
+        me->gain_score("martial art", 1);
 
     if( skill == "unarmed" ) {
         str = me->query_attr("str");
