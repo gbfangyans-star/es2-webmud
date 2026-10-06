@@ -22,6 +22,7 @@ void refresh_taoist_spell_mastery(string skill)
 varargs int query_attr(string attr, int raw);
 int set_attr(string what, int value);
 varargs void advance_skill(string skill, int amount);
+void apply_restored_skill_progression(string skill);
 
 // implementations
 
@@ -157,8 +158,17 @@ static mapping skill_gain = ([]);
 mapping query_skill_gain() { return skill_gain; }
 void reset_skill_gain() { skill_gain = ([]); }
 
-/* DIAGNOSTIC ROUND 3 - common restored cumulative progression.
- * Keep syntax deliberately conservative for the old Neolith driver. */
+/* 技能升級規則（所有技能共用）
+ *
+ * 拿到技能點數只會累積在 learned，當下不升級。玩家下 gain 時，這段時間
+ * 有拿到點數的技能才判斷：累積點數到了下一級的門檻就升一級，一次 gain
+ * 最多一級。還沒學成的技能（0 級）要累積到學成等級的門檻，gain 時才直接
+ * 學成到那一級，例如瘋虎功 20 級、龍圖心經 40 級；沒指定的技能學成等級是 1。
+ * NPC 不會下 gain，拿到點數就照同一套門檻升級。
+ *
+ * 門檻：升到第 level 級所需的累積點數 = level² × base，越高級 base 越大。
+ * 所有技能上限 200 級。
+ */
 int restored_skill_threshold(int level)
 {
     int base;
@@ -174,60 +184,87 @@ int restored_skill_threshold(int level)
     return level * level * base;
 }
 
-int uses_restored_skill_threshold(string skill)
-{
-    if( skill == "literate" || skill == "archaic attainment"
-    || skill == "mysticism" ) return 1;
-    if( skill == "unarmed" ) return 1;
-    if( skill == "parry" ) return 1;
-    if( skill == "dodge" ) return 1;
-    if( skill == "force" ) return 1;
-    if( skill == "tiger-steps" ) return 1;
-    if( skill == "tiger-blade" ) return 1;
-    if( skill == "sanmeendo" ) return 1;
-
-    // Every base weapon-strike skill uses the same threshold progression
-    // as blade -- previously only "blade" (and its twohanded/secondhand
-    // forms) was listed here, so improve_skill_exact() could pile up
-    // "learned" progress for axe/sword/pike/staff/etc. that never actually
-    // converted into a skill level.
-    if( skill == "axe" || skill == "twohanded axe" || skill == "secondhand axe" ) return 1;
-    if( skill == "sword" || skill == "twohanded sword" || skill == "secondhand sword" ) return 1;
-    if( skill == "pike" || skill == "twohanded pike" || skill == "secondhand pike" ) return 1;
-    if( skill == "staff" || skill == "twohanded staff" || skill == "secondhand staff" ) return 1;
-    if( skill == "blade" || skill == "twohanded blade" || skill == "secondhand blade" ) return 1;
-    if( skill == "blunt" || skill == "twohanded blunt" || skill == "secondhand blunt" ) return 1;
-    if( skill == "dagger" || skill == "secondhand dagger" ) return 1;
-    if( skill == "needle" || skill == "secondhand needle" ) return 1;
-    if( skill == "whip" ) return 1;
-
-    return 0;
-}
-
 int restored_skill_cap(string skill)
 {
-    if( skill == "tiger-steps" ) return 120;
-    if( skill == "tiger-blade" ) return 140;
     return 200;
 }
 
+// 學成等級：技能檔用 query_entry_level() 指定，沒指定的是 1。
+int skill_entry_level(string skill)
+{
+    object daemon;
+    int lv;
+
+    daemon = SKILL_D(skill);
+    if( objectp(daemon) && function_exists("query_entry_level", daemon) )
+        lv = call_other(daemon, "query_entry_level");
+    return lv > 0 ? lv : 1;
+}
+
+/* 個別技能的門檻：技能檔用 query_threshold_percent() 把基本門檻打折，
+ * 例如龍圖心經 10（練滿 200 級只要基本門檻的十分之一）。沒指定的是 100。 */
+int skill_threshold(string skill, int level)
+{
+    object daemon;
+    int pct;
+
+    daemon = SKILL_D(skill);
+    if( objectp(daemon) && function_exists("query_threshold_percent", daemon) )
+        pct = call_other(daemon, "query_threshold_percent");
+    if( pct <= 0 ) pct = 100;
+    return restored_skill_threshold(level) * pct / 100;
+}
+
+// 累積點數夠升的下一個等級；還不夠就傳回 0。
+int skill_next_level(string skill)
+{
+    int level, next;
+
+    level = skills[skill];
+    if( level >= restored_skill_cap(skill) ) return 0;
+    next = level ? level + 1 : skill_entry_level(skill);
+    if( learned[skill] < skill_threshold(skill, next) ) return 0;
+    return next;
+}
+
+private void raise_skill_to(string skill, int next)
+{
+    object daemon;
+
+    // 從 0 級直接學成：先讓技能檔顯示練成的敘述、給學成獎勵。
+    if( !skills[skill] && next > 1 ) {
+        daemon = SKILL_D(skill);
+        if( objectp(daemon) && function_exists("skill_completed", daemon) )
+            call_other(daemon, "skill_completed", this_object(), skill);
+    }
+    advance_skill(skill, next - skills[skill]);
+}
+
+// gain 指令呼叫：gained 是這段時間拿到點數的技能。
+void apply_gain_progression(mapping gained)
+{
+    string skill;
+    int amount, next;
+
+    if( !mapp(gained) ) return;
+    foreach(skill, amount in gained) {
+        if( amount <= 0 ) continue;
+        if( skill_flag[skill] & SKILL_FLAG_ABANDONED ) continue;
+        next = skill_next_level(skill);
+        if( next ) raise_skill_to(skill, next);
+    }
+}
+
+// 拿到點數當下的升級，只對 NPC 生效；玩家要等 gain。
 void apply_restored_skill_progression(string skill)
 {
-    int level;
-    int next_level;
-    int cap;
+    int next;
 
-    if( !uses_restored_skill_threshold(skill) ) return;
-
-    level = query_skill(skill, 1);
-    cap = restored_skill_cap(skill);
-
-    while( level < cap )
-    {
-        next_level = level + 1;
-        if( query_learn(skill) < restored_skill_threshold(next_level) ) break;
-        advance_skill(skill, 1);
-        level = level + 1;
+    if( userp(this_object()) ) return;
+    while( 1 ) {
+        next = skill_next_level(skill);
+        if( !next ) break;
+        raise_skill_to(skill, next);
     }
 }
 
@@ -290,6 +327,7 @@ improve_skill(string skill, int amount)
     if( undefinedp(skills[skill]) ) skills[skill] = 0;
 
     SKILL_D(skill)->skill_improved(this_object(), skill);
+    apply_restored_skill_progression(skill);
 }
 
 // advance_skill()

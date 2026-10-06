@@ -182,6 +182,7 @@ function bindCommandButtons(root){
   });
 }
 function bindContextActions(){bindCommandButtons(contextBody);}
+let lastContextHtml=null;
 function renderContext(){
   if(!contextBody)return;
   let primary='';
@@ -192,7 +193,9 @@ function renderContext(){
     contextTitle.textContent='可使用道具';
     primary='';
   }
-  contextBody.innerHTML=primary+inventoryPanel();
+  // HUD 每 0.8 秒回報一次，內容多半沒變；相同就不重建 DOM，避免長時間掛機一直重排版。
+  const html=primary+inventoryPanel();
+  if(html!==lastContextHtml){contextBody.innerHTML=html;lastContextHtml=html;}
   bindContextActions();
 }
 function observeContext(raw){
@@ -379,7 +382,23 @@ function renderChunk(s){
   }
   return out;
 }
-function shouldStick(){return term.scrollHeight-term.scrollTop-term.clientHeight<90;}
+function isNearBottom(){return term.scrollHeight-term.scrollTop-term.clientHeight<90;}
+// 是否貼底改由捲動事件維護，不在每段輸出時讀 scrollHeight（會強迫瀏覽器立即排版）；
+// 貼底時的自動捲動也合併成每個畫面影格最多一次，分頁在背景時則完全不做。
+let stickToBottom=true;
+let autoScrollTop=-1;
+let stickScrollFrame=0;
+function shouldStick(){return stickToBottom;}
+function scheduleStickScroll(){
+  if(stickScrollFrame)return;
+  stickScrollFrame=requestAnimationFrame(()=>{
+    stickScrollFrame=0;
+    if(!stickToBottom)return;
+    term.scrollTop=term.scrollHeight;
+    autoScrollTop=term.scrollTop;
+    updateScrollLatest();
+  });
+}
 function hpLineKind(line){
   const p=cleanText(line).trim();
   if(!p)return 'blank';
@@ -396,69 +415,65 @@ function isHpSummaryLine(line){
 }
 // Strip @@WEBHUD|...| lines out of a buffer, keeping only real text.
 // 標記也可能接在同一行的提示字元「> 」或其他文字後面，所以從標記處截斷，只保留前面的真正文字。
-function cutWebHudMarker(line){
-  const at=line.indexOf('@@WEBHUD|');
-  return at<0?line:line.slice(0,at);
+// 內部狀態資料的判斷：只有在「行首」（前面最多是提示字元「> 」）出現 @@WEBHUD| 的一整行才算。
+// 文章、聊天內容中間提到 @@WEBHUD|BEGIN 這串字時是一般文字，照常顯示，也不會讓網頁誤以為資料開始而卡住。
+const HUD_LINE_RE=/^[ \t]*(?:>[ \t]*)*@@WEBHUD\|/;
+function isHudLine(line){ return HUD_LINE_RE.test(cleanText(line)); }
+function hasHudLine(text,tag){
+  return new RegExp('(?:^|\\n)[ \\t]*(?:>[ \\t]*)*@@WEBHUD\\|'+tag).test(cleanText(text));
+}
+// 只刪除內部狀態資料行，其他文字（包含空行）原樣保留。
+function removeHudLines(text){
+  const parts=String(text).split(/(\r\n|\n|\r)/);
+  let out='';
+  for(let i=0;i<parts.length;i+=2){
+    const line=parts[i], sep=parts[i+1]||'';
+    if(isHudLine(line))continue;
+    out+=line+sep;
+  }
+  return out;
 }
 function stripWebHudLines(whole){
-  return String(whole).split(/\r\n|\n|\r/).map(cutWebHudMarker).filter(line=>{
+  return String(whole).split(/\r\n|\n|\r/).filter(line=>{
+    if(isHudLine(line))return false;
     const plain=cleanText(line).trim();
     if(!plain)return false;
-    if(/^@@WEBHUD\|/.test(plain))return false;
     if(/^>\s*$/.test(plain))return false;
     if(/^webhud$/i.test(plain))return false;
     return true;
   });
 }
-// 最後一道防線：不論輪詢狀態如何（逾時後才到的半段回覆、被拆成兩段的區塊、接在提示字元後面的標記），
-// 只要畫面文字裡還有 @@WEBHUD|，先解析資料再整行移除，絕不顯示在終端機上。
+// 最後一道防線：畫面文字裡若還有行首的 @@WEBHUD| 資料行，先解析再刪掉，絕不顯示在終端機上。
 function consumeHudPollOutput(s){
   const r=consumeHudPollOutputRaw(s);
-  if(r.visible&&r.visible.includes('@@WEBHUD|')){
+  if(r.visible&&hasHudLine(r.visible,'')){
     parseWebHud(r.visible);
-    const kept=String(r.visible).split(/\r\n|\n|\r/).map(line=>{
-      if(!line.includes('@@WEBHUD|'))return line;
-      const rest=cutWebHudMarker(line);
-      return /^\s*>?\s*$/.test(cleanText(rest))?null:rest;
-    }).filter(line=>line!==null);
-    r.visible=kept.join('\n');
+    r.visible=removeHudLines(r.visible);
   }
   return r;
 }
 function consumeHudPollOutputRaw(s){
   if(!hudPollInFlight){
-    // Defensive fallback: a @@WEBHUD block can still arrive here if the
-    // client's poll already timed out (hudPollInFlight reset) before this
-    // — now late — server response landed. These lines must never be shown
-    // as visible game text regardless of polling state, so still recognise
-    // and swallow a complete BEGIN..END block even when unexpected.
-    //
-    // A single WebSocket message is not guaranteed to carry the whole block —
-    // BEGIN and END can land in separate onmessage calls. Buffer fragments
-    // (bounded, so a block that never closes cannot grow unbounded) until a
-    // complete block is seen, mirroring the in-flight branch below; text with
-    // no BEGIN in play still passes straight through so ordinary output is
-    // never delayed.
-    const str=String(s);
-    if(!hudFallbackBuffer && !str.includes('@@WEBHUD|BEGIN'))return {visible:str,done:false};
-    hudFallbackBuffer+=str;
-    if(hudFallbackBuffer.length>20000){
-      // Pathological: never saw a closing END. Give up buffering and show
-      // it rather than silently swallowing real game text forever.
-      const flushed=hudFallbackBuffer;hudFallbackBuffer='';
-      return {visible:flushed,done:false};
+    // 不在輪詢中：逾時後才到的半段回覆也可能出現在這裡。逐段處理、立刻顯示一般文字，
+    // 只把行首的資料行刪掉，不再整段暫存等結尾（文章內文提到標記時會因此卡住）。
+    // 唯一暫存的是「被拆在兩段傳輸之間、還沒收完的那一行資料」。
+    let str=hudFallbackBuffer+String(s);
+    hudFallbackBuffer='';
+    if(!str.includes('@@WEB'))return {visible:str,done:false};
+    const nl=Math.max(str.lastIndexOf('\n'),str.lastIndexOf('\r'));
+    const last=str.slice(nl+1);
+    const lastPlain=cleanText(last).replace(/^[ \t]*(?:>[ \t]*)*/,'');
+    if(lastPlain && ('@@WEBHUD|'.startsWith(lastPlain)||lastPlain.startsWith('@@WEBHUD|'))){
+      hudFallbackBuffer=last;
+      str=str.slice(0,nl+1);
     }
-    const cleanFallback=cleanText(hudFallbackBuffer);
-    if(!/@@WEBHUD\|END(?:\n|$)/.test(cleanFallback))return {visible:'',done:false};
-    const whole=hudFallbackBuffer;hudFallbackBuffer='';
-    parseWebHud(whole);
-    const kept=stripWebHudLines(whole);
-    return {visible:kept.length?kept.join('\n')+'\n':'',done:true};
+    if(hasHudLine(str,''))parseWebHud(str);
+    return {visible:removeHudLines(str),done:false};
   }
   hudPollBuffer += String(s);
   parseWebHud(hudPollBuffer);
   const clean=cleanText(hudPollBuffer);
-  const hasEnd=/@@WEBHUD\|END(?:\n|$)/.test(clean);
+  const hasEnd=hasHudLine(hudPollBuffer,'END(?:[ \\t]*)(?:\\n|$)');
   const timedOut=Date.now()-hudPollStartedAt>HUD_POLL_TIMEOUT_MS;
   if(!hasEnd && !timedOut)return {visible:'',done:false};
   const whole=hudPollBuffer;
@@ -494,11 +509,25 @@ function pollHud(force=false,allowNoRoom=false){
     hudResponseTimer=null;
     if(!hudPollInFlight)return;
     // Never let a missing/split HUD END marker hold real player clicks forever.
-    hudPollInFlight=false;hudBootstrapInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
+    hudBootstrapInFlight=false;
+    releaseHudPoll();
     flushPendingUserCommands();
     if(!currentRoomId&&!exactRoomTrackingReady)scheduleMapBootstrapRetry(180);
   },HUD_POLL_TIMEOUT_MS);
   return true;
+}
+// 放棄等待一個逾時（或被玩家指令搶先）的 webhud 回覆。等待期間收到的文字可能混著
+// 真正的遊戲輸出（例如 read 1 的文章內容、別人說話），以前直接連同緩衝一起丟掉，
+// 畫面上就只剩「> read 1」而沒有任何回應。現在只拿掉 @@WEBHUD 資料，其餘照常顯示；
+// 之後才到的半段 HUD 回覆由 consumeHudPollOutput 的最後防線過濾。
+function releaseHudPoll(){
+  const whole=hudPollBuffer;
+  hudPollInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
+  if(hudResponseTimer){clearTimeout(hudResponseTimer);hudResponseTimer=null;}
+  if(!whole)return;
+  parseWebHud(whole);
+  const kept=stripWebHudLines(whole);
+  if(kept.length)renderVisible(kept.join('\n')+'\n',false,shouldStick());
 }
 function startHudPolling(){
   if(hudTimer)return;
@@ -519,7 +548,12 @@ function kickHudAfterServerText(force=false){
 function print(s,system=false){
   const stick=shouldStick();
   lastReceiveAt=Date.now();
-  if(!system){sessionRecorder.appendResponse(s);captureChatMessages(s);}
+  if(!system){
+    // 背景 webhud 輪詢（每 0.8 秒）的回應不是玩家指令的輸出，不寫進 session 紀錄，
+    // 否則掛機時上一個指令的回應會被 HUD 資料無限撐大。
+    if(!hudPollInFlight&&!String(s).includes('@@WEBHUD|'))sessionRecorder.appendResponse(s);
+    captureChatMessages(s);
+  }
   observer.consume(s);renderObserved();updateInputMode(s);observeRoomText(s);bootstrapExactRoomFromOutput(s);
 
   let shown=String(s);
@@ -529,7 +563,10 @@ function print(s,system=false){
     shown=shown.replace(/^[\r\n]*\[ES2 connected\][ \t]*\r?\n?/,'');
     shown=consumeHudPollOutput(shown).visible;
   }
-  if(prefix)term.insertAdjacentHTML('beforeend',prefix);
+  if(prefix)appendTerminalHtml(prefix,true);
+  renderVisible(shown,system,stick);
+}
+function renderVisible(shown,system,stick){
   let rendered=shown?renderChunk(shown):'';
   if(!system&&pendingTrimLeadingBlank){
     // Server output can arrive split across several WebSocket frames -- e.g.
@@ -544,8 +581,44 @@ function print(s,system=false){
     if(strippedRendered.trim()){rendered=strippedRendered;pendingTrimLeadingBlank=false;}
     else rendered='';
   }
-  if(rendered)term.insertAdjacentHTML('beforeend',`<span class="${system?'sys':''}">${rendered}</span>`);
-  if(stick)term.scrollTop=term.scrollHeight;
+  if(rendered)appendTerminalHtml(`<span class="${system?'sys':''}">${rendered}</span>`,rendered.endsWith('<br>'));
+  trimTerminal(stick);
+  if(stick)scheduleStickScroll();
+}
+// 訊息欄內容以「段落區塊」為單位附加：上一段以換行結尾時，新輸出放進新的
+// <div>；否則接在同一個區塊裡（同一行的延續）。視覺上與全部塞在同一層 inline
+// 完全相同，但原本整個訊息欄是一個巨大的 inline 段落，每來一段文字（並讀取
+// scrollHeight 判斷是否貼底）瀏覽器就得把全部歷史重新排版；分成區塊後只需排版新增的部分。
+let termBlock=null;
+let termBlockOpen=false;
+function appendTerminalHtml(html,endsLine){
+  if(!html)return;
+  if(!termBlockOpen||!termBlock||termBlock.parentNode!==term){
+    termBlock=document.createElement('div');
+    termBlock.className='term-block';
+    term.appendChild(termBlock);
+  }
+  termBlock.insertAdjacentHTML('beforeend',html);
+  termBlockOpen=!endsLine;
+}
+// 訊息欄只保留最近的內容。原本每段輸出都永久留在 DOM，掛 3~4 小時（尤其戰鬥中）
+// 會累積數十萬個節點，每次新訊息都要對整棵樹排版，瀏覽器越跑越吃 CPU/記憶體。
+// 超過上限時一次刪掉一批最舊的，攤平成本；玩家正在往上捲閱讀時保持畫面位置不跳動。
+const TERMINAL_MAX_NODES=3000;
+const TERMINAL_TRIM_TO=2400;
+function trimTerminal(stick){
+  const extra=term.childNodes.length-TERMINAL_MAX_NODES;
+  if(extra<=0)return;
+  const removeCount=term.childNodes.length-TERMINAL_TRIM_TO;
+  const before=stick?0:term.scrollHeight;
+  const range=document.createRange();
+  range.setStartBefore(term.firstChild);
+  range.setEndAfter(term.childNodes[removeCount-1]);
+  range.deleteContents();
+  // 刪掉上方內容後瀏覽器會自行調整 scrollTop 並送出捲動事件；記下調整後的位置，
+  // 以免被當成玩家往上捲而取消貼底。
+  if(stick)autoScrollTop=term.scrollTop;
+  else term.scrollTop=Math.max(0,term.scrollTop-(before-term.scrollHeight));
 }
 
 function parsePairFromState(key){
@@ -557,6 +630,7 @@ function parsePairFromState(key){
 }
 function renderScoreHUD(){ renderObserved(); }
 
+let lastScoreHudHtml=null;
 function renderObserved(){
   // 版面跟 score 一致：形體／精／氣／神是「名稱 數字 方格」一行；食物／飲水／疲勞只顯示文字，排在最下面一行。
   const labels={hp:'形體',jing:'精',qi:'氣',shen:'神',food:'食物',water:'飲水',fatigue:'疲勞'};
@@ -580,7 +654,8 @@ function renderObserved(){
   }
   const hud=document.querySelector('#scoreHud');
   if(hud&&(vitals.length||needs.length)){
-    hud.innerHTML=`<div class="hud-vitals">${vitals.join('')}</div>${needs.length?`<div class="hud-needs">${needs.join('')}</div>`:''}`;
+    const html=`<div class="hud-vitals">${vitals.join('')}</div>${needs.length?`<div class="hud-needs">${needs.join('')}</div>`:''}`;
+    if(html!==lastScoreHudHtml){hud.innerHTML=html;lastScoreHudHtml=html;}
     hud.classList.remove('muted');
   }
   const level=observer.state.scoreDetail?.level ?? observer.state.score?.level;
@@ -924,9 +999,10 @@ let pendingTrimLeadingBlank=false;
 function echoCommand(c){
   if(!c)return;
   const stick=shouldStick();
-  term.insertAdjacentHTML('beforeend',`<span class="cmd">&gt; ${esc(c)}</span><br>`);
+  appendTerminalHtml(`<span class="cmd">&gt; ${esc(c)}</span><br>`,true);
+  trimTerminal(stick);
   pendingTrimLeadingBlank=true;
-  if(stick)term.scrollTop=term.scrollHeight;
+  if(stick)scheduleStickScroll();
 }
 function transmitUserCommand(c,sensitive=false){
   if(!sensitive)echoCommand(c);
@@ -965,10 +1041,7 @@ function send(c){
     // grace period, then release the queued player action.
     setTimeout(()=>{
       if(!pendingUserCommands.length)return;
-      if(hudPollInFlight){
-        hudPollInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
-        if(hudResponseTimer){clearTimeout(hudResponseTimer);hudResponseTimer=null;}
-      }
+      if(hudPollInFlight)releaseHudPoll();
       flushPendingUserCommands();
     },HUD_ACTION_FLUSH_MS);
     return;
@@ -1109,6 +1182,10 @@ input?.addEventListener('keydown',e=>{
 
 // 訊息欄往上翻時出現「▼」按鈕，按下直接捲到最新的訊息。
 const scrollLatest=document.querySelector('#scrollLatest');
-function updateScrollLatest(){if(scrollLatest)scrollLatest.hidden=shouldStick();}
-term?.addEventListener('scroll',updateScrollLatest);
-scrollLatest?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();term.scrollTop=term.scrollHeight;updateScrollLatest();input?.focus();});
+function updateScrollLatest(){if(scrollLatest)scrollLatest.hidden=stickToBottom;}
+term?.addEventListener('scroll',()=>{
+  // 自動捲到底後、捲動事件送達前可能又有新文字進來；位置沒變就視為自己的捲動，維持貼底。
+  if(term.scrollTop!==autoScrollTop)stickToBottom=isNearBottom();
+  updateScrollLatest();
+});
+scrollLatest?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();stickToBottom=true;term.scrollTop=term.scrollHeight;autoScrollTop=term.scrollTop;updateScrollLatest();input?.focus();});

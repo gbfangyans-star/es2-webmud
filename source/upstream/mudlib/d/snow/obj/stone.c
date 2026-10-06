@@ -48,6 +48,7 @@ void do_clean(object me)
 	object link_ob;
         seteuid(getuid());
 	link_ob = me->link();
+	link_ob->delete("board_read");   // 新的逐篇已讀紀錄也一併清掉
 	if( link_ob->query("board_last_read/announce") ) {
 		link_ob->set("board_last_read/announce", 000000001);}
 	if( link_ob->query("board_last_read/board_tree") ) {

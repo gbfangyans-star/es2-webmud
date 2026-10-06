@@ -15,13 +15,6 @@ def common_threshold(level):
     else: base = 250
     return level * level * base
 
-def tiger_force_threshold(level):
-    if level <= 100: base = 100
-    elif level <= 140: base = 150
-    elif level <= 180: base = 200
-    else: base = 250
-    return level * level * base
-
 def d_value(player, mob):
     return max(2, min(10, mob-player))
 
@@ -56,25 +49,30 @@ def test_formula_ranges_and_floor_int_base():
         if intel < 7:
             assert set(vals) == {0}
 
-def test_special_caps_are_enforced_in_core_progression():
+def test_every_skill_caps_at_200_and_levels_one_per_gain():
     s=src('source/upstream/mudlib/feature/char/skill.c')
-    assert 'if( skill == "tiger-steps" ) return 120;' in s
-    assert 'if( skill == "tiger-blade" ) return 140;' in s  # sanmeendo uses the default 200 cap
-    assert 'return 140;' in s
-    assert 'while( level < cap )' in s
+    cap=s.split('int restored_skill_cap(string skill)',1)[1].split('}',1)[0]
+    assert 'return 200;' in cap
+    assert 'return 120;' not in s and 'return 140;' not in s
+    prog=s.split('void apply_gain_progression(mapping gained)',1)[1].split('\n}\n',1)[0]
+    assert 'while' not in prog          # 一次 gain 最多一級
+    assert 'skill_next_level(skill)' in prog
+    npc=s.split('void apply_restored_skill_progression(string skill)\n{',1)[1].split('\n}\n',1)[0]
+    assert 'if( userp(this_object()) ) return;' in npc
+    g=src('source/upstream/mudlib/cmds/usr/gain.c')
+    assert 'me->apply_gain_progression(skill_g);' in g
 
-def test_tiger_force_seed_matches_cumulative_level20_floor():
-    g=src('source/upstream/mudlib/d/oldpine/npc/kao_shen.c')
-    assert 'me->query_learn(skill) < 40000' in g
-    assert 'me->set_learn(skill, 40000)' in g
-    assert tiger_force_threshold(20) == 40_000
-    assert tiger_force_threshold(21) == 44_100
-    assert tiger_force_threshold(21)-tiger_force_threshold(20) == 4_100
+def test_tiger_force_completes_at_common_level20_floor():
+    t=src('source/upstream/mudlib/daemon/skill/tiger-force.c')
+    assert 'int query_entry_level() { return 20; }' in t
+    assert common_threshold(20) == 40_000
+    assert common_threshold(21) == 44_100
 
-def test_level_one_teacher_seed_matches_common_cumulative_floor():
+def test_teacher_only_seeds_up_to_level_one_floor():
     g=src('source/upstream/mudlib/d/oldpine/npc/kao_shen.c')
-    assert 'me->query_learn(skill) < 100' in g
-    assert 'me->set_learn(skill, 100)' in g
+    assert 'me->query_learn(skill) >= me->skill_threshold(skill, cap)' in g
+    assert 'me->skill_threshold(skill, cap) - me->query_learn(skill)' in g
+    assert 'me->set_skill(skill, 1)' not in g
 
 def test_trigger_wiring_is_success_only_not_attempt_only():
     c=src('source/upstream/mudlib/adm/daemons/combatd.c')
@@ -102,17 +100,5 @@ def test_single_exact_boundary_multi_level_jump_and_caps():
     assert advance_model(59, common_threshold(60)) == 60
     # A large gain may legitimately cross several cumulative thresholds.
     assert advance_model(58, common_threshold(63)) == 63
-    # Special caps stop advancement even with absurd learned totals.
-    assert advance_model(119, 99_999_999, 120) == 120
-    assert advance_model(139, 99_999_999, 140) == 140
-
-def test_tiger_force_milestone_thresholds_are_monotonic():
-    vals=[tiger_force_threshold(x) for x in range(20,201)]
-    assert all(a < b for a,b in zip(vals, vals[1:]))
-    assert tiger_force_threshold(100) == 1_000_000
-    assert tiger_force_threshold(101) == 1_530_150
-    assert tiger_force_threshold(140) == 2_940_000
-    assert tiger_force_threshold(141) == 3_976_200
-    assert tiger_force_threshold(180) == 6_480_000
-    assert tiger_force_threshold(181) == 8_190_250
-    assert tiger_force_threshold(200) == 10_000_000
+    # The 200 cap stops advancement even with absurd learned totals.
+    assert advance_model(199, 99_999_999) == 200

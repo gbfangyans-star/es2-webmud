@@ -154,8 +154,9 @@ do_vendor_list(string arg)
 	// name mixes Chinese (double-width) and ASCII; cjk_pad() counts
 	// visual width instead so the "：" column and the price column both
 	// line up. Not original ES2 wording, only the alignment logic.
-	list += "  " + cjk_pad(item->short(1), 30) + "："
-	    + cjk_pad(price_string(item->query("value")), 12, 1) + "\n";
+	// 價格欄寬 18（最長像「九千九百九十九文錢」九個字），靠右對齊；名稱有顏色也照算畫面寬度。
+	list += "  " + cjk_pad(item->short(1), 30) + "： "
+	    + cjk_pad(price_string(item->query("value")), 18, 1) + "\n";
     }
     if( list=="" ) {
 	write( name() + "的貨物已經全部賣光了，下次早一點來吧！\n");
