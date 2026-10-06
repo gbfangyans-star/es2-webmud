@@ -208,8 +208,9 @@ do_read(string arg)
         // 從編號最小、還沒讀過的留言開始，一次讀一篇。
         for(num = 1; num<=sizeof(notes); num++)
             if( !note_is_read(this_player(), notes[num-1]["time"]) ) break;
+        // 全部都讀過了：明確告訴玩家沒有新留言，而不是「沒有這張留言」。
         if( num > sizeof(notes) )
-            return notify_fail("沒有未讀的留言了。\n");
+            return notify_fail("目前沒有新的留言﹐要重讀請用 read <編號>。\n");
     } else if( !sscanf(arg, "%d", num) )
         return notify_fail("你要讀第幾張留言﹖\n");
 
@@ -226,12 +227,14 @@ do_read(string arg)
         notes[num]["msg"]));
 
     // Keep track which post we were reading last time.
-    if( !mapp(last_read_time) ) {
+    // 登入物件的 query() 回傳的是 mapping 的複本，直接改 last_read_time 不會存回去
+    // （以前只有第一次讀留言板時記得住，之後未讀數不會減少、read new 一直停在舊文章）；
+    // 一律用 set() 寫回。
+    if( !mapp(last_read_time) )
         this_player()->link()->set("board_last_read", ([ myid: notes[num]["time"] ]) );
-    }
-    else 
-        if( undefinedp(last_read_time[myid]) || notes[num]["time"] > last_read_time[myid] )
-            last_read_time[myid] = notes[num]["time"];
+    else if( undefinedp(last_read_time[myid]) || notes[num]["time"] > last_read_time[myid] )
+        this_player()->link()->set("board_last_read/" + myid, notes[num]["time"]);
+    // 逐篇已讀紀錄（read new 與未讀標示用這個）。
     mark_read(this_player(), notes[num]["time"]);
 
     return 1;
