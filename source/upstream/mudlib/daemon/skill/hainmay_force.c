@@ -15,6 +15,8 @@ private void create()
     art_usage = "force";
     art_desc  = "冷梅莊的內功心法，可運氣回精、療傷，練到一百級能進入【 明 鏡 止 水 】之境。";
 
+    art_entry = 10;
+
     ma_coef  = 10;
     mm_start = 30;
     mm_minus = 11;
@@ -27,17 +29,34 @@ private void create()
 /* 內功不會拿來出招。 */
 void attack_using(object me, object opponent, object weapon) { }
 
-/* 每級獎勵（引擎）＋ 100 級：膂力 +1、膽識 +1、精上限 +100、氣上限 +100。 */
+/* 學成：累積到 10 級門檻，gain 時直接練成 10 級（第一重）。 */
+void skill_completed(object me, string skill)
+{
+    tell_object(me, HIW "你練成寒梅心法第一重﹗\n" NOR);
+}
+
+/* 每級獎勵（引擎）；每 10 級練成一重（20 級第二重……100 級第十重）。
+ * 100 級：修完十重基本心法，膂力 +1、膽識 +1、精上限 +100、氣上限 +100。 */
 void skill_advanced(object me, string skill)
 {
+    int lv;
+
     ::skill_advanced(me, skill);
-    if( me->query_skill("hainmay force", 1) >= 100 && !me->query("hainmay/bonus_100") ) {
+
+    lv = me->query_skill("hainmay force", 1);
+    if( lv >= 20 && lv <= 100 && lv % 10 == 0 )
+        tell_object(me, HIW "你練成了寒梅心法第" + chinese_number(lv / 10) + "重。\n" NOR);
+
+    if( lv >= 100 && !me->query("hainmay/bonus_100") ) {
         me->set("hainmay/bonus_100", 1);
         me->set_attr("str", me->query_attr("str", 1) + 1);
         me->set_attr("cor", me->query_attr("cor", 1) + 1);
         me->advance_stat("gin", 100);
         me->advance_stat("kee", 100);
-        tell_object(me, HIY "寒梅心法運轉周天﹐你只覺膂力與膽識都增長了﹐精氣也更加充沛！\n" NOR);
+        tell_object(me, HIW "你修煉寒梅心法有成，已經修完了十重基本心法。\n"
+            "你的膂力增加了。\n"
+            "你的膽識增加了。\n"
+            "你的精、氣因為長年修煉寒梅心法增進不少。\n" NOR);
     }
 }
 
@@ -120,7 +139,7 @@ int do_mirror(object me)
 
     sk = me->query_skill("hainmay force", 1);
     if( sk < 100 )
-        return notify_fail("你的寒梅心法還不到一百級﹐無法進入明鏡止水之境。\n");
+        return notify_fail("你的寒梅心法尚未大成，無法進入明鏡止水之境。\n");
     if( me->query_temp("hainmay/mirror") )
         return notify_fail("你已經處於明鏡止水之境了。\n");
     if( me->query_stat("kee") <= 100 )
