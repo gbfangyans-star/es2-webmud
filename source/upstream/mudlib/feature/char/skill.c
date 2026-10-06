@@ -201,6 +201,20 @@ int skill_entry_level(string skill)
     return lv > 0 ? lv : 1;
 }
 
+/* 個別技能的門檻：技能檔用 query_threshold_percent() 把基本門檻打折，
+ * 例如龍圖心經 10（練滿 200 級只要基本門檻的十分之一）。沒指定的是 100。 */
+int skill_threshold(string skill, int level)
+{
+    object daemon;
+    int pct;
+
+    daemon = SKILL_D(skill);
+    if( objectp(daemon) && function_exists("query_threshold_percent", daemon) )
+        pct = call_other(daemon, "query_threshold_percent");
+    if( pct <= 0 ) pct = 100;
+    return restored_skill_threshold(level) * pct / 100;
+}
+
 // 累積點數夠升的下一個等級；還不夠就傳回 0。
 int skill_next_level(string skill)
 {
@@ -209,7 +223,7 @@ int skill_next_level(string skill)
     level = skills[skill];
     if( level >= restored_skill_cap(skill) ) return 0;
     next = level ? level + 1 : skill_entry_level(skill);
-    if( learned[skill] < restored_skill_threshold(next) ) return 0;
+    if( learned[skill] < skill_threshold(skill, next) ) return 0;
     return next;
 }
 

@@ -18,6 +18,10 @@ int valid_enable(string usage)
 // 學成等級：累積點數到 40 級的門檻前一直是 0 級，gain 時直接練成 40 級。
 int query_entry_level() { return 40; }
 
+// 門檻為基本門檻的十分之一：練滿 200 級需 100 萬點（一般技能 1000 萬），
+// 學成 40 級需 16,000 點。
+int query_threshold_percent() { return 10; }
+
 void skill_completed(object me, string sk)
 {
     tell_object(me,

@@ -29,7 +29,7 @@ int study_capped(object me, mapping caps)
 
     foreach(skill, limit in caps)
         if( me->query_skill(skill, 1) >= limit
-        ||  me->query_learn(skill) >= me->restored_skill_threshold(limit) ) return 1;
+        ||  me->query_learn(skill) >= me->skill_threshold(skill, limit) ) return 1;
     return 0;
 }
 

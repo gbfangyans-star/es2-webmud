@@ -70,8 +70,8 @@ def test_tiger_force_completes_at_common_level20_floor():
 
 def test_teacher_only_seeds_up_to_level_one_floor():
     g=src('source/upstream/mudlib/d/oldpine/npc/kao_shen.c')
-    assert 'me->query_learn(skill) >= me->restored_skill_threshold(cap)' in g
-    assert 'me->restored_skill_threshold(cap) - me->query_learn(skill)' in g
+    assert 'me->query_learn(skill) >= me->skill_threshold(skill, cap)' in g
+    assert 'me->skill_threshold(skill, cap) - me->query_learn(skill)' in g
     assert 'me->set_skill(skill, 1)' not in g
 
 def test_trigger_wiring_is_success_only_not_attempt_only():
