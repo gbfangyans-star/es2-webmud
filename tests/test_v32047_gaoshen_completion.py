@@ -35,10 +35,14 @@ def test_tiger_force_user_growth_table_and_powerup_formula():
     assert 'consume_stat("gin", 3)' in s and 'damage_stat("gin", 1)' in s
 
 
-def test_gao_shen_tiger_force_starts_at_twenty_and_grants_root_bonus():
-    s = text("d/oldpine/npc/kao_shen.c")
-    assert 'if( skill == "tiger-force" )' in s
-    assert 'me->set_skill(skill, 20)' in s
+def test_gao_shen_tiger_force_completes_at_twenty_and_grants_root_bonus():
+    # 高慎只傳授入門點數；累積到 20 級門檻後下 gain 才練成 20 級並給根骨。
+    g = text("d/oldpine/npc/kao_shen.c")
+    assert 'me->set_skill(skill, 20)' not in g
+    assert 'me->improve_skill_exact(skill,' in g
+    s = text("daemon/skill/tiger-force.c")
+    assert 'int query_entry_level() { return 20; }' in s
+    assert 'void skill_completed(object me, string sk)' in s
     assert 'query_attr("con", 1) + 1' in s
     assert 'me->set("tiger_force/growth_level", 20)' in s
 
