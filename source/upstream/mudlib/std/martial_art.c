@@ -39,6 +39,13 @@ int valid_enable(string usage) { return usage == art_usage; }
 
 int query_entry_level() { return art_entry > 1 ? art_entry : 1; }
 
+/* 學習條件：師父傳授前呼叫 SKILL_D(skill)->valid_learn(me)，傳回 0 表示不能學
+ * （武功檔用 notify_fail() 說明原因）。沒有覆寫的武功沒有條件。 */
+int valid_learn(object me) { return 1; }
+
+/* 冷梅莊等門派弟子的判定：custom_faction（例如虎刀門是 "fighter.tiger"）。 */
+int is_faction(object me, string faction) { return me->query("custom_faction") == faction; }
+
 /* 從 0 級學成時呼叫一次（在升級之前）。 */
 void skill_completed(object me, string skill)
 {

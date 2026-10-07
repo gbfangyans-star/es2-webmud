@@ -26,6 +26,16 @@ private void create()
     setup();
 }
 
+/* 學習條件：等級 15、冷梅莊弟子。 */
+int valid_learn(object me)
+{
+    if( !is_faction(me, "fighter.lunmay") )
+        return notify_fail("你不是冷梅莊弟子﹐無法修練寒梅心法。\n");
+    if( me->query_level() < 15 )
+        return notify_fail("你的等級還不到十五級﹐無法修練寒梅心法。\n");
+    return 1;
+}
+
 /* 內功不會拿來出招。 */
 void attack_using(object me, object opponent, object weapon) { }
 
