@@ -56,6 +56,11 @@ let mapRefreshPending = false;
 let hudBootstrapInFlight = false;
 let hudBootstrapAttempts = 0;
 const HUD_POLL_MS = 800;
+// 背景狀態查詢的頻率：戰鬥中每 0.8 秒；平常每 2.5 秒；玩家剛下指令的 3 秒內，
+// 指令的回應一到就立刻更新（吃喝、裝備、移動後狀態欄馬上反映）。分頁在背景時完全暫停。
+const HUD_IDLE_POLL_MS = 2500;
+const HUD_AFTER_COMMAND_MS = 3000;
+let lastHudPollAt = 0;
 const HUD_USER_GRACE_MS = 350;
 const HUD_KICK_DELAY_MS = 20;
 const HUD_POLL_TIMEOUT_MS = 1200;
@@ -493,8 +498,16 @@ function consumeHudPollOutputRaw(s){
   // create a visible terminal line. Real asynchronous text is still preserved.
   return {visible:kept.length?kept.join('\n')+'\n':'',done:true};
 }
+function hudPollDue(){
+  const now=Date.now();
+  if(now-lastUserCommandAt<HUD_AFTER_COMMAND_MS)return true;
+  const gap=contextState.combat?.target?HUD_POLL_MS:HUD_IDLE_POLL_MS;
+  return now-lastHudPollAt>=gap;
+}
 function hudPollReady(force=false,allowNoRoom=false){
   if((!currentRoomId&&!allowNoRoom)||input.type==='password'||ws?.readyState!==1||hudPollInFlight)return false;
+  if(document.hidden)return false;
+  if(!force&&!hudPollDue())return false;
   if(editorActive)return false;
   // Real player input has priority over internal HUD telemetry.
   if(!force && Date.now()-lastUserCommandAt<HUD_USER_GRACE_MS)return false;
@@ -510,6 +523,7 @@ function pollHud(force=false,allowNoRoom=false){
   hudPollInFlight=true;
   hudPollBuffer='';
   hudPollStartedAt=Date.now();
+  lastHudPollAt=hudPollStartedAt;
   ws.send('webhud\r\n');
   if(allowNoRoom)hudBootstrapInFlight=true;
   if(hudResponseTimer)clearTimeout(hudResponseTimer);
@@ -537,6 +551,8 @@ function releaseHudPoll(){
   const kept=stripWebHudLines(whole);
   if(kept.length)renderVisible(kept.join('\n')+'\n',false,shouldStick());
 }
+// 切回分頁時立刻更新一次狀態。
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden)pollHud(true); });
 function startHudPolling(){
   if(hudTimer)return;
   hudTimer=setInterval(pollHud,HUD_POLL_MS);
