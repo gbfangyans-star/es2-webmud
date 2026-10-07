@@ -433,6 +433,20 @@ function removeHudLines(text){
   }
   return out;
 }
+// 傳輸被切在一行資料中間時（例如只收到「@@WEBHUD」，「|BEGIN」在下一段），
+// 最後那半行先留著等下一段，不要當成一般文字顯示。
+function isHudLinePrefix(line){
+  const plain=cleanText(line).replace(/^[ \t]*(?:>[ \t]*)*/,'');
+  return !!plain && ('@@WEBHUD|'.startsWith(plain)||plain.startsWith('@@WEBHUD|'));
+}
+function holdTrailingHudPartial(text){
+  const str=String(text);
+  const nl=Math.max(str.lastIndexOf('\n'),str.lastIndexOf('\r'));
+  const last=str.slice(nl+1);
+  if(!isHudLinePrefix(last))return str;
+  hudFallbackBuffer=last+hudFallbackBuffer;
+  return str.slice(0,nl+1);
+}
 function stripWebHudLines(whole){
   return String(whole).split(/\r\n|\n|\r/).filter(line=>{
     if(isHudLine(line))return false;
@@ -459,14 +473,8 @@ function consumeHudPollOutputRaw(s){
     // 唯一暫存的是「被拆在兩段傳輸之間、還沒收完的那一行資料」。
     let str=hudFallbackBuffer+String(s);
     hudFallbackBuffer='';
-    if(!str.includes('@@WEB'))return {visible:str,done:false};
-    const nl=Math.max(str.lastIndexOf('\n'),str.lastIndexOf('\r'));
-    const last=str.slice(nl+1);
-    const lastPlain=cleanText(last).replace(/^[ \t]*(?:>[ \t]*)*/,'');
-    if(lastPlain && ('@@WEBHUD|'.startsWith(lastPlain)||lastPlain.startsWith('@@WEBHUD|'))){
-      hudFallbackBuffer=last;
-      str=str.slice(0,nl+1);
-    }
+    if(!str.includes('@'))return {visible:str,done:false};
+    str=holdTrailingHudPartial(str);
     if(hasHudLine(str,''))parseWebHud(str);
     return {visible:removeHudLines(str),done:false};
   }
@@ -476,7 +484,7 @@ function consumeHudPollOutputRaw(s){
   const hasEnd=hasHudLine(hudPollBuffer,'END(?:[ \\t]*)(?:\\n|$)');
   const timedOut=Date.now()-hudPollStartedAt>HUD_POLL_TIMEOUT_MS;
   if(!hasEnd && !timedOut)return {visible:'',done:false};
-  const whole=hudPollBuffer;
+  const whole=holdTrailingHudPartial(hudPollBuffer);
   hudPollInFlight=false;hudBootstrapInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
   if(hudResponseTimer){clearTimeout(hudResponseTimer);hudResponseTimer=null;}
   flushPendingUserCommands();
@@ -521,7 +529,7 @@ function pollHud(force=false,allowNoRoom=false){
 // 畫面上就只剩「> read 1」而沒有任何回應。現在只拿掉 @@WEBHUD 資料，其餘照常顯示；
 // 之後才到的半段 HUD 回覆由 consumeHudPollOutput 的最後防線過濾。
 function releaseHudPoll(){
-  const whole=hudPollBuffer;
+  const whole=holdTrailingHudPartial(hudPollBuffer);
   hudPollInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
   if(hudResponseTimer){clearTimeout(hudResponseTimer);hudResponseTimer=null;}
   if(!whole)return;
