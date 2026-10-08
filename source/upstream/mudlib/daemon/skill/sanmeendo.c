@@ -33,7 +33,7 @@ private void create()
 
     ma_coef  = 10;
     mm_start = 30;
-    mm_minus = 11;
+    mm_minus = 29;
     mm_coef  = 10;
     mm_first_msg = "你將三門刀法反覆演練﹐漸漸體會到「攻守之間﹐門戶自分」的道理﹐\n"
                    + "對武學之道有了初步的領悟﹗\n";

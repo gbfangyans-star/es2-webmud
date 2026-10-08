@@ -109,7 +109,7 @@ int acquire_skill(object me, string skill)
         break;
     case "tiger-blade":
         if( me->query_skill("tiger-force", 1) < 30 )
-            return notify_fail("高慎喝道：瘋虎功不到三十級，也敢妄學瘋虎刀法？\n");
+            return notify_fail("高慎喝道：你的瘋虎功火候未到，也敢妄學瘋虎刀法？\n");
         cap = 1;
         break;
     default:
@@ -117,7 +117,7 @@ int acquire_skill(object me, string skill)
     }
 
     /* 只傳授入門：累積點數還不到 1 級的門檻才教，一次補足到門檻。
-     * 等級要玩家下 gain 才會提升；瘋虎功要自己修習到 20 級的門檻才練成。 */
+     * 等級要玩家下 gain 才會提升；瘋虎功要自己修習到 15 級的門檻（10000 點）才練成。 */
     if( me->query_learn(skill) >= me->skill_threshold(skill, cap) )
         return notify_fail("高慎說道：滾你奶奶的! 自己好好修練去!\n");
 
