@@ -8,13 +8,8 @@ inherit F_VENDOR;
 void create()
 {
         set_name("鐵匠", ({ "smith" }) );
-        set_race("human");
+        set_race("human"); set_class("commoner");
         set_level(13);
-        set_stat_maximum("kee", 80);
-        set_attr("str", 19);
-        set_attr("cor", 17);
-        set_attr("cps", 15);
-        set_attr("dex", 18);
 
         set("long",
                 "一個身材粗壯的鐵匠﹐正忙碌地工作著。\n"
@@ -34,6 +29,7 @@ void create()
                 "鐵匠說道﹕站開點﹐小心別燙著了。\n",
                 "鐵匠說道﹕唉 ... 真把我給忙壞了。\n",
         }));
+        set_power("C");
         setup();
         carry_object(__DIR__"obj/smock")->wear();
 }

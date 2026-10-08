@@ -24,6 +24,7 @@ LONG
         "老人坐在石椅上，瞇著眼睛曬太陽，看起來十分愜意。\n",
         "老人笑吟吟地說：「年輕人，常來這後院坐坐，對身子骨好啊。」\n",
     }));
+    set_power("C");
     setup();
     carry_object("/obj/area/obj/cloth")->wear();
 }

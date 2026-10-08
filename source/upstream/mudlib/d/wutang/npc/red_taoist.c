@@ -24,16 +24,8 @@ LONG
         (: command, "cast 2" :),
         (: command, "cast 3" :),
     }));
+    set_power("B");
     setup();
-    set_stat_maximum("gin", 180);
-    set_stat_effective("gin", 180);
-    set_stat_current("gin", 180);
-    set_stat_maximum("kee", 195);
-    set_stat_effective("kee", 195);
-    set_stat_current("kee", 195);
-    set_stat_maximum("sen", 300);
-    set_stat_effective("sen", 300);
-    set_stat_current("sen", 300);
     carry_object("/custom/armor/cloth/red_robe")->wear();
     carry_object("/obj/example/weapon/longsword")->wield();
 }

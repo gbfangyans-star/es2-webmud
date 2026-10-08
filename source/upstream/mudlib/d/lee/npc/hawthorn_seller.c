@@ -21,6 +21,7 @@ LONG
         "/d/lee/obj/candied_hawthorn" : 20,
         "/d/lee/obj/big_candied_hawthorn" : 10,
     ]));
+    set_power("C");
     setup();
 }
 

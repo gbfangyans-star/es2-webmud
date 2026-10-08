@@ -29,9 +29,8 @@ void cancel_pick(object ob);
 void create()
 {
     set_name("王懷芝", ({ "wang whaiz", "wang", "whaiz" }) );
-    set_race("human");
+    set_race("human"); set_class("scholar");
     set_level(5);
-    set_stat_maximum("sen", 50);
 
     set_skill("literate", 60);
     set("long",
@@ -41,6 +40,7 @@ void create()
     set("chat_msg", ({
         (: teach_literate :)
     }));
+    set_power("B");
     setup();
 }
 
