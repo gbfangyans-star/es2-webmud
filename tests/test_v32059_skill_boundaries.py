@@ -62,11 +62,10 @@ def test_every_skill_caps_at_200_and_levels_one_per_gain():
     g=src('source/upstream/mudlib/cmds/usr/gain.c')
     assert 'me->apply_gain_progression(skill_g);' in g
 
-def test_tiger_force_completes_at_common_level20_floor():
+def test_tiger_force_completes_at_level15_with_own_threshold():
     t=src('source/upstream/mudlib/daemon/skill/tiger-force.c')
-    assert 'int query_entry_level() { return 20; }' in t
-    assert common_threshold(20) == 40_000
-    assert common_threshold(21) == 44_100
+    assert 'int query_entry_level() { return 15; }' in t
+    assert 'int query_entry_threshold() { return 10000; }' in t
 
 def test_teacher_only_seeds_up_to_level_one_floor():
     g=src('source/upstream/mudlib/d/oldpine/npc/kao_shen.c')

@@ -19,7 +19,7 @@ def test_six_actions_each():
  assert (MUD/'daemon/skill/sanmeendo.c').read_text().count('"action":')==5
 def test_first_followup_gate():
  s=(MUD/'daemon/skill/tiger-blade.c').read_text()
- assert 'me->query_skill("tiger-blade", 1) < 90 || ratio <= 70' in s
+ assert 'me->query_skill("tiger-blade", 1) < 90 || ratio < 100' in s
  assert 'ratio = me->query("force_ratio")' in s
  assert 'first_follow = strike' in s
 def test_second_followup_damage_gate():

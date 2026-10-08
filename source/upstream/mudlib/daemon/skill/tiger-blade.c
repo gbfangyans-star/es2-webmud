@@ -15,7 +15,7 @@ private void create()
     art_name  = "瘋虎刀法";
     art_usage = "twohanded blade";
     art_desc  = "虎刀門的看家刀法，刀勢霸道、殺氣濃重，只攻不守；"
-                + "功力催到七成以上時刀勢連綿不絕，一擊得手更會瘋狂追擊。";
+                + "功力催到十成時刀勢連綿不絕，一擊得手更會瘋狂追擊。";
     art_bonus = 0;
 
     moves = ({
@@ -64,8 +64,8 @@ private int strike(object me, object opponent, object weapon)
     return COMBAT_D->fight(me, opponent, art_id, make_action(pick_move(me), 100), weapon);
 }
 
-/* 追擊（依 2010 年瘋虎刀法更新）：瘋虎刀法 90 級以上、出手功力七成以上，第一追必出；
- * 第一追打中並造成傷害，再出第二追。功力沒有設定時以遊戲預設的七成半計算。 */
+/* 追擊：瘋虎刀法 90 級以上、出手功力十成，第一追必出；
+ * 第一追打中並造成傷害，再出第二追。功力沒有設定時以遊戲預設的七成半計算（不會追擊）。 */
 void attack_using(object me, object opponent, object weapon)
 {
     int ratio, first_follow;
@@ -74,7 +74,7 @@ void attack_using(object me, object opponent, object weapon)
     strike(me, opponent, weapon);
 
     if( !(ratio = me->query("force_ratio")) ) ratio = 75;
-    if( me->query_skill("tiger-blade", 1) < 90 || ratio <= 70 ) return;
+    if( me->query_skill("tiger-blade", 1) < 90 || ratio < 100 ) return;
     if( !objectp(opponent) || !living(opponent) || environment(me) != environment(opponent) ) return;
 
     message_vision(HIR "$N一聲怒吼﹐勢如瘋虎般揮刀進擊！\n" NOR, me, opponent);
