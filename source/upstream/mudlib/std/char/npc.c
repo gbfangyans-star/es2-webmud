@@ -19,6 +19,7 @@ static int last_scheduled_time_tag = 0;
 
 // NPC 強度（custom: NEW，見 /daemon/misc/npc_power.c）。
 static string power_tier;
+static int beast_strength;
 static mapping manual_attr = ([]), manual_stat = ([]);
 static int applying_power = 0;
 
@@ -40,6 +41,17 @@ void set_power(string tier)
 }
 
 string query_power() { return power_tier; }
+
+// set_beast() : 野獸強度 1～10，數值表見 /daemon/race/beast.c。
+// 和 set_power() 一樣在 setup() 之前呼叫，setup() 完成後套用。
+void set_beast(int strength)
+{
+    if( strength < 1 || strength > 10 )
+        error("set_beast: strength must be 1 to 10.\n");
+    beast_strength = strength;
+}
+
+int query_beast() { return beast_strength; }
 
 // create() 裡手動指定的屬性與精氣神上限，強度計算時保留不覆蓋。
 int set_attr(string what, int value)
@@ -67,6 +79,11 @@ void setup()
         applying_power = 0;
     }
     ::setup();
+    if( beast_strength ) {
+        applying_power = 1;
+        RACE_D("beast")->set_strength(this_object(), beast_strength);
+        applying_power = 0;
+    }
 }
 
 static void

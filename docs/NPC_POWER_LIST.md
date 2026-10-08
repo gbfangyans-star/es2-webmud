@@ -2,7 +2,8 @@
 
 > 依使用者確認的表格套用 `set_power()`（規則見 `CUSTOM_NPC_POWER.md`）。
 > 套用的 NPC 已移除檔案中手動寫死的屬性與精氣神上限，改由系統計算。
-> 野獸、鬼魂（含城隍爺，平民 LV1 鬼魂狀態，由 setup_ghost() 設定）、練功假人維持原樣。
+> 野獸改用 `set_beast(1～10)`（數值表見 `daemon/race/beast.c`，數值不變；綿羊新設強度 2）。
+> 鬼魂（含城隍爺，平民 LV1 鬼魂狀態，由 setup_ghost() 設定）、練功假人維持原樣。
 
 | # | 地點 | 名稱 | 檔案 | 職業 | 等級 | 強度 |
 |---|---|---|---|---|---|---|
@@ -41,20 +42,20 @@
 | 33 | 李家村 | 婦人 | `d/lee/npc/woman.c` | 平民 | 5 | C |
 | 34 | 迷霧森林 | 土匪 | `d/oldpine/npc/bandit.c` | 盜賊 | 10 | C |
 | 35 | 迷霧森林 | 土匪嘍囉 | `d/oldpine/npc/bandit_minion.c` | 盜賊 | 5 | C |
-| 36 | 迷霧森林 | 大黑熊 | `d/oldpine/npc/big_bear.c` | — | — | 不動（野獸） |
+| 36 | 迷霧森林 | 大黑熊 | `d/oldpine/npc/big_bear.c` | 野獸 | — | 野獸強度 5 |
 | 37 | 迷霧森林 | 大觀和尚 | `d/oldpine/npc/da_guan.c` | 和尚 | 30 | A |
-| 38 | 迷霧森林 | 野鹿 | `d/oldpine/npc/deer.c` | — | — | 不動（野獸） |
+| 38 | 迷霧森林 | 野鹿 | `d/oldpine/npc/deer.c` | 野獸 | — | 野獸強度 3 |
 | 39 | 迷霧森林 | 採藥人 | `d/oldpine/npc/herbalist.c` | 平民 | 1 | C |
 | 40 | 迷霧森林 | 受傷的旅客 | `d/oldpine/npc/injured_traveller.c` | 平民 | 1 | C |
 | 41 | 迷霧森林 | 高慎 | `d/oldpine/npc/kao_shen.c` | 武者 | 30 | B |
 | 42 | 迷霧森林 | 靈玉嬋 | `d/oldpine/npc/lin_yuchan.c` | 武者 | 30 | A |
-| 43 | 迷霧森林 | 小黑熊 | `d/oldpine/npc/little_bear.c` | — | — | 不動（野獸） |
-| 44 | 迷霧森林 | 老鼠 | `d/oldpine/npc/rat.c` | — | — | 不動（野獸） |
+| 43 | 迷霧森林 | 小黑熊 | `d/oldpine/npc/little_bear.c` | 野獸 | — | 野獸強度 4 |
+| 44 | 迷霧森林 | 老鼠 | `d/oldpine/npc/rat.c` | 野獸 | — | 野獸強度 1 |
 | 45 | 迷霧森林 | 旅行小販 | `d/oldpine/npc/seller.c` | 平民 | 1 | C |
-| 46 | 迷霧森林 | 松鼠 | `d/oldpine/npc/squirrel.c` | — | — | 不動（野獸） |
+| 46 | 迷霧森林 | 松鼠 | `d/oldpine/npc/squirrel.c` | 野獸 | — | 野獸強度 1 |
 | 47 | 迷霧森林 | 店小二 | `d/oldpine/npc/waiter.c` | 平民 | 1 | C |
-| 48 | 迷霧森林 | 凶暴的野熊 | `d/oldpine/npc/wild_bear.c` | — | — | 不動（野獸） |
-| 49 | 迷霧森林 | 土狼 | `d/oldpine/npc/wolf.c` | — | — | 不動（野獸） |
+| 48 | 迷霧森林 | 凶暴的野熊 | `d/oldpine/npc/wild_bear.c` | 野獸 | — | 野獸強度 7 |
+| 49 | 迷霧森林 | 土狼 | `d/oldpine/npc/wolf.c` | 野獸 | — | 野獸強度 4 |
 | 50 | 迷霧森林 | 徐彪 | `d/oldpine/npc/xue_biao.c` | 盜賊 | 20 | B |
 | 51 | 雪亭鎮 | 陳維俠 | `d/snow/npc/alchemist.c` | 方士 | 30 | A |
 | 52 | 雪亭鎮 | 阿寶 | `d/snow/npc/child.c` | 盜賊 | 10 | C |
@@ -80,8 +81,8 @@
 | 72 | 雪亭鎮 | 少婦 | `d/snow/npc/woman.c` | 平民 | 2 | C |
 | 73 | 雪亭鎮 | 魚天 | `d/snow/npc/yu.c` | 平民 | 1 | C |
 | 74 | 五堂鎮 | 冷梅莊二代弟子 | `d/wutang/npc/apprentice.c` | 武者 | 25 | B |
-| 75 | 五堂鎮 | 大野豬 | `d/wutang/npc/big_boar.c` | — | — | 不動（野獸） |
-| 76 | 五堂鎮 | 野豬 | `d/wutang/npc/boar.c` | — | — | 不動（野獸） |
+| 75 | 五堂鎮 | 大野豬 | `d/wutang/npc/big_boar.c` | 野獸 | — | 野獸強度 5 |
+| 76 | 五堂鎮 | 野豬 | `d/wutang/npc/boar.c` | 野獸 | — | 野獸強度 4 |
 | 77 | 五堂鎮 | 釣客 | `d/wutang/npc/fisher.c` | 平民 | 1 | C |
 | 78 | 五堂鎮 | 護院武師 | `d/wutang/npc/guard.c` | 武者 | 5 | B |
 | 79 | 五堂鎮 | 郭布 | `d/wutang/npc/guo_boo.c` | 道士 | 60 | S |
@@ -97,7 +98,7 @@
 | 89 | 五堂鎮 | 老駱 | `d/wutang/npc/ro.c` | 平民 | 1 | C |
 | 90 | 五堂鎮 | 趙欽差 | `d/wutang/npc/royalist.c` | 軍人 | 1 | B |
 | 91 | 五堂鎮 | 賣餅大叔 | `d/wutang/npc/seller.c` | 平民 | 1 | C |
-| 92 | 五堂鎮 | 綿羊 | `d/wutang/npc/sheep.c` | — | — | 不動（野獸） |
+| 92 | 五堂鎮 | 綿羊 | `d/wutang/npc/sheep.c` | 野獸 | — | 野獸強度 2 |
 | 93 | 五堂鎮 | 牧羊人 | `d/wutang/npc/shepherd.c` | 平民 | 1 | C |
 | 94 | 五堂鎮 | 煙波釣叟 | `d/wutang/npc/smoke_fisher.c` | 武者 | 40 | S |
 | 95 | 五堂鎮 | 小桃 | `d/wutang/npc/tao.c` | 平民 | 5 | C |
