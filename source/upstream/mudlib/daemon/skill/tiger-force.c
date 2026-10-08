@@ -128,7 +128,7 @@ int do_powerup(object me)
 
     sk = me->query_skill("tiger-force", 1);
     if( sk < 100 )
-        return notify_fail("你的瘋虎功尚未到一百級，還無法施展 powerup。\n");
+        return notify_fail("你的瘋虎功火候未足，還無法催動瘋虎強盛式。\n");
     if( me->query_temp("tiger_force/powerup") )
         return notify_fail("你現在正處於瘋虎功 powerup 的催勁狀態。\n");
 
