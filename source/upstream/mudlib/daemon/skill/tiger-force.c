@@ -128,9 +128,9 @@ int do_powerup(object me)
 
     sk = me->query_skill("tiger-force", 1);
     if( sk < 100 )
-        return notify_fail("你的瘋虎功火候未足，還無法催動瘋虎強盛式。\n");
+        return notify_fail("你的瘋虎功火候未足，還無法催動瘋虎強盛勢。\n");
     if( me->query_temp("tiger_force/powerup") )
-        return notify_fail("你現在正處於瘋虎強盛式的催勁狀態。\n");
+        return notify_fail("你現在正處於瘋虎強盛勢的催勁狀態。\n");
 
     damage_bonus = sk / 4;
     attack_bonus = sk / 3;
@@ -140,8 +140,7 @@ int do_powerup(object me)
     me->add_temp("apply/attack", attack_bonus);
     me->set_temp("tiger_force/powerup", 1);
 
-    message_vision(HIR "$N猛吸一口氣，瘋虎功勁力沿周身經脈暴然奔走，整個人的攻勢頓時變得更沉、更快、更具壓迫感！\n" NOR,
-        me);
+    message_vision(HIR "$N突然發出幾聲虎吼，雙眼紅絲滿佈，逐漸進入「瘋 虎 強 盛 勢」了！\n" NOR, me);
     call_out("remove_powerup", duration, me, damage_bonus, attack_bonus);
     return 1;
 }
