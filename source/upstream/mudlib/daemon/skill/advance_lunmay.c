@@ -58,7 +58,7 @@ int valid_enable(string usage)
 int valid_learn(object me)
 {
     if( me->query_level() < 30 )
-        return notify_fail("你的等級還不到三十級﹐無法修練傲梅暗劍訣。\n");
+        return notify_fail("你的火候未到﹐還參不透傲梅暗劍訣的精要。\n");
     if( me->query_skill("hainmay force", 1) < 100 )
         return notify_fail("你的寒梅心法尚未大成﹐無法修練傲梅暗劍訣。\n");
     return 1;
