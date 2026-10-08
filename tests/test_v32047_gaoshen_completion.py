@@ -20,12 +20,14 @@ def test_tiger_steps_has_six_attempt_narratives_and_neutral_dodge_formula():
 
 def test_tiger_force_user_growth_table_and_powerup_formula():
     s = text("daemon/skill/tiger-force.c")
-    assert 'lv >= 161' in s
-    assert 'advance_stat("gin", 1)' in s and 'advance_stat("kee", 1)' in s
-    assert 'lv >= 141' in s
-    assert 'advance_stat("gin", 3)' in s and 'advance_stat("kee", 4)' in s
-    assert 'advance_stat("gin", 2)' in s and 'advance_stat("kee", 2)' in s
-    assert 'lv == 100' in s and 'query_attr("str", 1) + 1' in s and 'query_attr("cor", 1) + 1' in s
+    assert 'lv >= 161' in s and 'lv >= 141 && lv <= 160' in s
+    assert 'advance_stat("gin", lv >= 161 ? 1 : 2 + (lv >= 141 && lv <= 160 ? 1 : 0))' in s
+    assert 'advance_stat("kee", lv >= 161 ? 1 : 2 + (lv >= 141 && lv <= 160 ? 2 : 0))' in s
+    assert 'cap = lv * 12;' in s and 'query_stat_maximum("gin") <= cap' in s
+    assert 'gain_score("martial art", lv * 10)' in s
+    # 90 -> 91 branch: combat exp over 100000 jumps to 100 with str+2 con+1.
+    assert 'lv == 91' in s and 'score/combat") > 100000' in s
+    assert 'query_attr("str", 1) + 2' in s and 'advance_skill("tiger-force", 9)' in s
     assert 'lv == 140' in s and 'query_attr("cor", 1) + 2' in s
     assert 'damage_bonus = sk / 4' in s
     assert 'attack_bonus = sk / 3' in s
@@ -41,16 +43,18 @@ def test_gao_shen_tiger_force_completes_at_twenty_and_grants_root_bonus():
     assert 'me->set_skill(skill, 20)' not in g
     assert 'me->improve_skill_exact(skill,' in g
     s = text("daemon/skill/tiger-force.c")
-    assert 'int query_entry_level() { return 20; }' in s
+    assert 'int query_entry_level() { return 15; }' in s
+    assert 'int query_entry_threshold() { return 10000; }' in s
     assert 'void skill_completed(object me, string sk)' in s
     assert 'query_attr("con", 1) + 1' in s
-    assert 'me->set("tiger_force/growth_level", 20)' in s
+    assert 'me->set("tiger_force/growth_level", lv);' in s
 
 
-def test_tiger_blade_followup_and_six_actions_remain_present():
+def test_tiger_blade_followup_and_moves_remain_present():
+    # tiger-blade rewritten on the new martial art engine: eight moves from the
+    # Han Xiao battle record; follow-ups need full (100%) force.
     s = text("daemon/skill/tiger-blade.c")
-    assert s.count('["action"') == 6
-    assert 'query_skill("tiger-blade",1)<90' in s
-    assert 'query("force_ratio")<=70' in s
+    assert s.count('"action":') == 8
+    assert 'me->query_skill("tiger-blade", 1) < 90 || ratio < 100' in s
     assert 'first_follow = strike' in s
-    assert 'if(first_follow<=0' in s
+    assert 'if( first_follow <= 0' in s

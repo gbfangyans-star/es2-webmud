@@ -316,36 +316,13 @@ int
 inflict_damage (int strength, object victim)
 {
     int damage;
-    string force_sk;
 
     // If we are not living, make no damage.
     if( !living(this_object()) ) return 0;
 
-    // Convert strength to damage. If we are using force, use force formula.
-    // Otherwise use default.
-    // NOTE: skill_mapped("force") always returns a truthy string ("force"
-    // itself, when nothing is mapped) -- it is not a valid "does this
-    // character actually have force trained" test. Gating on query_skill()
-    // as well is what actually restricts this branch to characters who
-    // have force trained; without it every unarmed hit, from every
-    // character, silently fell into this branch and always computed 0
-    // damage (no /daemon/force.c skill exists to answer inflict_damage()),
-    // which also meant unarmed hits never registered as amount > 0 and so
-    // never triggered restored_hit_gain()'s "unarmed" experience gain.
-    force_sk = skill_mapped("force");
-
-    // If using force, call force skill to inflict damage
-    if( force_sk && query_skill("force") > 0 ) {
-	damage = SKILL_D(force_sk)->inflict_damage(strength, victim);
-
-	// Call default force skill in case the special force doesn't define
-	// inflict_damage()
-	if( ! damage && force_sk != "force" )
-	    damage = SKILL_D("force")->inflict_damage(strength, victim);
-
-	return damage;
-    }
-
+    // 傷害一律用「基本力道＋內功加成」換算（內功加成已在 COMBAT_D->fight()
+    // 加進 strength）。原本有內功等級時改請內功技能計算傷害，但沒有任何內功
+    // 實作 inflict_damage()，結果練了內功的人徒手傷害永遠是 0。
     damage = 1 + strength/10000 + random(strength/10000);
     damage += query_temp("apply/damage");
 

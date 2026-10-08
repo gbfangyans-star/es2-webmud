@@ -13,7 +13,7 @@ private void create()
     art_id    = "hainmay force";
     art_name  = "寒梅心法";
     art_usage = "force";
-    art_desc  = "冷梅莊的內功心法，可運氣回精、療傷，練到一百級能進入【 明 鏡 止 水 】之境。";
+    art_desc  = "冷梅莊的內功心法，可運氣回精、療傷，心法大成之後能進入【 明 鏡 止 水 】之境。";
 
     art_entry = 10;
 
@@ -24,6 +24,16 @@ private void create()
 
     DAEMON_D->register_skill_daemon("hainmay force");
     setup();
+}
+
+/* 學習條件：等級 15、冷梅莊弟子。 */
+int valid_learn(object me)
+{
+    if( !is_faction(me, "fighter.lunmay") )
+        return notify_fail("你不是冷梅莊弟子﹐無法修練寒梅心法。\n");
+    if( me->query_level() < 15 )
+        return notify_fail("你的根基尚淺﹐還承受不住寒梅心法的清冷真氣。\n");
+    return 1;
 }
 
 /* 內功不會拿來出招。 */

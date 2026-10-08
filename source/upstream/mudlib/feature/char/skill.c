@@ -206,9 +206,16 @@ int skill_entry_level(string skill)
 int skill_threshold(string skill, int level)
 {
     object daemon;
-    int pct;
+    int pct, entry;
 
     daemon = SKILL_D(skill);
+    /* 學成門檻：技能檔用 query_entry_threshold() 指定學成那一級所需的累積點數，
+     * 例如瘋虎刀法 50000 點學成 30 級；沒指定的照原本算法。 */
+    if( objectp(daemon) && function_exists("query_entry_threshold", daemon)
+    &&  level == skill_entry_level(skill)
+    &&  (entry = call_other(daemon, "query_entry_threshold")) > 0 )
+        return entry;
+
     if( objectp(daemon) && function_exists("query_threshold_percent", daemon) )
         pct = call_other(daemon, "query_threshold_percent");
     if( pct <= 0 ) pct = 100;
