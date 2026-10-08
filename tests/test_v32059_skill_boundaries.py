@@ -77,11 +77,13 @@ def test_teacher_only_seeds_up_to_level_one_floor():
 def test_trigger_wiring_is_success_only_not_attempt_only():
     c=src('source/upstream/mudlib/adm/daemons/combatd.c')
     f=src('source/upstream/mudlib/feature/char/combat.c')
-    assert 'if( damage > 0 ) restored_hit_gain(me, victim, skill);' in c
+    assert 'if( damage > 0 ) restored_hit_gain(me, victim, skill, weapon);' in c
     assert 'if( random(100) > chance ) {' in f
     dodge_block=f.split('if( random(100) > chance ) {',1)[1].split('return 0;',1)[0]
     assert 'restored_dodge_gain' in dodge_block
-    assert 'if( absorbed > 0 )' in f and 'restored_parry_gain' in f
+    # parry gain only after a successful block (new parry rule, see docs/martial_arts/招架規則設計.md)
+    parry_block=f.split('private int parry_attack(int strength, object from)\n{',1)[1]
+    assert parry_block.index('if( block <= strength ) return 0;') < parry_block.index('restored_parry_gain')
 
 def test_no_legacy_level_multiplier_in_exact_gain():
     s=src('source/upstream/mudlib/feature/char/skill.c')

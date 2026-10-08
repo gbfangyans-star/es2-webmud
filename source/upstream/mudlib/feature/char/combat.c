@@ -202,6 +202,8 @@ defend (int ability, int strength, object from)
  * absorb 應該傳回一個整數值，表示有多少攻擊的強度被「吸收」了。
  */
 
+private int parry_attack(int strength, object from);
+
 int
 absorb (int ability, int strength, object from)
 {
@@ -224,22 +226,83 @@ absorb (int ability, int strength, object from)
 
     if( !living(this_object()) ) return 0;
 
-    if( (sk=skill_mapped("parry")) ) {
-        int absorbed;
-        absorbed = SKILL_D(sk)->parry_using(
-            this_object(), ability, strength, from);
-        if( absorbed > 0 ) {
-            // 重擋(heavy_parry): whenever a normal parry lands, a soldier who
-            // knows this technique turns it into a much harder block.
-            if( query_learn("heavy_parry") ) absorbed *= 5;
-            if( from->is_character() ) COMBAT_D->restored_parry_gain(this_object(), from);
-            else if( environment(from) && environment(from)->is_character() )
-                COMBAT_D->restored_parry_gain(this_object(), environment(from));
-        }
-        return absorbed;
+    return parry_attack(strength, from);
+}
+
+/* 招架（NEW，規則見 docs/martial_arts/招架規則設計.md）
+ *
+ * 格擋力道上限 =（防守力道 + 自己的內功加成）×（100 + 招架等級）%，
+ * 每一刀從 1 到上限隨機取值，跟對方這一刀的攻擊力道比：
+ *   超過對方         → 格擋，傷害減少（1 + 招架等級 / 20）%
+ *   達到對方 2.5 倍  → 完全擋下，不受傷
+ * 學過重擋（heavy_parry）時格擋力道上限放大：對方有內功 ×5，沒有 ×2。
+ * 空手也可以格擋。招架等級沿用 query_skill("parry")（有 enable 招架武功時取平均）。
+ * 結果記在自己的 temp：parry_result（1 格擋、2 完全擋下）、parry_reduce（減傷 %），
+ * 由 COMBAT_D->fight() 讀取。
+ * enable 在招架上的武功可以實作：
+ *   string parry_message(object me, object attacker, int full)  拆招敘述
+ *   void parry_success(object me, object attacker, int full)    格擋後的特效
+ */
+private int parry_force_bonus()
+{
+    int ratio, bonus, kee, kee_required;
+
+    if( query_skill("force") <= 0 ) return 0;
+    if( !(ratio = query("force_ratio")) ) ratio = 75;
+    bonus = query_skill("force") * query_stat("kee") * ratio / 25;
+
+    // 跟攻擊方一樣：氣不夠時內功加成按比例打折。
+    kee_required = bonus / 500;
+    kee = query_stat("kee");
+    if( kee_required > 0 && kee < kee_required )
+        bonus = bonus * kee / kee_required;
+    return bonus;
+}
+
+private int parry_attack(int strength, object from)
+{
+    object attacker, daemon;
+    string art, msg;
+    int sk, max, block, full, reduce;
+
+    if( strength < 1 ) return 0;
+
+    attacker = from->is_character() ? from : environment(from);
+
+    sk = query_skill("parry");
+    max = (query_strength("defense") + parry_force_bonus()) * (100 + sk) / 100;
+
+    // 重擋(heavy_parry，軍人技巧)：格擋力道上限放大，對方有內功時 ×5，沒有時 ×2。
+    if( query_learn("heavy_parry") )
+        max *= (objectp(attacker) && attacker->query_skill("force") > 0) ? 5 : 2;
+    if( max < 1 ) return 0;
+
+    block = 1 + random(max);
+    if( block <= strength ) return 0;
+
+    full = block * 2 >= strength * 5;
+    reduce = 1 + sk / 20;
+
+    set_temp("parry_result", full ? 2 : 1);
+    set_temp("parry_reduce", reduce);
+
+    art = skill_mapped("parry");
+    if( stringp(art) && art != "parry" ) daemon = SKILL_D(art);
+
+    if( objectp(daemon) && function_exists("parry_message", daemon) )
+        msg = daemon->parry_message(this_object(), attacker, full);
+    if( !stringp(msg) )
+        msg = full ? "$n將$N這一擊格開" : "$n嘗試將$N這一擊格開";
+    if( objectp(attacker) ) {
+        attacker->set_temp("absorb_message", msg);
+        if( attacker->is_character() )
+            COMBAT_D->restored_parry_gain(this_object(), attacker);
     }
 
-    return 0;
+    if( objectp(daemon) && function_exists("parry_success", daemon) )
+        daemon->parry_success(this_object(), attacker, full);
+
+    return full ? strength : 0;
 }
 
 // inflict_damage()
@@ -286,8 +349,13 @@ inflict_damage (int strength, object victim)
     damage = 1 + strength/10000 + random(strength/10000);
     damage += query_temp("apply/damage");
 
+    // 新版武功的傷害百分比（見 COMBAT_D->fight()），在扣防具之前套用。
+    if( query_temp("martial_damage_pct") > 0 )
+        damage = damage * query_temp("martial_damage_pct") / 100;
+
     // Call victim to resist this.
-    damage -= victim->resist_damage(damage, this_object());
+    if( !query_temp("martial_no_armor") )
+        damage -= victim->resist_damage(damage, this_object());
 
     return damage > 0 ? victim->receive_damage(damage, this_object(), this_object()) : 0;
 }
