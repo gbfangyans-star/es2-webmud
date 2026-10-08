@@ -8,12 +8,19 @@ def text(rel):
     return (MUD / rel).read_text(encoding="utf-8")
 
 
-def test_tiger_steps_has_six_attempt_narratives_and_neutral_dodge_formula():
+def test_tiger_steps_has_five_dodge_narratives_and_neutral_dodge_formula():
+    # Five dodge narratives from the Han Xiao battle record; shown only when the
+    # dodge succeeds (handed to combatd through the attacker's defend_message).
     s = text("daemon/skill/tiger-steps.c")
-    assert s.count('"$N') == 6
+    assert s.count('"$n') == 5
     assert 'return me->query_skill("dodge")' in s
     assert 'valid_enable(string usage)' in s and 'usage == "dodge"' in s
-    assert 'message_vision' in s
+    assert 'set_temp("defend_message"' in s
+    assert 'message_vision' not in s
+    assert 'int query_entry_level() { return 10; }' in s
+    assert '你已經掌握了狻猊步法。' in s
+    assert 'gain_score("martial art", lv * 10)' in s
+    assert 'gain_score("martial mastery", (lv - 40) * 10)' in s
     assert 'apply/dodge' not in s
     assert 'random(100)' not in s
 

@@ -18,7 +18,7 @@ int valid_enable(string usage)
  *
  * 學成：累積 10000 點，gain 時練成 15 級；根骨 +1，並給 15 級本身的每級獎勵。
  * 每級獎勵（15 級起，每升一級）：
- *   武術造詣 + 等級 × 10
+ *   武術造詣 + 等級 × 10；31 級起武學之道 + (等級 − 30) × 10
  *   精、氣上限：15～140 級各 +2；141～160 級精 +3、氣 +4；161 級起各 +1。
  *   精（或氣）上限已超過「瘋虎功等級 × 12」時，該項這一級不加（各自判斷，用升級後的等級）。
  * 90 級分歧（只有一次機會，無法回頭）：從 90 升到 91 的那次，
@@ -36,6 +36,7 @@ private void level_reward(object me, int lv)
     me->set("tiger_force/growth_level", lv);
 
     me->gain_score("martial art", lv * 10);
+    if( lv > 30 ) me->gain_score("martial mastery", (lv - 30) * 10);
 
     cap = lv * 12;
     if( me->query_stat_maximum("gin") <= cap )
