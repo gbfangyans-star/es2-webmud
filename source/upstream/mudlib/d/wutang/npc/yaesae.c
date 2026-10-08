@@ -18,10 +18,6 @@ void create()
 面好漢，而他的輕功在武林中也是一絕。
 LONG
     );
-    set_attr("str", 20);
-    set_attr("cor", 30);
-    set_attr("dex", 35);
-    set_attr("con", 28);
     set_skill("dodge", 110);
     set_skill("parry", 80);
     set_skill("dagger", 60);
@@ -33,14 +29,6 @@ LONG
         "葉翔斜倚在公告欄旁，懶洋洋地打量著往來的富商，嘴角似笑非笑。\n",
         "葉翔低聲自語：「這鎮上有些人的銀子，也該拿出來分給窮苦人家了。」\n",
     }));
+    set_power("A");
     setup();
-    set_stat_maximum("gin", 360);
-    set_stat_effective("gin", 360);
-    set_stat_current("gin", 360);
-    set_stat_maximum("kee", 450);
-    set_stat_effective("kee", 450);
-    set_stat_current("kee", 450);
-    set_stat_maximum("sen", 150);
-    set_stat_effective("sen", 150);
-    set_stat_current("sen", 150);
 }

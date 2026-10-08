@@ -17,7 +17,7 @@ void create() {
     mapping gt;
 
     set_name ("掌櫃", ({ "innkeeper", "keeper" }) );
-    set_race ("human");
+    set_race ("human"); set_class ("commoner");
     set_level (4);
 
     set ("age", 52);
@@ -26,6 +26,7 @@ void create() {
         700: (: open_inn :),
         2200: (: close_inn :),
     ]));
+    set_power("C");
     setup();
     carry_money ("coin", 160);
 

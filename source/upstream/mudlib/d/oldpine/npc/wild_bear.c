@@ -31,7 +31,8 @@ LONG
         ([ "action": "$N張開血盆大口往$n的$l咬去", "damage_type": "咬傷" ]),
         ([ "action": "$N龐大的身軀往$n的$l猛撞過去", "damage_type": "瘀傷" ])
     }));
+    // 野獸強度（1～10），數值見 daemon/race/beast.c。
+    set_beast(7);
     setup();
-    RACE_D("beast")->set_strength(this_object(), 7);
     carry_object("/d/oldpine/obj/meat");
 }

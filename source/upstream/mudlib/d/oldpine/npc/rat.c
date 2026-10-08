@@ -17,6 +17,7 @@ LONG
         ([ "action": "$N張口往$n的$l咬去", "damage_type": "咬傷" ]),
         ([ "action": "$N竄到$n腳邊，往$n的$l抓了一把", "damage_type": "抓傷" ])
     }));
+    // 野獸強度（1～10），數值見 daemon/race/beast.c。
+    set_beast(1);
     setup();
-    RACE_D("beast")->set_strength(this_object(), 1);
 }

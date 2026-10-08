@@ -10,13 +10,8 @@ void new_crate();
 void create()
 {
 	set_name("工頭", ({ "foreman" }) );
-	set_race("human");
+	set_race("human"); set_class("commoner");
 	set_level(8);
-	set_stat_maximum("kee", 60);
-	set_attr("str", 18);
-	set_attr("cor", 19);
-	set_attr("cps", 15);
-	set_attr("dex", 16);
 
 	set("age", 48);
 	set("long",
@@ -31,6 +26,7 @@ void create()
 		"工頭說道﹕要算工錢的一個個來 ... 別急 ...\n"
 	}) );
 		
+	set_power("C");
 	setup();
 	carry_money("coin", 220);
 }
