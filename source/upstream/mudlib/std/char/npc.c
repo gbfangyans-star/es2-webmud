@@ -9,6 +9,7 @@
 #include <command.h>
 #include <skill.h>
 #include <type.h>
+#include <daemon.h>
 
 inherit CHARACTER;
 inherit F_CLEAN_UP;     // Only to clean up master copy of NPCs.
@@ -16,7 +17,57 @@ inherit F_CLEAN_UP;     // Only to clean up master copy of NPCs.
 static mixed next_chat;
 static int last_scheduled_time_tag = 0;
 
+// NPC 強度（custom: NEW，見 /daemon/misc/npc_power.c）。
+static string power_tier;
+static mapping manual_attr = ([]), manual_stat = ([]);
+static int applying_power = 0;
+
 int chat();
+
+// -----------------------
+// NPC 強度
+// -----------------------
+
+// set_power() : 設定 NPC 強度等級，"C"(雜兵)、"B"(一般)、"A"(菁英)、"S"(頭目)。
+// 要在 setup() 之前呼叫；setup() 時依種族、職業、等級自動算出屬性與精氣神。
+void set_power(string tier)
+{
+    string t;
+
+    if( !(t = NPC_POWER_D->normalize_tier(tier)) )
+        error("set_power: unknown power tier " + sprintf("%O", tier) + ".\n");
+    power_tier = t;
+}
+
+string query_power() { return power_tier; }
+
+// create() 裡手動指定的屬性與精氣神上限，強度計算時保留不覆蓋。
+int set_attr(string what, int value)
+{
+    if( !applying_power ) manual_attr[what] = 1;
+    return ::set_attr(what, value);
+}
+
+int set_stat_maximum(string what, int val)
+{
+    if( !applying_power ) manual_stat[what] = 1;
+    return ::set_stat_maximum(what, val);
+}
+
+void setup()
+{
+    if( power_tier && clonep(this_object()) ) {
+        // 與 CHAR_D->setup_char() 相同的預設值，確保種族初始化已經完成。
+        if( !query_race() ) set_race("human");
+        if( !query_class() ) set_class("commoner");
+        if( !query_level() ) set_level(1);
+
+        applying_power = 1;
+        NPC_POWER_D->apply_power(this_object(), power_tier, manual_attr, manual_stat);
+        applying_power = 0;
+    }
+    ::setup();
+}
 
 static void
 heart_beat()

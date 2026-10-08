@@ -1,0 +1,60 @@
+from pathlib import Path
+import re
+
+MUD = Path(__file__).resolve().parents[1] / 'source' / 'upstream' / 'mudlib'
+
+
+def read(p):
+    return (MUD / p).read_text(encoding='utf-8')
+
+
+def test_tier_multipliers():
+    s = read('daemon/misc/npc_power.c')
+    table = s[s.index('private mapping tier_pct = (['):]
+    table = table[:table.index(']);')]
+    assert dict(re.findall(r'"([CBAS])":\s*(\d+)', table)) == {
+        'C': '70', 'B': '100', 'A': '120', 'S': '140'}
+    assert '#define ATTR_CAP        45' in s
+
+
+def test_class_attribute_order():
+    s = read('daemon/misc/npc_power.c')
+    table = s[s.index('private mapping class_attr = (['):]
+    table = table[:table.index(']);')]
+    got = {c: re.findall(r'"([a-z]+)"', a)
+           for c, a in re.findall(r'"([a-z]+)":\s*\(\{([^}]*)\}\)', table)}
+    assert got == {
+        'fighter': ['con', 'str', 'cor'],
+        'scholar': ['int', 'dex', 'con'],
+        'soldier': ['str', 'cor', 'cps'],
+        'taoist': ['wis', 'spi', 'int'],
+        'monk': ['spi', 'wis', 'int'],
+        'alchemist': ['int', 'spi', 'str'],
+        'thief': ['cor', 'dex', 'cps'],
+        'commoner': [],
+    }
+
+
+def test_npc_hooks():
+    s = read('std/char/npc.c')
+    assert 'void set_power(string tier)' in s
+    assert 'if( !applying_power ) manual_attr[what] = 1;' in s
+    assert 'if( !applying_power ) manual_stat[what] = 1;' in s
+    assert 'NPC_POWER_D->apply_power(this_object(), power_tier, manual_attr, manual_stat);' in s
+    assert '#define NPC_POWER_D\t\t"/daemon/misc/npc_power.c"' in read('include/daemon.h')
+    assert '/daemon/misc/npc_power' in read('adm/etc/preload').splitlines()
+
+
+def calc_attr(base, rate, lv, pct):
+    v = base + ((lv - 1) * rate * pct + 5000) // 10000
+    return min(v, max(base, 45))
+
+
+def test_formula_examples():
+    # 黑齒族武者 LV10 C 級（種族平均 con 15.5 / str 16.5 / cor 17.5）
+    assert calc_attr(15, 43, 10, 70) == 18
+    assert calc_attr(16, 36, 10, 70) == 18
+    assert calc_attr(17, 29, 10, 70) == 19
+    # B 級第 1 重要屬性約在 LV70 到頂
+    assert calc_attr(15, 43, 70, 100) == 45
+    assert calc_attr(15, 10, 70, 100) == 22
