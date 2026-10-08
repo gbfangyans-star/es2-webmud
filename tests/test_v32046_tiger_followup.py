@@ -10,17 +10,19 @@ def test_enable_contracts():
  # sanmeendo uses the new martial art engine: enable target comes from art_usage
  assert 'art_usage = "blade";' in (MUD/'daemon/skill/sanmeendo.c').read_text()
  assert 'return usage == art_usage;' in (MUD/'std/martial_art.c').read_text()
- assert 'usage=="twohanded blade"' in (MUD/'daemon/skill/tiger-blade.c').read_text()
+ # tiger-blade also uses the new martial art engine
+ assert 'art_usage = "twohanded blade";' in (MUD/'daemon/skill/tiger-blade.c').read_text()
 def test_six_actions_each():
- assert (MUD/'daemon/skill/tiger-blade.c').read_text().count('"action":')==6
+ # new tiger-blade design has eight moves (from the Han Xiao battle record)
+ assert (MUD/'daemon/skill/tiger-blade.c').read_text().count('"action":')==8
  # new sanmeendo design has five moves
  assert (MUD/'daemon/skill/sanmeendo.c').read_text().count('"action":')==5
 def test_first_followup_gate():
  s=(MUD/'daemon/skill/tiger-blade.c').read_text()
- assert 'query_skill("tiger-blade",1)<90' in s
- assert 'query("force_ratio")<=70' in s
+ assert 'me->query_skill("tiger-blade", 1) < 90 || ratio <= 70' in s
+ assert 'ratio = me->query("force_ratio")' in s
  assert 'first_follow = strike' in s
 def test_second_followup_damage_gate():
  s=(MUD/'daemon/skill/tiger-blade.c').read_text()
- assert 'first_follow<=0' in s
- assert s.count('strike(me,opponent,weapon);')>=2
+ assert 'first_follow <= 0' in s
+ assert s.count('strike(me, opponent, weapon);')>=2

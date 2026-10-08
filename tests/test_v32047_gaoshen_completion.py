@@ -47,10 +47,11 @@ def test_gao_shen_tiger_force_completes_at_twenty_and_grants_root_bonus():
     assert 'me->set("tiger_force/growth_level", 20)' in s
 
 
-def test_tiger_blade_followup_and_six_actions_remain_present():
+def test_tiger_blade_followup_and_moves_remain_present():
+    # tiger-blade rewritten on the new martial art engine: eight moves from the
+    # Han Xiao battle record; the 2010 follow-up gate is unchanged.
     s = text("daemon/skill/tiger-blade.c")
-    assert s.count('["action"') == 6
-    assert 'query_skill("tiger-blade",1)<90' in s
-    assert 'query("force_ratio")<=70' in s
+    assert s.count('"action":') == 8
+    assert 'me->query_skill("tiger-blade", 1) < 90 || ratio <= 70' in s
     assert 'first_follow = strike' in s
-    assert 'if(first_follow<=0' in s
+    assert 'if( first_follow <= 0' in s
