@@ -130,7 +130,7 @@ int do_powerup(object me)
     if( sk < 100 )
         return notify_fail("你的瘋虎功火候未足，還無法催動瘋虎強盛式。\n");
     if( me->query_temp("tiger_force/powerup") )
-        return notify_fail("你現在正處於瘋虎功 powerup 的催勁狀態。\n");
+        return notify_fail("你現在正處於瘋虎強盛式的催勁狀態。\n");
 
     damage_bonus = sk / 4;
     attack_bonus = sk / 3;
@@ -146,6 +146,22 @@ int do_powerup(object me)
     return 1;
 }
 
+/* refresh：消耗 瘋虎功/8 的氣（目前值），回復 機敏＋瘋虎功 的精；自身停頓 1 回合，沒有冷卻。 */
+int do_refresh(object me)
+{
+    int sk, cost;
+
+    sk = me->query_skill("tiger-force", 1);
+    cost = sk / 8;
+    if( me->query_stat("kee") <= cost )
+        return notify_fail("你的氣不夠，無法運起瘋虎功回復精神。\n");
+    me->consume_stat("kee", cost);
+    me->supplement_stat("gin", me->query_attr("dex") + sk);
+    message_vision("$N運起瘋虎功，一股熾烈真氣直衝腦門，精神為之一振。\n", me);
+    me->start_busy(1);
+    return 1;
+}
+
 varargs int exert_function(object me, string func, object target)
 {
     switch(func) {
@@ -157,6 +173,8 @@ varargs int exert_function(object me, string func, object target)
         return 1;
     case "powerup":
         return do_powerup(me);
+    case "refresh":
+        return do_refresh(me);
     default:
         return notify_fail("瘋虎功沒有這種功能。\n");
     }
