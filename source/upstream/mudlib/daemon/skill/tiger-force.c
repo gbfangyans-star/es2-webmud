@@ -146,12 +146,14 @@ int do_powerup(object me)
     return 1;
 }
 
-/* refresh：消耗 瘋虎功/8 的氣（目前值），回復 機敏＋瘋虎功 的精；自身停頓 1 回合，沒有冷卻。 */
+/* refresh（瘋虎功練成後才能用）：消耗 瘋虎功/8 的氣（目前值），回復 機敏＋瘋虎功 的精；自身停頓 1 回合，沒有冷卻。 */
 int do_refresh(object me)
 {
     int sk, cost;
 
     sk = me->query_skill("tiger-force", 1);
+    if( sk < 1 )
+        return notify_fail("你的瘋虎功尚未練成，還無法運氣回復精神。\n");
     cost = sk / 8;
     if( me->query_stat("kee") <= cost )
         return notify_fail("你的氣不夠，無法運起瘋虎功回復精神。\n");
