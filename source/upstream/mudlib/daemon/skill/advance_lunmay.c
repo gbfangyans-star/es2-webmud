@@ -42,7 +42,7 @@ private void create()
 
     ma_coef  = 10;
     mm_start = 30;
-    mm_minus = 11;
+    mm_minus = 29;
     mm_coef  = 10;
 
     DAEMON_D->register_skill_daemon("advance_lunmay");
