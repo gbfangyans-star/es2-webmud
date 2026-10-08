@@ -17,6 +17,7 @@ custom: NEW. WebMUD NPC 強度設計（使用者設計：各職業重要屬性�
 //   第 3 重要 0.29、其他屬性 0.10（B 級第 1 重要屬性約在 LV70 到 45）。
 //   精氣神 = 種族基礎值 + 模擬從 1 級升到目前等級的成長 x 強度倍率；每級成長
 //   沿用該職業玩家升級的公式（精 = 機敏/除數、氣 = 根骨/除數、神 = 靈性/除數）。
+//   A、S 級等級超過 20 時，每多一級精氣神再各 +10（不乘強度倍率）。
 //   create() 裡用 set_attr()/set_stat_maximum() 手動指定的項目一律保留不覆蓋。
 
 #define ATTR_CAP        45
@@ -58,6 +59,12 @@ private mapping class_stat_div = ([
     "thief":     ({ 2, 4, 8 }),
     "commoner":  ({ 5, 5, 5 }),
 ]);
+
+// 菁英、頭目額外加成：等級超過 ELITE_BONUS_FROM 後，每級精氣神各 +ELITE_BONUS_PER，
+// 獨立計算，不乘強度倍率。
+private string *elite_tier = ({ "A", "S" });
+#define ELITE_BONUS_FROM    20
+#define ELITE_BONUS_PER     10
 
 private string *all_attr = ({ "str", "cor", "int", "spi", "cps", "dex", "con", "wis" });
 
@@ -104,6 +111,13 @@ int calc_attr(int base, string cls, string attr, int lv, string tier)
     return val;
 }
 
+// 菁英、頭目在等級 lv 時精氣神各自的額外加成（不乘強度倍率）。
+int query_elite_bonus(int lv, string tier)
+{
+    if( member_array(tier, elite_tier) == -1 || lv <= ELITE_BONUS_FROM ) return 0;
+    return (lv - ELITE_BONUS_FROM) * ELITE_BONUS_PER;
+}
+
 // 從 1 級升到 lv 級，精氣神各自累積的成長（尚未乘強度倍率）。
 // base_attr 是各屬性的基礎值；manual 中的屬性固定不隨等級成長。
 int *calc_stat_growth(mapping base_attr, mapping manual, string cls, int lv, string tier)
@@ -134,7 +148,7 @@ void apply_power(object ob, string tier, mapping manual_attr, mapping manual_sta
 {
     mapping base_attr;
     string cls, *stat;
-    int lv, pct, *gain, i;
+    int lv, pct, bonus, *gain, i;
 
     if( !objectp(ob) || !(tier = normalize_tier(tier)) ) return;
     if( !mapp(manual_attr) ) manual_attr = ([]);
@@ -154,14 +168,15 @@ void apply_power(object ob, string tier, mapping manual_attr, mapping manual_sta
         ob->set_attr(a, calc_attr(base_attr[a], cls, a, lv, tier));
     }
 
-    // 精氣神：種族基礎值 + 升級成長 x 強度倍率。
+    // 精氣神：種族基礎值 + 升級成長 x 強度倍率 + 菁英／頭目額外加成。
     gain = calc_stat_growth(base_attr, manual_attr, cls, lv, tier);
+    bonus = query_elite_bonus(lv, tier);
     stat = ({ "gin", "kee", "sen" });
     for( i = 0; i < 3; i++ ) {
         if( manual_stat[stat[i]] ) continue;
         if( undefinedp(ob->query_stat_maximum(stat[i])) ) continue;
         ob->set_stat_maximum(stat[i],
-            ob->query_stat_maximum(stat[i]) + (gain[i] * pct + 50) / 100);
+            ob->query_stat_maximum(stat[i]) + (gain[i] * pct + 50) / 100 + bonus);
     }
 
     ob->set("power_tier", tier);

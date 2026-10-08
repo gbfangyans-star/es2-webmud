@@ -24,9 +24,6 @@ void create()
     map_skill("force", "celestial force");
     set("defensive", 60);
 
-    advance_stat("gin", 160);
-    advance_stat("kee", 160);
-    advance_stat("sen", 80);
 
     set("age", 19);
     set("gender", "female");

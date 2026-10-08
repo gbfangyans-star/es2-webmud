@@ -24,9 +24,6 @@ void create()
 	set_skill("alchemy-immortality", 30);
 	map_skill("force", "dragon force");
 
-	advance_stat("gin", 180);
-	advance_stat("kee", 180);
-	advance_stat("sen", 180);
 
 	set("age", 55);
 	set("long",

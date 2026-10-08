@@ -9,7 +9,7 @@ void create()
     set_name("郭布", ({ "guo boo", "guo", "boo" }));
     set_race("human");
     set_class("taoist");
-    set_level(40);
+    set_level(60);
     set("title", "朱衣派道士");
     set("age", 65);
     set("long", @LONG

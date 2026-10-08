@@ -72,3 +72,13 @@ def test_existing_npcs_converted():
         assert _re.search(r'(?<![>\w])set_level\s*\(%s\)' % lv, s), f
         assert not _re.search(r'^\s*set_attr\(', s, _re.M), f
         assert not _re.search(r'^\s*set_stat_maximum\("(gin|kee|sen)"', s, _re.M), f
+        assert not _re.search(r'^\s*advance_stat\("(gin|kee|sen)"', s, _re.M), f
+
+
+def test_elite_bonus():
+    s = read('daemon/misc/npc_power.c')
+    assert 'private string *elite_tier = ({ "A", "S" });' in s
+    assert '#define ELITE_BONUS_FROM    20' in s
+    assert '#define ELITE_BONUS_PER     10' in s
+    assert 'return (lv - ELITE_BONUS_FROM) * ELITE_BONUS_PER;' in s
+    assert '(gain[i] * pct + 50) / 100 + bonus);' in s

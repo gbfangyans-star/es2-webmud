@@ -9,7 +9,7 @@ void create()
 	set_name("瞎眼老太婆", ({ "blind gammer", "gammer", "__ID_GAMMER__" }) );
 	set_race("human");
 	set_class("thief");
-	set_level(44);
+	set_level(20);
 
 	set_skill("staff", 40);
 	set_skill("stealing", 70);
@@ -24,9 +24,6 @@ void create()
 	set_skill("regular force", 100);
     map_skill("force", "regular force");
 
-	advance_stat("gin", 270);
-	advance_stat("kee", 180);
-	advance_stat("sen", 90);
 
 	set("gender", "female");
 	set("age", 66);
@@ -47,7 +44,7 @@ void create()
 	}) );
 	set_stat_notify("kee", 40);
 
-	set_power("B");
+	set_power("A");
 	setup();
 	carry_object("/obj/area/obj/cloth")->wear();
 	carry_object(__DIR__"obj/cane")->wield();

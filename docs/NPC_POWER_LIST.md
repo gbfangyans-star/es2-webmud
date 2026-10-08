@@ -63,7 +63,7 @@
 | 55 | 雪亭鎮 | 小孩 | `d/snow/npc/child3.c` | 平民 | 1 | C |
 | 56 | 雪亭鎮 | 小孩 | `d/snow/npc/child4.c` | 平民 | 1 | C |
 | 57 | 雪亭鎮 | 工頭 | `d/snow/npc/foreman.c` | 平民 | 8 | C |
-| 58 | 雪亭鎮 | 瞎眼老太婆 | `d/snow/npc/gammer.c` | 盜賊 | 44 | B |
+| 58 | 雪亭鎮 | 瞎眼老太婆 | `d/snow/npc/gammer.c` | 盜賊 | 20 | A |
 | 59 | 雪亭鎮 | 官兵 | `d/snow/npc/garrison.c` | 軍人 | 15 | B |
 | 60 | 雪亭鎮 | 白衣女子 | `d/snow/npc/girl.c` | 武者 | 25 | S |
 | 61 | 雪亭鎮 | 青衣漢子 | `d/snow/npc/guard.c` | 武者 | 10 | C |
@@ -83,8 +83,8 @@
 | 75 | 五堂鎮 | 大野豬 | `d/wutang/npc/big_boar.c` | — | — | 不動（野獸） |
 | 76 | 五堂鎮 | 野豬 | `d/wutang/npc/boar.c` | — | — | 不動（野獸） |
 | 77 | 五堂鎮 | 釣客 | `d/wutang/npc/fisher.c` | 平民 | 1 | C |
-| 78 | 五堂鎮 | 護院武師 | `d/wutang/npc/guard.c` | 武者 | 20 | B |
-| 79 | 五堂鎮 | 郭布 | `d/wutang/npc/guo_boo.c` | 道士 | 40 | S |
+| 78 | 五堂鎮 | 護院武師 | `d/wutang/npc/guard.c` | 武者 | 5 | B |
+| 79 | 五堂鎮 | 郭布 | `d/wutang/npc/guo_boo.c` | 道士 | 60 | S |
 | 80 | 五堂鎮 | 小黃 | `d/wutang/npc/huang.c` | 平民 | 1 | C |
 | 81 | 五堂鎮 | 呼延光 | `d/wutang/npc/huyen_guan.c` | 書生 | 35 | A |
 | 82 | 五堂鎮 | 珍寶商人 | `d/wutang/npc/jeweller.c` | 平民 | 10 | C |
