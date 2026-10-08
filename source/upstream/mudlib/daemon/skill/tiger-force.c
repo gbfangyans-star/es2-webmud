@@ -152,13 +152,13 @@ int do_refresh(object me)
 
     sk = me->query_skill("tiger-force", 1);
     if( sk < 1 )
-        return notify_fail("你的瘋虎功尚未練成，還無法運氣回復精神。\n");
+        return notify_fail("你的瘋虎功尚未練成，還無法運氣回精。\n");
     cost = sk / 8;
     if( me->query_stat("kee") <= cost )
         return notify_fail("你的氣不夠，無法運起瘋虎功回復精神。\n");
     me->consume_stat("kee", cost);
     me->supplement_stat("gin", me->query_attr("dex") + sk);
-    message_vision("$N運起瘋虎功，一股熾烈真氣直衝腦門，精神為之一振。\n", me);
+    message_vision("$N深吸一口氣，精神為之一振。\n", me);
     me->start_busy(1);
     return 1;
 }
