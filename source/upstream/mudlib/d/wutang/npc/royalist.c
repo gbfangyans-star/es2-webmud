@@ -19,14 +19,6 @@ LONG
     set_skill("unarmed", 2);
     set_skill("dodge", 2);
     set_skill("parry", 2);
+    set_power("B");
     setup();
-    set_stat_maximum("gin", 300);
-    set_stat_effective("gin", 300);
-    set_stat_current("gin", 300);
-    set_stat_maximum("kee", 550);
-    set_stat_effective("kee", 550);
-    set_stat_current("kee", 550);
-    set_stat_maximum("sen", 80);
-    set_stat_effective("sen", 80);
-    set_stat_current("sen", 80);
 }

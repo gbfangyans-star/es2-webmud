@@ -58,3 +58,17 @@ def test_formula_examples():
     # B 級第 1 重要屬性約在 LV70 到頂
     assert calc_attr(15, 43, 70, 100) == 45
     assert calc_attr(15, 10, 70, 100) == 22
+
+
+def test_existing_npcs_converted():
+    # 已套用的 NPC 不再手動寫死屬性或精氣神上限。
+    import re as _re
+    listed = _re.findall(r'\| `([^`]+)` \| [^|]+ \| (\d+) \| ([CBAS]) \|',
+                         (MUD.parents[2] / 'docs' / 'NPC_POWER_LIST.md').read_text(encoding='utf-8'))
+    assert len(listed) == 86
+    for f, lv, tier in listed:
+        s = read(f)
+        assert f'set_power("{tier}");' in s, f
+        assert _re.search(r'(?<![>\w])set_level\s*\(%s\)' % lv, s), f
+        assert not _re.search(r'^\s*set_attr\(', s, _re.M), f
+        assert not _re.search(r'^\s*set_stat_maximum\("(gin|kee|sen)"', s, _re.M), f

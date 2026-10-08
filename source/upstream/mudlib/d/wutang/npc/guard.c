@@ -19,16 +19,8 @@ LONG
     set_skill("blade", 40);
     set_skill("dodge", 40);
     set_skill("parry", 40);
+    set_power("B");
     setup();
-    set_stat_maximum("gin", 75);
-    set_stat_effective("gin", 75);
-    set_stat_current("gin", 75);
-    set_stat_maximum("kee", 80);
-    set_stat_effective("kee", 80);
-    set_stat_current("kee", 80);
-    set_stat_maximum("sen", 23);
-    set_stat_effective("sen", 23);
-    set_stat_current("sen", 23);
     carry_object("/custom/armor/cloth/cowhide_vest")->wear();
     carry_object("/obj/area/obj/blade")->wield();
 }

@@ -8,15 +8,9 @@ void create()
 {
 	set_name("陳維俠", ({ "chen weisha", "weisha", "chen" }));
 	set("nickname", "牙山居士");
-	set_attr("dex", 18);
-	set_attr("int", 24);
-	set_attr("wis", 25);
-	set_attr("spi", 22);
-	set_attr("cps", 19);
-	set_attr("con", 20);
 	set_race("human");
 	set_level(30);
-	set_class("commoner");
+	set_class("alchemist");
 	set_skill("unarmed", 60);
 	set_skill("sword", 60);
 	set_skill("parry", 80);
@@ -42,6 +36,7 @@ void create()
 		"陳維俠本名陳度﹐維俠是他的學生們送給他的稱號﹐意思是說他相當\n"
 		"有俠氣﹐喜歡打抱不平﹐若不是給王員外的獨子纏住了講養生之術﹐\n"
 		"只怕早幾日前就上野羊山剷除盜匪去了。\n");
+	set_power("A");
 	setup();
 	carry_object(__DIR__"obj/silversword")->wield();
 	carry_object("/obj/area/obj/cloth")->wear();

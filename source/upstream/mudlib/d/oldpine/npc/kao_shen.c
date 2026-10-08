@@ -15,7 +15,7 @@ void create()
     set("title", "虎刀門長老");
     set_race("human");
     set("gender", "male");
-    set_class("fighter");
+    set_class("fighter"); set_level(30);
 
     /* User-provided legacy teacher table: teaching ceilings. */
     set_skill("unarmed", 120);
@@ -39,6 +39,7 @@ void create()
         "高慎負手望著林間小路，冷哼一聲，神情頗為不耐。\n",
         "高慎伸手按了按腰間刀鞘，目光銳利地打量四周。\n",
     }));
+    set_power("B");
     setup();
 }
 

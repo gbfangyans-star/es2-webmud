@@ -9,14 +9,9 @@ object *dest = ({});
 void create()
 {
     set_name("白衣女子", ({ "girl" }) );
-    set_attr("con", 23);
-    set_attr("str", 23);
-    set_attr("spi", 27);
-    set_attr("int", 22);
-    set_attr("dex", 26);
     set_race("human");
-    set_class("commoner");
-    set_level(55);
+    set_class("fighter");
+    set_level(25);
 
     set_skill("sword", 140);
     set_skill("dodge", 120);
@@ -38,6 +33,7 @@ void create()
     set("long",
         "一個身穿白衣的女子﹐看起來年紀不會超過二十歲﹐容貌雖不甚美﹐卻\n"
         "別有一股靈秀之氣﹐令人凜然不敢輕侮。\n" );
+    set_power("S");
     setup();
     carry_object(__DIR__"obj/white_dress")->wear();
     carry_object(__DIR__"obj/slasher_sword")->wield();

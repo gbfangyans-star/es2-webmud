@@ -9,12 +9,8 @@ void timeto_eat();
 void create()
 {
 	set_name("阿寶", ({ "arbao", "__ID_ARBAO__" }) );
-	set_attr("spi", 18);
-	set_attr("int", 19);
-	set_attr("dex", 19);
-	set_attr("con", 17);
 	set_race("human");
-	set_class("commoner");
+	set_class("thief");
 	set_level(10);
 
 	set_skill("stealing", 40);
@@ -39,6 +35,7 @@ void create()
 	    1900: (: timeto_eat :),
 	]));
 
+	set_power("C");
 	setup();
 	carry_money("coin", 30);
 	carry_object(__DIR__"obj/blue_cloth")->wear();

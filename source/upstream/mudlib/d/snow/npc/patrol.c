@@ -8,18 +8,17 @@ void create()
 {
     set_name("巡邏官兵", ({ "patrol garrison", "patrol", "garrison" }) );
     set_race("human");
-    set_class("commoner");
+    set_class("soldier");
     set_level(15);
     set_skill("sword", 60);
     set_skill("parry", 60);
-    set_stat_maximum("gin", 150);
-    set_stat_maximum("kee", 150);
 
     set("pursuer", 1);
     set("long",
         "一位負責維護地方治安的官兵﹐他們受過相當的訓練﹐有時候\n"
         "也加入軍隊作戰。\n");
     set("vendetta_mark", "authority");
+    set_power("B");
     setup();
     carry_object( STOCK_ARMOR("cloth") )->wear();
     // Wiled the sword when protecting someone. (Just for cool :P)

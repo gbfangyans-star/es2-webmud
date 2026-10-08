@@ -32,5 +32,6 @@ LONG
         "/obj/food/pork" : 30,
         "/d/snow/npc/obj/roast_chicken" : 30,
     ]));
+    set_power("C");
     setup();
 }

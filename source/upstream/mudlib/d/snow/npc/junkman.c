@@ -7,7 +7,7 @@ inherit F_VILLAGER;
 void create()
 {
 	set_name("拾荒老頭", ({ "junkman" }));
-	set_race("human");
+	set_race("human"); set_class("commoner");
 	set_level(2);
 
 	set("age", 66);
@@ -21,6 +21,7 @@ void create()
 		(: random_move :),
 		(: command, "get all" :),
 	}));
+	set_power("C");
 	setup();
 
 	// Always flee.

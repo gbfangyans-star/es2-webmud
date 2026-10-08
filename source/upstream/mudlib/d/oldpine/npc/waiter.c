@@ -33,5 +33,6 @@ LONG
         "/obj/food/manto" : 50,
         "/d/oldpine/obj/venison" : 50,
     ]));
+    set_power("C");
     setup();
 }

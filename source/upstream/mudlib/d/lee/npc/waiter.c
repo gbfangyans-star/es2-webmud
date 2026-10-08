@@ -15,6 +15,7 @@ void create()
         "/obj/food/dumpling" : 50,
         "/obj/food/manto" : 50,
     ]));
+    set_power("C");
     setup();
 }
 

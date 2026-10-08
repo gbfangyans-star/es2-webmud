@@ -7,14 +7,9 @@ inherit F_VILLAGER;
 void create()
 {
     set_name("李勇", ({ "lee yong", "li yong", "lee", "li", "yong" }));
-    set_attr("str", 22);
-    set_attr("cor", 24);
     set_race("human");
     set_class("fighter");
     set_level(15);
-    set_stat_maximum("gin", 150);
-    set_stat_maximum("kee", 195);
-    set_stat_maximum("sen", 50);
     set_skill("pike", 30);
     set_skill("parry", 30);
     set_skill("dodge", 50);
@@ -25,6 +20,7 @@ void create()
 普通好手，從他家裡滿屋子的獸皮你就能了解他的實力。
 LONG
     );
+    set_power("B");
     setup();
     carry_object("/d/lee/obj/leather_boots")->wear();
     carry_object("/d/lee/obj/tight_cloth")->wear();

@@ -18,16 +18,8 @@ LONG
     set_skill("unarmed", 20);
     set_skill("dodge", 20);
     set_skill("parry", 20);
+    set_power("C");
     setup();
-    set_stat_maximum("gin", 120);
-    set_stat_effective("gin", 120);
-    set_stat_current("gin", 120);
-    set_stat_maximum("kee", 150);
-    set_stat_effective("kee", 150);
-    set_stat_current("kee", 150);
-    set_stat_maximum("sen", 50);
-    set_stat_effective("sen", 50);
-    set_stat_current("sen", 50);
     carry_object("/custom/weapon/sword/jeweled_shortsword")->wield();
     carry_object("/d/wutang/obj/blue_cloth")->wear();
     carry_object("/obj/books/anthology_of_classical_prose");

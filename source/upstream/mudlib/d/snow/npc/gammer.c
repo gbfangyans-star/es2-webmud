@@ -7,12 +7,8 @@ inherit F_VILLAGER;
 void create()
 {
 	set_name("瞎眼老太婆", ({ "blind gammer", "gammer", "__ID_GAMMER__" }) );
-	set_attr("dex", 29);
-	set_attr("con", 21);
-	set_attr("cor", 22);
-	set_attr("str", 19);
 	set_race("human");
-	set_class("commoner");
+	set_class("thief");
 	set_level(44);
 
 	set_skill("staff", 40);
@@ -51,6 +47,7 @@ void create()
 	}) );
 	set_stat_notify("kee", 40);
 
+	set_power("B");
 	setup();
 	carry_object("/obj/area/obj/cloth")->wear();
 	carry_object(__DIR__"obj/cane")->wield();
