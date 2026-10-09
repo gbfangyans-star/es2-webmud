@@ -27,6 +27,7 @@ string mm_first_msg;    // 第一次獲得武學之道時的訊息（可留空�
  *   level_msgs      升到特定等級時的訊息，([ 等級: 訊息 ]) */
 int art_entry;
 int art_entry_threshold;   // 學成所需累積點數；0 表示照原本算法
+int art_entry_reward;      // 1 表示學成那一級也給每級獎勵（預設從下一級起）
 string art_entry_msg;
 mapping level_msgs = ([]);
 
@@ -157,7 +158,8 @@ void attack_using(object me, object opponent, object weapon)
 }
 
 /* 每次升級後呼叫；學成時一次跳多級也只呼叫一次。
- * 每級獎勵只給超過學成等級的部分（學成等級為 1 時從 1 級開始給）。 */
+ * 每級獎勵只給超過學成等級的部分（學成等級為 1 時從 1 級開始給）；
+ * art_entry_reward 設為 1 時學成那一級也給。 */
 void skill_advanced(object me, string skill)
 {
     int lv;
@@ -169,7 +171,7 @@ void skill_advanced(object me, string skill)
         tell_object(me, HIY + msg + NOR);
 
     if( !userp(me) ) return;
-    if( art_entry > 1 && lv <= art_entry ) return;
+    if( art_entry > 1 && (art_entry_reward ? lv < art_entry : lv <= art_entry) ) return;
 
     if( ma_coef > 0 ) me->gain_score("martial art", lv * ma_coef);
 
