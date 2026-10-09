@@ -478,9 +478,18 @@ function consumeHudPollOutputRaw(s){
     // 唯一暫存的是「被拆在兩段傳輸之間、還沒收完的那一行資料」。
     let str=hudFallbackBuffer+String(s);
     hudFallbackBuffer='';
+    // 遊戲每段回覆開頭都有一個換行；逾時才到的狀態回覆，開頭那個換行若照常顯示就成了空行。
+    // 只有空白的片段先留著，等下一段到了再判斷是不是狀態回覆的開頭。
+    if(!/\S/.test(str)){hudFallbackBuffer=str;return {visible:'',done:false};}
     if(!str.includes('@'))return {visible:str,done:false};
     str=holdTrailingHudPartial(str);
-    if(hasHudLine(str,''))parseWebHud(str);
+    if(hasHudLine(str,'')){
+      parseWebHud(str);
+      str=str.replace(/(?:^|[\r\n])[ \t\r\n]*(?=[ \t]*(?:>[ \t]*)*@@WEBHUD\|)/g,(m,off)=>off===0?'':'\n');
+      // 整段只是狀態回覆（剩下的只有提示字元「>」和空白）時，什麼都不顯示。
+      const rest=removeHudLines(str);
+      return {visible:/[^\s>]/.test(cleanText(rest))?rest:'',done:false};
+    }
     return {visible:removeHudLines(str),done:false};
   }
   hudPollBuffer += String(s);
@@ -500,7 +509,11 @@ function consumeHudPollOutputRaw(s){
 }
 function hudPollDue(){
   const now=Date.now();
-  if(now-lastUserCommandAt<HUD_AFTER_COMMAND_MS)return true;
+  // 剛下指令：指令之後還沒查過就立刻查一次，之後同戰鬥中的節奏，不連續狂查。
+  if(now-lastUserCommandAt<HUD_AFTER_COMMAND_MS){
+    if(lastHudPollAt<lastUserCommandAt)return true;
+    return now-lastHudPollAt>=HUD_POLL_MS;
+  }
   const gap=contextState.combat?.target?HUD_POLL_MS:HUD_IDLE_POLL_MS;
   return now-lastHudPollAt>=gap;
 }
@@ -998,7 +1011,7 @@ function connect(){
     // A completed movement command must refresh ROOM/NAME/EXITS immediately. The
     // normal 350ms user-input grace remains for all other commands so telemetry
     // cannot compete with player input.
-    if(currentRoomId && !String(raw).includes('@@WEBHUD|')){
+    if(currentRoomId && /\S/.test(String(raw)) && !String(raw).includes('@@WEBHUD|')){
       const forceMapRefresh=mapRefreshPending;
       if(forceMapRefresh)mapRefreshPending=false;
       kickHudAfterServerText(forceMapRefresh);
