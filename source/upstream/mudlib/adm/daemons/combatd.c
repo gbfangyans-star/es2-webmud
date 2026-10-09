@@ -22,6 +22,13 @@ string *catch_hunt_msg = ({
     HIW "$N喝道﹕「納命來！」\n" NOR
 });
 
+/* 練武用的假人、木樁（set("training_dummy", 1)）被命中時的敘述：死物，不提部位、不提傷勢。 */
+string *dummy_hit_msg = ({
+    "結果扎扎實實的命中$n。\n",
+    "結果不偏不倚地擊中$n。\n",
+    "結果「啪」地一聲落在$n上，$n紋風不動。\n",
+});
+
 string *dead_msg = ({
     "\n$N死了。\n\n",
     "\n$N吐出幾口鮮血﹐抽搐了幾下 ... 死了。\n\n",
@@ -301,7 +308,7 @@ int elemental_extra(object me, object victim, string element)
 varargs int
 fight (object me, object victim, string skill, mapping action, object weapon)
 {
-    int ability, strength, damage, gin_cost, force_bonus;
+    int ability, strength, damage, gin_cost, force_bonus, dummy;
     string msg, force_skill;
 
     // 若在非戰區, 且戰鬥雙方都沒被arrest, 停止戰鬥 -Dragoon
@@ -317,6 +324,10 @@ fight (object me, object victim, string skill, mapping action, object weapon)
 
     me->set_combat_message(action["action"]);
     me->set_temp("last_action", action);
+
+    /* 練武假人：必定命中，敘述不提部位與傷勢。耗精照一般公式
+     * （沒有內功為 random(2)，有內功依功力提高）。 */
+    dummy = victim->query("training_dummy");
 
     /* 力道
      */
@@ -386,7 +397,7 @@ fight (object me, object victim, string skill, mapping action, object weapon)
     /* 要求攻擊對象進行防禦。 */
     me->set_temp("defend_message", 0);
     /* 招式帶 must_hit（例如三門齊開）時不讓對方閃躲或格擋，防具照樣減傷。 */
-    if( !action["must_hit"]
+    if( !action["must_hit"] && !dummy
     &&  !victim->is_busy()
     &&  victim->defend(ability, strength, weapon ? weapon : me) )
     {
@@ -408,7 +419,7 @@ fight (object me, object victim, string skill, mapping action, object weapon)
 
         me->set_temp("absorb_message", 0);
         victim->delete_temp("parry_result");
-        if( !action["must_hit"] )
+        if( !action["must_hit"] && !dummy )
             strength -= (int)victim->absorb(ability, strength,
                     weapon ? weapon : me);
         absorb_msg = me->query_temp("absorb_message");
@@ -489,6 +500,14 @@ fight (object me, object victim, string skill, mapping action, object weapon)
     if( action["brief"] ) msg = action["action"] + "\n";
     /* 招式帶 silent 時完全不顯示（連擊由武功自行顯示敘述與體力狀態）。 */
     if( action["silent"] ) msg = 0;
+    /* 練武假人：只留出招敘述（拿掉部位），接一句簡短的命中敘述。 */
+    if( dummy && stringp(msg) ) {
+        msg = action["action"];
+        msg = replace_string(msg, "$n的$l", "$n");
+        msg = replace_string(msg, "$n$l", "$n");
+        msg = replace_string(msg, "$l", "$n");
+        msg += "﹐" + dummy_hit_msg[random(sizeof(dummy_hit_msg))];
+    }
     if( stringp(msg) )
     {
         string *limbs = victim->query("limbs");
@@ -501,7 +520,7 @@ fight (object me, object victim, string skill, mapping action, object weapon)
         if( weapon ) msg = replace_string(msg, "$w", weapon->name());
 
         message_vision( msg, me, victim, 1);
-        if( damage > 0 && !action["brief"] ) report_status(victim);
+        if( damage > 0 && !action["brief"] && !dummy ) report_status(victim);
     }
 
     // 武器攻擊被閃躲、格擋，或命中但力道被完全吸收（沒造成傷害）後的
