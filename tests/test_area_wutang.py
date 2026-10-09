@@ -26,7 +26,7 @@ def exits(name):
 def test_rooms_and_npcs():
     rooms = sorted(p.stem for p in W.glob('*.c'))
     assert len(rooms) == 56
-    assert len(list((W / 'npc').glob('*.c'))) == 31
+    assert len(list((W / 'npc').glob('*.c'))) == 32
     for r in rooms:
         s = read(W / (r + '.c'))
         assert 'set("map/area", "五堂鎮");' in s, r

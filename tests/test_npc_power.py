@@ -65,7 +65,7 @@ def test_existing_npcs_converted():
     import re as _re
     listed = _re.findall(r'\| `([^`]+)` \| [^|]+ \| (\d+) \| ([CBAS]) \|',
                          (MUD.parents[2] / 'docs' / 'NPC_POWER_LIST.md').read_text(encoding='utf-8'))
-    assert len(listed) == 86
+    assert len(listed) == 87
     for f, lv, tier in listed:
         s = read(f)
         assert f'set_power("{tier}");' in s, f
