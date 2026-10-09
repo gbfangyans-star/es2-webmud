@@ -55,7 +55,7 @@ void init()
 int do_sit(string arg)
 {
     // add by dragoon
-    if( this_player()->query_skill("literate") > 29 ) 
+    if( this_player()->query_skill("literate", 1) >= 30 )
 	return notify_fail("你的讀書識字根基不錯，不需要再聽三字經了。\n");
 	
     if( this_player()->query_temp("pending/sit_learning_literate") )
@@ -129,7 +129,7 @@ int accept_info(object ob, string type)
 int acquire_skill(object who, string skill)
 {
     if( skill=="literate" ) {
-	command("say 想讀書識字嗎﹖在這裡坐著(sit)聽吧。\n");
+	command("say 想讀書識字嗎﹖在這裡坐著聽吧。\n");
 	command("smile");
 	command("say 讀書可不容易﹐不過學了多少一輩子都是你的。\n");
 	return 1;
