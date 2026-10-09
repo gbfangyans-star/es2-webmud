@@ -129,7 +129,9 @@ int kee_ratio(object ob)
 
 void show_status(object ob, int ratio)
 {
-    if( objectp(ob) && ratio >= 0 ) message_vision(COMBAT_D->status_msg(ratio), ob);
+    // 練武假人是死物，不顯示體力狀態。
+    if( objectp(ob) && ratio >= 0 && !ob->query("training_dummy") )
+        message_vision(COMBAT_D->status_msg(ratio), ob);
 }
 
 /* 依技能等級成長的機率：200 級時達到 max（%）。 */
