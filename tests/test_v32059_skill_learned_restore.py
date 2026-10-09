@@ -28,7 +28,7 @@ def test_d_floor_is_two_and_combat_formulas_present():
 def test_tiger_force_milestones_and_common_thresholds():
     s=text('source/upstream/mudlib/daemon/skill/tiger-force.c')
     assert 'tiger_force_threshold' not in s
-    assert 'lv == 100' in s and '"str"' in s and '+ 1' in s
+    assert 'lv == 91' in s and '"str"' in s and '+ 2' in s
     assert 'lv == 140' in s and '+ 2' in s
     assert 'lv >= 141' in s
 

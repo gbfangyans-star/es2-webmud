@@ -34,6 +34,7 @@ void create() {
         __DIR__"obj/roast_chicken": 30,
     ]));
 
+    set_power("C");
     setup();
 }
 

@@ -7,15 +7,13 @@ inherit F_VILLAGER;
 void create()
 {
 	set_name("小孩", ({ "child" }) );
-	set_race("human");
+	set_race("human"); set_class("commoner");
 	set_level(1);
-	set_stat_maximum("gin", 20);
-	set_stat_maximum("kee", 20);
-	set_stat_maximum("sen", 20);
 	set_stat_notify("kee", 100);
 
 	set("age", 6);
 	set("long", "一個流著鼻涕的小孩﹐睜著一雙無邪的眼睛望著你。\n");
+	set_power("C");
 	setup();
 	carry_money("coin", 1);
 	carry_object(__DIR__"obj/tummy_cover")->wear();

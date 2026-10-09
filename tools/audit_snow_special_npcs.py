@@ -6,7 +6,7 @@ OUT=ROOT/'reports/snow_special_npc_audit.json'
 SPECS={
 'child.c': {'name':'阿寶','room':'d/snow/tree.c','tokens':['set_name("阿寶"','accept_object','give_comb','relay_say','try/fon','command("follow "+me->query("id"))']},
 'gammer.c': {'name':'瞎眼老太婆','room':'d/snow/square.c','tokens':['set_name("瞎眼老太婆"','accept_object','ask_join','thief_qualified','set_class("thief")','relay_say','random_move']},
-'teacher.c': {'name':'王懷芝','room':'d/snow/school.c','tokens':['set_name("王懷芝"','add_action("do_sit", "sit")','improve_skill("literate"','set_class("scholar")','acquire_skill']},
+'teacher.c': {'name':'王懷芝','room':'d/snow/school.c','tokens':['set_name("王懷芝"','add_action("do_sit", "sit")','improve_skill_exact("literate"','set_class("scholar")','acquire_skill']},
 'alchemist.c': {'name':'陳維俠','room':'d/snow/school.c','tokens':['set_name("陳維俠"','accept_apprentice','set_class("alchemist")','龍圖丹派弟子','acquire_skill','alchemy-medication']},
 'girl.c': {'name':'白衣女子','room':'d/snow/ruin2.c','tokens':['set_name("白衣女子"','attack_intruder','hairpin_quest','accept_object','bronze hairpin','pending_requester','英雄帖','invitation']},
 }

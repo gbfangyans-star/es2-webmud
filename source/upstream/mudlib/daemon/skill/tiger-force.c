@@ -14,60 +14,70 @@ int valid_enable(string usage)
 }
 
 /*
- * User-provided Tiger Force growth table.
- * Initial completion (gain at the Lv20 threshold): level 20 + CON 1.
- * Thereafter every actually gained level permanently grants:
- *   21-140 : gin +2, kee +2
- *   141-160: gin +3, kee +4
- *   161+   : gin +1, kee +1
- * Milestones: level 100 STR +1, COR +1; level 140 COR +2.
- * A per-character growth marker prevents duplicate permanent grants.
+ * 瘋虎功成長（使用者定案，2026-10-08）
+ *
+ * 學成：累積 10000 點，gain 時練成 15 級；根骨 +1，並給 15 級本身的每級獎勵。
+ * 每級獎勵（15 級起，每升一級）：
+ *   武術造詣 + 等級 × 10；31 級起武學之道 + (等級 − 30) × 10
+ *   精、氣上限：15～140 級各 +2；141～160 級精 +3、氣 +4；161 級起各 +1。
+ *   精（或氣）上限已超過「瘋虎功等級 × 12」時，該項這一級不加（各自判斷，用升級後的等級）。
+ * 90 級分歧（只有一次機會，無法回頭）：從 90 升到 91 的那次，
+ *   實戰經驗超過 10 萬 → 直接跳到 100 級，膂力 +2、根骨 +1；跳過的 92～99 級不給獎勵。
+ *   不到 10 萬 → 照常 91 級，之後一級一級練，100 級沒有額外獎勵。
+ * 140 級：膽識 +2。
+ * growth_level 記錄已給過獎勵的等級，避免重複發放。
  */
-void apply_growth_to(object me, int level)
+private void level_reward(object me, int lv)
 {
-    int old, lv;
+    int cap;
 
-    if( !objectp(me) || level <= 20 ) return;
+    if( !userp(me) ) return;
+    if( me->query("tiger_force/growth_level") >= lv ) return;
+    me->set("tiger_force/growth_level", lv);
 
-    old = me->query("tiger_force/growth_level");
-    if( old < 20 ) old = 20;
-    if( old >= level ) return;
+    me->gain_score("martial art", lv * 10);
+    if( lv > 30 ) me->gain_score("martial mastery", (lv - 30) * 10);
 
-    for(lv = old + 1; lv <= level; lv++) {
-        if( lv >= 161 ) {
-            me->advance_stat("gin", 1);
-            me->advance_stat("kee", 1);
-        }
-        else if( lv >= 141 ) {
-            me->advance_stat("gin", 3);
-            me->advance_stat("kee", 4);
-        }
-        else {
-            me->advance_stat("gin", 2);
-            me->advance_stat("kee", 2);
-        }
+    cap = lv * 12;
+    if( me->query_stat_maximum("gin") <= cap )
+        me->advance_stat("gin", lv >= 161 ? 1 : 2 + (lv >= 141 && lv <= 160 ? 1 : 0));
+    if( me->query_stat_maximum("kee") <= cap )
+        me->advance_stat("kee", lv >= 161 ? 1 : 2 + (lv >= 141 && lv <= 160 ? 2 : 0));
 
-        if( lv == 100 && !me->query("tiger_force/bonus_100") ) {
-            me->set_attr("str", me->query_attr("str", 1) + 1);
-            me->set_attr("cor", me->query_attr("cor", 1) + 1);
-            me->set("tiger_force/bonus_100", 1);
-        }
-        if( lv == 140 && !me->query("tiger_force/cor_bonus_140") ) {
-            me->set_attr("cor", me->query_attr("cor", 1) + 2);
-            me->set("tiger_force/cor_bonus_140", 1);
-        }
+    if( lv == 140 && !me->query("tiger_force/cor_bonus_140") ) {
+        me->set_attr("cor", me->query_attr("cor", 1) + 2);
+        me->set("tiger_force/cor_bonus_140", 1);
     }
-
-    me->set("tiger_force/growth_level", level);
 }
 
 void skill_advanced(object me, string sk)
 {
-    apply_growth_to(me, me->query_skill("tiger-force", 1));
+    int lv;
+
+    lv = me->query_skill("tiger-force", 1);
+
+    // 90 級分歧：升到 91 的那一刻判斷，只有一次機會。
+    if( lv == 91 && userp(me) && !me->query("tiger_force/branch_90") ) {
+        me->set("tiger_force/branch_90", 1);
+        if( me->query("score/combat") > 100000 ) {
+            me->set("tiger_force/jump_100", 1);
+            // 跳過的 92～99 級不給獎勵；91 級也算在跳級之內。
+            me->set("tiger_force/growth_level", 99);
+            me->set_attr("str", me->query_attr("str", 1) + 2);
+            me->set_attr("con", me->query_attr("con", 1) + 1);
+            tell_object(me, HIR "你身經百戰﹐瘋虎功在生死搏殺間豁然貫通﹐一舉衝破了重重關隘﹗\n"
+                "你的膂力大增﹐根骨也更加堅實了。\n" NOR);
+            me->advance_skill("tiger-force", 9);   // 91 -> 100，會再呼叫一次本函式
+            return;
+        }
+    }
+
+    level_reward(me, lv);
 }
 
-// 學成等級：累積點數到 20 級的門檻前一直是 0 級，gain 時直接練成 20 級。
-int query_entry_level() { return 20; }
+// 學成等級：累積 10000 點時 gain，直接練成 15 級。
+int query_entry_level() { return 15; }
+int query_entry_threshold() { return 10000; }
 
 void skill_completed(object me, string sk)
 {
@@ -76,8 +86,6 @@ void skill_completed(object me, string sk)
         me->set_attr("con", me->query_attr("con", 1) + 1);
         me->set("tiger_force/initial_con_bonus", 1);
     }
-    if( me->query("tiger_force/growth_level") < 20 )
-        me->set("tiger_force/growth_level", 20);
 }
 
 /*
@@ -128,9 +136,9 @@ int do_powerup(object me)
 
     sk = me->query_skill("tiger-force", 1);
     if( sk < 100 )
-        return notify_fail("你的瘋虎功尚未到一百級，還無法施展 powerup。\n");
+        return notify_fail("你的瘋虎功火候未足，還無法催動瘋虎強盛勢。\n");
     if( me->query_temp("tiger_force/powerup") )
-        return notify_fail("你現在正處於瘋虎功 powerup 的催勁狀態。\n");
+        return notify_fail("你現在正處於瘋虎強盛勢的催勁狀態。\n");
 
     damage_bonus = sk / 4;
     attack_bonus = sk / 3;
@@ -140,9 +148,26 @@ int do_powerup(object me)
     me->add_temp("apply/attack", attack_bonus);
     me->set_temp("tiger_force/powerup", 1);
 
-    message_vision(HIR "$N猛吸一口氣，瘋虎功勁力沿周身經脈暴然奔走，整個人的攻勢頓時變得更沉、更快、更具壓迫感！\n" NOR,
-        me);
+    message_vision(HIR "$N突然發出幾聲虎吼，雙眼紅絲滿佈，逐漸進入「瘋 虎 強 盛 勢」了！\n" NOR, me);
     call_out("remove_powerup", duration, me, damage_bonus, attack_bonus);
+    return 1;
+}
+
+/* refresh（瘋虎功練成後才能用）：消耗 瘋虎功/8 的氣（目前值），回復 機敏＋瘋虎功 的精；自身停頓 1 回合，沒有冷卻。 */
+int do_refresh(object me)
+{
+    int sk, cost;
+
+    sk = me->query_skill("tiger-force", 1);
+    if( sk < 1 )
+        return notify_fail("你的瘋虎功尚未練成，還無法運氣回精。\n");
+    cost = sk / 8;
+    if( me->query_stat("kee") <= cost )
+        return notify_fail("你的氣不夠，無法運起瘋虎功回復精神。\n");
+    me->consume_stat("kee", cost);
+    me->supplement_stat("gin", me->query_attr("dex") + sk);
+    message_vision("$N深吸一口氣，精神為之一振。\n", me);
+    me->start_busy(1);
     return 1;
 }
 
@@ -157,6 +182,8 @@ varargs int exert_function(object me, string func, object target)
         return 1;
     case "powerup":
         return do_powerup(me);
+    case "refresh":
+        return do_refresh(me);
     default:
         return notify_fail("瘋虎功沒有這種功能。\n");
     }

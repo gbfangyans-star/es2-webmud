@@ -7,13 +7,10 @@ inherit F_VILLAGER;
 void create()
 {
     set_name("小藥童", ({ "boy", "apprentice", "herb boy" }));
-    set_race("human"); set_class("commoner"); set_level(5);
-    set_attr("int", 20);
-    set_stat_maximum("gin", 50);
-    set_stat_maximum("kee", 80);
-    set_stat_maximum("sen", 100);
+    set_race("human"); set_class("commoner"); set_level(3);
     set("age", 15);
     set("long", "一個在醫館裡跑進跑出的藥童，衣袖上沾著搗藥留下的藥漬，手裡還捧著幾株曬乾的藥草，看來是聶晟身邊打雜幫手的孩子。\n");
+    set_power("C");
     setup();
 }
 

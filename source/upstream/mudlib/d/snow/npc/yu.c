@@ -8,7 +8,7 @@ inherit F_VENDOR;
 void create()
 {
 	set_name("魚天", ({ "yu tan","yu","tan" }) );
-	set_race("human");
+	set_race("human"); set_class("commoner");
 	set_level(1);
 	set("gender", "male");
 	set("age", 25);
@@ -28,6 +28,7 @@ void create()
 		"魚天喃喃唸道: 嗯, 上個月的利息收了二百八十兩白銀, 不錯 不錯 !\n",
 		"魚天靠在左側的大櫃臺上, 低頭喃喃自語, 似乎正在算計著.\n",
 	}));
+	set_power("C");
 	setup();
 	carry_object(__DIR__"obj/blue_jacket")->wear();
 }

@@ -24,14 +24,6 @@ LONG
         "李山蹲在牆角，賊頭賊腦地東張西望，好像在提防著什麼人。\n",
         "李山不耐煩地踢了踢地上的石子：「看什麼看？沒見過人在這裡乘涼嗎？」\n",
     }));
+    set_power("C");
     setup();
-    set_stat_maximum("gin", 60);
-    set_stat_effective("gin", 60);
-    set_stat_current("gin", 60);
-    set_stat_maximum("kee", 75);
-    set_stat_effective("kee", 75);
-    set_stat_current("kee", 75);
-    set_stat_maximum("sen", 35);
-    set_stat_effective("sen", 35);
-    set_stat_current("sen", 35);
 }

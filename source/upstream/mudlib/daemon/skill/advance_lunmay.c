@@ -42,7 +42,7 @@ private void create()
 
     ma_coef  = 10;
     mm_start = 30;
-    mm_minus = 11;
+    mm_minus = 29;
     mm_coef  = 10;
 
     DAEMON_D->register_skill_daemon("advance_lunmay");
@@ -52,6 +52,16 @@ private void create()
 int valid_enable(string usage)
 {
     return usage == "secondhand sword" || usage == "secondhand dagger";
+}
+
+/* 學習條件：等級 30、寒梅心法 100 級。 */
+int valid_learn(object me)
+{
+    if( me->query_level() < 30 )
+        return notify_fail("你的火候未到﹐還參不透傲梅暗劍訣的精要。\n");
+    if( me->query_skill("hainmay force", 1) < 100 )
+        return notify_fail("你的寒梅心法尚未大成﹐無法修練傲梅暗劍訣。\n");
+    return 1;
 }
 
 int in_mirror(object me)

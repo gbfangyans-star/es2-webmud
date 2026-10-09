@@ -39,7 +39,7 @@ private void create()
 
     ma_coef  = 10;
     mm_start = 30;
-    mm_minus = 11;
+    mm_minus = 29;
     mm_coef  = 10;
 
     DAEMON_D->register_skill_daemon("lunmay");
@@ -47,6 +47,14 @@ private void create()
 }
 
 int valid_enable(string usage) { return usage == "sword" || usage == "parry"; }
+
+/* 學習條件：冷梅莊弟子。 */
+int valid_learn(object me)
+{
+    if( !is_faction(me, "fighter.lunmay") )
+        return notify_fail("你不是冷梅莊弟子﹐無法修練冷梅劍法。\n");
+    return 1;
+}
 
 /* 明鏡止水狀態（寒梅心法 exert mirror，且內功 enable 寒梅心法）。 */
 int in_mirror(object me)
