@@ -283,3 +283,6 @@ body.context-compact .center-stack{grid-template-rows:minmax(0,1fr) 120px}body.c
 #scoreHud .hud-num{font-family:var(--term-font)}
 /* score 的進度格：每格剛好一個中文字寬（兩個英文字），跟文字格線對齊。 */
 #terminal .stat-cell{width:calc(1em - 2px);margin-right:2px}
+
+/* 訊息欄行頭：按一下反白並複製整行 */
+#terminal.line-pick{cursor:pointer}
