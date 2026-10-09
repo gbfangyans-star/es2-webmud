@@ -20,14 +20,15 @@ def test_d_floor_is_two_and_combat_formulas_present():
     assert '(random(d) + 1) * (random(d) + 1)' in s
     assert '(random(str) + 1) * (random(str) + 1) + random(str)' in s
     assert 'random(me->query_attr("cor"))' in s
-    assert 'random(me->query_attr("cps"))' in s
+    # 瘋虎功只靠修習取得點數，戰鬥中不給。
+    assert 'improve_skill_exact("tiger-force"' not in s
+    t=text('source/upstream/mudlib/daemon/skill/tiger-force.c')
+    assert 'random(me->query_attr("cps"))' in t
 
-def test_tiger_force_new_milestones_and_private_thresholds():
+def test_tiger_force_milestones_and_common_thresholds():
     s=text('source/upstream/mudlib/daemon/skill/tiger-force.c')
-    assert 'level <= 100' in s and 'base = 100' in s
-    assert 'level <= 140' in s and 'base = 150' in s
-    assert 'level <= 180' in s and 'base = 200' in s
-    assert 'lv == 100' in s and '"str"' in s and '+ 1' in s
+    assert 'tiger_force_threshold' not in s
+    assert 'lv == 91' in s and '"str"' in s and '+ 2' in s
     assert 'lv == 140' in s and '+ 2' in s
     assert 'lv >= 141' in s
 

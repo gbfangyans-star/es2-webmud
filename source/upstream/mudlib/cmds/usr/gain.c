@@ -34,7 +34,10 @@ int main(object me, string arg)
     }
 
     write(txt);
-    return 1;    
+
+    // 這段時間有拿到點數的技能，累積夠了就升一級。
+    me->apply_gain_progression(skill_g);
+    return 1;
 }
 
 int help()
@@ -46,6 +49,10 @@ int help()
 統會記錄所獲得的值，當你使用 gain 指令，會顯示這些值，然後清除這些紀錄從頭開
 始，你可以在戰鬥開始前先用 gain 清除，然後在戰鬥結束後用 gain 檢視你的人物從
 剛剛的戰鬥中獲的多少進步。
+
+技能點數只會累積，技能等級要在使用 gain 時才會提升：這段時間有獲得點數的技能，
+累積的點數足夠升級就提升一級，每次 gain 最多一級。尚未學成的技能要累積到學成
+所需的點數，才會在 gain 時一次練成。
 TEXT
     );
     return 1;

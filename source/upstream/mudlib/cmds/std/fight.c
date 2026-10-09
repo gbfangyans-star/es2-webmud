@@ -59,6 +59,14 @@ int main(object me, string arg)
 	return 1;
     }
 
+    // 練武用的假人、木樁是死物，不用對它說話。
+    if( obj->query("training_dummy") ) {
+	message_vision("\n$N在$n前站定，擺開架勢練起招式來。\n\n", me, obj);
+	me->fight_ob(obj);
+	obj->fight_ob(me);
+	return 1;
+    }
+
     if( obj->query("civilized") ) {
 	if( me->is_fighting() )
 	    message_vision( "\n$N對著$n說道：一併領教這位"

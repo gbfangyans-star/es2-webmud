@@ -15,30 +15,19 @@ int valid_enable(string usage)
     return usage == "force";
 }
 
-void skill_improved(object me, string sk)
+// 學成等級：累積點數到 40 級的門檻前一直是 0 級，gain 時直接練成 40 級。
+int query_entry_level() { return 40; }
+
+// 門檻為基本門檻的十分之一：練滿 200 級需 100 萬點（一般技能 1000 萬），
+// 學成 40 級需 16,000 點。
+int query_threshold_percent() { return 10; }
+
+void skill_completed(object me, string sk)
 {
-    int skill, learn;
-
-    skill = me->query_skill("dragon force", 1);
-    learn = me->query_learn("dragon force", 1);
-
-    if( !skill ) {
-	if( learn >= 1500 ) {
-	    tell_object(me,
-		HIY "你覺得腹中一股暖洋洋的熱氣忽然膨脹，立刻充滿了全身各處，看來你的\n"
-		    "龍圖心經已經練成了﹗" NOR);
-	    me->advance_skill("dragon force", 40);
-	    me->gain_score("martial art", 500);
-	}
-	return;
-    }
-
-    if( (skill < 120) && (skill-39) * (skill-39) * 200 < learn - 1500 ) {
-	me->advance_skill("dragon force", 1);
-	me->gain_score("martial art", (skill+1) * 10);
-	if( skill >= 50 )
-	    me->gain_score("martial mastery", (skill-40) * 10);
-    }
+    tell_object(me,
+        HIY "你覺得腹中一股暖洋洋的熱氣忽然膨脹，立刻充滿了全身各處，看來你的\n"
+            "龍圖心經已經練成了﹗\n" NOR);
+    me->gain_score("martial art", 500);
 }
 
 void skill_advanced(object me, string sk)
@@ -52,6 +41,13 @@ void skill_advanced(object me, string sk)
 	me->advance_stat("kee", 5);
     if( me->query_stat_maximum("sen") < level * 13 )
 	me->advance_stat("sen", 5);
+
+    // 學成之後每升一級（升到第 level 級）的獎勵，沿用原本的公式。
+    if( level > 40 ) {
+	me->gain_score("martial art", level * 10);
+	if( level > 50 )
+	    me->gain_score("martial mastery", (level - 41) * 10);
+    }
 }
 
 int do_exercise(object me)

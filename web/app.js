@@ -56,6 +56,11 @@ let mapRefreshPending = false;
 let hudBootstrapInFlight = false;
 let hudBootstrapAttempts = 0;
 const HUD_POLL_MS = 800;
+// 背景狀態查詢的頻率：戰鬥中每 0.8 秒；平常每 2.5 秒；玩家剛下指令的 3 秒內，
+// 指令的回應一到就立刻更新（吃喝、裝備、移動後狀態欄馬上反映）。分頁在背景時完全暫停。
+const HUD_IDLE_POLL_MS = 2500;
+const HUD_AFTER_COMMAND_MS = 3000;
+let lastHudPollAt = 0;
 const HUD_USER_GRACE_MS = 350;
 const HUD_KICK_DELAY_MS = 20;
 const HUD_POLL_TIMEOUT_MS = 1200;
@@ -433,6 +438,20 @@ function removeHudLines(text){
   }
   return out;
 }
+// 傳輸被切在一行資料中間時（例如只收到「@@WEBHUD」，「|BEGIN」在下一段），
+// 最後那半行先留著等下一段，不要當成一般文字顯示。
+function isHudLinePrefix(line){
+  const plain=cleanText(line).replace(/^[ \t]*(?:>[ \t]*)*/,'');
+  return !!plain && ('@@WEBHUD|'.startsWith(plain)||plain.startsWith('@@WEBHUD|'));
+}
+function holdTrailingHudPartial(text){
+  const str=String(text);
+  const nl=Math.max(str.lastIndexOf('\n'),str.lastIndexOf('\r'));
+  const last=str.slice(nl+1);
+  if(!isHudLinePrefix(last))return str;
+  hudFallbackBuffer=last+hudFallbackBuffer;
+  return str.slice(0,nl+1);
+}
 function stripWebHudLines(whole){
   return String(whole).split(/\r\n|\n|\r/).filter(line=>{
     if(isHudLine(line))return false;
@@ -459,14 +478,8 @@ function consumeHudPollOutputRaw(s){
     // 唯一暫存的是「被拆在兩段傳輸之間、還沒收完的那一行資料」。
     let str=hudFallbackBuffer+String(s);
     hudFallbackBuffer='';
-    if(!str.includes('@@WEB'))return {visible:str,done:false};
-    const nl=Math.max(str.lastIndexOf('\n'),str.lastIndexOf('\r'));
-    const last=str.slice(nl+1);
-    const lastPlain=cleanText(last).replace(/^[ \t]*(?:>[ \t]*)*/,'');
-    if(lastPlain && ('@@WEBHUD|'.startsWith(lastPlain)||lastPlain.startsWith('@@WEBHUD|'))){
-      hudFallbackBuffer=last;
-      str=str.slice(0,nl+1);
-    }
+    if(!str.includes('@'))return {visible:str,done:false};
+    str=holdTrailingHudPartial(str);
     if(hasHudLine(str,''))parseWebHud(str);
     return {visible:removeHudLines(str),done:false};
   }
@@ -476,7 +489,7 @@ function consumeHudPollOutputRaw(s){
   const hasEnd=hasHudLine(hudPollBuffer,'END(?:[ \\t]*)(?:\\n|$)');
   const timedOut=Date.now()-hudPollStartedAt>HUD_POLL_TIMEOUT_MS;
   if(!hasEnd && !timedOut)return {visible:'',done:false};
-  const whole=hudPollBuffer;
+  const whole=holdTrailingHudPartial(hudPollBuffer);
   hudPollInFlight=false;hudBootstrapInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
   if(hudResponseTimer){clearTimeout(hudResponseTimer);hudResponseTimer=null;}
   flushPendingUserCommands();
@@ -485,8 +498,16 @@ function consumeHudPollOutputRaw(s){
   // create a visible terminal line. Real asynchronous text is still preserved.
   return {visible:kept.length?kept.join('\n')+'\n':'',done:true};
 }
+function hudPollDue(){
+  const now=Date.now();
+  if(now-lastUserCommandAt<HUD_AFTER_COMMAND_MS)return true;
+  const gap=contextState.combat?.target?HUD_POLL_MS:HUD_IDLE_POLL_MS;
+  return now-lastHudPollAt>=gap;
+}
 function hudPollReady(force=false,allowNoRoom=false){
   if((!currentRoomId&&!allowNoRoom)||input.type==='password'||ws?.readyState!==1||hudPollInFlight)return false;
+  if(document.hidden)return false;
+  if(!force&&!hudPollDue())return false;
   if(editorActive)return false;
   // Real player input has priority over internal HUD telemetry.
   if(!force && Date.now()-lastUserCommandAt<HUD_USER_GRACE_MS)return false;
@@ -502,6 +523,7 @@ function pollHud(force=false,allowNoRoom=false){
   hudPollInFlight=true;
   hudPollBuffer='';
   hudPollStartedAt=Date.now();
+  lastHudPollAt=hudPollStartedAt;
   ws.send('webhud\r\n');
   if(allowNoRoom)hudBootstrapInFlight=true;
   if(hudResponseTimer)clearTimeout(hudResponseTimer);
@@ -521,7 +543,7 @@ function pollHud(force=false,allowNoRoom=false){
 // 畫面上就只剩「> read 1」而沒有任何回應。現在只拿掉 @@WEBHUD 資料，其餘照常顯示；
 // 之後才到的半段 HUD 回覆由 consumeHudPollOutput 的最後防線過濾。
 function releaseHudPoll(){
-  const whole=hudPollBuffer;
+  const whole=holdTrailingHudPartial(hudPollBuffer);
   hudPollInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
   if(hudResponseTimer){clearTimeout(hudResponseTimer);hudResponseTimer=null;}
   if(!whole)return;
@@ -529,6 +551,8 @@ function releaseHudPoll(){
   const kept=stripWebHudLines(whole);
   if(kept.length)renderVisible(kept.join('\n')+'\n',false,shouldStick());
 }
+// 切回分頁時立刻更新一次狀態。
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden)pollHud(true); });
 function startHudPolling(){
   if(hudTimer)return;
   hudTimer=setInterval(pollHud,HUD_POLL_MS);
