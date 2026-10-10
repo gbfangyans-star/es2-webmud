@@ -110,7 +110,7 @@ int do_exercise(object me)
      * 戰鬥中不會增加。 */
     me->improve_restored_force_tick();
     me->improve_skill_exact("tiger-force",
-        (random(me->query_attr("int")) + 1) * (me->query_attr("int") / 7)
+        COMBAT_D->int_formula_exp(me)
         + random(me->query_attr("cps")));
     return 1;
 }

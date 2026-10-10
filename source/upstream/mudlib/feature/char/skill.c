@@ -282,6 +282,8 @@ void improve_skill_exact(string skill, int amount)
 
     if( skill_flag[skill] & SKILL_FLAG_ABANDONED ) return;
     if( amount <= 0 ) return;
+    /* 人物等級加成：點數 × (1 + random(人物等級 / 8))。 */
+    amount += amount * random(this_object()->query_level() / 8);
     if( undefinedp(learned[skill]) ) learned[skill] = amount; else learned[skill] += amount;
     if( undefinedp(skill_gain[skill]) ) skill_gain[skill] = amount; else skill_gain[skill] += amount;
     if( undefinedp(skills[skill]) ) skills[skill] = 0;
@@ -302,6 +304,7 @@ int restored_force_tick_exp()
     con = query_attr("con");
     cps = query_attr("cps");
     ib = query_attr("int") / 7;
+    if( ib < 1 ) ib = 1;    // 智力不足 7 只是沒有加成
     return (con > 0 ? random(con) : 0) + (cps > 0 ? random(cps) : 0) * ib;
 }
 
