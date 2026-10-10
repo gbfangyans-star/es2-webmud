@@ -302,6 +302,7 @@ int restored_force_tick_exp()
     con = query_attr("con");
     cps = query_attr("cps");
     ib = query_attr("int") / 7;
+    if( ib < 1 ) ib = 1;    // 智力不足 7 只是沒有加成
     return (con > 0 ? random(con) : 0) + (cps > 0 ? random(cps) : 0) * ib;
 }
 

@@ -156,16 +156,22 @@ private int restored_d(object me, object opponent)
     return d;
 }
 
+/* 智力加成 智力/7，最低 1：智力不足 7 只是沒有加成，不會學不到技能。 */
 private int restored_int_base(object me)
 {
-    return me->query_attr("int") / 7;
+    int ib;
+    ib = me->query_attr("int") / 7;
+    return ib < 1 ? 1 : ib;
 }
 
-private int restored_defense_exp(object me, object opponent)
+/* 防禦經驗：(random(屬性) + 1) × (random(d) + 1) × (智力/7)。
+ * 閃躲用敏捷（dex），格擋用定力（cps）。 */
+private int restored_defense_exp(object me, object opponent, string attr)
 {
-    int d;
+    int d, a;
     d = restored_d(me, opponent);
-    return (random(d) + 1) * (random(d) + 1) * restored_int_base(me);
+    a = me->query_attr(attr);
+    return ((a > 0 ? random(a) : 0) + 1) * (random(d) + 1) * restored_int_base(me);
 }
 
 /* 成功閃躲、格擋時取得實戰經驗（combat）。
@@ -192,23 +198,21 @@ void restored_dodge_gain(object me, object opponent)
     int exp;
     if( !userp(me) || !objectp(opponent) ) return;
     defense_combat_gain(me, opponent);
-    exp = restored_defense_exp(me, opponent);
+    exp = restored_defense_exp(me, opponent, "dex");
     me->improve_skill_exact("dodge", exp);
     mapped = me->skill_mapped("dodge");
     if( mapped == "tiger-steps" ) me->improve_skill_exact("tiger-steps", exp);
 }
 
-/* 格擋成功（含完全擋下）時呼叫：招架經驗 = 閃躲的基礎公式 + random(定力)，
+/* 格擋成功（含完全擋下）時呼叫：招架經驗 = (random(定力)+1) × (random(d)+1) × (智力/7)，
  * enable 在招架上的武功一起漲同樣的點數。 */
 void restored_parry_gain(object me, object opponent)
 {
-    int exp, cps;
+    int exp;
     string art;
     if( !userp(me) || !objectp(opponent) ) return;
     defense_combat_gain(me, opponent);
-    exp = restored_defense_exp(me, opponent);
-    cps = me->query_attr("cps");
-    if( cps > 0 ) exp += random(cps);
+    exp = restored_defense_exp(me, opponent, "cps");
     me->improve_skill_exact("parry", exp);
     art = me->skill_mapped("parry");
     if( stringp(art) && art != "parry" ) me->improve_skill_exact(art, exp);
