@@ -478,9 +478,18 @@ function consumeHudPollOutputRaw(s){
     // 唯一暫存的是「被拆在兩段傳輸之間、還沒收完的那一行資料」。
     let str=hudFallbackBuffer+String(s);
     hudFallbackBuffer='';
+    // 遊戲每段回覆開頭都有一個換行；逾時才到的狀態回覆，開頭那個換行若照常顯示就成了空行。
+    // 只有空白的片段先留著，等下一段到了再判斷是不是狀態回覆的開頭。
+    if(!/\S/.test(str)){hudFallbackBuffer=str;return {visible:'',done:false};}
     if(!str.includes('@'))return {visible:str,done:false};
     str=holdTrailingHudPartial(str);
-    if(hasHudLine(str,''))parseWebHud(str);
+    if(hasHudLine(str,'')){
+      parseWebHud(str);
+      str=str.replace(/(?:^|[\r\n])[ \t\r\n]*(?=[ \t]*(?:>[ \t]*)*@@WEBHUD\|)/g,(m,off)=>off===0?'':'\n');
+      // 整段只是狀態回覆（剩下的只有提示字元「>」和空白）時，什麼都不顯示。
+      const rest=removeHudLines(str);
+      return {visible:/[^\s>]/.test(cleanText(rest))?rest:'',done:false};
+    }
     return {visible:removeHudLines(str),done:false};
   }
   hudPollBuffer += String(s);
@@ -500,7 +509,11 @@ function consumeHudPollOutputRaw(s){
 }
 function hudPollDue(){
   const now=Date.now();
-  if(now-lastUserCommandAt<HUD_AFTER_COMMAND_MS)return true;
+  // 剛下指令：指令之後還沒查過就立刻查一次，之後同戰鬥中的節奏，不連續狂查。
+  if(now-lastUserCommandAt<HUD_AFTER_COMMAND_MS){
+    if(lastHudPollAt<lastUserCommandAt)return true;
+    return now-lastHudPollAt>=HUD_POLL_MS;
+  }
   const gap=contextState.combat?.target?HUD_POLL_MS:HUD_IDLE_POLL_MS;
   return now-lastHudPollAt>=gap;
 }
@@ -998,7 +1011,7 @@ function connect(){
     // A completed movement command must refresh ROOM/NAME/EXITS immediately. The
     // normal 350ms user-input grace remains for all other commands so telemetry
     // cannot compete with player input.
-    if(currentRoomId && !String(raw).includes('@@WEBHUD|')){
+    if(currentRoomId && /\S/.test(String(raw)) && !String(raw).includes('@@WEBHUD|')){
       const forceMapRefresh=mapRefreshPending;
       if(forceMapRefresh)mapRefreshPending=false;
       kickHudAfterServerText(forceMapRefresh);
@@ -1030,7 +1043,7 @@ function echoCommand(c){
 }
 function transmitUserCommand(c,sensitive=false){
   if(!sensitive)echoCommand(c);
-  const op=c.split(/\s+/)[0];
+  const op=editorActive?'':c.split(/\s+/)[0];
   if(!sensitive && /^(?:n|s|e|w|ne|nw|se|sw|u|d|north|south|east|west|northeast|northwest|southeast|southwest|up|down|go|enter|out)$/i.test(op)){
     // Catworld-style feel: move the marker immediately using already-known topology;
     // the silent HUD response that follows is authoritative and corrects it if needed.
@@ -1048,8 +1061,10 @@ function flushPendingUserCommands(){
   pendingUserCommands=[];
   for(const item of queued)transmitUserCommand(item.command,item.sensitive);
 }
-function send(c){
-  const sensitive=input.type==='password';c=String(c??'').trim();
+function send(c,keepSpaces=false){
+  const sensitive=input.type==='password';
+  // 留言／寫信的編輯器裡，每行前面的空白（半形、全形）是內容的一部分，不能去掉。
+  c=keepSpaces?String(c??'').replace(/[\r\n]+/g,''):String(c??'').trim();
   if(c){lastUserCommandAt=Date.now();if(hudKickTimer){clearTimeout(hudKickTimer);hudKickTimer=null;}}
   if(ws?.readyState!==1){print('\n[尚未連上 ES2]\n',true);return;}
   // The silent HUD request and a real player command must never share the same
@@ -1058,7 +1073,7 @@ function send(c){
   // @@WEBHUD|END marker. This prevents interaction buttons from being swallowed
   // by the HUD parser or interleaved with the telemetry command.
   if(hudPollInFlight){
-    if(!pendingUserCommands.some(x=>x.command===c&&x.sensitive===sensitive))
+    if(keepSpaces||!pendingUserCommands.some(x=>x.command===c&&x.sensitive===sensitive))
       pendingUserCommands.push({command:c,sensitive});
     // A HUD response is background telemetry. A real click must win quickly even
     // if the END marker is delayed/lost. Give the current HUD packet a very short
@@ -1098,6 +1113,10 @@ document.querySelector('#form')?.addEventListener('submit',e=>{
   if(input.type==='password'){
     // Password entry never stays in the box or gets echoed/repeated.
     send(raw);input.value='';repeatArmed=false;input.focus();return;
+  }
+  if(editorActive){
+    // 編輯器裡一行就是一行內容：保留前面的空白、不拆「;」、不留在欄位裡重複送。
+    send(raw,true);input.value='';repeatArmed=false;input.focus();return;
   }
   // ';' chains several commands from one line, e.g. "e;e;e;n" walks east
   // three times then north. No inter-command delay -- fired back to back.
@@ -1186,7 +1205,20 @@ bootPreviewMode().then(()=>startGame());
 
 function historyMatch(cmd){return cmd.toLowerCase().startsWith(historyPrefix.toLowerCase());}
 function showHistory(value){input.value=value;repeatArmed=false;const n=value.length;input.setSelectionRange(n,n);}
+// Tab：插入空白到下一個 8 格的位置（中文字算 2 格），不會跳離輸入列。
+function textColumns(t){let w=0;for(const ch of t)w+=/[\u1100-\u115f\u2e80-\ua4cf\uac00-\ud7a3\uf900-\ufaff\ufe30-\ufe4f\uff00-\uff60\uffe0-\uffe6]|[\u{20000}-\u{3fffd}]/u.test(ch)?2:1;return w;}
+function insertTab(){
+  const start=input.selectionStart??input.value.length,end=input.selectionEnd??start;
+  const col=textColumns(input.value.slice(0,start));
+  const pad=' '.repeat(8-col%8);
+  input.value=input.value.slice(0,start)+pad+input.value.slice(end);
+  const pos=start+pad.length;input.setSelectionRange(pos,pos);
+  repeatArmed=false;historyPrefix=null;hi=history.length;
+}
 input?.addEventListener('keydown',e=>{
+  if(e.key==='Tab'&&!e.shiftKey&&!e.ctrlKey&&!e.altKey&&!e.metaKey&&!e.isComposing){
+    e.preventDefault();insertTab();return;
+  }
   if(e.key==='ArrowUp'){
     e.preventDefault();
     if(historyPrefix===null){
@@ -1202,6 +1234,38 @@ input?.addEventListener('keydown',e=>{
     // 翻到底：回到當初輸入的文字。
     hi=history.length;showHistory(historyPrefix);historyPrefix=null;
   }
+});
+
+// 訊息欄每一行的行頭（第一個字左邊的空白處）按一下：反白整行並複製。
+function copyText(text){
+  if(navigator.clipboard?.writeText)return navigator.clipboard.writeText(text).catch(()=>document.execCommand('copy'));
+  try{document.execCommand('copy');}catch(_){}
+}
+function inLineGutter(e){
+  if(e.target!==term)return false;
+  const rect=term.getBoundingClientRect();
+  return e.clientX<rect.left+(parseFloat(getComputedStyle(term).paddingLeft)||0);
+}
+term?.addEventListener('mousemove',e=>term.classList.toggle('line-pick',inLineGutter(e)));
+term?.addEventListener('mouseleave',()=>term.classList.remove('line-pick'));
+term?.addEventListener('mousedown',e=>{
+  if(e.button!==0||e.target!==term)return;
+  const rect=term.getBoundingClientRect();
+  const padLeft=parseFloat(getComputedStyle(term).paddingLeft)||0;
+  if(e.clientX>=rect.left+padLeft)return;
+  const x=rect.left+padLeft+2,y=e.clientY;
+  let node=null,offset=0;
+  if(document.caretPositionFromPoint){const p=document.caretPositionFromPoint(x,y);if(p){node=p.offsetNode;offset=p.offset;}}
+  else if(document.caretRangeFromPoint){const r=document.caretRangeFromPoint(x,y);if(r){node=r.startContainer;offset=r.startOffset;}}
+  if(!node||!term.contains(node))return;
+  e.preventDefault();
+  const sel=window.getSelection();
+  sel.removeAllRanges();
+  const r=document.createRange();r.setStart(node,offset);r.collapse(true);sel.addRange(r);
+  sel.modify('move','backward','lineboundary');
+  sel.modify('extend','forward','lineboundary');
+  const text=sel.toString().replace(/\n+$/,'');
+  if(text.trim())copyText(text);
 });
 
 // 訊息欄往上翻時出現「▼」按鈕，按下直接捲到最新的訊息。

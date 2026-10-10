@@ -115,9 +115,10 @@ int main (object me, string arg) {
             int xp_t;
 
             if (xp >= 0 && (xp_t = ob->query_target_score(c) - xp) > 0) 
-                line = sprintf("%s" HIM "%-8s %8d %-9s " NOR, line, to_chinese("score of " + c), xp, "[" + xp_t + "]");
+                // 名稱一律補到 4 個全形字寬（用全形空白），兩欄在任何字型下都會對齊。
+                line = sprintf("%s" HIM "%s %8d %-9s " NOR, line, cjk_align(to_chinese("score of " + c), 4, 0), xp, "[" + xp_t + "]");
             else
-                line = sprintf("%s%-8s %8d %9s ", line, to_chinese("score of " + c), xp, "");
+                line = sprintf("%s%s %8d %9s ", line, cjk_align(to_chinese("score of " + c), 4, 0), xp, "");
             if ((i++)%SCORE_COLUMN == SCORE_COLUMN-1)
                 line += "\n   ";
         }
