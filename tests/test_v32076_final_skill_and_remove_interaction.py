@@ -39,8 +39,8 @@ def test_final_skill_stack_keeps_old_neolith_compat_and_special_progression():
     assert "apply_restored_skill_progression(skill);" in skill
     assert 'void apply_gain_progression(mapping gained)' in skill
     assert 'improve_skill_exact("tiger-force"' not in combatd
-    assert 'me->improve_skill_exact("tiger-blade", exp);' in combatd
-    assert 'me->improve_skill_exact("sanmeendo", exp);' in combatd
+    assert 'if( art == "tiger-blade" ) exp += random(me->query_attr("cor"));' in combatd
+    assert 'me->improve_skill_exact(art, exp);' in combatd
     assert "void skill_completed(object me, string sk)" in tiger
     assert "void skill_advanced(object me, string sk)" in tiger
     assert 'me->improve_skill_exact("tiger-force",' in tiger

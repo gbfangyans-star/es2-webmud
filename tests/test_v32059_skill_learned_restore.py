@@ -12,7 +12,8 @@ def test_exact_gain_bypasses_legacy_level_bonus_and_has_thresholds():
     assert 'level <= 180' in s and 'base = 200' in s
     assert 'base = 250' in s
     exact=s.split('void improve_skill_exact',1)[1].split('// improve_skill()',1)[0]
-    assert 'query_level() / 8' not in exact
+    # 2026-10-10 使用者定案：所有技能點數都吃人物等級加成。
+    assert 'amount += amount * random(this_object()->query_level() / 8);' in exact
 
 def test_d_floor_is_two_and_combat_formulas_present():
     s=text('source/upstream/mudlib/adm/daemons/combatd.c')

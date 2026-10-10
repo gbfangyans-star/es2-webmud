@@ -192,30 +192,41 @@ private void defense_combat_gain(object me, object opponent)
     me->gain_score("combat", n > 0 ? 1 + random(n) : 1);
 }
 
+/* 閃躲成功時呼叫：基本閃躲與 enable 在閃躲上的身法，
+ * 都是 (random(敏捷)+1) × (random(d)+1) × (智力/7)，兩者各自擲骰。 */
 void restored_dodge_gain(object me, object opponent)
 {
     string mapped;
-    int exp;
     if( !userp(me) || !objectp(opponent) ) return;
     defense_combat_gain(me, opponent);
-    exp = restored_defense_exp(me, opponent, "dex");
-    me->improve_skill_exact("dodge", exp);
+    me->improve_skill_exact("dodge", restored_defense_exp(me, opponent, "dex"));
     mapped = me->skill_mapped("dodge");
-    if( mapped == "tiger-steps" ) me->improve_skill_exact("tiger-steps", exp);
+    if( stringp(mapped) && mapped != "dodge" )
+        me->improve_skill_exact(mapped, restored_defense_exp(me, opponent, "dex"));
 }
 
-/* 格擋成功（含完全擋下）時呼叫：招架經驗 = (random(定力)+1) × (random(d)+1) × (智力/7)，
- * enable 在招架上的武功一起漲同樣的點數。 */
+/* 格擋成功（含完全擋下）時呼叫：基本招架 = (random(定力)+1) × (random(d)+1) × (智力/7)。
+ * enable 在招架上的武功不從格擋拿點數；武功檔有 parry_gains_exp() 傳回 1 時才給（各自擲骰）。 */
 void restored_parry_gain(object me, object opponent)
 {
-    int exp;
     string art;
+    object daemon;
     if( !userp(me) || !objectp(opponent) ) return;
     defense_combat_gain(me, opponent);
-    exp = restored_defense_exp(me, opponent, "cps");
-    me->improve_skill_exact("parry", exp);
+    me->improve_skill_exact("parry", restored_defense_exp(me, opponent, "cps"));
     art = me->skill_mapped("parry");
-    if( stringp(art) && art != "parry" ) me->improve_skill_exact(art, exp);
+    if( stringp(art) && art != "parry" && objectp(daemon = SKILL_D(art))
+    &&  function_exists("parry_gains_exp", daemon) && daemon->parry_gains_exp() )
+        me->improve_skill_exact(art, restored_defense_exp(me, opponent, "cps"));
+}
+
+/* 沒有另外設定公式的技能一律用：(random(智力)+1) × (random(智力)+1) + random(智力)。 */
+int int_formula_exp(object me)
+{
+    int i;
+    i = me->query_attr("int");
+    if( i < 1 ) i = 1;
+    return (random(i) + 1) * (random(i) + 1) + random(i);
 }
 
 /* 基本攻擊技能：命中時不給武術造詣。 */
@@ -232,17 +243,17 @@ private string *basic_attack_skills = ({
 
 private void restored_hit_gain(object me, object victim, string skill, object weapon)
 {
-    int exp, ib, str;
+    int exp, str;
     string base, equipped, art;
     object daemon;
 
     if( !userp(me) || !objectp(victim) ) return;
-    ib = restored_int_base(me);
 
     /* 用 enable 的武功（非基本技能）造成傷害，每次 1 點武術造詣。 */
     if( member_array(skill, basic_attack_skills) < 0 )
         me->gain_score("martial art", 1);
 
+    /* 空手沒用武功：基本拳腳用力量公式。 */
     if( skill == "unarmed" ) {
         str = me->query_attr("str");
         if( str > 0 ) {
@@ -252,12 +263,9 @@ private void restored_hit_gain(object me, object victim, string skill, object we
         return;
     }
 
-    if( skill == "tiger-blade" ) base = "twohanded blade";
-    else if( skill == "sanmeendo" ) base = "blade";
-    /* 新版武功引擎做的武功（std/martial_art.c）：基本技能取武器裝備的位置，
-     * 武功本身漲同樣的點數。 */
-    else if( objectp(daemon = SKILL_D(skill))
-         &&  function_exists("is_martial_art", daemon) ) {
+    /* 新版武功引擎做的武功（std/martial_art.c）：基本技能取武器裝備的位置。 */
+    if( objectp(daemon = SKILL_D(skill))
+    &&  function_exists("is_martial_art", daemon) ) {
         equipped = objectp(weapon) ? weapon->query("equipped") : 0;
         if( stringp(equipped) && equipped[0..6] == "weapon/" ) base = equipped[7..];
         else base = daemon->query_base_skill();
@@ -265,20 +273,15 @@ private void restored_hit_gain(object me, object victim, string skill, object we
     }
     // Every other weapon skill (axe, sword, pike, staff, blade, their
     // twohanded/secondhand variants, dagger, needle, blunt, whip, ...)
-    // gains its own experience directly -- this used to be a narrow
-    // blade-only allowlist, so any other weapon skill got hits registered
-    // but no learned progress at all.
+    // gains its own experience directly.
     else base = skill;
 
-    if( stringp(base) ) {
-        exp = (random(me->query_attr("int")) + 1) * ib;
-        me->improve_skill_exact(base, exp);
-        if( skill == "sanmeendo" ) me->improve_skill_exact("sanmeendo", exp);
-        else if( stringp(art) ) me->improve_skill_exact(art, exp);
-        else if( skill == "tiger-blade" ) {
-            exp += random(me->query_attr("cor"));
-            me->improve_skill_exact("tiger-blade", exp);
-        }
+    /* 基本技能與武功本身都用智力公式，各自擲骰；瘋虎刀法本身另加 random(膽識)。 */
+    if( stringp(base) ) me->improve_skill_exact(base, int_formula_exp(me));
+    if( stringp(art) ) {
+        exp = int_formula_exp(me);
+        if( art == "tiger-blade" ) exp += random(me->query_attr("cor"));
+        me->improve_skill_exact(art, exp);
     }
 }
 

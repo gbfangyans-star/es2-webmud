@@ -282,6 +282,8 @@ void improve_skill_exact(string skill, int amount)
 
     if( skill_flag[skill] & SKILL_FLAG_ABANDONED ) return;
     if( amount <= 0 ) return;
+    /* 人物等級加成：點數 × (1 + random(人物等級 / 8))。 */
+    amount += amount * random(this_object()->query_level() / 8);
     if( undefinedp(learned[skill]) ) learned[skill] = amount; else learned[skill] += amount;
     if( undefinedp(skill_gain[skill]) ) skill_gain[skill] = amount; else skill_gain[skill] += amount;
     if( undefinedp(skills[skill]) ) skills[skill] = 0;

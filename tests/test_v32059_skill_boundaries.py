@@ -87,7 +87,8 @@ def test_trigger_wiring_is_success_only_not_attempt_only():
 def test_no_legacy_level_multiplier_in_exact_gain():
     s=src('source/upstream/mudlib/feature/char/skill.c')
     exact=s.split('void improve_skill_exact',1)[1].split('// improve_skill()',1)[0]
-    assert 'query_level() / 8' not in exact
+    # 2026-10-10 使用者定案：所有技能點數都吃人物等級加成。
+    assert 'amount += amount * random(this_object()->query_level() / 8);' in exact
     assert 'skill_gain[skill]' in exact
 
 def advance_model(level, learned, cap=200):

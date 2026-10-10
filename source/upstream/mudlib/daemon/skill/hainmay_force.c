@@ -87,7 +87,7 @@ int do_exercise(object me)
 
     me->improve_restored_force_tick();
     me->improve_skill_exact("hainmay force",
-        (random(me->query_attr("int")) + 1) * (me->query_attr("int") >= 7 ? me->query_attr("int") / 7 : 1)
+        COMBAT_D->int_formula_exp(me)
         + random(me->query_attr("cps")));
     return 1;
 }
