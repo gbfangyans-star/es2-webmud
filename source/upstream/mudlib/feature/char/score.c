@@ -86,10 +86,7 @@ int try_level_up()
 
     /* CUSTOM A-H RACE RULE: per-race class level cap from race daemon. */
     v = RACE_D(query_race())->query("class_level_cap/" + query_class());
-    if( v != 0 && query_level() >= v ) {
-        receive(HIY "你目前的種族與職業組合已達等級上限。\n" NOR);
-        return 0;
-    }
+    if( v != 0 && query_level() >= v ) return 0;   // 已達上限，不提示
 
     receive( HIY "你的等級提昇了﹗\n" NOR );
     RACE_D(query_race())->advance_level(this_object());
