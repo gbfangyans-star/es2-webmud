@@ -6,7 +6,7 @@ APP=(ROOT/'web/app.js').read_text(encoding='utf-8')
 def test_user_commands_wait_for_hud_end():
     assert 'let pendingUserCommands = [];' in APP
     assert 'if(hudPollInFlight)' in APP
-    assert 'pendingUserCommands.push({command:c,sensitive})' in APP
+    assert 'pendingUserCommands.push({command:c,sensitive,silent:auto})' in APP
     assert 'flushPendingUserCommands();' in APP
 
 def test_duplicate_clicks_are_not_queued_repeatedly():

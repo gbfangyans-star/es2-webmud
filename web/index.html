@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- 終端機中文字型：Noto Sans TC（思源黑體繁體），英文與符號用網站自帶的 ES2 Mono（更紗黑體） -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap">
-  <link rel="stylesheet" href="/styles.css?v=merge-1006">
+  <link rel="stylesheet" href="/styles.css?v=automation-v1">
 </head>
 <body class="game-body">
   <div id="gameApp" class="game-app">
@@ -28,6 +28,8 @@
             <button type="button" class="nav-item" data-cmd="skills"><span class="nav-icon">卷</span><span>技能</span></button>
             <button type="button" class="nav-item" data-ui-focus="map"><span class="nav-icon">圖</span><span>地圖</span></button>
             <button type="button" class="nav-item" data-ui-focus="chat"><span class="nav-icon">言</span><span>聊天</span></button>
+            <button type="button" class="nav-item" data-ui-automation="triggers"><span class="nav-icon">觸</span><span>觸發</span></button>
+            <button type="button" class="nav-item" data-ui-automation="timers"><span class="nav-icon">時</span><span>計時器</span></button>
             <button type="button" class="nav-item" data-cmd="help"><span class="nav-icon">?</span><span>說明</span></button>
             <button type="button" class="nav-item" data-ui-settings><span class="nav-icon">⚙</span><span>設定</span></button>
           </nav>
@@ -47,6 +49,7 @@
           <div id="terminal" aria-live="polite"></div>
           <button type="button" id="scrollLatest" class="scroll-latest" title="捲到最新訊息" aria-label="捲到最新訊息" hidden>▼</button>
           <form class="commandbar" id="form">
+            <button type="button" id="automationToggle" class="automation-toggle" aria-pressed="false" title="自動功能（觸發與計時器）">自動</button>
             <span class="command-prompt">›</span>
             <span id="inputMode" class="input-mode">指令輸入</span>
             <input id="command" autocomplete="off" spellcheck="false" placeholder="請輸入指令...">
@@ -130,6 +133,82 @@
       </aside>
     </div>
 
+    <dialog id="automationDialog" class="automation-dialog" aria-label="觸發與計時器">
+      <div class="auto-head">
+        <div class="auto-tabs" role="tablist">
+          <button type="button" data-auto-tab="triggers" role="tab">觸發</button>
+          <button type="button" data-auto-tab="timers" role="tab">計時器</button>
+        </div>
+        <div class="auto-head-actions">
+          <button type="button" id="autoExport">匯出</button>
+          <button type="button" id="autoImport">匯入</button>
+          <input type="file" id="autoImportFile" accept="application/json,.json" hidden>
+          <form method="dialog"><button value="close" aria-label="關閉">×</button></form>
+        </div>
+      </div>
+
+      <section id="autoTriggerPane" class="auto-pane">
+        <div class="auto-bar">
+          <label class="auto-switch"><input type="checkbox" id="autoTriggersEnabled"> 啟用全部觸發（同 <code>#tr</code>／<code>#tr on</code>／<code>#tr off</code>）</label>
+          <div class="auto-classes"><span>類別：</span><span id="autoClassList"></span></div>
+        </div>
+        <div class="auto-table-wrap">
+          <table class="auto-table">
+            <thead><tr><th>啟用</th><th>樣式</th><th>指令</th><th>類別</th><th></th></tr></thead>
+            <tbody id="autoTriggerRows"></tbody>
+          </table>
+        </div>
+        <div class="auto-form">
+          <label class="auto-wide">樣式 Pattern <input id="trgPattern" spellcheck="false" placeholder="例：^(%w)告訴你：(*)$"></label>
+          <label class="auto-wide">指令 Value <input id="trgCommand" spellcheck="false" placeholder="例：reply 我在忙，等一下回你　（多個指令用 ; 分隔，%1～%9 帶入擷取文字）"></label>
+          <label>類別 Class <input id="trgClass" spellcheck="false" placeholder="例：戰鬥"></label>
+          <div class="auto-checks">
+            <label><input type="checkbox" id="trgEnabled" checked> 啟用</label>
+            <label><input type="checkbox" id="trgCase"> 區分大小寫</label>
+            <label><input type="checkbox" id="trgRegex"> 正規表示式</label>
+            <label title="也比對還沒換行的提示文字，例如「你確定嗎？」"><input type="checkbox" id="trgPrompt"> 比對提示行</label>
+          </div>
+          <label class="auto-wide">測試文字 <input id="trgSample" spellcheck="false" placeholder="貼一行遊戲訊息，按「測試」看會不會觸發"></label>
+          <div class="auto-form-actions">
+            <button type="button" id="trgTest">測試</button>
+            <button type="button" id="trgNew">清空</button>
+            <button type="button" id="trgSave" class="primary">新增觸發</button>
+          </div>
+          <div id="trgTestResult" class="auto-result"></div>
+          <div id="trgError" class="auto-error"></div>
+        </div>
+        <details class="auto-help">
+          <summary>樣式寫法說明</summary>
+          <p><code>*</code> 任意文字　<code>?</code> 任一個字　<code>%d</code> 數字　<code>%n</code> 可帶正負號的數字　<code>%w</code> 一個詞（中英文字、數字）　<code>%s</code> 空白　<code>%x</code> 非空白字元</p>
+          <p><code>( )</code> 擷取文字，指令裡用 <code>%1</code>～<code>%9</code> 帶入（<code>%0</code> 是整段符合的文字）　<code>{甲|乙}</code> 二選一　<code>[abc]</code> 字元集合　<code>^</code> 行首　<code>$</code> 行尾　<code>~</code> 讓下一個字元照字面比對</p>
+          <p>例：樣式 <code>^(%w)告訴你：(*)$</code>，指令 <code>reply 收到：%2</code>。指令可用 <code>;</code> 串接，也可以寫 <code>#tr off</code>。</p>
+          <p>同一行符合多個觸發時全部都會執行。自動指令一秒內超過 20 個會自動暫停，避免觸發互相引發造成無限循環。輸入密碼或編輯文章時不會自動送指令。</p>
+        </details>
+      </section>
+
+      <section id="autoTimerPane" class="auto-pane" hidden>
+        <div class="auto-table-wrap">
+          <table class="auto-table">
+            <thead><tr><th>名稱</th><th>倒數秒數</th><th>剩幾秒時執行</th><th>指令</th><th>循環</th><th>剩餘</th><th></th></tr></thead>
+            <tbody id="autoTimerRows"></tbody>
+          </table>
+        </div>
+        <div class="auto-form">
+          <label>名稱（可不填） <input id="tmrName" spellcheck="false" placeholder="例：吃飯"></label>
+          <label>1. 倒數幾秒 <input id="tmrSeconds" type="number" min="1" step="1" placeholder="例：60"></label>
+          <label>2. 倒數剩幾秒時執行指令 <input id="tmrFireAt" type="number" min="0" step="1" value="0"></label>
+          <label class="auto-wide">3. 執行的指令 <input id="tmrCommand" spellcheck="false" placeholder="例：eat dumpling;drink water　（多個指令用 ; 分隔）"></label>
+          <div class="auto-checks"><label><input type="checkbox" id="tmrLoop"> 4. 循環（倒數到 0 後重新從第 1 欄的秒數開始）</label></div>
+          <div class="auto-form-actions">
+            <button type="button" id="tmrNew">清空</button>
+            <button type="button" id="tmrSave" class="primary">新增計時器</button>
+          </div>
+          <div id="tmrError" class="auto-error"></div>
+        </div>
+        <p class="auto-note">計時器要按「開始」才會倒數；重新整理或斷線後需要手動再開始。輸入欄左邊的按鈕暫停時，計時器照常倒數，但不會送出指令。</p>
+      </section>
+    </dialog>
+
     <dialog id="uiSettings" class="ui-settings">
       <form method="dialog">
         <div class="settings-head"><strong>介面設定</strong><button value="cancel" aria-label="關閉">×</button></div>
@@ -140,6 +219,6 @@
     </dialog>
   </div>
 
-  <script type="module" src="/app.js?v=merge-1006"></script>
+  <script type="module" src="/app.js?v=automation-v1"></script>
 </body>
 </html>

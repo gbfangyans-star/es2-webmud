@@ -1,5 +1,6 @@
 import {SessionRecorder} from './session_recorder.js';
 import {PlayerStateObserver} from './player_state.js';
+import {Automation,setupAutomationUI} from './automation.js';
 
 const sessionRecorder = new SessionRecorder();
 const observer = new PlayerStateObserver();
@@ -567,6 +568,7 @@ function print(s,system=false){
   renderVisible(shown,system,stick);
 }
 function renderVisible(shown,system,stick){
+  if(!system&&shown)automation.feed(shown,cleanText);
   let rendered=shown?renderChunk(shown):'';
   if(!system&&pendingTrimLeadingBlank){
     // Server output can arrive split across several WebSocket frames -- e.g.
@@ -1004,8 +1006,8 @@ function echoCommand(c){
   pendingTrimLeadingBlank=true;
   if(stick)scheduleStickScroll();
 }
-function transmitUserCommand(c,sensitive=false){
-  if(!sensitive)echoCommand(c);
+function transmitUserCommand(c,sensitive=false,silent=false){
+  if(!sensitive&&!silent)echoCommand(c);
   const op=c.split(/\s+/)[0];
   if(!sensitive && /^(?:n|s|e|w|ne|nw|se|sw|u|d|north|south|east|west|northeast|northwest|southeast|southwest|up|down|go|enter|out)$/i.test(op)){
     // Catworld-style feel: move the marker immediately using already-known topology;
@@ -1022,10 +1024,11 @@ function flushPendingUserCommands(){
   if(hudPollInFlight||ws?.readyState!==1||!pendingUserCommands.length)return;
   const queued=pendingUserCommands;
   pendingUserCommands=[];
-  for(const item of queued)transmitUserCommand(item.command,item.sensitive);
+  for(const item of queued)transmitUserCommand(item.command,item.sensitive,item.silent);
 }
-function send(c){
-  const sensitive=input.type==='password';c=String(c??'').trim();
+// auto：觸發或計時器送出的指令，畫面上不顯示「> 指令」。
+function send(c,{auto=false}={}){
+  const sensitive=!auto&&input.type==='password';c=String(c??'').trim();
   if(c){lastUserCommandAt=Date.now();if(hudKickTimer){clearTimeout(hudKickTimer);hudKickTimer=null;}}
   if(ws?.readyState!==1){print('\n[尚未連上 ES2]\n',true);return;}
   // The silent HUD request and a real player command must never share the same
@@ -1035,7 +1038,7 @@ function send(c){
   // by the HUD parser or interleaved with the telemetry command.
   if(hudPollInFlight){
     if(!pendingUserCommands.some(x=>x.command===c&&x.sensitive===sensitive))
-      pendingUserCommands.push({command:c,sensitive});
+      pendingUserCommands.push({command:c,sensitive,silent:auto});
     // A HUD response is background telemetry. A real click must win quickly even
     // if the END marker is delayed/lost. Give the current HUD packet a very short
     // grace period, then release the queued player action.
@@ -1046,8 +1049,20 @@ function send(c){
     },HUD_ACTION_FLUSH_MS);
     return;
   }
-  transmitUserCommand(c,sensitive);
+  transmitUserCommand(c,sensitive,auto);
 }
+
+// 觸發與計時器（設定存在瀏覽器）。輸入密碼、編輯文章或沒連線時不自動送指令。
+const automation=new Automation({
+  sendCommand:c=>send(c,{auto:true}),
+  notify:m=>print(`\n${m}\n`,true),
+  isBlocked:()=>input.type==='password'||editorActive||ws?.readyState!==1,
+});
+setupAutomationUI(automation,{
+  dialog:document.querySelector('#automationDialog'),
+  toggleButton:document.querySelector('#automationToggle'),
+  openButtons:[...document.querySelectorAll('[data-ui-automation]')].map(b=>[b,b.dataset.uiAutomation]),
+});
 
 // 打開網頁就直接連線（不再顯示封面）。
 async function startGame(){
@@ -1088,7 +1103,8 @@ document.querySelector('#form')?.addEventListener('submit',e=>{
     parts=parts.slice(0,MAX_CHAIN_COMMANDS);
     print('\n你的動作太快了...\n',true);
   }
-  for(const part of parts)send(part);
+  // #tr／#tr on／#tr off 是網頁本地指令，切換全部觸發，不送到伺服器。
+  for(const part of parts){if(!automation.handleClientCommand(part))send(part);}
   // Keep the line in the box (selected, not cleared) so a bare Enter repeats
   // it -- handy for walking a corridor by holding Enter -- while typing
   // anything just overwrites the selection like normal.
