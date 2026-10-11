@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- 終端機中文字型：Noto Sans TC（思源黑體繁體），英文與符號用網站自帶的 ES2 Mono（更紗黑體） -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&display=swap">
-  <link rel="stylesheet" href="/styles.css?v=automation-v1">
+  <link rel="stylesheet" href="/styles.css?v=chat-window-v1">
 </head>
 <body class="game-body">
   <div id="gameApp" class="game-app">
@@ -23,11 +23,7 @@
             <small>CELESTIAL EMPIRE</small>
           </div>
           <nav class="nav-menu">
-            <button type="button" class="nav-item active" data-cmd="score"><span class="nav-icon">◈</span><span>狀態</span></button>
-            <button type="button" class="nav-item" data-cmd="inventory"><span class="nav-icon">▣</span><span>背包</span></button>
-            <button type="button" class="nav-item" data-cmd="skills"><span class="nav-icon">卷</span><span>技能</span></button>
-            <button type="button" class="nav-item" data-ui-focus="map"><span class="nav-icon">圖</span><span>地圖</span></button>
-            <button type="button" class="nav-item" data-ui-focus="chat"><span class="nav-icon">言</span><span>聊天</span></button>
+            <button type="button" class="nav-item" data-ui-chat aria-pressed="false"><span class="nav-icon">言</span><span>聊天</span></button>
             <button type="button" class="nav-item" data-ui-automation="triggers"><span class="nav-icon">觸</span><span>觸發</span></button>
             <button type="button" class="nav-item" data-ui-automation="timers"><span class="nav-icon">時</span><span>計時器</span></button>
             <button type="button" class="nav-item" data-cmd="help"><span class="nav-icon">?</span><span>說明</span></button>
@@ -57,32 +53,6 @@
           </form>
         </main>
 
-        <section class="context-panel" id="contextPanel" aria-label="情境資訊">
-          <div class="context-card">
-            <div class="context-kicker">SCENE / INTERACTION</div>
-            <h2 id="contextTitle">目前場景</h2>
-            <div id="contextBody" class="context-body">
-              <div class="context-sigil">東方故事 II</div>
-              <p>等待遊戲場景資訊。</p>
-              <small>此面板整理原生 ES2 輸出中的人物、物件與戰鬥資訊。</small>
-            </div>
-          </div>
-          <div class="context-chat-card" id="chatPanel" aria-label="聊天訊息">
-            <div class="context-chat-head">
-              <div>
-                <div class="context-kicker">MESSAGES</div>
-                <strong>江湖傳訊</strong>
-              </div>
-              <div class="context-chat-tabs" role="tablist" aria-label="聊天類型">
-                <button type="button" class="context-chat-tab active" data-chat-tab="chat" role="tab" aria-selected="true">CHAT</button>
-                <button type="button" class="context-chat-tab" data-chat-tab="tell" role="tab" aria-selected="false">TELL</button>
-              </div>
-            </div>
-            <div id="contextChatLog" class="context-chat-log" aria-live="polite">
-              <div class="context-chat-empty">尚無 CHAT 訊息。</div>
-            </div>
-          </div>
-        </section>
       </div>
 
       <aside class="game-side">
@@ -132,6 +102,23 @@
         </section>
       </aside>
     </div>
+
+    <section id="chatWindow" class="chat-window" aria-label="聊天視窗" hidden>
+      <div class="chat-window-head" data-chat-drag title="拖曳這裡移動視窗">
+        <div class="chat-channels" role="group" aria-label="頻道">
+          <button type="button" data-chat-channel="all">全部</button>
+          <button type="button" data-chat-channel="chat">閒聊</button>
+          <button type="button" data-chat-channel="rumor">謠言</button>
+          <button type="button" data-chat-channel="tell">密語</button>
+          <button type="button" data-chat-channel="say">對談</button>
+        </div>
+        <div class="chat-window-actions">
+          <button type="button" data-chat-download title="下載目前顯示的訊息（txt）">下載</button>
+          <button type="button" data-chat-close class="chat-close" aria-label="關閉">×</button>
+        </div>
+      </div>
+      <div class="chat-window-log" data-chat-log aria-live="polite"></div>
+    </section>
 
     <dialog id="automationDialog" class="automation-dialog" aria-label="觸發與計時器">
       <div class="auto-head">
@@ -213,12 +200,11 @@
       <form method="dialog">
         <div class="settings-head"><strong>介面設定</strong><button value="cancel" aria-label="關閉">×</button></div>
         <label>文字大小 <input id="terminalFontSize" type="range" min="13" max="20" value="15"><span id="terminalFontValue">15px</span></label>
-        <label class="toggle-line"><input id="compactContext" type="checkbox"> 精簡下方情境區</label>
         <p>這些設定只影響瀏覽器顯示，不修改 MUD Server。</p>
       </form>
     </dialog>
   </div>
 
-  <script type="module" src="/app.js?v=automation-v1"></script>
+  <script type="module" src="/app.js?v=chat-window-v1"></script>
 </body>
 </html>
