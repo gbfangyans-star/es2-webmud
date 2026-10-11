@@ -21,4 +21,7 @@ def test_outgoing_tell_and_reply_still_captured():
 
 def test_prompt_debris_is_removed_before_logging():
     assert "text.replace(/^(?:[>＞]\\s*)+/,'').trim()" in APP
-    assert "html:esc(hit.text)" in APP
+    assert "chatWindow.add(hit.kind,hit.text)" in APP
+    # 聊天視窗輸出前一律跳脫 HTML。
+    chat=(ROOT / "web" / "chat_window.js").read_text(encoding="utf-8")
+    assert "${esc(m.text)}" in chat
