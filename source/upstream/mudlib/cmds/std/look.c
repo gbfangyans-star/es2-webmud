@@ -71,7 +71,9 @@ int look_living (object me, object obj) {
     pro = (me == obj) ? gender_self (obj->query ("gender")) : gender_pronoun (obj->query ("gender"));
 
     race = obj->query_race();
-    if ((string)obj->query("humanoid") && intp(age = obj->query("age"))) {
+    // 練武用的假人、木樁是死物，不顯示外貌與年齡。
+    if ((string)obj->query("humanoid") && intp(age = obj->query("age"))
+    &&  !obj->query("training_dummy")) {
         string age_str = (age > 10) ? ("約" + chinese_number (age / 10 * 10) + "多歲") : "不到十歲";
 
         if (race == "human")

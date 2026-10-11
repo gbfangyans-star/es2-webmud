@@ -350,3 +350,5 @@ label{display:block;margin:12px 0 5px;color:#b6c9bb}.form input,.form textarea{w
 .chat-say{color:#e5ece7}
 .chat-other{color:#efd06b}
 .chat-empty{color:#667d72;padding:8px 0}
+/* 訊息欄行頭：按一下反白並複製整行 */
+#terminal.line-pick{cursor:pointer}

@@ -1,30 +1,87 @@
+/*---
+description: 瘋虎刀法（NEW 新版武功寫法）。虎刀門雙手刀法；招式與追擊訊息取自
+             「劉乙忘玄 vs 韓笑」對戰紀錄，設計見 docs/martial_arts/虎刀門_瘋虎刀法.md。
+---*/
 #include <ansi.h>
-inherit SKILL;
+#include "/std/martial_art.h"
 
-mapping *actions = ({
-(["action":"$N雙手猛提$w，腰背驟然發力，使出瘋虎刀法「猛虎出柙」，整個人挾著沉重刀勢撲向$n，刀鋒破風怒斬$n的$l。","attack":7,"force":7,"defense":-3,"damage_type":"割傷"]),
-(["action":"$N一聲暴喝，雙手握緊$w使出「餓虎撲嶺」，腳下連踏數步逼近$n，刀勢自高處轟然壓落，帶著兇猛勁風劈向$n的$l。","attack":9,"force":8,"defense":-5,"damage_type":"割傷"]),
-(["action":"$N沉腰旋身，雙手$w隨身勢橫掃，使出瘋虎刀法「虎尾橫江」，厚重刀光攔腰捲過，挾著狂猛力道掃向$n的$l。","attack":8,"force":9,"defense":-2,"damage_type":"割傷"]),
-(["action":"$N猛踏地面，雙手持$w直闖$n中門，使出「怒虎穿林」，刀鋒在衝勢中由下翻上，狂烈勁道毫無保留地斬向$n的$l。","attack":11,"force":8,"defense":-6,"damage_type":"割傷"]),
-(["action":"$N忽然收刀伏身，下一瞬雙手$w隨著轉腰之勢暴起，使出「伏虎翻身」，沉重刀鋒由極低處翻捲而上，猛襲$n的$l。","attack":6,"force":12,"defense":1,"damage_type":"割傷"]),
-(["action":"$N仰首暴喝，雙手$w猛然高舉，使出瘋虎刀法「虎嘯裂谷」，全身力道隨刀鋒一併壓下，凜烈刀風直震$n的$l。","attack":10,"force":10,"defense":-7,"damage_type":"割傷"]),
-});
-private void create(){ seteuid(getuid()); DAEMON_D->register_skill_daemon("tiger-blade"); setup(); }
-int valid_enable(string usage){ return usage=="twohanded blade"; }
-private int strike(object me, object opponent, object weapon){ return COMBAT_D->fight(me,opponent,"tiger-blade",actions[random(sizeof(actions))],weapon); }
-void attack_using(object me, object opponent, object weapon){
- int first_follow;
- if(!opponent) return;
- strike(me,opponent,weapon);
- /* 2010 tiger-blade update: skill >=90 and exert >70 guarantees first follow-up.
-    Historical update explicitly removed the old ~75kg added force, so none is added here. */
- if(me->query_skill("tiger-blade",1)<90 || me->query("force_ratio")<=70) return;
- if(!living(opponent) || environment(me)!=environment(opponent)) return;
- message_vision(HIR "$N刀勢未盡，腳下一踏緊追而上，瘋虎刀法的追擊已如猛虎撲食般再次壓向$n！\n" NOR,me,opponent);
- first_follow = strike(me,opponent,weapon);
- /* First follow-up dealing damage triggers the second follow-up.
-    rage is intentionally not invented here; when rage exists it can be added as the alternate trigger. */
- if(first_follow<=0 || !living(opponent) || environment(me)!=environment(opponent)) return;
- message_vision(HIR "$N見第一追已然得手，雙手長刀順勢再轉，第二追毫不停歇地直逼$n而去！\n" NOR,me,opponent);
- strike(me,opponent,weapon);
+inherit "/std/martial_art";
+
+private void create()
+{
+    seteuid(getuid());
+
+    art_id    = "tiger-blade";
+    art_name  = "瘋虎刀法";
+    art_usage = "twohanded blade";
+    art_desc  = "虎刀門的看家刀法，刀勢霸道、殺氣濃重，只攻不守；"
+                + "功力催到十成時刀勢連綿不絕，一擊得手更會瘋狂追擊。";
+    art_bonus = 0;
+
+    moves = ({
+        ([ "name": "平地生雷", "attack": 9, "defense": -3, "force": 8, "bonus": 10, "damage_type": "割傷",
+           "action": "$N踏上一步﹐手中$w後發先至﹐一招平地生雷刀風掃出" ]),
+        ([ "name": "百獸懾服", "attack": 10, "defense": -5, "force": 9, "bonus": 15, "damage_type": "割傷",
+           "action": "$N一聲暴喝﹐手中$w一招百獸懾服直劈而出" ]),
+        ([ "name": "乘風破浪", "attack": 11, "defense": -4, "force": 7, "bonus": 10, "damage_type": "割傷",
+           "action": "$N步法疾行﹐狂轉﹐轉身間蓄勁於刃﹐忽地手中$w藉迴轉之勢一招乘風破浪迅捷無倫側砍而至" ]),
+        ([ "name": "巨吼劈下", "attack": 8, "defense": -6, "force": 12, "bonus": 20, "damage_type": "割傷",
+           "action": "$N一聲巨吼高舉手中$w狠命劈下﹐$n急忙回身一擋﹐不料一格之下$w竟脫手急旋﹐"
+                     + "挾風雷之聲朝$n$l狠狠斬下" ]),
+        ([ "name": "餓虎攔路", "attack": 8, "defense": 0, "force": 8, "bonus": 10, "damage_type": "割傷",
+           "action": "$N將$w一立﹐使出餓虎攔路往$n$l斬下" ]),
+        ([ "name": "風從虎勢", "attack": 9, "defense": -7, "force": 11, "bonus": 20, "damage_type": "割傷",
+           "action": "$N突然拔起數丈﹐藉下墜力道加強刀勢﹐人在半空刀勢如風﹐風從虎勢一刀挾重勁朝$n當頭劈下" ]),
+        ([ "name": "雷霆萬鈞", "attack": 7, "defense": -2, "force": 12, "bonus": 15, "damage_type": "割傷",
+           "action": "$N待$n出招一瞬間﹐堆運內力灌刀身﹐刀光閃爍吼聲暴﹐雷霆萬鈞一式猛然朝$n的招式正面迎上" ]),
+        ([ "name": "霧裡藏刀", "attack": 12, "defense": -3, "force": 8, "bonus": 15, "damage_type": "割傷",
+           "action": "$N猛然一刃劈地﹐塵土飛揚霧朦朧﹐迷濛中$w無聲無息朝$n欺身而至竟是瘋虎刀招至陰一式霧裡藏刀" ]),
+    });
+
+    art_entry     = 30;
+    art_entry_threshold = 50000;
+    art_entry_msg = "你對瘋虎刀法已經有初步掌握。\n";
+
+    ma_coef  = 10;
+    mm_start = 30;
+    mm_minus = 30;
+    mm_coef  = 10;
+
+    DAEMON_D->register_skill_daemon("tiger-blade");
+    setup();
+}
+
+/* 學習條件：瘋虎功 30 級。 */
+int valid_learn(object me)
+{
+    if( me->query_skill("tiger-force", 1) < 30 )
+        return notify_fail("你的瘋虎功火候未足﹐還駕馭不了瘋虎刀法的霸道刀勁。\n");
+    return 1;
+}
+
+private int strike(object me, object opponent, object weapon)
+{
+    return COMBAT_D->fight(me, opponent, art_id, make_action(pick_move(me), 100), weapon);
+}
+
+/* 追擊：瘋虎刀法 90 級以上、出手功力十成，第一追必出；
+ * 第一追打中並造成傷害，再出第二追。功力沒有設定時以遊戲預設的七成半計算（不會追擊）。 */
+void attack_using(object me, object opponent, object weapon)
+{
+    int ratio, first_follow;
+
+    if( !opponent ) return;
+    strike(me, opponent, weapon);
+
+    if( !(ratio = me->query("force_ratio")) ) ratio = 75;
+    if( me->query_skill("tiger-blade", 1) < 90 || ratio < 100 ) return;
+    if( !objectp(opponent) || !living(opponent) || environment(me) != environment(opponent) ) return;
+
+    message_vision(HIR "$N一聲怒吼﹐勢如瘋虎般揮刀進擊！\n" NOR, me, opponent);
+    first_follow = strike(me, opponent, weapon);
+
+    if( first_follow <= 0 || !objectp(opponent) || !living(opponent)
+    ||  environment(me) != environment(opponent) ) return;
+    message_vision(HIR "$N一擊得手威勢更不可當﹐雙眼血紅﹐瘋狂追擊！\n" NOR, me, opponent);
+    strike(me, opponent, weapon);
 }

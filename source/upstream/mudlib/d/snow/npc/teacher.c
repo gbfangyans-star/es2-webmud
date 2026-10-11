@@ -36,7 +36,7 @@ void create()
     set("long",
         "王懷芝是鎮上王員外的獨子﹐前幾年上京考試落第﹐碰巧王太夫人過世\n"
         "﹐因此留在家鄉服喪﹐閒暇無事﹐便開了間私塾教鎮上孩子讀書。\n");
-    set("chat_chance", 8);
+    set("chat_chance", 40);
     set("chat_msg", ({
         (: teach_literate :)
     }));
@@ -46,13 +46,16 @@ void create()
 
 void init()
 {
+    /* 玩家走進私塾時取消原本的聽課狀態：離開再回來要重新坐下。 */
+    if( userp(this_player()) )
+        this_player()->delete_temp("pending/sit_learning_literate");
     add_action("do_sit", "sit");
 }
 
 int do_sit(string arg)
 {
     // add by dragoon
-    if( this_player()->query_skill("literate") > 29 ) 
+    if( this_player()->query_skill("literate", 1) >= 30 )
 	return notify_fail("你的讀書識字根基不錯，不需要再聽三字經了。\n");
 	
     if( this_player()->query_temp("pending/sit_learning_literate") )
@@ -83,7 +86,9 @@ void teach_literate()
 	||  ob->is_fighting()
 	||  ob->query_skill("literate",1) >= 30 ) continue;
 
-	ob->improve_skill("literate", random(ob->query_attr("int")+1));
+	/* 每句得到 智力 × random(智力) 的讀書識字點數。 */
+	ob->improve_skill_exact("literate",
+	    ob->query_attr("int") * random(ob->query_attr("int")));
 	message_vision("$N跟著念道﹕" + txt + "。\n", ob);
 
 	/* 挑選書生的條件 */
@@ -92,7 +97,7 @@ void teach_literate()
 	&&  ob->query_class()=="commoner"
 	&&  ob->query_skill("literate") >= 5
 	&&  member_array(ob->query_race(), ({
-		"human", "woochan", "jiaojao", "rainnar"
+		"avatar", "human", "rainner", "malik", "woochan", "jiaojao", "yaksa"
 	    })) != -1
 	&&  ob->query_attr("int") > random(20) )
 	    do_chat( (: pick_student, ob :) );
@@ -124,7 +129,7 @@ int accept_info(object ob, string type)
 int acquire_skill(object who, string skill)
 {
     if( skill=="literate" ) {
-	command("say 想讀書識字嗎﹖在這裡坐著(sit)聽吧。\n");
+	command("say 想讀書識字嗎﹖在這裡坐著聽吧。\n");
 	command("smile");
 	command("say 讀書可不容易﹐不過學了多少一輩子都是你的。\n");
 	return 1;

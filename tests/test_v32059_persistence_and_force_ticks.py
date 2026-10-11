@@ -15,7 +15,7 @@ def force_tick(seed, con, cps, intel):
 def tiger_growth_delta(old, new):
     """Model only the permanent deltas encoded in tiger-force.c."""
     out = {"gin": 0, "kee": 0, "str": 0, "cor": 0}
-    old = max(old, 20)
+    old = max(old, 14)
     for lv in range(old + 1, new + 1):
         if lv >= 161:
             out["gin"] += 1; out["kee"] += 1
@@ -23,8 +23,6 @@ def tiger_growth_delta(old, new):
             out["gin"] += 3; out["kee"] += 4
         else:
             out["gin"] += 2; out["kee"] += 2
-        if lv == 100:
-            out["str"] += 1; out["cor"] += 1
         if lv == 140:
             out["cor"] += 2
     return out
@@ -71,11 +69,11 @@ def test_skill_and_learned_are_save_object_persistent_not_static():
 
 def test_tiger_growth_markers_are_persistent_dbase_not_temp():
     tiger = src('source/upstream/mudlib/daemon/skill/tiger-force.c')
-    assert 'me->set("tiger_force/growth_level", level);' in tiger
-    assert 'me->set("tiger_force/bonus_100", 1);' in tiger
+    assert 'me->set("tiger_force/growth_level", lv);' in tiger
+    assert 'me->set("tiger_force/branch_90", 1);' in tiger
     assert 'me->set("tiger_force/cor_bonus_140", 1);' in tiger
     assert 'set_temp("tiger_force/growth_level"' not in tiger
-    assert 'set_temp("tiger_force/bonus_100"' not in tiger
+    assert 'set_temp("tiger_force/branch_90"' not in tiger
     assert 'set_temp("tiger_force/cor_bonus_140"' not in tiger
 
 
@@ -92,11 +90,11 @@ def test_five_reload_cycles_do_not_regrant_permanent_growth_model():
         marker = level  # persisted marker after save
         assert tiger_growth_delta(marker, level) == {"gin":0,"kee":0,"str":0,"cor":0}
     # Expected cumulative permanent growth from 21 through 181.
-    assert totals == {"gin": 321, "kee": 341, "str": 1, "cor": 3}
+    assert totals == {"gin": 321, "kee": 341, "str": 0, "cor": 2}
 
 
 def test_growth_boundaries_100_140_141_160_161_181_are_exact():
-    assert tiger_growth_delta(99, 100) == {"gin":2,"kee":2,"str":1,"cor":1}
+    assert tiger_growth_delta(99, 100) == {"gin":2,"kee":2,"str":0,"cor":0}
     assert tiger_growth_delta(139, 140) == {"gin":2,"kee":2,"str":0,"cor":2}
     assert tiger_growth_delta(140, 141) == {"gin":3,"kee":4,"str":0,"cor":0}
     assert tiger_growth_delta(159, 160) == {"gin":3,"kee":4,"str":0,"cor":0}

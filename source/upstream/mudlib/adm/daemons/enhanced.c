@@ -226,7 +226,7 @@ string enhance_weapon(object ob, int bonus, string weapon_type)
 /* =====================================================================
  * 武器附加屬性（使用者提供的「武器附加屬性表」，obj/area/obj 的 12 種一般武器使用）
  *
- * 武器產生時擲一次：普通 60%、只有前綴 30%、前綴加後綴 10%（必須有前綴才會有後綴）。
+ * 武器產生時擲一次：普通 80%、只有前綴 15%、前綴加後綴 5%（必須有前綴才會有後綴）。
  * 前綴來自表一、表二（同名的效果合併），後綴來自表三。名稱為「前綴＋後綴＋原名」，
  * 例如「黑鋼火炎長劍」；每個修飾讓價值變成 1.5 倍。
  * 結果記在 query("affix")（([ "prefix": 名稱, "suffix": 名稱 ])），家園儲物箱會照存。
@@ -282,7 +282,8 @@ private mapping AFFIX_SUFFIX = ([
     "天鷹": ([ "awarness": 50 ]),
 ]);
 
-// 整把武器的名稱用同一個顏色：有後綴用後綴的顏色，只有前綴用前綴的顏色。AFFIX_COLOR 設為 0 則不上色。
+// 名稱的顏色：只有前綴時整把用前綴的顏色；有後綴時前綴用前綴的顏色，後綴與武器名用後綴的顏色。
+// AFFIX_COLOR 設為 0 則不上色。
 #define AFFIX_COLOR 1
 private mapping AFFIX_COLOR_CODE = ([
     "形天": HIY,
@@ -398,10 +399,14 @@ void apply_affix(object ob, mapping affix)
         value = value * 3 / 2;
     }
     if( prefix ) {
-        string color = affix_color(suffix ? suffix : prefix);
+        string pcolor = affix_color(prefix), scolor = affix_color(suffix);
         name = affix_short_name(ob, name);
-        name = prefix + (suffix ? suffix : "") + name;
-        if( color ) name = color + name + NOR;
+        if( suffix ) {
+            name = (pcolor ? pcolor + prefix + NOR : prefix)
+                 + (scolor ? scolor + suffix + name + NOR : suffix + name);
+        } else {
+            name = pcolor ? pcolor + prefix + name + NOR : prefix + name;
+        }
     }
 
     ob->set("name", name);
@@ -433,7 +438,7 @@ void roll_affix(object ob)
     string *pre = keys(AFFIX_PREFIX), *suf = keys(AFFIX_SUFFIX);
     mapping affix = ([]);
 
-    if( r >= 60 ) affix["prefix"] = pre[random(sizeof(pre))];
-    if( r >= 90 ) affix["suffix"] = suf[random(sizeof(suf))];
+    if( r >= 80 ) affix["prefix"] = pre[random(sizeof(pre))];
+    if( r >= 95 ) affix["suffix"] = suf[random(sizeof(suf))];
     apply_affix(ob, affix);
 }

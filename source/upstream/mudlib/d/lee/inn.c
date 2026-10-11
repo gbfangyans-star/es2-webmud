@@ -18,6 +18,7 @@ LONG
     set("exits", ([
         "east" : __DIR__"street2"
     ]));
+    set("no_fight", 1);
     setup();
     replace_program(ROOM);
     set("map/area", "李家村");

@@ -90,6 +90,11 @@ void reset() {
         }
     }
 
+    // 房間重生時，固定在房裡的水缸、水井等供水物件一起補滿（物件有 refill() 才會呼叫）。
+    foreach (string key, object ob in spawn_list)
+        if (objectp (ob) && environment (ob) == this_object() && function_exists ("refill", ob))
+            ob->refill();
+
     foreach (object ob in all_inventory()) {
         if (ob.interactive() || !ob.clonep())
             return;

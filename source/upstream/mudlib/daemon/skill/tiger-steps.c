@@ -1,13 +1,14 @@
 #include <ansi.h>
 inherit SKILL;
 
+/* 閃避敘述（取自「劉乙忘玄 vs 韓笑」對戰紀錄）：接在對方出招敘述後面，
+ * 只有閃過時才出現。$N 是出招的人，$n 是閃避的人。 */
 string *dodge_actions = ({
-    "$N眼見攻勢逼近，腳下忽然一錯，使出狻猊步法，身形沿著$n來勢斜斜滑開，衣袂被勁風猛然掀起，轉瞬已換了方位，試圖避開這迎面而來的一擊。\n",
-    "$N肩頭微沉，雙足一前一後踏出狻猊步法，身子貼著$n的攻勢急轉半圈，步幅雖小卻連續變位，整個人順勢向側面閃開，試圖讓這一擊落空。\n",
-    "$N察覺$n招勢逼到近前，腰身猛然一折，狻猊步法隨念而動，腳尖點地後迅速後撤，再橫移半步，身形在刀風拳影間游走，試圖避過來勢。\n",
-    "$N不退反進，腳下踏出狻猊步法，先迎著$n的攻勢踏近半步，隨即扭腰錯肩從側邊滑過，身形在極短距離內連換兩次方位，試圖從攻勢縫隙脫身。\n",
-    "$N呼吸一沉，雙膝微屈，狻猊步法驟然展開，身形先向下伏再猛地側旋，足下連踏數步將來勢引向身旁，試圖在$n攻勢真正落下前閃出範圍。\n",
-    "$N看準$n攻勢將至的一瞬，腳尖輕點地面，使出狻猊步法繞身疾走，前一刻還停在原處，下一刻已沿著弧線移向側後方，試圖讓迎來的一擊擦身而過。\n",
+    "$n就地一個溜滾﹐一個『餓虎逐狼步』﹐飛快橫身裡撲﹐打亂$N的攻勢",
+    "$n一個『虎奔步』﹐轉眼間竟繞過$N﹐向前疾奔出數丈",
+    "$n一聲悶吼﹐身子暴然彈起﹐從$N頭頂掠了過去",
+    "$n不閃不退﹐身形倏然翻滾﹐一招『虎躍風生』令$N撲了個空",
+    "$n往右一個急跨﹐『猛虎爬山』步法順勢而發﹐瞬間閃過$N的攻擊",
 });
 
 private void create()
@@ -22,28 +23,45 @@ int valid_enable(string usage)
     return usage == "dodge";
 }
 
+// 學成：照一般門檻累積到 10 級時 gain，直接練成 10 級。
+int query_entry_level() { return 10; }
+
+void skill_completed(object me, string sk)
+{
+    tell_object(me, HIY "你已經掌握了狻猊步法。\n" NOR);
+}
+
+/* 每級獎勵（超過學成等級才給）：武術造詣 等級 × 10；
+ * 41 級起武學之道 (等級 − 40) × 10。 */
+void skill_advanced(object me, string sk)
+{
+    int lv;
+
+    if( !userp(me) ) return;
+    lv = me->query_skill("tiger-steps", 1);
+    if( lv <= 10 ) return;
+    me->gain_score("martial art", lv * 10);
+    if( lv > 40 ) me->gain_score("martial mastery", (lv - 40) * 10);
+}
+
 /*
- * User-approved presentation rule:
- * tiger-steps never changes ES2's dodge probability formula.  The special
- * skill only supplies its normal effective dodge value and emits one of six
- * attempt narratives before the core defend() result is rolled.  Therefore
- * seeing the narrative never means the dodge succeeded.
+ * 閃避機率照 ES2 原本的公式，步法只提供有效閃避值。
+ * 這裡先選好一句閃避敘述交給出招的一方；戰鬥程式只有在真的閃過時
+ * 才會把這句接到出招敘述後面，沒閃過就不會出現。
  */
 int dodge_using(object me, int ability, int strength, object from)
 {
     object attacker;
 
-    if( objectp(me) ) {
+    if( objectp(me) && objectp(from) ) {
         attacker = from;
-        if( objectp(from) && !from->is_character()
+        if( !from->is_character()
         &&  objectp(environment(from)) && environment(from)->is_character() )
             attacker = environment(from);
 
-        if( objectp(attacker) && attacker != me )
-            message_vision(HIC + dodge_actions[random(sizeof(dodge_actions))] + NOR,
-                me, attacker);
-        else
-            tell_object(me, HIC + dodge_actions[random(sizeof(dodge_actions))] + NOR);
+        if( attacker->is_character() && attacker != me )
+            attacker->set_temp("defend_message",
+                dodge_actions[random(sizeof(dodge_actions))]);
     }
 
     return me->query_skill("dodge");

@@ -111,3 +111,4 @@
 | 102 | 五堂鎮 | 小鼠兒 | `d/wutang/npc/young_man.c` | 平民 | 1 | C |
 | 103 | 五堂鎮 | 青年書生 | `d/wutang/npc/young_scholar.c` | 平民 | 10 | C |
 | 104 | 五堂鎮 | 雍泰 | `d/wutang/npc/yung_tai.c` | 武者 | 20 | B |
+| 105 | 五堂鎮 | 梅影風 | `d/wutang/npc/may_yin_fong.c` | 武者 | 60 | S |

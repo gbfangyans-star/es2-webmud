@@ -16,6 +16,9 @@ void create()
 
 int accept_fight(object who) { return 1; }
 
+/* 假人是死物：被 kill 時不會喊救命。 */
+void accept_kill(object ob) { }
+
 /* Training target never retaliates. */
 void fight_ob(object ob) { }
 void kill_ob(object ob) { }

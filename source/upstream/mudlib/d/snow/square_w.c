@@ -29,7 +29,7 @@ LONG
     set("no_fight", 1);	// prevent pk when post
 
     setup();
-    // load_object("/daemon/board/common");
+    load_object("/daemon/board/snow_board");   // 雪亭鎮留言板
     replace_program (ROOM);
     set("map/area", "雪亭鎮");
 }
