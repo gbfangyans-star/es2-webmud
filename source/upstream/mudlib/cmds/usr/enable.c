@@ -46,7 +46,7 @@ int main(object me, string arg)
         return 1;
     }
 
-    if( !me->query_learn(arg) )
+    if( !me->query_learn(arg) && !me->query_skill(arg, 1) )
         return notify_fail("你沒有學過這種技能。\n");
 
     if( me->skill_mapped(arg)==arg ) {
