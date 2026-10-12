@@ -93,8 +93,8 @@ function normalizeTimer(t){
 
 export class Automation{
   constructor({sendCommand,sendUserCommand,notify,isBlocked,disconnect,connect}){
-    this.sendCommand=sendCommand;   // (command) => void，不顯示「> 指令」
-    this.sendUserCommand=sendUserCommand||sendCommand; // 玩家自己打的指令，畫面上顯示「> 指令」
+    this.sendCommand=sendCommand;   // (command) => void，觸發／計時器送出的指令（畫面上照樣顯示）
+    this.sendUserCommand=sendUserCommand||sendCommand; // 玩家自己在輸入欄打的指令
     this.disconnect=disconnect||(()=>false); // #dis：回傳 false 表示本來就沒連線
     this.connect=connect||(()=>false);       // #con：回傳 false 表示已經連線中
     this.pending=new Set();         // 被 #wa 擋住、還在等的指令串
@@ -255,7 +255,7 @@ export class Automation{
   }
 
   // 執行一串以 ; 分隔的指令（可含 #wa、#3 等本地指令）。
-  // user：玩家在輸入欄打的。會顯示「> 指令」、一次最多送 9 個、不受每秒 20 個的保險限制。
+  // user：玩家在輸入欄打的。一次最多送 9 個、不受每秒 20 個的保險限制。
   run(commandLine,source,{user=false}={}){
     const parts=splitCommandLine(commandLine);
     if(user&&!parts.length){this.sendUserCommand(String(commandLine));return;} // 空白行照送（例如按 Enter 繼續）

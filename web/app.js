@@ -1023,13 +1023,13 @@ let pendingTrimLeadingBlank=false;
 function echoCommand(c){
   if(!c)return;
   const stick=shouldStick();
-  appendTerminalHtml(`<span class="cmd">&gt; ${esc(c)}</span><br>`,true);
+  appendTerminalHtml(`<span class="cmd">${esc(c)}</span><br>`,true);
   trimTerminal(stick);
   pendingTrimLeadingBlank=true;
   if(stick)scheduleStickScroll();
 }
-function transmitUserCommand(c,sensitive=false,silent=false){
-  if(!sensitive&&!silent)echoCommand(c);
+function transmitUserCommand(c,sensitive=false){
+  if(!sensitive)echoCommand(c);
   const op=editorActive?'':c.split(/\s+/)[0];
   if(!sensitive && /^(?:n|s|e|w|ne|nw|se|sw|u|d|north|south|east|west|northeast|northwest|southeast|southwest|up|down|go|enter|out)$/i.test(op)){
     // Catworld-style feel: move the marker immediately using already-known topology;
@@ -1046,9 +1046,11 @@ function flushPendingUserCommands(){
   if(hudPollInFlight||ws?.readyState!==1||!pendingUserCommands.length)return;
   const queued=pendingUserCommands;
   pendingUserCommands=[];
-  for(const item of queued)transmitUserCommand(item.command,item.sensitive,item.silent);
+  for(const item of queued)transmitUserCommand(item.command,item.sensitive);
 }
-// auto：觸發或計時器送出的指令，畫面上不顯示「> 指令」。
+// auto：觸發或計時器送出的指令。和玩家打的指令一樣顯示在畫面上（同樣顏色），
+// 只是不會被當成密碼輸入（輸入密碼時本來就不會自動送）。
+// 送到伺服器的方式和玩家打字完全相同，所以也會讓角色的發呆時間歸零。
 // keepSpaces：留言／寫信的編輯器裡，每行前面的空白（半形、全形）是內容的一部分，不能去掉。
 function send(c,{auto=false,keepSpaces=false}={}){
   const sensitive=!auto&&input.type==='password';
@@ -1062,7 +1064,7 @@ function send(c,{auto=false,keepSpaces=false}={}){
   // by the HUD parser or interleaved with the telemetry command.
   if(hudPollInFlight){
     if(keepSpaces||!pendingUserCommands.some(x=>x.command===c&&x.sensitive===sensitive))
-      pendingUserCommands.push({command:c,sensitive,silent:auto});
+      pendingUserCommands.push({command:c,sensitive});
     // A HUD response is background telemetry. A real click must win quickly even
     // if the END marker is delayed/lost. Give the current HUD packet a very short
     // grace period, then release the queued player action.
@@ -1073,7 +1075,7 @@ function send(c,{auto=false,keepSpaces=false}={}){
     },HUD_ACTION_FLUSH_MS);
     return;
   }
-  transmitUserCommand(c,sensitive,auto);
+  transmitUserCommand(c,sensitive);
 }
 
 // 觸發與計時器（設定存在瀏覽器）。輸入密碼、編輯文章或沒連線時不自動送指令。
