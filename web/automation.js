@@ -9,10 +9,20 @@
 //   ^ 行首  $ 行尾      ~ 讓下一個字元照字面比對
 // 也可勾選「正規表示式」直接寫 JavaScript regex。
 // 指令可用 ; 串接，%0 是整段符合的文字，%1～%9 是擷取到的文字。
+//
+// 網頁本地指令（不送到伺服器，輸入欄、觸發、計時器都能用）：
+//   #wa 毫秒      等一下再送後面的指令（只寫 #wa 是 1 秒）
+//   #3 指令       同一個指令重複 3 次
+//   #dis／#con    中斷連線（不自動重連）／重新連線
+//   #tr [on|off]  開關全部觸發      #t+ 類別／#t- 類別  開關某一組觸發
+//   #sh 文字      只在自己畫面印一行字
 
 const STORAGE_KEY='es2-automation-v1';
 const MAX_AUTO_SENDS_PER_SECOND=20;
 const TIMER_TICK_MS=250;
+const MAX_USER_CHAIN_COMMANDS=9;   // 輸入欄一次最多送幾個指令（#wa 等本地指令不算）
+const MAX_REPEAT=99;
+const MAX_WAIT_MS=3600000;
 
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const uid=()=>Date.now().toString(36)+Math.random().toString(36).slice(2,7);
@@ -53,6 +63,23 @@ export function expandCommand(template,match){
   return String(template).replace(/%(\d)/g,(_,n)=>match[Number(n)]??'');
 }
 
+// 把一行拆成一個個指令，並展開 #3 e 這種重複寫法。
+export function splitCommandLine(line){
+  const out=[];
+  for(const part of String(line).split(';').map(s=>s.trim()).filter(Boolean)){
+    const m=part.match(/^#(\d+)\s+(.+)$/);
+    if(m){const n=Math.min(MAX_REPEAT,Number(m[1]));for(let i=0;i<n;i++)out.push(m[2].trim());}
+    else out.push(part);
+  }
+  return out;
+}
+// #wa／#wait 回傳要等的毫秒數，不是等待指令就回傳 null。
+export function parseWait(part){
+  const m=String(part).trim().match(/^#wa(?:it)?(?:\s+(\d+))?\s*$/i);
+  if(!m)return null;
+  return Math.min(MAX_WAIT_MS,m[1]===undefined?1000:Number(m[1]));
+}
+
 function defaultState(){return {triggersEnabled:true,paused:false,disabledClasses:[],triggers:[],timers:[]};}
 function normalizeTrigger(t){
   return {id:t.id||uid(),pattern:String(t.pattern||''),command:String(t.command||''),cls:String(t.cls||''),
@@ -65,8 +92,12 @@ function normalizeTimer(t){
 }
 
 export class Automation{
-  constructor({sendCommand,notify,isBlocked}){
+  constructor({sendCommand,sendUserCommand,notify,isBlocked,disconnect,connect}){
     this.sendCommand=sendCommand;   // (command) => void，不顯示「> 指令」
+    this.sendUserCommand=sendUserCommand||sendCommand; // 玩家自己打的指令，畫面上顯示「> 指令」
+    this.disconnect=disconnect||(()=>false); // #dis：回傳 false 表示本來就沒連線
+    this.connect=connect||(()=>false);       // #con：回傳 false 表示已經連線中
+    this.pending=new Set();         // 被 #wa 擋住、還在等的指令串
     this.notify=notify;             // (message) => void，在畫面印一行系統訊息
     this.isBlocked=isBlocked||(()=>false); // 輸入密碼、編輯文章時不自動送指令
     this.state=this.load();
@@ -122,7 +153,7 @@ export class Automation{
 
   // ---------- 開關 ----------
   setTriggersEnabled(on){this.state.triggersEnabled=!!on;this.save();}
-  setPaused(on){this.state.paused=!!on;this.save();}
+  setPaused(on){this.state.paused=!!on;if(this.state.paused)this.cancelPending();this.save();}
   toggleClass(cls,on){
     const set=new Set(this.state.disabledClasses);
     if(on)set.delete(cls);else set.add(cls);
@@ -130,14 +161,37 @@ export class Automation{
   }
   classes(){return [...new Set(this.state.triggers.map(t=>t.cls).filter(Boolean))].sort();}
 
-  // #tr / #tr on / #tr off。回傳 true 表示是本地指令，不送到伺服器。
+  // #tr、#t+、#t-、#sh、#dis、#con。回傳 true 表示是本地指令，不送到伺服器。
+  // （#wa 和 #3 由 run() 處理。）
   handleClientCommand(raw){
-    const m=String(raw).trim().match(/^#tr(?:\s+(on|off))?\s*$/i);
-    if(!m)return false;
-    const next=m[1]?m[1].toLowerCase()==='on':!this.state.triggersEnabled;
-    this.setTriggersEnabled(next);
-    this.notify(`觸發已全部${next?'開啟':'關閉'}。`);
-    return true;
+    const text=String(raw).trim();
+    let m=text.match(/^#tr(?:\s+(on|off))?\s*$/i);
+    if(m){
+      const next=m[1]?m[1].toLowerCase()==='on':!this.state.triggersEnabled;
+      this.setTriggersEnabled(next);
+      this.notify(`觸發已全部${next?'開啟':'關閉'}。`);
+      return true;
+    }
+    m=text.match(/^#t([+-])\s*(.*)$/i);
+    if(m){
+      const cls=m[2].trim(),on=m[1]==='+';
+      if(!cls){this.notify('請寫上要開關的觸發類別。');return true;}
+      this.toggleClass(cls,on);
+      const n=this.state.triggers.filter(t=>t.cls===cls).length;
+      this.notify(n?`觸發類別「${cls}」已${on?'開啟':'關閉'}（${n} 個）。`:`沒有類別為「${cls}」的觸發。`);
+      return true;
+    }
+    m=text.match(/^#(?:sh|show)(?:\s+(.*))?$/i);
+    if(m){this.notify(m[1]||'');return true;}
+    if(/^#dis(?:connect)?\s*$/i.test(text)){
+      if(!this.disconnect())this.notify('目前沒有連線。');
+      return true;
+    }
+    if(/^#con(?:nect)?\s*$/i.test(text)){
+      if(!this.connect())this.notify('已經連線中。');
+      return true;
+    }
+    return false;
   }
 
   // ---------- 觸發 ----------
@@ -200,22 +254,48 @@ export class Automation{
     return fired;
   }
 
-  // 執行一串以 ; 分隔的指令。
-  run(commandLine,source){
-    for(const part of String(commandLine).split(';').map(s=>s.trim()).filter(Boolean)){
+  // 執行一串以 ; 分隔的指令（可含 #wa、#3 等本地指令）。
+  // user：玩家在輸入欄打的。會顯示「> 指令」、一次最多送 9 個、不受每秒 20 個的保險限制。
+  run(commandLine,source,{user=false}={}){
+    const parts=splitCommandLine(commandLine);
+    if(user&&!parts.length){this.sendUserCommand(String(commandLine));return;} // 空白行照送（例如按 Enter 繼續）
+    this.step({parts,i:0,source,user,sent:0,timer:null},true);
+  }
+  step(job,first){
+    while(job.i<job.parts.length){
+      const part=job.parts[job.i++];
+      const wait=parseWait(part);
+      if(wait!==null){
+        if(job.i>=job.parts.length)return; // 最後一個是 #wa，不用等
+        this.pending.add(job);
+        job.timer=setTimeout(()=>{this.pending.delete(job);this.step(job,false);},wait);
+        return;
+      }
       if(this.handleClientCommand(part))continue;
-      if(this.isBlocked())return;
+      // 玩家當下打的指令照常送（沒連線時會顯示提示）；等過 #wa 之後和自動指令則先確認現在能送。
+      if((!job.user||!first)&&this.isBlocked())return;
+      if(job.user){
+        if(job.sent>=MAX_USER_CHAIN_COMMANDS){this.notify('你的動作太快了...');return;}
+        job.sent++;
+        this.sendUserCommand(part);
+        continue;
+      }
       const now=Date.now();
       this.sendTimes=this.sendTimes.filter(x=>now-x<1000);
       if(this.sendTimes.length>=MAX_AUTO_SENDS_PER_SECOND){
         // 觸發互相引發、無限循環時的保險：全部暫停，等玩家檢查設定。
         this.setPaused(true);
-        this.notify(`自動指令一秒內超過 ${MAX_AUTO_SENDS_PER_SECOND} 個（${source}），已暫停全部觸發與計時器，請檢查設定後再按輸入欄左邊的按鈕恢復。`);
+        this.notify(`自動指令一秒內超過 ${MAX_AUTO_SENDS_PER_SECOND} 個（${job.source}），已暫停全部觸發與計時器，請檢查設定後再按輸入欄左邊的按鈕恢復。`);
         return;
       }
       this.sendTimes.push(now);
       this.sendCommand(part);
     }
+  }
+  // 丟掉所有被 #wa 擋住、還沒送出的指令（斷線、暫停時）。
+  cancelPending(){
+    for(const job of this.pending)clearTimeout(job.timer);
+    this.pending.clear();
   }
 
   // ---------- 計時器 ----------

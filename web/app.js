@@ -968,8 +968,11 @@ function optimisticMapMove(command){
 
 
 
+// #dis 主動斷線時不自動重連，等玩家 #con。
+let manualDisconnect=false,reconnectTimer=null;
 function connect(){
   if(ws&&[WebSocket.OPEN,WebSocket.CONNECTING].includes(ws.readyState))return;
+  manualDisconnect=false;if(reconnectTimer){clearTimeout(reconnectTimer);reconnectTimer=null;}
   conn.textContent='CONNECTING';const proto=location.protocol==='https:'?'wss':'ws';ws=new WebSocket(`${proto}://${location.host}/mud`);ws.binaryType='arraybuffer';
   ws.onopen=()=>{
     // A TCP/WebSocket reconnect starts at the Neolith login object, not inside
@@ -1001,7 +1004,7 @@ function connect(){
       kickHudAfterServerText(forceMapRefresh);
     }
   };
-  ws.onclose=e=>{stopHudPolling();editorActive=false;if(mapBootstrapRetryTimer){clearTimeout(mapBootstrapRetryTimer);mapBootstrapRetryTimer=null;}pendingUserCommands=[];mapRefreshPending=false;hudBootstrapInFlight=false;hudBootstrapAttempts=0;currentRoomId=null;runtimeSnapshot=null;tail='';sessionRecorder.finishResponse();sessionRecorder.markTransportClose(e?.code??null,e?.reason||'');sessionRecorder.markReconnect();conn.textContent='DISCONNECTED';if(!started)return;const wait=Math.min(10000,1000*2**Math.min(retry++,3));print(`\n[${wait/1000} 秒後重新連線]\n`,true);setTimeout(connect,wait);};
+  ws.onclose=e=>{stopHudPolling();editorActive=false;if(mapBootstrapRetryTimer){clearTimeout(mapBootstrapRetryTimer);mapBootstrapRetryTimer=null;}pendingUserCommands=[];mapRefreshPending=false;hudBootstrapInFlight=false;hudBootstrapAttempts=0;currentRoomId=null;runtimeSnapshot=null;tail='';sessionRecorder.finishResponse();sessionRecorder.markTransportClose(e?.code??null,e?.reason||'');sessionRecorder.markReconnect();conn.textContent='DISCONNECTED';if(manualDisconnect){print('\n[已中斷連線，輸入 #con 重新連線]\n',true);return;}automation.cancelPending();if(!started)return;const wait=Math.min(10000,1000*2**Math.min(retry++,3));print(`\n[${wait/1000} 秒後重新連線]\n`,true);reconnectTimer=setTimeout(()=>{reconnectTimer=null;connect();},wait);};
   ws.onerror=()=>conn.textContent='ERROR';
 }
 // Echo the player's own command into the transcript as its own line, the
@@ -1076,8 +1079,18 @@ function send(c,{auto=false,keepSpaces=false}={}){
 // 觸發與計時器（設定存在瀏覽器）。輸入密碼、編輯文章或沒連線時不自動送指令。
 const automation=new Automation({
   sendCommand:c=>send(c,{auto:true}),
+  sendUserCommand:c=>send(c),
   notify:m=>print(`\n${m}\n`,true),
   isBlocked:()=>input.type==='password'||editorActive||ws?.readyState!==1,
+  disconnect:()=>{
+    if(reconnectTimer){clearTimeout(reconnectTimer);reconnectTimer=null;manualDisconnect=true;print('\n[已取消自動重連，輸入 #con 重新連線]\n',true);return true;}
+    if(!ws||![WebSocket.OPEN,WebSocket.CONNECTING].includes(ws.readyState))return false;
+    manualDisconnect=true;ws.close();return true;
+  },
+  connect:()=>{
+    if(ws&&[WebSocket.OPEN,WebSocket.CONNECTING].includes(ws.readyState))return false;
+    retry=0;connect();return true;
+  },
 });
 setupAutomationUI(automation,{
   dialog:document.querySelector('#automationDialog'),
@@ -1116,20 +1129,12 @@ document.querySelector('#form')?.addEventListener('submit',e=>{
     send(raw,{keepSpaces:true});input.value='';repeatArmed=false;input.focus();return;
   }
   // ';' chains several commands from one line, e.g. "e;e;e;n" walks east
-  // three times then north. No inter-command delay -- fired back to back.
+  // three times then north. No inter-command delay unless the line uses
+  // #wa (zMUD-style wait). At most 9 real commands per submit -- roughly what
+  // a tick should hold; local # commands (#wa, #tr, #sh ...) don't count.
+  // #3 e repeats, #dis/#con disconnect/reconnect -- see automation.js.
   rememberCommand(raw);hi=history.length;historyPrefix=null;
-  let parts=raw.includes(';')?raw.split(';').map(s=>s.trim()).filter(s=>s.length):[raw];
-  if(!parts.length)parts.push('');
-  // Cap at 9 actions per submit -- roughly what a tick should hold -- so a
-  // long ';' chain can't dump an unbounded burst of actions into one instant.
-  // Only the first 9 run; the rest are silently dropped with a local notice.
-  const MAX_CHAIN_COMMANDS=9;
-  if(parts.length>MAX_CHAIN_COMMANDS){
-    parts=parts.slice(0,MAX_CHAIN_COMMANDS);
-    print('\n你的動作太快了...\n',true);
-  }
-  // #tr／#tr on／#tr off 是網頁本地指令，切換全部觸發，不送到伺服器。
-  for(const part of parts){if(!automation.handleClientCommand(part))send(part);}
+  automation.run(raw,'輸入欄',{user:true});
   // Keep the line in the box (selected, not cleared) so a bare Enter repeats
   // it -- handy for walking a corridor by holding Enter -- while typing
   // anything just overwrites the selection like normal.

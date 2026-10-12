@@ -169,6 +169,7 @@
           <p><code>*</code> 任意文字　<code>?</code> 任一個字　<code>%d</code> 數字　<code>%n</code> 可帶正負號的數字　<code>%w</code> 一個詞（中英文字、數字）　<code>%s</code> 空白　<code>%x</code> 非空白字元</p>
           <p><code>( )</code> 擷取文字，指令裡用 <code>%1</code>～<code>%9</code> 帶入（<code>%0</code> 是整段符合的文字）　<code>{甲|乙}</code> 二選一　<code>[abc]</code> 字元集合　<code>^</code> 行首　<code>$</code> 行尾　<code>~</code> 讓下一個字元照字面比對</p>
           <p>例：樣式 <code>^(%w)告訴你：(*)$</code>，指令 <code>reply 收到：%2</code>。指令可用 <code>;</code> 串接，也可以寫 <code>#tr off</code>。</p>
+          <p>網頁指令（輸入欄、觸發、計時器都能用，不會送到遊戲）：<code>#wa 2000</code> 等 2 秒再送後面的指令（單位毫秒，只寫 <code>#wa</code> 是 1 秒）　<code>#3 e</code> 同一個指令重複 3 次　<code>#dis</code> 中斷連線（不會自動重連）　<code>#con</code> 重新連線　<code>#t+ 類別</code>／<code>#t- 類別</code> 開關某一組觸發　<code>#sh 文字</code> 只在自己畫面印一行字。例：<code>n;#wa 2000;get all;s</code>。</p>
           <p>同一行符合多個觸發時全部都會執行。自動指令一秒內超過 20 個會自動暫停，避免觸發互相引發造成無限循環。輸入密碼或編輯文章時不會自動送指令。</p>
         </details>
       </section>
