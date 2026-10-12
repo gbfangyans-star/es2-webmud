@@ -50,8 +50,7 @@ int do_enlist(string arg)
         me->set_learn("berserk", 1);
         me->set_skill("powerblow", 1);
         me->set_learn("powerblow", 1);
-        me->set_skill("heavy_parry", 1);
-        me->set_learn("heavy_parry", 1);
+        // 強力格擋改由米沛傳授（軍人、等級與戰場功勳達標時觸發劇情）。
     }
 
     // The rest of the welcome (魯熙年's dialogue, then the final
