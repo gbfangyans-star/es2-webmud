@@ -33,10 +33,12 @@ void skill_advanced(object me, string skill)
     if( !(done = me->query("powerblow/growth_level")) ) done = lv - 1;
     if( done >= lv ) return;
     me->set("powerblow/growth_level", lv);
-    for(done++; done <= lv; done++) stat += level_stat(done);
-    if( stat ) {
+    for(done++; done <= lv; done++) {
+        if( !(stat = level_stat(done)) ) continue;
         me->advance_stat("gin", stat);
         me->advance_stat("kee", stat);
-        tell_object(me, HIY "千錘百鍊的重擊讓你的體魄更加強健﹐精、氣更加充沛了。\n" NOR);
+        /* 只有 100 級顯示訊息，之後每級的成長不提示。 */
+        if( done == 100 )
+            tell_object(me, HIY "千錘百鍊的重擊讓你的體魄更加強健﹐精、氣更加充沛了。\n" NOR);
     }
 }
