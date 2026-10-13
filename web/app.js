@@ -352,13 +352,42 @@ function classifyLine(line){
   // 例如攻擊敘述含「擊中」、人物名稱含「受傷」，都不該因字面被染成紅色。
   return '';
 }
+// 伺服器在每段輸出前後都會送提示字元「> 」，並在它前後各帶一個換行。網頁有輸入框，
+// 提示字元不需要顯示；只拿掉「>」而留下那些換行，畫面就會多出一行行空白
+// （潛行、戰鬥這類每個心跳印一行的訊息最明顯）。這裡逐行處理：
+//   - \r\r\n、\r\n 都只算一次換行
+//   - 整行只有提示字元：連同它前面帶出的空行一起拿掉；正在等輸入的提示字元（在一段的最後）
+//     拿掉後，下一段開頭跟著它的那個換行也一併拿掉
+//   - 接在文字前面的「> 」只拿掉提示字元（前面有色碼的「> 」是內容，例如留言板的引文，不動）
+//   - 只有色碼、沒有文字的行接到下一行，不要佔成一個空行
+let promptPending=false;
+function isPromptOnly(line){return /^[ \t]*>[ \t]*$/.test(cleanText(line));}
 function compactGameOutput(s){
+  let text=String(s).replace(/\r+\n/g,'\n').replace(/\r/g,'');
+  if(promptPending&&text.startsWith('\n'))text=text.slice(1);
+  promptPending=false;
+  const lines=text.split('\n');
+  let partial=lines.pop();
+  const kept=[];
+  let carry='';   // 只有色碼的行，接到下一行前面
+  for(const raw of lines){
+    if(isPromptOnly(raw)){
+      if(kept.length&&kept[kept.length-1]==='')kept.pop();
+      continue;
+    }
+    let line=carry+raw.replace(/^[ \t]*>[ \t]+(?=\S)/,'');carry='';
+    if(!cleanText(line)&&/\x1b\[/.test(line)){carry=line;continue;}
+    kept.push(line);
+  }
+  if(isPromptOnly(partial)){
+    if(kept.length&&kept[kept.length-1]==='')kept.pop();
+    partial='';promptPending=true;
+  }else partial=partial.replace(/^[ \t]*>[ \t]+(?=\S)/,'');
+  partial=carry+partial;
+  let out=kept.length?kept.join('\n')+'\n'+partial:partial;
   // Keep deliberate paragraph spacing, but prevent MUD output from turning repeated
   // empty lines into large blank vertical gaps in the browser terminal.
-  let out=String(s).replace(/\r?\n(?:[ \t]*\r?\n){2,}/g,'\n\n');  // 連續空行縮成一行，但保留下一行開頭的空白（置中排版用）
-  // Once login is complete, the classic standalone MUD prompt is redundant because
-  // WebMUD already has a command input box. Remove it regardless of current room state.
-  if(welcomeStyled)out=out.replace(/(^|\r?\n)[ \t]*>[ \t]*(?=\r?\n|$)/g,'$1');
+  out=out.replace(/\n(?:[ \t]*\n){2,}/g,'\n\n');  // 連續空行縮成一行，但保留下一行開頭的空白（置中排版用）
   return out;
 }
 function renderChunk(s){
