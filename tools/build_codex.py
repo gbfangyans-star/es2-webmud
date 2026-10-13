@@ -587,11 +587,16 @@ def parse_room(p, src, code):
 # --------------------------------------------------------------------------- 技能
 
 def parse_skills(used_codes):
+    # 技能升級規則（feature/char/skill.c）：點數累積在 learned，下 gain 時才判定，
+    # 一次最多升一級；門檻 = 等級² × 基數，所有技能上限 200 級。
+    # 技能檔可用 query_entry_level／query_entry_threshold／query_threshold_percent，
+    # 或新版武功引擎的 art_entry／art_entry_threshold 指定學成等級與門檻。
     base = read(MUD / 'feature' / 'char' / 'skill.c')
-    restored = set(re.findall(r'skill\s*==\s*"([^"]+)"', base.split('int uses_restored_skill_threshold', 1)[1].split('return 0;', 1)[0]))
-    caps = {k: int(v) for k, v in re.findall(r'skill\s*==\s*"([^"]+)"[^)]*\)\s*return\s*(\d+)', base.split('int restored_skill_cap', 1)[1].split('}', 1)[0])}
-    formula = ('升級所需累積點數 = 等級² × 基數；基數：1–60 級 100、61–90 級 125、91–120 級 150、'
-               '121–160 級 175、161–180 級 200、181 級以上 250。')
+    cap_m = re.search(r'int restored_skill_cap\([^)]*\)\s*\{\s*return\s*(\d+)', base)
+    cap = int(cap_m.group(1)) if cap_m else 200
+    formula = ('拿到的點數先累積，下 gain 時才判定升級，一次最多升一級。'
+               '升到某一級所需累積點數 = 等級² × 基數；基數：1–60 級 100、61–90 級 125、91–120 級 150、'
+               f'121–160 級 175、161–180 級 200、181 級以上 250。上限 {cap} 級。')
     reg = {}
     doc = ROOT / 'docs' / 'SKILL_NAMES.md'
     if doc.exists():
@@ -615,18 +620,38 @@ def parse_skills(used_codes):
         grow = []
         for st, n in re.findall(r'advance_stat\(\s*"(\w+)"\s*,\s*(\d+)', src):
             grow.append(f'{zh(st)} +{n}')
-        thr = re.search(r'(private\s+)?int\s+\w*threshold\w*\([^)]*\)\s*\{.*?\n\}', src, re.S)
-        if thr:
-            form = '依技能程式：\n' + thr.group(0).strip()
-        elif code in restored or 'apply_restored_skill_progression' in src:
-            form = formula + f' 上限 {caps.get(code, 200)} 級。'
-        else:
-            form = '沒有自動升級規則（由學習、研讀或劇情提升）。'
+        form = formula
+        entry = re.search(r'query_entry_level\(\)\s*\{\s*return\s*(\d+)', src) or re.search(r'\bart_entry\s*=\s*(\d+)', src)
+        entry_thr = re.search(r'query_entry_threshold\(\)\s*\{\s*return\s*(\d+)', src) or re.search(r'\bart_entry_threshold\s*=\s*(\d+)', src)
+        pct = re.search(r'query_threshold_percent\(\)\s*\{\s*return\s*(\d+)', src)
+        extra = []
+        if entry and int(entry.group(1)) > 1:
+            extra.append(f'從 0 級直接學成到 {entry.group(1)} 級')
+        if entry_thr and int(entry_thr.group(1)) > 0:
+            extra.append(f'學成所需累積點數 {int(entry_thr.group(1)):,}')
+        if pct and int(pct.group(1)) != 100:
+            extra.append(f'門檻打 {pct.group(1)}%')
+        if extra:
+            form += '\n本技能：' + '；'.join(extra) + '。'
         skills[code] = {
             'code': code, 'name': zh(code), 'impl': True,
             'cat': reg.get(code, ('', ''))[0] or ({'spell': '法術', 'martial': '武學'}.get(typ.group(1), typ.group(1)) if typ else ''),
             'desc': desc.group(1).strip() if desc else '',
             'formula': form, 'growth': sorted(set(grow)), 'notes': notes,
+            'file': str(p.relative_to(ROOT)).replace('\\', '/'),
+        }
+    # 沒有技能檔、而是用指令施展的技能（例如 berserk：cmds/std/berserk.c）。
+    for p in sorted((MUD / 'cmds' / 'std').glob('*.c')):
+        code = p.stem
+        src = read(p)
+        if code in skills or f'query_skill("{code}"' not in src:
+            continue
+        learn = f'query_learn("{code}"' in src
+        skills[code] = {
+            'code': code, 'name': reg.get(code, ('', zh(code)))[1] or zh(code), 'impl': True,
+            'cat': reg.get(code, ('', ''))[0] or '指令技能',
+            'desc': f'用指令 {code} 施展。' + ('需要有這項技能的學習點數才算學會（只用巫師指令設定等級、沒有學習點數，會顯示「你不會這項技能」）。' if learn else ''),
+            'formula': formula, 'growth': [], 'notes': [],
             'file': str(p.relative_to(ROOT)).replace('\\', '/'),
         }
     for code in sorted(set(reg) | used_codes):

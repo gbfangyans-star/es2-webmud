@@ -2,6 +2,7 @@ import {SessionRecorder} from './session_recorder.js';
 import {PlayerStateObserver} from './player_state.js';
 import {Automation,setupAutomationUI} from './automation.js';
 import {setupChatWindow} from './chat_window.js';
+import {bgTimeout,clearBg,keepPageAlive} from './bg_timer.js';
 
 const sessionRecorder = new SessionRecorder();
 const observer = new PlayerStateObserver();
@@ -483,7 +484,7 @@ function consumeHudPollOutputRaw(s){
   if(!hasEnd && !timedOut)return {visible:'',done:false};
   const whole=holdTrailingHudPartial(hudPollBuffer);
   hudPollInFlight=false;hudBootstrapInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
-  if(hudResponseTimer){clearTimeout(hudResponseTimer);hudResponseTimer=null;}
+  if(hudResponseTimer){clearBg(hudResponseTimer);hudResponseTimer=null;}
   flushPendingUserCommands();
   const kept=stripWebHudLines(whole);
   // HUD polling is a silent transport. Internal payload/prompt whitespace must never
@@ -522,8 +523,9 @@ function pollHud(force=false,allowNoRoom=false){
   lastHudPollAt=hudPollStartedAt;
   ws.send('webhud\r\n');
   if(allowNoRoom)hudBootstrapInFlight=true;
-  if(hudResponseTimer)clearTimeout(hudResponseTimer);
-  hudResponseTimer=setTimeout(()=>{
+  if(hudResponseTimer)clearBg(hudResponseTimer);
+  // 背景計時：網頁不在最上層時也要準時放行排隊中的指令（觸發、計時器送出的指令也在這裡排隊）。
+  hudResponseTimer=bgTimeout(()=>{
     hudResponseTimer=null;
     if(!hudPollInFlight)return;
     // Never let a missing/split HUD END marker hold real player clicks forever.
@@ -541,7 +543,7 @@ function pollHud(force=false,allowNoRoom=false){
 function releaseHudPoll(){
   const whole=holdTrailingHudPartial(hudPollBuffer);
   hudPollInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
-  if(hudResponseTimer){clearTimeout(hudResponseTimer);hudResponseTimer=null;}
+  if(hudResponseTimer){clearBg(hudResponseTimer);hudResponseTimer=null;}
   if(!whole)return;
   parseWebHud(whole);
   const kept=stripWebHudLines(whole);
@@ -557,7 +559,7 @@ function startHudPolling(){
 function stopHudPolling(){
   if(hudTimer){clearInterval(hudTimer);hudTimer=null;}
   if(hudKickTimer){clearTimeout(hudKickTimer);hudKickTimer=null;}
-  if(hudResponseTimer){clearTimeout(hudResponseTimer);hudResponseTimer=null;}
+  if(hudResponseTimer){clearBg(hudResponseTimer);hudResponseTimer=null;}
   hudPollInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
   pendingUserCommands=[];
 }
@@ -968,8 +970,11 @@ function optimisticMapMove(command){
 
 
 
+// #dis 主動斷線時不自動重連，等玩家 #con。
+let manualDisconnect=false,reconnectTimer=null;
 function connect(){
   if(ws&&[WebSocket.OPEN,WebSocket.CONNECTING].includes(ws.readyState))return;
+  manualDisconnect=false;if(reconnectTimer){clearBg(reconnectTimer);reconnectTimer=null;}
   conn.textContent='CONNECTING';const proto=location.protocol==='https:'?'wss':'ws';ws=new WebSocket(`${proto}://${location.host}/mud`);ws.binaryType='arraybuffer';
   ws.onopen=()=>{
     // A TCP/WebSocket reconnect starts at the Neolith login object, not inside
@@ -1001,7 +1006,7 @@ function connect(){
       kickHudAfterServerText(forceMapRefresh);
     }
   };
-  ws.onclose=e=>{stopHudPolling();editorActive=false;if(mapBootstrapRetryTimer){clearTimeout(mapBootstrapRetryTimer);mapBootstrapRetryTimer=null;}pendingUserCommands=[];mapRefreshPending=false;hudBootstrapInFlight=false;hudBootstrapAttempts=0;currentRoomId=null;runtimeSnapshot=null;tail='';sessionRecorder.finishResponse();sessionRecorder.markTransportClose(e?.code??null,e?.reason||'');sessionRecorder.markReconnect();conn.textContent='DISCONNECTED';if(!started)return;const wait=Math.min(10000,1000*2**Math.min(retry++,3));print(`\n[${wait/1000} 秒後重新連線]\n`,true);setTimeout(connect,wait);};
+  ws.onclose=e=>{stopHudPolling();editorActive=false;if(mapBootstrapRetryTimer){clearTimeout(mapBootstrapRetryTimer);mapBootstrapRetryTimer=null;}pendingUserCommands=[];mapRefreshPending=false;hudBootstrapInFlight=false;hudBootstrapAttempts=0;currentRoomId=null;runtimeSnapshot=null;tail='';sessionRecorder.finishResponse();sessionRecorder.markTransportClose(e?.code??null,e?.reason||'');sessionRecorder.markReconnect();conn.textContent='DISCONNECTED';if(manualDisconnect){print('\n[已中斷連線，輸入 #con 重新連線]\n',true);return;}automation.cancelPending();if(!started)return;const wait=Math.min(10000,1000*2**Math.min(retry++,3));print(`\n[${wait/1000} 秒後重新連線]\n`,true);reconnectTimer=bgTimeout(()=>{reconnectTimer=null;connect();},wait);};
   ws.onerror=()=>conn.textContent='ERROR';
 }
 // Echo the player's own command into the transcript as its own line, the
@@ -1020,13 +1025,13 @@ let pendingTrimLeadingBlank=false;
 function echoCommand(c){
   if(!c)return;
   const stick=shouldStick();
-  appendTerminalHtml(`<span class="cmd">&gt; ${esc(c)}</span><br>`,true);
+  appendTerminalHtml(`<span class="cmd">${esc(c)}</span><br>`,true);
   trimTerminal(stick);
   pendingTrimLeadingBlank=true;
   if(stick)scheduleStickScroll();
 }
-function transmitUserCommand(c,sensitive=false,silent=false){
-  if(!sensitive&&!silent)echoCommand(c);
+function transmitUserCommand(c,sensitive=false){
+  if(!sensitive)echoCommand(c);
   const op=editorActive?'':c.split(/\s+/)[0];
   if(!sensitive && /^(?:n|s|e|w|ne|nw|se|sw|u|d|north|south|east|west|northeast|northwest|southeast|southwest|up|down|go|enter|out)$/i.test(op)){
     // Catworld-style feel: move the marker immediately using already-known topology;
@@ -1043,9 +1048,11 @@ function flushPendingUserCommands(){
   if(hudPollInFlight||ws?.readyState!==1||!pendingUserCommands.length)return;
   const queued=pendingUserCommands;
   pendingUserCommands=[];
-  for(const item of queued)transmitUserCommand(item.command,item.sensitive,item.silent);
+  for(const item of queued)transmitUserCommand(item.command,item.sensitive);
 }
-// auto：觸發或計時器送出的指令，畫面上不顯示「> 指令」。
+// auto：觸發或計時器送出的指令。和玩家打的指令一樣顯示在畫面上（同樣顏色），
+// 只是不會被當成密碼輸入（輸入密碼時本來就不會自動送）。
+// 送到伺服器的方式和玩家打字完全相同，所以也會讓角色的發呆時間歸零。
 // keepSpaces：留言／寫信的編輯器裡，每行前面的空白（半形、全形）是內容的一部分，不能去掉。
 function send(c,{auto=false,keepSpaces=false}={}){
   const sensitive=!auto&&input.type==='password';
@@ -1059,25 +1066,35 @@ function send(c,{auto=false,keepSpaces=false}={}){
   // by the HUD parser or interleaved with the telemetry command.
   if(hudPollInFlight){
     if(keepSpaces||!pendingUserCommands.some(x=>x.command===c&&x.sensitive===sensitive))
-      pendingUserCommands.push({command:c,sensitive,silent:auto});
+      pendingUserCommands.push({command:c,sensitive});
     // A HUD response is background telemetry. A real click must win quickly even
     // if the END marker is delayed/lost. Give the current HUD packet a very short
     // grace period, then release the queued player action.
-    setTimeout(()=>{
+    bgTimeout(()=>{
       if(!pendingUserCommands.length)return;
       if(hudPollInFlight)releaseHudPoll();
       flushPendingUserCommands();
     },HUD_ACTION_FLUSH_MS);
     return;
   }
-  transmitUserCommand(c,sensitive,auto);
+  transmitUserCommand(c,sensitive);
 }
 
 // 觸發與計時器（設定存在瀏覽器）。輸入密碼、編輯文章或沒連線時不自動送指令。
 const automation=new Automation({
   sendCommand:c=>send(c,{auto:true}),
+  sendUserCommand:c=>send(c),
   notify:m=>print(`\n${m}\n`,true),
   isBlocked:()=>input.type==='password'||editorActive||ws?.readyState!==1,
+  disconnect:()=>{
+    if(reconnectTimer){clearBg(reconnectTimer);reconnectTimer=null;manualDisconnect=true;print('\n[已取消自動重連，輸入 #con 重新連線]\n',true);return true;}
+    if(!ws||![WebSocket.OPEN,WebSocket.CONNECTING].includes(ws.readyState))return false;
+    manualDisconnect=true;ws.close();return true;
+  },
+  connect:()=>{
+    if(ws&&[WebSocket.OPEN,WebSocket.CONNECTING].includes(ws.readyState))return false;
+    retry=0;connect();return true;
+  },
 });
 setupAutomationUI(automation,{
   dialog:document.querySelector('#automationDialog'),
@@ -1089,6 +1106,7 @@ setupAutomationUI(automation,{
 async function startGame(){
   if(started)return;
   started=true;gameApp.hidden=false;input.focus();
+  keepPageAlive(); // 掛機：請瀏覽器不要凍結背景中的分頁
   await loadGraph();connect();
 }
 // Set once the box holds a "kept" command (see #form submit below) so a bare
@@ -1116,20 +1134,12 @@ document.querySelector('#form')?.addEventListener('submit',e=>{
     send(raw,{keepSpaces:true});input.value='';repeatArmed=false;input.focus();return;
   }
   // ';' chains several commands from one line, e.g. "e;e;e;n" walks east
-  // three times then north. No inter-command delay -- fired back to back.
+  // three times then north. No inter-command delay unless the line uses
+  // #wa (zMUD-style wait). At most 9 real commands per submit -- roughly what
+  // a tick should hold; local # commands (#wa, #tr, #sh ...) don't count.
+  // #3 e repeats, #dis/#con disconnect/reconnect -- see automation.js.
   rememberCommand(raw);hi=history.length;historyPrefix=null;
-  let parts=raw.includes(';')?raw.split(';').map(s=>s.trim()).filter(s=>s.length):[raw];
-  if(!parts.length)parts.push('');
-  // Cap at 9 actions per submit -- roughly what a tick should hold -- so a
-  // long ';' chain can't dump an unbounded burst of actions into one instant.
-  // Only the first 9 run; the rest are silently dropped with a local notice.
-  const MAX_CHAIN_COMMANDS=9;
-  if(parts.length>MAX_CHAIN_COMMANDS){
-    parts=parts.slice(0,MAX_CHAIN_COMMANDS);
-    print('\n你的動作太快了...\n',true);
-  }
-  // #tr／#tr on／#tr off 是網頁本地指令，切換全部觸發，不送到伺服器。
-  for(const part of parts){if(!automation.handleClientCommand(part))send(part);}
+  automation.run(raw,'輸入欄',{user:true});
   // Keep the line in the box (selected, not cleared) so a bare Enter repeats
   // it -- handy for walking a corridor by holding Enter -- while typing
   // anything just overwrites the selection like normal.
