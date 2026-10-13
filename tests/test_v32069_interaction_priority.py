@@ -10,7 +10,7 @@ def test_player_click_has_bounded_hud_wait():
 
 def test_hud_has_real_timeout_timer():
     assert 'let hudResponseTimer = null;' in APP
-    assert 'hudResponseTimer=setTimeout' in APP
+    assert 'hudResponseTimer=bgTimeout' in APP  # 背景計時器：分頁在背景也準時逾時
     assert 'HUD_POLL_TIMEOUT_MS' in APP
 
 def test_interaction_buttons_use_delegated_send():
