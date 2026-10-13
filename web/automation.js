@@ -17,6 +17,8 @@
 //   #tr [on|off]  開關全部觸發      #t+ 類別／#t- 類別  開關某一組觸發
 //   #sh 文字      只在自己畫面印一行字
 
+import {bgTimeout,bgInterval,clearBg} from './bg_timer.js';
+
 const STORAGE_KEY='es2-automation-v1';
 const MAX_AUTO_SENDS_PER_SECOND=20;
 const TIMER_TICK_MS=250;
@@ -268,7 +270,7 @@ export class Automation{
       if(wait!==null){
         if(job.i>=job.parts.length)return; // 最後一個是 #wa，不用等
         this.pending.add(job);
-        job.timer=setTimeout(()=>{this.pending.delete(job);this.step(job,false);},wait);
+        job.timer=bgTimeout(()=>{this.pending.delete(job);this.step(job,false);},wait); // 背景分頁也準時
         return;
       }
       if(this.handleClientCommand(part))continue;
@@ -294,7 +296,7 @@ export class Automation{
   }
   // 丟掉所有被 #wa 擋住、還沒送出的指令（斷線、暫停時）。
   cancelPending(){
-    for(const job of this.pending)clearTimeout(job.timer);
+    for(const job of this.pending)clearBg(job.timer);
     this.pending.clear();
   }
 
@@ -314,7 +316,7 @@ export class Automation{
   }
   stopTimer(id){
     this.running.delete(id);
-    if(!this.running.size&&this.tickTimer){clearInterval(this.tickTimer);this.tickTimer=null;}
+    if(!this.running.size&&this.tickTimer){clearBg(this.tickTimer);this.tickTimer=null;}
     this.emit();
   }
   stopAllTimers(){for(const id of [...this.running.keys()])this.stopTimer(id);}
@@ -325,7 +327,7 @@ export class Automation{
   }
   ensureTicking(){
     if(this.tickTimer)return;
-    this.tickTimer=setInterval(()=>this.tick(),TIMER_TICK_MS);
+    this.tickTimer=bgInterval(()=>this.tick(),TIMER_TICK_MS); // 網頁在背景也照常倒數
   }
   tick(){
     const now=Date.now();
@@ -343,7 +345,7 @@ export class Automation{
         else this.running.delete(id);
       }
     }
-    if(!this.running.size&&this.tickTimer){clearInterval(this.tickTimer);this.tickTimer=null;}
+    if(!this.running.size&&this.tickTimer){clearBg(this.tickTimer);this.tickTimer=null;}
     this.emit();
   }
 }
