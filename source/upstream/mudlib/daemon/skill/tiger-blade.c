@@ -54,7 +54,7 @@ private void create()
 /* 學習條件：瘋虎功 30 級。 */
 int valid_learn(object me)
 {
-    if( me->query_skill("tiger-force", 1) < 30 )
+    if( me->query_skill("tiger force", 1) < 30 )
         return notify_fail("你的瘋虎功火候未足﹐還駕馭不了瘋虎刀法的霸道刀勁。\n");
     return 1;
 }

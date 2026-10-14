@@ -11,9 +11,6 @@ void create()
     set_class("fighter");
     set_level(15);
     set_skill("pike", 30);
-    set_skill("parry", 30);
-    set_skill("dodge", 50);
-    set_skill("unarmed", 80);
     set("age", 20);
     set("long", @LONG
 李勇是村子裡惟一的獵戶，雖然沒學過甚麼武功，天生的神力卻讓他足以打敗

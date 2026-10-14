@@ -4,7 +4,7 @@
 
 討論武功、製作武功時，**只能修改武功本身的檔案**：
 
-- 武功的技能檔（例如 `source/upstream/mudlib/daemon/skill/sanmeendo.c`）
+- 武功的技能檔（例如 `source/upstream/mudlib/daemon/skill/ksanmando.c`）
 - 武功設計文件與強度表（`docs/martial_arts/`）
 - 新版武功共用引擎（`source/upstream/mudlib/std/martial_art.c`、`std/martial_art.h`）
 

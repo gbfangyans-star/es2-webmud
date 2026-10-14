@@ -11,7 +11,6 @@ void create()
     set_class("soldier");
     set_level(15);
     set_skill("sword", 60);
-    set_skill("parry", 60);
 
     set("pursuer", 1);
     set("long",

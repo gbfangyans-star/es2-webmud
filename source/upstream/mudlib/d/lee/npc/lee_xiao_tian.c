@@ -7,10 +7,6 @@ void create()
     set_race("human");
     set_class("fighter");
     set_level(20);
-    set_skill("parry", 50);
-    set_skill("dodge", 50);
-    set_skill("unarmed", 50);
-    set_skill("blade", 30);
     set("age", 40);
     set("long", "李員外家的二總管為人精明，年少時好舞刀弄槍，被派任當鋪掌櫃之後，諸事都處理得緊緊有條。\n");
     set("chat_chance", 1);

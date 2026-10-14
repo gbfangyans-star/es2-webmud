@@ -19,9 +19,6 @@ void create()
 一位膚色白皙的女郎，眉頭深鎖，似乎正在為什麼事情煩心。
 LONG
     );
-    set_skill("dodge", 100);
-    set_skill("parry", 100);
-    set_skill("unarmed", 80);
     set_skill("force", 60);
     set_power("A");
     setup();

@@ -11,15 +11,9 @@ void create()
 	set_class("thief");
 	set_level(20);
 
-	set_skill("staff", 40);
 	set_skill("stealing", 70);
-	set_skill("dodge", 90);
 	set_skill("blade", 30);
 	set_skill("sword", 30);
-	set_skill("unarmed", 50);
-	set_skill("dagger", 70);
-	set_skill("secondhand dagger", 70);
-	set_skill("killerhood", 60);
 	set_skill("force", 90);
 	set_skill("regular force", 100);
     map_skill("force", "regular force");

@@ -12,9 +12,6 @@ void create()
     set_level(15);
 
     set_skill("twohanded sword", 60);
-    set_skill("parry", 60);
-    set_skill("unarmed", 50);
-    set_skill("dodge", 50);
     set_skill("blade", 50);
 
     set("long",

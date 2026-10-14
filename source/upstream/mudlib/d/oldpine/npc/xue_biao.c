@@ -32,10 +32,6 @@ void create()
 背地裡稱他「疤鼻子」。
 LONG
     );
-    set_skill("blade", 40);
-    set_skill("dodge", 40);
-    set_skill("parry", 40);
-    set_skill("unarmed", 40);
     // 擊殺者獲得戰場功勳。
     set("bounty", ([ "military service": 110 ]));
     set_power("B");

@@ -17,6 +17,8 @@ setup();
 
 沒有寫 `set_power()` 的 NPC 維持舊行為，完全不受影響。
 
+技能等級另有規則（只看等級與職業，不受強度影響），見 `CUSTOM_NPC_SKILL.md`。
+
 現有 86 個 NPC 已依使用者確認的表格套用，清單見 `NPC_POWER_LIST.md`。
 
 ## 野獸

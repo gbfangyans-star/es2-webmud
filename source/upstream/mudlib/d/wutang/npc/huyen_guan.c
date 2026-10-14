@@ -18,9 +18,6 @@ void create()
 李再延都對他推崇備至。
 LONG
     );
-    set_skill("unarmed", 120);
-    set_skill("dodge", 90);
-    set_skill("parry", 65);
     set_power("A");
     setup();
     carry_object("/custom/armor/cloth/white_cloth")->wear();

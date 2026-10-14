@@ -16,7 +16,6 @@ void create()
 LONG
     );
     set_skill("taoism-fire", 80);
-    set_skill("spells", 120);
     map_skill("spells", "taoism-fire");
     set("chat_chance_combat", 40);
     set("chat_msg_combat", ({
@@ -24,6 +23,7 @@ LONG
         (: command, "cast 2" :),
         (: command, "cast 3" :),
     }));
+    set("custom_faction", "taoist.fire");   // 門派記號（docs/martial_arts/門派武功對照表.md）
     set_power("B");
     setup();
     carry_object("/custom/armor/cloth/red_robe")->wear();

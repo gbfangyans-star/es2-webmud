@@ -25,6 +25,7 @@ LONG
         (: command, "cast 2" :),
         (: command, "cast 3" :),
     }));
+    set("custom_faction", "taoist.fire");   // 門派記號（docs/martial_arts/門派武功對照表.md）
     set_power("S");
     setup();
     carry_object("/custom/armor/cloth/red_robe")->wear();
