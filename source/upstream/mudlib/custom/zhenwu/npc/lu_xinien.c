@@ -14,10 +14,11 @@ private string *taught_skills = ({
 void create(){
     set_name("魯熙年", ({"lu xinien","lu","xinien","魯熙年"}));
     set_race("human");
-    set_class("soldier");
+    set_class("soldier"); set_level(25);
     set("gender","male");
     set("nickname","徵兵官");
     set("long", "魯熙年是一名身材微胖的中年武官，兩眼瞇成一條線，臉上總帶著似笑非笑的古怪表情。他同時也是振武營負責招募新兵的徵兵官，看起來約三十多歲。營中新兵入伍後的基本兵刃操練，多半也是他一手帶出來的。\n");
+    set_power("B");
     setup();
     foreach(string sk in taught_skills)
         set_skill(sk, 70);

@@ -43,7 +43,12 @@ int main(object me, string arg)
 
     me->set_temp("pending/hidden", 0);      // be visible
         
-    if( ! me->is_fighting(obj)
+    if( obj->query("training_dummy") ) {
+	// 練武用的假人、木樁是死物，不用對它喊話。
+	if( !me->is_fighting(obj) )
+	    message_vision("\n$N在$n前站定，擺開架勢練起招式來。\n\n", me, obj);
+    }
+    else if( ! me->is_fighting(obj)
     ||	! me->is_killing(obj) ) {
 	switch( random(3) )
 	{

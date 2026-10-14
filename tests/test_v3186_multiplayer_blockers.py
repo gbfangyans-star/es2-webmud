@@ -11,6 +11,6 @@ def test_server_exposes_version_identity():
 def test_start_is_version_safe():
     s=text('start_es2_windows.ps1'); assert 'Close the OLD WebMUD window' in s and 'Get-ListenerPid' in s
 def test_banner_is_connection_phase_driven():
-    s=text('web/app.js'); assert '/\\[ES2 connected\\]/i' in s and 'Do not depend on title spacing' in s
+    s=text('web/app.js'); assert '[ES2 connected]' in s and 'Do not depend on title spacing' not in s
 def test_isolation_uses_dynamic_ports():
     assert 'listen(0' in text('tests/test_multiplayer_isolation_v34.mjs')

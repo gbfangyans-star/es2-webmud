@@ -28,6 +28,7 @@ void create()
 		STOCK_MEDICATION("dragon_saliva") : 20,
 	]));
 
+	set_power("C");
 	setup();
 	carry_object("/obj/area/obj/cloth")->wear();
 	carry_object(__DIR__"obj/fur_hat")->wear();

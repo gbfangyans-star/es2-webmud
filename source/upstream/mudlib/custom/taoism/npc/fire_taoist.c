@@ -11,12 +11,6 @@ void create()
     set_level(30);
 
     // Race initialization fills every attribute not specified here.
-    set_attr("con", 30);
-    set_attr("wis", 25);
-    set_attr("spi", 30);
-    set_stat_maximum("gin", 500);
-    set_stat_maximum("kee", 600);
-    set_stat_maximum("sen", 800);
 
     set_skill("taoism-fire", 160);
     set_skill("spells", 160);
@@ -31,6 +25,7 @@ void create()
         (: command, "cast 4" :)
     }));
 
+    set_power("B");
     setup();
     carry_object("/obj/area/obj/cloth")->wear();
     carry_object("/obj/area/obj/longsword")->wield();

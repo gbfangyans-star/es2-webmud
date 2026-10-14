@@ -20,6 +20,7 @@ void create()
         "/d/lee/obj/sugar" : 100,
         "/d/lee/obj/flour" : 100,
     ]));
+    set_power("C");
     setup();
 }
 

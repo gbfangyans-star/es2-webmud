@@ -33,5 +33,6 @@ LONG
         "/obj/area/obj/kris" : 3,
         "/custom/item/scroll/blank" : 300,
     ]));
+    set_power("C");
     setup();
 }

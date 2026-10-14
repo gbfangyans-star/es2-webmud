@@ -36,8 +36,8 @@ varargs mapping query_action(object me) {
 }
 
 /* 野獸強度 1～10（野豬為 4）：精、氣、野獸技能、傷害加成。
- * 用法：在 NPC 的 create() 裡 setup() 之後呼叫
- *       RACE_D("beast")->set_strength(this_object(), 強度);
+ * 用法：在 NPC 的 create() 裡 setup() 之前呼叫 set_beast(強度);
+ *       （/std/char/npc.c 會在 setup() 完成後套用這張表）
  */
 private mapping *strength_table = ({
     0,

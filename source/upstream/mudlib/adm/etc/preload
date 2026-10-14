@@ -9,4 +9,5 @@
 /adm/daemons/channeld
 /adm/daemons/natured
 /adm/daemons/enterd
+/daemon/misc/npc_power
 #/adm/daemons/network/dns_master

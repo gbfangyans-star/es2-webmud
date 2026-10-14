@@ -29,6 +29,7 @@ LONG
     set_skill("unarmed", 2);
     set_skill("dodge", 2);
     set_skill("parry", 2);
+    set_power("C");
     setup();
     give_herb();
 }

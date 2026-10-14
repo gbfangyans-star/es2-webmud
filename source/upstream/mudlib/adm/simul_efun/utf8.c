@@ -58,10 +58,22 @@ varargs string cjk_pad (string str, int width, int right_align) {
     string* mbch;
     int w, pad;
 
+    int in_ansi = 0;
+
     mbch = explode (str, "");
     w = 0;
-    foreach (string ch in mbch)
+    // ANSI 顏色碼（ESC[...m）不佔畫面寬度：有顏色的商品名稱原本被算得太寬，後面的價格欄就對不齊。
+    foreach (string ch in mbch) {
+        if (in_ansi) {
+            if (ch == "m") in_ansi = 0;
+            continue;
+        }
+        if (ch == "\x1b") {
+            in_ansi = 1;
+            continue;
+        }
         w += (strlen (ch) > 1) ? 2 : 1;
+    }
 
     pad = width - w;
     if (pad <= 0) return str;

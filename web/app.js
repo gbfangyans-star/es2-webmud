@@ -1,12 +1,14 @@
 import {SessionRecorder} from './session_recorder.js';
 import {PlayerStateObserver} from './player_state.js';
+import {Automation,setupAutomationUI} from './automation.js';
+import {setupChatWindow} from './chat_window.js';
+import {bgTimeout,clearBg,keepPageAlive} from './bg_timer.js';
 
 const sessionRecorder = new SessionRecorder();
 const observer = new PlayerStateObserver();
 const term = document.querySelector('#terminal');
 const input = document.querySelector('#command');
 const conn = document.querySelector('#conn');
-const landing = document.querySelector('#landing');
 const gameApp = document.querySelector('#gameApp');
 
 let ws = null;
@@ -52,12 +54,16 @@ let hudPollStartedAt = 0;
 let hudFallbackBuffer = '';
 let pendingUserCommands = [];
 let lastReceiveAt = 0;
-let welcomeStyled = false;
-let welcomeBuffer = '';
+let welcomeStyled = true;
 let mapRefreshPending = false;
 let hudBootstrapInFlight = false;
 let hudBootstrapAttempts = 0;
 const HUD_POLL_MS = 800;
+// 背景狀態查詢的頻率：戰鬥中每 0.8 秒；平常每 2.5 秒；玩家剛下指令的 3 秒內，
+// 指令的回應一到就立刻更新（吃喝、裝備、移動後狀態欄馬上反映）。分頁在背景時完全暫停。
+const HUD_IDLE_POLL_MS = 2500;
+const HUD_AFTER_COMMAND_MS = 3000;
+let lastHudPollAt = 0;
 const HUD_USER_GRACE_MS = 350;
 const HUD_KICK_DELAY_MS = 20;
 const HUD_POLL_TIMEOUT_MS = 1200;
@@ -75,32 +81,13 @@ const contextTitle=document.getElementById('contextTitle');
 const contextBody=document.getElementById('contextBody');
 let contextState={room:'',people:[],items:[],combat:null,inventory:[]};
 let contextRoomScan=false;
-let chatView='chat';
 let chatParseBuffer='';
-const chatMessages={chat:[],tell:[]};
-const CHAT_LOG_LIMIT=200;
-const contextChatLog=document.getElementById('contextChatLog');
-function renderChatLog(){
-  if(!contextChatLog)return;
-  const rows=chatMessages[chatView]||[];
-  contextChatLog.innerHTML=rows.length
-    ? rows.map(x=>`<div class="context-chat-message ${chatView==='tell'?'is-tell':'is-chat'}">${x.html}</div>`).join('')
-    : `<div class="context-chat-empty">尚無 ${chatView.toUpperCase()} 訊息。</div>`;
-  contextChatLog.scrollTop=contextChatLog.scrollHeight;
-}
-function setupChatTabs(){
-  for(const btn of document.querySelectorAll('.context-chat-tab[data-chat-tab]')){
-    btn.addEventListener('click',()=>{
-      chatView=btn.dataset.chatTab==='tell'?'tell':'chat';
-      for(const x of document.querySelectorAll('.context-chat-tab[data-chat-tab]')){
-        const on=x.dataset.chatTab===chatView;
-        x.classList.toggle('active',on);
-        x.setAttribute('aria-selected',on?'true':'false');
-      }
-      renderChatLog();
-    });
-  }
-}
+// 聊天視窗（左側「聊天」開關）。頻道：閒聊、謠言、密語（tell/reply）、對談（say），
+// 其他頻道（系統、巫師、隊伍、幫派…）只在「全部」裡出現。
+const chatWindow=setupChatWindow({
+  root:document.getElementById('chatWindow'),
+  openButton:document.querySelector('[data-ui-chat]'),
+});
 function extractChatMessage(plain){
   let text=String(plain||'').trim();
   if(!text)return null;
@@ -120,6 +107,10 @@ function extractChatMessage(plain){
   if(/^你回答.+[：﹕:]/.test(text))return {kind:'tell',text};
   if(/告訴你[：﹕:]/.test(text))return {kind:'tell',text};
   if(/回答你[：﹕:]/.test(text))return {kind:'tell',text};
+  if(/^【謠言】/.test(text))return {kind:'rumor',text};
+  if(/^[^\s【】：﹕:]{1,20}說道[：﹕:]/.test(text))return {kind:'say',text};
+  // 其他頻道：【系統】【巫師】【東方故事】【隊伍】【幫派名】… 只出現在「全部」。
+  if(/^【[^】\s]{1,8}】\S/.test(text))return {kind:'other',text};
   return null;
 }
 function captureChatMessages(raw){
@@ -131,16 +122,12 @@ function captureChatMessages(raw){
     if(!plain)continue;
     const hit=extractChatMessage(plain);
     if(!hit)continue;
-    // Render normalized text rather than the whole transport line, otherwise a
-    // leading command prompt becomes part of the chat history.  CHAT/TELL have
-    // their own pane colors, so ANSI preservation is unnecessary here.
-    chatMessages[hit.kind].push({html:esc(hit.text)});
-    if(chatMessages[hit.kind].length>CHAT_LOG_LIMIT)chatMessages[hit.kind].splice(0,chatMessages[hit.kind].length-CHAT_LOG_LIMIT);
-    if(chatView===hit.kind)renderChatLog();
+    // Record normalized text rather than the whole transport line, otherwise a
+    // leading command prompt becomes part of the chat history. Each channel has
+    // its own color in the chat window, so ANSI preservation is unnecessary here.
+    chatWindow.add(hit.kind,hit.text);
   }
 }
-setupChatTabs();
-renderChatLog();
 function escContext(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function combatStat(label,cur,max,sideKey){
   const pct=max>0?Math.max(0,Math.min(100,cur*100/max)):0;
@@ -184,6 +171,7 @@ function bindCommandButtons(root){
   });
 }
 function bindContextActions(){bindCommandButtons(contextBody);}
+let lastContextHtml=null;
 function renderContext(){
   if(!contextBody)return;
   let primary='';
@@ -194,7 +182,9 @@ function renderContext(){
     contextTitle.textContent='可使用道具';
     primary='';
   }
-  contextBody.innerHTML=primary+inventoryPanel();
+  // HUD 每 0.8 秒回報一次，內容多半沒變；相同就不重建 DOM，避免長時間掛機一直重排版。
+  const html=primary+inventoryPanel();
+  if(html!==lastContextHtml){contextBody.innerHTML=html;lastContextHtml=html;}
   bindContextActions();
 }
 function observeContext(raw){
@@ -244,10 +234,12 @@ function parseWebHud(raw){
     if(a[1]==='SELF'){
       // The silent LPC HUD feed is also the browser side-panel source, so the
       // role status no longer waits for the player to type hp/score manually.
-      observer.state.vitals.hp={current:side.hp,limit:side.hpmax,limitKind:'effective'};
-      observer.state.vitals.jing={current:side.gin,limit:side.ginmax,limitKind:'effective'};
-      observer.state.vitals.qi={current:side.kee,limit:side.keemax,limitKind:'effective'};
-      observer.state.vitals.shen={current:side.sen,limit:side.senmax,limitKind:'effective'};
+      // a[19..22] 是最大值（score 的分母）；舊版伺服器沒有這四欄時退回用有效上限。
+      const mx=i=>a.length>=23?+a[i]:0;
+      observer.state.vitals.hp={current:side.hp,limit:mx(19)||side.hpmax,effective:side.hpmax,limitKind:'maximum'};
+      observer.state.vitals.jing={current:side.gin,limit:mx(20)||side.ginmax,effective:side.ginmax,limitKind:'maximum'};
+      observer.state.vitals.qi={current:side.kee,limit:mx(21)||side.keemax,effective:side.keemax,limitKind:'maximum'};
+      observer.state.vitals.shen={current:side.sen,limit:mx(22)||side.senmax,effective:side.senmax,limitKind:'maximum'};
       if(a.length>=19){
         observer.state.score.level=+a[12];
         observer.state.vitals.food={current:+a[13],limit:+a[14],limitKind:'maximum'};
@@ -332,7 +324,11 @@ function ansi(s){
 function cleanText(s){return terminalSafe(String(s)).replace(/\x1b\[[0-9;]*m/g,'').replace(/\r/g,'');}
 
 const passwordPrompts=['請輸入密碼:','請設定您的密碼:','請重設您的密碼:','請再輸入一次您的密碼﹐以確認您沒記錯:','您兩次輸入的密碼並不一樣﹐請重新設定一次密碼:'];
+// 留言／寫信的逐行編輯器：期間每一行輸入都會被收進內容，背景狀態查詢必須暫停，
+// 直到玩家輸入「.」（完成）或「~q」（取消）。
+let editorActive=false;
 function updateInputMode(chunk){
+  if(cleanText(chunk).includes("結束離開用 '.'"))editorActive=true;
   tail=(tail+cleanText(chunk)).slice(-700);
   const secret=passwordPrompts.some(x=>tail.includes(x));
   const wasSecret=input.type==='password';
@@ -356,13 +352,42 @@ function classifyLine(line){
   // 例如攻擊敘述含「擊中」、人物名稱含「受傷」，都不該因字面被染成紅色。
   return '';
 }
+// 伺服器在每段輸出前後都會送提示字元「> 」，並在它前後各帶一個換行。網頁有輸入框，
+// 提示字元不需要顯示；只拿掉「>」而留下那些換行，畫面就會多出一行行空白
+// （潛行、戰鬥這類每個心跳印一行的訊息最明顯）。這裡逐行處理：
+//   - \r\r\n、\r\n 都只算一次換行
+//   - 整行只有提示字元：連同它前面帶出的空行一起拿掉；正在等輸入的提示字元（在一段的最後）
+//     拿掉後，下一段開頭跟著它的那個換行也一併拿掉
+//   - 接在文字前面的「> 」只拿掉提示字元（前面有色碼的「> 」是內容，例如留言板的引文，不動）
+//   - 只有色碼、沒有文字的行接到下一行，不要佔成一個空行
+let promptPending=false;
+function isPromptOnly(line){return /^[ \t]*>[ \t]*$/.test(cleanText(line));}
 function compactGameOutput(s){
+  let text=String(s).replace(/\r+\n/g,'\n').replace(/\r/g,'');
+  if(promptPending&&text.startsWith('\n'))text=text.slice(1);
+  promptPending=false;
+  const lines=text.split('\n');
+  let partial=lines.pop();
+  const kept=[];
+  let carry='';   // 只有色碼的行，接到下一行前面
+  for(const raw of lines){
+    if(isPromptOnly(raw)){
+      if(kept.length&&kept[kept.length-1]==='')kept.pop();
+      continue;
+    }
+    let line=carry+raw.replace(/^[ \t]*>[ \t]+(?=\S)/,'');carry='';
+    if(!cleanText(line)&&/\x1b\[/.test(line)){carry=line;continue;}
+    kept.push(line);
+  }
+  if(isPromptOnly(partial)){
+    if(kept.length&&kept[kept.length-1]==='')kept.pop();
+    partial='';promptPending=true;
+  }else partial=partial.replace(/^[ \t]*>[ \t]+(?=\S)/,'');
+  partial=carry+partial;
+  let out=kept.length?kept.join('\n')+'\n'+partial:partial;
   // Keep deliberate paragraph spacing, but prevent MUD output from turning repeated
   // empty lines into large blank vertical gaps in the browser terminal.
-  let out=String(s).replace(/(?:\r?\n[ \t]*){3,}/g,'\n\n');
-  // Once login is complete, the classic standalone MUD prompt is redundant because
-  // WebMUD already has a command input box. Remove it regardless of current room state.
-  if(welcomeStyled)out=out.replace(/(^|\r?\n)[ \t]*>[ \t]*(?=\r?\n|$)/g,'$1');
+  out=out.replace(/\n(?:[ \t]*\n){2,}/g,'\n\n');  // 連續空行縮成一行，但保留下一行開頭的空白（置中排版用）
   return out;
 }
 function renderChunk(s){
@@ -375,7 +400,23 @@ function renderChunk(s){
   }
   return out;
 }
-function shouldStick(){return term.scrollHeight-term.scrollTop-term.clientHeight<90;}
+function isNearBottom(){return term.scrollHeight-term.scrollTop-term.clientHeight<90;}
+// 是否貼底改由捲動事件維護，不在每段輸出時讀 scrollHeight（會強迫瀏覽器立即排版）；
+// 貼底時的自動捲動也合併成每個畫面影格最多一次，分頁在背景時則完全不做。
+let stickToBottom=true;
+let autoScrollTop=-1;
+let stickScrollFrame=0;
+function shouldStick(){return stickToBottom;}
+function scheduleStickScroll(){
+  if(stickScrollFrame)return;
+  stickScrollFrame=requestAnimationFrame(()=>{
+    stickScrollFrame=0;
+    if(!stickToBottom)return;
+    term.scrollTop=term.scrollHeight;
+    autoScrollTop=term.scrollTop;
+    updateScrollLatest();
+  });
+}
 function hpLineKind(line){
   const p=cleanText(line).trim();
   if(!p)return 'blank';
@@ -391,63 +432,109 @@ function isHpSummaryLine(line){
   return hpLineKind(line)==='summary';
 }
 // Strip @@WEBHUD|...| lines out of a buffer, keeping only real text.
+// 標記也可能接在同一行的提示字元「> 」或其他文字後面，所以從標記處截斷，只保留前面的真正文字。
+// 內部狀態資料的判斷：只有在「行首」（前面最多是提示字元「> 」）出現 @@WEBHUD| 的一整行才算。
+// 文章、聊天內容中間提到 @@WEBHUD|BEGIN 這串字時是一般文字，照常顯示，也不會讓網頁誤以為資料開始而卡住。
+const HUD_LINE_RE=/^[ \t]*(?:>[ \t]*)*@@WEBHUD\|/;
+function isHudLine(line){ return HUD_LINE_RE.test(cleanText(line)); }
+function hasHudLine(text,tag){
+  return new RegExp('(?:^|\\n)[ \\t]*(?:>[ \\t]*)*@@WEBHUD\\|'+tag).test(cleanText(text));
+}
+// 只刪除內部狀態資料行，其他文字（包含空行）原樣保留。
+function removeHudLines(text){
+  const parts=String(text).split(/(\r\n|\n|\r)/);
+  let out='';
+  for(let i=0;i<parts.length;i+=2){
+    const line=parts[i], sep=parts[i+1]||'';
+    if(isHudLine(line))continue;
+    out+=line+sep;
+  }
+  return out;
+}
+// 傳輸被切在一行資料中間時（例如只收到「@@WEBHUD」，「|BEGIN」在下一段），
+// 最後那半行先留著等下一段，不要當成一般文字顯示。
+function isHudLinePrefix(line){
+  const plain=cleanText(line).replace(/^[ \t]*(?:>[ \t]*)*/,'');
+  return !!plain && ('@@WEBHUD|'.startsWith(plain)||plain.startsWith('@@WEBHUD|'));
+}
+function holdTrailingHudPartial(text){
+  const str=String(text);
+  const nl=Math.max(str.lastIndexOf('\n'),str.lastIndexOf('\r'));
+  const last=str.slice(nl+1);
+  if(!isHudLinePrefix(last))return str;
+  hudFallbackBuffer=last+hudFallbackBuffer;
+  return str.slice(0,nl+1);
+}
 function stripWebHudLines(whole){
   return String(whole).split(/\r\n|\n|\r/).filter(line=>{
+    if(isHudLine(line))return false;
     const plain=cleanText(line).trim();
     if(!plain)return false;
-    if(/^@@WEBHUD\|/.test(plain))return false;
     if(/^>\s*$/.test(plain))return false;
     if(/^webhud$/i.test(plain))return false;
     return true;
   });
 }
+// 最後一道防線：畫面文字裡若還有行首的 @@WEBHUD| 資料行，先解析再刪掉，絕不顯示在終端機上。
 function consumeHudPollOutput(s){
+  const r=consumeHudPollOutputRaw(s);
+  if(r.visible&&hasHudLine(r.visible,'')){
+    parseWebHud(r.visible);
+    r.visible=removeHudLines(r.visible);
+  }
+  return r;
+}
+function consumeHudPollOutputRaw(s){
   if(!hudPollInFlight){
-    // Defensive fallback: a @@WEBHUD block can still arrive here if the
-    // client's poll already timed out (hudPollInFlight reset) before this
-    // — now late — server response landed. These lines must never be shown
-    // as visible game text regardless of polling state, so still recognise
-    // and swallow a complete BEGIN..END block even when unexpected.
-    //
-    // A single WebSocket message is not guaranteed to carry the whole block —
-    // BEGIN and END can land in separate onmessage calls. Buffer fragments
-    // (bounded, so a block that never closes cannot grow unbounded) until a
-    // complete block is seen, mirroring the in-flight branch below; text with
-    // no BEGIN in play still passes straight through so ordinary output is
-    // never delayed.
-    const str=String(s);
-    if(!hudFallbackBuffer && !str.includes('@@WEBHUD|BEGIN'))return {visible:str,done:false};
-    hudFallbackBuffer+=str;
-    if(hudFallbackBuffer.length>20000){
-      // Pathological: never saw a closing END. Give up buffering and show
-      // it rather than silently swallowing real game text forever.
-      const flushed=hudFallbackBuffer;hudFallbackBuffer='';
-      return {visible:flushed,done:false};
+    // 不在輪詢中：逾時後才到的半段回覆也可能出現在這裡。逐段處理、立刻顯示一般文字，
+    // 只把行首的資料行刪掉，不再整段暫存等結尾（文章內文提到標記時會因此卡住）。
+    // 唯一暫存的是「被拆在兩段傳輸之間、還沒收完的那一行資料」。
+    let str=hudFallbackBuffer+String(s);
+    hudFallbackBuffer='';
+    // 遊戲每段回覆開頭都有一個換行；逾時才到的狀態回覆，開頭那個換行若照常顯示就成了空行。
+    // 只有空白的片段先留著，等下一段到了再判斷是不是狀態回覆的開頭。
+    if(!/\S/.test(str)){hudFallbackBuffer=str;return {visible:'',done:false};}
+    if(!str.includes('@'))return {visible:str,done:false};
+    str=holdTrailingHudPartial(str);
+    if(hasHudLine(str,'')){
+      parseWebHud(str);
+      str=str.replace(/(?:^|[\r\n])[ \t\r\n]*(?=[ \t]*(?:>[ \t]*)*@@WEBHUD\|)/g,(m,off)=>off===0?'':'\n');
+      // 整段只是狀態回覆（剩下的只有提示字元「>」和空白）時，什麼都不顯示。
+      const rest=removeHudLines(str);
+      return {visible:/[^\s>]/.test(cleanText(rest))?rest:'',done:false};
     }
-    const cleanFallback=cleanText(hudFallbackBuffer);
-    if(!/(?:^|\n)@@WEBHUD\|END(?:\n|$)/.test(cleanFallback))return {visible:'',done:false};
-    const whole=hudFallbackBuffer;hudFallbackBuffer='';
-    parseWebHud(whole);
-    const kept=stripWebHudLines(whole);
-    return {visible:kept.length?kept.join('\n')+'\n':'',done:true};
+    return {visible:removeHudLines(str),done:false};
   }
   hudPollBuffer += String(s);
   parseWebHud(hudPollBuffer);
   const clean=cleanText(hudPollBuffer);
-  const hasEnd=/(?:^|\n)@@WEBHUD\|END(?:\n|$)/.test(clean);
+  const hasEnd=hasHudLine(hudPollBuffer,'END(?:[ \\t]*)(?:\\n|$)');
   const timedOut=Date.now()-hudPollStartedAt>HUD_POLL_TIMEOUT_MS;
   if(!hasEnd && !timedOut)return {visible:'',done:false};
-  const whole=hudPollBuffer;
+  const whole=holdTrailingHudPartial(hudPollBuffer);
   hudPollInFlight=false;hudBootstrapInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
-  if(hudResponseTimer){clearTimeout(hudResponseTimer);hudResponseTimer=null;}
+  if(hudResponseTimer){clearBg(hudResponseTimer);hudResponseTimer=null;}
   flushPendingUserCommands();
   const kept=stripWebHudLines(whole);
   // HUD polling is a silent transport. Internal payload/prompt whitespace must never
   // create a visible terminal line. Real asynchronous text is still preserved.
   return {visible:kept.length?kept.join('\n')+'\n':'',done:true};
 }
+function hudPollDue(){
+  const now=Date.now();
+  // 剛下指令：指令之後還沒查過就立刻查一次，之後同戰鬥中的節奏，不連續狂查。
+  if(now-lastUserCommandAt<HUD_AFTER_COMMAND_MS){
+    if(lastHudPollAt<lastUserCommandAt)return true;
+    return now-lastHudPollAt>=HUD_POLL_MS;
+  }
+  const gap=contextState.combat?.target?HUD_POLL_MS:HUD_IDLE_POLL_MS;
+  return now-lastHudPollAt>=gap;
+}
 function hudPollReady(force=false,allowNoRoom=false){
   if((!currentRoomId&&!allowNoRoom)||input.type==='password'||ws?.readyState!==1||hudPollInFlight)return false;
+  if(document.hidden)return false;
+  if(!force&&!hudPollDue())return false;
+  if(editorActive)return false;
   // Real player input has priority over internal HUD telemetry.
   if(!force && Date.now()-lastUserCommandAt<HUD_USER_GRACE_MS)return false;
   // HUD must continue updating during combat even when no classic ">" prompt is emitted.
@@ -462,19 +549,37 @@ function pollHud(force=false,allowNoRoom=false){
   hudPollInFlight=true;
   hudPollBuffer='';
   hudPollStartedAt=Date.now();
+  lastHudPollAt=hudPollStartedAt;
   ws.send('webhud\r\n');
   if(allowNoRoom)hudBootstrapInFlight=true;
-  if(hudResponseTimer)clearTimeout(hudResponseTimer);
-  hudResponseTimer=setTimeout(()=>{
+  if(hudResponseTimer)clearBg(hudResponseTimer);
+  // 背景計時：網頁不在最上層時也要準時放行排隊中的指令（觸發、計時器送出的指令也在這裡排隊）。
+  hudResponseTimer=bgTimeout(()=>{
     hudResponseTimer=null;
     if(!hudPollInFlight)return;
     // Never let a missing/split HUD END marker hold real player clicks forever.
-    hudPollInFlight=false;hudBootstrapInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
+    hudBootstrapInFlight=false;
+    releaseHudPoll();
     flushPendingUserCommands();
     if(!currentRoomId&&!exactRoomTrackingReady)scheduleMapBootstrapRetry(180);
   },HUD_POLL_TIMEOUT_MS);
   return true;
 }
+// 放棄等待一個逾時（或被玩家指令搶先）的 webhud 回覆。等待期間收到的文字可能混著
+// 真正的遊戲輸出（例如 read 1 的文章內容、別人說話），以前直接連同緩衝一起丟掉，
+// 畫面上就只剩「> read 1」而沒有任何回應。現在只拿掉 @@WEBHUD 資料，其餘照常顯示；
+// 之後才到的半段 HUD 回覆由 consumeHudPollOutput 的最後防線過濾。
+function releaseHudPoll(){
+  const whole=holdTrailingHudPartial(hudPollBuffer);
+  hudPollInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
+  if(hudResponseTimer){clearBg(hudResponseTimer);hudResponseTimer=null;}
+  if(!whole)return;
+  parseWebHud(whole);
+  const kept=stripWebHudLines(whole);
+  if(kept.length)renderVisible(kept.join('\n')+'\n',false,shouldStick());
+}
+// 切回分頁時立刻更新一次狀態。
+document.addEventListener('visibilitychange',()=>{ if(!document.hidden)pollHud(true); });
 function startHudPolling(){
   if(hudTimer)return;
   hudTimer=setInterval(pollHud,HUD_POLL_MS);
@@ -483,7 +588,7 @@ function startHudPolling(){
 function stopHudPolling(){
   if(hudTimer){clearInterval(hudTimer);hudTimer=null;}
   if(hudKickTimer){clearTimeout(hudKickTimer);hudKickTimer=null;}
-  if(hudResponseTimer){clearTimeout(hudResponseTimer);hudResponseTimer=null;}
+  if(hudResponseTimer){clearBg(hudResponseTimer);hudResponseTimer=null;}
   hudPollInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
   pendingUserCommands=[];
 }
@@ -491,57 +596,29 @@ function kickHudAfterServerText(force=false){
   if(hudKickTimer)clearTimeout(hudKickTimer);
   hudKickTimer=setTimeout(()=>{hudKickTimer=null;pollHud(force);},HUD_KICK_DELAY_MS);
 }
-function renderWelcomeIfPresent(s){
-  if(welcomeStyled)return {html:'',rest:String(s),hold:false};
-  welcomeBuffer+=String(s);
-  const clean=cleanText(welcomeBuffer);
-  const connected=/\[ES2 connected\]/i.test(clean);
-  const prompt=/使用者代號|您的使用者代號|請輸入密碼/.exec(clean);
-  const statusLines=clean.split(/\r?\n/).map(x=>x.trim()).filter(Boolean).filter(line=>
-    /已經執行了|現在時間|目前共有/.test(line)
-  ).map(line=>line.replace(/^東方故事(?:Ⅱ|II)?/, '東方故事'));
-  const statusPanel=statusLines.length?`<div class="login-server-status" aria-label="伺服器狀態">${statusLines.map(line=>`<div>${escContext(line)}</div>`).join('')}</div>`:'';
-  const card=`<div class="login-welcome login-welcome-art" aria-label="東方故事 II 天朝帝國 Celestial Empire">
-    <img src="/login_title_v3185.png" alt="東方故事 II 天朝帝國 Celestial Empire" class="login-title-art">
-    ${statusPanel}
-  </div>`;
-
-  // Browser presentation only. The canonical Neolith bytes are still received,
-  // recorded and parsed; the original pre-login title block is hidden in WebMUD.
-  // Do not depend on title spacing, ANSI, II/Ⅱ, source line, or TCP chunk boundaries.
-  if(connected && !term.querySelector('.login-welcome-art')){
-    const after=clean.replace(/^\s*\[ES2 connected\]\s*/i,'');
-    welcomeBuffer=after;
-    return {html:`<span class="sys">[ES2 connected]</span><br>${card}`,rest:'',hold:true};
-  }
-  if(prompt){
-    welcomeStyled=true;
-    const rest=clean.slice(prompt.index);
-    welcomeBuffer='';
-    return {html:term.querySelector('.login-welcome-art')?'':card,rest,hold:false};
-  }
-  if(welcomeBuffer.length>24000){
-    welcomeStyled=true;
-    const rest=welcomeBuffer;welcomeBuffer='';
-    return {html:'',rest,hold:false};
-  }
-  return {html:'',rest:'',hold:true};
-}
 function print(s,system=false){
   const stick=shouldStick();
   lastReceiveAt=Date.now();
-  if(!system){sessionRecorder.appendResponse(s);captureChatMessages(s);}
+  if(!system){
+    // 背景 webhud 輪詢（每 0.8 秒）的回應不是玩家指令的輸出，不寫進 session 紀錄，
+    // 否則掛機時上一個指令的回應會被 HUD 資料無限撐大。
+    if(!hudPollInFlight&&!String(s).includes('@@WEBHUD|'))sessionRecorder.appendResponse(s);
+    captureChatMessages(s);
+  }
   observer.consume(s);renderObserved();updateInputMode(s);observeRoomText(s);bootstrapExactRoomFromOutput(s);
 
   let shown=String(s);
   let prefix='';
   if(!system){
-    const welcome=renderWelcomeIfPresent(shown);
-    prefix=welcome.html||'';shown=welcome.rest;
-    if(welcome.hold)return;
+    // 橋接程式連上遊戲時送出的「[ES2 connected]」只給工具判斷用，畫面上不顯示。
+    shown=shown.replace(/^[\r\n]*\[ES2 connected\][ \t]*\r?\n?/,'');
     shown=consumeHudPollOutput(shown).visible;
   }
-  if(prefix)term.insertAdjacentHTML('beforeend',prefix);
+  if(prefix)appendTerminalHtml(prefix,true);
+  renderVisible(shown,system,stick);
+}
+function renderVisible(shown,system,stick){
+  if(!system&&shown)automation.feed(shown,cleanText);
   let rendered=shown?renderChunk(shown):'';
   if(!system&&pendingTrimLeadingBlank){
     // Server output can arrive split across several WebSocket frames -- e.g.
@@ -556,31 +633,83 @@ function print(s,system=false){
     if(strippedRendered.trim()){rendered=strippedRendered;pendingTrimLeadingBlank=false;}
     else rendered='';
   }
-  if(rendered)term.insertAdjacentHTML('beforeend',`<span class="${system?'sys':''}">${rendered}</span>`);
-  if(stick)term.scrollTop=term.scrollHeight;
+  if(rendered)appendTerminalHtml(`<span class="${system?'sys':''}">${rendered}</span>`,rendered.endsWith('<br>'));
+  trimTerminal(stick);
+  if(stick)scheduleStickScroll();
+}
+// 訊息欄內容以「段落區塊」為單位附加：上一段以換行結尾時，新輸出放進新的
+// <div>；否則接在同一個區塊裡（同一行的延續）。視覺上與全部塞在同一層 inline
+// 完全相同，但原本整個訊息欄是一個巨大的 inline 段落，每來一段文字（並讀取
+// scrollHeight 判斷是否貼底）瀏覽器就得把全部歷史重新排版；分成區塊後只需排版新增的部分。
+let termBlock=null;
+let termBlockOpen=false;
+function appendTerminalHtml(html,endsLine){
+  if(!html)return;
+  if(!termBlockOpen||!termBlock||termBlock.parentNode!==term){
+    termBlock=document.createElement('div');
+    termBlock.className='term-block';
+    term.appendChild(termBlock);
+  }
+  termBlock.insertAdjacentHTML('beforeend',html);
+  termBlockOpen=!endsLine;
+}
+// 訊息欄只保留最近的內容。原本每段輸出都永久留在 DOM，掛 3~4 小時（尤其戰鬥中）
+// 會累積數十萬個節點，每次新訊息都要對整棵樹排版，瀏覽器越跑越吃 CPU/記憶體。
+// 超過上限時一次刪掉一批最舊的，攤平成本；玩家正在往上捲閱讀時保持畫面位置不跳動。
+const TERMINAL_MAX_NODES=3000;
+const TERMINAL_TRIM_TO=2400;
+function trimTerminal(stick){
+  const extra=term.childNodes.length-TERMINAL_MAX_NODES;
+  if(extra<=0)return;
+  const removeCount=term.childNodes.length-TERMINAL_TRIM_TO;
+  const before=stick?0:term.scrollHeight;
+  const range=document.createRange();
+  range.setStartBefore(term.firstChild);
+  range.setEndAfter(term.childNodes[removeCount-1]);
+  range.deleteContents();
+  // 刪掉上方內容後瀏覽器會自行調整 scrollTop 並送出捲動事件；記下調整後的位置，
+  // 以免被當成玩家往上捲而取消貼底。
+  if(stick)autoScrollTop=term.scrollTop;
+  else term.scrollTop=Math.max(0,term.scrollTop-(before-term.scrollHeight));
 }
 
 function parsePairFromState(key){
   // Silent webhud is the live source. Manual score output is only a fallback, never
   // allowed to override newer background vitals with stale values.
-  const live=observer.state.vitals?.[key];if(live)return {current:live.current,max:live.limit};
-  const detail=observer.state.scoreDetail?.stats?.[key];if(detail)return {current:detail.current,max:detail.maximum};
+  const live=observer.state.vitals?.[key];if(live)return {current:live.current,max:live.limit,eff:live.effective??live.limit};
+  const detail=observer.state.scoreDetail?.stats?.[key];if(detail)return {current:detail.current,max:detail.maximum,eff:detail.effective??detail.maximum};
   return null;
 }
 function renderScoreHUD(){ renderObserved(); }
 
+let lastScoreHudHtml=null;
 function renderObserved(){
+  // 版面跟 score 一致：形體／精／氣／神是「名稱 數字 方格」一行；食物／飲水／疲勞只顯示文字，排在最下面一行。
   const labels={hp:'形體',jing:'精',qi:'氣',shen:'神',food:'食物',water:'飲水',fatigue:'疲勞'};
-  const rows=[];
-  for(const key of ['hp','jing','qi','shen','food','water','fatigue']){
+  const colors={hp:'#2f7a4a',jing:'#efd06b',qi:'#ff7474',shen:'#76a9ff'};
+  const CELLS=15;
+  const num=v=>`${String(v.current).padStart(3)}/${String(v.max).padStart(4)}`;
+  const vitals=[],needs=[];
+  for(const key of ['hp','jing','qi','shen']){
     const v=parsePairFromState(key);if(!v)continue;
     const pct=v.max>0?Math.max(0,Math.min(100,Math.round(v.current*100/v.max))):0;
-    const colors={hp:'#ef6262',jing:'#70c7ff',qi:'#70d99b',shen:'#b89cff',food:'#e9a45f',water:'#68b9e8',fatigue:'#8b9690'};
-    const filled=Math.max(0,Math.min(10,Math.round(pct/10)));
-    const segments=Array.from({length:10},(_,i)=>`<i class="hud-segment${i<filled?' filled':''}" aria-hidden="true"></i>`).join('');
-    rows.push(`<div class="hudstat hud-${key}" style="--hud-color:${colors[key]}"><div><span>${labels[key]}</span><b>${v.current}/${v.max}</b></div><div class="hud-segments" role="img" aria-label="${labels[key]} ${pct}%">${segments}</div></div>`);
+    // 跟 score 的 tribar 一樣：目前值是實心格，目前值到有效上限是空心格（形體為暗紅），有效上限以上不畫。
+    const clamp=n=>Math.max(0,Math.min(CELLS,n));
+    const filled=v.max>0?clamp(Math.floor(v.current*CELLS/v.max)):0;
+    const effCells=v.max>0?clamp(Math.floor((v.eff??v.max)*CELLS/v.max)):0;
+    const cells=Array.from({length:CELLS},(_,i)=>`<i class="hud-cell${i<filled?' filled':i<effCells?'':' gone'}" aria-hidden="true"></i>`).join('');
+    vitals.push(`<div class="hud-vital hud-${key}" style="--hud-color:${colors[key]}"><span class="hud-label">${labels[key]}</span><b class="hud-num">${num(v)}</b><div class="hud-cells" role="img" aria-label="${labels[key]} ${pct}%">${cells}</div></div>`);
   }
-  const hud=document.querySelector('#scoreHud');if(hud&&rows.length){hud.innerHTML=rows.join('');hud.classList.remove('muted');}
+  for(const key of ['food','water','fatigue']){
+    const v=parsePairFromState(key);if(!v)continue;
+    needs.push(`<span class="hud-need hud-${key}"><span class="hud-label">${labels[key]}</span><b class="hud-num">${num(v)}</b></span>`);
+  }
+  const hud=document.querySelector('#scoreHud');
+  if(hud&&(vitals.length||needs.length)){
+    const html=`<div class="hud-vitals">${vitals.join('')}</div>${needs.length?`<div class="hud-needs">${needs.join('')}</div>`:''}`;
+    if(html!==lastScoreHudHtml){hud.innerHTML=html;lastScoreHudHtml=html;}
+    hud.classList.remove('muted');
+  }
   const level=observer.state.scoreDetail?.level ?? observer.state.score?.level;
   const lev=document.querySelector('#levelHud');if(lev)lev.textContent=level!==undefined?`Lv.${level}`:'Lv.--';
 }
@@ -870,8 +999,11 @@ function optimisticMapMove(command){
 
 
 
+// #dis 主動斷線時不自動重連，等玩家 #con。
+let manualDisconnect=false,reconnectTimer=null;
 function connect(){
   if(ws&&[WebSocket.OPEN,WebSocket.CONNECTING].includes(ws.readyState))return;
+  manualDisconnect=false;if(reconnectTimer){clearBg(reconnectTimer);reconnectTimer=null;}
   conn.textContent='CONNECTING';const proto=location.protocol==='https:'?'wss':'ws';ws=new WebSocket(`${proto}://${location.host}/mud`);ws.binaryType='arraybuffer';
   ws.onopen=()=>{
     // A TCP/WebSocket reconnect starts at the Neolith login object, not inside
@@ -897,13 +1029,13 @@ function connect(){
     // A completed movement command must refresh ROOM/NAME/EXITS immediately. The
     // normal 350ms user-input grace remains for all other commands so telemetry
     // cannot compete with player input.
-    if(currentRoomId && !String(raw).includes('@@WEBHUD|')){
+    if(currentRoomId && /\S/.test(String(raw)) && !String(raw).includes('@@WEBHUD|')){
       const forceMapRefresh=mapRefreshPending;
       if(forceMapRefresh)mapRefreshPending=false;
       kickHudAfterServerText(forceMapRefresh);
     }
   };
-  ws.onclose=e=>{stopHudPolling();if(mapBootstrapRetryTimer){clearTimeout(mapBootstrapRetryTimer);mapBootstrapRetryTimer=null;}pendingUserCommands=[];mapRefreshPending=false;hudBootstrapInFlight=false;hudBootstrapAttempts=0;currentRoomId=null;runtimeSnapshot=null;tail='';sessionRecorder.finishResponse();sessionRecorder.markTransportClose(e?.code??null,e?.reason||'');sessionRecorder.markReconnect();conn.textContent='DISCONNECTED';if(!started)return;const wait=Math.min(10000,1000*2**Math.min(retry++,3));print(`\n[${wait/1000} 秒後重新連線]\n`,true);setTimeout(connect,wait);};
+  ws.onclose=e=>{stopHudPolling();editorActive=false;if(mapBootstrapRetryTimer){clearTimeout(mapBootstrapRetryTimer);mapBootstrapRetryTimer=null;}pendingUserCommands=[];mapRefreshPending=false;hudBootstrapInFlight=false;hudBootstrapAttempts=0;currentRoomId=null;runtimeSnapshot=null;tail='';sessionRecorder.finishResponse();sessionRecorder.markTransportClose(e?.code??null,e?.reason||'');sessionRecorder.markReconnect();conn.textContent='DISCONNECTED';if(manualDisconnect){print('\n[已中斷連線，輸入 #con 重新連線]\n',true);return;}automation.cancelPending();if(!started)return;const wait=Math.min(10000,1000*2**Math.min(retry++,3));print(`\n[${wait/1000} 秒後重新連線]\n`,true);reconnectTimer=bgTimeout(()=>{reconnectTimer=null;connect();},wait);};
   ws.onerror=()=>conn.textContent='ERROR';
 }
 // Echo the player's own command into the transcript as its own line, the
@@ -922,13 +1054,14 @@ let pendingTrimLeadingBlank=false;
 function echoCommand(c){
   if(!c)return;
   const stick=shouldStick();
-  term.insertAdjacentHTML('beforeend',`<span class="cmd">&gt; ${esc(c)}</span><br>`);
+  appendTerminalHtml(`<span class="cmd">${esc(c)}</span><br>`,true);
+  trimTerminal(stick);
   pendingTrimLeadingBlank=true;
-  if(stick)term.scrollTop=term.scrollHeight;
+  if(stick)scheduleStickScroll();
 }
 function transmitUserCommand(c,sensitive=false){
   if(!sensitive)echoCommand(c);
-  const op=c.split(/\s+/)[0];
+  const op=editorActive?'':c.split(/\s+/)[0];
   if(!sensitive && /^(?:n|s|e|w|ne|nw|se|sw|u|d|north|south|east|west|northeast|northwest|southeast|southwest|up|down|go|enter|out)$/i.test(op)){
     // Catworld-style feel: move the marker immediately using already-known topology;
     // the silent HUD response that follows is authoritative and corrects it if needed.
@@ -937,6 +1070,7 @@ function transmitUserCommand(c,sensitive=false){
   if(!sensitive&&['score','hp','skills','inventory','look','go'].includes(op))observer.begin(op,c);
   sessionRecorder.beginCommand(c,{sensitive});
   ws.send(c+'\r\n');
+  if(editorActive&&(c.trim()==='.'||c.trim()==='~q'))editorActive=false;
   input.type='text';input.autocomplete='off';tail='';
 }
 function flushPendingUserCommands(){
@@ -945,8 +1079,13 @@ function flushPendingUserCommands(){
   pendingUserCommands=[];
   for(const item of queued)transmitUserCommand(item.command,item.sensitive);
 }
-function send(c){
-  const sensitive=input.type==='password';c=String(c??'').trim();
+// auto：觸發或計時器送出的指令。和玩家打的指令一樣顯示在畫面上（同樣顏色），
+// 只是不會被當成密碼輸入（輸入密碼時本來就不會自動送）。
+// 送到伺服器的方式和玩家打字完全相同，所以也會讓角色的發呆時間歸零。
+// keepSpaces：留言／寫信的編輯器裡，每行前面的空白（半形、全形）是內容的一部分，不能去掉。
+function send(c,{auto=false,keepSpaces=false}={}){
+  const sensitive=!auto&&input.type==='password';
+  c=keepSpaces?String(c??'').replace(/[\r\n]+/g,''):String(c??'').trim();
   if(c){lastUserCommandAt=Date.now();if(hudKickTimer){clearTimeout(hudKickTimer);hudKickTimer=null;}}
   if(ws?.readyState!==1){print('\n[尚未連上 ES2]\n',true);return;}
   // The silent HUD request and a real player command must never share the same
@@ -955,17 +1094,14 @@ function send(c){
   // @@WEBHUD|END marker. This prevents interaction buttons from being swallowed
   // by the HUD parser or interleaved with the telemetry command.
   if(hudPollInFlight){
-    if(!pendingUserCommands.some(x=>x.command===c&&x.sensitive===sensitive))
+    if(keepSpaces||!pendingUserCommands.some(x=>x.command===c&&x.sensitive===sensitive))
       pendingUserCommands.push({command:c,sensitive});
     // A HUD response is background telemetry. A real click must win quickly even
     // if the END marker is delayed/lost. Give the current HUD packet a very short
     // grace period, then release the queued player action.
-    setTimeout(()=>{
+    bgTimeout(()=>{
       if(!pendingUserCommands.length)return;
-      if(hudPollInFlight){
-        hudPollInFlight=false;hudPollBuffer='';hudPollStartedAt=0;
-        if(hudResponseTimer){clearTimeout(hudResponseTimer);hudResponseTimer=null;}
-      }
+      if(hudPollInFlight)releaseHudPoll();
       flushPendingUserCommands();
     },HUD_ACTION_FLUSH_MS);
     return;
@@ -973,10 +1109,35 @@ function send(c){
   transmitUserCommand(c,sensitive);
 }
 
-document.querySelector('#enterGame')?.addEventListener('click',async()=>{
-  started=true;landing.classList.add('leaving');setTimeout(()=>{landing.hidden=true;gameApp.hidden=false;input.focus();},180);
-  await loadGraph();connect();
+// 觸發與計時器（設定存在瀏覽器）。輸入密碼、編輯文章或沒連線時不自動送指令。
+const automation=new Automation({
+  sendCommand:c=>send(c,{auto:true}),
+  sendUserCommand:c=>send(c),
+  notify:m=>print(`\n${m}\n`,true),
+  isBlocked:()=>input.type==='password'||editorActive||ws?.readyState!==1,
+  disconnect:()=>{
+    if(reconnectTimer){clearBg(reconnectTimer);reconnectTimer=null;manualDisconnect=true;print('\n[已取消自動重連，輸入 #con 重新連線]\n',true);return true;}
+    if(!ws||![WebSocket.OPEN,WebSocket.CONNECTING].includes(ws.readyState))return false;
+    manualDisconnect=true;ws.close();return true;
+  },
+  connect:()=>{
+    if(ws&&[WebSocket.OPEN,WebSocket.CONNECTING].includes(ws.readyState))return false;
+    retry=0;connect();return true;
+  },
 });
+setupAutomationUI(automation,{
+  dialog:document.querySelector('#automationDialog'),
+  toggleButton:document.querySelector('#automationToggle'),
+  openButtons:[...document.querySelectorAll('[data-ui-automation]')].map(b=>[b,b.dataset.uiAutomation]),
+});
+
+// 打開網頁就直接連線（不再顯示封面）。
+async function startGame(){
+  if(started)return;
+  started=true;gameApp.hidden=false;input.focus();
+  keepPageAlive(); // 掛機：請瀏覽器不要凍結背景中的分頁
+  await loadGraph();connect();
+}
 // Set once the box holds a "kept" command (see #form submit below) so a bare
 // Enter repeats it. A plain input.select() only survives until the next
 // click, because a mouse click on a focused field always collapses the
@@ -997,20 +1158,17 @@ document.querySelector('#form')?.addEventListener('submit',e=>{
     // Password entry never stays in the box or gets echoed/repeated.
     send(raw);input.value='';repeatArmed=false;input.focus();return;
   }
-  // ';' chains several commands from one line, e.g. "e;e;e;n" walks east
-  // three times then north. No inter-command delay -- fired back to back.
-  rememberCommand(raw);hi=history.length;historyPrefix=null;
-  let parts=raw.includes(';')?raw.split(';').map(s=>s.trim()).filter(s=>s.length):[raw];
-  if(!parts.length)parts.push('');
-  // Cap at 9 actions per submit -- roughly what a tick should hold -- so a
-  // long ';' chain can't dump an unbounded burst of actions into one instant.
-  // Only the first 9 run; the rest are silently dropped with a local notice.
-  const MAX_CHAIN_COMMANDS=9;
-  if(parts.length>MAX_CHAIN_COMMANDS){
-    parts=parts.slice(0,MAX_CHAIN_COMMANDS);
-    print('\n你的動作太快了...\n',true);
+  if(editorActive){
+    // 編輯器裡一行就是一行內容：保留前面的空白、不拆「;」、不留在欄位裡重複送。
+    send(raw,{keepSpaces:true});input.value='';repeatArmed=false;input.focus();return;
   }
-  for(const part of parts)send(part);
+  // ';' chains several commands from one line, e.g. "e;e;e;n" walks east
+  // three times then north. No inter-command delay unless the line uses
+  // #wa (zMUD-style wait). At most 9 real commands per submit -- roughly what
+  // a tick should hold; local # commands (#wa, #tr, #sh ...) don't count.
+  // #3 e repeats, #dis/#con disconnect/reconnect -- see automation.js.
+  rememberCommand(raw);hi=history.length;historyPrefix=null;
+  automation.run(raw,'輸入欄',{user:true});
   // Keep the line in the box (selected, not cleared) so a bare Enter repeats
   // it -- handy for walking a corridor by holding Enter -- while typing
   // anything just overwrites the selection like normal.
@@ -1045,29 +1203,19 @@ document.querySelector('#form')?.addEventListener('click',e=>{
 });
 document.querySelectorAll('[data-cmd]').forEach(b=>b.addEventListener('click',()=>{send(b.dataset.cmd);input.focus();}));
 
-document.querySelectorAll('[data-ui-focus]').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.nav-item').forEach(x=>x.classList.toggle('active',x===b));
-  const target=b.dataset.uiFocus==='map'?document.querySelector('#mapPanel'):document.querySelector('#chatPanel');
-  if(target){target.scrollIntoView({behavior:'smooth',block:'nearest'});target.classList.remove('ui-focus-flash');requestAnimationFrame(()=>target.classList.add('ui-focus-flash'));}
-  input.focus();
-}));
-document.querySelectorAll('.nav-item[data-cmd]').forEach(b=>b.addEventListener('click',()=>{
-  document.querySelectorAll('.nav-item').forEach(x=>x.classList.toggle('active',x===b));
-}));
 document.querySelector('[data-ui-settings]')?.addEventListener('click',()=>document.querySelector('#uiSettings')?.showModal());
 document.querySelectorAll('[data-map-action]').forEach(b=>b.addEventListener('click',()=>{
   const a=b.dataset.mapAction;if(a==='in')setMapZoom(mapZoom+.12);else if(a==='out')setMapZoom(mapZoom-.12);else setMapZoom(1);
 }));
 const fontRange=document.querySelector('#terminalFontSize'),fontValue=document.querySelector('#terminalFontValue');
 fontRange?.addEventListener('input',()=>{document.documentElement.style.setProperty('--terminal-font-size',fontRange.value+'px');if(fontValue)fontValue.textContent=fontRange.value+'px';localStorage.setItem('es2-ui-font',fontRange.value);});
-const compactToggle=document.querySelector('#compactContext');compactToggle?.addEventListener('change',()=>{document.body.classList.toggle('context-compact',compactToggle.checked);localStorage.setItem('es2-ui-compact',compactToggle.checked?'1':'0');});
-try{const f=localStorage.getItem('es2-ui-font');if(f&&fontRange){fontRange.value=f;document.documentElement.style.setProperty('--terminal-font-size',f+'px');if(fontValue)fontValue.textContent=f+'px';}const c=localStorage.getItem('es2-ui-compact')==='1';if(compactToggle){compactToggle.checked=c;document.body.classList.toggle('context-compact',c);}}catch(_){}
+try{const f=localStorage.getItem('es2-ui-font');if(f&&fontRange){fontRange.value=f;document.documentElement.style.setProperty('--terminal-font-size',f+'px');if(fontValue)fontValue.textContent=f+'px';}}catch(_){}
 
 
 
 async function bootPreviewMode(){
   const p=new URLSearchParams(location.search);if(!p.has('preview'))return false;
-  started=true;landing.hidden=true;gameApp.hidden=false;conn.textContent='PREVIEW';
+  started=true;gameApp.hidden=false;conn.textContent='PREVIEW';
   graph={nodes:[
     {id:'/preview/main',label:'中央大街'},{id:'/preview/wuguan',label:'武館'},{id:'/preview/yaopu',label:'藥舖'},{id:'/preview/qianzhuang',label:'錢莊'},{id:'/preview/kelou',label:'客棧'},{id:'/preview/nanjie',label:'南街'},{id:'/preview/xiaoxiang',label:'小巷'},{id:'/preview/caopeng',label:'草棚'},{id:'/preview/yingdi',label:'振武軍營'}
   ],edges:[]};indexGraph();
@@ -1076,15 +1224,27 @@ async function bootPreviewMode(){
   setRoomMapMeta('/preview/main','雪亭','地面','');setExactRoom('/preview/main','中央大街');
   observer.state.vitals={hp:{current:176,limit:210},jing:{current:1296,limit:1296},qi:{current:1738,limit:1738},shen:{current:449,limit:449},food:{current:303,limit:551},water:{current:261,limit:429},fatigue:{current:0,limit:100}};observer.state.score={level:15};renderObserved();
   term.innerHTML='<span class="room-line">【雪亭・中央大街】</span><br>這是一條寬闊的青石大街，兩旁店舖林立，遠處可見城門與屋脊。<br><br><span class="exit-line">出口：北、南、東、西</span><br><br>一名往來的行人從街角走過。<br><br><span class="cmd">&gt; look</span><br>你仔細觀察四周，風裡帶著炊煙與木香。';
-  document.querySelector('#contextTitle').textContent='中央大街';document.querySelector('#contextBody').innerHTML='<div class="context-line context-person">行人</div><div class="context-line context-item">街邊招牌</div><div class="context-line">東：錢莊　西：客棧　北：武館</div>';
-  document.querySelector('#contextChatLog').innerHTML='<div class="context-line"><b>[CHAT]</b> 測試玩家：新版介面預覽。</div>';
+  chatWindow.add('chat','【閒聊】測試玩家﹕新版介面預覽。');
   return true;
 }
-bootPreviewMode();
+bootPreviewMode().then(()=>startGame());
 
 function historyMatch(cmd){return cmd.toLowerCase().startsWith(historyPrefix.toLowerCase());}
 function showHistory(value){input.value=value;repeatArmed=false;const n=value.length;input.setSelectionRange(n,n);}
+// Tab：插入空白到下一個 8 格的位置（中文字算 2 格），不會跳離輸入列。
+function textColumns(t){let w=0;for(const ch of t)w+=/[\u1100-\u115f\u2e80-\ua4cf\uac00-\ud7a3\uf900-\ufaff\ufe30-\ufe4f\uff00-\uff60\uffe0-\uffe6]|[\u{20000}-\u{3fffd}]/u.test(ch)?2:1;return w;}
+function insertTab(){
+  const start=input.selectionStart??input.value.length,end=input.selectionEnd??start;
+  const col=textColumns(input.value.slice(0,start));
+  const pad=' '.repeat(8-col%8);
+  input.value=input.value.slice(0,start)+pad+input.value.slice(end);
+  const pos=start+pad.length;input.setSelectionRange(pos,pos);
+  repeatArmed=false;historyPrefix=null;hi=history.length;
+}
 input?.addEventListener('keydown',e=>{
+  if(e.key==='Tab'&&!e.shiftKey&&!e.ctrlKey&&!e.altKey&&!e.metaKey&&!e.isComposing){
+    e.preventDefault();insertTab();return;
+  }
   if(e.key==='ArrowUp'){
     e.preventDefault();
     if(historyPrefix===null){
@@ -1102,8 +1262,44 @@ input?.addEventListener('keydown',e=>{
   }
 });
 
+// 訊息欄每一行的行頭（第一個字左邊的空白處）按一下：反白整行並複製。
+function copyText(text){
+  if(navigator.clipboard?.writeText)return navigator.clipboard.writeText(text).catch(()=>document.execCommand('copy'));
+  try{document.execCommand('copy');}catch(_){}
+}
+function inLineGutter(e){
+  if(e.target!==term)return false;
+  const rect=term.getBoundingClientRect();
+  return e.clientX<rect.left+(parseFloat(getComputedStyle(term).paddingLeft)||0);
+}
+term?.addEventListener('mousemove',e=>term.classList.toggle('line-pick',inLineGutter(e)));
+term?.addEventListener('mouseleave',()=>term.classList.remove('line-pick'));
+term?.addEventListener('mousedown',e=>{
+  if(e.button!==0||e.target!==term)return;
+  const rect=term.getBoundingClientRect();
+  const padLeft=parseFloat(getComputedStyle(term).paddingLeft)||0;
+  if(e.clientX>=rect.left+padLeft)return;
+  const x=rect.left+padLeft+2,y=e.clientY;
+  let node=null,offset=0;
+  if(document.caretPositionFromPoint){const p=document.caretPositionFromPoint(x,y);if(p){node=p.offsetNode;offset=p.offset;}}
+  else if(document.caretRangeFromPoint){const r=document.caretRangeFromPoint(x,y);if(r){node=r.startContainer;offset=r.startOffset;}}
+  if(!node||!term.contains(node))return;
+  e.preventDefault();
+  const sel=window.getSelection();
+  sel.removeAllRanges();
+  const r=document.createRange();r.setStart(node,offset);r.collapse(true);sel.addRange(r);
+  sel.modify('move','backward','lineboundary');
+  sel.modify('extend','forward','lineboundary');
+  const text=sel.toString().replace(/\n+$/,'');
+  if(text.trim())copyText(text);
+});
+
 // 訊息欄往上翻時出現「▼」按鈕，按下直接捲到最新的訊息。
 const scrollLatest=document.querySelector('#scrollLatest');
-function updateScrollLatest(){if(scrollLatest)scrollLatest.hidden=shouldStick();}
-term?.addEventListener('scroll',updateScrollLatest);
-scrollLatest?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();term.scrollTop=term.scrollHeight;updateScrollLatest();input?.focus();});
+function updateScrollLatest(){if(scrollLatest)scrollLatest.hidden=stickToBottom;}
+term?.addEventListener('scroll',()=>{
+  // 自動捲到底後、捲動事件送達前可能又有新文字進來；位置沒變就視為自己的捲動，維持貼底。
+  if(term.scrollTop!==autoScrollTop)stickToBottom=isNearBottom();
+  updateScrollLatest();
+});
+scrollLatest?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();stickToBottom=true;term.scrollTop=term.scrollHeight;autoScrollTop=term.scrollTop;updateScrollLatest();input?.focus();});

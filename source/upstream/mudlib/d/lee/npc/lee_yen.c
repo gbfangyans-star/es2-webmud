@@ -23,6 +23,7 @@ void create()
         "/d/lee/obj/medicine_bottle" : 20,
         "/d/lee/obj/heaven_dew" : 10,
     ]));
+    set_power("C");
     setup();
 }
 

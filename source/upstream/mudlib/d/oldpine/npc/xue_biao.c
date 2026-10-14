@@ -38,16 +38,8 @@ LONG
     set_skill("unarmed", 40);
     // 擊殺者獲得戰場功勳。
     set("bounty", ([ "military service": 110 ]));
+    set_power("B");
     setup();
-    set_stat_maximum("gin", 240);
-    set_stat_effective("gin", 240);
-    set_stat_current("gin", 240);
-    set_stat_maximum("kee", 300);
-    set_stat_effective("kee", 300);
-    set_stat_current("kee", 300);
-    set_stat_maximum("sen", 100);
-    set_stat_effective("sen", 100);
-    set_stat_current("sen", 100);
     carry_object("/d/oldpine/obj/coarse_cloth")->wear();
     carry_object("/obj/area/obj/glaive")->wield();
     carry_object("/d/oldpine/obj/head_cloth")->wear();

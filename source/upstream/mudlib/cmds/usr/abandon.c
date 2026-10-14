@@ -1,6 +1,7 @@
 
 
 #include <command.h>
+#include <skill.h>
 
 inherit F_CLEAN_UP;
 
@@ -8,16 +9,33 @@ private void create() { seteuid(getuid()); }
 
 int main(object me, string arg)
 {
+    int restore;
+    mapping learned, flags;
+
     SECURED_COMMAND;
 
     if( !arg ) return notify_fail("你要放棄繼續學習什麼技能？\n");
 
-    if( sscanf(arg, "-c %s", arg)==1 )
-        me->abandon_skill(arg, 1);
-    else
-        me->abandon_skill(arg);
+    restore = sscanf(arg, "-c %s", arg) == 1;
 
-    write("Ok.\n");
+    learned = me->query_learned();
+    if( !mapp(learned) || undefinedp(learned[arg]) )
+        return notify_fail("你沒有學習這項技能。\n");
+
+    flags = me->query_skill_flags();
+    if( !mapp(flags) ) flags = ([]);
+
+    if( restore ) {
+        if( !(flags[arg] & SKILL_FLAG_ABANDONED) )
+            return notify_fail("你並沒有中止學習「" + to_chinese(arg) + "」。\n");
+        me->abandon_skill(arg, 1);
+        write("你決定恢復學習「" + to_chinese(arg) + "」。\n");
+    } else {
+        if( flags[arg] & SKILL_FLAG_ABANDONED )
+            return notify_fail("你已經中止學習「" + to_chinese(arg) + "」了。\n");
+        me->abandon_skill(arg);
+        write("你決定中止學習「" + to_chinese(arg) + "」。\n");
+    }
     return 1;
 }
 

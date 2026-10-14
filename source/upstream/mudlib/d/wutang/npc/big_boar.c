@@ -40,7 +40,7 @@ void create()
 一隻兇猛的大野豬，眼盯著你一副蓄勢待發的樣子。
 LONG
     );
+    // 野獸強度（1～10），數值見 daemon/race/beast.c。
+    set_beast(5);
     setup();
-    // 野獸強度（1～10，野豬為 4），數值見 daemon/race/beast.c。
-    RACE_D("beast")->set_strength(this_object(), 5);
 }

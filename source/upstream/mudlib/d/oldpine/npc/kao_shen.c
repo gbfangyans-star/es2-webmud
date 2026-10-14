@@ -15,7 +15,7 @@ void create()
     set("title", "虎刀門長老");
     set_race("human");
     set("gender", "male");
-    set_class("fighter");
+    set_class("fighter"); set_level(30);
 
     /* User-provided legacy teacher table: teaching ceilings. */
     set_skill("unarmed", 120);
@@ -39,6 +39,7 @@ void create()
         "高慎負手望著林間小路，冷哼一聲，神情頗為不耐。\n",
         "高慎伸手按了按腰間刀鞘，目光銳利地打量四周。\n",
     }));
+    set_power("B");
     setup();
 }
 
@@ -47,11 +48,11 @@ int accept_info(object ob, string type)
     return type == "skills";
 }
 
-/* No prerequisite: finding Gao Shen is enough to apprentice. */
+/* 拜師條件：平民（尚未加入任何職業），且刀法至少 1 級。拜師後成為武者（虎刀門弟子）。 */
 int accept_apprentice(object me)
 {
-    if( me->query_class() != "fighter" ) {
-        command("say 你連武者都不是, 不要想套近乎。");
+    if( me->query_class() != "commoner" ) {
+        command("say 你已經另有所屬, 不要想套近乎。");
         return 0;
     }
 
@@ -66,6 +67,7 @@ int accept_apprentice(object me)
 int init_apprentice(object me)
 {
     if( ::init_apprentice(me) ) {
+        me->set_class("fighter");
         me->set("title", "虎刀門弟子");
         me->set("custom_faction", "fighter.tiger");
         do_chat(({
@@ -88,60 +90,45 @@ int acquire_skill(object me, string skill)
     if( !me->is_apprentice_of(this_object()) ) return 0;
 
     switch(skill) {
-    case "unarmed": cap = 120; break;
-    case "parry": cap = 120; break;
-    case "dodge": cap = 120; break;
-    case "tiger-steps": cap = 120; break;
-    case "sanmeendo": cap = 140; break;
-    case "blade": cap = 120; break;
-    case "twohanded blade": cap = 120; break;
-    case "secondhand blade": cap = 120; break;
+    case "unarmed": cap = 1; break;
+    case "parry": cap = 1; break;
+    case "dodge": cap = 1; break;
+    case "tiger-steps": cap = 1; break;
+    case "sanmeendo": cap = 1; break;
+    case "blade": cap = 1; break;
+    case "twohanded blade": cap = 1; break;
+    case "secondhand blade": cap = 1; break;
     case "force":
         if( me->query_level() < 15 )
             return notify_fail("高慎搖頭道：你根基未穩，還是多練練吧。\n");
-        cap = 120;
+        cap = 1;
         break;
     case "tiger-force":
         if( me->query_level() < 15 )
             return notify_fail("高慎搖頭道：你根基未穩，還是多練練吧。\n");
-        cap = 120;
+        cap = 1;
         break;
     case "tiger-blade":
         if( me->query_skill("tiger-force", 1) < 30 )
-            return notify_fail("高慎喝道：瘋虎功不到三十級，也敢妄學瘋虎刀法？\n");
-        cap = 140;
+            return notify_fail("高慎喝道：你的瘋虎功火候未到，也敢妄學瘋虎刀法？\n");
+        cap = 1;
         break;
     default:
         return 0;
     }
 
-    if( me->query_skill(skill, 1) >= cap )
-        return notify_fail("高慎說道：這門功夫老夫能教你的，已經到頂了。\n");
+    /* 只傳授入門：累積點數還不到 1 級的門檻才教，一次補足到門檻。
+     * 等級要玩家下 gain 才會提升；瘋虎功要自己修習到 15 級的門檻（10000 點）才練成。 */
+    if( me->query_learn(skill) >= me->skill_threshold(skill, cap) )
+        return notify_fail("高慎說道：滾你奶奶的! 自己好好修練去!\n");
 
-    if( !me->query_skill(skill, 1) ) {
-        if( skill == "tiger-force" ) {
-            /* User-provided rule: Tiger Force is completed directly at Lv20. */
-            me->set_skill(skill, 20);
-            /* The learned table is cumulative.  A skill granted directly at
-             * Lv20 therefore starts at the Lv20 cumulative floor, otherwise
-             * the first 20->21 step would incorrectly require the entire
-             * Lv21 total from zero. */
-            if( me->query_learn(skill) < 40000 ) me->set_learn(skill, 40000);
-            if( !me->query("tiger_force/initial_con_bonus") ) {
-                me->set_attr("con", me->query_attr("con", 1) + 1);
-                me->set("tiger_force/initial_con_bonus", 1);
-            }
-            me->set("tiger_force/growth_level", 20);
-            tell_object(me, "高慎將瘋虎功的入門心訣一氣傳下，你依法運轉數周天後豁然貫通，瘋虎功已練成二十級，根骨也隨之增長一點。\n");
-            return 1;
-        }
-        me->set_skill(skill, 1);
-        /* Common restored learned is cumulative: Lv1's floor is 100. */
-        if( me->query_learn(skill) < 100 ) me->set_learn(skill, 100);
+    me->improve_skill_exact(skill,
+        me->skill_threshold(skill, cap) - me->query_learn(skill));
+    if( skill == "tiger-force" )
+        tell_object(me, "高慎將瘋虎功的入門心訣傳授給你，接下來就得靠你自己運功修習了。\n");
+    else
         tell_object(me, "高慎將「" + to_chinese(skill) + "」的入門要訣傳授給你。\n");
-        return 1;
-    }
-    return 0;
+    return 1;
 }
 
 int accept_fight()

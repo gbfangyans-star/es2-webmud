@@ -9,6 +9,7 @@ void create()
 {
     object water;
 
+    seteuid(getuid());   // 產生時要放一井清水，需要有效 UID 才能 new()
     set_name("水井", ({ "well" }));
     set_max_encumbrance(180000);
     set("long", "一口普通的水井，井口以石塊砌成，井中有清水，可供村民取用。\n");
@@ -30,9 +31,21 @@ varargs int accept_object(object me, object ob)
     else return notify_fail("你不能將玩家放到容器裡面。\n");
 }
 
+// 補滿：清水被喝光時液體物件會消失，以前的 reset() 只補還在的，喝乾後就不會再有。
+// 現在不見了就重新放一份，再補到滿；房間每次重生（reset）時也會呼叫。
+void refill()
+{
+	object liquid;
+
+	if( !(liquid = present("water", this_object())) ) {
+		seteuid(getuid());
+		liquid = new("/obj/water");
+		liquid->move(this_object());
+	}
+	liquid->set_volume(100000);
+}
+
 void reset()
 {
-    object water;
-    if( water = present("water", this_object()) )
-        water->set_volume(100000);
+	refill();
 }

@@ -226,7 +226,7 @@ string enhance_weapon(object ob, int bonus, string weapon_type)
 /* =====================================================================
  * 武器附加屬性（使用者提供的「武器附加屬性表」，obj/area/obj 的 12 種一般武器使用）
  *
- * 武器產生時擲一次：普通 60%、只有前綴 30%、前綴加後綴 10%（必須有前綴才會有後綴）。
+ * 武器產生時擲一次：普通 80%、只有前綴 15%、前綴加後綴 5%（必須有前綴才會有後綴）。
  * 前綴來自表一、表二（同名的效果合併），後綴來自表三。名稱為「前綴＋後綴＋原名」，
  * 例如「黑鋼火炎長劍」；每個修飾讓價值變成 1.5 倍。
  * 結果記在 query("affix")（([ "prefix": 名稱, "suffix": 名稱 ])），家園儲物箱會照存。
@@ -282,7 +282,8 @@ private mapping AFFIX_SUFFIX = ([
     "天鷹": ([ "awarness": 50 ]),
 ]);
 
-// 前綴、後綴各用表上的顏色，原名不上色。AFFIX_COLOR 設為 0 則全部不上色。
+// 名稱的顏色：只有前綴時整把用前綴的顏色；有後綴時前綴用前綴的顏色，後綴與武器名用後綴的顏色。
+// AFFIX_COLOR 設為 0 則不上色。
 #define AFFIX_COLOR 1
 private mapping AFFIX_COLOR_CODE = ([
     "形天": HIY,
@@ -332,10 +333,38 @@ private mapping AFFIX_COLOR_CODE = ([
     "天鷹": HIC,
 ]);
 
-private string affix_text(string word)
+// 有詞綴時原名改顯示成武器種類（長劍、短劍都顯示成「劍」，單刀、鬼頭刀都顯示成「刀」），
+// 英文名稱不變，仍可分辨是哪一種。武器可用 set("affix_short_name", ...) 自己指定。
+private mapping AFFIX_BASE_SHORT = ([
+    "sword": "劍",
+    "blade": "刀",
+    "dagger": "匕",
+    "staff": "杖",
+    "axe": "斧",
+    "pike": "槍",
+    "whip": "鞭",
+]);
+
+private string affix_short_name(object ob, string name)
 {
-    if( !AFFIX_COLOR || undefinedp(AFFIX_COLOR_CODE[word]) ) return word;
-    return AFFIX_COLOR_CODE[word] + word + NOR;
+    mixed wield_as = ob->query("wield_as");
+    string k;
+
+    if( stringp(ob->query("affix_short_name")) ) return ob->query("affix_short_name");
+    if( stringp(wield_as) ) wield_as = ({ wield_as });
+    if( arrayp(wield_as) )
+        foreach(k in wield_as) {
+            if( !stringp(k) ) continue;
+            k = replace_string(replace_string(k, "twohanded ", ""), "secondhand ", "");
+            if( !undefinedp(AFFIX_BASE_SHORT[k]) ) return AFFIX_BASE_SHORT[k];
+        }
+    return name;
+}
+
+private string affix_color(string word)
+{
+    if( !AFFIX_COLOR || !stringp(word) || undefinedp(AFFIX_COLOR_CODE[word]) ) return 0;
+    return AFFIX_COLOR_CODE[word];
 }
 
 // 依 affix 重新設定名稱、能力與價值；affix 為空（或 0）就是普通武器。
@@ -369,8 +398,16 @@ void apply_affix(object ob, mapping affix)
         foreach(k, v in part) apply[k] += v;
         value = value * 3 / 2;
     }
-    if( suffix ) name = affix_text(suffix) + name;
-    if( prefix ) name = affix_text(prefix) + name;
+    if( prefix ) {
+        string pcolor = affix_color(prefix), scolor = affix_color(suffix);
+        name = affix_short_name(ob, name);
+        if( suffix ) {
+            name = (pcolor ? pcolor + prefix + NOR : prefix)
+                 + (scolor ? scolor + suffix + name + NOR : suffix + name);
+        } else {
+            name = pcolor ? pcolor + prefix + name + NOR : prefix + name;
+        }
+    }
 
     ob->set("name", name);
     ob->set("value", value);
@@ -401,7 +438,7 @@ void roll_affix(object ob)
     string *pre = keys(AFFIX_PREFIX), *suf = keys(AFFIX_SUFFIX);
     mapping affix = ([]);
 
-    if( r >= 60 ) affix["prefix"] = pre[random(sizeof(pre))];
-    if( r >= 90 ) affix["suffix"] = suf[random(sizeof(suf))];
+    if( r >= 80 ) affix["prefix"] = pre[random(sizeof(pre))];
+    if( r >= 95 ) affix["suffix"] = suf[random(sizeof(suf))];
     apply_affix(ob, affix);
 }

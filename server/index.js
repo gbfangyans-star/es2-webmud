@@ -28,10 +28,14 @@ const WS_MAX_BUFFERED_BYTES=Math.max(65536,Number(process.env.WS_MAX_BUFFERED_BY
 const HEARTBEAT_MS=Math.max(5000,Number(process.env.HEARTBEAT_MS||30000));
 const bridgeStats={startedAt:Date.now(),accepted:0,rejectedCapacity:0,tcpErrors:0,wsErrors:0,peakSessions:0};
 const adminJobs=new AdminJobState();
-const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.c':'text/plain; charset=utf-8','.h':'text/plain; charset=utf-8'};
+const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.json':'application/json; charset=utf-8','.c':'text/plain; charset=utf-8','.h':'text/plain; charset=utf-8','.woff2':'font/woff2','.txt':'text/plain; charset=utf-8','.md':'text/plain; charset=utf-8'};
 
 
+// 經過反向代理或 Tunnel（Caddy、cloudflared）轉送的請求，來源看起來也是本機，
+// 但會帶轉送標頭；這種請求一律視為外部連線，管理功能不開放。
+const PROXY_HEADERS=['x-forwarded-for','forwarded','x-real-ip','cf-connecting-ip','cf-ray'];
 function isLocal(req){
+  if(PROXY_HEADERS.some(h=>req.headers[h]!==undefined))return false;
   return ['127.0.0.1','::1','::ffff:127.0.0.1'].includes(req.socket.remoteAddress||'');
 }
 function runProcess(cmd,args,{cwd=ROOT,timeout=120000}={}){
@@ -195,6 +199,8 @@ const server=http.createServer(async(req,res)=>{
       return hit?send(res,200,JSON.stringify(hit,null,2),'application/json; charset=utf-8'):send(res,404,'not found');
     }
     if(u.pathname==='/api/source'&&req.method==='GET'){
+      // 原始碼與 mudlib/data（玩家存檔，含密碼雜湊和 email）只給主機本機的管理頁讀取。
+      if(!isLocal(req))return send(res,403,'Source viewing is localhost-only');
       const rel=u.searchParams.get('path')||'';
       if(!rel.startsWith('mudlib/'))return send(res,400,'Only mudlib/* is editable');
       return send(res,200,await fs.readFile(safeWithin(UPSTREAM,rel),'utf8'),'text/plain; charset=utf-8');

@@ -244,11 +244,12 @@ int do_list(string arg)
 
 
     msg = "當鋪裡現在有以下貨物出售﹕\n\n";
+    // 名稱與價格依畫面寬度補空白（sprintf 會把中文字與顏色碼算成好幾格，有顏色的名稱就對不齊）；價格靠右對齊。
     for ( i = 0; i < sizeof(inv); i++)
-        msg += sprintf("     %-5d  %-50s%s\n",
+        msg += sprintf("     %-5d  %s %s\n",
         i+1,
-        inv[i]->short(),
-        value_string(inv[i]->query("value") * 2));
+        cjk_pad(inv[i]->short(), 48),
+        cjk_pad(value_string(inv[i]->query("value") * 2), 24, 1));
     this_player()->start_more_if_needed (msg);
     return 1;
 }
@@ -268,7 +269,12 @@ int do_buy(string arg)
 //    if( !parse_command(arg, inv, "%o", ob) )
 //        return notify_fail("你要買什麼東西﹖\n");
 
-    if( sscanf(arg, "%s %d", arg, index) != 2 ) index = 1;
+    // 「buy dagger 2」= 第二把 dagger；sscanf 失敗時不能動到 arg，否則「short sword」會被截成「short」。
+    {
+        string name_part;
+        if( sscanf(arg, "%s %d", name_part, index) == 2 ) arg = name_part;
+        else index = 1;
+    }
     index--;
     for(i=0; i<sizeof(inv); i++)
         if( inv[i]->id(arg) && !(index--)) break;

@@ -15,10 +15,13 @@ void create()
 
     if( !clonep() ) {
         set("wield_as", ({ "staff", "twohanded staff" }));
+        set("affix_short_name", "棍");
         set("unit", "根");
         set("value", 700);         // 拐杖 600 * 1.1 = 660，無條件進位到百位
         set("rigidity", 12);       // 沿用拐杖數值，未要求調整
         set("long", "一根常見的齊眉棍，棍身結實，是守衛用來防身的尋常兵器。\n");
     }
     setup();
+    // 武器附加屬性：每把新產生的武器擲一次前綴／後綴（adm/daemons/enhanced.c）。
+    if( clonep() ) ENHANCE_D->roll_affix(this_object());
 }

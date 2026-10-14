@@ -20,8 +20,9 @@ def test_chat_combat_inventory_status_map_remain():
     html=text("web/index.html")
     app=text("web/app.js")
     hud=text("source/upstream/mudlib/cmds/usr/webhud.c")
-    assert "contextChatLog" in html
-    assert "contextBody" in html
+    # 下方情境區（江湖傳訊、可使用道具）已移除，聊天改為可移動的獨立視窗。
+    assert 'id="chatWindow"' in html
+    assert "setupChatWindow" in app
     assert "inventoryPanel" in app
     assert "bindCommandButtons(contextBody)" in app
     assert "@@WEBHUD|INVBEGIN" in hud
@@ -37,11 +38,10 @@ def test_final_skill_stack_keeps_old_neolith_compat_and_special_progression():
     assert "varargs void advance_skill(string skill, int amount);" in skill
     assert 'call_other(daemon, \"skill_improved\", this_object(), skill);' in skill
     assert "apply_restored_skill_progression(skill);" in skill
-    assert 'if( skill == "tiger-steps" ) return 120;' in skill
-    assert 'skill == "tiger-blade" || skill == "sanmeendo"' in skill
-    assert 'me->improve_skill_exact("tiger-force", exp);' in combatd
-    assert 'me->improve_skill_exact("tiger-blade", exp);' in combatd
-    assert 'me->improve_skill_exact("sanmeendo", exp);' in combatd
-    assert "void skill_improved(object me, string sk)" in tiger
+    assert 'void apply_gain_progression(mapping gained)' in skill
+    assert 'improve_skill_exact("tiger-force"' not in combatd
+    assert 'if( art == "tiger-blade" ) exp += random(me->query_attr("cor"));' in combatd
+    assert 'me->improve_skill_exact(art, exp);' in combatd
+    assert "void skill_completed(object me, string sk)" in tiger
     assert "void skill_advanced(object me, string sk)" in tiger
-    assert "while( level < 200 )" in tiger
+    assert 'me->improve_skill_exact("tiger-force",' in tiger

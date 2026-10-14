@@ -265,7 +265,7 @@ unconcious (string reason)
 
     /* CUSTOM WEBMUD TUNING: 玩家昏迷後 20 秒甦醒（使用者核准，非 canonical ES2 數值） */
     remove_call_out("revive");
-    call_out("revive", 30);
+    call_out("revive", 20);
 }
 
 // overrides

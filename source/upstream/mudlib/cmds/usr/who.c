@@ -12,6 +12,45 @@ int i, j;
 
 void msg_format(string arg);
 
+// 依「畫面上佔的格數」計算寬度：sprintf 把一個中文字（UTF-8 三個位元組）當成 3 格，
+// 但畫面上只佔 2 格，中文字數不同的名字就會對不齊。ANSI 顏色碼不佔格。
+private int dwidth(string s)
+{
+    int k, c, w = 0, n = strlen(s);
+
+    for( k = 0; k < n; k++ ) {
+        c = s[k] & 0xff;
+        if( c == 27 ) {                         // 跳過 ESC[...m
+            while( k < n && (s[k] & 0xff) != 'm' ) k++;
+            continue;
+        }
+        if( c < 0x80 ) w += 1;
+        else if( (c & 0xe0) == 0xc0 ) w += 1;   // 兩位元組字元（如拉丁字母）
+        else if( (c & 0xf0) == 0xe0 ) w += 2;   // 三位元組字元（中文）
+        else if( (c & 0xf8) == 0xf0 ) w += 2;   // 四位元組字元
+    }
+    return w;
+}
+
+private string pad_left(string s, int width)
+{
+    int d = width - dwidth(s);
+    return (d > 0 ? repeat_string(" ", d) : "") + s;
+}
+
+private string pad_right(string s, int width)
+{
+    int d = width - dwidth(s);
+    return s + (d > 0 ? repeat_string(" ", d) : "");
+}
+
+private string pad_center(string s, int width)
+{
+    int d = width - dwidth(s);
+    if( d <= 0 ) return s;
+    return repeat_string(" ", d / 2) + s + repeat_string(" ", d - d / 2);
+}
+
 private void
 create()
 {
@@ -216,24 +255,25 @@ msg_format(string arg)
         // detail message
         while( j-- ) {
             // <ansi.h> will confuse sprintf's format
+            // 中文名字的字尾對齊、英文 ID 的左括號對齊（依畫面格數補空白）。
             if( wizardp(target[j]) )
-                msg = sprintf("%s%s【 %|10s 】%+42s %-14s%s\n",
+                msg = sprintf("%s%s【 %s 】%s %s%s\n",
                     msg,
                     BOLD,
-                    target[j]->rank(),
-                    (target[j]->query("title") ? target[j]->query("title") : "") + (target[j]->query("nickname") ? "「"+ target[j]->query("nickname") +"」" : "") + (target[j]->query("name", 1)),
+                    pad_center(target[j]->rank(), 10),
+                    pad_left((target[j]->query("title") ? target[j]->query("title") : "") + (target[j]->query("nickname") ? "「"+ target[j]->query("nickname") +"」" : "") + (target[j]->query("name", 1)), 42),
                     "(" + capitalize(target[j]->query("id")) + ")",
                     NOR
                 );
             else
-                      msg = sprintf("%s【 %2d%|8s 】%-12s%30s %-14s\n",
+                msg = sprintf("%s【 %2d%s 】%s%s %s\n",
                     msg,
                     target[j]->query_level(),
-                    target[j]->rank(),
-                    target[j]->query("title") ? target[j]->query("title") : "",
-                    (target[j]->query("nickname") ? "「"+ target[j]->query("nickname") +"」" : "")
-                        + target[j]->query("name", 1),
-                    "(" + capitalize(target[j]->query("id")) + ")",
+                    pad_center(target[j]->rank(), 8),
+                    pad_right(target[j]->query("title") ? target[j]->query("title") : "", 12),
+                    pad_left((target[j]->query("nickname") ? "「"+ target[j]->query("nickname") +"」" : "")
+                        + target[j]->query("name", 1), 30),
+                    "(" + capitalize(target[j]->query("id")) + ")"
                 );
         }
         break;

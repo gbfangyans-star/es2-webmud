@@ -12,9 +12,10 @@ void set_home_owner(object ob) { home_owner = ob; }
 
 void create() {
     set_name(HIY "家園管家" NOR, ({ "home butler", "butler", "家園管家", "管家" }));
-    set_race("human");
+    set_race("human"); set_class("commoner");
     set_level(1);
     set("age", 50);
+    set_power("C");
     setup();
 }
 

@@ -7,10 +7,10 @@ inherit F_VILLAGER;
 void create()
 {
     set_name("李勖賢", ({ "lee hsu hsien", "hsu hsien", "lee", "hsu", "hsien" }));
-    set_attr("int", 30);
     set_race("human");
-    set_class("commoner");
+    set_class("scholar");
     set_level(10);
     set("long", "李勖賢是村裡的文士，有秀才的頭銜，矮小的身裁給人很瘦弱的感覺，現在正\n指導學童唸著書。\n");
+    set_power("C");
     setup();
 }

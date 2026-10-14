@@ -44,6 +44,7 @@ LONG
 
     setup();
     //load_object("/daemon/board/wizard_board");
+    load_object("/daemon/board/celestial_board");   // 天朝公告
     replace_program (INN);
     set("map/area", "雪亭鎮");
 }

@@ -16,10 +16,8 @@ def test_live_gate_has_visible_progress_and_bounded_waits():
  assert 'sender.read(.10)' in s and 'recipient.read(.10)' in s
  assert 'concurrent save phase exceeded 6 seconds' in s
 
-def test_approved_title_art_is_bundled_and_rendered():
- assert (R/'web/login_title_v3185.png').stat().st_size>100000
+def test_login_title_is_plain_text_from_the_mud():
+ # 連線後的標題改由遊戲送出的文字顯示，網頁不再換成圖片。
  app=(R/'web/app.js').read_text(encoding='utf-8')
- css=(R/'web/styles.css').read_text(encoding='utf-8')
- assert '/login_title_v3185.png' in app
- assert 'login-welcome-art' in app
- assert '.login-title-art' in css
+ assert '/login_title_v3185.png' not in app
+ assert 'login-welcome-art' not in app

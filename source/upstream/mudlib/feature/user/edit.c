@@ -32,6 +32,8 @@ private void input_line(string line, string text, function callback)
         write("輸入取消。\n");
         return;
     } else if( line=="~e" ) {
+    } else if( line=="webhud" ) {
+        // 網頁背景狀態查詢送來的指令，不是玩家輸入的內容，不寫進文章／信件。
     } else
         text += line + "\n";
     input_to("input_line", text, callback);

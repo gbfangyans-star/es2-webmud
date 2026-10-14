@@ -35,5 +35,6 @@ LONG
     set("merchandise", ([
         "/d/wutang/obj/pie" : 20,
     ]));
+    set_power("C");
     setup();
 }

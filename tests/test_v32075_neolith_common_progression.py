@@ -38,7 +38,7 @@ def test_restored_skills_and_caps_are_explicit_without_member_array_literal():
     for name in ('unarmed','parry','dodge','blade','twohanded blade','secondhand blade','force','tiger-steps','tiger-blade','sanmeendo'):
         assert f'if( skill == "{name}" ) return 1;' in s
     assert 'if( skill == "tiger-steps" ) return 120;' in s
-    assert 'if( skill == "tiger-blade" || skill == "sanmeendo" ) return 140;' in s
+    assert 'if( skill == "tiger-blade" ) return 140;' in s
     assert 'member_array(skill' not in s
 
 def test_progression_is_called_after_daemon_hook_and_uses_conservative_call_other():

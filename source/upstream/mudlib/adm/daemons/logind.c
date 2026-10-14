@@ -7,6 +7,7 @@ author: Annihilator <taedlar@gmail.com>
 #include <ansi.h>
 #include <command.h>
 #include <login.h>
+#include <localtime.h>
 
 inherit F_CLEAN_UP;
 inherit F_DBASE;
@@ -72,6 +73,8 @@ object find_body(string name);
 int check_legal_id(string arg);
 int check_legal_name(string arg);
 private void increment_visitor_count();
+private string login_date_string(int t);
+private void show_visitor_count();
 private int check_ip(object link);
 
 private void create() {
@@ -96,8 +99,9 @@ void logon (object ob) {
     seteuid (getuid());
     write (read_file (WELCOME) + "\n");
 
-    UPTIME_CMD->main();
-    VISITOR_CMD->main();
+    printf ("現在時間 %s, 東方故事Ⅱ已經執行了%s。\n",
+        login_date_string(time()), CHINESE_D->chinese_period(uptime()));
+    show_visitor_count();
 
     usr = users();
     wiz_cnt = 0;
@@ -117,8 +121,25 @@ void logon (object ob) {
     printf ("目前共有 %d 位巫師、%d 位玩家在線上﹐以及 %d 位使用者嘗試連線中。\n\n",
         wiz_cnt, ppl_cnt, login_cnt );
 
-    write ("您的使用者代號: ");
+    write ("如果您是第一次使用，請輸入您喜歡的使用者代號以註冊角色\n");
+    write ("您的使用者代號：");
     input_to ("get_id", ob);
+}
+
+// 登入畫面用的日期格式：2026-10-04 13:17:49
+private string login_date_string(int t) {
+    mixed *lt = localtime(t);
+
+    return sprintf("%d-%02d-%02d %02d:%02d:%02d", lt[LT_YEAR], lt[LT_MON] + 1,
+        lt[LT_MDAY], lt[LT_HOUR], lt[LT_MIN], lt[LT_SEC]);
+}
+
+private void show_visitor_count() {
+    string s = read_file ("/adm/etc/visitor.cnt");
+    int t, cnt;
+
+    if( !s || sscanf(s, "%d %d", t, cnt) != 2 ) return;
+    printf ("從 %s 以來累計上線人次：%d 人次。\n", login_date_string(t), cnt);
 }
 
 private void get_id (string arg, object ob) {

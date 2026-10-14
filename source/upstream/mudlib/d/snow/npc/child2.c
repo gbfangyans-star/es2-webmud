@@ -7,7 +7,7 @@ inherit F_VILLAGER;
 void create()
 {
 	set_name("小孩", ({ "child" }) );
-	set_race("human");
+	set_race("human"); set_class("commoner");
 	set_stat_notify("kee", 100);
 	set_level(1);
 
@@ -18,6 +18,7 @@ void create()
 		"小孩咭咭咯咯地笑著﹐繞著你跑來跑去。\n",
 		"小孩叫道﹕咿 ～ 咿 ～\n"
 	}) );
+	set_power("C");
 	setup();
 	carry_money("coin", 1);
 	carry_object(__DIR__"obj/woodsword")->wield();

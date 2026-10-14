@@ -13,8 +13,6 @@ create()
   set_race("human");
   set_class("commoner");
   set_level(7);
-  set_stat_maximum("gin", 70);
-  set_stat_maximum("sen", 50);
   set_skill("sword", 25);
   set_skill("parry", 15);
   set_skill("dodge", 20);
@@ -28,6 +26,7 @@ create()
 	"一個身穿黑衣的老人﹐雖然年紀很大了﹐卻臉色紅潤﹐眼睛炯炯有神。\n");
   set("pursuer", 1);
 
+  set_power("B");
   setup();
   carry_object("/obj/area/obj/cloth")->wear();
   carry_object("/obj/area/obj/shortsword")->wield();

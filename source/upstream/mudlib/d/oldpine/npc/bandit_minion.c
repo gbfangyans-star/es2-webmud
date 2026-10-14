@@ -22,16 +22,8 @@ LONG
     set_skill("unarmed", 10);
     // 擊殺者獲得戰場功勳。
     set("bounty", ([ "military service": 5 ]));
+    set_power("C");
     setup();
-    set_stat_maximum("gin", 60);
-    set_stat_effective("gin", 60);
-    set_stat_current("gin", 60);
-    set_stat_maximum("kee", 75);
-    set_stat_effective("kee", 75);
-    set_stat_current("kee", 75);
-    set_stat_maximum("sen", 35);
-    set_stat_effective("sen", 35);
-    set_stat_current("sen", 35);
     carry_object("/obj/area/obj/blade")->wield();
     carry_object("/custom/armor/cloth/leather_vest")->wear();
     carry_money("silver", 2);

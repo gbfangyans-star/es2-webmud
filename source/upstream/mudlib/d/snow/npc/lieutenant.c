@@ -7,10 +7,8 @@ inherit F_SOLDIER;
 void create()
 {
     set_name("武官", "lieutenant" );
-    set_attr("con", 21);
-    set_attr("str", 22);
     set_race("human");
-    set_class("commoner");
+    set_class("soldier");
     set_level(24);
 
     set_skill("twohanded sword", 80);
@@ -24,6 +22,7 @@ void create()
     set("vendetta_mark", "authority");
     set("bounty/martial art", 250);
     set("bounty/martial mastery", 150);
+    set_power("B");
     setup();
     carry_object( STOCK_ARMOR("cloth") )->wear();
     carry_object(__DIR__"obj/leather_armor")->wear();

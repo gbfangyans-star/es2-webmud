@@ -71,25 +71,34 @@ int look_living (object me, object obj) {
     pro = (me == obj) ? gender_self (obj->query ("gender")) : gender_pronoun (obj->query ("gender"));
 
     race = obj->query_race();
-    if ((string)obj->query("humanoid") && intp(age = obj->query("age"))) {
-        if (race == me->query_race()) // same race with the viewer, omit the race
+    // 練武用的假人、木樁是死物，不顯示外貌與年齡。
+    if ((string)obj->query("humanoid") && intp(age = obj->query("age"))
+    &&  !obj->query("training_dummy")) {
+        string age_str = (age > 10) ? ("約" + chinese_number (age / 10 * 10) + "多歲") : "不到十歲";
+
+        if (race == "human")
+            // 人類不顯示種族，直接接最高屬性的外貌描述。
             str += cjk_wrap (
-                sprintf ("%s%s。%s的外表看起來%s。",
+                sprintf ("%s%s，%s看起來%s。",
                     obj->name(),
                     RACE_D (race)->query_appearance (obj),
                     pro,
-                    (age > 10) ? ("約" + chinese_number (age / 10 * 10) + "多歲") : "不到十歲"),
+                    age_str),
                 living_desc_wrap_width) + "\n";
-        else
+        else {
+            // 其他種族一律顯示「屬於某某族」；中文名本身已有「族」字（人類族）就不重複。
+            string race_name = to_chinese (race);
+            if (race_name[<3..] != "族") race_name += "族";
             str += cjk_wrap (
-                sprintf ("%s屬於%s族，%s%s。%s的外表看起來%s。",
+                sprintf ("%s屬於%s，%s%s。%s看起來%s。",
                     obj->name(),
-                    to_chinese (race),
+                    race_name,
                     pro,
                     RACE_D (race)->query_appearance (obj),
                     pro,
-                    (age > 10) ? ("約" + chinese_number (age / 10 * 10) + "多歲") : "不到十歲"),
+                    age_str),
                 living_desc_wrap_width) + "\n";
+        }
     }
 
     inv = all_inventory (obj);

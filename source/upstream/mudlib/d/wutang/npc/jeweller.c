@@ -31,14 +31,6 @@ LONG
         "/custom/armor/finger/white_jade_ring" : 5,
         "/d/lee/obj/yellow_jade_ring" : 5,
     ]));
+    set_power("C");
     setup();
-    set_stat_maximum("gin", 120);
-    set_stat_effective("gin", 120);
-    set_stat_current("gin", 120);
-    set_stat_maximum("kee", 150);
-    set_stat_effective("kee", 150);
-    set_stat_current("kee", 150);
-    set_stat_maximum("sen", 50);
-    set_stat_effective("sen", 50);
-    set_stat_current("sen", 50);
 }

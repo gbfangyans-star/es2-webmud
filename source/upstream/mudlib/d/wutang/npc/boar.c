@@ -40,7 +40,7 @@ void create()
 一隻兇猛的野豬，正東張西望找食物。
 LONG
     );
+    // 野獸強度（1～10），數值見 daemon/race/beast.c。
+    set_beast(4);
     setup();
-    // 野獸強度（1～10，野豬為 4），數值見 daemon/race/beast.c。
-    RACE_D("beast")->set_strength(this_object(), 4);
 }

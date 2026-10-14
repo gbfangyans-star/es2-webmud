@@ -14,6 +14,7 @@ void create()
     set_level(5);
     set("age", 20);
     set("long", "路上來來往往的旅人，每天都能碰上十來個。\n");
+    set_power("C");
     setup();
     carry_object("/obj/area/obj/cloth")->wear();
     carry_object("/obj/area/obj/shortsword")->wield();

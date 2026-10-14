@@ -14,5 +14,7 @@ void create()
 整天只會咩咩跟吃草，頗為愜意。
 LONG
     );
+    // 野獸強度（1～10），數值見 daemon/race/beast.c。
+    set_beast(2);
     setup();
 }

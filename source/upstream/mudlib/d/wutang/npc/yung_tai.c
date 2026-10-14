@@ -20,11 +20,6 @@ void create()
 厄運﹐眼看著就要沒落了。
 LONG
     );
-    set_attr("str", 35);
-    set_attr("cor", 30);
-    set_attr("cps", 30);
-    set_attr("dex", 35);
-    set_attr("con", 32);
     set_skill("unarmed", 40);
     set_skill("dodge", 40);
     set_skill("parry", 40);
@@ -34,14 +29,6 @@ LONG
         "雍泰獨自坐在角落喝著悶酒，望著窗外的鐵旗桿怔怔出神。\n",
         "雍泰嘆了口氣：「先父一生清廉，到頭來卻落得這般下場……」\n",
     }));
+    set_power("B");
     setup();
-    set_stat_maximum("gin", 240);
-    set_stat_effective("gin", 240);
-    set_stat_current("gin", 240);
-    set_stat_maximum("kee", 300);
-    set_stat_effective("kee", 300);
-    set_stat_current("kee", 300);
-    set_stat_maximum("sen", 100);
-    set_stat_effective("sen", 100);
-    set_stat_current("sen", 100);
 }

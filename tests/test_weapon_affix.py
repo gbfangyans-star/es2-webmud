@@ -19,8 +19,8 @@ def test_affix_tables_match_design():
     assert pre['修羅'] == {'cor': 2, 'intimidate': 15}
     assert pre['雛鐵'] == {'attack': 10, 'force': 10}
     assert suf['天鷹'] == {'awarness': 50} and suf['金鷹'] == {'wittiness': 30}
-    # 必須有前綴才會有後綴；機率 60／30／10。
-    assert 'if( r >= 60 ) affix["prefix"]' in src and 'if( r >= 90 ) affix["suffix"]' in src
+    # 必須有前綴才會有後綴；機率 80／15／5。
+    assert 'if( r >= 80 ) affix["prefix"]' in src and 'if( r >= 95 ) affix["suffix"]' in src
     assert 'if( !prefix || !stringp(suffix)' in src
     assert '#define AFFIX_COLOR 1' in src
 
@@ -44,3 +44,31 @@ def test_bamboo_fishing_rod_keeps_base_trait():
     d = (MUD / 'adm/daemons/enhanced.c').read_text(encoding='utf-8')
     assert 'affix_base_apply/' in d   # 詞綴加在原本特性上，不會蓋掉
     assert 'bamboo_fishing_rod' in (MUD / 'd/wutang/npc/fisher.c').read_text(encoding='utf-8')
+
+
+def test_affix_name_uses_weapon_kind_and_both_colors():
+    src = (MUD / 'adm/daemons/enhanced.c').read_text(encoding='utf-8')
+    short = dict(re.findall(r'"(\w+)": "([^"]+)",', src.split('private mapping AFFIX_BASE_SHORT = ([', 1)[1].split(']);', 1)[0]))
+    assert short['sword'] == '劍' and short['blade'] == '刀' and short['dagger'] == '匕' and short['staff'] == '杖'
+    # 只有前綴：整把用前綴的顏色；有後綴：前綴用前綴的顏色，後綴與武器名用後綴的顏色。
+    assert 'pcolor = affix_color(prefix), scolor = affix_color(suffix)' in src
+    assert '(pcolor ? pcolor + prefix + NOR : prefix)' in src
+    assert '(scolor ? scolor + suffix + name + NOR : suffix + name)' in src
+    assert 'name = affix_short_name(ob, name);' in src
+    assert 'set("affix_short_name", "鞭");' in (MUD / 'obj/area/obj/rod.c').read_text(encoding='utf-8')
+    assert 'set("affix_short_name", "竿");' in (MUD / 'custom/weapon/whip/bamboo_fishing_rod.c').read_text(encoding='utf-8')
+
+
+def test_wutang_guard_wields_blade():
+    s = (MUD / 'd/wutang/npc/guard.c').read_text(encoding='utf-8')
+    assert 'set_skill("blade", 40);' in s
+    assert 'carry_object("/obj/area/obj/blade")->wield();' in s
+
+
+def test_dagger_and_staffs_roll_affix():
+    for f, short in (('obj/area/obj/dagger.c', None), ('d/lee/obj/brow_staff.c', '棍'),
+                     ('custom/weapon/staff/long_staff.c', None), ('custom/weapon/staff/zenstaff.c', '禪杖')):
+        s = (MUD / f).read_text(encoding='utf-8')
+        assert 'if( clonep() ) ENHANCE_D->roll_affix(this_object());' in s, f
+        if short:
+            assert 'set("affix_short_name", "%s");' % short in s, f
