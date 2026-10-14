@@ -35,7 +35,7 @@ def test_common_threshold_breakpoints():
 
 def test_restored_skills_and_caps_are_explicit_without_member_array_literal():
     s = text()
-    for name in ('unarmed','parry','dodge','blade','twohanded blade','secondhand blade','force','tiger-steps','tiger-blade','sanmeendo'):
+    for name in ('unarmed','parry','dodge','blade','twohanded blade','secondhand blade','force','tiger-steps','tiger-blade','ksanmando'):
         assert f'if( skill == "{name}" ) return 1;' in s
     assert 'if( skill == "tiger-steps" ) return 120;' in s
     assert 'if( skill == "tiger-blade" ) return 140;' in s

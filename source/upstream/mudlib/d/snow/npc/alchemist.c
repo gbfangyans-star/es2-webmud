@@ -11,10 +11,6 @@ void create()
 	set_race("human");
 	set_level(30);
 	set_class("alchemist");
-	set_skill("unarmed", 60);
-	set_skill("sword", 60);
-	set_skill("parry", 80);
-	set_skill("dodge", 70);
 	set_skill("force", 70);
 	set_skill("kee anatomy", 100);
 	set_skill("dragon force", 60);

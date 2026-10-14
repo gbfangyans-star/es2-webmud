@@ -12,18 +12,11 @@ void create()
 
 
 
-    set_skill("berserk", 180);
     set_skill("powerblow", 180);
     set_learn("powerblow", 1);
-    set_skill("dodge", 120);
-    set_skill("parry", 120);
-    set_skill("unarmed", 150);
-    set_skill("twohanded axe", 150);
 
+    // 狂擊由系統依軍人身分自動加入戰鬥動作（docs/CUSTOM_NPC_SKILL.md），這裡只設施展機率。
     set("chat_chance_combat", 50);
-    set("chat_msg_combat", ({
-        (: command, "berserk" :)
-    }));
 
     set("long", "米沛是振武軍最高指揮官，身披戰甲，神情沉穩威嚴。他在軍中多年，以實戰與軍功一步步升任主將，看來約五十多歲。軍中傳聞具備相當實力的軍人可向他申請更進一步的職務，但相關條件目前仍待可靠資料補齊。\n");
 

@@ -11,11 +11,7 @@ void create()
     set_class("fighter");
     set_level(10);
 
-    set_skill("sword", 70);
     set_skill("blade", 50);
-    set_skill("parry", 50);
-    set_skill("unarmed", 40);
-    set_skill("dodge", 70);
 
     set("age", 26);
     set("long", "一個身穿藏青勁裝的漢子﹐雙目炯炯有神地盯著你。\n");

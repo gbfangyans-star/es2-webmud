@@ -16,16 +16,13 @@ void create()
 楊子陵在冷梅派第一代弟子中排行第四, 為梅影風某日出外於路上所遇到的棄嬰, 因機緣而入冷梅派, 目前劍術內功已略有小成, 一手真冷梅劍法在武林中也頗有微名。
 LONG
     );
-    set_skill("unarmed", 90);
-    set_skill("dodge", 90);
-    set_skill("parry", 90);
-    set_skill("sword", 90);
     // 約 5～7 tick 說一句（每 tick 16% 機率）。
     set("chat_chance", 15);
     set("chat_msg", ({
         "楊子陵負手而立，望著遠處的羿水，似乎在等什麼人。\n",
         "楊子陵輕撫劍柄，低聲道：「冷梅劍法講究的是一個『冷』字，心若不靜，劍便不冷。」\n",
     }));
+    set("custom_faction", "fighter.lunmay");   // 門派記號（docs/CUSTOM_NPC_SKILL.md）
     set_power("A");
     setup();
     carry_object("/custom/weapon/sword/black_sword")->wield();

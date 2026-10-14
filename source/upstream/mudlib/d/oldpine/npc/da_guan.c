@@ -18,9 +18,6 @@ void create()
 大觀和尚是彤雲寺的住持，到南方雲遊七年，幾天前才剛回來。
 LONG
     );
-    set_skill("twohanded staff", 120);
-    set_skill("dodge", 40);
-    set_skill("parry", 60);
     set_power("A");
     setup();
     carry_object("/custom/weapon/staff/wither_zenstaff")->wield();

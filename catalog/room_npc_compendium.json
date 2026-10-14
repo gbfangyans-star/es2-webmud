@@ -1,0 +1,5112 @@
+[
+  {
+    "file": "/d/snow/bazar",
+    "area": "雪亭鎮",
+    "short": "魚記小鋪",
+    "long": "這裡是一間小店鋪, 右側擺了個長架, 不甚起眼的幾件日常用品零\n零疏疏地擺在架上, 你看到了有瓶罐, 棉被, 碗盤竹筷等雜物, 不過上\n面隱隱有些灰塵黃土, 似乎這兒老闆不常清掃. 正廳有個大圓桌, 上面\n擺了些布匹服飾. 左側有個高大的櫃臺, 上面橫掛了個匾額  (look 匾\n額 ), 看來像是個小錢莊.\n",
+    "exits": {
+      "west": "/d/snow/sstreet1"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/yu",
+        "count": 1,
+        "display": "魚天(Yu tan)",
+        "name": "魚天",
+        "id": "yu tan",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 25,
+        "long": "濃眉扇耳聲似洪, 自幼獨孤魚家童, 不識父母識鐵山, 不愛刀槍愛錢逢。\n魚天跟魚家淵源甚深, 據傳聞為魚鐵山當年誤殺一俠士時, 身旁之小男嬰\n, 由於不知其性氏家源, 故從小在魚家長大且名為天. 魚家對其有愧, 而\n魚天又不好武藝, 便以魚家資源, 助其在此開設錢莊兼販雜貨。\n",
+        "look": "濃眉扇耳聲似洪, 自幼獨孤魚家童, 不識父母識鐵山, 不愛刀槍愛錢逢。\n魚天跟魚家淵源甚深, 據傳聞為魚鐵山當年誤殺一俠士時, 身旁之小男嬰\n, 由於不知其性氏家源, 故從小在魚家長大且名為天. 魚家對其有愧, 而\n魚天又不好武藝, 便以魚家資源, 助其在此開設錢莊兼販雜貨。\n魚天屬於人類族。他的外表看起來約二十多歲。\n他身上帶著﹕\nＶ藍衣套 (Blue jacket)",
+        "inventory": [
+          {
+            "path": "/d/snow/npc/obj/blue_jacket",
+            "name": "藍衣套",
+            "id": "blue jacket",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/bug_room",
+    "area": "雪亭鎮",
+    "short": "小廣場",
+    "long": "這裏是個小廣場，幾棵樹稀稀落落的長在附近，中央有個小型的\n留言版，可供民眾回報所遭遇的怪異現象，往南可回到人聲鼎沸的雪\n亭鎮廣場。\n",
+    "exits": {
+      "south": "/d/snow/square_w"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/court",
+    "area": "雪亭鎮",
+    "short": "鄉校",
+    "long": "這裡是雪亭鎮的鄉校﹐平常鎮民對官府的施政有什麼不滿的可以到\n這裡來向校老申訴﹐所謂的校老就是地方上有德行與聲望的老人﹐今年\n擔任校老的是開磨坊的楊老爹﹐但是他最近身體不是很好﹐並不常到鄉\n校裡來﹐往南是街道﹐北邊是一間衙堂﹐當縣裡派師爺來這裡斷事就會\n在那裡開堂。\n",
+    "exits": {
+      "south": "/d/snow/wstreet3"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/oldman",
+        "count": 1,
+        "display": "黑衣老人(Oldman)",
+        "name": "黑衣老人",
+        "id": "oldman",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 65,
+        "long": "一個身穿黑衣的老人﹐雖然年紀很大了﹐卻臉色紅潤﹐眼睛炯炯有神。\n",
+        "look": "一個身穿黑衣的老人﹐雖然年紀很大了﹐卻臉色紅潤﹐眼睛炯炯有神。\n黑衣老人屬於人類族。他的外表看起來約六十多歲。\n他身上帶著﹕\nＶ布衣 (Cloth)\nＶ短劍 (Short sword)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/shortsword",
+            "name": "短劍",
+            "id": "short sword",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/ebridge",
+    "area": "雪亭鎮",
+    "short": "木橋",
+    "long": "你現在來到一條橫過山澗的木橋上。\n山澗雖不甚寬﹐但是深度卻有三、四丈﹐是雪亭鎮上居民主要的飲用水源。\n木橋連通溪邊小路和東邊的山路，橋面已經有些年頭了﹐不過看起來還算堅固。\n橋下的溪水正發出轟隆轟隆的巨響流過溪谷﹐往西是雪亭鎮﹐往東則通往著名的雪吟山莊。\n",
+    "exits": {
+      "west": "/d/snow/npath3"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/guard",
+        "count": 2,
+        "display": "青衣漢子(Guard)",
+        "name": "青衣漢子",
+        "id": "guard",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 26,
+        "long": "一個身穿藏青勁裝的漢子﹐雙目炯炯有神地盯著你。\n",
+        "look": "一個身穿藏青勁裝的漢子﹐雙目炯炯有神地盯著你。\n青衣漢子屬於人類族。他的外表看起來約二十多歲。\n他身上帶著﹕\nＶ布衣 (Cloth)\nＶ長劍 (Long sword)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/longsword",
+            "name": "長劍",
+            "id": "long sword",
+            "equipped": true
+          }
+        ]
+      },
+      {
+        "path": "/custom/ghost/npc/wronged_ghost",
+        "count": 1,
+        "display": "枉死鬼(Wronged ghost)",
+        "name": "枉死鬼",
+        "id": "wronged ghost",
+        "title": null,
+        "nickname": null,
+        "race": null,
+        "age": null,
+        "long": "一個因意外而亡的枉死鬼，無法投胎轉世，只能在事發地點附近遊蕩，\n一遍又一遍地重複著死前的那一刻。\n",
+        "look": "一個因意外而亡的枉死鬼，無法投胎轉世，只能在事發地點附近遊蕩，\n一遍又一遍地重複著死前的那一刻。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/egate",
+    "area": "雪亭鎮",
+    "short": "河邊",
+    "long": "破舊大宅外，你眼前是兩條河流的匯流處，來自西北、東北的兩條\n小河匯流後，緩緩的向西南流去。西北邊的河流上有一座小橋，過了橋\n，沿著東北邊河流的小石子路可以通往李家村。　\n",
+    "exits": {
+      "west": "/d/snow/ruin1",
+      "northeast": "/d/lee/entrance_s"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/epath",
+    "area": "雪亭鎮",
+    "short": "僻靜小巷",
+    "long": "這裡是條僻靜的小巷子﹐往西不遠處通往雪亭鎮的廣場﹐小巷的北\n面是一些瓦屋﹐圍繞著高高的圍牆﹐看來是有錢人的屋子﹐南邊有家小\n藥鋪﹐門口掛了好些曬乾的藥草﹐小巷往東是個轉角。\n",
+    "exits": {
+      "east": "/d/snow/lane1",
+      "west": "/d/snow/square_e",
+      "south": "/d/snow/herb_shop"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/fireplace",
+    "area": "雪亭鎮",
+    "short": "大灶內",
+    "long": "你現在正蜷縮著擠在一個大灶之中, 頭頂上方隱隱可看到煙囪的出\n口, 不過顯然沒有辦法爬出去, 這裡的牆壁因為長年燒火而變得烏黑, \n地面上積了一層厚厚的柴灰.\n",
+    "exits": {
+      "out": "/d/snow/inn_kitchen"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/herb_shop",
+    "area": "雪亭鎮",
+    "short": "小藥鋪",
+    "long": "這裡是一間小藥鋪﹐連像樣一點的招牌都沒有﹐只在門邊掛著一塊\n不甚起眼的木牌﹐上面寫著「順生堂」三個字﹐老舊的櫃臺後面陳列著\n一列藥櫃﹐藥櫃的每個抽屜按藥鋪的規矩都沒有任何標籤﹐西面的牆上\n吊著幾束曬乾的甘草﹐像這種小藥鋪沒有錢燒檀香祛除藥味﹐只好用甘\n草替代。\n",
+    "exits": {
+      "north": "/d/snow/epath"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/herbalist",
+        "count": 1,
+        "display": "藥鋪掌櫃(Herbalist)",
+        "name": "藥鋪掌櫃",
+        "id": "herbalist",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 44,
+        "long": "藥鋪掌櫃的是位胖胖的中年男子﹐雖然年紀有四五十歲了﹐不過看起\n來依然紅光滿面、精神煥發﹐你可以用 list 問他店裡有哪些藥。\n",
+        "look": "藥鋪掌櫃的是位胖胖的中年男子﹐雖然年紀有四五十歲了﹐不過看起\n來依然紅光滿面、精神煥發﹐你可以用 list 問他店裡有哪些藥。\n藥鋪掌櫃屬於人類族。他的外表看起來約四十多歲。\n他身上帶著﹕\nＶ布衣 (Cloth)\nＶ毛皮帽 (Fur hat)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          },
+          {
+            "path": "/d/snow/npc/obj/fur_hat",
+            "name": "毛皮帽",
+            "id": "fur hat",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/inn_hall",
+    "area": "雪亭鎮",
+    "short": "客棧大堂",
+    "long": "這裡是一家客棧的大堂﹐老舊的桌椅因為經年的使用而變得烏黑黝亮。\n西邊隔著一層竹簾隱隱傳來一陣陣鍋鏟的聲音﹐大概是客棧的廚房。\n靠北邊的牆壁邊上有一道通往二樓雅座的樓梯﹐樓梯下就是櫃臺。\n東邊是客棧的出口﹐門口一串紙糊燈籠隨風搖擺﹐上面寫著「飲風客棧」：\n意思是即使你沒有錢﹐也歡迎來這裡聊天聽書﹐喝西北風。\n西南邊有一扇木門通往客棧後面的馬房。\n",
+    "exits": {
+      "west": "/d/snow/inn_kitchen",
+      "east": "/d/snow/square_w"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/waiter",
+        "count": 1,
+        "display": "店小二(Waiter)",
+        "name": "店小二",
+        "id": "waiter",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 21,
+        "long": "一個約二十出頭的年輕小夥計﹐正忙進忙出招呼客人﹐你可以用\nlist 看可以點什麼菜﹐用 buy 跟店小二點菜。\n",
+        "look": "一個約二十出頭的年輕小夥計﹐正忙進忙出招呼客人﹐你可以用\nlist 看可以點什麼菜﹐用 buy 跟店小二點菜。\n店小二屬於人類族。他的外表看起來約二十多歲。",
+        "inventory": []
+      },
+      {
+        "path": "/d/snow/npc/innkeeper",
+        "count": 1,
+        "display": "掌櫃(Innkeeper)",
+        "name": "掌櫃",
+        "id": "innkeeper",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 52,
+        "long": "這位便是這家客棧的掌櫃﹐看起來福福泰泰像是個老好人。\n",
+        "look": "這位便是這家客棧的掌櫃﹐看起來福福泰泰像是個老好人。\n掌櫃屬於人類族。他的外表看起來約五十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/inn_kitchen",
+    "area": "雪亭鎮",
+    "short": "廚房",
+    "long": "這裡是一間寬敞的廚房﹐一座大灶佔據了東邊半個牆壁﹐南邊的櫃\n子整整齊齊地放著許多鍋碗瓢盆﹐這裡平常是相當忙碌的﹐如果你要在\n這裡東張西望的話﹐最好小心別被店小二端著的熱湯給燙到了﹐往東可\n以回到客棧裡。\n",
+    "exits": {
+      "east": "/d/snow/inn_hall"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/inn_staff_room",
+    "area": "雪亭鎮",
+    "short": "客棧人員休息室",
+    "long": "這裡是飲風客棧後院的員工休息室，供 NPC 員工休息和放鬆。\n普通玩家無法進入這裡，巫師可以在這裡休息，或者和 NPC 員工聊天，了解客棧的內部運作。\n",
+    "exits": {},
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/kitchen",
+    "area": "雪亭鎮",
+    "short": "廚房",
+    "long": "你現在正在一戶有錢人家的廚房裡﹐不過和你想像中的有錢人家廚\n房好像不太一樣﹐並沒有堆滿了雞鴨魚肉跟山珍海味﹐想來有錢人也是\n省吃儉用才能有錢的﹐廚房的門在你的南邊﹐不過鎖住了﹐東邊則是你\n進來的圍牆。\n",
+    "exits": {},
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/lane1",
+    "area": "雪亭鎮",
+    "short": "僻靜小巷",
+    "long": "這裡是條僻靜小巷的轉角處﹐小巷往北可以通往溪邊﹐從這裡就可\n以聽到溪流轟轟的聲音﹐東邊是一棟破舊的大宅院﹐門口的一的破匾寫\n著「長樂侯府」﹐不過裡面已經是斷垣殘璧了﹐小巷南邊有一座小土地\n公廟。\n",
+    "exits": {
+      "north": "/d/snow/lane2",
+      "west": "/d/snow/epath",
+      "east": "/d/snow/ruin1"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/lane2",
+    "area": "雪亭鎮",
+    "short": "溪邊小路",
+    "long": "你現在來到一處巷子的入口﹐往北通往一條溪邊的小路﹐西邊是一\n棟大瓦屋﹐大門深鎖著﹐東邊有一家磨坊﹐磨坊屋旁一個水車正轆轆地\n轉著﹐往南通往巷子裡的一個轉角。\n",
+    "exits": {
+      "south": "/d/snow/lane1",
+      "north": "/d/snow/npath3"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/mill",
+    "area": "雪亭鎮",
+    "short": "磨坊",
+    "long": "這裡是一間以磨麵粉為業的磨坊﹐屋子裡一大半的空間被一架水車\n佔據﹐水車轉動橫過屋樑上的木軸﹐木軸推動幾個絞盤轉動屋子中央的\n石磨﹐房子的另一角堆放著一些空的麻袋。\n",
+    "exits": {
+      "out": "/d/snow/lane2"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/miller",
+        "count": 1,
+        "display": "楊大嬸(Miller)",
+        "name": "楊大嬸",
+        "id": "miller",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "楊大嬸是前幾年才搬到這個地方的﹐據說他的丈夫是朝中的高官﹐但是\n得了功名富貴之後卻拋棄妻兒﹐但是楊大嬸自己從不承認﹐只說丈夫在\n京城經商。\n",
+        "look": "楊大嬸是前幾年才搬到這個地方的﹐據說他的丈夫是朝中的高官﹐但是\n得了功名富貴之後卻拋棄妻兒﹐但是楊大嬸自己從不承認﹐只說丈夫在\n京城經商。\n她身上帶著﹕\nＶ布衣 (Cloth)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/ngate",
+    "area": "雪亭鎮",
+    "short": "山路",
+    "long": "你現在正走在一條蜿蜒的山路上﹐往南不遠處可以看見許多人家和\n房舍﹐往北則通往山上﹐山路兩旁長滿雜草﹐靠西的一面是山壁﹐東邊\n是平緩的山坡﹐山坡盡頭是一片草地。\n",
+    "exits": {
+      "south": "/d/snow/nstreet2"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/garrison",
+        "count": 4,
+        "display": "官兵(Garrison)",
+        "name": "官兵",
+        "id": "garrison",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "一位負責維護地方治安的官兵﹐他們受過相當的訓練﹐有時候\n也加入軍隊作戰。\n",
+        "look": "一位負責維護地方治安的官兵﹐他們受過相當的訓練﹐有時候\n也加入軍隊作戰。\n他身上帶著﹕\nＶ布衣 (Cloth)\nＶ闊劍 (Broadsword)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/broadsword",
+            "name": "闊劍",
+            "id": "broadsword",
+            "equipped": true
+          }
+        ]
+      },
+      {
+        "path": "/d/snow/npc/lieutenant",
+        "count": 1,
+        "display": "武官(Lieutenant)",
+        "name": "武官",
+        "id": "lieutenant",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 36,
+        "long": "這是一名指揮官兵的武官﹐他們通常是軍人中出類拔萃的佼佼者。\n",
+        "look": "這是一名指揮官兵的武官﹐他們通常是軍人中出類拔萃的佼佼者。\n武官屬於人類族。他的外表看起來約三十多歲。\n他身上帶著﹕\nＶ布衣 (Cloth)\nＶ硬皮甲冑 (Leather armor)\nＶ銅盔 (Brass helmet)\nＶ皂步靴 (Black boots)\nＶ闊劍 (Broadsword)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          },
+          {
+            "path": "/d/snow/npc/obj/leather_armor",
+            "name": "硬皮甲冑",
+            "id": "leather armor",
+            "equipped": true
+          },
+          {
+            "path": "/d/snow/npc/obj/helmet",
+            "name": "銅盔",
+            "id": "brass helmet",
+            "equipped": true
+          },
+          {
+            "path": "/d/snow/npc/obj/clothboot",
+            "name": "皂步靴",
+            "id": "black boots",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/broadsword",
+            "name": "闊劍",
+            "id": "broadsword",
+            "equipped": true
+          }
+        ]
+      },
+      {
+        "path": "/custom/ghost/npc/tiger_thrall",
+        "count": 1,
+        "display": "倀鬼(Tiger thrall)",
+        "name": "倀鬼",
+        "id": "tiger thrall",
+        "title": null,
+        "nickname": null,
+        "race": null,
+        "age": null,
+        "long": "一個被老虎咬死的人所化的倀鬼。死後靈魂無法投胎，反而成為老虎的奴隸，\n替老虎引路去吃更多的人。\n",
+        "look": "一個被老虎咬死的人所化的倀鬼。死後靈魂無法投胎，反而成為老虎的奴隸，\n替老虎引路去吃更多的人。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/npath1",
+    "area": "雪亭鎮",
+    "short": "小路",
+    "long": "這裡是一條黃土小路﹐往西可以回到雪亭鎮的主要街道﹐北邊是一\n片草地﹐草地盡頭則是一片樹林﹐往東你可以聽到淙淙的水聲﹐不遠處\n可以望見一條山溪。\n",
+    "exits": {
+      "east": "/d/snow/npath2",
+      "west": "/d/snow/nstreet2"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/npath2",
+    "area": "雪亭鎮",
+    "short": "溪邊小路",
+    "long": "這裡是一條溪邊的小路﹐從這裡可以望見北邊的山間一道瀑布從崖\n上垂下﹐穿過山坡上的一片樹林﹐以及不遠處的草地﹐往你的東南邊流\n過﹐溪水衝激著溪床的岩石﹐發出轟轟的響聲﹐往西沿著小路可以回到\n雪亭鎮的大街﹐小路向東南可以通往溪邊。\n",
+    "exits": {
+      "southeast": "/d/snow/npath3",
+      "west": "/d/snow/npath1"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/woman",
+        "count": 1,
+        "display": "少婦(Woman)",
+        "name": "少婦",
+        "id": "woman",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "一個容色秀麗的少婦﹐穿著十分樸素。\n",
+        "look": "一個容色秀麗的少婦﹐穿著十分樸素。\n她身上帶著﹕\nＶ布衣 (Cloth)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/npath3",
+    "area": "雪亭鎮",
+    "short": "溪邊小路",
+    "long": "你現在來到一條溪流邊上的小路﹐溪水流過佈滿石塊的河床發出轟\n轟的聲音﹐一條木橋跨過溪流往東通往鎮外的小路﹐沿著溪邊往南不遠\n處則可以望見一間磨坊。北邊一條小路可以下到溪谷中。\n",
+    "exits": {
+      "north": "/d/snow/river1",
+      "south": "/d/snow/lane2",
+      "northwest": "/d/snow/npath2",
+      "east": "/d/snow/ebridge"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/nstreet1",
+    "area": "雪亭鎮",
+    "short": "街道",
+    "long": "這裡是雪亭鎮北邊的主要街道﹐往南通往鎮上最熱鬧的廣場﹐往北\n則通往鎮北的山路﹐你的西邊都是一些賣雜貨的店鋪﹐這一帶除了市集\n的日子﹐並不常有太多人走動。你注意到東邊有一間不太顯眼的土地公\n廟。\n",
+    "exits": {
+      "south": "/d/snow/square_n",
+      "north": "/d/snow/nstreet2",
+      "east": "/d/snow/small_temple"
+    },
+    "npcs": [
+      {
+        "path": "/custom/ghost/npc/wandering_soul",
+        "count": 1,
+        "display": "遊魂(Wandering soul)",
+        "name": "遊魂",
+        "id": "wandering soul",
+        "title": null,
+        "nickname": null,
+        "race": null,
+        "age": null,
+        "long": "一縷不屬於任何家族牌位的遊魂，無人祭祀、無處可歸，只能等待陽間的\n慈善廟宇進行集體收容與超度。\n",
+        "look": "一縷不屬於任何家族牌位的遊魂，無人祭祀、無處可歸，只能等待陽間的\n慈善廟宇進行集體收容與超度。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/nstreet2",
+    "area": "雪亭鎮",
+    "short": "街道",
+    "long": "這裡是雪亭鎮北邊的主要街道﹐往南稍遠處便是一處廣場﹐往北可\n見一條蜿蜒的山路穿過長滿芒草的山坡通往野羊山上﹐東邊是一條小路\n通往溪邊﹐西邊則是一間驛站。\n",
+    "exits": {
+      "west": "/d/snow/post_office",
+      "east": "/d/snow/npath1",
+      "south": "/d/snow/nstreet1",
+      "north": "/d/snow/ngate"
+    },
+    "npcs": [
+      {
+        "path": "/obj/area/man",
+        "count": 1,
+        "display": "路人(Man)",
+        "name": "路人",
+        "id": "man",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "一個普通的路人﹐像這樣的人一天可以在路上碰見幾十個。\n",
+        "look": "一個普通的路人﹐像這樣的人一天可以在路上碰見幾十個。\n他身上帶著﹕\nＶ布衣 (Cloth)\nＶ短劍 (Short sword)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/shortsword",
+            "name": "短劍",
+            "id": "short sword",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/post_office",
+    "area": "雪亭鎮",
+    "short": "雪亭驛",
+    "long": "這裡是雪亭鎮的驛站﹐雖然驛站主要是替官府遞送文書﹐不過由於近年來\n土匪強盜出沒頻繁﹐也不少百姓會花一些錢請驛站的官員幫忙送信收信，喬陰\n縣的縣令認為土匪擾民是官府的施政缺失，驛站若是還收百姓的錢，實在是受\n之有愧，索性下令縣內驛站對百姓的郵遞委託一律不得收費。\n\n如果你想要收發信，可以用 request 向驛站官員領取收發信的信札。\n",
+    "exits": {
+      "east": "/d/snow/nstreet2"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/river1",
+    "area": "雪亭鎮",
+    "short": "溪邊",
+    "long": "這裡是溪流旁的亂石灘，溪流兩岸都有一丈多高，只有此處因為溪\n流彎道沖積，形成一處小石灘，水流衝激的聲音經過溪谷的回音震耳欲\n聾，往南一條小路可以回到岸邊。\n",
+    "exits": {
+      "south": "/d/snow/npath3"
+    },
+    "npcs": [
+      {
+        "path": "/custom/taoism/npc/fire_taoist",
+        "count": 1,
+        "display": "朱衣派弟子(Red-taoist)",
+        "name": "朱衣派弟子",
+        "id": "red-taoist",
+        "title": null,
+        "nickname": null,
+        "race": "avatar",
+        "age": null,
+        "long": "這名朱衣派弟子精通天師道法【火術】，手持長劍，身穿布衣。\n",
+        "look": "這名朱衣派弟子精通天師道法【火術】，手持長劍，身穿布衣。\n他身上帶著﹕\nＶ布衣 (Cloth)\nＶ長劍 (Long sword)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/longsword",
+            "name": "長劍",
+            "id": "long sword",
+            "equipped": true
+          }
+        ]
+      },
+      {
+        "path": "/custom/taoism/npc/freeze_taoist",
+        "count": 1,
+        "display": "素衣派弟子(White-taoist)",
+        "name": "素衣派弟子",
+        "id": "white-taoist",
+        "title": null,
+        "nickname": null,
+        "race": "woochan",
+        "age": null,
+        "long": "這名素衣派弟子精通天師道法【冰咒】，手持長劍，身穿布衣。\n",
+        "look": "這名素衣派弟子精通天師道法【冰咒】，手持長劍，身穿布衣。\n他身上帶著﹕\nＶ布衣 (Cloth)\nＶ長劍 (Long sword)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/longsword",
+            "name": "長劍",
+            "id": "long sword",
+            "equipped": true
+          }
+        ]
+      },
+      {
+        "path": "/custom/taoism/npc/storm_taoist",
+        "count": 1,
+        "display": "玄衣派弟子(Black-taoist)",
+        "name": "玄衣派弟子",
+        "id": "black-taoist",
+        "title": null,
+        "nickname": null,
+        "race": "avatar",
+        "age": null,
+        "long": "這名玄衣派弟子精通天師道法【風符】，手持長劍，身穿布衣。\n",
+        "look": "這名玄衣派弟子精通天師道法【風符】，手持長劍，身穿布衣。\n他身上帶著﹕\nＶ布衣 (Cloth)\nＶ長劍 (Long sword)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/longsword",
+            "name": "長劍",
+            "id": "long sword",
+            "equipped": true
+          }
+        ]
+      },
+      {
+        "path": "/custom/taoism/npc/thunder_taoist",
+        "count": 1,
+        "display": "紫衣派弟子(Purple-taoist)",
+        "name": "紫衣派弟子",
+        "id": "purple-taoist",
+        "title": null,
+        "nickname": null,
+        "race": "avatar",
+        "age": null,
+        "long": "這名紫衣派弟子精通天師道法【雷法】，手持長劍，身穿布衣。\n",
+        "look": "這名紫衣派弟子精通天師道法【雷法】，手持長劍，身穿布衣。\n他身上帶著﹕\nＶ布衣 (Cloth)\nＶ長劍 (Long sword)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/longsword",
+            "name": "長劍",
+            "id": "long sword",
+            "equipped": true
+          }
+        ]
+      },
+      {
+        "path": "/custom/ghost/npc/water_goblin",
+        "count": 1,
+        "display": "魍魎(Water goblin)",
+        "name": "魍魎",
+        "id": "water goblin",
+        "title": null,
+        "nickname": null,
+        "race": null,
+        "age": null,
+        "long": "一隻皮膚紅黑、耳朵很長的魍魎，喜歡在夜間模仿人類的聲音來嚇人，\n或是引誘人走進水裡溺死。\n",
+        "look": "一隻皮膚紅黑、耳朵很長的魍魎，喜歡在夜間模仿人類的聲音來嚇人，\n或是引誘人走進水裡溺死。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/riverbank",
+    "area": "雪亭鎮",
+    "short": "河邊空地",
+    "long": "這裡是河邊的一處空地﹐湍急的河流從你的北邊往東南邊流去﹐離\n這裡的河岸往北一丈多遠的地方可以看見一個水車﹐南邊則是一間破舊\n的大宅院﹐牆壁上一個大缺口足足可以讓人通過。\n",
+    "exits": {
+      "south": "/d/snow/ruin2"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/ruin1",
+    "area": "雪亭鎮",
+    "short": "破舊大宅",
+    "long": "這裡是一間破舊大宅的前院﹐大廳已經崩塌了一半﹐焦黑的樑柱擋\n住了你的去路﹐庭院裡雜草叢生﹐看來已經很久沒有人住了﹐據說這裡\n晚上有鬼魂出現﹐但是倒也從沒聽說過有人被害﹐因此附近的居民仍然\n照常生活﹐往西可以經由大宅的正門回到街上。\n",
+    "exits": {
+      "west": "/d/snow/lane1",
+      "east": "/d/snow/egate"
+    },
+    "npcs": [
+      {
+        "path": "/custom/ghost/npc/wandering_soul",
+        "count": 1,
+        "display": "遊魂(Wandering soul)",
+        "name": "遊魂",
+        "id": "wandering soul",
+        "title": null,
+        "nickname": null,
+        "race": null,
+        "age": null,
+        "long": "一縷不屬於任何家族牌位的遊魂，無人祭祀、無處可歸，只能等待陽間的\n慈善廟宇進行集體收容與超度。\n",
+        "look": "一縷不屬於任何家族牌位的遊魂，無人祭祀、無處可歸，只能等待陽間的\n慈善廟宇進行集體收容與超度。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/ruin2",
+    "area": "雪亭鎮",
+    "short": "破舊大宅正廳",
+    "long": "這裡是一棟破舊大宅的正廳﹐北面的牆壁跟屋頂已經整個坍塌了﹐\n涼颼颼的冷風從北邊的缺口直灌進來﹐另你覺得意外的是﹐這裡清掃得\n相當整潔﹐地上用乾草整整齊齊地鋪著一個床舖﹐說是流浪漢在這裡棲\n宿卻也不像﹐哪裡會有這麼愛整潔的流浪漢﹖大廳倒塌的樑柱擋住了往\n西的出口。\n",
+    "exits": {
+      "north": "/d/snow/riverbank"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/girl",
+        "count": 1,
+        "display": "白衣女子(Girl)",
+        "name": "白衣女子",
+        "id": "girl",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 19,
+        "long": "一個身穿白衣的女子﹐看起來年紀不會超過二十歲﹐容貌雖不甚美﹐卻\n別有一股靈秀之氣﹐令人凜然不敢輕侮。\n",
+        "look": "一個身穿白衣的女子﹐看起來年紀不會超過二十歲﹐容貌雖不甚美﹐卻\n別有一股靈秀之氣﹐令人凜然不敢輕侮。\n白衣女子屬於人類族。她的外表看起來約十多歲。\n她身上帶著﹕\nＶ白綢羽衫 (White dress)\nＶ繞指柔劍 (Slasher sword)",
+        "inventory": [
+          {
+            "path": "/d/snow/npc/obj/white_dress",
+            "name": "白綢羽衫",
+            "id": "white dress",
+            "equipped": true
+          },
+          {
+            "path": "/d/snow/npc/obj/slasher_sword",
+            "name": "繞指柔劍",
+            "id": "slasher sword",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/school",
+    "area": "雪亭鎮",
+    "short": "私塾",
+    "long": "這裡是一間私塾﹐簡單的陳設與幾張排得整整齊齊的桌椅﹐就是這\n間屋子的所有傢具﹐屋角一個大書櫃﹐裡面放著許多手抄本的古書﹐不\n過書櫃的門是鎖著的﹐最前面的桌上放著文房四寶﹐與一盆小巧的盆栽\n柏樹﹐私塾的出口在北邊。\n",
+    "exits": {
+      "north": "/d/snow/wstreet1"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/teacher",
+        "count": 1,
+        "display": "王懷芝(Wang whaiz)",
+        "name": "王懷芝",
+        "id": "wang whaiz",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "王懷芝是鎮上王員外的獨子﹐前幾年上京考試落第﹐碰巧王太夫人過世\n﹐因此留在家鄉服喪﹐閒暇無事﹐便開了間私塾教鎮上孩子讀書。\n",
+        "look": "王懷芝是鎮上王員外的獨子﹐前幾年上京考試落第﹐碰巧王太夫人過世\n﹐因此留在家鄉服喪﹐閒暇無事﹐便開了間私塾教鎮上孩子讀書。",
+        "inventory": []
+      },
+      {
+        "path": "/d/snow/npc/alchemist",
+        "count": 1,
+        "display": "龍圖丹派弟子「牙山居士」陳維俠(Chen weisha)",
+        "name": "陳維俠",
+        "id": "chen weisha",
+        "title": "龍圖丹派弟子",
+        "nickname": "牙山居士",
+        "race": "human",
+        "age": 55,
+        "long": "陳維俠是個著名的方士﹐經常來往於天邪國與喬陰縣之間採藥及尋覓\n珍奇礦物﹐他和雪亭鎮的王員外是舊日同窗﹐這幾日原本要往野羊山\n採藥﹐但是因為盜賊肆虐所以暫時在王員外家盤桓數日。\n陳維俠本名陳度﹐維俠是他的學生們送給他的稱號﹐意思是說他相當\n有俠氣﹐喜歡打抱不平﹐若不是給王員外的獨子纏住了講養生之術﹐\n只怕早幾日前就上野羊山剷除盜匪去了。\n",
+        "look": "陳維俠是個著名的方士﹐經常來往於天邪國與喬陰縣之間採藥及尋覓\n珍奇礦物﹐他和雪亭鎮的王員外是舊日同窗﹐這幾日原本要往野羊山\n採藥﹐但是因為盜賊肆虐所以暫時在王員外家盤桓數日。\n陳維俠本名陳度﹐維俠是他的學生們送給他的稱號﹐意思是說他相當\n有俠氣﹐喜歡打抱不平﹐若不是給王員外的獨子纏住了講養生之術﹐\n只怕早幾日前就上野羊山剷除盜匪去了。\n陳維俠屬於人類族。他的外表看起來約五十多歲。\n他身上帶著﹕\nＶ洗銀劍 (Silver sword)\nＶ布衣 (Cloth)",
+        "inventory": [
+          {
+            "path": "/d/snow/npc/obj/silversword",
+            "name": "洗銀劍",
+            "id": "silver sword",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          }
+        ]
+      },
+      {
+        "path": "/d/snow/npc/child3",
+        "count": 2,
+        "display": "小孩(Child)",
+        "name": "小孩",
+        "id": "child",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 6,
+        "long": "一個流著鼻涕的小孩﹐睜著一雙無邪的眼睛望著你。\n",
+        "look": "一個流著鼻涕的小孩﹐睜著一雙無邪的眼睛望著你。\n小孩屬於人類族。他的外表看起來不到十歲。\n他身上帶著﹕\nＶ肚兜 (Tummy cover)",
+        "inventory": [
+          {
+            "path": "/d/snow/npc/obj/tummy_cover",
+            "name": "肚兜",
+            "id": "tummy cover",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/sgate",
+    "area": "雪亭鎮",
+    "short": "草棚",
+    "long": "這裡是雪亭鎮南邊的入口﹐往北穿過草棚通往雪亭鎮的街道﹐出草\n棚往鎮外有兩條路﹐往東南的路穿過雪亭南方的老松林﹐通往縣城喬陰\n﹐這條路雖然比較近﹐但是近來一群自稱老松寨的土匪常常在這一帶出\n沒﹐往西的一條沿著老松林外的大路通往鄰近的五堂鎮﹐從喬陰縣城往\n天邪國的商旅現在大多繞道走這一條路﹐因為往五堂鎮的路上有一處北\n軍府訓練新兵的軍營﹐常有軍士巡邏﹐攔路強人多半不敢滋事。\n",
+    "exits": {
+      "north": "/d/snow/sstreet1",
+      "west": "/custom/zhenwu/room/gate",
+      "southeast": "/d/oldpine/entrance"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/small_temple",
+    "area": "雪亭鎮",
+    "short": "土地公廟",
+    "long": "這裡是一處小而整潔的土地公廟，中央一座紅磚砌成的神龕裡供奉著一尊黑色臉龐的土地公神像。\n神龕前有一個黃銅香爐，幾注線香伴隨著輕煙散發出一種安詳的氛圍。\n",
+    "exits": {
+      "west": "/d/snow/nstreet1"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/smithy",
+    "area": "雪亭鎮",
+    "short": "打鐵鋪子",
+    "long": "這裡是一間打鐵鋪子﹐牆上掛了許多鐵器的半成品跟工具﹐鋪子中\n間一個燒著熊熊火燄的火爐映得你在牆上的影子一晃一晃的﹐旁邊還有\n一個沈重的大鐵砧﹐鋪子的出口就在東邊。\n",
+    "exits": {
+      "west": "/d/snow/square_s"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/smith",
+        "count": 1,
+        "display": "鐵匠(Smith)",
+        "name": "鐵匠",
+        "id": "smith",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "一個身材粗壯的鐵匠﹐正忙碌地工作著。\n如果你想買一些鐵器﹐可以用 list 看有哪些東西﹐用 buy 向鐵匠購買。\n",
+        "look": "一個身材粗壯的鐵匠﹐正忙碌地工作著。\n如果你想買一些鐵器﹐可以用 list 看有哪些東西﹐用 buy 向鐵匠購買。\n他身上帶著﹕\nＶ打鐵褂子 (Work smock)",
+        "inventory": [
+          {
+            "path": "/d/snow/npc/obj/smock",
+            "name": "打鐵褂子",
+            "id": "work smock",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/square",
+    "area": "雪亭鎮",
+    "short": "廣場中央",
+    "long": "這裡是雪亭鎮廣場的中央﹐一株巨大的老榕樹盤根錯結地站在中央\n﹐一些孩童常常爬上這株老榕嬉戲﹐榕樹下七橫八豎地放著幾張長凳供\n人歇息聊天﹐樹旁還有一個水缸供路人取水解渴。\n",
+    "exits": {
+      "east": "/d/snow/square_e",
+      "north": "/d/snow/square_n",
+      "west": "/d/snow/square_w",
+      "south": "/d/snow/square_s"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/gammer",
+        "count": 1,
+        "display": "瞎眼老太婆(Blind gammer)",
+        "name": "瞎眼老太婆",
+        "id": "blind gammer",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 66,
+        "long": "一個瞎了眼睛的老太婆﹐滿臉皺紋﹐但是卻給人一種親切的感覺。\n",
+        "look": "一個瞎了眼睛的老太婆﹐滿臉皺紋﹐但是卻給人一種親切的感覺。\n瞎眼老太婆屬於人類族。她的外表看起來約六十多歲。\n她身上帶著﹕\nＶ布衣 (Cloth)\nＶ拐杖 (Cane)\nＶ「尺娘」 (Syndicator)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          },
+          {
+            "path": "/d/snow/npc/obj/cane",
+            "name": "拐杖",
+            "id": "cane",
+            "equipped": true
+          },
+          {
+            "path": "/d/snow/npc/obj/syndicator",
+            "name": "「尺娘」",
+            "id": "syndicator",
+            "equipped": true
+          }
+        ]
+      },
+      {
+        "path": "/d/snow/npc/junkman",
+        "count": 1,
+        "display": "拾荒老頭(Junkman)",
+        "name": "拾荒老頭",
+        "id": "junkman",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 66,
+        "long": "一個痀僂的拾荒老頭﹐靠撿拾廢物維生﹐如果你願意幫助這樣一個\n老人過好一點的生活﹐或者是願意替辛苦的巫師們節省一點記憶體\n﹐請把你身上多餘的東西給他﹐可以得到一點的 civism。\n",
+        "look": "一個痀僂的拾荒老頭﹐靠撿拾廢物維生﹐如果你願意幫助這樣一個\n老人過好一點的生活﹐或者是願意替辛苦的巫師們節省一點記憶體\n﹐請把你身上多餘的東西給他﹐可以得到一點的 civism。\n拾荒老頭屬於人類族。他的外表看起來約六十多歲。",
+        "inventory": []
+      },
+      {
+        "path": "/custom/ghost/npc/hungry_ghost",
+        "count": 2,
+        "display": "餓鬼(Hungry ghost)",
+        "name": "餓鬼",
+        "id": "hungry ghost",
+        "title": null,
+        "nickname": null,
+        "race": null,
+        "age": null,
+        "long": "一隻肚子大如鼓、食道卻細如針孔的餓鬼。每當牠看到食物想要進食時，\n食物就會化為烈火，只能永遠處於飢餓交迫的游離狀態。\n",
+        "look": "一隻肚子大如鼓、食道卻細如針孔的餓鬼。每當牠看到食物想要進食時，\n食物就會化為烈火，只能永遠處於飢餓交迫的游離狀態。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/square_e",
+    "area": "雪亭鎮",
+    "short": "廣場",
+    "long": "這裡是雪亭鎮廣場東邊﹐往東是一條僻靜的巷子﹐西邊有一株高大\n的榕樹﹐南邊是一家打鐵鋪子﹐不過店門不在這一邊。\n",
+    "exits": {
+      "east": "/d/snow/epath",
+      "west": "/d/snow/square"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/square_n",
+    "area": "雪亭鎮",
+    "short": "廣場",
+    "long": "這裡是雪亭鎮廣場北邊﹐平常是附近孩童嬉戲遊玩的地方﹐初一十\n五則是市集的所在﹐往南可以看見一株大榕樹﹐往北則是一條筆直的街\n道。\n",
+    "exits": {
+      "north": "/d/snow/nstreet1",
+      "south": "/d/snow/square"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/child1",
+        "count": 1,
+        "display": "小孩(Child)",
+        "name": "小孩",
+        "id": "child",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 6,
+        "long": "一個流著鼻涕的小孩﹐睜著一雙無邪的眼睛望著你。\n",
+        "look": "一個流著鼻涕的小孩﹐睜著一雙無邪的眼睛望著你。\n小孩屬於人類族。他的外表看起來不到十歲。\n他身上帶著﹕\nＶ肚兜 (Tummy cover)",
+        "inventory": [
+          {
+            "path": "/d/snow/npc/obj/tummy_cover",
+            "name": "肚兜",
+            "id": "tummy cover",
+            "equipped": true
+          }
+        ]
+      },
+      {
+        "path": "/d/snow/npc/child2",
+        "count": 1,
+        "display": "小孩(Child)",
+        "name": "小孩",
+        "id": "child",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "一個約七、八歲大的男孩﹐笑瞇瞇地望著你。\n",
+        "look": "一個約七、八歲大的男孩﹐笑瞇瞇地望著你。\n他身上帶著﹕\nＶ木劍 (Wooden sword)",
+        "inventory": [
+          {
+            "path": "/d/snow/npc/obj/woodsword",
+            "name": "木劍",
+            "id": "wooden sword",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/square_s",
+    "area": "雪亭鎮",
+    "short": "廣場",
+    "long": "這裡是雪亭鎮廣場的南邊﹐往北可以望見一株高大的榕樹﹐廣場以\n榕樹為中心形成一個十多丈見方的大空地﹐街道往南通往鎮外﹐東邊不\n遠處有間打鐵鋪子。\n",
+    "exits": {
+      "west": "/d/snow/square_sw",
+      "east": "/d/snow/smithy",
+      "north": "/d/snow/square",
+      "south": "/d/snow/sstreet1"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/square_sw",
+    "area": "雪亭鎮",
+    "short": "廣場",
+    "long": "這裡是雪亭鎮廣場的西南邊﹐廣場中央的大榕樹就在你的東北方不\n遠處﹐這裡的北邊可以看見一家客棧﹐往西是一條街道﹐東邊穿過一個\n路口可看見一家打鐵鋪子。\n",
+    "exits": {
+      "west": "/d/snow/wstreet1",
+      "east": "/d/snow/square_s",
+      "north": "/d/snow/square_w"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/square_w",
+    "area": "雪亭鎮",
+    "short": "廣場",
+    "long": "這裡是雪亭鎮廣場的西邊﹐往東可以看見廣場中央的大榕樹。 \n一家小客棧座落在西邊不遠處﹐客棧前的一串燈籠上寫著「飲風客棧」四個大字。\n廣場上鋪著整齊的石板，在這樣的小鎮通常是因為驛站的緣故才會費事鋪設。\n",
+    "exits": {
+      "south": "/d/snow/square_sw",
+      "west": "/d/snow/inn_hall",
+      "east": "/d/snow/square",
+      "north": "/d/snow/bug_room"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/sstreet1",
+    "area": "雪亭鎮",
+    "short": "街道",
+    "long": "這裡是雪亭鎮南邊連接鎮外的街道﹐西邊有一間貨棧﹐東邊則是一\n家雜貨鋪﹐街道往北通往廣場南邊﹐往南穿過一個草棚出鎮外。\n",
+    "exits": {
+      "south": "/d/snow/sgate",
+      "north": "/d/snow/square_s",
+      "west": "/d/snow/store",
+      "east": "/d/snow/bazar"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/store",
+    "area": "雪亭鎮",
+    "short": "貨棧",
+    "long": "這裡是一間貨棧﹐也是旅行客商們儲放貨物﹐運送、轉交的地方﹐\n雪亭鎮因為位於通往天邪國的重要道路﹐所以貨棧往來的貨物相當的多\n﹐因此成為少數幾個設有貨棧的村鎮﹐天朝各地的貨棧大多數都互相連\n繫﹐因此商業十分發達﹐忙碌的貨棧也常常是缺錢的人打零工的地方﹐\n因為貨棧的工作量不固定﹐有大批貨物進來的時候往往需要平常十幾倍\n的人手﹐但是貨棧的利潤又雇不起長期的工人。\n",
+    "exits": {
+      "east": "/d/snow/sstreet1"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/foreman",
+        "count": 1,
+        "display": "工頭(Foreman)",
+        "name": "工頭",
+        "id": "foreman",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 48,
+        "long": "這位就是這家貨棧的工頭﹐負責指揮工人將貨物搬進搬出﹐如果\n你想打工賺些錢﹐可以跟他談談看。\n",
+        "look": "這位就是這家貨棧的工頭﹐負責指揮工人將貨物搬進搬出﹐如果\n你想打工賺些錢﹐可以跟他談談看。\n工頭屬於人類族。他的外表看起來約四十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/tree",
+    "area": "雪亭鎮",
+    "short": "榕樹上",
+    "long": "你現在正在一株巨大的榕樹上﹐茂密的枝葉搔得你有些發癢﹐前面\n一根粗大的樹枝上有人放著一塊墊子。\n",
+    "exits": {
+      "down": "/d/snow/square"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/child",
+        "count": 1,
+        "display": "阿寶(Arbao)",
+        "name": "阿寶",
+        "id": "arbao",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 16,
+        "long": "這個十五、六歲的小姑娘就是「阿寶」了﹐她身上雖然穿著粗布\n衣服﹐但卻十足是個美人胚子﹐一雙水汪汪的大眼睛骨碌碌地轉\n著﹐還不時盯著你看﹐使你不禁覺得有些發窘。\n",
+        "look": "這個十五、六歲的小姑娘就是「阿寶」了﹐她身上雖然穿著粗布\n衣服﹐但卻十足是個美人胚子﹐一雙水汪汪的大眼睛骨碌碌地轉\n著﹐還不時盯著你看﹐使你不禁覺得有些發窘。\n阿寶屬於人類族。她的外表看起來約十多歲。\n她身上帶著﹕\nＶ藍布長衫 (Blue cloth)\nＶ匕首 (Dagger)",
+        "inventory": [
+          {
+            "path": "/d/snow/npc/obj/blue_cloth",
+            "name": "藍布長衫",
+            "id": "blue cloth",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/dagger",
+            "name": "匕首",
+            "id": "dagger",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/wgate",
+    "area": "雪亭鎮",
+    "short": "雪亭鎮",
+    "long": "這裡是雪亭鎮西邊的官道﹐雖然雪亭驛設在鎮上的北邊﹐但是官道\n卻是從西邊入雪亭﹐因為原來修官道時利用了一段從前中陽侯征奐族亂\n軍的棧道﹐因此上這條官道便從西邊穿過山谷接古中陽棧道﹐出黃石隘\n﹐往東通往雪亭鎮的街道﹐往西則出鎮。\n",
+    "exits": {
+      "east": "/d/snow/wstreet3"
+    },
+    "npcs": [
+      {
+        "path": "/custom/ghost/npc/mountain_sprite",
+        "count": 1,
+        "display": "魑魅(Mountain sprite)",
+        "name": "魑魅",
+        "id": "mountain sprite",
+        "title": null,
+        "nickname": null,
+        "race": null,
+        "age": null,
+        "long": "一隻由深山老林中的瘴氣、木石等自然異氣化生而成的精怪，身形忽濃忽淡，\n隱約帶著一股潮濕腐朽的草木氣味。\n",
+        "look": "一隻由深山老林中的瘴氣、木石等自然異氣化生而成的精怪，身形忽濃忽淡，\n隱約帶著一股潮濕腐朽的草木氣味。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/snow/wstreet1",
+    "area": "雪亭鎮",
+    "short": "街道",
+    "long": "這裡是雪亭鎮廣場西邊的街道﹐往北是一間客棧﹐不過這個方向沒\n有入口﹐南邊一間青瓦屋﹐門口灑掃得乾乾淨淨﹐似是家私塾模樣﹐往\n西的街道十分寬敞﹐路上還有車馬經過壓出來的溝痕。\n",
+    "exits": {
+      "south": "/d/snow/school",
+      "east": "/d/snow/square_sw",
+      "west": "/d/snow/wstreet2"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/wstreet2",
+    "area": "雪亭鎮",
+    "short": "街道",
+    "long": "這裡是雪亭鎮西邊的街道﹐北邊是一間看起來像是客棧的大屋，圍\n牆上曬著一些陳舊卻潔白的衣服。南邊有間青瓦屋，幾株大樹從圍牆內\n探出頭來。\n",
+    "exits": {
+      "east": "/d/snow/wstreet1",
+      "west": "/d/snow/wstreet3"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/snow/wstreet3",
+    "area": "雪亭鎮",
+    "short": "街道",
+    "long": "這裡是雪亭鎮西邊的街道﹐北邊是雪亭鎮的鄉校﹐平常會有一些鎮\n上的長者在這裡談論鎮上的閒事﹐縣裡若有公爺來這裡斷事﹐也是在這\n裡設的公堂﹐往西不遠處就是出鎮的官道﹐街道南邊是一家糕餅鋪。\n",
+    "exits": {
+      "north": "/d/snow/court",
+      "east": "/d/snow/wstreet2",
+      "west": "/d/snow/wgate"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/creek",
+    "area": "李家村",
+    "short": "小溪",
+    "long": "清淺溪水貼著李家村東側緩緩流過，岸邊散著大小不一的石塊。西面靠近瓜田，北面則可沿溪邊小路返回村東門。溪水清澈見底，偶爾能看見幾尾小魚悠游其中，石塊上還留著村婦浣衣時留下的濕痕。\n",
+    "exits": {
+      "north": "/d/lee/riverside_s",
+      "west": "/d/lee/watermelon_n3"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/entrance_s",
+    "area": "李家村",
+    "short": "村口",
+    "long": "這裡是李家村南面的村口，北方木製大門後便是村內街道。往西南沿著小路離村，便可回到雪亭一帶兩條河流交會的河邊。路邊立著一塊半人高的青石界碑年久失修，「李家村」三個字已被歲月磨得淺淡，碑角還纏著幾圈舊布條，像是往來旅客隨手繫上的平安結。幾名風塵僕僕的旅客或坐或倚在碑石邊，一邊揉著痠痛的腿腳，一邊互相打聽前方村鎮的近況。\n",
+    "exits": {
+      "north": "/d/lee/gate_s",
+      "southwest": "/d/snow/egate"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/traveller",
+        "count": 3,
+        "display": "旅客(Traveller)",
+        "name": "旅客",
+        "id": "traveller",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 20,
+        "long": "路上來來往往的旅人，每天都能碰上十來個。\n",
+        "look": "路上來來往往的旅人，每天都能碰上十來個。\n旅客屬於人類族。他的外表看起來約二十多歲。\n他身上帶著﹕\nＶ布衣 (Cloth)\nＶ短劍 (Short sword)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/shortsword",
+            "name": "短劍",
+            "id": "short sword",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/eroad1",
+    "area": "李家村",
+    "short": "石子路",
+    "long": "廣場東面的石子路筆直延伸，兩側逐漸由房舍轉為田地。往東仍可看見另一段道路與村口方向。路旁的屋舍漸漸稀疏，取而代之的是連片的田埂，偶有農人挑著擔子由此經過，留下一串深淺不一的腳印。\n",
+    "exits": {
+      "west": "/d/lee/square_e",
+      "east": "/d/lee/eroad2"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/eroad2",
+    "area": "李家村",
+    "short": "石子路",
+    "long": "這段石子路鄰近村東，風中已帶著田野與溪水的氣味。向西可回廣場，向東則通往村口大門。路面兩側種著幾株矮樹，枝葉隨風輕輕搖晃，遠遠便能聽見溪水流動的聲響，替這段路添了幾分清涼。\n",
+    "exits": {
+      "west": "/d/lee/eroad1",
+      "east": "/d/lee/gate_e"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/farm_w1",
+    "area": "李家村",
+    "short": "農家",
+    "long": "低矮農舍圍著小院，院裡擺著竹籃、農具與曬乾的作物。屋主人多半白日下田，只留下家人照看家務。院牆邊晾著幾件洗過的衣物，隨風輕輕擺動，屋簷下掛著一串串曬乾的辣椒與玉米，透出濃濃的農家氣息。院裡的婦人手裡忙著縫補衣物，見有人經過，總會抬頭善意地點個頭。\n",
+    "exits": {
+      "north": "/d/lee/wroad2",
+      "east": "/d/lee/farm_w2"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/woman",
+        "count": 1,
+        "display": "婦人(Woman)",
+        "name": "婦人",
+        "id": "woman",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 25,
+        "long": "一名住在李家村的婦人，手裡忙著家務，遇上熟人便停下來聊幾句村裡近況。\n",
+        "look": "一名住在李家村的婦人，手裡忙著家務，遇上熟人便停下來聊幾句村裡近況。\n婦人屬於人類族。他的外表看起來約二十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/farm_w2",
+    "area": "李家村",
+    "short": "農家",
+    "long": "另一戶農家的院牆由土磚砌成，門口靠著犁與鋤頭。雞鳴與人聲不時從院內傳出，顯得十分尋常。牆角堆著幾捆乾草，牆頭上還曬著幾張剛洗過的粗布，看得出這戶人家過得雖不寬裕，倒也打理得井井有條。\n",
+    "exits": {
+      "north": "/d/lee/wroad3",
+      "west": "/d/lee/farm_w1"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/gate_e",
+    "area": "李家村",
+    "short": "村口大門",
+    "long": "李家村東面的村口大門立在道路盡頭，門外很快便接近溪畔。木門兩旁有簡單的守望位置，方便村民巡看。厚重的木門終年開著，門板下緣已經磨出一道淺淺的弧痕，是無數車輪與腳步經年累月踩踏出來的。守衛倚在門邊的木樁上，一邊留意著往來行人，一邊靜靜聽著不遠處溪水潺潺的聲音，偶爾有村民挑著擔子經過，總會停下來寒暄兩句。\n",
+    "exits": {
+      "west": "/d/lee/eroad2",
+      "east": "/d/lee/riverside_s"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/guard",
+        "count": 1,
+        "display": "守衛(Guard)",
+        "name": "守衛",
+        "id": "guard",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 30,
+        "long": "一名負責巡看李家村出入口的守衛，穿著便於行動的短裝，目光時常警覺地掃視著來往的行人。\n",
+        "look": "一名負責巡看李家村出入口的守衛，穿著便於行動的短裝，目光時常警覺地掃視著來往的行人。\n守衛屬於人類族。他的外表看起來約三十多歲。\n他身上帶著﹕\nＶ齊眉棍 (Brow staff)\nＶ麻布衣 (Hemp cloth)\nＶ麻布鞋 (Hemp boots)",
+        "inventory": [
+          {
+            "path": "/d/lee/obj/brow_staff",
+            "name": "齊眉棍",
+            "id": "brow staff",
+            "equipped": true
+          },
+          {
+            "path": "/d/lee/obj/hemp_cloth",
+            "name": "麻布衣",
+            "id": "hemp cloth",
+            "equipped": true
+          },
+          {
+            "path": "/d/lee/obj/hemp_boots",
+            "name": "麻布鞋",
+            "id": "hemp boots",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/gate_n",
+    "area": "李家村",
+    "short": "村口大門",
+    "long": "李家村北面的村口大門由厚實木料搭成，門柱上留著長年風吹雨打的痕跡。門內石子路向南伸入村中，兩旁低矮屋舍與田地相間，來往村民大多在此放慢腳步。兩名守衛並肩站在門洞下，腰間各佩著趁手的兵器，見到生面孔進村，總會多看上兩眼。門楣上掛著一塊褪色的木匾，隱約可辨「李家村」三個字，是村里請人重新描過漆的。\n",
+    "exits": {
+      "south": "/d/lee/nroad1"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/guard",
+        "count": 2,
+        "display": "守衛(Guard)",
+        "name": "守衛",
+        "id": "guard",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 30,
+        "long": "一名負責巡看李家村出入口的守衛，穿著便於行動的短裝，目光時常警覺地掃視著來往的行人。\n",
+        "look": "一名負責巡看李家村出入口的守衛，穿著便於行動的短裝，目光時常警覺地掃視著來往的行人。\n守衛屬於人類族。他的外表看起來約三十多歲。\n他身上帶著﹕\nＶ齊眉棍 (Brow staff)\nＶ麻布衣 (Hemp cloth)\nＶ麻布鞋 (Hemp boots)",
+        "inventory": [
+          {
+            "path": "/d/lee/obj/brow_staff",
+            "name": "齊眉棍",
+            "id": "brow staff",
+            "equipped": true
+          },
+          {
+            "path": "/d/lee/obj/hemp_cloth",
+            "name": "麻布衣",
+            "id": "hemp cloth",
+            "equipped": true
+          },
+          {
+            "path": "/d/lee/obj/hemp_boots",
+            "name": "麻布鞋",
+            "id": "hemp boots",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/gate_s",
+    "area": "李家村",
+    "short": "村口大門",
+    "long": "李家村南面的村口大門守著主要進村道路。從這裡往北就是村內街道，往南則通向村口與外面的道路。這是村里人來人往最頻繁的一道門，門洞兩側的石牆被經年的手掌磨得光滑，牆角還堆著幾捆備用的柴薪。兩名守衛神情警覺，不時交換幾句低語，遇上面生的旅人便會多打量幾眼，確認沒有可疑之處才放行。\n",
+    "exits": {
+      "north": "/d/lee/street2",
+      "south": "/d/lee/entrance_s"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/guard",
+        "count": 2,
+        "display": "守衛(Guard)",
+        "name": "守衛",
+        "id": "guard",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 30,
+        "long": "一名負責巡看李家村出入口的守衛，穿著便於行動的短裝，目光時常警覺地掃視著來往的行人。\n",
+        "look": "一名負責巡看李家村出入口的守衛，穿著便於行動的短裝，目光時常警覺地掃視著來往的行人。\n守衛屬於人類族。他的外表看起來約三十多歲。\n他身上帶著﹕\nＶ齊眉棍 (Brow staff)\nＶ麻布衣 (Hemp cloth)\nＶ麻布鞋 (Hemp boots)",
+        "inventory": [
+          {
+            "path": "/d/lee/obj/brow_staff",
+            "name": "齊眉棍",
+            "id": "brow staff",
+            "equipped": true
+          },
+          {
+            "path": "/d/lee/obj/hemp_cloth",
+            "name": "麻布衣",
+            "id": "hemp cloth",
+            "equipped": true
+          },
+          {
+            "path": "/d/lee/obj/hemp_boots",
+            "name": "麻布鞋",
+            "id": "hemp boots",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/gate_w",
+    "area": "李家村",
+    "short": "村口大門",
+    "long": "李家村西面的木製大門橫跨道路，門外道路通向村外，門內則接上筆直石子路。守衛偶爾在門旁巡看來往行人。門邊立著一根老舊的拴馬樁，樁身被繩索磨出深深的溝痕，看得出往來的行商經常在此歇腳餵馬。兩名守衛肩靠著門柱閒聊村里近日的瑣事，見有人靠近才收起話頭，恢復巡看的神色。\n",
+    "exits": {
+      "east": "/d/lee/wroad1"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/guard",
+        "count": 2,
+        "display": "守衛(Guard)",
+        "name": "守衛",
+        "id": "guard",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 30,
+        "long": "一名負責巡看李家村出入口的守衛，穿著便於行動的短裝，目光時常警覺地掃視著來往的行人。\n",
+        "look": "一名負責巡看李家村出入口的守衛，穿著便於行動的短裝，目光時常警覺地掃視著來往的行人。\n守衛屬於人類族。他的外表看起來約三十多歲。\n他身上帶著﹕\nＶ齊眉棍 (Brow staff)\nＶ麻布衣 (Hemp cloth)\nＶ麻布鞋 (Hemp boots)",
+        "inventory": [
+          {
+            "path": "/d/lee/obj/brow_staff",
+            "name": "齊眉棍",
+            "id": "brow staff",
+            "equipped": true
+          },
+          {
+            "path": "/d/lee/obj/hemp_cloth",
+            "name": "麻布衣",
+            "id": "hemp cloth",
+            "equipped": true
+          },
+          {
+            "path": "/d/lee/obj/hemp_boots",
+            "name": "麻布鞋",
+            "id": "hemp boots",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/grocery",
+    "area": "李家村",
+    "short": "雜貨鋪",
+    "long": "小小的雜貨鋪裡擺著油鹽、繩索、陶器與各式家常用品，貨架高低不一。這裡主要做附近村民的生意，東門通往石子路。櫃臺上擺著一把用得十分發亮的舊算盤，旁邊還堆疊著幾本記帳的簿冊，牆角還立著幾捆備用的麻繩與陶罐，看得出這裡的貨色雖不起眼，卻樣樣齊全。\n",
+    "exits": {
+      "east": "/d/lee/nroad2"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/lee_zhong",
+        "count": 1,
+        "display": "李忠(Lee zhong)",
+        "name": "李忠",
+        "id": "lee zhong",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "李忠是賣雜貨小夥計，整天笑嘻嘻的，一臉老實樣。\n",
+        "look": "李忠是賣雜貨小夥計，整天笑嘻嘻的，一臉老實樣。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/herb_shop",
+    "area": "李家村",
+    "short": "藥鋪",
+    "long": "這是一間不大的藥鋪，木櫃裡分門別類收著藥材與丹藥，空氣中混著草根與藥香。掌櫃李岩守著櫃臺，店門朝東開向石子路。牆上掛著幾串曬乾的藥草，屋樑上懸著一副舊招牌，字跡已經有些斑駁老舊。鋪子裡賣的丹藥多是聶晟閒暇時煉的，價格公道，村民生病時多半先來這裡瞧瞧。\n",
+    "exits": {
+      "east": "/d/lee/nroad1"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/lee_yen",
+        "count": 1,
+        "display": "李岩(Lee yen)",
+        "name": "李岩",
+        "id": "lee yen",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 43,
+        "long": "李家村藥鋪的掌櫃，熟悉常用藥材與丹藥。你可以用 list 查看目前已恢復且功能可核對的商品。\n",
+        "look": "李家村藥鋪的掌櫃，熟悉常用藥材與丹藥。你可以用 list 查看目前已恢復且功能可核對的商品。\n李岩屬於人類族。他的外表看起來約四十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/hunter",
+    "area": "李家村",
+    "short": "木屋",
+    "long": "屋內陳設雖然簡單，卻處處留著長年狩獵生活的痕跡。幾件簡單的家具散落其中。牆邊掛著幾件獵具，地上還堆著幾張尚未處理的獸皮。屋子中央擺著一張木桌。桌上除了幾件零散的獵具外，還放著一塊沾滿污漬的破布，似乎已經使用了很長一段時間。\n",
+    "exits": {
+      "south": "/d/lee/wroad2"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/lee_yong",
+        "count": 1,
+        "display": "李勇(Lee yong)",
+        "name": "李勇",
+        "id": "lee yong",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 20,
+        "long": "李勇是村子裡惟一的獵戶，雖然沒學過甚麼武功，天生的神力卻讓他足以打敗\n普通好手，從他家裡滿屋子的獸皮你就能了解他的實力。\n",
+        "look": "李勇是村子裡惟一的獵戶，雖然沒學過甚麼武功，天生的神力卻讓他足以打敗\n普通好手，從他家裡滿屋子的獸皮你就能了解他的實力。\n李勇屬於人類族。他的外表看起來約二十多歲。\n他身上帶著﹕\nＶ皮靴 (Leather boots)\nＶ緊身衣 (Tight cloth)\nＶ獵叉 (Hunter pike)",
+        "inventory": [
+          {
+            "path": "/d/lee/obj/leather_boots",
+            "name": "皮靴",
+            "id": "leather boots",
+            "equipped": true
+          },
+          {
+            "path": "/d/lee/obj/tight_cloth",
+            "name": "緊身衣",
+            "id": "tight cloth",
+            "equipped": true
+          },
+          {
+            "path": "/d/lee/obj/hunter_pike",
+            "name": "獵叉",
+            "id": "hunter pike",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/inn",
+    "area": "李家村",
+    "short": "小旅店",
+    "long": "這是一間規模很小的旅店，屋裡只有幾張老舊桌椅。店小二忙著招呼客人，說書先生李半仙偶爾在此停留，東門通往街道。牆角一張矮桌上擺著粗陶茶壺與幾個缺了口的碗，看得出這裡的客人多是圖個實在，不講究排場。牆上掛著一塊掉漆的木牌，歪歪斜斜地寫著幾樣簡單的吃食。\n",
+    "exits": {
+      "east": "/d/lee/street2"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/waiter",
+        "count": 1,
+        "display": "店小二(Waiter)",
+        "name": "店小二",
+        "id": "waiter",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 22,
+        "long": "李家村小旅店的店小二，動作俐落，忙著替往來客人端茶送飯。你可以用 list 看菜單，再用 buy 購買。\n",
+        "look": "李家村小旅店的店小二，動作俐落，忙著替往來客人端茶送飯。你可以用 list 看菜單，再用 buy 購買。\n店小二屬於人類族。他的外表看起來約二十多歲。",
+        "inventory": []
+      },
+      {
+        "path": "/d/lee/npc/li_ban_xian",
+        "count": 1,
+        "display": "李半仙(Li ban xian)",
+        "name": "李半仙",
+        "id": "li ban xian",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 56,
+        "long": "一位常在小旅店落腳的說書先生，鬍鬚微白，說起江湖舊聞時總是愛故意壓低聲音。目前階段只保留已經確認的角色與位置，完整的說書關鍵字和能力成長事件都待後續逐條復原。\n",
+        "look": "一位常在小旅店落腳的說書先生，鬍鬚微白，說起江湖舊聞時總是愛故意壓低聲音。目前階段只保留已經確認的角色與位置，完整的說書關鍵字和能力成長事件都待後續逐條復原。\n李半仙屬於人類族。他的外表看起來約五十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/nie_backroom",
+    "area": "李家村",
+    "short": "丹房",
+    "long": "這裡是醫館後方的一間小室，靠牆放著一座青銅丹爐與丹鼎，爐火尚有些許餘溫，看起來不久前才煉過藥。\n牆角一張矮榻鋪著薄被，榻邊小几上擺著一壺涼透的茶與幾卷翻開的醫書，這裡是聶晟煉丹與歇息的\n地方，平時鮮少有外人進來走動探訪打擾。\n",
+    "exits": {
+      "out": "/d/lee/shrine"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/nroad1",
+    "area": "李家村",
+    "short": "石子路",
+    "long": "平整石子鋪成的小路穿過村北，雨後石縫仍留著些水氣。西側是一間藥鋪，門前藥香隨風散出；南北兩端都是通往村中與村口的道路。路邊立著一根老石燈籠，每逢夜色降臨，便會有人點上燈火，替晚歸的村民照亮腳下的路。\n",
+    "exits": {
+      "north": "/d/lee/gate_n",
+      "south": "/d/lee/nroad2",
+      "west": "/d/lee/herb_shop"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/nroad2",
+    "area": "李家村",
+    "short": "石子路",
+    "long": "這段石子路兩旁房舍漸密，西側雜貨鋪門口堆著日用雜物。路面被車輪與腳步磨得發亮，向南可以繼續前往村中的廣場。路旁幾隻雞悠閒地啄著地上散落的穀粒，對來往的行人視若無睹，替這段熱鬧的路添了幾分生活氣息。\n",
+    "exits": {
+      "north": "/d/lee/nroad1",
+      "south": "/d/lee/nroad3",
+      "west": "/d/lee/grocery"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/nroad3",
+    "area": "李家村",
+    "short": "石子路",
+    "long": "石子路到了村中心附近變得熱鬧，西側可見私塾的木門與窗紙。孩童讀書聲偶爾越牆而出，南面就是村內往來最頻繁的廣場。路邊有棵老槐樹，樹蔭下擺著一張石凳，常有村民坐著乘涼，順道聽一聽牆內傳來的讀書聲。\n",
+    "exits": {
+      "north": "/d/lee/nroad2",
+      "south": "/d/lee/square_w",
+      "west": "/d/lee/school"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/pawnshop",
+    "area": "李家村",
+    "short": "李記當鋪",
+    "long": "李員外在村裡的主要生意之一，掌櫃李嘯天替李家打理此處產業。附近的旅客、店鋪都會到這典當周轉，\n櫃臺後堆著各式不同標記的木箱，看來頗為貴重。牆上掛著一幅字畫，寫著「童叟無欺」四個大字，算是給\n上門的客人先吃顆定心丸。櫃臺邊還擺著一把算盤與幾疊當票，透著幾分精打細算的生意氣息。\n",
+    "exits": {
+      "east": "/d/lee/street1"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/lee_xiao_tian",
+        "count": 1,
+        "display": "李嘯天(Lee xiao tian)",
+        "name": "李嘯天",
+        "id": "lee xiao tian",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 40,
+        "long": "李員外家的二總管為人精明，年少時好舞刀弄槍，被派任當鋪掌櫃之後，諸事都處理得緊緊有條。\n",
+        "look": "李員外家的二總管為人精明，年少時好舞刀弄槍，被派任當鋪掌櫃之後，諸事都處理得緊緊有條。\n李嘯天屬於人類族。他的外表看起來約四十多歲。\n他身上帶著﹕\nＶ黃玉戒指 (Yellow jade ring)\nＶ柳葉刀 (Willow blade)",
+        "inventory": [
+          {
+            "path": "/d/lee/obj/yellow_jade_ring",
+            "name": "黃玉戒指",
+            "id": "yellow jade ring",
+            "equipped": true
+          },
+          {
+            "path": "/d/lee/obj/willow_blade",
+            "name": "柳葉刀",
+            "id": "willow blade",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/riverside_n1",
+    "area": "李家村",
+    "short": "溪邊小路",
+    "long": "沿溪小路夾在村舍與水岸之間，北面還能隱約望見拱橋方向。南北兩端都順著溪流延伸。一名村婦蹲在溪邊，手裡捧著木盆，正仔細地搓洗衣物，木盆碰撞石塊發出輕微的聲響，與潺潺水聲交織在一起。\n",
+    "exits": {
+      "north": "/d/lee/riverside_n2",
+      "south": "/d/lee/riverside_s"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/woman",
+        "count": 1,
+        "display": "婦人(Woman)",
+        "name": "婦人",
+        "id": "woman",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 25,
+        "long": "一名住在李家村的婦人，手裡忙著家務，遇上熟人便停下來聊幾句村裡近況。\n",
+        "look": "一名住在李家村的婦人，手裡忙著家務，遇上熟人便停下來聊幾句村裡近況。\n婦人屬於人類族。他的外表看起來約二十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/riverside_n2",
+    "area": "李家村",
+    "short": "溪邊小路",
+    "long": "小路沿著溪岸南北延伸，腳下散布著細碎石子。溪水貼著村東流過，附近草木因水氣而顯得格外茂盛。幾株垂柳沿岸而生，枝條輕拂水面，蕩起一圈圈細小的漣漪，替這段路添了幾分靜謐的氣氛。\n",
+    "exits": {
+      "south": "/d/lee/riverside_n1"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/riverside_s",
+    "area": "李家村",
+    "short": "溪邊小路",
+    "long": "溪邊小路到了村東門附近，西面可回村口大門，南北則沿著溪岸延伸。水聲在這一帶十分清楚。幾名村婦聚在溪邊，一邊浣洗衣物一邊閒話家常，笑聲不時隨著水聲飄散開來，是這一帶少見的熱鬧光景。\n",
+    "exits": {
+      "west": "/d/lee/gate_e",
+      "north": "/d/lee/riverside_n1",
+      "south": "/d/lee/creek",
+      "southwest": "/d/lee/watermelon_n3"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/woman",
+        "count": 4,
+        "display": "婦人(Woman)",
+        "name": "婦人",
+        "id": "woman",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 25,
+        "long": "一名住在李家村的婦人，手裡忙著家務，遇上熟人便停下來聊幾句村裡近況。\n",
+        "look": "一名住在李家村的婦人，手裡忙著家務，遇上熟人便停下來聊幾句村裡近況。\n婦人屬於人類族。他的外表看起來約二十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/school",
+    "area": "李家村",
+    "short": "私塾",
+    "long": "私塾裡整齊排著舊木桌椅，牆邊堆著幾冊翻得起毛的書本。白日常有孩童朗讀文章，窗外便是通往廣場的石子路。牆上掛著一幅「有教無類」的字幅，墨跡雖已略顯陳舊，仍看得出當年書寫時的用心。案頭擺著一方硯台與幾支毛筆，牆邊立著一根戒尺，看來平日規矩管教不算鬆散。\n",
+    "exits": {
+      "east": "/d/lee/nroad3"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/lee_hsu_hsien",
+        "count": 1,
+        "display": "李勖賢(Lee hsu hsien)",
+        "name": "李勖賢",
+        "id": "lee hsu hsien",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "李勖賢是村裡的文士，有秀才的頭銜，矮小的身裁給人很瘦弱的感覺，現在正\n指導學童唸著書。\n",
+        "look": "李勖賢是村裡的文士，有秀才的頭銜，矮小的身裁給人很瘦弱的感覺，現在正\n指導學童唸著書。",
+        "inventory": []
+      },
+      {
+        "path": "/d/lee/npc/child",
+        "count": 3,
+        "display": "小孩(Child)",
+        "name": "小孩",
+        "id": "child",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 5,
+        "long": "一個在村裡跑來跑去的小孩，衣角沾著灰土，像是剛從廣場玩回來。\n",
+        "look": "一個在村裡跑來跑去的小孩，衣角沾著灰土，像是剛從廣場玩回來。\n小孩屬於人類族。他的外表看起來不到十歲。\n他身上帶著﹕\nＶ肚兜 (Tummy cover)",
+        "inventory": [
+          {
+            "path": "/d/snow/npc/obj/tummy_cover",
+            "name": "肚兜",
+            "id": "tummy cover",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/shrine",
+    "area": "李家村",
+    "short": "醫館",
+    "long": "這裡是聶晟看診行醫的醫館，四壁的木架上整齊排著大大小小的藥罐，靠窗的長案上攤著幾本醫書與銀針，\n一旁垂著布簾，隔出裡間看診的地方。空氣中瀰著淡淡的藥草香。十多年前村裡爆發一場怪病，便是聶晟\n在此治好了村民，李員外因此請他留下，成為村中的大夫。\n",
+    "exits": {
+      "south": "/d/lee/wroad3",
+      "in": "/d/lee/nie_backroom"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/nee_cheng",
+        "count": 1,
+        "display": "聶晟(Nee cheng)",
+        "name": "聶晟",
+        "id": "nee cheng",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 40,
+        "long": "聶晟是李家村裡惟一不姓李的住民。十多年前，村裡許多的居民曾經得了一種怪病，聶晟\n恰巧路過，治好了村民，於是李員外請他留下，成為村裡的大夫。\n聶晟身形削瘦，做文人打扮，表情冷漠，似乎不太容易親近。\n",
+        "look": "聶晟是李家村裡惟一不姓李的住民。十多年前，村裡許多的居民曾經得了一種怪病，聶晟\n恰巧路過，治好了村民，於是李員外請他留下，成為村裡的大夫。\n聶晟身形削瘦，做文人打扮，表情冷漠，似乎不太容易親近。\n聶晟屬於人類族。他的外表看起來約四十多歲。\n他身上帶著﹕\nＶ白綢羽衫 (White dress)\nＶ\\x1b[1;37m水晶戒指\\x1b[m (Crystal ring)\nＶ皮鞭 (Leather whip)",
+        "inventory": [
+          {
+            "path": "/d/snow/npc/obj/white_dress",
+            "name": "白綢羽衫",
+            "id": "white dress",
+            "equipped": true
+          },
+          {
+            "path": "/d/lee/obj/crystal_ring",
+            "name": "\\x1b[1;37m水晶戒指\\x1b[m",
+            "id": "crystal ring",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/leather_whip",
+            "name": "皮鞭",
+            "id": "leather whip",
+            "equipped": true
+          }
+        ]
+      },
+      {
+        "path": "/d/lee/npc/herb_boy",
+        "count": 2,
+        "display": "小藥童(Boy)",
+        "name": "小藥童",
+        "id": "boy",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 15,
+        "long": "一個在醫館裡跑進跑出的藥童，衣袖上沾著搗藥留下的藥漬，手裡還捧著幾株曬乾的藥草，看來是聶晟身邊打雜幫手的孩子。\n",
+        "look": "一個在醫館裡跑進跑出的藥童，衣袖上沾著搗藥留下的藥漬，手裡還捧著幾株曬乾的藥草，看來是聶晟身邊打雜幫手的孩子。\n小藥童屬於人類族。他的外表看起來約十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/square_c",
+    "area": "李家村",
+    "short": "廣場中央",
+    "long": "這裡是李家村最容易聚集人群的中央廣場，四周道路交錯。孩童常在空地追逐，村民也會停下交換消息或談論村中近事。廣場中央立著一口老水井，井欄被繩索磨出一道道深痕，是全村人取水的地方。井邊常有婦人打水閒聊，孩童們則繞著井欄追逐嬉戲，笑鬧聲響徹整個廣場。\n",
+    "exits": {
+      "west": "/d/lee/square_s",
+      "north": "/d/lee/square_e",
+      "south": "/d/lee/street1"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/child",
+        "count": 3,
+        "display": "小孩(Child)",
+        "name": "小孩",
+        "id": "child",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 5,
+        "long": "一個在村裡跑來跑去的小孩，衣角沾著灰土，像是剛從廣場玩回來。\n",
+        "look": "一個在村裡跑來跑去的小孩，衣角沾著灰土，像是剛從廣場玩回來。\n小孩屬於人類族。他的外表看起來不到十歲。\n他身上帶著﹕\nＶ肚兜 (Tummy cover)",
+        "inventory": [
+          {
+            "path": "/d/snow/npc/obj/tummy_cover",
+            "name": "肚兜",
+            "id": "tummy cover",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/square_e",
+    "area": "李家村",
+    "short": "廣場",
+    "long": "廣場向東西兩側伸展，附近商販和村民常在此碰面交換消息。往南可到廣場中央，往北可回村北道路。地面鋪著大小不一的石板，縫隙間長著幾叢野草，倒也不影響往來行走。\n",
+    "exits": {
+      "west": "/d/lee/square_w",
+      "east": "/d/lee/eroad1",
+      "south": "/d/lee/square_c"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/square_s",
+    "area": "李家村",
+    "short": "廣場",
+    "long": "這片廣場位在村中心偏南的位置，北面接著村中主路，東邊就是廣場中央。空地邊緣堆著幾捆備用的木料，像是村里修繕房舍時剩下的，平時倒也沒人特地搬動整理清掃。\n",
+    "exits": {
+      "north": "/d/lee/square_w",
+      "east": "/d/lee/square_c"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/square_w",
+    "area": "李家村",
+    "short": "廣場",
+    "long": "這片空地是村民日常往來與歇腳的地方，地面被踩得十分結實。北面連著私塾附近的道路，南面還有另一片廣場。空地一角擺著幾張長凳，木質已經有些發黑，看得出是村里人常年歇腳留下的痕跡。\n",
+    "exits": {
+      "north": "/d/lee/nroad3",
+      "west": "/d/lee/wroad4",
+      "east": "/d/lee/square_e",
+      "south": "/d/lee/square_s"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/street1",
+    "area": "李家村",
+    "short": "街道",
+    "long": "村中央往南的街道比石子路平整些，兩側屋舍緊靠。西側就是李記當鋪，南北來往的人多半從這裡穿過。屋簷下掛著幾盞燈籠，入夜後會點起微弱的燈火，照亮這段人來人往的街道。\n",
+    "exits": {
+      "west": "/d/lee/pawnshop",
+      "north": "/d/lee/square_c",
+      "south": "/d/lee/street2",
+      "east": "/d/lee/watermelon_s1"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/street2",
+    "area": "李家村",
+    "short": "街道",
+    "long": "街道繼續向南延伸，北面通往村中央，南面就是村口大門。西側的小旅店常傳出店小二招呼客人的聲音。街邊擺著一個小攤子，賣冰糖葫蘆的小販正吆喝著招攬生意，紅通通的糖葫蘆插在草把上，看著就讓人食指大動，不少路過的孩童都忍不住多看兩眼。\n",
+    "exits": {
+      "north": "/d/lee/street1",
+      "west": "/d/lee/inn",
+      "south": "/d/lee/gate_s"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/hawthorn_seller",
+        "count": 1,
+        "display": "冰糖葫蘆小販(Seller)",
+        "name": "冰糖葫蘆小販",
+        "id": "seller",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "一名挑著小擔的冰糖葫蘆小販，正在這裡叫賣。\n擔子上插滿了一串串裹著糖衣的山楂，村中的孩子們都喜歡來找他買冰糖葫蘆。\n",
+        "look": "一名挑著小擔的冰糖葫蘆小販，正在這裡叫賣。\n擔子上插滿了一串串裹著糖衣的山楂，村中的孩子們都喜歡來找他買冰糖葫蘆。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/watermelon_n1",
+    "area": "李家村",
+    "short": "西瓜田",
+    "long": "田畦裡種著一排排西瓜藤，寬大的葉片鋪滿泥地。農人沿著田埂巡看瓜苗，防著路人隨手摘走尚未成熟的西瓜。幾顆碩大的西瓜半埋在泥土裡，表皮泛著油亮的青綠色，看著十分誘人。田埂邊插著一根根竹竿，上頭綁著幾條破布條隨風擺動，是農人用來嚇唬偷嘴的鳥雀。\n",
+    "exits": {
+      "east": "/d/lee/watermelon_n2",
+      "south": "/d/lee/watermelon_s1"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/farmer",
+        "count": 3,
+        "display": "農夫(Farmer)",
+        "name": "農夫",
+        "id": "farmer",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 25,
+        "long": "一名常年在田裡工作的農夫，皮膚曬得黝黑，手掌粗糙，對田裡作物看得很緊。\n",
+        "look": "一名常年在田裡工作的農夫，皮膚曬得黝黑，手掌粗糙，對田裡作物看得很緊。\n農夫屬於人類族。他的外表看起來約二十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/watermelon_n2",
+    "area": "李家村",
+    "short": "西瓜田",
+    "long": "大片瓜藤沿田埂向東展開，葉下偶爾露出圓滾滾的西瓜。日照充足時，田間熱氣與泥土氣味格外明顯。幾名農人戴著斗笠，彎腰仔細查看瓜藤的長勢，時不時直起身子擦一把汗，對這片瓜田的收成顯然十分上心。\n",
+    "exits": {
+      "west": "/d/lee/watermelon_n1",
+      "east": "/d/lee/watermelon_n3",
+      "south": "/d/lee/watermelon_s2"
+    },
+    "npcs": [
+      {
+        "path": "/d/lee/npc/farmer",
+        "count": 3,
+        "display": "農夫(Farmer)",
+        "name": "農夫",
+        "id": "farmer",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 25,
+        "long": "一名常年在田裡工作的農夫，皮膚曬得黝黑，手掌粗糙，對田裡作物看得很緊。\n",
+        "look": "一名常年在田裡工作的農夫，皮膚曬得黝黑，手掌粗糙，對田裡作物看得很緊。\n農夫屬於人類族。他的外表看起來約二十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/lee/watermelon_n3",
+    "area": "李家村",
+    "short": "西瓜田",
+    "long": "這片西瓜田已靠近村東溪流，田邊泥土較濕，偶爾能聽見溪水聲。田埂向西與其他瓜田相連。因為靠近水源，這裡的瓜藤長得格外茂盛，葉片肥厚，藤蔓幾乎要蔓過窄窄的田埂。\n",
+    "exits": {
+      "west": "/d/lee/watermelon_n2",
+      "south": "/d/lee/watermelon_s3",
+      "northeast": "/d/lee/riverside_s",
+      "east": "/d/lee/creek"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/watermelon_s1",
+    "area": "李家村",
+    "short": "西瓜田",
+    "long": "田裡瓜藤交錯，農人留下的腳印沿著窄窄田埂延伸。北面與另一片瓜田緊緊相連，西面就靠近村中央街道。田埂邊散落著幾片乾枯的瓜葉，踩上去發出細碎的聲響，倒也給這片安靜的田地添了幾分生氣。\n",
+    "exits": {
+      "west": "/d/lee/street1",
+      "east": "/d/lee/watermelon_s2",
+      "north": "/d/lee/watermelon_n1"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/watermelon_s2",
+    "area": "李家村",
+    "short": "西瓜田",
+    "long": "一畦畦西瓜向東西排列，部分瓜實已長得相當飽滿。田間沒有遮蔭，午後常能感到土地散出的熱氣。幾隻蝴蝶在瓜藤間翩翩飛舞，偶爾停在花朵上歇息，替這片單調的田地增添了幾分生趣。\n",
+    "exits": {
+      "west": "/d/lee/watermelon_s1",
+      "east": "/d/lee/watermelon_s3",
+      "north": "/d/lee/watermelon_n2"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/watermelon_s3",
+    "area": "李家村",
+    "short": "西瓜田",
+    "long": "李家村東南側的瓜田延伸到溪邊附近，水氣讓此處土壤較為鬆軟。沿田埂可回到西面的其他瓜田。田邊立著一座簡陋的稻草人，衣衫破舊，隨風輕輕晃動，多少能唬住幾隻膽小的鳥雀。\n",
+    "exits": {
+      "west": "/d/lee/watermelon_s2",
+      "north": "/d/lee/watermelon_n3"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/wroad1",
+    "area": "李家村",
+    "short": "石子路",
+    "long": "這段石子路緊靠西村口，路旁泥地上留著車輪與牲口腳印。向東繼續走可以深入李家村，向西便是村口大門。路邊立著一塊簡陋的木牌，寫著「小心牲口」四個字，字跡歪斜，倒也透著幾分鄉野的樸拙。\n",
+    "exits": {
+      "west": "/d/lee/gate_w",
+      "east": "/d/lee/wroad2"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/wroad2",
+    "area": "李家村",
+    "short": "石子路",
+    "long": "石子路穿過幾戶人家之間，北邊有獵戶住處，南邊則是農家院落。村民推著小車往來，路面十分平實。路旁堆著幾張晾曬的獸皮，散發著淡淡的皮革氣味，看得出這一帶住的多是靠山吃飯的人家。\n",
+    "exits": {
+      "west": "/d/lee/wroad1",
+      "east": "/d/lee/wroad3",
+      "north": "/d/lee/hunter",
+      "south": "/d/lee/farm_w1"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/wroad3",
+    "area": "李家村",
+    "short": "石子路",
+    "long": "村西的石子路在這裡較寬，北側靠近醫館，南側仍是農家。向東再走便能抵達村中廣場。路面因為往來就診的村民較多，被踩得格外平整，偶爾能聞到醫館飄來的淡淡藥香，混著農家的泥土氣息。\n",
+    "exits": {
+      "west": "/d/lee/wroad2",
+      "east": "/d/lee/wroad4",
+      "north": "/d/lee/shrine",
+      "south": "/d/lee/farm_w2"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/lee/wroad4",
+    "area": "李家村",
+    "short": "石子路",
+    "long": "這段石子路夾在廣場與醫館一帶之間，路面同樣鋪著碎石，偶有村民往來。兩側種著幾株低矮的灌木，替過路人擋去了些許日頭，走起來倒也不算難受。\n",
+    "exits": {
+      "east": "/d/lee/square_w",
+      "west": "/d/lee/wroad3"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/bandit_clearing",
+    "area": "迷霧森林",
+    "short": "空地",
+    "long": "迷霧森林西南角的一塊空地，地上的草被踩得東倒西歪，幾根削尖的木樁斜插在地上，木樁上還掛著破碎的衣物。空地邊緣堆著幾個空酒罈，一面破舊的布旗插在樹上，旗上歪歪斜斜地寫著一個「寨」字。看來老松林的土匪也把手伸進了這片森林。往東北可以回到矮樹叢。\n",
+    "exits": {
+      "northeast": "/d/oldpine/shrubs"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/bandit",
+        "count": 3,
+        "display": "土匪(Bandit)",
+        "name": "土匪",
+        "id": "bandit",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 30,
+        "long": "滿臉橫肉看起來一副凶神惡煞的樣子。\n",
+        "look": "滿臉橫肉看起來一副凶神惡煞的樣子。\n土匪屬於人類族。他的外表看起來約三十多歲。\n他身上帶著﹕\nＶ單刀 (Blade)\nＶ皮背心 (Leather vest)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/blade",
+            "name": "單刀",
+            "id": "blade",
+            "equipped": true
+          },
+          {
+            "path": "/custom/armor/cloth/leather_vest",
+            "name": "皮背心",
+            "id": "leather vest",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/bear_cave",
+    "area": "老松林",
+    "short": "山洞",
+    "long": "一個陰暗潮濕的山洞，洞頂不時滴下冰涼的水珠，空氣中瀰漫著一股濃重的腥臊味。地上散落著被啃得乾乾淨淨的獸骨，其中似乎還混著幾根人骨，角落裡鋪著一堆被壓扁的乾草，看起來是某種大型野獸的窩。洞口透進一點微光，外頭就是那片比人還高的草叢。\n",
+    "exits": {
+      "out": "/d/oldpine/grass2"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/wild_bear",
+        "count": 1,
+        "display": "凶暴的野熊(Bear)",
+        "name": "凶暴的野熊",
+        "id": "bear",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "體型壯碩的大熊，且不知為何異常兇暴。\n",
+        "look": "體型壯碩的大熊，且不知為何異常兇暴。\n他身上帶著﹕\n  肉塊 (Meat)",
+        "inventory": [
+          {
+            "path": "/d/oldpine/obj/meat",
+            "name": "肉塊",
+            "id": "meat",
+            "equipped": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/beast_trail",
+    "area": "迷霧森林",
+    "short": "獸徑",
+    "long": "一條野獸踩出來的狹窄小徑，兩旁的灌木被撞得東倒西歪，枝條上勾著幾撮粗硬的黑毛。泥地上的腳印又大又深，越往東走越密集，空氣中還飄著一股野獸的騷味。附近的樹幹上有幾道深深的抓痕，高度竟比人還高。往西南可以回到樹林，往東則是一面山壁。\n",
+    "exits": {
+      "southwest": "/d/oldpine/wood1",
+      "east": "/d/oldpine/cave_mouth"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/cave1",
+    "area": "迷霧森林",
+    "short": "山洞",
+    "long": "洞內比想像中寬敞，岩壁上長著一層濕滑的青苔，從洞口透進來的光線只能照亮幾步遠。地上鋪著一層乾草和落葉，踩上去軟綿綿的，還混著一股淡淡的奶腥味。洞穴往東和往南延伸，深處不時傳來窸窣的聲響和小獸的哼叫聲。身後的洞口透進一點天光，那是唯一的出路。\n",
+    "exits": {
+      "east": "/d/oldpine/cave2",
+      "south": "/d/oldpine/cave3",
+      "out": "/d/oldpine/cave_mouth"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/little_bear",
+        "count": 2,
+        "display": "小黑熊(Little bear)",
+        "name": "小黑熊",
+        "id": "little bear",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "一頭小黑熊，圓滾滾的樣子相當可愛。\n",
+        "look": "一頭小黑熊，圓滾滾的樣子相當可愛。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/cave2",
+    "area": "迷霧森林",
+    "short": "山洞",
+    "long": "山洞的東側，岩壁上布滿了一道道爪痕，像是有野獸經常在此磨爪。角落裡堆著一些被掏空的蜂巢，蜂蠟和蜂蜜沾了一地，引來一群小蟲嗡嗡飛舞。洞頂有一道細細的裂縫，透進一縷微光，正好照在地上一灘渾濁的積水上。往西可以回到洞口附近，往南通往更深的地方。\n",
+    "exits": {
+      "west": "/d/oldpine/cave1",
+      "south": "/d/oldpine/cave_deep"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/little_bear",
+        "count": 3,
+        "display": "小黑熊(Little bear)",
+        "name": "小黑熊",
+        "id": "little bear",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "一頭小黑熊，圓滾滾的樣子相當可愛。\n",
+        "look": "一頭小黑熊，圓滾滾的樣子相當可愛。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/cave3",
+    "area": "迷霧森林",
+    "short": "山洞",
+    "long": "洞穴在這裡低了下來，得彎著腰才能前進。地上散落著被咬碎的骨頭和魚鱗，空氣又悶又臭，讓人幾乎喘不過氣。岩壁的凹陷處被扒成了一個淺淺的窩，裡面鋪著柔軟的獸毛，摸上去還帶著餘溫。往北可以回到洞口附近，往東則傳來更粗重的喘息聲。\n",
+    "exits": {
+      "north": "/d/oldpine/cave1",
+      "east": "/d/oldpine/cave_deep"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/little_bear",
+        "count": 3,
+        "display": "小黑熊(Little bear)",
+        "name": "小黑熊",
+        "id": "little bear",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "一頭小黑熊，圓滾滾的樣子相當可愛。\n",
+        "look": "一頭小黑熊，圓滾滾的樣子相當可愛。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/cave_deep",
+    "area": "迷霧森林",
+    "short": "山洞深處",
+    "long": "山洞的最深處，空間突然開闊起來，洞頂高得看不見，四周的岩壁上掛著水珠，在黑暗中閃著微光。地上散落著大量獸骨，還有幾件破爛的衣物和一隻生鏽的鐵鍋，不知是哪個倒楣的獵人留下的。洞的一角有一塊巨大的石頭，石面上有幾處被踩出來的凹痕，看起來可以攀爬上去。往北和往西可以回到洞內其他地方。\n",
+    "exits": {
+      "north": "/d/oldpine/cave2",
+      "west": "/d/oldpine/cave3"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/little_bear",
+        "count": 2,
+        "display": "小黑熊(Little bear)",
+        "name": "小黑熊",
+        "id": "little bear",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "一頭小黑熊，圓滾滾的樣子相當可愛。\n",
+        "look": "一頭小黑熊，圓滾滾的樣子相當可愛。",
+        "inventory": []
+      },
+      {
+        "path": "/d/oldpine/npc/big_bear",
+        "count": 1,
+        "display": "大黑熊(Big bear)",
+        "name": "大黑熊",
+        "id": "big bear",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "一頭大黑熊，壯碩的體型讓你不自覺的想要後退幾步…\n",
+        "look": "一頭大黑熊，壯碩的體型讓你不自覺的想要後退幾步…",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/cave_mouth",
+    "area": "迷霧森林",
+    "short": "山洞口",
+    "long": "獸徑的盡頭是一面陡峭的山壁，山壁下有一個黑漆漆的洞口，洞口的岩石被磨得光滑，顯然常有東西進出。洞口前散落著吃剩的蜂巢和魚骨，還有一些被扒開的泥土。洞裡隱約傳出低沉的鼾聲和咕嚕聲，讓人遲疑該不該進去....\n",
+    "exits": {
+      "west": "/d/oldpine/beast_trail"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/clearing_n",
+    "area": "老松林",
+    "short": "空地",
+    "long": "老松林北緣的一塊空地，四周的老松被人砍倒了幾棵，留下一圈高低不齊的樹樁，正好圍出一片平坦的泥地。地上滿是凌亂的腳印，幾棵松樹的樹幹上留著深淺不一的刀痕，有些痕跡又深又齊，像是有人經常在這裡練刀，而且刀法十分了得。林風穿過松針沙沙作響，四下顯得格外清靜。往南可以走進一片及腰的草叢。\n",
+    "exits": {
+      "south": "/d/oldpine/grass1"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/kao_shen",
+        "count": 1,
+        "display": "虎刀門長老 高慎(Kao shen)",
+        "name": "高慎",
+        "id": "kao shen",
+        "title": "虎刀門長老",
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "高慎是季縣虎刀門的耆宿，雖已年逾七旬，身形仍顯得十分硬朗。\n他眉目間帶著一股火爆剛烈之氣，站在老松林中也像一柄尚未入鞘的刀。\n據說他這次離開虎刀門，正是為了在外收幾名合意弟子，好讓門中後輩\n在一年一度的試會上爭一口氣。他看來膽識過人，一副天不怕地不怕的模樣。\n",
+        "look": "高慎是季縣虎刀門的耆宿，雖已年逾七旬，身形仍顯得十分硬朗。\n他眉目間帶著一股火爆剛烈之氣，站在老松林中也像一柄尚未入鞘的刀。\n據說他這次離開虎刀門，正是為了在外收幾名合意弟子，好讓門中後輩\n在一年一度的試會上爭一口氣。他看來膽識過人，一副天不怕地不怕的模樣。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/clearing_w",
+    "area": "老松林",
+    "short": "林間空地",
+    "long": "林子中間一塊不大的空地，中央用石頭圍了個火堆，裡面的灰燼還帶著餘溫，旁邊散落著酒罈的碎片和吃剩的獸骨。幾棵松樹的枝椏上掛著破爛的衣物，樹下堆著好幾個被扯開的包袱，裡頭的東西早被搜刮一空，看來是土匪臨時落腳的地方。往北可以回到林子邊緣，往東南則有一條小路穿過樹林。\n",
+    "exits": {
+      "north": "/d/oldpine/entrance",
+      "southeast": "/d/oldpine/path0"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/bandit",
+        "count": 2,
+        "display": "土匪(Bandit)",
+        "name": "土匪",
+        "id": "bandit",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 30,
+        "long": "滿臉橫肉看起來一副凶神惡煞的樣子。\n",
+        "look": "滿臉橫肉看起來一副凶神惡煞的樣子。\n土匪屬於人類族。他的外表看起來約三十多歲。\n他身上帶著﹕\nＶ單刀 (Blade)\nＶ皮背心 (Leather vest)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/blade",
+            "name": "單刀",
+            "id": "blade",
+            "equipped": true
+          },
+          {
+            "path": "/custom/armor/cloth/leather_vest",
+            "name": "皮背心",
+            "id": "leather vest",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/crossing",
+    "area": "老松林",
+    "short": "空地",
+    "long": "一塊地面被踩得光禿禿的空地，四周的松樹上綁著幾根斷掉的繩子，地上散落著被翻得亂七八糟的行李和撕破的衣物，看來不久前才有旅人在這裡遭到洗劫。這塊空地是老松林裡幾條小路的交會處，往北、往西、往西南都有路通往林中，往東走則是一片霧氣瀰漫的森林。\n",
+    "exits": {
+      "north": "/d/oldpine/forest_w",
+      "west": "/d/oldpine/path2",
+      "east": "/d/oldpine/mist_entrance",
+      "southwest": "/d/oldpine/hideout"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/bandit_minion",
+        "count": 1,
+        "display": "土匪嘍囉(Bandit minion)",
+        "name": "土匪嘍囉",
+        "id": "bandit minion",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "看起來沒啥江湖經驗，努力裝兇卻顯得異常可笑。\n",
+        "look": "看起來沒啥江湖經驗，努力裝兇卻顯得異常可笑。\n他身上帶著﹕\nＶ單刀 (Blade)\nＶ皮背心 (Leather vest)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/blade",
+            "name": "單刀",
+            "id": "blade",
+            "equipped": true
+          },
+          {
+            "path": "/custom/armor/cloth/leather_vest",
+            "name": "皮背心",
+            "id": "leather vest",
+            "equipped": true
+          }
+        ]
+      },
+      {
+        "path": "/d/oldpine/npc/injured_traveller",
+        "count": 1,
+        "display": "受傷的旅客(Injured traveller)",
+        "name": "受傷的旅客",
+        "id": "injured traveller",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 35,
+        "long": "看起來傷勢頗為嚴重，若不及時醫治恐危及性命。\n",
+        "look": "看起來傷勢頗為嚴重，若不及時醫治恐危及性命。\n受傷的旅客屬於人類族。他的外表看起來約三十多歲。\n他身上帶著﹕\n  武魁龍轉 (Dragon pill)",
+        "inventory": [
+          {
+            "path": "/d/oldpine/obj/dragon_pill",
+            "name": "武魁龍轉",
+            "id": "dragon pill",
+            "equipped": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/entrance",
+    "area": "老松林",
+    "short": "老松林",
+    "long": "出了雪亭鎮往東南不遠，便是這片綿延數里的老松林。高大的松樹一株挨著一株，枝葉遮天，即使是正午，林子裡也顯得陰暗。這裡原是雪亭鎮往來喬陰的捷徑，近來卻因為土匪出沒，旅人多半寧可繞道五堂鎮。路旁立著一塊被風雨侵蝕的木牌，上頭的字跡已經模糊難辨。往西北可以回到雪亭鎮，往南則有一條小路深入林中。\n",
+    "exits": {
+      "northwest": "/d/snow/sgate",
+      "south": "/d/oldpine/clearing_w"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/forest_n1",
+    "area": "老松林",
+    "short": "樹林",
+    "long": "松林在這裡長得特別茂密，樹與樹之間的空隙只容一人側身通過，地上的松針積了厚厚一層，踩上去軟綿綿的，沒有半點聲響。灌木叢後隱約有被人踩平的痕跡，旁邊還丟著幾根啃過的雞骨頭和一個空酒葫蘆，看來常有人躲在這裡守株待兔。往東樹林延伸開去，往西南則有一條被人踩出來的小徑。\n",
+    "exits": {
+      "east": "/d/oldpine/forest_n2",
+      "southwest": "/d/oldpine/forest_w"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/bandit",
+        "count": 2,
+        "display": "土匪(Bandit)",
+        "name": "土匪",
+        "id": "bandit",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 30,
+        "long": "滿臉橫肉看起來一副凶神惡煞的樣子。\n",
+        "look": "滿臉橫肉看起來一副凶神惡煞的樣子。\n土匪屬於人類族。他的外表看起來約三十多歲。\n他身上帶著﹕\nＶ單刀 (Blade)\nＶ皮背心 (Leather vest)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/blade",
+            "name": "單刀",
+            "id": "blade",
+            "equipped": true
+          },
+          {
+            "path": "/custom/armor/cloth/leather_vest",
+            "name": "皮背心",
+            "id": "leather vest",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/forest_n2",
+    "area": "老松林",
+    "short": "樹林",
+    "long": "一片幽靜的松林，粗大的樹幹上爬滿了青苔，偶爾有幾隻野鳥在枝頭吱吱喳喳地叫著，又倏地飛走。林間沒有像樣的路，只有前人砍斷的枝條和繫在樹上的布條指引方向，布條早已褪色，在風中無力地飄動著。往東、往西都還是一眼望不到盡頭的樹林。\n",
+    "exits": {
+      "west": "/d/oldpine/forest_n1",
+      "east": "/d/oldpine/forest_n3"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/forest_n3",
+    "area": "老松林",
+    "short": "樹林",
+    "long": "這裡的松樹稍微稀疏了些，陽光從枝葉的縫隙灑下來，在地上投出斑駁的光影。東北方的林子後面不時傳來刀刃劈開空氣的呼呼聲；東南方的地勢漸漸低下去，長滿了半人高的雜草。往西則是更深的松林，林子裡靜得只剩下自己的腳步聲。\n",
+    "exits": {
+      "west": "/d/oldpine/forest_n2",
+      "southeast": "/d/oldpine/grass1"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/forest_w",
+    "area": "老松林",
+    "short": "樹林",
+    "long": "高大的老松將天空遮得只剩下零星幾點光亮，林中瀰漫著一股松脂的清香。一棵被雷劈倒的大松橫躺在地上，樹身早已腐朽中空，幾朵白色的菇菌從裂縫裡冒出頭來，倒下的樹幹旁長出了一圈嫩綠的小松苗。往東北可以穿過樹林，往南不遠處就是一塊較為開闊的空地。\n",
+    "exits": {
+      "northeast": "/d/oldpine/forest_n1",
+      "south": "/d/oldpine/crossing"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/glade",
+    "area": "迷霧森林",
+    "short": "林間空地",
+    "long": "迷霧森林中一塊難得開闊的空地，霧氣在這裡變得稀薄，抬頭還能望見一角灰濛濛的天空。空地西邊有一間冒著炊煙的野店，幾條小路從這裡向四方延伸，是林中往來的人必經之處。空地中央有一截被砍平的大樹樁，上面刻滿了旅人留下的名字。往西是野店，往北、西北、東、南都有路通往森林各處。\n",
+    "exits": {
+      "west": "/d/oldpine/inn",
+      "north": "/d/oldpine/mist4",
+      "northwest": "/d/oldpine/mist3",
+      "east": "/d/oldpine/wood1",
+      "south": "/d/oldpine/shrubs"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/lin_yuchan",
+        "count": 1,
+        "display": "逆靈宮四宮主 靈玉嬋(Lin yu-chan)",
+        "name": "靈玉嬋",
+        "id": "lin yu-chan",
+        "title": "逆靈宮四宮主",
+        "nickname": null,
+        "race": "human",
+        "age": 18,
+        "long": "一位膚色白皙的女郎，眉頭深鎖，似乎正在為什麼事情煩心。\n",
+        "look": "一位膚色白皙的女郎，眉頭深鎖，似乎正在為什麼事情煩心。\n靈玉嬋屬於人類族。她的外表看起來約十多歲。\n她身上帶著﹕\nＶ\\x1b[1;35m紫紗靴\\x1b[m (Violet shoes)\nＶ\\x1b[1;35m紫紗衫\\x1b[m (Violet cloth)\nＶ\\x1b[1;35m紫玉釵\\x1b[m (Violet hairpin)\nＶ\\x1b[1;35m紫雲玉珮\\x1b[m (Voliet jade)",
+        "inventory": [
+          {
+            "path": "/custom/armor/feet/violet_shoes",
+            "name": "\\x1b[1;35m紫紗靴\\x1b[m",
+            "id": "violet shoes",
+            "equipped": true
+          },
+          {
+            "path": "/custom/armor/cloth/violet_cloth",
+            "name": "\\x1b[1;35m紫紗衫\\x1b[m",
+            "id": "violet cloth",
+            "equipped": true
+          },
+          {
+            "path": "/custom/armor/head/violet_hairpin",
+            "name": "\\x1b[1;35m紫玉釵\\x1b[m",
+            "id": "violet hairpin",
+            "equipped": true
+          },
+          {
+            "path": "/custom/armor/waist/voliet_jade",
+            "name": "\\x1b[1;35m紫雲玉珮\\x1b[m",
+            "id": "voliet jade",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/grass1",
+    "area": "老松林",
+    "short": "草叢",
+    "long": "松林在這裡忽然斷開，眼前是一大片及腰的野草，風一吹便如波浪般起伏。草叢裡不時傳來窸窸窣窣的聲音，偶爾還能看見一雙發亮的眼睛在草間一閃而過，叫人心裡發毛。草地上有幾處被壓倒的痕跡，像是有什麼大傢伙在這裡打過滾。往西北可以回到松林，往北是一塊空地，往東南的草長得更高更密。\n",
+    "exits": {
+      "northwest": "/d/oldpine/forest_n3",
+      "north": "/d/oldpine/clearing_n",
+      "southeast": "/d/oldpine/grass2"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/grass2",
+    "area": "老松林",
+    "short": "草叢",
+    "long": "這裡的野草長得比人還高，四周只聽得見草葉摩擦的沙沙聲，根本看不清三步以外的東西。草叢中被壓出了一條條獸徑，泥地上滿是爪印，草根處還散落著幾撮灰黃色的獸毛。北邊的山壁下有一個黑黝黝的洞穴，裡頭不時傳出低沉的吼聲。往西北可以回到較矮的草叢。\n",
+    "exits": {
+      "northwest": "/d/oldpine/grass1"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/wolf",
+        "count": 3,
+        "display": "土狼(Wolf)",
+        "name": "土狼",
+        "id": "wolf",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "一口白森森的利牙，正虎視眈眈的盯著你。\n",
+        "look": "一口白森森的利牙，正虎視眈眈的盯著你。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/gravel_road",
+    "area": "老松林",
+    "short": "碎石路",
+    "long": "一條鋪著碎石的小路，碎石大小不一，走起來喀啦作響，是彤雲寺的僧人一擔一擔挑來鋪成的。路旁立著一塊小石碑，刻著「彤雲寺由此往西」。這裡是老松林中少數有人整理的路，往西可以到彤雲寺，往南接上官道，往北的林子裡卻不時傳來粗野的喧鬧聲。\n",
+    "exits": {
+      "west": "/d/oldpine/temple_gate",
+      "north": "/d/oldpine/hideout",
+      "south": "/d/oldpine/highway"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/hideout",
+    "area": "老松林",
+    "short": "林間空地",
+    "long": "松林深處一塊隱密的空地，四周用砍下的樹枝圍起了簡陋的柵欄，柵欄上掛著幾面破舊的布旗。空地中央搭著一個獸皮棚子，裡面堆著搶來的米糧和兵器，棚前插著一把生了鏽的大刀，刀柄上纏著褪色的紅布。這裡顯然是土匪在老松林裡的據點。往東北和往南各有一條小路。\n",
+    "exits": {
+      "northeast": "/d/oldpine/crossing",
+      "south": "/d/oldpine/gravel_road"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/xue_biao",
+        "count": 1,
+        "display": "土匪 徐彪(Xue biaw)",
+        "name": "徐彪",
+        "id": "xue biaw",
+        "title": "土匪",
+        "nickname": null,
+        "race": "yenhold",
+        "age": 40,
+        "long": "徐彪是老松林的土匪之一，因為在喬陰城裡犯下了不少案子，因此這一帶的\n百姓都認得他，他的特徵是一條從額頭到鼻子的傷疤，不少痛恨他的百姓都\n背地裡稱他「疤鼻子」。\n",
+        "look": "徐彪是老松林的土匪之一，因為在喬陰城裡犯下了不少案子，因此這一帶的\n百姓都認得他，他的特徵是一條從額頭到鼻子的傷疤，不少痛恨他的百姓都\n背地裡稱他「疤鼻子」。\n徐彪屬於厭火族。他的外表看起來約四十多歲。\n他身上帶著﹕\nＶ粗布衣 (Coarse cloth)\nＶ鬼頭刀 (Glaive)\nＶ頭巾 (Head cloth)",
+        "inventory": [
+          {
+            "path": "/d/oldpine/obj/coarse_cloth",
+            "name": "粗布衣",
+            "id": "coarse cloth",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/glaive",
+            "name": "鬼頭刀",
+            "id": "glaive",
+            "equipped": true
+          },
+          {
+            "path": "/d/oldpine/obj/head_cloth",
+            "name": "頭巾",
+            "id": "head cloth",
+            "equipped": true
+          }
+        ]
+      },
+      {
+        "path": "/d/oldpine/npc/bandit",
+        "count": 2,
+        "display": "土匪(Bandit)",
+        "name": "土匪",
+        "id": "bandit",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 30,
+        "long": "滿臉橫肉看起來一副凶神惡煞的樣子。\n",
+        "look": "滿臉橫肉看起來一副凶神惡煞的樣子。\n土匪屬於人類族。他的外表看起來約三十多歲。\n他身上帶著﹕\nＶ單刀 (Blade)\nＶ皮背心 (Leather vest)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/blade",
+            "name": "單刀",
+            "id": "blade",
+            "equipped": true
+          },
+          {
+            "path": "/custom/armor/cloth/leather_vest",
+            "name": "皮背心",
+            "id": "leather vest",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/highway",
+    "area": "老松林",
+    "short": "官道",
+    "long": "老松林南邊的官道，路面寬闊平坦，兩旁種著整齊的柳樹，與林中崎嶇的小路相比，走起來輕鬆許多。路邊立著一塊里程碑，刻著往喬陰縣的方向與里數。由於近來老松林土匪橫行，官道上往來的旅人寥寥無幾，只有幾隻烏鴉停在柳枝上啞啞叫著。往北可以進入老松林，往南的官道通往喬陰縣。\n",
+    "exits": {
+      "north": "/d/oldpine/gravel_road"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/inn",
+    "area": "迷霧森林",
+    "short": "野店",
+    "long": "迷霧森林裡一間用原木搭成的野店，屋簷下掛著一串串獸皮與風乾的鹿腿，門口豎著一根竹竿，挑著寫有「酒」字的布幌子。野店來往的人雖然不多，但獵戶和採藥人經常在此落腳，生意倒也還過得去；偶爾有獵人把打到的獵物賣給野店，烤肉的香味還吸引了附近的老饕前來光顧。往東可以回到林間空地，後頭掛著一塊油膩的布簾，裡面就是廚房。\n",
+    "exits": {
+      "east": "/d/oldpine/glade",
+      "enter": "/d/oldpine/kitchen"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/waiter",
+        "count": 1,
+        "display": "店小二(Waiter)",
+        "name": "店小二",
+        "id": "waiter",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 25,
+        "long": "來往的客人雖不多，總是笑臉迎人、手腳還算利索。你可以用 list 看可以點什麼，用 buy 跟店小二點菜。\n",
+        "look": "來往的客人雖不多，總是笑臉迎人、手腳還算利索。你可以用 list 看可以點什麼，用 buy 跟店小二點菜。\n店小二屬於人類族。他的外表看起來約二十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/kitchen",
+    "area": "迷霧森林",
+    "short": "廚房",
+    "long": "野店後頭的小廚房，牆壁被煙燻得烏黑，灶上架著一口大鐵鍋，鍋裡燉著不知名的野味，香氣四溢。屋樑上吊著幾串風乾的獸肉和辣椒，牆角堆滿了柴火與裝米的麻袋，麻袋上被咬出了好幾個破洞，地上還散落著米粒和老鼠屎。掀開布簾就能回到前頭的店裡。\n",
+    "exits": {
+      "out": "/d/oldpine/inn"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/rat",
+        "count": 3,
+        "display": "老鼠(Rat)",
+        "name": "老鼠",
+        "id": "rat",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "無所不在的老鼠，在野店尤其討厭。\n",
+        "look": "無所不在的老鼠，在野店尤其討厭。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/ledge",
+    "area": "迷霧森林",
+    "short": "平台",
+    "long": "一塊突出的大石頭形成的平台，位置高出洞底許多，下面的動靜看得一清二楚。石面上有幾處被人用刀刻下的記號，旁邊還丟著一個乾癟的水袋，看來曾有人在此躲避野獸。在這裡總算可以暫時喘口氣，但下面的低吼聲不時傳來，提醒你危險並未遠離。從這裡可以爬下去，回到山洞深處。\n",
+    "exits": {
+      "down": "/d/oldpine/cave_deep"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/main_hall",
+    "area": "老松林",
+    "short": "大雄寶殿",
+    "long": "這裡是彤雲寺的大雄寶殿﹐正殿供奉的是一尊巨大的大日如來神像﹐各式法器均整齊地放在一旁﹐神像前放著幾個蒲團﹐大殿的入口在你的南邊﹐東西兩邊各有一扇門通往寺院內部。\n",
+    "exits": {
+      "west": "/d/oldpine/side_hall_w",
+      "east": "/d/oldpine/side_hall_e",
+      "south": "/d/oldpine/temple_square"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/da_guan",
+        "count": 1,
+        "display": "彤雲寺住持 大觀和尚(Abbot da-gaun)",
+        "name": "大觀和尚",
+        "id": "abbot da-gaun",
+        "title": "彤雲寺住持",
+        "nickname": null,
+        "race": "human",
+        "age": 60,
+        "long": "大觀和尚是彤雲寺的住持，到南方雲遊七年，幾天前才剛回來。\n",
+        "look": "大觀和尚是彤雲寺的住持，到南方雲遊七年，幾天前才剛回來。\n大觀和尚屬於人類族。他的外表看起來約六十多歲。\n他身上帶著﹕\nＶ\\x1b[1;36m枯禪杖\\x1b[m (Wither zenstaff)\nＶ\\x1b[1;31m無相福田\\x1b[m (Animitta kasaya)\nＶ金剛念珠 (Psakaml)",
+        "inventory": [
+          {
+            "path": "/custom/weapon/staff/wither_zenstaff",
+            "name": "\\x1b[1;36m枯禪杖\\x1b[m",
+            "id": "wither zenstaff",
+            "equipped": true
+          },
+          {
+            "path": "/custom/armor/cloth/animitta_kasaya",
+            "name": "\\x1b[1;31m無相福田\\x1b[m",
+            "id": "animitta kasaya",
+            "equipped": true
+          },
+          {
+            "path": "/custom/armor/neck/psakaml",
+            "name": "金剛念珠",
+            "id": "psakaml",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/mist1",
+    "area": "迷霧森林",
+    "short": "迷霧森林",
+    "long": "白茫茫的霧氣在樹林間緩緩流動，十步以外的景物便模糊不清，只剩下一團團灰色的樹影。腳下是濕滑的落葉和腐土，空氣中飄著草藥的苦香，路旁偶爾能看見採藥人遺落的竹簍和斷掉的藥鋤。森林雖然深不可測，往來的人倒也不算少。往西可以走出森林，往東霧氣更加濃重。\n",
+    "exits": {
+      "west": "/d/oldpine/mist_entrance",
+      "east": "/d/oldpine/mist2"
+    },
+    "npcs": [
+      {
+        "path": "/obj/area/traveller",
+        "count": 2,
+        "display": "過路客(Traveller)",
+        "name": "過路客",
+        "id": "traveller",
+        "title": null,
+        "nickname": null,
+        "race": "jiaojao",
+        "age": 19,
+        "long": "一位行色匆匆, 滿臉風霜的過路客, 一身勁裝, 似乎隨時又要上路去.\n",
+        "look": "一位行色匆匆, 滿臉風霜的過路客, 一身勁裝, 似乎隨時又要上路去.\n過路客屬於焦僥族。她的外表看起來約十多歲。\n她身上帶著﹕\nＶ布衣 (Cloth)\nＶ馬鞭 (Horse whip)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/whip",
+            "name": "馬鞭",
+            "id": "horse whip",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/mist2",
+    "area": "迷霧森林",
+    "short": "迷霧森林",
+    "long": "霧氣濃得像化不開的牛乳，衣服沒多久就被沾得濕漉漉的。林間有一塊稍微乾燥的高地，被往來的人當成了歇腳處，地上留著熄滅的火堆和一些吃剩的乾糧碎屑。不時有人影從霧中出現又消失，分不清是旅人還是商販。往西可以回去，往南有一條被人踩出來的小徑。\n",
+    "exits": {
+      "west": "/d/oldpine/mist1",
+      "south": "/d/oldpine/mist3"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/seller",
+        "count": 1,
+        "display": "旅行小販(Seller)",
+        "name": "旅行小販",
+        "id": "seller",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 40,
+        "long": "揹著大貨箱四處做買賣的小販。你可以用 list 看他賣些什麼，用 buy 購買。\n",
+        "look": "揹著大貨箱四處做買賣的小販。你可以用 list 看他賣些什麼，用 buy 購買。\n旅行小販屬於人類族。他的外表看起來約四十多歲。",
+        "inventory": []
+      },
+      {
+        "path": "/obj/area/man",
+        "count": 1,
+        "display": "路人(Man)",
+        "name": "路人",
+        "id": "man",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "一個普通的路人﹐像這樣的人一天可以在路上碰見幾十個。\n",
+        "look": "一個普通的路人﹐像這樣的人一天可以在路上碰見幾十個。\n他身上帶著﹕\nＶ布衣 (Cloth)\nＶ短劍 (Short sword)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/shortsword",
+            "name": "短劍",
+            "id": "short sword",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/mist3",
+    "area": "迷霧森林",
+    "short": "迷霧森林",
+    "long": "這裡的樹木長得歪歪斜斜，樹根像一條條巨蛇般隆出地面，一不留神就會被絆倒。霧氣中隱約傳來潺潺的水聲，循聲望去卻什麼也看不見。樹幹上被人用刀刻了幾個箭頭，指向東南方，大概是往來的獵戶留下的記號。往北可以回到林中的歇腳處，往東南的霧氣稍微淡了一些。\n",
+    "exits": {
+      "north": "/d/oldpine/mist2",
+      "southeast": "/d/oldpine/glade"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/mist4",
+    "area": "迷霧森林",
+    "short": "迷霧森林",
+    "long": "一片長滿青草的林間窪地，霧氣在此聚積不散，像一池靜止的白水。草地上滿是蹄印和被啃食過的草根，四周的樹皮也被磨去了一塊塊，看來常有野鹿成群在此覓食。一有風吹草動，草叢深處便傳來一陣慌亂的蹄聲，接著又歸於平靜。往南可以走到一塊林間空地。\n",
+    "exits": {
+      "south": "/d/oldpine/glade"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/deer",
+        "count": 4,
+        "display": "野鹿(Deer)",
+        "name": "野鹿",
+        "id": "deer",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "一頭警覺性很強的精壯野鹿，即使低頭吃草仍保持警戒。\n",
+        "look": "一頭警覺性很強的精壯野鹿，即使低頭吃草仍保持警戒。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/mist_entrance",
+    "area": "迷霧森林",
+    "short": "森林入口",
+    "long": "老松林往東走到盡頭，樹木的種類漸漸變得雜亂，高大的樟樹與楓樹取代了松樹，林間開始飄起一層薄薄的白霧。路旁一棵大樟樹上刻著歪歪扭扭的幾個字：「霧深勿入」，旁邊還畫了個骷髏頭。這裡便是迷霧森林的入口，往西可以回到老松林，往東則是霧氣更濃的森林深處。\n",
+    "exits": {
+      "west": "/d/oldpine/crossing",
+      "east": "/d/oldpine/mist1"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/path0",
+    "area": "老松林",
+    "short": "林間小路",
+    "long": "一段狹窄的林間小路，兩旁的老松枝椏低垂，行人得不時低頭，才不會被松枝刮到臉。路面上散落著被踩碎的松果，泥土裡還半埋著一隻斷了繩的草鞋和幾枚生鏽的銅錢，看來曾有人在這裡慌忙逃命。西北方隱約飄來柴火的煙味和粗野的笑罵聲，往東則接上一條較為平坦的小路。\n",
+    "exits": {
+      "northwest": "/d/oldpine/clearing_w",
+      "east": "/d/oldpine/path1"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/path1",
+    "area": "老松林",
+    "short": "林間小路",
+    "long": "一條夾在松樹之間的泥土小路，路面被往來的人踩得結實，兩旁卻長滿了帶刺的荊棘，稍不留神就會勾破衣裳。路邊的泥地上留著幾個新鮮的馬蹄印，不遠處還有一小攤乾掉的血跡和一隻掉落的布鞋，讓人不禁加快了腳步。小路往西越走越窄，往東南則蜿蜒深入林中。\n",
+    "exits": {
+      "west": "/d/oldpine/path0",
+      "southeast": "/d/oldpine/path2"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/path2",
+    "area": "老松林",
+    "short": "林間小路",
+    "long": "林間的小路在這裡轉了個彎，路旁一棵老松的根部盤結隆起，被往來的人當成了歇腳的石凳，坐得光滑發亮。樹枝上掛著幾串風乾的野果，不知是哪個好心的旅人留下來給後人充飢的。近來路上行人稀少，樹根旁已經積了一層沒人掃的落葉。小路往西北通向林子深處，往東則能走到一塊空地。\n",
+    "exits": {
+      "northwest": "/d/oldpine/path1",
+      "east": "/d/oldpine/crossing"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/reeds",
+    "area": "迷霧森林",
+    "short": "蘆葦叢",
+    "long": "一望無際的蘆葦叢，蘆葦長得比人還高，密密麻麻地擋住了視線，四面八方看起來都一模一樣。腳下是濕軟的泥地，每走一步都會陷下去半寸，身後的足跡很快又被泥水填平。風吹過蘆葦，發出沙沙的聲響，彷彿有人在耳邊低語，讓人完全分不清東南西北。\n",
+    "exits": {
+      "north": "/d/oldpine/reeds2",
+      "south": "/d/oldpine/reeds",
+      "east": "/d/oldpine/wood3",
+      "west": "/d/oldpine/reeds"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/reeds2",
+    "area": "迷霧森林",
+    "short": "蘆葦叢",
+    "long": "一望無際的蘆葦叢，蘆葦長得比人還高，密密麻麻地擋住了視線，四面八方看起來都一模一樣。腳下是濕軟的泥地，每走一步都會陷下去半寸，身後的足跡很快又被泥水填平。風吹過蘆葦，發出沙沙的聲響，彷彿有人在耳邊低語，讓人完全分不清東南西北。\n",
+    "exits": {
+      "north": "/d/oldpine/reeds3",
+      "south": "/d/oldpine/reeds",
+      "east": "/d/oldpine/reeds",
+      "west": "/d/oldpine/reeds"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/reeds3",
+    "area": "迷霧森林",
+    "short": "蘆葦叢",
+    "long": "一望無際的蘆葦叢，蘆葦長得比人還高，密密麻麻地擋住了視線，四面八方看起來都一模一樣。腳下是濕軟的泥地，每走一步都會陷下去半寸，身後的足跡很快又被泥水填平。風吹過蘆葦，發出沙沙的聲響，彷彿有人在耳邊低語，讓人完全分不清東南西北。\n",
+    "exits": {
+      "north": "/d/oldpine/reeds",
+      "south": "/d/oldpine/reeds",
+      "east": "/d/oldpine/reeds4",
+      "west": "/d/oldpine/reeds"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/reeds4",
+    "area": "迷霧森林",
+    "short": "蘆葦叢",
+    "long": "一望無際的蘆葦叢，蘆葦長得比人還高，密密麻麻地擋住了視線，四面八方看起來都一模一樣。腳下是濕軟的泥地，每走一步都會陷下去半寸，身後的足跡很快又被泥水填平。風吹過蘆葦，發出沙沙的聲響，彷彿有人在耳邊低語，讓人完全分不清東南西北。\n",
+    "exits": {
+      "north": "/d/oldpine/reeds",
+      "south": "/d/oldpine/reeds",
+      "east": "/d/oldpine/reeds",
+      "west": "/d/oldpine/reeds5"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/reeds5",
+    "area": "迷霧森林",
+    "short": "蘆葦叢",
+    "long": "一望無際的蘆葦叢，蘆葦長得比人還高，密密麻麻地擋住了視線，四面八方看起來都一模一樣。腳下是濕軟的泥地，每走一步都會陷下去半寸，身後的足跡很快又被泥水填平。風吹過蘆葦，發出沙沙的聲響，彷彿有人在耳邊低語，讓人完全分不清東南西北。\n",
+    "exits": {
+      "north": "/d/oldpine/reeds_exit",
+      "south": "/d/oldpine/reeds",
+      "east": "/d/oldpine/reeds",
+      "west": "/d/oldpine/reeds"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/reeds_exit",
+    "area": "迷霧森林",
+    "short": "蘆葦叢",
+    "long": "蘆葦叢的邊緣，高大的蘆葦終於稀疏了下來，露出一小片乾燥的土丘。土丘上長著幾株罕見的草藥，在潮濕的霧氣中顯得格外青翠，看來很少有人能找到這裡。從土丘上望出去，東邊隱約可以看見樹林的輪廓，總算是找到了出路。往東可以離開蘆葦叢。\n",
+    "exits": {
+      "east": "/d/oldpine/wood3"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/herbalist",
+        "count": 1,
+        "display": "採藥人(Herbalist)",
+        "name": "採藥人",
+        "id": "herbalist",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 22,
+        "long": "身材健碩的小伙子，經常在人煙罕至的地方收集草藥。\n",
+        "look": "身材健碩的小伙子，經常在人煙罕至的地方收集草藥。\n採藥人屬於人類族。他的外表看起來約二十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/shrubs",
+    "area": "迷霧森林",
+    "short": "矮樹叢",
+    "long": "一片低矮的灌木叢，枝葉間結滿了紅色的小漿果，酸甜的氣味混在霧氣裡。灌木叢中被人砍出了一條小路，路旁的樹枝上綁著一條褪色的紅布，大概是給迷路的人做的記號。霧中不時傳來幾聲粗魯的吆喝和大笑，聽起來不像是善類。往北可以回到林間空地，往西南是一片空地。\n",
+    "exits": {
+      "north": "/d/oldpine/glade",
+      "southwest": "/d/oldpine/bandit_clearing"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/side_hall_e",
+    "area": "老松林",
+    "short": "側殿",
+    "long": "大雄寶殿東側的偏殿，殿內供奉著十八羅漢的泥塑像，有的怒目圓睜，有的含笑撫膝，個個神態不同、栩栩如生。殿角放著一面大鼓和一口銅鐘，鐘身刻滿了經文，看得出年代久遠。地上的青磚被跪拜的人磨得光亮，蒲團上還留著淺淺的膝印。往西可以回到大雄寶殿。\n",
+    "exits": {
+      "west": "/d/oldpine/main_hall"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/side_hall_w",
+    "area": "老松林",
+    "short": "側殿",
+    "long": "大雄寶殿西側的偏殿，殿內供奉著一尊手持淨瓶的觀音菩薩像，菩薩低眉垂目，神情慈悲。兩旁的木架上擺滿了經書，許多書頁已經泛黃，用細繩小心地綑紮著。供桌上點著一盞長明燈，微弱的火光映著牆上褪色的壁畫，畫的是菩薩救苦救難的故事。往東可以回到大雄寶殿。\n",
+    "exits": {
+      "east": "/d/oldpine/main_hall"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/temple_gate",
+    "area": "老松林",
+    "short": "彤雲寺",
+    "long": "彤雲寺的山門，兩扇朱漆木門斑駁褪色，門楣上懸著一塊匾額，以蒼勁的筆法寫著「彤雲寺」三個大字。門前蹲著兩隻石獅，被風雨侵蝕得只剩下模糊的輪廓。聽說寺裡的住持到南方雲遊了好些年，香火一度冷清，最近才又熱鬧起來。往西進入寺內的廣場，往東是一條碎石路。\n",
+    "exits": {
+      "west": "/d/oldpine/temple_square",
+      "east": "/d/oldpine/gravel_road"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/temple_square",
+    "area": "老松林",
+    "short": "彤雲寺",
+    "long": "彤雲寺大殿前的廣場，地上鋪著平整的青石板，石縫裡長出幾叢青草。廣場中央立著一座三足銅香爐，爐中插滿了香，裊裊青煙飄向北邊莊嚴的大雄寶殿。廣場兩側種著幾棵老松，樹下擺著石凳，偶爾有僧人拿著竹掃帚在此清掃落葉。往北是大雄寶殿，往東可以走出寺門。\n",
+    "exits": {
+      "north": "/d/oldpine/main_hall",
+      "east": "/d/oldpine/temple_gate"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/wood1",
+    "area": "迷霧森林",
+    "short": "樹林",
+    "long": "霧氣籠罩下的雜木林，樹幹上纏滿了藤蔓，藤上結著一串串紫黑色的果實，引來不少鳥雀啄食。地面上有幾道被重物拖過的痕跡，一路延伸到東北方的林子裡，痕跡旁還印著碗口大的爪印，看得人心頭一緊。往西可以回到空地，往東北和往南各有小路。\n",
+    "exits": {
+      "west": "/d/oldpine/glade",
+      "northeast": "/d/oldpine/beast_trail",
+      "south": "/d/oldpine/wood2"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/wood2",
+    "area": "迷霧森林",
+    "short": "樹林",
+    "long": "林中的霧氣潮濕而清涼，樹下長著各式各樣的蕨類和野草，其中有不少是珍貴的藥材。地上被挖出了許多小坑，坑邊還留著新鮮的泥土，看來有採藥人剛在這裡忙碌過。遠處傳來一陣陣蘆葦被風吹動的沙沙聲，在霧中聽來格外清晰。往北和往南都有路可走。\n",
+    "exits": {
+      "north": "/d/oldpine/wood1",
+      "south": "/d/oldpine/wood3"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/herbalist",
+        "count": 1,
+        "display": "採藥人(Herbalist)",
+        "name": "採藥人",
+        "id": "herbalist",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 22,
+        "long": "身材健碩的小伙子，經常在人煙罕至的地方收集草藥。\n",
+        "look": "身材健碩的小伙子，經常在人煙罕至的地方收集草藥。\n採藥人屬於人類族。他的外表看起來約二十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/oldpine/wood3",
+    "area": "迷霧森林",
+    "short": "樹林",
+    "long": "森林的南邊，霧氣在這裡被一片廣大的蘆葦叢擋住，樹林與蘆葦交界處長滿了濕漉漉的苔蘚。西邊的蘆葦叢一望無際，隨風起伏如海，據說曾有人走進去就再也沒有出來，附近的獵戶都繞道而行。往北可以回到林中，往西是蘆葦叢，往西南的樹林則越來越幽深。\n",
+    "exits": {
+      "north": "/d/oldpine/wood2",
+      "west": "/d/oldpine/reeds",
+      "southwest": "/d/oldpine/wood4"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/wood4",
+    "area": "迷霧森林",
+    "short": "樹林",
+    "long": "這裡的樹木又高又密，枝葉交錯成一片厚實的頂篷，霧氣被困在林下，濃得幾乎可以用手撈起。地上的落葉積了不知多少年，踩下去鬆鬆軟軟，散發出一股潮濕的霉味。樹枝間不時有小動物竄過，抖落一串冰涼的水珠。往東北可以回去，往南是森林更深的地方。\n",
+    "exits": {
+      "northeast": "/d/oldpine/wood3",
+      "south": "/d/oldpine/wood_deep"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/oldpine/wood_deep",
+    "area": "迷霧森林",
+    "short": "樹林深處",
+    "long": "迷霧森林的最深處，幾棵需要數人合抱的古松挺立在霧中，樹幹上滿是樹洞，松果落了一地。松鼠們在枝頭間跳來跳去，一點也不怕人，偶爾還會抱著松果好奇地打量你。四周靜謐得出奇，彷彿與外面的世界完全隔絕。往北是唯一的出路。\n",
+    "exits": {
+      "north": "/d/oldpine/wood4"
+    },
+    "npcs": [
+      {
+        "path": "/d/oldpine/npc/squirrel",
+        "count": 4,
+        "display": "松鼠(Squirrel)",
+        "name": "松鼠",
+        "id": "squirrel",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "森林裡的松鼠數量眾多，同時也是獵人的主要獵物之一。\n",
+        "look": "森林裡的松鼠數量眾多，同時也是獵人的主要獵物之一。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/backyard",
+    "area": "五堂鎮",
+    "short": "後院",
+    "long": "這裡是民房的後院，在後院裡有養著各式各樣的家畜，而在不遠的前方也有著一條很清澈的小溪，通常這也是這地方人家洗衣服和用水的小溪，而在小溪中也有幾隻小魚，溪中也有鴨子在上面玩水。\n",
+    "exits": {
+      "north": "/d/wutang/path_e"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/bamboo_grove",
+    "area": "五堂鎮",
+    "short": "綠竹林",
+    "long": "一片茂密的綠竹林，修長的竹子直入雲霄，竹葉沙沙作響，陽光從縫隙間灑落下來，顯得格外清幽。往北隱約可以看見一間綠竹搭成的小屋，往回走則要穿過那一大叢草叢。\n",
+    "exits": {
+      "north": "/d/wutang/bamboo_hall"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/bamboo_hall",
+    "area": "五堂鎮",
+    "short": "主廳",
+    "long": "這是一間綠竹所造的小屋, 簡單的擺設中流露出異於凡俗的清幽雅緻, 東西兩側兩扇小窗引進樹林的淡淡清香繚繞室內, 幾張竹桌竹椅整齊的排在屋內, 竹桌上還泡著一壺清茶, 和一籃水果。\n",
+    "exits": {
+      "south": "/d/wutang/bamboo_grove"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/huyen_guan",
+        "count": 1,
+        "display": "綠竹居士 呼延光(Huyen guan)",
+        "name": "呼延光",
+        "id": "huyen guan",
+        "title": "綠竹居士",
+        "nickname": null,
+        "race": "human",
+        "age": 50,
+        "long": "一位隱居在綠竹林中的居士，一襲雪白長袍，神態閒適，眉宇間透著一股\n書卷氣。據說他見多識廣，天下奇聞軼事少有他不知道的，連五陵客棧的\n李再延都對他推崇備至。\n",
+        "look": "一位隱居在綠竹林中的居士，一襲雪白長袍，神態閒適，眉宇間透著一股\n書卷氣。據說他見多識廣，天下奇聞軼事少有他不知道的，連五陵客棧的\n李再延都對他推崇備至。\n呼延光屬於人類族。他的外表看起來約五十多歲。\n他身上帶著﹕\nＶ白長袍 (White cloth)",
+        "inventory": [
+          {
+            "path": "/custom/armor/cloth/white_cloth",
+            "name": "白長袍",
+            "id": "white cloth",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/bank",
+    "area": "五堂鎮",
+    "short": "景隆錢莊",
+    "long": "五堂鎮最大的景隆錢莊，櫃臺後的夥計正噼哩啪啦地打著算盤，牆上掛著一塊「信義通商」的金字匾額。幾名身材魁梧的護院武師守在門口與內堂，讓人不敢有非分之想。在這裡可以存款、提款，也可以兌換銀兩。\n",
+    "exits": {
+      "north": "/d/wutang/east_street1"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/guard",
+        "count": 4,
+        "display": "護院武師(Guard)",
+        "name": "護院武師",
+        "id": "guard",
+        "title": null,
+        "nickname": null,
+        "race": "blackteeth",
+        "age": 20,
+        "long": "肌肉虯結一身橫肉，看起來並不好惹的樣子。\n",
+        "look": "肌肉虯結一身橫肉，看起來並不好惹的樣子。\n護院武師屬於黑齒族。他的外表看起來約二十多歲。\n他身上帶著﹕\nＶ牛皮背心 (Leather vest)",
+        "inventory": [
+          {
+            "path": "/custom/armor/cloth/cowhide_vest",
+            "name": "牛皮背心",
+            "id": "leather vest",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/boardwalk_e",
+    "area": "五堂鎮",
+    "short": "木道",
+    "long": "木板步道的東段，木板已經有些老舊，縫隙間長出了青苔。往北是一片放牧著綿羊的草原，常能聽見羊群咩咩的叫聲，往東接到三岔路口，往西則通往鯉君渡，渡口那頭不時傳來船夫的吆喝聲。\n",
+    "exits": {
+      "west": "/d/wutang/boardwalk_w",
+      "east": "/d/wutang/three_way",
+      "north": "/d/wutang/grass_se"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/boardwalk_w",
+    "area": "五堂鎮",
+    "short": "木道",
+    "long": "一條用木板鋪成的步道，架在濕軟的河灘上，踩上去會發出吱吱嘎嘎的聲響。兩旁長著高過人頭的蘆葦，風一吹便沙沙作響，偶爾還會驚起幾隻水鳥。往西是鯉君渡，往東可以走往三岔路口。\n",
+    "exits": {
+      "west": "/d/wutang/ferry",
+      "east": "/d/wutang/boardwalk_e"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/boat",
+    "area": "五堂鎮",
+    "short": "小船上",
+    "long": "一艘用稻草搭著篷子的小草船，靜靜地停在羿水河心，隨著水波緩緩搖晃。船頭擱著一根釣竿，船上的人似乎已經在這裡垂釣了很久。四周都是河水，想回岸邊只能游回去。\n",
+    "exits": {},
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/smoke_fisher",
+        "count": 1,
+        "display": "煙波釣叟(Fisher)",
+        "name": "煙波釣叟",
+        "id": "fisher",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 70,
+        "long": "看起來在這裡但感覺不到他在這裡，只見一翁一竿在草船上坐著，彷彿時間就這樣停止了。\n",
+        "look": "看起來在這裡但感覺不到他在這裡，只見一翁一竿在草船上坐著，彷彿時間就這樣停止了。\n煙波釣叟屬於人類族。他的外表看起來約七十多歲。\n他身上帶著﹕\nＶ青絲釣竿 (Fishing stick)\nＶ簑衣 (Cloth)",
+        "inventory": [
+          {
+            "path": "/custom/weapon/whip/silk_fishing_stick",
+            "name": "青絲釣竿",
+            "id": "fishing stick",
+            "equipped": true
+          },
+          {
+            "path": "/custom/armor/cloth/straw_cloth",
+            "name": "簑衣",
+            "id": "cloth",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/city_god_temple",
+    "area": "五堂鎮",
+    "short": "城隍廟",
+    "long": "五堂鎮的城隍廟，是地方上的信仰中心，香火終年不斷。正殿供奉著身穿紫紅官服的城隍爺神像，兩旁站著牛頭馬面，神情威嚴。香案上擺滿了鎮民供奉的鮮花素果，裊裊的香煙中透著一股肅穆的氣氛。\n",
+    "exits": {
+      "west": "/d/wutang/east_street4"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/town_god",
+        "count": 1,
+        "display": "城隍爺(Town god)",
+        "name": "城隍爺",
+        "id": "town god",
+        "title": null,
+        "nickname": null,
+        "race": null,
+        "age": 800,
+        "long": "你面前這位身穿紫紅色官服的老人便是此地的城隍爺了﹐土地公掌管陽間之事﹐城隍爺掌管的就是陰間之事﹐陽間的人死了﹐鬼魂都要找城隍爺報到(register)才能往生輪迴﹐否則便會淪落為孤魂野鬼。\n",
+        "look": "你面前這位身穿紫紅色官服的老人便是此地的城隍爺了﹐土地公掌管陽間之事﹐城隍爺掌管的就是陰間之事﹐陽間的人死了﹐鬼魂都要找城隍爺報到(register)才能往生輪迴﹐否則便會淪落為孤魂野鬼。\n城隍爺屬於人類族。他的外表看起來約八百多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/clearing",
+    "area": "五堂鎮",
+    "short": "空地",
+    "long": "菜田前的一片空地，地上留著許多雜亂的蹄印，看來常有野豬從菜田那頭跑過來。空地邊緣擺著幾個用來嚇唬野豬的稻草人，可惜看來沒什麼用處。往西就是一大片菜田，往南則是通往五堂鎮的碎石路。\n",
+    "exits": {
+      "west": "/d/wutang/field5",
+      "south": "/d/wutang/gravel_road_n"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/cloth_shop",
+    "area": "五堂鎮",
+    "short": "布莊",
+    "long": "一家不大的布莊，架子上堆滿了一疋疋的布料，從粗棉布到上好的綢緞應有盡有。櫃臺上攤開著幾疋顏色鮮豔的花布，是老闆娘李美麗最得意的貨色，常有姑娘家在這裡流連忘返。往南可以回到街道。\n",
+    "exits": {
+      "south": "/d/wutang/east_street3"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/tao",
+        "count": 1,
+        "display": "小桃(Tao)",
+        "name": "小桃",
+        "id": "tao",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 10,
+        "long": "天真爛漫的小女孩，正盯著布莊李美麗的花布。\n",
+        "look": "天真爛漫的小女孩，正盯著布莊李美麗的花布。\n小桃屬於人類族。她的外表看起來不到十歲。",
+        "inventory": []
+      },
+      {
+        "path": "/d/wutang/npc/young_gentleman",
+        "count": 1,
+        "display": "青年公子(Young man)",
+        "name": "青年公子",
+        "id": "young man",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 18,
+        "long": "一位衣著講究的青年公子，手搖摺扇，在布莊裡挑挑揀揀，看來是鎮上富\n貴人家的少爺，正打算挑塊上好的綢緞做件新衣裳。\n",
+        "look": "一位衣著講究的青年公子，手搖摺扇，在布莊裡挑挑揀揀，看來是鎮上富\n貴人家的少爺，正打算挑塊上好的綢緞做件新衣裳。\n青年公子屬於人類族。他的外表看起來約十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/crossroad",
+    "area": "五堂鎮",
+    "short": "交叉路口",
+    "long": "這裡是五堂鎮廟口大街的一處交叉路口﹐廟口大街往東西延伸﹐路口中央立著一根高大的鐵旗桿﹐據說是鎮上雍家的先祖所立﹐幾百年來已成為五堂鎮的地標之一﹐街道往東西南北都相當熱鬧﹐人來人往﹐由於五堂鎮位當喬陰縣的水路要衝﹐因此這裡的繁華景象和縣城比起來是毫不遜色。\n",
+    "exits": {
+      "west": "/d/wutang/west_street1",
+      "east": "/d/wutang/east_street1",
+      "north": "/d/wutang/north_street",
+      "south": "/d/wutang/south_street1"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/seller",
+        "count": 1,
+        "display": "賣餅大叔(Seller)",
+        "name": "賣餅大叔",
+        "id": "seller",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 40,
+        "long": "長年在五堂鎮賣餅，與街訪都相當熟識。你可以用 list 看他賣些什麼，用 buy 購買。\n",
+        "look": "長年在五堂鎮賣餅，與街訪都相當熟識。你可以用 list 看他賣些什麼，用 buy 購買。\n賣餅大叔屬於人類族。他的外表看起來約四十多歲。",
+        "inventory": []
+      },
+      {
+        "path": "/d/wutang/npc/guo_boo",
+        "count": 1,
+        "display": "朱衣派道士 郭布(Guo boo)",
+        "name": "郭布",
+        "id": "guo boo",
+        "title": "朱衣派道士",
+        "nickname": null,
+        "race": "human",
+        "age": 65,
+        "long": "一個神色剽悍的禿頭老者﹐若不是穿著道袍﹐說不定你會以為他是個武林豪傑。\n",
+        "look": "一個神色剽悍的禿頭老者﹐若不是穿著道袍﹐說不定你會以為他是個武林豪傑。\n郭布屬於人類族。他的外表看起來約六十多歲。\n他身上帶著﹕\nＶ鮮紅道袍 (Red robe)\nＶ鮮紅道冠 (Red hat)\nＶ\\x1b[1;31m咒劍紅羽\\x1b[m (Sword of redrune)",
+        "inventory": [
+          {
+            "path": "/custom/armor/cloth/red_robe",
+            "name": "鮮紅道袍",
+            "id": "red robe",
+            "equipped": true
+          },
+          {
+            "path": "/custom/armor/head/red_hat",
+            "name": "鮮紅道冠",
+            "id": "red hat",
+            "equipped": true
+          },
+          {
+            "path": "/custom/weapon/sword/sword_of_redrune",
+            "name": "\\x1b[1;31m咒劍紅羽\\x1b[m",
+            "id": "sword of redrune",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/dark_alley_e",
+    "area": "五堂鎮",
+    "short": "暗巷",
+    "long": "這是一條非常陰冷的巷子，因為在兩旁的房子的中間，而巷子是非常的窄的，而陽光也是被房子所遮敝著，所以使的這非常的涼快，而巷子的盡頭傳來吵雜的聲音，也看得到那一頭人來人往的樣子。\n",
+    "exits": {
+      "east": "/d/wutang/temple_road_s",
+      "west": "/d/wutang/dark_alley_w"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/lee_shan",
+        "count": 1,
+        "display": "李山(Lee shan)",
+        "name": "李山",
+        "id": "lee shan",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 25,
+        "long": "附近遊手好閒的小混混，時不時就會做出些令人苦惱的爛事。\n",
+        "look": "附近遊手好閒的小混混，時不時就會做出些令人苦惱的爛事。\n李山屬於人類族。他的外表看起來約二十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/dark_alley_w",
+    "area": "五堂鎮",
+    "short": "暗巷",
+    "long": "暗巷的另一頭，兩旁的牆壁高得幾乎遮住了天空，地上滿是積水與垃圾，散發出一股霉味。巷子到這裡就到了盡頭，往東可以走回巷口，隱約還聽得到市集那頭傳來的吵雜聲。\n",
+    "exits": {
+      "east": "/d/wutang/dark_alley_e"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/east_street1",
+    "area": "五堂鎮",
+    "short": "街道",
+    "long": "交叉路口東邊的廟口大街，街上人潮不斷，兩旁的店鋪招牌林立。往南是一間門面氣派的錢莊，門口站著幾個身材魁梧的護院，往東沿著大街可以走到醇雨樓客棧。\n",
+    "exits": {
+      "west": "/d/wutang/crossroad",
+      "east": "/d/wutang/east_street2",
+      "south": "/d/wutang/bank"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/east_street2",
+    "area": "五堂鎮",
+    "short": "街道",
+    "long": "廟口大街的中段，北邊就是三層樓高的醇雨樓客棧，飯菜的香味不時從客棧裡飄出來，引得路人頻頻回頭。街上的行人多半是往來的旅客與商販，十分熱鬧。\n",
+    "exits": {
+      "west": "/d/wutang/east_street1",
+      "east": "/d/wutang/east_street3",
+      "north": "/d/wutang/inn"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/east_street3",
+    "area": "五堂鎮",
+    "short": "街道",
+    "long": "廟口大街往東延伸的一段，北邊是一間布莊，門口掛著五顏六色的布疋，南邊則是官府設的五堂別館，門口立著兩隻石獅子，顯得十分莊重。往西是熱鬧的大街，往東則通往城隍廟的方向。\n",
+    "exits": {
+      "west": "/d/wutang/east_street2",
+      "east": "/d/wutang/east_street4",
+      "north": "/d/wutang/cloth_shop",
+      "south": "/d/wutang/guesthouse"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/east_street4",
+    "area": "五堂鎮",
+    "short": "街道",
+    "long": "廟口大街的東端，再往東走就是香火鼎盛的城隍廟，空氣中飄著淡淡的香煙味。往東北可以通往雲棧市集廣場，市集那頭的吵雜聲遠遠就能聽見。\n",
+    "exits": {
+      "west": "/d/wutang/east_street3",
+      "east": "/d/wutang/city_god_temple",
+      "northeast": "/d/wutang/market_square"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/entrance",
+    "area": "五堂鎮",
+    "short": "五堂鎮口",
+    "long": "這裡是五堂鎮的鎮口，幾輛人力車整齊地停在路邊，車伕們一邊擦汗一邊招攬客人，等著把旅客送往附近的城鎮。往北是振武軍營的方向，往南走就進入五堂鎮了。\n",
+    "exits": {
+      "north": "/custom/zhenwu/room/gate",
+      "south": "/d/wutang/north_street"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/young_man",
+        "count": 1,
+        "display": "小鼠兒(Young man)",
+        "name": "小鼠兒",
+        "id": "young man",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 15,
+        "long": "努力拉車的小伙子，經常往返兩地、服務鄉親。\n",
+        "look": "努力拉車的小伙子，經常往返兩地、服務鄉親。\n小鼠兒屬於人類族。他的外表看起來約十多歲。",
+        "inventory": []
+      },
+      {
+        "path": "/d/wutang/npc/old_fire",
+        "count": 1,
+        "display": "老火(Old fire)",
+        "name": "老火",
+        "id": "old fire",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 55,
+        "long": "拉車多年的壯漢，雖然頗有年紀但依然勝任愉快。\n",
+        "look": "拉車多年的壯漢，雖然頗有年紀但依然勝任愉快。\n老火屬於人類族。他的外表看起來約五十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/ferry",
+    "area": "五堂鎮",
+    "short": "鯉君渡",
+    "long": "這裡是前往水嵐縣的鯉君渡，河岸邊停泊著幾艘渡船，船夫們吆喝著招攬過河的旅客。往北走下河堤，便是緊鄰河面的渡口，往東則是一條通往三岔路口的木道。\n",
+    "exits": {
+      "east": "/d/wutang/boardwalk_w",
+      "northdown": "/d/wutang/ferry_dock"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/ferry_dock",
+    "area": "五堂鎮",
+    "short": "鯉君渡口",
+    "long": "這裡是來往喬陰縣和水嵐縣的主要交通要衝，在喬陰縣和水嵐縣發展的越來越具規模之後，鯉君渡也變得越來越繁榮，相傳鯉君渡這渡口的由來是在寒於氏死後靈魂化身的十三精靈之一的川鬼「濁魚」因羿水這裡山靈水秀而在這裡安定下來，由於本身所具有對於山川河水的神祕能力，使的原本急湍旋流很多的羿水成為一條穩定的河川，後人為了緬懷祂們，尊稱祂們為鯉君，更在這裡設立一個鯉君渡，讓過往的旅客能受祂們的庇佑安全渡過羿水。\n",
+    "exits": {
+      "southup": "/d/wutang/ferry",
+      "southeast": "/d/wutang/river_bank"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/fisher",
+        "count": 2,
+        "display": "釣客(Fisher)",
+        "name": "釣客",
+        "id": "fisher",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 30,
+        "long": "拿根釣竿悠哉的垂釣中。\n",
+        "look": "拿根釣竿悠哉的垂釣中。\n釣客屬於人類族。他的外表看起來約三十多歲。\n他身上帶著﹕\nＶ竹釣竿 (Bamboo fishing rod)",
+        "inventory": [
+          {
+            "path": "/custom/weapon/whip/bamboo_fishing_rod",
+            "name": "竹釣竿",
+            "id": "bamboo fishing rod",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/field1",
+    "area": "五堂鎮",
+    "short": "菜田",
+    "long": "一大片菜田，田裡種著白菜、蘿蔔與青蔥，只是不少菜苗被翻得東倒西歪，地上滿是野豬的蹄印與拱出來的土坑。田埂上插著幾根削尖的竹竿，似乎是主人用來防範野豬的。往西是菜田主人的草屋。\n",
+    "exits": {
+      "west": "/d/wutang/hut",
+      "south": "/d/wutang/field2"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/big_boar",
+        "count": 1,
+        "display": "大野豬(Big boar)",
+        "name": "大野豬",
+        "id": "big boar",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "一隻兇猛的大野豬，眼盯著你一副蓄勢待發的樣子。\n",
+        "look": "一隻兇猛的大野豬，眼盯著你一副蓄勢待發的樣子。",
+        "inventory": []
+      },
+      {
+        "path": "/d/wutang/npc/boar",
+        "count": 2,
+        "display": "野豬(Boar)",
+        "name": "野豬",
+        "id": "boar",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "一隻兇猛的野豬，正東張西望找食物。\n",
+        "look": "一隻兇猛的野豬，正東張西望找食物。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/field2",
+    "area": "五堂鎮",
+    "short": "菜田",
+    "long": "菜田的中央，一畦畦的菜圃整齊排列，卻被野豬啃得七零八落，田邊的竹籬笆也被撞出了好幾個破洞。四周不時傳來野豬哼哼的叫聲，田裡的泥土被翻得亂七八糟，一不小心就會踩進泥坑裡，往北、往東、往南都還是菜田。\n",
+    "exits": {
+      "north": "/d/wutang/field1",
+      "east": "/d/wutang/field3",
+      "south": "/d/wutang/field4"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/boar",
+        "count": 3,
+        "display": "野豬(Boar)",
+        "name": "野豬",
+        "id": "boar",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "一隻兇猛的野豬，正東張西望找食物。\n",
+        "look": "一隻兇猛的野豬，正東張西望找食物。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/field3",
+    "area": "五堂鎮",
+    "short": "菜田",
+    "long": "菜田的東北角，這裡種的是一排排的豆藤，竹架子歪歪斜斜，有些已經被拱倒在地。泥地裡散落著被咬了一半的瓜果，引來了一群蒼蠅嗡嗡作響。往西、往南都還是菜田，幾隻野豬正埋頭在田裡大快朵頤。\n",
+    "exits": {
+      "west": "/d/wutang/field2",
+      "south": "/d/wutang/field5"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/boar",
+        "count": 3,
+        "display": "野豬(Boar)",
+        "name": "野豬",
+        "id": "boar",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "一隻兇猛的野豬，正東張西望找食物。\n",
+        "look": "一隻兇猛的野豬，正東張西望找食物。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/field4",
+    "area": "五堂鎮",
+    "short": "菜田",
+    "long": "菜田的西南角，地上的蘿蔔幾乎都被野豬拱了出來，只剩下一個個坑洞。看來菜田主人對這群野豬實在是束手無策。田邊的水溝已經被泥土填平了一半，往北、往東還有更多被糟蹋的菜圃。\n",
+    "exits": {
+      "north": "/d/wutang/field2",
+      "east": "/d/wutang/field5"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/boar",
+        "count": 3,
+        "display": "野豬(Boar)",
+        "name": "野豬",
+        "id": "boar",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "一隻兇猛的野豬，正東張西望找食物。\n",
+        "look": "一隻兇猛的野豬，正東張西望找食物。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/field5",
+    "area": "五堂鎮",
+    "short": "菜田",
+    "long": "菜田的東側，往東就是菜田前的空地。田裡的作物被踩得亂七八糟，泥地上的蹄印一路延伸到空地那頭。田邊幾棵果樹的樹皮被啃得斑斑駁駁，往西、往北都是一片狼藉的菜田。\n",
+    "exits": {
+      "west": "/d/wutang/field4",
+      "north": "/d/wutang/field3",
+      "east": "/d/wutang/clearing"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/boar",
+        "count": 2,
+        "display": "野豬(Boar)",
+        "name": "野豬",
+        "id": "boar",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": null,
+        "long": "一隻兇猛的野豬，正東張西望找食物。\n",
+        "look": "一隻兇猛的野豬，正東張西望找食物。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/grass_ne",
+    "area": "五堂鎮",
+    "short": "草原",
+    "long": "草原上微風徐徐，牧羊人倚著一根木杖看著羊群，偶爾吹起口哨把走遠的綿羊趕回來。往西、往南都還是一望無際的草地，草叢中不時竄出幾隻野兔，又飛快地鑽進草堆裡不見蹤影。\n",
+    "exits": {
+      "west": "/d/wutang/grass_nw",
+      "south": "/d/wutang/grass_se"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/sheep",
+        "count": 2,
+        "display": "綿羊(Sheep)",
+        "name": "綿羊",
+        "id": "sheep",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": 3,
+        "long": "整天只會咩咩跟吃草，頗為愜意。\n",
+        "look": "整天只會咩咩跟吃草，頗為愜意。",
+        "inventory": []
+      },
+      {
+        "path": "/d/wutang/npc/shepherd",
+        "count": 1,
+        "display": "牧羊人(Sheep man)",
+        "name": "牧羊人",
+        "id": "sheep man",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 15,
+        "long": "盯著羊群，時而發呆放空。\n",
+        "look": "盯著羊群，時而發呆放空。\n牧羊人屬於人類族。他的外表看起來約十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/grass_nw",
+    "area": "五堂鎮",
+    "short": "草原",
+    "long": "一片青翠的草原，綠草長得又密又嫩，幾隻綿羊低著頭悠閒地吃著草，不時發出咩咩的叫聲。草原往東、往南延伸，遠處看得見五堂鎮的屋頂。草地上開著一些不知名的小黃花，偶爾有蝴蝶飛舞其間，十分恬靜。\n",
+    "exits": {
+      "east": "/d/wutang/grass_ne",
+      "south": "/d/wutang/grass_sw"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/sheep",
+        "count": 2,
+        "display": "綿羊(Sheep)",
+        "name": "綿羊",
+        "id": "sheep",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": 3,
+        "long": "整天只會咩咩跟吃草，頗為愜意。\n",
+        "look": "整天只會咩咩跟吃草，頗為愜意。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/grass_se",
+    "area": "五堂鎮",
+    "short": "草原",
+    "long": "草原的東南角，這裡的草被羊群啃得短短的，露出一塊塊泥土。往南可以走上通往三岔路口的木道，往北、往西則是更大的草原。草地上散落著幾坨羊糞，牧羊人搭的一個小棚子歪歪斜斜地立在一旁。\n",
+    "exits": {
+      "west": "/d/wutang/grass_sw",
+      "north": "/d/wutang/grass_ne",
+      "south": "/d/wutang/boardwalk_e"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/sheep",
+        "count": 2,
+        "display": "綿羊(Sheep)",
+        "name": "綿羊",
+        "id": "sheep",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": 3,
+        "long": "整天只會咩咩跟吃草，頗為愜意。\n",
+        "look": "整天只會咩咩跟吃草，頗為愜意。",
+        "inventory": []
+      },
+      {
+        "path": "/d/wutang/npc/shepherd",
+        "count": 1,
+        "display": "牧羊人(Sheep man)",
+        "name": "牧羊人",
+        "id": "sheep man",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 15,
+        "long": "盯著羊群，時而發呆放空。\n",
+        "look": "盯著羊群，時而發呆放空。\n牧羊人屬於人類族。他的外表看起來約十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/grass_sw",
+    "area": "五堂鎮",
+    "short": "草原",
+    "long": "草原的西南角，地勢稍低，草叢間有幾處小水窪，綿羊們聚在水邊喝水。往北、往東都是綠油油的草地。水窪邊的泥地上印滿了羊蹄印，空氣中帶著青草與泥土混合的氣味。\n",
+    "exits": {
+      "north": "/d/wutang/grass_nw",
+      "east": "/d/wutang/grass_se"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/sheep",
+        "count": 2,
+        "display": "綿羊(Sheep)",
+        "name": "綿羊",
+        "id": "sheep",
+        "title": null,
+        "nickname": null,
+        "race": "beast",
+        "age": 3,
+        "long": "整天只會咩咩跟吃草，頗為愜意。\n",
+        "look": "整天只會咩咩跟吃草，頗為愜意。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/gravel_road_n",
+    "area": "五堂鎮",
+    "short": "碎石路",
+    "long": "一條鋪滿碎石的小路，走起來沙沙作響。西側不遠就是羿水河邊，路旁長著一大叢茂密的草叢，旁邊還有一片竹蘆，風一吹便沙沙作響，似乎可以從草叢穿過去。往東是五堂鎮的街道，往北是菜田前的空地。\n",
+    "exits": {
+      "west": "/d/wutang/pavilion",
+      "east": "/d/wutang/west_street2",
+      "north": "/d/wutang/clearing",
+      "southwest": "/d/wutang/gravel_road_s"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/yang_zlin",
+        "count": 1,
+        "display": "冷梅莊一代弟子 楊子陵(Yang zlin)",
+        "name": "楊子陵",
+        "id": "yang zlin",
+        "title": "冷梅莊一代弟子",
+        "nickname": null,
+        "race": "human",
+        "age": 30,
+        "long": "楊子陵在冷梅派第一代弟子中排行第四, 為梅影風某日出外於路上所遇到的棄嬰, 因機緣而入冷梅派, 目前劍術內功已略有小成, 一手真冷梅劍法在武林中也頗有微名。\n",
+        "look": "楊子陵在冷梅派第一代弟子中排行第四, 為梅影風某日出外於路上所遇到的棄嬰, 因機緣而入冷梅派, 目前劍術內功已略有小成, 一手真冷梅劍法在武林中也頗有微名。\n楊子陵屬於人類族。他的外表看起來約三十多歲。\n他身上帶著﹕\nＶ黑劍 (Black sword)\nＶ黑鋼短刃 (Black iron dagger)\nＶ\\x1b[1;37m天蠶寶衣\\x1b[m (Silk cloth)\nＶ狼皮靴 (Wolf boots)\nＶ狼皮帽 (Woof hat)",
+        "inventory": [
+          {
+            "path": "/custom/weapon/sword/black_sword",
+            "name": "黑劍",
+            "id": "black sword",
+            "equipped": true
+          },
+          {
+            "path": "/custom/weapon/dagger/black_iron_dagger",
+            "name": "黑鋼短刃",
+            "id": "black iron dagger",
+            "equipped": true
+          },
+          {
+            "path": "/custom/armor/cloth/silk_cloth",
+            "name": "\\x1b[1;37m天蠶寶衣\\x1b[m",
+            "id": "silk cloth",
+            "equipped": true
+          },
+          {
+            "path": "/custom/armor/feet/wolf_boots",
+            "name": "狼皮靴",
+            "id": "wolf boots",
+            "equipped": true
+          },
+          {
+            "path": "/custom/armor/head/woof_hat",
+            "name": "狼皮帽",
+            "id": "woof hat",
+            "equipped": true
+          }
+        ]
+      },
+      {
+        "path": "/d/wutang/npc/apprentice",
+        "count": 1,
+        "display": "冷梅莊二代弟子(Apprentice)",
+        "name": "冷梅莊二代弟子",
+        "id": "apprentice",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 20,
+        "long": "冷梅莊弟子，在劍法、內功上已經有相當火侯。\n",
+        "look": "冷梅莊弟子，在劍法、內功上已經有相當火侯。\n冷梅莊二代弟子屬於人類族。他的外表看起來約二十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/gravel_road_s",
+    "area": "五堂鎮",
+    "short": "碎石路",
+    "long": "碎石路往西南延伸，路旁的雜草漸漸茂密起來，空氣中帶著河水的濕氣。遠處傳來潺潺的流水聲與船夫的吆喝聲，越往西走路面越是濕滑。往西走就是羿水河邊，往東北則可以走回五堂鎮的方向。\n",
+    "exits": {
+      "west": "/d/wutang/riverside",
+      "northeast": "/d/wutang/gravel_road_n"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/guesthouse",
+    "area": "五堂鎮",
+    "short": "五堂別館",
+    "long": "這裏是五堂鎮官府所設的別館，專供往來的大官休息之用，別館裏樸實雅緻的佈置，可看出鎮方樸實的一面。\n",
+    "exits": {
+      "north": "/d/wutang/east_street3"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/royalist",
+        "count": 1,
+        "display": "趙欽差(Royalist)",
+        "name": "趙欽差",
+        "id": "royalist",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 50,
+        "long": "趙欽差是奉皇命遊走各個城市鄉村探訪民間疾苦、收集奇文異事和懲治貪官污吏的。\n現今他剛好行至五堂鎮，正在這裡休息並且寫密信給皇上訴說沿途所見所聞。\n",
+        "look": "趙欽差是奉皇命遊走各個城市鄉村探訪民間疾苦、收集奇文異事和懲治貪官污吏的。\n現今他剛好行至五堂鎮，正在這裡休息並且寫密信給皇上訴說沿途所見所聞。\n趙欽差屬於人類族。他的外表看起來約五十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/hut",
+    "area": "五堂鎮",
+    "short": "草屋",
+    "long": "一間用茅草與土牆搭成的簡陋草屋，是菜田主人的住處。屋裡擺著幾件農具與一張竹床，牆角堆著剛收成的蔬菜，屋簷下掛著幾串風乾的辣椒與玉米。門板上釘著好幾塊新補上的木板，看來是被野豬撞壞過不只一次。往東就是一大片菜田。\n",
+    "exits": {
+      "east": "/d/wutang/field1"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/inn",
+    "area": "五堂鎮",
+    "short": "醇雨樓客棧",
+    "long": "這是一家中等規模的客棧﹐樓面不甚寬闊﹐但是卻有三層樓﹐看牆面樑柱的樣子﹐大概有七、八十年的歷史了﹐大門兩側的柱子還題得有字﹐只不過龍飛鳳舞地不知道寫些什麼﹐東首有座樓梯往二樓雅座。\n",
+    "exits": {
+      "south": "/d/wutang/east_street2",
+      "up": "/d/wutang/inn2"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/waiter",
+        "count": 1,
+        "display": "店小二(Waiter)",
+        "name": "店小二",
+        "id": "waiter",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 35,
+        "long": "忙進忙出的店小二，來來去去招呼客人。你可以用 list 看可以點什麼菜，用 buy 跟店小二點菜。\n",
+        "look": "忙進忙出的店小二，來來去去招呼客人。你可以用 list 看可以點什麼菜，用 buy 跟店小二點菜。\n店小二屬於人類族。他的外表看起來約三十多歲。",
+        "inventory": []
+      },
+      {
+        "path": "/d/wutang/npc/yung_tai",
+        "count": 1,
+        "display": "雍泰(Yung tai)",
+        "name": "雍泰",
+        "id": "yung tai",
+        "title": null,
+        "nickname": null,
+        "race": "yenhold",
+        "age": 30,
+        "long": "雍泰是五堂鎮雍家這一代的老三﹐自從前年雍老爺從斐縣官期任滿\n回鄉中途不幸被盜匪殺害﹐雍家四個兒子便流離各處﹐雍泰是幾個\n月前才得到同鄉好友景襄仁景二爺幫助才得以湊足盤纏扶著老父棺\n木回鄉安葬﹐雍家世代或為文官﹐或為武將﹐都是兩袖清風﹐家財\n向來不富﹐但是卻相當受到五堂鎮居民的敬重﹐想不到這一代遭逢\n厄運﹐眼看著就要沒落了。\n",
+        "look": "雍泰是五堂鎮雍家這一代的老三﹐自從前年雍老爺從斐縣官期任滿\n回鄉中途不幸被盜匪殺害﹐雍家四個兒子便流離各處﹐雍泰是幾個\n月前才得到同鄉好友景襄仁景二爺幫助才得以湊足盤纏扶著老父棺\n木回鄉安葬﹐雍家世代或為文官﹐或為武將﹐都是兩袖清風﹐家財\n向來不富﹐但是卻相當受到五堂鎮居民的敬重﹐想不到這一代遭逢\n厄運﹐眼看著就要沒落了。\n雍泰屬於厭火族。他的外表看起來約三十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/inn2",
+    "area": "五堂鎮",
+    "short": "醇雨樓客棧二樓",
+    "long": "這裡是醇雨樓客棧的二樓，樓梯旁的蘭花增添了幾分清香，七八張木桌整齊排列，川流不息。倚著窗欄可以看到五堂鎮來往的路人，是休憩用膳喘口氣的好去處。\n",
+    "exits": {
+      "down": "/d/wutang/inn",
+      "up": "/d/wutang/inn3"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/white_taoist",
+        "count": 3,
+        "display": "白衣道士(Taoist)",
+        "name": "白衣道士",
+        "id": "taoist",
+        "title": null,
+        "nickname": null,
+        "race": "woochan",
+        "age": 25,
+        "long": "身上透出淡淡的寒氣，應該是修習冰咒的素衣派道士。\n",
+        "look": "身上透出淡淡的寒氣，應該是修習冰咒的素衣派道士。\n白衣道士屬於無腸族。他的外表看起來約二十多歲。\n他身上帶著﹕\nＶ純白道袍 (White robe)\nＶ長劍 (Longsword)",
+        "inventory": [
+          {
+            "path": "/custom/armor/cloth/white_taoist_robe",
+            "name": "純白道袍",
+            "id": "white robe",
+            "equipped": true
+          },
+          {
+            "path": "/obj/example/weapon/longsword",
+            "name": "長劍",
+            "id": "longsword",
+            "equipped": true
+          }
+        ]
+      },
+      {
+        "path": "/d/wutang/npc/red_taoist",
+        "count": 3,
+        "display": "紅衣道士(Taoist)",
+        "name": "紅衣道士",
+        "id": "taoist",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 20,
+        "long": "一身道士打扮，看他的氣息應是朱衣派道士。\n",
+        "look": "一身道士打扮，看他的氣息應是朱衣派道士。\n紅衣道士屬於人類族。他的外表看起來約二十多歲。\n他身上帶著﹕\nＶ鮮紅道袍 (Red robe)\nＶ長劍 (Longsword)",
+        "inventory": [
+          {
+            "path": "/custom/armor/cloth/red_robe",
+            "name": "鮮紅道袍",
+            "id": "red robe",
+            "equipped": true
+          },
+          {
+            "path": "/obj/example/weapon/longsword",
+            "name": "長劍",
+            "id": "longsword",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/inn3",
+    "area": "五堂鎮",
+    "short": "醇雨樓客棧三樓",
+    "long": "這裡是醇雨樓客棧的三樓﹐佈置和二樓雅座大致差不多﹐不過樓中放了幾盆蘭花﹐更添幾分雅致﹐往下的樓梯在西邊。\n",
+    "exits": {
+      "down": "/d/wutang/inn2"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/jeweller",
+        "count": 1,
+        "display": "珍寶商人(Jeweller)",
+        "name": "珍寶商人",
+        "id": "jeweller",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 40,
+        "long": "在天朝各處收集珍寶的商人，不僅身懷異寶還頗有歷練。你可以用 list 看他賣些什麼，用 buy 購買。\n",
+        "look": "在天朝各處收集珍寶的商人，不僅身懷異寶還頗有歷練。你可以用 list 看他賣些什麼，用 buy 購買。\n珍寶商人屬於人類族。他的外表看起來約四十多歲。",
+        "inventory": []
+      },
+      {
+        "path": "/d/wutang/npc/young_scholar",
+        "count": 1,
+        "display": "青年書生(Young scholar)",
+        "name": "青年書生",
+        "id": "young scholar",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 25,
+        "long": "一個相貌斯文的青年書生正獨自一人在這裡沈思。\n",
+        "look": "一個相貌斯文的青年書生正獨自一人在這裡沈思。\n青年書生屬於人類族。他的外表看起來約二十多歲。\n他身上帶著﹕\nＶ鑲玉短劍 (Jeweled shortsword)\nＶ青布衣 (Blue cloth)\n  【古文觀止】 (Anthology of Classical Prose)",
+        "inventory": [
+          {
+            "path": "/custom/weapon/sword/jeweled_shortsword",
+            "name": "鑲玉短劍",
+            "id": "jeweled shortsword",
+            "equipped": true
+          },
+          {
+            "path": "/d/wutang/obj/blue_cloth",
+            "name": "青布衣",
+            "id": "blue cloth",
+            "equipped": true
+          },
+          {
+            "path": "/obj/books/anthology_of_classical_prose",
+            "name": "【古文觀止】",
+            "id": "Anthology of Classical Prose",
+            "equipped": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/market_square",
+    "area": "五堂鎮",
+    "short": "雲棧市集廣場",
+    "long": "這是雲棧市集廣場，在這不算廣闊的空地裡，卻是此市集最繁榮之處，不時傳來震耳欲聾的吵雜聲，真的不難想像這到底有多熱鬧，所到之處那一個地方不是人擠人，尤其是西方的雲棧客棧和北方的鎮天神廟，都是本地的名勝古蹟，而在廣場的中央有著官府所設製的公告欄是當地官府向人民宣布重要事情之用。\n",
+    "exits": {
+      "north": "/d/wutang/temple_road_s",
+      "southwest": "/d/wutang/east_street4"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/yaesae",
+        "count": 1,
+        "display": "玉面好漢 葉翔(Yaesae)",
+        "name": "葉翔",
+        "id": "yaesae",
+        "title": "玉面好漢",
+        "nickname": null,
+        "race": "human",
+        "age": 30,
+        "long": "葉翔是武林中俠盜代表的佼佼者，時常劫富濟貧，是一個武林中豪\n傑的代表，而他的容貌有如古代的潘安，所以被武林同道通稱為玉\n面好漢，而他的輕功在武林中也是一絕。\n",
+        "look": "葉翔是武林中俠盜代表的佼佼者，時常劫富濟貧，是一個武林中豪\n傑的代表，而他的容貌有如古代的潘安，所以被武林同道通稱為玉\n面好漢，而他的輕功在武林中也是一絕。\n葉翔屬於人類族。他的外表看起來約三十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/north_street",
+    "area": "五堂鎮",
+    "short": "五堂鎮",
+    "long": "從鎮口往南走，街道兩旁的店鋪漸漸多了起來，挑擔的小販與趕路的行人來來往往，越往鎮中心越顯得熱鬧。西邊是陸家的和豐當鋪，往北可以走回鎮口，往南就是鎮上最熱鬧的交叉路口。\n",
+    "exits": {
+      "north": "/d/wutang/entrance",
+      "west": "/d/wutang/pawnshop",
+      "south": "/d/wutang/crossroad"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/path_e",
+    "area": "五堂鎮",
+    "short": "小路",
+    "long": "一條夾在民房之間的泥土小路，兩旁的竹籬笆上晾著衣物，偶爾傳來幾聲雞鳴犬吠。往西可以回到熱鬧的廟口小路，往南則是民房的後院，隱約聽得見潺潺的溪水聲。\n",
+    "exits": {
+      "west": "/d/wutang/temple_road_n",
+      "south": "/d/wutang/backyard"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/pavilion",
+    "area": "五堂鎮",
+    "short": "涼亭",
+    "long": "一座建在小丘上的木造涼亭，四周種著幾株垂柳，微風吹過時柳枝輕輕搖曳。站在亭中向西望去，可以眺望寬闊的羿水在遠方緩緩流過，河面上點點帆影，景色十分宜人。往東是一條碎石路。\n",
+    "exits": {
+      "east": "/d/wutang/gravel_road_n"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/pawnshop",
+    "area": "五堂鎮",
+    "short": "和豐當鋪",
+    "long": "這裡是一家中等規模的當鋪﹐老闆便是五堂鎮上陸姓一堂的當家﹐因為陸家的祖先是從經營當鋪發跡的﹐因此這家當鋪也被視為是陸家家長的主要基業﹐現在的大朝奉是由陸大當家的四弟擔任﹐大家都稱他陸四爺﹐當鋪的出口在東邊﹐北邊的牆上掛著一幅工筆花鳥﹐西邊是櫃臺﹐通往內間的門就在櫃臺邊﹐不過顯然是從裡面鎖著的。\n",
+    "exits": {
+      "east": "/d/wutang/north_street"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/lu_estimator",
+        "count": 1,
+        "display": "陸四爺(Lu estimator)",
+        "name": "陸四爺",
+        "id": "lu estimator",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 40,
+        "long": "陸家老四，做事圓融幹練，把家族的當舖生意照顧的有聲有色。\n",
+        "look": "陸家老四，做事圓融幹練，把家族的當舖生意照顧的有聲有色。\n陸四爺屬於人類族。他的外表看起來約四十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/river_bank",
+    "area": "五堂鎮",
+    "short": "羿水河邊",
+    "long": "羿水河邊的一片沙灘，河水在這裡轉了個彎，流速緩了下來，水面上不時有魚兒躍出。岸邊散落著幾塊大石頭，是釣客們最喜歡的位置。往西北可以回到鯉君渡口。\n",
+    "exits": {
+      "northwest": "/d/wutang/ferry_dock"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/riverside",
+    "area": "五堂鎮",
+    "short": "河邊",
+    "long": "這裏是羿水河邊, 西邊是一座大山, 陡峭的山壁隱隱現出不凡的氣勢, 東邊則是通往五堂鎮的石道, 商旅不時的來來往往。\n",
+    "exits": {
+      "east": "/d/wutang/gravel_road_s"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/ro",
+        "count": 1,
+        "display": "老駱(Shipman)",
+        "name": "老駱",
+        "id": "shipman",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 55,
+        "long": "一位在此討生活多年的船夫。\n",
+        "look": "一位在此討生活多年的船夫。\n老駱屬於人類族。他的外表看起來約五十多歲。",
+        "inventory": []
+      },
+      {
+        "path": "/d/wutang/npc/huang",
+        "count": 1,
+        "display": "小黃(Shipman)",
+        "name": "小黃",
+        "id": "shipman",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 15,
+        "long": "一位年輕氣壯、精力旺盛的小伙子。\n",
+        "look": "一位年輕氣壯、精力旺盛的小伙子。\n小黃屬於人類族。他的外表看起來約十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/school",
+    "area": "五堂鎮",
+    "short": "鄉校",
+    "long": "五堂鎮的鄉校，比一般的私塾大上許多，屋裡排滿了一張張書桌，學生們搖頭晃腦地唸著書。牆上貼著一張紅紙，寫著前幾年鎮上出了一位舉人，從那之後鎮民讀書的風氣便越來越盛。往南可以回到街道。\n",
+    "exits": {
+      "south": "/d/wutang/west_street2"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/south_street1",
+    "area": "五堂鎮",
+    "short": "街道",
+    "long": "交叉路口往南的街道，路面漸漸寬了起來，常有挑著貨擔的商人與趕車的旅客經過。路旁有一家打鐵鋪傳來叮叮噹噹的聲音，也有幾間賣雜貨的小店。往北可以回到鎮中心，往南則通往鎮外的三岔路口。\n",
+    "exits": {
+      "north": "/d/wutang/crossroad",
+      "south": "/d/wutang/south_street2"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/south_street2",
+    "area": "五堂鎮",
+    "short": "街道",
+    "long": "五堂鎮南邊的街道，兩旁的房舍漸漸稀疏，遠處可以望見一片綠油油的草原。路邊的大樹下有幾個老人坐著乘涼閒聊，旁邊拴著幾頭準備上路的驢子。往北走回到鎮上，往南不遠就是通往四方的三岔路口。\n",
+    "exits": {
+      "north": "/d/wutang/south_street1",
+      "south": "/d/wutang/three_way"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/temple",
+    "area": "五堂鎮",
+    "short": "鎮天神廟",
+    "long": "這裡是這個地方最有名的鎮天神廟，也是這地方最古老的廟，從這間廟建築的老舊可是卻香火鼎盛，就可以知道人們一定認為這間廟很靈，而這間廟主要是供奉著雲棧鎮天神，在廟前的廣場通常也是村人舉行活動的好地方，而旁邊也有一條進入後院的路。\n",
+    "exits": {
+      "south": "/d/wutang/temple_road_n"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/keeper",
+        "count": 1,
+        "display": "廟祝(Keeper)",
+        "name": "廟祝",
+        "id": "keeper",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 40,
+        "long": "鎮天神廟的廟祝，平日管理廟裡的大小事，最近正為了丟失廟裡的重要東西而發愁。\n",
+        "look": "鎮天神廟的廟祝，平日管理廟裡的大小事，最近正為了丟失廟裡的重要東西而發愁。\n廟祝屬於人類族。他的外表看起來約四十多歲。\n他身上帶著﹕\nＶ布衣 (Cloth)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/temple_road_n",
+    "area": "五堂鎮",
+    "short": "廟口小路",
+    "long": "通往鎮天神廟的石板小路，往來的香客絡繹不絕，人聲雖然鼎沸，越往北走卻越顯得莊嚴肅穆。路的西邊是最近出了事的顏家大宅，高牆下有一條陰暗的巷子，鎮民經過時都刻意繞開。東邊有條小路通往民房，往南則回到廟口。\n",
+    "exits": {
+      "north": "/d/wutang/temple",
+      "south": "/d/wutang/temple_road_s",
+      "east": "/d/wutang/path_e"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/temple_road_s",
+    "area": "五堂鎮",
+    "short": "廟口小路",
+    "long": "往北通往鎮天神廟的石板路，路旁擺著幾個賣香燭紙錢的小攤，空氣裡瀰漫著檀香的氣味。路邊兩棟房子中間夾著一條狹窄的小巷子，看不清裡頭有些什麼。往南走就是熱鬧的雲棧市集廣場。\n",
+    "exits": {
+      "north": "/d/wutang/temple_road_n",
+      "south": "/d/wutang/market_square"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/temple_yard",
+    "area": "五堂鎮",
+    "short": "後院",
+    "long": "這是鎮天神廟的後院，通常開放給鎮民來此休息，在此有種著許多的樹和盆景，而在老黃桐樹下也有著四張石椅和一張光滑的石桌供人在此乘涼。\n",
+    "exits": {
+      "out": "/d/wutang/temple"
+    },
+    "npcs": [
+      {
+        "path": "/d/wutang/npc/oldman",
+        "count": 1,
+        "display": "老人(Oldman)",
+        "name": "老人",
+        "id": "oldman",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 1200,
+        "long": "一位慈眉善目的老人，笑吟吟的看著你。\n",
+        "look": "一位慈眉善目的老人，笑吟吟的看著你。\n老人屬於人類族。他的外表看起來約一千二百多歲。\n他身上帶著﹕\nＶ布衣 (Cloth)",
+        "inventory": [
+          {
+            "path": "/obj/area/obj/cloth",
+            "name": "布衣",
+            "id": "cloth",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/d/wutang/three_way",
+    "area": "五堂鎮",
+    "short": "三岔路口",
+    "long": "一處三岔路口，路旁立著一塊斑駁的石碑，上頭刻著往各地的方向。往西是一片草原，再往西則是鯉君渡，往東南的官道可以前往喬陰縣，往北則回到五堂鎮。\n",
+    "exits": {
+      "north": "/d/wutang/south_street2",
+      "west": "/d/wutang/boardwalk_e"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/west_street1",
+    "area": "五堂鎮",
+    "short": "街道",
+    "long": "五堂鎮的街道，往東不遠就是鎮中心的交叉路口，人聲漸漸熱鬧起來。路旁有幾個小販擺著攤子叫賣，偶爾還能看見幾隻從城外菜田跑進來的野豬，惹得鎮民一陣驚呼。\n",
+    "exits": {
+      "west": "/d/wutang/west_street2",
+      "east": "/d/wutang/crossroad"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/west_street2",
+    "area": "五堂鎮",
+    "short": "街道",
+    "long": "五堂鎮西側的街道，路面由青石板鋪成，兩旁是幾間簡樸的民房。往北可以聽見鄉校傳來的讀書聲，往西走則漸漸離開市街，通往一條碎石路，往東是鎮上的街道。\n",
+    "exits": {
+      "west": "/d/wutang/gravel_road_n",
+      "east": "/d/wutang/west_street1",
+      "north": "/d/wutang/school"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/yan_gate",
+    "area": "五堂鎮",
+    "short": "前門",
+    "long": "顏家大宅的前門，四周一片死寂，杳無人煙。門板與石階上留著斑斑血跡，牆上還有好幾道深深的刀痕，看得出這裡不久前經過一場惡鬥。往北可以進入大宅，往東則能回到廟口小路。\n",
+    "exits": {
+      "north": "/d/wutang/yan_mansion",
+      "east": "/d/wutang/temple_road_n"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/yan_hall",
+    "area": "五堂鎮",
+    "short": "大廳",
+    "long": "顏家大宅的正廳，原本氣派的桌椅翻倒在地，名貴的瓷器碎了一地。幾具家僕與丫鬟的屍體橫陳在血泊之中，看來都是被一刀斃命。主人的座位空空蕩蕩，似乎在出事之前就已經逃走了。\n",
+    "exits": {
+      "out": "/d/wutang/yan_mansion"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/d/wutang/yan_mansion",
+    "area": "五堂鎮",
+    "short": "顏家大宅",
+    "long": "大宅的門戶敞開著，雕樑畫棟、朱漆門柱都看得出顏家當年的輝煌，如今卻蒙上了一層灰，庭院裡的花草也已經枯萎。院中靜得出奇，只有幾隻烏鴉停在屋簷上。往裡走是正廳，往南則是大宅的前門。\n",
+    "exits": {
+      "in": "/d/wutang/yan_hall",
+      "south": "/d/wutang/yan_gate"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/custom/zhenwu/room/big_tent",
+    "area": "振武軍營",
+    "short": "大帳",
+    "long": "一座厚重軍帳立在校場北端，帳布經風吹日曬已略顯褪色，帳前卻收拾得一塵不亂。兩側兵器架與軍旗排列整齊，往來士卒經過此處都不自覺放輕聲音，顯示這裡是軍中主將處理軍務的地方。\n",
+    "exits": {
+      "out": "/custom/zhenwu/room/yard04"
+    },
+    "npcs": [
+      {
+        "path": "/custom/zhenwu/npc/mee_pei",
+        "count": 1,
+        "display": "「振武軍提督」米沛(Mee-pei)",
+        "name": "米沛",
+        "id": "mee-pei",
+        "title": null,
+        "nickname": "振武軍提督",
+        "race": "human",
+        "age": null,
+        "long": "米沛是振武軍最高指揮官，身披戰甲，神情沉穩威嚴。他在軍中多年，以實戰與軍功一步步升任主將，看來約五十多歲。軍中傳聞具備相當實力的軍人可向他申請更進一步的職務，但相關條件目前仍待可靠資料補齊。\n",
+        "look": "米沛是振武軍最高指揮官，身披戰甲，神情沉穩威嚴。他在軍中多年，以實戰與軍功一步步升任主將，看來約五十多歲。軍中傳聞具備相當實力的軍人可向他申請更進一步的職務，但相關條件目前仍待可靠資料補齊。\n他身上帶著﹕\nＶ精鋼戰靴 (Steel boots)\nＶ冶磺套 (Fire gauntlets)\nＶ精鋼戰甲 (Steel armor)\nＶ萬夫莫敵 (Great axe of mighty)",
+        "inventory": [
+          {
+            "path": "/custom/zhenwu/obj/steel_boots",
+            "name": "精鋼戰靴",
+            "id": "steel boots",
+            "equipped": true
+          },
+          {
+            "path": "/custom/zhenwu/obj/fire_gauntlets",
+            "name": "冶磺套",
+            "id": "fire gauntlets",
+            "equipped": true
+          },
+          {
+            "path": "/custom/zhenwu/obj/steel_armor",
+            "name": "精鋼戰甲",
+            "id": "steel armor",
+            "equipped": true
+          },
+          {
+            "path": "/custom/zhenwu/obj/great_axe_of_mighty",
+            "name": "萬夫莫敵",
+            "id": "great axe of mighty",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/custom/zhenwu/room/camp",
+    "area": "振武軍營",
+    "short": "軍營",
+    "long": "這裡是振武軍營西側的營區入口，木柵與營帳沿路排列，來往軍士神色匆忙。東邊棚場後便是大片校場，遠處號令聲此起彼落；往東一路穿過營地，可回到雪亭鎮南方草棚附近。\n",
+    "exits": {
+      "east": "/custom/zhenwu/room/shed"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/custom/zhenwu/room/gate",
+    "area": "振武軍營",
+    "short": "振武軍營大門",
+    "long": "兩扇厚重木門構成振武軍營的主要門戶，門板外包鐵條，兩側木柵高聳。守門士兵持槍立在門旁，目光不時掃過往來人群；門內便是操練校場，軍旗與號令聲從營中不斷傳來。往東就到雪亭鎮。\n",
+    "exits": {
+      "west": "/custom/zhenwu/room/yard06",
+      "east": "/d/snow/sgate",
+      "south": "/d/wutang/entrance"
+    },
+    "npcs": [
+      {
+        "path": "/custom/zhenwu/npc/soldier",
+        "count": 2,
+        "display": "小兵(Soldier)",
+        "name": "小兵",
+        "id": "soldier",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "軍營裡的新兵，通常負責簡單的體力工作。\n",
+        "look": "軍營裡的新兵，通常負責簡單的體力工作。\n他身上帶著﹕\nＶ皂步靴 (Black boots)\nＶ銅盔 (Brass helmet)\nＶ硬皮甲冑 (Leather armor)\nＶ短槍 (Short pike)",
+        "inventory": [
+          {
+            "path": "/d/snow/npc/obj/clothboot",
+            "name": "皂步靴",
+            "id": "black boots",
+            "equipped": true
+          },
+          {
+            "path": "/d/snow/npc/obj/helmet",
+            "name": "銅盔",
+            "id": "brass helmet",
+            "equipped": true
+          },
+          {
+            "path": "/d/snow/npc/obj/leather_armor",
+            "name": "硬皮甲冑",
+            "id": "leather armor",
+            "equipped": true
+          },
+          {
+            "path": "/custom/zhenwu/obj/short_pike",
+            "name": "短槍",
+            "id": "short pike",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/custom/zhenwu/room/shed",
+    "area": "振武軍營",
+    "short": "棚場",
+    "long": "一排簡陋木棚沿著軍營西側搭建，棚下堆著草束、木料與日常操演所需的雜物。地面有車輪與軍靴留下的痕跡，向東便是校場，向西則可通往軍營外側。\n",
+    "exits": {
+      "east": "/custom/zhenwu/room/yard10",
+      "west": "/custom/zhenwu/room/camp"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/custom/zhenwu/room/yard02",
+    "area": "振武軍營",
+    "short": "校場",
+    "long": "這片校場靠近大帳，黃土地被長年操演磨得平整堅實。幾根粗木立在場邊，木身遍布刀痕與撞擊留下的缺口，北風穿過營旗時發出獵獵聲響，使整座軍營顯得肅整而緊張。\n",
+    "exits": {
+      "east": "/custom/zhenwu/room/yard03",
+      "south": "/custom/zhenwu/room/yard05"
+    },
+    "npcs": [
+      {
+        "path": "/custom/zhenwu/npc/target_stake",
+        "count": 5,
+        "display": "假人(Target stake)",
+        "name": "假人",
+        "id": "target stake",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "這是一具軍營內供新兵練武的粗麻木樁，樁身佈滿刀痕與箭孔。它被牢牢固定在地面，不會還手，也不會因操練而損壞，正適合反覆磨練基本招式。\n",
+        "look": "這是一具軍營內供新兵練武的粗麻木樁，樁身佈滿刀痕與箭孔。它被牢牢固定在地面，不會還手，也不會因操練而損壞，正適合反覆磨練基本招式。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/custom/zhenwu/room/yard03",
+    "area": "振武軍營",
+    "short": "校場",
+    "long": "校場東北角視野開闊，往來軍士多從這裡穿過。地上用石灰與木樁分出操練的位置，遠處可見振武軍營大門，守門軍士的身影在門樓下來回巡視，營內一切井然有序。\n",
+    "exits": {
+      "west": "/custom/zhenwu/room/yard02",
+      "south": "/custom/zhenwu/room/yard06"
+    },
+    "npcs": [
+      {
+        "path": "/custom/zhenwu/npc/target_stake",
+        "count": 5,
+        "display": "假人(Target stake)",
+        "name": "假人",
+        "id": "target stake",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "這是一具軍營內供新兵練武的粗麻木樁，樁身佈滿刀痕與箭孔。它被牢牢固定在地面，不會還手，也不會因操練而損壞，正適合反覆磨練基本招式。\n",
+        "look": "這是一具軍營內供新兵練武的粗麻木樁，樁身佈滿刀痕與箭孔。它被牢牢固定在地面，不會還手，也不會因操練而損壞，正適合反覆磨練基本招式。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/custom/zhenwu/room/yard04",
+    "area": "振武軍營",
+    "short": "校場",
+    "long": "這裡是校場西側，土地上散著被踏碎的草梗與細石。附近常有士卒列隊練習步伐，沉重腳步把地面踩出一道道淺痕；向北可望見大帳，向東則是軍營較寬闊的操演區。\n",
+    "exits": {
+      "in": "/custom/zhenwu/room/big_tent",
+      "south": "/custom/zhenwu/room/yard07",
+      "east": "/custom/zhenwu/room/yard05"
+    },
+    "npcs": [
+      {
+        "path": "/custom/zhenwu/npc/zhenwu_soldier",
+        "count": 5,
+        "display": "振武軍營士兵(Soldier)",
+        "name": "振武軍營士兵",
+        "id": "soldier",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "振武軍營士兵是天朝帝國邊防最基層的步兵。他身穿粗糙皮甲，手執沉重長槍，雖沒有江湖大俠般的絕頂輕功，卻有一身扎實的軍旅外家拳腳，每日都在營邊巡邏警戒。\n",
+        "look": "振武軍營士兵是天朝帝國邊防最基層的步兵。他身穿粗糙皮甲，手執沉重長槍，雖沒有江湖大俠般的絕頂輕功，卻有一身扎實的軍旅外家拳腳，每日都在營邊巡邏警戒。\n他身上帶著﹕\nＶ皂步靴 (Black boots)\nＶ銅盔 (Brass helmet)\nＶ硬皮甲冑 (Leather armor)\nＶ長槍 (Long pike)",
+        "inventory": [
+          {
+            "path": "/d/snow/npc/obj/clothboot",
+            "name": "皂步靴",
+            "id": "black boots",
+            "equipped": true
+          },
+          {
+            "path": "/d/snow/npc/obj/helmet",
+            "name": "銅盔",
+            "id": "brass helmet",
+            "equipped": true
+          },
+          {
+            "path": "/d/snow/npc/obj/leather_armor",
+            "name": "硬皮甲冑",
+            "id": "leather armor",
+            "equipped": true
+          },
+          {
+            "path": "/obj/area/obj/pike",
+            "name": "長槍",
+            "id": "long pike",
+            "equipped": true
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "file": "/custom/zhenwu/room/yard05",
+    "area": "振武軍營",
+    "short": "校場",
+    "long": "校場中央人聲與兵器碰撞聲最為集中，四周黃土被反覆踩踏得幾乎不生寸草。場邊插著幾面振武軍旗，風一吹便整齊展開，讓人一踏進來便感受到軍伍特有的森嚴氣息。\n",
+    "exits": {
+      "north": "/custom/zhenwu/room/yard02",
+      "south": "/custom/zhenwu/room/yard08",
+      "west": "/custom/zhenwu/room/yard04",
+      "east": "/custom/zhenwu/room/yard06"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/custom/zhenwu/room/yard06",
+    "area": "振武軍營",
+    "short": "校場",
+    "long": "這片校場緊鄰軍營大門，來往軍士不時從東邊經過。木製拒馬與練兵器具靠著場邊擺放，地面仍留有整隊操練形成的平直足跡，遠近都能聽見教官短促有力的號令。\n",
+    "exits": {
+      "north": "/custom/zhenwu/room/yard03",
+      "south": "/custom/zhenwu/room/yard09",
+      "west": "/custom/zhenwu/room/yard05",
+      "east": "/custom/zhenwu/room/gate"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/custom/zhenwu/room/yard07",
+    "area": "振武軍營",
+    "short": "校場",
+    "long": "校場西邊較為安靜，幾座兵器架在風中微微作響。地上散落著操練後留下的木屑，長槍與刀具劃過木樁的痕跡清晰可見，顯然每日都有不少新兵在此反覆磨練基本功。\n",
+    "exits": {
+      "north": "/custom/zhenwu/room/yard04",
+      "south": "/custom/zhenwu/room/yard10",
+      "east": "/custom/zhenwu/room/yard08"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/custom/zhenwu/room/yard08",
+    "area": "振武軍營",
+    "short": "校場",
+    "long": "這裡位於軍營腹地，四周校場彼此相連，腳下黃土因長年操練而堅硬如石。軍士奔走時揚起薄薄塵霧，營旗、木樁與兵器架錯落在視野中，整片區域充滿規律而沉重的軍旅節奏。\n",
+    "exits": {
+      "north": "/custom/zhenwu/room/yard05",
+      "south": "/custom/zhenwu/room/yard11",
+      "west": "/custom/zhenwu/room/yard07",
+      "east": "/custom/zhenwu/room/yard09"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/custom/zhenwu/room/yard09",
+    "area": "振武軍營",
+    "short": "校場",
+    "long": "東側校場靠近營牆，風從牆頭吹落，捲起細碎塵沙。幾處木樁上密布槍刺與刀劈的痕跡，場邊還留著拖動重物形成的深溝，是士卒鍛鍊體力與兵器技巧的地方。\n",
+    "exits": {
+      "north": "/custom/zhenwu/room/yard06",
+      "south": "/custom/zhenwu/room/yard12",
+      "west": "/custom/zhenwu/room/yard08"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/custom/zhenwu/room/yard10",
+    "area": "振武軍營",
+    "short": "校場",
+    "long": "這片校場位在中軍一側，往西可通向棚場與軍營外圍。土地中央被無數雙軍靴踩得發亮，附近不時傳來整隊口令；在此停留片刻，便能看見軍士依照號令往各處操演。\n",
+    "exits": {
+      "north": "/custom/zhenwu/room/yard07",
+      "south": "/custom/zhenwu/room/yard13",
+      "east": "/custom/zhenwu/room/yard11",
+      "west": "/custom/zhenwu/room/shed"
+    },
+    "npcs": [
+      {
+        "path": "/custom/zhenwu/npc/lu_xinien",
+        "count": 1,
+        "display": "「徵兵官」魯熙年(Lu xinien)",
+        "name": "魯熙年",
+        "id": "lu xinien",
+        "title": null,
+        "nickname": "徵兵官",
+        "race": "human",
+        "age": null,
+        "long": "魯熙年是一名身材微胖的中年武官，兩眼瞇成一條線，臉上總帶著似笑非笑的古怪表情。他同時也是振武營負責招募新兵的徵兵官，看起來約三十多歲。營中新兵入伍後的基本兵刃操練，多半也是他一手帶出來的。\n",
+        "look": "魯熙年是一名身材微胖的中年武官，兩眼瞇成一條線，臉上總帶著似笑非笑的古怪表情。他同時也是振武營負責招募新兵的徵兵官，看起來約三十多歲。營中新兵入伍後的基本兵刃操練，多半也是他一手帶出來的。",
+        "inventory": []
+      },
+      {
+        "path": "/custom/zhenwu/obj/recruit_stone",
+        "count": 1,
+        "display": "徵兵石(Recruit stone)",
+        "name": "徵兵石",
+        "id": "recruit stone",
+        "title": null,
+        "nickname": null,
+        "race": null,
+        "age": null,
+        "long": "振武軍營徵兵處，可在此登記 (enlist) 成為軍人。\n",
+        "look": "振武軍營徵兵處，可在此登記 (enlist) 成為軍人。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/custom/zhenwu/room/yard11",
+    "area": "振武軍營",
+    "short": "校場",
+    "long": "校場中段寬敞平坦，場邊豎著供士卒練習的木架，黃土地上交錯著腳印與兵器拖痕。南北兩側都還有操演場地，軍士往來頻繁，讓這裡始終保持著忙碌的氣氛。\n",
+    "exits": {
+      "north": "/custom/zhenwu/room/yard08",
+      "south": "/custom/zhenwu/room/yard14",
+      "west": "/custom/zhenwu/room/yard10",
+      "east": "/custom/zhenwu/room/yard12"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/custom/zhenwu/room/yard12",
+    "area": "振武軍營",
+    "short": "校場",
+    "long": "軍營東南側的校場貼近營牆，幾面舊軍旗迎風拍響。操練留下的土坑已被反覆填平，木架旁散著斷裂的木片，顯示這裡長年承受高強度的軍事訓練。\n",
+    "exits": {
+      "north": "/custom/zhenwu/room/yard09",
+      "west": "/custom/zhenwu/room/yard11"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/custom/zhenwu/room/yard13",
+    "area": "振武軍營",
+    "short": "校場",
+    "long": "這裡是校場南端，幾具粗重木樁立在黃土地上，樁身滿是刀砍槍刺留下的傷痕。新兵常在此練習出手與步法，久而久之連周圍泥土都被踩得緊實，幾乎看不見雜草。\n",
+    "exits": {
+      "north": "/custom/zhenwu/room/yard10",
+      "east": "/custom/zhenwu/room/yard14"
+    },
+    "npcs": [
+      {
+        "path": "/custom/zhenwu/npc/target_stake",
+        "count": 5,
+        "display": "假人(Target stake)",
+        "name": "假人",
+        "id": "target stake",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "這是一具軍營內供新兵練武的粗麻木樁，樁身佈滿刀痕與箭孔。它被牢牢固定在地面，不會還手，也不會因操練而損壞，正適合反覆磨練基本招式。\n",
+        "look": "這是一具軍營內供新兵練武的粗麻木樁，樁身佈滿刀痕與箭孔。它被牢牢固定在地面，不會還手，也不會因操練而損壞，正適合反覆磨練基本招式。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/custom/zhenwu/room/yard14",
+    "area": "振武軍營",
+    "short": "校場",
+    "long": "南側另一片校場同樣擺著練兵木樁，地面散布細碎木屑與乾土。從這裡向北望去，層層校場一路延伸到大帳與軍營大門，整座振武軍營的規模一覽無遺。\n",
+    "exits": {
+      "north": "/custom/zhenwu/room/yard11",
+      "west": "/custom/zhenwu/room/yard13"
+    },
+    "npcs": [
+      {
+        "path": "/custom/zhenwu/npc/target_stake",
+        "count": 5,
+        "display": "假人(Target stake)",
+        "name": "假人",
+        "id": "target stake",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": null,
+        "long": "這是一具軍營內供新兵練武的粗麻木樁，樁身佈滿刀痕與箭孔。它被牢牢固定在地面，不會還手，也不會因操練而損壞，正適合反覆磨練基本招式。\n",
+        "look": "這是一具軍營內供新兵練武的粗麻木樁，樁身佈滿刀痕與箭孔。它被牢牢固定在地面，不會還手，也不會因操練而損壞，正適合反覆磨練基本招式。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/custom/home/room/bedroom",
+    "area": "玩家住宅",
+    "short": "寢室",
+    "long": "這是一間屬於你的私人寢室。木牆隔去了外面的聲響，燈火柔和，室內收拾得乾淨整齊。\n靠牆擺著一張鋪好被褥的床，疲倦時可以上床安靜休息。\nlook bed 查看床；rest bed 或 上床開始休息；backhall 返回家園大廳。\n",
+    "exits": {},
+    "npcs": []
+  },
+  {
+    "file": "/custom/home/room/future_room",
+    "area": "玩家住宅",
+    "short": "家園房間",
+    "long": "這是一間尚未指定用途的家園房間。\n",
+    "exits": {},
+    "npcs": []
+  },
+  {
+    "file": "/custom/home/room/home_hall",
+    "area": "玩家住宅",
+    "short": "家園大廳",
+    "long": "這裡是只屬於你的私人家園入口大廳。空間安靜而穩定，現在仍保持著最初的簡潔模樣。\n大廳中放著一只私人儲物箱，旁邊站著家園管家，牆上新掛了一面列有增建房型的告示板。\n可用動作：returnhome 返回雪亭客棧；look chest 查看儲物箱；look board 查看增建告示板。\n",
+    "exits": {},
+    "npcs": [
+      {
+        "path": "/custom/home/npc/butler",
+        "count": 1,
+        "display": "家園管家(Home butler)",
+        "name": "家園管家",
+        "id": "home butler",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 50,
+        "long": null,
+        "look": "家園管家看起來沒有什麼特別。\n家園管家屬於人類族。他的外表看起來約五十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/custom/home/room/study_room",
+    "area": "玩家住宅",
+    "short": "書房",
+    "long": "這是一間安靜的私人書房。靠牆立著木製書架，中央擺著寬大的書桌與座椅，燈火被罩得柔和而穩定。\n這裡少有外界干擾，很適合靜下心來研讀書籍與卷冊。\n在此使用原本的 study 指令研讀時，學習效率提升 20%；backhall 返回家園大廳。\n",
+    "exits": {},
+    "npcs": []
+  },
+  {
+    "file": "/custom/wizroom/w/windstory/room/dragon_inn",
+    "area": "巫師工作室",
+    "short": "龍門客棧",
+    "long": "推開厚重木門, 迎面便是燈火溫暖的大堂。幾張方桌沿著牆邊整齊排開, \n桌面留著淡淡酒香, 樑上懸掛的紅燈籠隨風輕晃。櫃臺後方陳列著一排\n酒罈, 爐火與飯菜香氣從簾後緩緩飄來。往來旅客在此歇腳談天, 店小\n二穿梭桌間招呼客人, 門外偶爾傳來馬蹄與風沙聲。\n",
+    "exits": {
+      "west": "/custom/wizroom/w/windstory/room/inn_w"
+    },
+    "npcs": [
+      {
+        "path": "/d/snow/npc/waiter",
+        "count": 1,
+        "display": "店小二(Waiter)",
+        "name": "店小二",
+        "id": "waiter",
+        "title": null,
+        "nickname": null,
+        "race": "human",
+        "age": 21,
+        "long": "一個約二十出頭的年輕小夥計﹐正忙進忙出招呼客人﹐你可以用\nlist 看可以點什麼菜﹐用 buy 跟店小二點菜。\n",
+        "look": "一個約二十出頭的年輕小夥計﹐正忙進忙出招呼客人﹐你可以用\nlist 看可以點什麼菜﹐用 buy 跟店小二點菜。\n店小二屬於人類族。他的外表看起來約二十多歲。",
+        "inventory": []
+      }
+    ]
+  },
+  {
+    "file": "/custom/wizroom/w/windstory/room/inn_w",
+    "area": "巫師工作室",
+    "short": "鄉校",
+    "long": "這裡是雪亭鎮的鄉校，鎮民若對地方事務有所疑問，便會前來向校老申訴。廳內陳設簡樸，幾張木桌與長凳整齊排列，牆上貼著勸人向善的告示。西邊通往雪亭鎮廣場，東邊新設了一道厚重木門，門後便是供往來旅客歇腳的龍門客棧。\n",
+    "exits": {
+      "east": "/custom/wizroom/w/windstory/room/dragon_inn",
+      "west": "/d/snow/square_w"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/adm/guild/academy",
+    "area": "公會",
+    "short": "巫師學院",
+    "long": "你來到一片平坦的草地，幾株大樹和樹下的大理石桌與舒適木椅提供了舒適的閱讀環境。\n草地外是看不見邊際的雲海，以及雲海上燦爛的星空。\n這裡是巫師們研究魔法與世界萬物的地方﹐如果你是新手巫師﹐歡迎來到這裡和其他人互相討論﹐如果你是老手﹐也請不吝回答新手的問題。\n",
+    "exits": {
+      "west": "/adm/guild/guildhall"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/adm/guild/guildhall",
+    "area": "公會",
+    "short": "巫師公會",
+    "long": "這裡就是巫師公會了﹐一個半球型的大浮島漂浮在七彩的雲間，平坦的地面鋪著一層碧綠草皮。\n草地北端盡頭是一棟純白的大型建築﹐希臘式的圓柱跟波斯風格的圓頂﹐營造出一種莊嚴的氣氛。\n你的東邊是露天的巫師學院﹐往西則是通往世界各地的傳送魔法陣。\n",
+    "exits": {
+      "east": "/adm/guild/academy",
+      "west": "/adm/guild/portal",
+      "north": "/adm/guild/meetingroom"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/adm/guild/meetingroom",
+    "area": "公會",
+    "short": "會議廳",
+    "long": "這裡是巫師公會的會議廳，圓形的明亮大廳被一圈高大的圓柱包圍著，從地面一直延伸到半空中，彷彿支撐著整個天空。\n高聳的圓頂浮現出明亮的星星，但顯現的似乎是古老的星空並且以極快的速度演化中，你意識到這個大廳本身就是一個時空的紀錄儀器。\n巫師們商討重要事情時都會在這裡進行。\n",
+    "exits": {
+      "south": "/adm/guild/guildhall"
+    },
+    "npcs": []
+  },
+  {
+    "file": "/adm/guild/portal",
+    "area": "公會",
+    "short": "傳送門",
+    "long": "這裡是巫師公會的傳送門，平坦的草地上有一片鋪著地磚的空地。\n空地中央有一個巨大的綠色魔法陣，正發出閃爍不定的微弱光芒。\n",
+    "exits": {
+      "east": "/adm/guild/guildhall",
+      "inn": "/d/snow/inn_hall"
+    },
+    "npcs": []
+  }
+]

@@ -33,15 +33,15 @@ def test_chat_combat_inventory_status_map_remain():
 def test_final_skill_stack_keeps_old_neolith_compat_and_special_progression():
     skill=text("source/upstream/mudlib/feature/char/skill.c")
     combatd=text("source/upstream/mudlib/adm/daemons/combatd.c")
-    tiger=text("source/upstream/mudlib/daemon/skill/tiger-force.c")
+    tiger=text("source/upstream/mudlib/daemon/skill/tiger_force.c")
     assert "varargs int query_attr(string attr, int raw);" in skill
     assert "varargs void advance_skill(string skill, int amount);" in skill
     assert 'call_other(daemon, \"skill_improved\", this_object(), skill);' in skill
     assert "apply_restored_skill_progression(skill);" in skill
     assert 'void apply_gain_progression(mapping gained)' in skill
-    assert 'improve_skill_exact("tiger-force"' not in combatd
+    assert 'improve_skill_exact("tiger force"' not in combatd
     assert 'if( art == "tiger-blade" ) exp += random(me->query_attr("cor"));' in combatd
     assert 'me->improve_skill_exact(art, exp);' in combatd
     assert "void skill_completed(object me, string sk)" in tiger
     assert "void skill_advanced(object me, string sk)" in tiger
-    assert 'me->improve_skill_exact("tiger-force",' in tiger
+    assert 'me->improve_skill_exact("tiger force",' in tiger

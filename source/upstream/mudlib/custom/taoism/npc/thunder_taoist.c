@@ -13,7 +13,6 @@ void create()
     // Race initialization fills every attribute not specified here.
 
     set_skill("taoism-thunder", 160);
-    set_skill("spells", 160);
     map_skill("spells", "taoism-thunder");
 
     set("long", "這名紫衣派弟子精通天師道法【雷法】，手持長劍，身穿布衣。\n");
@@ -25,6 +24,7 @@ void create()
         (: command, "cast 4" :)
     }));
 
+    set("custom_faction", "taoist.thunder");   // 門派記號（docs/martial_arts/門派武功對照表.md）
     set_power("B");
     setup();
     carry_object("/obj/area/obj/cloth")->wear();

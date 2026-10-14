@@ -54,6 +54,7 @@ void create()
     map_skill("dodge", "mayin");
     map_skill("unarmed", "seven");
 
+    set("custom_faction", FACTION);   // 門派記號（docs/CUSTOM_NPC_SKILL.md）
     set_power("S");
     setup();
 

@@ -10,10 +10,6 @@ void create()
     set_race("human");
     set_level(40);
     set_class("alchemist");
-    set_skill("whip", 50);
-    set_skill("parry", 40);
-    set_skill("dodge", 40);
-    set_skill("unarmed", 50);
     set("age", 40);
     set("long", @LONG
 聶晟是李家村裡惟一不姓李的住民。十多年前，村裡許多的居民曾經得了一種怪病，聶晟

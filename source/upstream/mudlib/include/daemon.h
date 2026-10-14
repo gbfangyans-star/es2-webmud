@@ -5,5 +5,6 @@
 
 #define TRAVELER_D		"/daemon/misc/traveler.c"
 #define NPC_POWER_D		"/daemon/misc/npc_power.c"
+#define NPC_SKILL_D		"/daemon/misc/npc_skill.c"
 
 #endif

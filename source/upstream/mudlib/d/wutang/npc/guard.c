@@ -15,10 +15,6 @@ void create()
 肌肉虯結一身橫肉，看起來並不好惹的樣子。
 LONG
     );
-    set_skill("unarmed", 40);
-    set_skill("blade", 40);
-    set_skill("dodge", 40);
-    set_skill("parry", 40);
     set_power("B");
     setup();
     carry_object("/custom/armor/cloth/cowhide_vest")->wear();

@@ -18,10 +18,6 @@ void create()
 面好漢，而他的輕功在武林中也是一絕。
 LONG
     );
-    set_skill("dodge", 110);
-    set_skill("parry", 80);
-    set_skill("dagger", 60);
-    set_skill("unarmed", 100);
     set_skill("butterfly-steps", 110);
     // 約 5～7 tick 說一句（每 tick 16% 機率）。
     set("chat_chance", 15);

@@ -1,6 +1,6 @@
 /*---
 description: 三門刀法（NEW 新版武功寫法）。虎刀門入門刀法，設計見
-             docs/martial_arts/sanmeendo_三門刀法.md，強度見 武功強度設定表.xlsx。
+             docs/martial_arts/ksanmando_三門刀法.md，強度見 武功強度設定表.xlsx。
 ---*/
 #include <ansi.h>
 
@@ -10,7 +10,7 @@ private void create()
 {
     seteuid(getuid());
 
-    art_id    = "sanmeendo";
+    art_id    = "ksanmando";
     art_name  = "三門刀法";
     art_usage = "blade";
     art_desc  = "虎刀門入門刀法。刀路分中、側、反三門，招式樸實、易學易練，"
@@ -38,7 +38,7 @@ private void create()
     mm_first_msg = "你將三門刀法反覆演練﹐漸漸體會到「攻守之間﹐門戶自分」的道理﹐\n"
                    + "對武學之道有了初步的領悟﹗\n";
 
-    DAEMON_D->register_skill_daemon("sanmeendo");
+    DAEMON_D->register_skill_daemon("ksanmando");
     setup();
 }
 
@@ -75,22 +75,22 @@ void after_strike(object me, object opponent, object weapon, mapping m, int dama
     mixed streak;
 
     if( damage <= 0 ) {
-        me->delete_temp("sanmeendo/streak");
+        me->delete_temp("ksanmando/streak");
         return;
     }
 
-    streak = me->query_temp("sanmeendo/streak");
+    streak = me->query_temp("ksanmando/streak");
     if( !arrayp(streak) ) streak = ({});
     streak += ({ m });
     if( sizeof(streak) > 3 ) streak = streak[sizeof(streak)-3..];
-    me->set_temp("sanmeendo/streak", streak);
+    me->set_temp("ksanmando/streak", streak);
 
     if( sizeof(streak) < 3 ) return;
-    if( me->query_skill("sanmeendo", 1) < 100 ) return;
+    if( me->query_skill("ksanmando", 1) < 100 ) return;
     if( me->skill_mapped("dodge") != "tiger-steps"
     ||  me->query_skill("tiger-steps", 1) < 60 ) return;
     if( random(100) >= 10 + me->query_attr("cor", 1) / 4 ) return;
 
-    me->delete_temp("sanmeendo/streak");
+    me->delete_temp("ksanmando/streak");
     three_gates(me, opponent, weapon, streak);
 }

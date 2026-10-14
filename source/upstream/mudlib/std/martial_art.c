@@ -8,7 +8,7 @@ description: 新版武功共用引擎（NEW）。武功檔只填資料，選招�
 inherit SKILL;
 
 /* 以下由武功檔在 create() 裡設定。 */
-string art_id;          // 技能代碼，例如 "sanmeendo"
+string art_id;          // 技能代碼，例如 "ksanmando"
 string art_name;        // 中文名稱
 string art_usage;       // enable 在哪個基本技能，例如 "blade"
 string art_desc;        // 武功簡介
