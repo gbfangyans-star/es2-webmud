@@ -45,6 +45,9 @@ private mapping class_skill = ([
 //   arts        門派武功：({ ([ "skill": 武功, "map": 對應的基本技能或 0, "level": 人物等級門檻,
 //                              "req": ([ 前置武功: 至少幾級 ]) ]) })
 //               「拜師後」為等級 1；「解謎」取得的武功不會自動給門派 NPC，只記在文件裡。
+//   前置條件（使用者規則，2026-10-14）：NPC 只要能學到前置武功，就視為該武功已練滿，
+//               例如傲梅暗劍訣要 LV30＋寒梅心法 100，寒梅心法 LV15 就學得到，所以 LV30 即可學。
+//   同一個基本技能有多套武功時，以先列的那套為主（後面的只學會、不對應）。
 //   還沒有武功檔的只給名稱與等級，不做對應（對應到不存在的武功會讓戰鬥出錯）。
 private mapping sect = ([
     "fighter.lunmay": ([
@@ -55,6 +58,7 @@ private mapping sect = ([
             ([ "skill": "mayin", "map": "dodge", "level": 1 ]),
             ([ "skill": "seven", "map": "unarmed", "level": 1 ]),
             ([ "skill": "lunmay", "map": "sword", "level": 1 ]),
+            ([ "skill": "lunmay", "map": "parry", "level": 1 ]),
             ([ "skill": "advance_lunmay", "map": "secondhand sword", "level": 30, "req": ([ "hainmay force": 100 ]) ]),
             ([ "skill": "advance_lunmay", "map": "secondhand dagger", "level": 30, "req": ([ "hainmay force": 100 ]) ]),
         }),
@@ -65,6 +69,8 @@ private mapping sect = ([
         "force_level": 15,
         "arts":        ({
             ([ "skill": "sanmeendo", "map": "blade", "level": 1 ]),
+            ([ "skill": "tiger-blade", "map": "twohanded blade", "level": 1, "req": ([ "tiger-force": 30 ]) ]),
+            ([ "skill": "tiger-steps", "map": "dodge", "level": 1 ]),
         }),
     ]),
     "fighter.fonxan": ([
@@ -123,7 +129,7 @@ private mapping sect = ([
             ([ "skill": "lightswift", "map": "dodge", "level": 1 ]),
         }),
     ]),
-    "taoist.fire": ([   // 對照表未列火術，比照其他三派補上（待確認）
+    "taoist.fire": ([   // 對照表未列火術，比照其他三派補上（使用者確認）
         "name":        "朱衣派",
         "force":       "sun force",
         "force_level": 15,
@@ -240,16 +246,17 @@ mapping calc_skills(string cls, int lv, string faction)
         foreach( mapping art in s["arts"] ) {
             if( lv < art["level"] ) continue;
             if( mapp(art["req"]) ) {
+                // 前置武功只要學得到就視為練滿，不看實際等級。
                 int ok = 1;
                 foreach( string rq, int need in art["req"] )
-                    if( skills[rq] < need ) ok = 0;
+                    if( skills[rq] < 1 ) ok = 0;
                 if( !ok ) continue;
             }
             put(skills, art["skill"], calc_level(lv, MAIN_PCT));
             if( art["map"] ) {
                 put(skills, art["map"], calc_level(lv, MAIN_PCT));
-                // 同一個基本技能有多套武功時，後面（門檻較高）的蓋過前面的。
-                if( has_art(art["skill"]) ) maps[art["map"]] = art["skill"];
+                // 同一個基本技能有多套武功時，以先列的為主。
+                if( !maps[art["map"]] && has_art(art["skill"]) ) maps[art["map"]] = art["skill"];
             }
         }
     }

@@ -24,6 +24,7 @@ void create()
         (: command, "cast 4" :)
     }));
 
+    set("custom_faction", "taoist.storm");   // 門派記號（docs/martial_arts/門派武功對照表.md）
     set_power("B");
     setup();
     carry_object("/obj/area/obj/cloth")->wear();

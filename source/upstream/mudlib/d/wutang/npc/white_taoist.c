@@ -23,6 +23,7 @@ LONG
         (: command, "cast 2" :),
         (: command, "cast 3" :),
     }));
+    set("custom_faction", "taoist.freeze");   // 門派記號（docs/martial_arts/門派武功對照表.md）
     set_power("B");
     setup();
     carry_object("/custom/armor/cloth/white_taoist_robe")->wear();

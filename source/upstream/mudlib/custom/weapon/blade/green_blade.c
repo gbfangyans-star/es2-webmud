@@ -42,7 +42,7 @@ void create()
             "刻著【七傷七損】四個字，手握刀柄可感覺到戒尺上傳來微溫，稍稍摧動內力則可明\n"
             "顯感覺到體內真氣源源流入兵器中。\n");
         set("apply_weapon/blade", ([
-            "huge force": 10,
+            "devil force": 10,
             "force": 10,
             "parry": 10,
         ]));
