@@ -1,0 +1,66 @@
+from pathlib import Path
+import re
+
+MUD = Path(__file__).resolve().parents[1] / 'source' / 'upstream' / 'mudlib'
+
+
+def read(p):
+    return (MUD / p).read_text(encoding='utf-8')
+
+
+def table(s, name):
+    t = s[s.index(name):]
+    return t[:t.index(']);')]
+
+
+def test_coefficients_and_cap():
+    s = read('daemon/misc/npc_skill.c')
+    assert '#define SKILL_CAP       200' in s
+    assert '#define MAIN_PCT        300' in s
+    assert '#define COMMON_PCT      200' in s
+    assert '#define AUX_PCT         150' in s
+
+
+def test_class_skill_table():
+    t = table(read('daemon/misc/npc_skill.c'), 'private mapping class_skill = ([')
+    got = {}
+    for cls, main, aux in re.findall(
+            r'"([a-z]+)":\s*\(\[\s*"main":\s*\(\{([^}]*)\}\),\s*"aux":\s*\(\{([^}]*)\}\)', t):
+        got[cls] = (re.findall(r'"([^"]+)"', main), re.findall(r'"([^"]+)"', aux))
+    assert got == {
+        'fighter': ([], []),
+        'soldier': (['berserk'], []),
+        'thief': (['backstab', 'killerhood'], ['sneak', 'dagger']),
+        'taoist': (['spells'], []),
+        'scholar': (['dodge', 'literate', 'archaic attainment'], []),
+        'monk': (['magic'], []),
+        'alchemist': (['magic'], []),
+    }
+    assert 'commoner' not in got
+
+
+def test_sect_forces():
+    t = table(read('daemon/misc/npc_skill.c'), 'private mapping sect = ([')
+    assert re.search(r'"fighter\.tiger":.*?"force":\s*"tiger-force",\s*"force_level": 15', t, re.S)
+    assert re.search(r'"fighter\.lunmay":.*?"force":\s*"hainmay force",\s*"force_level": 15', t, re.S)
+
+
+def test_npc_hooks():
+    s = read('std/char/npc.c')
+    assert 'if( !applying_power ) manual_skill[skill] = 1;' in s
+    assert 'if( !applying_power ) manual_map[skill] = 1;' in s
+    assert 'NPC_SKILL_D->apply_skills(this_object(), manual_skill, manual_map);' in s
+    assert 'call_out("apply_npc_weapon_skills", 0);' in s
+    assert '(: command, "berserk" :)' in s
+    assert '#define NPC_SKILL_D\t\t"/daemon/misc/npc_skill.c"' in read('include/daemon.h')
+    assert '/daemon/misc/npc_skill' in read('adm/etc/preload').splitlines()
+
+
+def calc(lv, pct):
+    return min(200, max(1, lv * pct // 100))
+
+
+def test_formula_examples():
+    assert [calc(lv, 300) for lv in (10, 30, 50, 70)] == [30, 90, 150, 200]
+    assert [calc(lv, 200) for lv in (10, 30, 50, 70)] == [20, 60, 100, 140]
+    assert [calc(lv, 150) for lv in (10, 30, 50, 70)] == [15, 45, 75, 105]
