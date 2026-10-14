@@ -61,7 +61,9 @@ def test_affix_name_uses_weapon_kind_and_both_colors():
 
 def test_wutang_guard_wields_blade():
     s = (MUD / 'd/wutang/npc/guard.c').read_text(encoding='utf-8')
-    assert 'set_skill("blade", 40);' in s
+    # 刀法改由 NPC 自動技能依手上武器補上（docs/CUSTOM_NPC_SKILL.md），不再手寫。
+    assert 'set_skill("blade"' not in s
+    assert 'set_power("B");' in s
     assert 'carry_object("/obj/area/obj/blade")->wield();' in s
 
 

@@ -16,10 +16,6 @@ void create()
 楊子陵在冷梅派第一代弟子中排行第四, 為梅影風某日出外於路上所遇到的棄嬰, 因機緣而入冷梅派, 目前劍術內功已略有小成, 一手真冷梅劍法在武林中也頗有微名。
 LONG
     );
-    set_skill("unarmed", 90);
-    set_skill("dodge", 90);
-    set_skill("parry", 90);
-    set_skill("sword", 90);
     // 約 5～7 tick 說一句（每 tick 16% 機率）。
     set("chat_chance", 15);
     set("chat_msg", ({

@@ -13,9 +13,6 @@ void create()
 
     set_skill("twohanded sword", 80);
     set_skill("blade", 60);
-    set_skill("unarmed", 65);
-    set_skill("parry", 60);
-    set_skill("dodge", 70);
 
     set("age", 36);
     set("long", "這是一名指揮官兵的武官﹐他們通常是軍人中出類拔萃的佼佼者。\n");

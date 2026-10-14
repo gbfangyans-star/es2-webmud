@@ -13,7 +13,6 @@ void create()
     // Race initialization fills every attribute not specified here.
 
     set_skill("taoism-freeze", 160);
-    set_skill("spells", 160);
     map_skill("spells", "taoism-freeze");
 
     set("long", "這名素衣派弟子精通天師道法【冰咒】，手持長劍，身穿布衣。\n");

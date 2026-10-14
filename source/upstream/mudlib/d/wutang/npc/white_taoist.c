@@ -16,7 +16,6 @@ void create()
 LONG
     );
     set_skill("taoism-freeze", 80);
-    set_skill("spells", 120);
     map_skill("spells", "taoism-freeze");
     set("chat_chance_combat", 40);
     set("chat_msg_combat", ({

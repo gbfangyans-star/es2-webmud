@@ -13,7 +13,6 @@ void create()
     // Race initialization fills every attribute not specified here.
 
     set_skill("taoism-storm", 160);
-    set_skill("spells", 160);
     map_skill("spells", "taoism-storm");
 
     set("long", "這名玄衣派弟子精通天師道法【風符】，手持長劍，身穿布衣。\n");

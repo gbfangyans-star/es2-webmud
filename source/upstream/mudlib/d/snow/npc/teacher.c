@@ -32,7 +32,6 @@ void create()
     set_race("human"); set_class("scholar");
     set_level(5);
 
-    set_skill("literate", 60);
     set("long",
         "王懷芝是鎮上王員外的獨子﹐前幾年上京考試落第﹐碰巧王太夫人過世\n"
         "﹐因此留在家鄉服喪﹐閒暇無事﹐便開了間私塾教鎮上孩子讀書。\n");

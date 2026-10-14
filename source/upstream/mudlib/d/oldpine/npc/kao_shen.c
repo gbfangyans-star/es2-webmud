@@ -18,9 +18,6 @@ void create()
     set_class("fighter"); set_level(30);
 
     /* User-provided legacy teacher table: teaching ceilings. */
-    set_skill("unarmed", 120);
-    set_skill("parry", 120);
-    set_skill("dodge", 120);
     set_skill("tiger-steps", 120);
     set_skill("sanmeendo", 140);
     set_skill("blade", 120);
