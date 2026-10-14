@@ -64,3 +64,18 @@ def test_formula_examples():
     assert [calc(lv, 300) for lv in (10, 30, 50, 70)] == [30, 90, 150, 200]
     assert [calc(lv, 200) for lv in (10, 30, 50, 70)] == [20, 60, 100, 140]
     assert [calc(lv, 150) for lv in (10, 30, 50, 70)] == [15, 45, 75, 105]
+
+
+def test_sect_npcs_marked():
+    for f, fac in (('d/oldpine/npc/kao_shen.c', '"fighter.tiger"'),
+                   ('d/wutang/npc/yang_zlin.c', '"fighter.lunmay"'),
+                   ('d/wutang/npc/apprentice.c', '"fighter.lunmay"'),
+                   ('d/wutang/npc/may_yin_fong.c', 'FACTION')):
+        s = read(f)
+        assert 'set("custom_faction", %s);' % fac in s, f
+        assert s.index('set("custom_faction"') < s.index('set_power('), f
+
+
+def test_force_map_only_skips_manual_map():
+    s = read('daemon/misc/npc_skill.c')
+    assert 'if( !manual_map[sk] ) ob->map_skill(sk, r["map"][sk]);' in s

@@ -22,6 +22,7 @@ LONG
         "楊子陵負手而立，望著遠處的羿水，似乎在等什麼人。\n",
         "楊子陵輕撫劍柄，低聲道：「冷梅劍法講究的是一個『冷』字，心若不靜，劍便不冷。」\n",
     }));
+    set("custom_faction", "fighter.lunmay");   // 門派記號（docs/CUSTOM_NPC_SKILL.md）
     set_power("A");
     setup();
     carry_object("/custom/weapon/sword/black_sword")->wield();

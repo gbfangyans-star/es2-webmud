@@ -36,6 +36,7 @@ void create()
         "高慎負手望著林間小路，冷哼一聲，神情頗為不耐。\n",
         "高慎伸手按了按腰間刀鞘，目光銳利地打量四周。\n",
     }));
+    set("custom_faction", "fighter.tiger");   // 門派記號（docs/CUSTOM_NPC_SKILL.md）
     set_power("B");
     setup();
 }

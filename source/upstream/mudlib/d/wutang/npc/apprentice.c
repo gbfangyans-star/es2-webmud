@@ -18,6 +18,7 @@ LONG
     set_skill("unarmed", 50);
     set_skill("dodge", 50);
     set_skill("parry", 50);
+    set("custom_faction", "fighter.lunmay");   // 門派記號（docs/CUSTOM_NPC_SKILL.md）
     set_power("B");
     setup();
 }

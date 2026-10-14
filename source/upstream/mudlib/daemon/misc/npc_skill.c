@@ -14,7 +14,8 @@ custom: NEW. WebMUD NPC 技能設計（使用者設計，2026-10-14）：技能�
 //   各職業主修／輔助見下方 class_skill。
 //   門派（custom_faction）：達到內功門檻等級時學會該門派內功（主修），
 //     並把 force 對應到該內功；門派武功清單之後補上（sect 表的 "arts"）。
-//   create() 裡手動 set_skill()/map_skill() 的項目保留不覆蓋。
+//   create() 裡手動 set_skill()/map_skill() 的項目保留不覆蓋；手寫了內功等級
+//   但沒寫對應的，仍會把內功對應到門派內功。
 
 #define SKILL_CAP       200
 
@@ -125,7 +126,7 @@ void apply_skills(object ob, mapping manual_skill, mapping manual_map)
     foreach( sk, lv in r["skills"] )
         if( !manual_skill[sk] ) ob->set_skill(sk, lv);
     foreach( sk in keys(r["map"]) )
-        if( !manual_map[sk] && !manual_skill[sk] ) ob->map_skill(sk, r["map"][sk]);
+        if( !manual_map[sk] ) ob->map_skill(sk, r["map"][sk]);
 }
 
 // 手上武器的技能（主修）。NPC 在 setup() 之後才拿武器，所以晚一步套用。
