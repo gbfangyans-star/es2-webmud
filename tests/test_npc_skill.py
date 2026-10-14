@@ -79,3 +79,27 @@ def test_sect_npcs_marked():
 def test_force_map_only_skips_manual_map():
     s = read('daemon/misc/npc_skill.c')
     assert 'if( !manual_map[sk] ) ob->map_skill(sk, r["map"][sk]);' in s
+
+
+def test_sect_table_keys_and_arts():
+    t = table(read('daemon/misc/npc_skill.c'), 'private mapping sect = ([')
+    keys = re.findall(r'^    "([a-z]+\.[a-z]+)": \(\[', t, re.M)
+    assert keys == ['fighter.lunmay', 'fighter.tiger', 'fighter.fonxan', 'fighter.chin', 'fighter.snow',
+                    'fighter.ancient', 'scholar.sky', 'thief.longye', 'thief.hidden', 'taoist.fire',
+                    'taoist.freeze', 'taoist.storm', 'taoist.thunder', 'taoist.huanwu', 'taoist.yinfeng',
+                    'taoist.lingyun']
+    assert '"skill": "advance_lunmay", "map": "secondhand sword", "level": 30, "req": ([ "hainmay force": 100 ])' in t
+    assert '"skill": "sanmeendo", "map": "blade", "level": 1' in t
+
+
+def test_unbuilt_arts_not_mapped():
+    s = read('daemon/misc/npc_skill.c')
+    assert 'if( has_art(art["skill"]) ) maps[art["map"]] = art["skill"];' in s
+    assert 'if( has_art(s["force"]) ) maps["force"] = s["force"];' in s
+
+
+def test_new_chinese_names():
+    s = read('data/chinese.o')
+    for k, v in (('sky force', '玄天心法'), ('devil force', '大邪心經'), ('tidy force', '凌潮心法'),
+                 ('nine-dragon force', '九龍神功'), ('reflecting star sword', '清河映星劍'), ('enchance', '強化之術')):
+        assert '"%s":"%s"' % (k, v) in s
