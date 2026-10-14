@@ -41,7 +41,7 @@ def test_class_skill_table():
 
 def test_sect_forces():
     t = table(read('daemon/misc/npc_skill.c'), 'private mapping sect = ([')
-    assert re.search(r'"fighter\.tiger":.*?"force":\s*"tiger-force",\s*"force_level": 15', t, re.S)
+    assert re.search(r'"fighter\.tiger":.*?"force":\s*"tiger force",\s*"force_level": 15', t, re.S)
     assert re.search(r'"fighter\.lunmay":.*?"force":\s*"hainmay force",\s*"force_level": 15', t, re.S)
 
 
@@ -89,7 +89,7 @@ def test_sect_table_keys_and_arts():
                     'taoist.freeze', 'taoist.storm', 'taoist.thunder', 'taoist.huanwu', 'taoist.yinfeng',
                     'taoist.lingyun']
     assert '"skill": "advance_lunmay", "map": "secondhand sword", "level": 30, "req": ([ "hainmay force": 100 ])' in t
-    assert '"skill": "sanmeendo", "map": "blade", "level": 1' in t
+    assert '"skill": "ksanmando", "map": "blade", "level": 1' in t
 
 
 def test_unbuilt_arts_not_mapped():
@@ -108,7 +108,7 @@ def test_new_chinese_names():
 def test_user_decisions_2026_10_14():
     t = table(read('daemon/misc/npc_skill.c'), 'private mapping sect = ([')
     assert '"skill": "lunmay", "map": "parry", "level": 1' in t
-    assert '"skill": "tiger-blade", "map": "twohanded blade", "level": 1, "req": ([ "tiger-force": 30 ])' in t
+    assert '"skill": "tiger-blade", "map": "twohanded blade", "level": 1, "req": ([ "tiger force": 30 ])' in t
     assert '"skill": "tiger-steps", "map": "dodge", "level": 1' in t
     s = read('daemon/misc/npc_skill.c')
     assert 'if( skills[rq] < 1 ) ok = 0;' in s                       # 前置武功學得到即視為練滿
@@ -119,3 +119,15 @@ def test_user_decisions_2026_10_14():
                    ('d/wutang/npc/guo_boo.c', 'taoist.fire'), ('d/wutang/npc/red_taoist.c', 'taoist.fire'),
                    ('d/wutang/npc/white_taoist.c', 'taoist.freeze')):
         assert 'set("custom_faction", "%s");' % fac in read(f), f
+
+
+def test_renamed_skill_ids():
+    # 三門刀法、瘋虎功改用對照表的代碼；舊存檔讀進來時轉換（使用者決定，2026-10-14）。
+    assert (MUD / 'daemon/skill/ksanmando.c').exists() and not (MUD / 'daemon/skill/sanmeendo.c').exists()
+    assert (MUD / 'daemon/skill/tiger_force.c').exists() and not (MUD / 'daemon/skill/tiger-force.c').exists()
+    assert 'register_skill_daemon("ksanmando")' in read('daemon/skill/ksanmando.c')
+    assert 'register_skill_daemon("tiger force")' in read('daemon/skill/tiger_force.c')
+    s = read('feature/char/skill.c')
+    assert '"sanmeendo":   "ksanmando",' in s and '"tiger-force": "tiger force",' in s
+    assert 'void migrate_skill_ids()' in s
+    assert 'this_object()->migrate_skill_ids();' in read('feature/save.c')

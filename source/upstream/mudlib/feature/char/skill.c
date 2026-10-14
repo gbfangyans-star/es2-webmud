@@ -26,6 +26,42 @@ void apply_restored_skill_progression(string skill);
 
 // implementations
 
+/* 武功代碼更名（使用者決定，2026-10-14）：舊存檔讀進來後把舊代碼換成新代碼，
+ * 等級、修練進度、技能對應都保留。由 /feature/save.c 的 restore() 呼叫。 */
+static mapping RENAMED_SKILL = ([
+    "sanmeendo":   "ksanmando",     // 三門刀法
+    "tiger-force": "tiger force",   // 瘋虎功
+]);
+
+void migrate_skill_ids()
+{
+    string old, nw, k;
+
+    foreach( old, nw in RENAMED_SKILL ) {
+        if( mapp(skills) && !undefinedp(skills[old]) ) {
+            if( skills[nw] < skills[old] ) skills[nw] = skills[old];
+            map_delete(skills, old);
+        }
+        if( mapp(learned) && !undefinedp(learned[old]) ) {
+            if( learned[nw] < learned[old] ) learned[nw] = learned[old];
+            map_delete(learned, old);
+        }
+        if( mapp(skill_flag) && !undefinedp(skill_flag[old]) ) {
+            if( undefinedp(skill_flag[nw]) ) skill_flag[nw] = skill_flag[old];
+            map_delete(skill_flag, old);
+        }
+        if( mapp(skill_map) ) {
+            if( !undefinedp(skill_map[old]) ) {
+                if( undefinedp(skill_map[nw]) ) skill_map[nw] = skill_map[old];
+                map_delete(skill_map, old);
+            }
+            foreach( k in keys(skill_map) )
+                if( skill_map[k] == old ) skill_map[k] = nw;
+        }
+        if( best_skill == old ) best_skill = nw;
+    }
+}
+
 string query_best_skill()
 {
     return best_skill;

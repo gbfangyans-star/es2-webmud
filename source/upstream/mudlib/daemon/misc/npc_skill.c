@@ -65,11 +65,11 @@ private mapping sect = ([
     ]),
     "fighter.tiger": ([
         "name":        "虎刀門",
-        "force":       "tiger-force",
+        "force":       "tiger force",
         "force_level": 15,
         "arts":        ({
-            ([ "skill": "sanmeendo", "map": "blade", "level": 1 ]),
-            ([ "skill": "tiger-blade", "map": "twohanded blade", "level": 1, "req": ([ "tiger-force": 30 ]) ]),
+            ([ "skill": "ksanmando", "map": "blade", "level": 1 ]),
+            ([ "skill": "tiger-blade", "map": "twohanded blade", "level": 1, "req": ([ "tiger force": 30 ]) ]),
             ([ "skill": "tiger-steps", "map": "dodge", "level": 1 ]),
         }),
     ]),

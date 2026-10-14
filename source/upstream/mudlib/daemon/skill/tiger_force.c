@@ -4,7 +4,7 @@ inherit SKILL;
 private void create()
 {
     seteuid(getuid());
-    DAEMON_D->register_skill_daemon("tiger-force");
+    DAEMON_D->register_skill_daemon("tiger force");
     setup();
 }
 
@@ -54,7 +54,7 @@ void skill_advanced(object me, string sk)
 {
     int lv;
 
-    lv = me->query_skill("tiger-force", 1);
+    lv = me->query_skill("tiger force", 1);
 
     // 90 級分歧：升到 91 的那一刻判斷，只有一次機會。
     if( lv == 91 && userp(me) && !me->query("tiger_force/branch_90") ) {
@@ -67,7 +67,7 @@ void skill_advanced(object me, string sk)
             me->set_attr("con", me->query_attr("con", 1) + 1);
             tell_object(me, HIR "你身經百戰﹐瘋虎功在生死搏殺間豁然貫通﹐一舉衝破了重重關隘﹗\n"
                 "你的膂力大增﹐根骨也更加堅實了。\n" NOR);
-            me->advance_skill("tiger-force", 9);   // 91 -> 100，會再呼叫一次本函式
+            me->advance_skill("tiger force", 9);   // 91 -> 100，會再呼叫一次本函式
             return;
         }
     }
@@ -109,7 +109,7 @@ int do_exercise(object me)
     /* 每次運功同時累積基本內功與瘋虎功的點數；瘋虎功只能靠修習取得，
      * 戰鬥中不會增加。 */
     me->improve_restored_force_tick();
-    me->improve_skill_exact("tiger-force",
+    me->improve_skill_exact("tiger force",
         COMBAT_D->int_formula_exp(me)
         + random(me->query_attr("cps")));
     return 1;
@@ -134,7 +134,7 @@ int do_powerup(object me)
 {
     int sk, damage_bonus, attack_bonus, duration;
 
-    sk = me->query_skill("tiger-force", 1);
+    sk = me->query_skill("tiger force", 1);
     if( sk < 100 )
         return notify_fail("你的瘋虎功火候未足，還無法催動瘋虎強盛勢。\n");
     if( me->query_temp("tiger_force/powerup") )
@@ -158,7 +158,7 @@ int do_refresh(object me)
 {
     int sk, cost;
 
-    sk = me->query_skill("tiger-force", 1);
+    sk = me->query_skill("tiger force", 1);
     if( sk < 1 )
         return notify_fail("你的瘋虎功尚未練成，還無法運氣回精。\n");
     cost = sk / 8;
@@ -175,7 +175,7 @@ varargs int exert_function(object me, string func, object target)
 {
     switch(func) {
     case "tiger force":
-    case "tiger-force":
+    case "tiger-force":     // 舊寫法，仍可使用
         message_vision(HIY "$N盤膝坐定，調勻呼吸，開始依照瘋虎功口訣運轉內息。\n" NOR,
             me);
         me->start_busy((: do_exercise, me :), (: halt_exercise, me :));

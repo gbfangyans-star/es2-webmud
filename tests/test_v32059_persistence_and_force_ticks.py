@@ -13,7 +13,7 @@ def force_tick(seed, con, cps, intel):
 
 
 def tiger_growth_delta(old, new):
-    """Model only the permanent deltas encoded in tiger-force.c."""
+    """Model only the permanent deltas encoded in tiger_force.c."""
     out = {"gin": 0, "kee": 0, "str": 0, "cor": 0}
     old = max(old, 14)
     for lv in range(old + 1, new + 1):
@@ -38,7 +38,7 @@ def test_shared_force_tick_formula_is_single_source_of_truth():
 
 
 def test_tiger_and_dragon_force_both_use_shared_basic_force_tick():
-    tiger = src('source/upstream/mudlib/daemon/skill/tiger-force.c')
+    tiger = src('source/upstream/mudlib/daemon/skill/tiger_force.c')
     dragon = src('source/upstream/mudlib/d/snow/skill/dragon_force.c')
     assert 'me->improve_restored_force_tick();' in tiger
     assert 'me->improve_restored_force_tick();' in dragon
@@ -68,7 +68,7 @@ def test_skill_and_learned_are_save_object_persistent_not_static():
 
 
 def test_tiger_growth_markers_are_persistent_dbase_not_temp():
-    tiger = src('source/upstream/mudlib/daemon/skill/tiger-force.c')
+    tiger = src('source/upstream/mudlib/daemon/skill/tiger_force.c')
     assert 'me->set("tiger_force/growth_level", lv);' in tiger
     assert 'me->set("tiger_force/branch_90", 1);' in tiger
     assert 'me->set("tiger_force/cor_bonus_140", 1);' in tiger

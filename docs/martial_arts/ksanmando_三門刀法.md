@@ -1,6 +1,6 @@
-# 三門刀法（sanmeendo）— 武功敘述草稿
+# 三門刀法（ksanmando）— 武功敘述草稿
 
-狀態：已實作（`daemon/skill/sanmeendo.c`，使用新版武功引擎 `std/martial_art.c`）。五招強度數字為建議值，待確認。強度數字見 `武功強度設定表.xlsx`。
+狀態：已實作（`daemon/skill/ksanmando.c`，使用新版武功引擎 `std/martial_art.c`）。五招強度數字為建議值，待確認。強度數字見 `武功強度設定表.xlsx`。
 標記：NEW（新版武功寫法）。
 
 ## 構想（提供者原文整理）
