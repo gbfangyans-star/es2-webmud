@@ -11,6 +11,7 @@
   - 土匪型（`legacy_aggressive`）：看到玩家就下殺手。
   - 巡邏（`legacy_patrol`）：只在同一區域（房間的 map/area 相同）內走動，每 2 tick 擲一次，10% 機率移動。
 - 道士且屬朱衣、素衣、玄衣派的，戰鬥中會施法（比照天師道各派弟子）。
+- 門派名稱「武陀堂」「五陀灸堂」依使用者更正，統一為「武陀灸堂」。
 - 使用者決定：司馬雷 ID 用 `Si-ma lei`；韓夫人 ID 用 `Madam han`；言歙（夜叉族不能當書生）改為平民；
   土伯（表上職業「野獸」）改為形天族武者；武官的大劍沿用現有 `obj/area/obj/bastardsword.c`。
 - 新做的裝備：翠綠短杉 `custom/armor/cloth/green_cloth.c`、掩心甲 `custom/armor/armor/heart_armor.c`。
@@ -59,7 +60,7 @@
 | 36 | 韓江洪 | Han jiang hong | `custom/legacy_npc/han_jiang_hong.c` | 尚書府／西廂房 | 人類 | 書生 | 20 | B | — | — |
 | 37 | 柳淳風 | Liuh chuen-fon | `custom/legacy_npc/liuh_chuen_fon.c` | 康平村／小客店 | 人類 | 武者 | 30 | A | 封山派（`fighter.fonxan`） | — |
 | 38 | 噬魂 | Ghost lord | `custom/legacy_npc/ghost_lord.c` | 文國縣／清水鄉 | 人類 | 軍人 | 35 | B | — | 主動攻擊 |
-| 39 | 雷同 | Lay ton | `custom/legacy_npc/lay_ton.c` | 斐縣／— | 人類 | 方士 | 20 | B | 武陀堂（未列入對照表） | — |
+| 39 | 雷同 | Lay ton | `custom/legacy_npc/lay_ton.c` | 斐縣／— | 人類 | 方士 | 20 | B | 武陀灸堂（未列入對照表） | — |
 | 40 | 任蕭蕭 | Ren xiao-xiao | `custom/legacy_npc/ren_xiao_xiao.c` | 未能判定／廂房 | 人類 | 平民 | 10 | B | — | — |
 | 41 | 八臂石妖 | Stone ghost | `custom/legacy_npc/stone_ghost.c` | 未能判定／雷神宮殿 | 形天族 | 軍人 | 40 | A | — | 主動攻擊 |
 | 42 | 兵部軍官 | Soldier leader | `custom/legacy_npc/soldier_leader.c` | 未能判定／— | 形天族 | 軍人 | 20 | B | — | — |
@@ -100,7 +101,7 @@
 | 77 | 李儒 | Li ru | `custom/legacy_npc/li_ru.c` | 柳家／民宅 | 人類 | 書生 | 20 | B | — | — |
 | 78 | 劉開 | Liu kei | `custom/legacy_npc/liu_kei.c` | 檒城／街道 | 人類 | 軍人 | 30 | B | — | — |
 | 79 | 駱易 | Ro yi | `custom/legacy_npc/ro_yi.c` | 步玄派／— | 人類 | 書生 | 65 | S | 步玄派（未列入對照表） | — |
-| 80 | 武道通 | Wu dauton | `custom/legacy_npc/wu_dauton.c` | 武陀灸堂／武陀灸堂 | 人類 | 方士 | 60 | S | 五陀灸堂（未列入對照表） | — |
+| 80 | 武道通 | Wu dauton | `custom/legacy_npc/wu_dauton.c` | 武陀灸堂／武陀灸堂 | 人類 | 方士 | 60 | S | 武陀灸堂（未列入對照表） | — |
 | 81 | 張小簽 | Zhang xiao qian | `custom/legacy_npc/zhang_xiao_qian.c` | 水嵐縣／街道 | 人類 | 平民 | 1 | C | — | — |
 | 82 | 白劍飛 | Bai jian fei | `custom/legacy_npc/bai_jian_fei.c` | 漕幫／小船 | 夜叉族 | 武者 | 25 | B | 封山派（`fighter.fonxan`） | — |
 | 83 | 蕭尹 | Xiao yin | `custom/legacy_npc/xiao_yin.c` | 漕幫／房間內 | 人類 | 武者 | 45 | A | — | — |
@@ -197,6 +198,5 @@
 |---|---|
 | 步玄派 | 歐陽芝、駱易 |
 | 天邪派 | 於蘭兼毅、蕭朗生 |
-| 武陀堂 | 雷同 |
-| 五陀灸堂 | 武道通 |
+| 武陀灸堂 | 雷同、武道通 |
 | 白象寺 | 無念大師 |
