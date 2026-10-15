@@ -399,6 +399,7 @@ static mapping ATTR_GROWTH = ([
     "force":                "con",
     "dodge":                "dex",
     "parry":                "cps",
+    "sneak":                "dex",
     "spells":               "spi",
     "magic":                "spi",
     "backstab":             "cor",
