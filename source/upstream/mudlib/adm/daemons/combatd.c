@@ -212,15 +212,25 @@ void restored_dodge_gain(object me, object opponent)
         me->improve_skill_exact(mapped, restored_defense_exp(me, opponent, "dex"));
 }
 
-/* 格擋成功（含完全擋下）時呼叫：基本招架 = (random(定力)+1) × (random(d)+1) × (智力/7)。
+/* 格擋成功（含完全擋下）時呼叫：基本招架 = (random(定力)+1) × (random(d)+1) × (智力/7)；
+ * 學過強力格擋時，強力格擋另得這次招架點數的 (定力×1.5～100)%。
  * enable 在招架上的武功不從格擋拿點數；武功檔有 parry_gains_exp() 傳回 1 時才給（各自擲骰）。 */
 void restored_parry_gain(object me, object opponent)
 {
     string art;
     object daemon;
+    int exp, lo;
     if( !userp(me) || !objectp(opponent) ) return;
     defense_combat_gain(me, opponent);
-    me->improve_skill_exact("parry", restored_defense_exp(me, opponent, "cps"));
+    exp = restored_defense_exp(me, opponent, "cps");
+    me->improve_skill_exact("parry", exp);
+    /* 強力格擋：這次招架點數 × (定力×1.5 ～ 100)%，定力 67 以上固定 100%。 */
+    if( me->query_learn("heavy_parry") ) {
+        lo = me->query_attr("cps") * 3 / 2;
+        if( lo > 100 ) lo = 100;
+        if( lo < 0 ) lo = 0;
+        me->improve_skill_exact("heavy_parry", exp * (lo + random(101 - lo)) / 100);
+    }
     art = me->skill_mapped("parry");
     if( stringp(art) && art != "parry" && objectp(daemon = SKILL_D(art))
     &&  function_exists("parry_gains_exp", daemon) && daemon->parry_gains_exp() )

@@ -254,7 +254,12 @@ inflict_damage(int strength, object victim)
     {
         bonus = max_bonus;
         damage = dam->multipler * dam->range;
-        owner->improve_skill("powerblow", 1 + bonus/5);
+        // 重擊術經驗（使用者定案，2026-10-12）：
+        // random(1+加成上限) × (1 + 重擊術等級/20) × 膂力/5，
+        // 每把武器各自判定，雙持時兩手都可獲得；improve_skill() 另乘人物等級加成。
+        owner->improve_skill("powerblow", random(1 + max_bonus)
+            * (1 + owner->query_skill("powerblow", 1) / 20)
+            * owner->query_attr("str") / 5);
     }
     else damage = dam->multipler * (1+random(dam->range));
 

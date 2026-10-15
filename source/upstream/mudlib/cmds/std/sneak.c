@@ -107,7 +107,8 @@ int do_sneak(object me, object obj, string dir, string exit_dir, int type)
     if( me->query_temp("sneak_countdown") > 0 ) {
 	me->add_temp("sneak_countdown", -1);
 	tell_object(me, CYN "小心翼翼 ...\n" NOR);
-	me->improve_skill("sneak", 1);
+	// 小心翼翼的準備階段：每次得 悟性 點（improve_skill() 另乘人物等級加成）。
+	me->improve_skill("sneak", me->query_attr("int"));
 	return 1;
     }
 
@@ -123,7 +124,8 @@ int do_sneak(object me, object obj, string dir, string exit_dir, int type)
 	rating = 1 + random( me->query_skill("sneak") * 2 );
         tell_object(me, "看起來，似乎還沒有人發覺你的行動。\n");
 	me->set_temp("pending/hidden", rating);
-        me->improve_skill("sneak", me->query_attr("int") );
+        // 潛行成功：基本公式 (random(悟性)+1)×(random(悟性)+1)+random(悟性)。
+        me->improve_skill("sneak", COMBAT_D->int_formula_exp(me));
         if( !me->move(obj) ) me->set_temp("pending/hidden", 0);
         break;
     }

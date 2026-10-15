@@ -103,12 +103,11 @@ do_berserk(object me)
 	    // 若是敵人不在同一個房間, 跳過
 	    if( environment(ob) != environment(me) ) continue;
 	    me->attack(ob);
-	    // 每出手攻擊一次均給予經驗值, 以鼓勵玩家在實戰中學習 berserk, 
-	    // 經驗值與攻擊的技巧有關
-	    exp = 1 + me->query_skill("berserk")/3
-		+ random(me->query_skill("berserk"))/3;
- 	    // 在技巧不足時, 膽識高對技能學習有正面幫助
- 	    if( skill < 80 ) exp += random(me->query_attr("cor"));
+	    // 每出手攻擊一次給予經驗值（使用者定案，2026-10-12）：
+	    // (1+random(膽識)) × (1+random(膂力)) + random(悟性)，
+	    // improve_skill() 另外乘上人物等級加成 (1+random(等級/8))。
+	    exp = (1 + random(me->query_attr("cor"))) * (1 + random(me->query_attr("str")))
+		+ random(me->query_attr("int"));
 	    me->improve_skill("berserk", exp);
 	    if( --max_attack < 1 ) break;
 	}
@@ -128,9 +127,6 @@ do_berserk(object me)
 //	me->consume_stat("gin", cost);
 	me->consume_stat("kee", kee_cost);
 	
-	// 給予基本的使用經驗值, 與悟性相關
-	if( me->query_skill("berserk", 1) < 180 )
-	    me->improve_skill("berserk", 1 + random(me->query_attr("int"))*2);
 	me->gain_score("combat", 1 + random(max_hit));
 
 	me->start_busy(2);
