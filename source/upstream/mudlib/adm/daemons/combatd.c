@@ -260,8 +260,8 @@ private string *basic_attack_skills = ({
 
 private void restored_hit_gain(object me, object victim, string skill, object weapon)
 {
-    int exp, str;
-    string base, equipped, art;
+    int exp, str, cps;
+    string base, equipped, art, force;
     object daemon;
 
     if( !userp(me) || !objectp(victim) ) return;
@@ -269,6 +269,16 @@ private void restored_hit_gain(object me, object victim, string skill, object we
     /* 用 enable 的武功（非基本技能）造成傷害，每次 1 點武術造詣。 */
     if( member_array(skill, basic_attack_skills) < 0 )
         me->gain_score("martial art", 1);
+
+    /* 空手打中、且內功設定成特殊內功時，基本內功另得
+     * (random(膂力) × random(定力) + random(膂力)) × (智力/7，最低 1)。 */
+    if( !objectp(weapon) && stringp(force = me->skill_mapped("force")) && force != "force" ) {
+        str = me->query_attr("str");
+        cps = me->query_attr("cps");
+        exp = ((str > 0 ? random(str) : 0) * (cps > 0 ? random(cps) : 0)
+            + (str > 0 ? random(str) : 0)) * restored_int_base(me);
+        if( exp > 0 ) me->improve_skill_exact("force", exp);
+    }
 
     /* 空手沒用武功：基本拳腳用力量公式。 */
     if( skill == "unarmed" ) {
