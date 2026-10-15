@@ -170,9 +170,17 @@ void make_new_scholar(object ob)
 
 void relay_say(object who, string msg)
 {
+    string word;
+
     if( ! who->query_temp("pending/picked_by_whaiz") ) return;
-    if( member_array(msg[0..1], ({"想", "是", "好"})) != -1 ) {
-	do_chat((: make_new_scholar, who :));
-	who->delete_temp("pending/picked_by_whaiz");
+    if( !stringp(msg) ) return;
+    // 回答以「想」「是」「好」開頭就答應。中文字在 UTF-8 裡一個字佔 3 個位元組，
+    // 原本只比對前 2 個位元組（舊 Big5 一字 2 位元組的寫法），所以永遠不會成立。
+    foreach(word in ({ "想", "是", "好" })) {
+	if( msg[0..strlen(word)-1] == word ) {
+	    do_chat((: make_new_scholar, who :));
+	    who->delete_temp("pending/picked_by_whaiz");
+	    return;
+	}
     }
 }
