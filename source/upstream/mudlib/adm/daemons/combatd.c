@@ -451,8 +451,10 @@ fight (object me, object victim, string skill, mapping action, object weapon)
                     weapon ? weapon : me);
         absorb_msg = me->query_temp("absorb_message");
         me->add_combat_message( "﹐" );
+        /* 沒有格擋成功時（absorb_message 只在格擋成功時設定）顯示招架不及，
+         * 避免玩家誤以為有格擋。 */
         me->add_combat_message( stringp(absorb_msg) ? absorb_msg
-                : "$n嘗試將$N這一擊格開");
+                : "$n招架不及");
 
         /* 招架結果（見 F_COMBAT 的 absorb()）：1 格擋減傷、2 完全擋下。 */
         parry_result = victim->query_temp("parry_result");

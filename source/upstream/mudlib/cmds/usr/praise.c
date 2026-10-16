@@ -39,6 +39,16 @@ int main(object me, string arg)
         ob->gain_score("reputation", (level-1) * (level-1) );
 
     me->gain_score("reputation", 1);
+
+    // 武者讚揚武者另得武林聲望、盜賊讚揚盜賊另得黑道聲望，數值同聲望
+    // （使用者定案，2026-10-16）。
+    if( (pro == "fighter" || pro == "thief") && ob->query_class() == pro ) {
+        string fame;
+        fame = pro == "fighter" ? "martial fame" : "negative fame";
+        ob->gain_score(fame, (level-1) * (level-1));
+        me->gain_score(fame, 1);
+    }
+
     if( pro!="commoner" && ob->query_class()==pro )
         CLASS_D(pro)->brother_praise(me, ob);
     me->set("praise_done", 1);

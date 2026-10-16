@@ -29,9 +29,17 @@ int main(object me, string arg)
 	spl = replace_string( spl, " ", "_");
 
 	notify_fail("你請先用 enable 指令選擇你要使用的法術系。\n");
-	if( stringp(magic = me->skill_mapped("magic")) )
-		return (int)SKILL_D(magic)->conjure_magic(me, spl, target);
-		
+	if( stringp(magic = me->skill_mapped("magic")) ) {
+		int ok, spi;
+		ok = (int)SKILL_D(magic)->conjure_magic(me, spl, target);
+		// 施法成功：法術修為、丹道修養各得 random(靈性/6) + 1（使用者定案，2026-10-16）。
+		if( ok && userp(me) ) {
+			spi = me->query_attr("spi");
+			me->gain_score("magic", (spi >= 6 ? random(spi / 6) : 0) + 1);
+			me->gain_score("alchemy", (spi >= 6 ? random(spi / 6) : 0) + 1);
+		}
+		return ok;
+	}
 	return 0;
 }
 
