@@ -13,6 +13,7 @@ LONG
     );
     set("exits", ([
         "north" : __DIR__"gravel_road",
+        "south" : "/d/qiaoyin/ngate",
     ]));
     set("map/area", "老松林");
     setup();

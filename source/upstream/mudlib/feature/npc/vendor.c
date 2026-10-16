@@ -66,6 +66,15 @@ query_trading_price(string handle)
     return handle->query("value");
 }
 
+// 商店賣的武器一律是普通品，不帶隨機附加屬性（使用者決定，2026-10-16）。
+// 武器產生時已經擲過詞綴（adm/daemons/enhanced.c 的 roll_affix），這裡改回普通品。
+private object plain_goods(object ob)
+{
+    if( objectp(ob) && !undefinedp(ob->query("affix")) )
+        ENHANCE_D->apply_affix(ob, ([]));
+    return ob;
+}
+
 // amount：一次買幾個。可堆疊的商品（COMBINED_ITEM）合成一堆交貨；其他商品一件一件交，
 // 身上拿不動（太重或放不下）的部分直接銷毀，不掉在地上，庫存與價錢照算。
 varargs void
@@ -82,7 +91,7 @@ deliver_merchandise(object me, string what, int amount)
     if( !mapp(list) || undefinedp(list[what]) ) return;
     if( amount < 1 ) amount = 1;
 
-    ob = new(what);
+    ob = plain_goods(new(what));
     item_name = ob->query("name");
 
     if( ob->query_volume() ) {
@@ -92,7 +101,7 @@ deliver_merchandise(object me, string what, int amount)
 	if( !(container = ob->query("default_container")) )
 	    container = "/obj/bottle";
 	for( i = 0; i < amount; i++ ) {
-	    if( i ) ob = new(what);
+	    if( i ) ob = plain_goods(new(what));
 	    container_ob = new(container);
 	    unit = container_ob->query("container_unit");
 	    ob->move(container_ob);
@@ -112,7 +121,7 @@ deliver_merchandise(object me, string what, int amount)
     } else {
 	unit = ob->query("unit");
 	for( i = 0; i < amount; i++ ) {
-	    if( i ) ob = new(what);
+	    if( i ) ob = plain_goods(new(what));
 	    if( ob->move(me) ) got++;
 	    else destruct(ob);
 	}
