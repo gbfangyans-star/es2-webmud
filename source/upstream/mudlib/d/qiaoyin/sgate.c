@@ -15,7 +15,7 @@ LONG
         "north" : __DIR__"south_street2",
     ]));
     set("objects", ([
-        "/d/snow/npc/garrison" : 4,
+        "/obj/area/garrison" : 4,
     ]));
     set("map/area", "喬陰縣");
     setup();
