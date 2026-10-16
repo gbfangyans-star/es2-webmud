@@ -74,3 +74,11 @@ def test_dagger_and_staffs_roll_affix():
         assert 'if( clonep() ) ENHANCE_D->roll_affix(this_object());' in s, f
         if short:
             assert 'set("affix_short_name", "%s");' % short in s, f
+
+
+def test_vendor_sells_plain_weapons():
+    # 商店賣的武器一律是普通品（使用者決定，2026-10-16）。
+    s = (MUD / 'feature/npc/vendor.c').read_text(encoding='utf-8')
+    assert 'ENHANCE_D->apply_affix(ob, ([]));' in s
+    assert s.count('plain_goods(new(what))') == 3
+    assert 'new(what)' not in s.replace('plain_goods(new(what))', '')
