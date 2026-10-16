@@ -1491,6 +1491,252 @@
       "x": 9,
       "y": 13,
       "layer": "蘆葦叢"
+    },
+    {
+      "id": "/d/qiaoyin/ngate",
+      "label": "喬陰縣城北門",
+      "area": "喬陰縣",
+      "x": 0,
+      "y": -4
+    },
+    {
+      "id": "/d/qiaoyin/highway",
+      "label": "官道",
+      "area": "喬陰縣",
+      "x": -5,
+      "y": -3
+    },
+    {
+      "id": "/d/qiaoyin/wgate",
+      "label": "喬陰縣城西門",
+      "area": "喬陰縣",
+      "x": -4,
+      "y": -3
+    },
+    {
+      "id": "/d/qiaoyin/grocery",
+      "label": "雜貨舖",
+      "area": "喬陰縣",
+      "x": -1,
+      "y": -3
+    },
+    {
+      "id": "/d/qiaoyin/north_street1",
+      "label": "北大街",
+      "area": "喬陰縣",
+      "x": 0,
+      "y": -3
+    },
+    {
+      "id": "/d/qiaoyin/west_lane1",
+      "label": "街道",
+      "area": "喬陰縣",
+      "x": -4,
+      "y": -2
+    },
+    {
+      "id": "/d/qiaoyin/mid_lane1",
+      "label": "街道",
+      "area": "喬陰縣",
+      "x": -2,
+      "y": -2
+    },
+    {
+      "id": "/d/qiaoyin/pawnshop",
+      "label": "和豐當鋪",
+      "area": "喬陰縣",
+      "x": -1,
+      "y": -2
+    },
+    {
+      "id": "/d/qiaoyin/north_street2",
+      "label": "北大街",
+      "area": "喬陰縣",
+      "x": 0,
+      "y": -2
+    },
+    {
+      "id": "/d/qiaoyin/alchemy_room",
+      "label": "煉丹房",
+      "area": "喬陰縣",
+      "x": 2,
+      "y": -2
+    },
+    {
+      "id": "/d/qiaoyin/bookstore",
+      "label": "名山書肆",
+      "area": "喬陰縣",
+      "x": -5,
+      "y": -1
+    },
+    {
+      "id": "/d/qiaoyin/west_lane2",
+      "label": "街道",
+      "area": "喬陰縣",
+      "x": -4,
+      "y": -1
+    },
+    {
+      "id": "/d/qiaoyin/mid_lane2",
+      "label": "街道",
+      "area": "喬陰縣",
+      "x": -2,
+      "y": -1
+    },
+    {
+      "id": "/d/qiaoyin/north_street3",
+      "label": "北大街",
+      "area": "喬陰縣",
+      "x": 0,
+      "y": -1
+    },
+    {
+      "id": "/d/qiaoyin/smithy",
+      "label": "鐵匠鋪",
+      "area": "喬陰縣",
+      "x": 1,
+      "y": -1
+    },
+    {
+      "id": "/d/qiaoyin/big_hall",
+      "label": "大屋正廳",
+      "area": "喬陰縣",
+      "x": 2,
+      "y": -1
+    },
+    {
+      "id": "/d/qiaoyin/alley",
+      "label": "小巷子",
+      "area": "喬陰縣",
+      "x": 3,
+      "y": -1
+    },
+    {
+      "id": "/d/qiaoyin/fonxan_hall",
+      "label": "正廳",
+      "area": "喬陰縣",
+      "x": 4,
+      "y": -1
+    },
+    {
+      "id": "/d/qiaoyin/fonxan_yard",
+      "label": "別院",
+      "area": "喬陰縣",
+      "x": 5,
+      "y": -1
+    },
+    {
+      "id": "/d/qiaoyin/west_street1",
+      "label": "西大街",
+      "area": "喬陰縣",
+      "x": -4,
+      "y": 0
+    },
+    {
+      "id": "/d/qiaoyin/west_street2",
+      "label": "西大街",
+      "area": "喬陰縣",
+      "x": -3,
+      "y": 0
+    },
+    {
+      "id": "/d/qiaoyin/west_street3",
+      "label": "西大街",
+      "area": "喬陰縣",
+      "x": -2,
+      "y": 0
+    },
+    {
+      "id": "/d/qiaoyin/west_street4",
+      "label": "西大街",
+      "area": "喬陰縣",
+      "x": -1,
+      "y": 0
+    },
+    {
+      "id": "/d/qiaoyin/tree_tomb",
+      "label": "樹王墳",
+      "area": "喬陰縣",
+      "x": 0,
+      "y": 0
+    },
+    {
+      "id": "/d/qiaoyin/east_street1",
+      "label": "東大街",
+      "area": "喬陰縣",
+      "x": 1,
+      "y": 0
+    },
+    {
+      "id": "/d/qiaoyin/east_street2",
+      "label": "東大街",
+      "area": "喬陰縣",
+      "x": 2,
+      "y": 0
+    },
+    {
+      "id": "/d/qiaoyin/east_street3",
+      "label": "東大街",
+      "area": "喬陰縣",
+      "x": 3,
+      "y": 0
+    },
+    {
+      "id": "/d/qiaoyin/egate",
+      "label": "喬陰縣城東門",
+      "area": "喬陰縣",
+      "x": 4,
+      "y": 0
+    },
+    {
+      "id": "/d/qiaoyin/bank",
+      "label": "景隆錢莊",
+      "area": "喬陰縣",
+      "x": -2,
+      "y": 1
+    },
+    {
+      "id": "/d/qiaoyin/south_street1",
+      "label": "南大街",
+      "area": "喬陰縣",
+      "x": 0,
+      "y": 1
+    },
+    {
+      "id": "/d/qiaoyin/pharmacy",
+      "label": "同仁藥鋪",
+      "area": "喬陰縣",
+      "x": 3,
+      "y": 1
+    },
+    {
+      "id": "/d/qiaoyin/inn",
+      "label": "金水客棧",
+      "area": "喬陰縣",
+      "x": -1,
+      "y": 2
+    },
+    {
+      "id": "/d/qiaoyin/south_street2",
+      "label": "南大街",
+      "area": "喬陰縣",
+      "x": 0,
+      "y": 2
+    },
+    {
+      "id": "/d/qiaoyin/inn2",
+      "label": "金水客棧二樓",
+      "area": "喬陰縣",
+      "x": -1,
+      "y": 3,
+      "layer": "二樓"
+    },
+    {
+      "id": "/d/qiaoyin/sgate",
+      "label": "喬陰縣城南門",
+      "area": "喬陰縣",
+      "x": 0,
+      "y": 3
     }
   ],
   "edges": [
@@ -4179,6 +4425,438 @@
     {
       "from": "/d/snow/sgate",
       "to": "/d/oldpine/entrance",
+      "direction": "southeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/ngate",
+      "to": "/d/oldpine/highway",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/ngate",
+      "to": "/d/qiaoyin/north_street1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/highway",
+      "to": "/d/wutang/three_way",
+      "direction": "northwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/highway",
+      "to": "/d/qiaoyin/wgate",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/wgate",
+      "to": "/d/qiaoyin/highway",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/wgate",
+      "to": "/d/qiaoyin/west_lane1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/grocery",
+      "to": "/d/qiaoyin/north_street1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/north_street1",
+      "to": "/d/qiaoyin/ngate",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/north_street1",
+      "to": "/d/qiaoyin/grocery",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/north_street1",
+      "to": "/d/qiaoyin/north_street2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/west_lane1",
+      "to": "/d/qiaoyin/wgate",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/west_lane1",
+      "to": "/d/qiaoyin/west_lane2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/mid_lane1",
+      "to": "/d/qiaoyin/pawnshop",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/mid_lane1",
+      "to": "/d/qiaoyin/mid_lane2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/pawnshop",
+      "to": "/d/qiaoyin/mid_lane1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/north_street2",
+      "to": "/d/qiaoyin/north_street1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/north_street2",
+      "to": "/d/qiaoyin/north_street3",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/alchemy_room",
+      "to": "/d/qiaoyin/big_hall",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/bookstore",
+      "to": "/d/qiaoyin/west_lane2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/west_lane2",
+      "to": "/d/qiaoyin/west_lane1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/west_lane2",
+      "to": "/d/qiaoyin/bookstore",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/west_lane2",
+      "to": "/d/qiaoyin/west_street1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/mid_lane2",
+      "to": "/d/qiaoyin/mid_lane1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/mid_lane2",
+      "to": "/d/qiaoyin/west_street3",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/north_street3",
+      "to": "/d/qiaoyin/north_street2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/north_street3",
+      "to": "/d/qiaoyin/smithy",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/north_street3",
+      "to": "/d/qiaoyin/tree_tomb",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/smithy",
+      "to": "/d/qiaoyin/north_street3",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/big_hall",
+      "to": "/d/qiaoyin/alchemy_room",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/big_hall",
+      "to": "/d/qiaoyin/alley",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/alley",
+      "to": "/d/qiaoyin/big_hall",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/alley",
+      "to": "/d/qiaoyin/east_street3",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/fonxan_hall",
+      "to": "/d/qiaoyin/fonxan_yard",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/fonxan_hall",
+      "to": "/d/qiaoyin/east_street3",
+      "direction": "southwest",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/fonxan_yard",
+      "to": "/d/qiaoyin/fonxan_hall",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/west_street1",
+      "to": "/d/qiaoyin/west_lane2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/west_street1",
+      "to": "/d/qiaoyin/west_street2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/west_street2",
+      "to": "/d/qiaoyin/west_street1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/west_street2",
+      "to": "/d/qiaoyin/west_street3",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/west_street3",
+      "to": "/d/qiaoyin/west_street2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/west_street3",
+      "to": "/d/qiaoyin/west_street4",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/west_street3",
+      "to": "/d/qiaoyin/mid_lane2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/west_street3",
+      "to": "/d/qiaoyin/bank",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/west_street4",
+      "to": "/d/qiaoyin/west_street3",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/west_street4",
+      "to": "/d/qiaoyin/tree_tomb",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/tree_tomb",
+      "to": "/d/qiaoyin/west_street4",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/tree_tomb",
+      "to": "/d/qiaoyin/east_street1",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/tree_tomb",
+      "to": "/d/qiaoyin/north_street3",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/tree_tomb",
+      "to": "/d/qiaoyin/south_street1",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/east_street1",
+      "to": "/d/qiaoyin/tree_tomb",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/east_street1",
+      "to": "/d/qiaoyin/east_street2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/east_street2",
+      "to": "/d/qiaoyin/east_street1",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/east_street2",
+      "to": "/d/qiaoyin/east_street3",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/east_street3",
+      "to": "/d/qiaoyin/east_street2",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/east_street3",
+      "to": "/d/qiaoyin/egate",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/east_street3",
+      "to": "/d/qiaoyin/alley",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/east_street3",
+      "to": "/d/qiaoyin/fonxan_hall",
+      "direction": "northeast",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/east_street3",
+      "to": "/d/qiaoyin/pharmacy",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/egate",
+      "to": "/d/qiaoyin/east_street3",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/bank",
+      "to": "/d/qiaoyin/west_street3",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/south_street1",
+      "to": "/d/qiaoyin/tree_tomb",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/south_street1",
+      "to": "/d/qiaoyin/south_street2",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/pharmacy",
+      "to": "/d/qiaoyin/east_street3",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/inn",
+      "to": "/d/qiaoyin/south_street2",
+      "direction": "east",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/inn",
+      "to": "/d/qiaoyin/inn2",
+      "direction": "up",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/south_street2",
+      "to": "/d/qiaoyin/south_street1",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/south_street2",
+      "to": "/d/qiaoyin/inn",
+      "direction": "west",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/south_street2",
+      "to": "/d/qiaoyin/sgate",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/inn2",
+      "to": "/d/qiaoyin/inn",
+      "direction": "down",
+      "resolved": true
+    },
+    {
+      "from": "/d/qiaoyin/sgate",
+      "to": "/d/qiaoyin/south_street2",
+      "direction": "north",
+      "resolved": true
+    },
+    {
+      "from": "/d/oldpine/highway",
+      "to": "/d/qiaoyin/ngate",
+      "direction": "south",
+      "resolved": true
+    },
+    {
+      "from": "/d/wutang/three_way",
+      "to": "/d/qiaoyin/highway",
       "direction": "southeast",
       "resolved": true
     }
