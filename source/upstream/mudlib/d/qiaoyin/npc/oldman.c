@@ -23,11 +23,17 @@ void create()
 慢條斯理的老人家，賣些啟蒙書餬口維生。
 LONG
     );
-    // merchandise 的數字是庫存份數。【脈經注】使用者決定先不賣。
+    // merchandise 的數字是庫存份數（使用者指定各 10 本，2026-10-16）。
     set("merchandise", ([
-        "/obj/books/studies_of_famous_mountains" : 5,             // 【名山文考】
-        "/obj/books/the_literary_mind_and_carving_of_dragons" : 5, // 【文心雕龍】
+        "/obj/books/book_of_pulse_notes" : 10,                     // 【脈經注】
+        "/obj/books/studies_of_famous_mountains" : 10,             // 【名山文考】
+        "/obj/books/book_of_ambush" : 10,                          // 【奇兵摘要】
+        "/obj/books/the_five_numbers" : 10,                        // 【五數】
+        "/obj/books/the_literary_mind_and_carving_of_dragons" : 10, // 【文心雕龍】
+        "/obj/books/book_of_buddhology" : 10,                      // 【般若波羅密多心經】
+        "/obj/books/book_of_life" : 10,                            // 【無量壽經】
     ]));
+
     set_power("C");
     setup();
     carry_object("/obj/cloth")->wear();

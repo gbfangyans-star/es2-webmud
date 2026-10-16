@@ -22,7 +22,7 @@
 | 劍術、拆招卸力之法 | 太乙劍法 | `taiyie` | 對照表原本就有 |
 | 劍術、左手劍術 | 茅山劍法 | `mao-shan sword` | |
 | 其他 | 大悲咒 | `compassion` | 無相福田 |
-| 其他 | 善想禪要 | `absorption` | 金線僧袍 |
+| 其他 | 善想禪要 | `absorption` | 金線僧袍。技能檔已製作（見 `BOOKS.md`） |
 | 其他 | 暗器技巧 | `throwing` | 混天白龍 |
 | 其他 | 天邪神掌 | `celestial palm` | 天邪虎爪 |
 

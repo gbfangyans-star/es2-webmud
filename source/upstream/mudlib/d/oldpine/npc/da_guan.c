@@ -3,7 +3,13 @@
 #include <npc.h>
 
 inherit F_FIGHTER;
+inherit F_VENDOR;
 
+void init()
+{
+    ::init();
+    add_action("do_vendor_list", "list");
+}
 
 void create()
 {
@@ -18,6 +24,13 @@ void create()
 大觀和尚是彤雲寺的住持，到南方雲遊七年，幾天前才剛回來。
 LONG
     );
+    // 販售佛經（使用者指定，2026-10-16）。數字是庫存份數。
+    set("merchandise", ([
+        "/obj/books/book_of_buddhology" : 10,      // 【般若波羅密多心經】
+        "/obj/books/book_of_life" : 10,            // 【無量壽經】
+        "/obj/books/book_of_mercy" : 10,           // 【大悲咒】
+        "/obj/books/book_of_afterlife" : 10,       // 【往生經】
+    ]));
     set_power("A");
     setup();
     carry_object("/custom/weapon/staff/wither_zenstaff")->wield();

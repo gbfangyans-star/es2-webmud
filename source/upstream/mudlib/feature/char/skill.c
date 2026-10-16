@@ -399,12 +399,14 @@ static mapping ATTR_GROWTH = ([
     "force":                "con",
     "dodge":                "dex",
     "parry":                "cps",
+    "sneak":                "dex",
     "spells":               "spi",
     "magic":                "spi",
     "backstab":             "cor",
     "killerhood":           "cor",
     "literate":             "int",
     "archaic attainment":   "int",
+    "absorption":           "wis",
 ]);
 
 private int attr_growth_base(int value)
