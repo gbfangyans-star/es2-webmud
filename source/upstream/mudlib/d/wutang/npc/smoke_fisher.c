@@ -23,4 +23,5 @@ LONG
     setup();
     carry_object("/custom/weapon/whip/silk_fishing_stick")->wield();
     carry_object("/custom/armor/cloth/straw_cloth")->wear();
+    carry_object("/custom/armor/feet/spider_boots")->wear();
 }

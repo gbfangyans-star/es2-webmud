@@ -346,7 +346,10 @@ function classifyLine(line){
   const plain=cleanText(line).trim();
   if(!plain)return '';
   // 巫師看得到的「房間名 - /路徑」格式直接視為房間標題，不依賴地圖資料是否已收錄。
-  if(isRoomLabel(plain)||/^\S+ - \/[\w\/.-]+$/.test(plain))return 'room-line';
+  if(/^\S+ - \/[\w\/.-]+$/.test(plain))return 'room-line';
+  // 人物那一行結尾是「(英文代號)」，例如「同仁藥鋪 掌櫃 (Keeper)」。頭銜剛好和房間同名時，
+  // 不能因為開頭像房間名稱就被當成房間標題上色。
+  if(isRoomLabel(plain)&&!/\s\([A-Za-z][^()]*\)$/.test(plain))return 'room-line';
   if(/^出口\s*[:：]/.test(plain)||/明顯的出口|唯一的出口/.test(plain))return 'exit-line';
   // 其他文字的顏色一律由遊戲（伺服器送來的 ANSI 顏色）決定，網頁不再依關鍵字替整行上色；
   // 例如攻擊敘述含「擊中」、人物名稱含「受傷」，都不該因字面被染成紅色。
