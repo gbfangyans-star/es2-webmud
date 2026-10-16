@@ -27,6 +27,7 @@ void create()
     carry_object("/custom/zhenwu/obj/fire_gauntlets")->wear();
     carry_object("/custom/zhenwu/obj/steel_armor")->wear();
     carry_object("/custom/zhenwu/obj/great_axe_of_mighty")->wield("twohanded axe");
+    carry_object("/obj/books/book_of_assault");   // 【奇兵精意】（使用者指定，2026-10-16）
 }
 
 /* 強力格擋劇情：軍人、人物 40 級以上、還沒學過強力格擋，走進大帳時觸發。

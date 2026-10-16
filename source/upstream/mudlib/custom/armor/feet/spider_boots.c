@@ -1,4 +1,4 @@
-/* 玄蛛皂白靴 — ES2 原始護具資料。所屬 NPC 另行設定。 */
+/* 玄蛛皂白靴 — ES2 原始護具資料。由五堂鎮小船上的煙波釣叟（/d/wutang/npc/smoke_fisher）穿戴。 */
 #include <ansi.h>
 #include <armor.h>
 
