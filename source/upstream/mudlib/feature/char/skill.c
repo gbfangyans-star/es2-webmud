@@ -406,6 +406,7 @@ static mapping ATTR_GROWTH = ([
     "killerhood":           "cor",
     "literate":             "int",
     "archaic attainment":   "int",
+    "absorption":           "wis",
 ]);
 
 private int attr_growth_base(int value)
