@@ -2,9 +2,7 @@
 //
 // 每升到 5 的倍數級，精、氣、神的最大值各加 10。只對玩家生效。
 // 已經給到哪一級記在 skill_bonus/kee anatomy，同一個門檻一生只給一次
-// （放棄後重練、重複升到同一級都不會重複給）。
-
-#include <ansi.h>
+// （放棄後重練、重複升到同一級都不會重複給）。提升時不顯示訊息。
 
 inherit SKILL;
 
@@ -37,6 +35,4 @@ void skill_advanced(object me, string skill)
     gain = (now - done) / STEP * BONUS;
     foreach(string stat in ({ "gin", "kee", "sen" }))
         me->set_stat_maximum(stat, me->query_stat_maximum(stat) + gain);
-
-    tell_object(me, HIG "你對周身經脈穴道的運行更加通透，精、氣、神都充沛了幾分。\n" NOR);
 }
