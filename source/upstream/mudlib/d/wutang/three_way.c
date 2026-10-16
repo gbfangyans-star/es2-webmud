@@ -14,6 +14,7 @@ LONG
     set("exits", ([
         "north" : __DIR__"south_street2",
         "west" : __DIR__"boardwalk_e",
+        "southeast" : "/d/qiaoyin/highway",
     ]));
     set("map/area", "五堂鎮");
     setup();
