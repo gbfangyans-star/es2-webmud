@@ -37,7 +37,7 @@ def test_growth_mapping():
     table = table[:table.index(']);')]
     got = dict(re.findall(r'"([^"]+)":\s*"([a-z]+)"', table))
     assert got == {
-        'unarmed': 'str', 'force': 'con', 'dodge': 'dex', 'parry': 'cps',
+        'unarmed': 'str', 'force': 'con', 'dodge': 'dex', 'parry': 'cps', 'sneak': 'dex',
         'spells': 'spi', 'magic': 'spi', 'backstab': 'cor', 'killerhood': 'cor',
         'literate': 'int', 'archaic attainment': 'int',
     }
