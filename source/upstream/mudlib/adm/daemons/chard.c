@@ -100,7 +100,7 @@ void setup_char (object ob) {
 }
 
 varargs object make_corpse (object victim, object killer) {
-    int i, k, negative_fame, killer_rep, killer_fame;
+    int i, k, negative_fame;
     object corpse, inv, police1, police2;
     string corpse_ob;
     mapping bounty;
@@ -177,19 +177,8 @@ varargs object make_corpse (object victim, object killer) {
                 victim->query_score("mortal sin") / 15;
 
             if( negative_fame > 0 ) {
-                killer_rep = killer->query_score("reputation");
-                killer_fame = killer->query_score("martial fame");
                 k = random(negative_fame);
-                // 扣聲望
-                if( killer_rep > k ) 
-                    killer->gain_score("reputation", -k);
-                else killer->gain_score("reputation", -killer_rep);
-                // 扣武林聲望
-                if( killer_fame > 0 ) {
-                    if( killer_fame > k/10 )
-                        killer->gain_score("martial fame", -k/10);
-                    else killer->gain_score("martial fame", -killer_fame);
-                }
+                // 殺人不再扣聲望與武林聲望（使用者定案，2026-10-16）。
                 // 小偷略增黑道聲望
                 if( killer->query("class") == "thief" )
                     killer->gain_score("negative fame", k/10);
