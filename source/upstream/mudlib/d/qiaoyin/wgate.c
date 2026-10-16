@@ -17,7 +17,7 @@ LONG
     ]));
     set("objects", ([
         "/custom/legacy_npc/han_wen_suei" : 1,
-        "/d/snow/npc/garrison" : 4,
+        "/obj/area/garrison" : 4,
     ]));
     set("map/area", "喬陰縣");
     setup();
