@@ -49,8 +49,10 @@ int spell_mastery_score(object ob)
 
     schools = ({ "fire", "freeze", "storm", "thunder" });
     for(i = 0; i < sizeof(schools); i++) {
-        skill = ob->query_skill("taoism-" + schools[i], 1) - 10;
-        if( skill > 0 ) total += skill*skill*10;
+        /* 咒術道行（使用者定案，2026-10-16）：各系咒術每升到第 n 級給 n×10，
+         * 累計起來等於 5 × 等級 × (等級 + 1)。 */
+        skill = ob->query_skill("taoism-" + schools[i], 1);
+        if( skill > 0 ) total += 5 * skill * (skill + 1);
     }
     return total;
 }

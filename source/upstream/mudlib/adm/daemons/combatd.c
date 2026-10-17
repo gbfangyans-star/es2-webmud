@@ -214,15 +214,18 @@ void restored_dodge_gain(object me, object opponent)
 
 /* 格擋成功（含完全擋下）時呼叫：基本招架 = (random(定力)+1) × (random(d)+1) × (智力/7)；
  * 學過強力格擋時，強力格擋另得這次招架點數的 (定力×1.5～100)%。
- * enable 在招架上的武功不從格擋拿點數；武功檔有 parry_gains_exp() 傳回 1 時才給（各自擲骰）。 */
-void restored_parry_gain(object me, object opponent)
+ * enable 在招架上的武功不從格擋拿點數；武功檔有 parry_gains_exp() 傳回 1 時才給（各自擲骰）。
+ * failed = 1：招架不及（見 F_COMBAT 的 parry_attack()），點數為正常的 1/4、至少 1，
+ * 不給實戰經驗（使用者定案，2026-10-17）。 */
+varargs void restored_parry_gain(object me, object opponent, int failed)
 {
     string art;
     object daemon;
     int exp, lo;
     if( !userp(me) || !objectp(opponent) ) return;
-    defense_combat_gain(me, opponent);
+    if( !failed ) defense_combat_gain(me, opponent);
     exp = restored_defense_exp(me, opponent, "cps");
+    if( failed && (exp /= 4) < 1 ) exp = 1;
     me->improve_skill_exact("parry", exp);
     /* 強力格擋：這次招架點數 × (定力×1.5 ～ 100)%，定力 67 以上固定 100%。 */
     if( me->query_learn("heavy_parry") ) {
@@ -234,7 +237,11 @@ void restored_parry_gain(object me, object opponent)
     art = me->skill_mapped("parry");
     if( stringp(art) && art != "parry" && objectp(daemon = SKILL_D(art))
     &&  function_exists("parry_gains_exp", daemon) && daemon->parry_gains_exp() )
-        me->improve_skill_exact(art, restored_defense_exp(me, opponent, "cps"));
+    {
+        exp = restored_defense_exp(me, opponent, "cps");
+        if( failed && (exp /= 4) < 1 ) exp = 1;
+        me->improve_skill_exact(art, exp);
+    }
 }
 
 /* 沒有另外設定公式的技能一律用：(random(智力)+1) × (random(智力)+1) + random(智力)。 */
@@ -451,8 +458,10 @@ fight (object me, object victim, string skill, mapping action, object weapon)
                     weapon ? weapon : me);
         absorb_msg = me->query_temp("absorb_message");
         me->add_combat_message( "﹐" );
+        /* 沒有格擋成功時（absorb_message 只在格擋成功時設定）顯示招架不及，
+         * 避免玩家誤以為有格擋。 */
         me->add_combat_message( stringp(absorb_msg) ? absorb_msg
-                : "$n嘗試將$N這一擊格開");
+                : "$n招架不及");
 
         /* 招架結果（見 F_COMBAT 的 absorb()）：1 格擋減傷、2 完全擋下。 */
         parry_result = victim->query_temp("parry_result");

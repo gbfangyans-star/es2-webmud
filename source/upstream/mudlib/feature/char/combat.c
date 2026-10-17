@@ -170,6 +170,9 @@ defend (int ability, int strength, object from)
 	counter_ability = query_ability("defense");
 	break;
     case PHASE_PHYSICAL:
+	/* 玩家停用閃躲（disable dodge）時完全不閃躲：這一刀一定打中，
+	 * 直接進入招架判定。NPC 不受影響。 */
+	if( userp(this_object()) && !skill_mapped("dodge") ) return 0;
 	counter_ability = query_ability("defense");
 	if( (sk=skill_mapped("dodge")) )
 	    counter_ability += SKILL_D(sk)->dodge_using(this_object(),
@@ -278,9 +281,18 @@ private int parry_attack(int strength, object from)
     if( max < 1 ) return 0;
 
     block = 1 + random(max);
-    if( block <= strength ) return 0;
-
-    full = block * 2 >= strength * 5;
+    if( block <= strength ) {
+        // 保底格擋：力道比不過時，仍有 5% + 招架等級/4 %（最多 50%）的機會
+        // 部分格擋（不會完全擋下）；沒抽中就是招架不及，給 1/4 招架經驗
+        // （使用者定案，2026-10-17）。
+        if( random(100) >= (5 + sk / 4 > 50 ? 50 : 5 + sk / 4) ) {
+            if( objectp(attacker) && attacker->is_character() )
+                COMBAT_D->restored_parry_gain(this_object(), attacker, 1);
+            return 0;
+        }
+        full = 0;
+    }
+    else full = block * 2 >= strength * 5;
     reduce = 1 + sk / 20;
 
     set_temp("parry_result", full ? 2 : 1);
@@ -292,7 +304,7 @@ private int parry_attack(int strength, object from)
     if( objectp(daemon) && function_exists("parry_message", daemon) )
         msg = daemon->parry_message(this_object(), attacker, full);
     if( !stringp(msg) )
-        msg = full ? "$n將$N這一擊格開" : "$n嘗試將$N這一擊格開";
+        msg = full ? "$n將$N這一擊格開" : "$n奮力格擋﹐卸去了$N這一擊的部分力道";
     if( objectp(attacker) ) {
         attacker->set_temp("absorb_message", msg);
         if( attacker->is_character() )

@@ -252,7 +252,8 @@ varargs int cast_spell(object me, string spell, object target)
     base = me->query_strength("spell") / 3000;
     base = base * (100 + me->query_skill("spells")) / 100;
     if( base < 10 ) base = 10;
-    me->gain_score("magic", 1 + random(rank + 1));
+    // 每次施咒得法術修為 random(慧根/6) + 1（使用者定案，2026-10-16）。
+    me->gain_score("magic", (me->query_attr("wis") >= 6 ? random(me->query_attr("wis") / 6) : 0) + 1);
     power = spell_power(kind, rank, base, caster_kee, caster_sen);
     if( me->query_temp("taoism/overload") ) {
         power = power*3/2;
