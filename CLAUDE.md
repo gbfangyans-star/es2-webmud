@@ -22,6 +22,15 @@
 - 遊戲裡的敘述**也不提指令**，例如不能寫「還無法施展 powerup」「請先 exert mirror」；
   改用武功或狀態的名稱，例如「還無法催動瘋虎勁」「尚未進入明鏡止水之境」。
 
+## 開 PR（使用者指示，2026-10-17）
+
+使用者說「開 PR」時：
+
+1. 寫好標題與說明（繁體中文、白話），在 `gbfangyans-star/es2-webmud` 開 PR（工作分支 → main）並直接合併。
+2. 再給使用者合併到 wolfer168 的網址，由使用者自己操作，例如：
+   https://github.com/wolfer168/es2-webmud/compare/main...gbfangyans-star:es2-webmud:claude/confident-carson-v8bs1a
+   （分支名稱換成當時的工作分支），同時附上可貼上的標題與說明。
+
 ## 工作方式
 
 - 先推演、確認後才製作：設計討論階段只更新文件，使用者確認後才寫程式。
