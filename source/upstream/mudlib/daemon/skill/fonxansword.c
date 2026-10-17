@@ -1,5 +1,5 @@
 /*---
-description: 封山劍法（NEW 新版武功寫法）。封山派右手劍法，也可 enable 在招架上。
+description: 封山劍法（NEW 新版武功寫法）。封山派劍法，可 enable 在劍術與雙手劍，不能 enable 在招架上。
              攻守兼備、變化多端，爆發不足；招式敘述取自「梅影風 vs 柳東蘆」對戰紀錄。
              設計見 docs/martial_arts/封山派_封山劍法與倒亂七星步法.md。
 ---*/
@@ -50,7 +50,8 @@ private void create()
     setup();
 }
 
-int valid_enable(string usage) { return usage == "sword" || usage == "parry"; }
+/* 可當劍術、雙手劍使用，不能當招架（使用者定案，2026-10-17）。 */
+int valid_enable(string usage) { return usage == "sword" || usage == "twohanded sword"; }
 
 /* 學習條件：封山派弟子。 */
 int valid_learn(object me)
@@ -58,27 +59,4 @@ int valid_learn(object me)
     if( !is_faction(me, "fighter.fonxan") )
         return notify_fail("你不是封山派弟子﹐無法修練封山劍法。\n");
     return 1;
-}
-
-/* 招架敘述（取自對戰紀錄，柳東蘆的招架沒有招式名稱；$n 是招架者，$N 是攻擊者）。
- * 寫的是兩把兵刃相碰，所以雙方都拿著兵刃時才用；否則傳回 0，改用一般的格擋敘述。
- * 封山劍法沒有招架反擊。 */
-string parry_message(object me, object attacker, int full)
-{
-    mapping w;
-    object ob;
-    int armed;
-
-    if( !objectp(me->query_temp("weapon/sword")) ) return 0;
-    if( mapp(w = attacker->query_temp("weapon")) )
-        foreach(ob in values(w))
-            if( objectp(ob) ) armed = 1;
-    if( !armed ) return 0;
-
-    return ({
-        "兩件兵刃「鏘」地一撞﹐并發出耀眼的火花",
-        "兩件兵刃相碰﹐發出「鏗」地一聲巨響",
-        "$n揮動手中兵刃「噹」地一聲將$w擊偏",
-        "只聽見「鏘」地一聲﹐$w被$n的兵刃一格偏了開去",
-    })[random(4)];
 }
