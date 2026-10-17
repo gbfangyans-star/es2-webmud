@@ -1,5 +1,6 @@
 /*---
 description: 倒亂七星步法。封山派閃躲步法，七式對應北斗七星；閃避機率照 ES2 原本公式。
+             100 級起被攻擊時有機會發動「七星殘影」，扣對手的精並回復自己。
              閃避敘述取自「梅影風 vs 柳東蘆」對戰紀錄。
              設計見 docs/martial_arts/封山派_封山劍法與倒亂七星步法.md。
 ---*/
@@ -17,6 +18,8 @@ string *dodge_actions = ({
     "$n一招「開陽非虛」﹐身形飄忽往後騰挪了半尺﹐避開了這招",
     "$n身不動腿不抬﹐一招「搖光逝影」原地轉了一圈﹐讓$N的攻勢硬生生地落了個空",
 });
+
+void seven_shadows(object me, object attacker);
 
 private void create()
 {
@@ -74,10 +77,32 @@ int dodge_using(object me, int ability, int strength, object from)
         &&  objectp(environment(from)) && environment(from)->is_character() )
             attacker = environment(from);
 
-        if( attacker->is_character() && attacker != me )
+        if( attacker->is_character() && attacker != me ) {
             attacker->set_temp("defend_message",
                 dodge_actions[random(sizeof(dodge_actions))]);
+            seven_shadows(me, attacker);
+        }
     }
 
     return me->query_skill("dodge");
+}
+
+/* 七星殘影：倒亂七星步法 100 級起，被攻擊時 30% 發動（不影響這一招能否閃過）。
+ * 扣對手精 = (random(自己的機敏) + 1) + 倒亂七星步法等級 / 5，
+ * 自己回復扣掉的 1/3（使用者定案，2026-10-17）。 */
+void seven_shadows(object me, object attacker)
+{
+    int sk, dex, n;
+
+    sk = me->query_skill("chaos-steps", 1);
+    if( sk < 100 || random(100) >= 30 ) return;
+
+    dex = me->query_attr("dex");
+    n = (dex > 0 ? random(dex) : 0) + 1 + sk / 5;
+
+    message_vision(CYN "\n$N清嘯一聲﹐提氣疾轉﹐竟化為七道殘影在$n面前按七星方位狂旋起來！！\n\n" NOR,
+        me, attacker);
+    attacker->consume_stat("gin", n, me);
+    me->supplement_stat("gin", n / 3);
+    message_vision("$N被七道殘影繞得頭暈眼花﹐精神一陣恍惚。\n", attacker);
 }
