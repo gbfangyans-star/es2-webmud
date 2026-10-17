@@ -281,9 +281,18 @@ private int parry_attack(int strength, object from)
     if( max < 1 ) return 0;
 
     block = 1 + random(max);
-    if( block <= strength ) return 0;
-
-    full = block * 2 >= strength * 5;
+    if( block <= strength ) {
+        // 保底格擋：力道比不過時，仍有 5% + 招架等級/4 %（最多 50%）的機會
+        // 部分格擋（不會完全擋下）；沒抽中就是招架不及，給 1/4 招架經驗
+        // （使用者定案，2026-10-17）。
+        if( random(100) >= (5 + sk / 4 > 50 ? 50 : 5 + sk / 4) ) {
+            if( objectp(attacker) && attacker->is_character() )
+                COMBAT_D->restored_parry_gain(this_object(), attacker, 1);
+            return 0;
+        }
+        full = 0;
+    }
+    else full = block * 2 >= strength * 5;
     reduce = 1 + sk / 20;
 
     set_temp("parry_result", full ? 2 : 1);
