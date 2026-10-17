@@ -26,6 +26,17 @@ void teach_literate();
 void pick_student(object ob);
 void cancel_pick(object ob);
 
+/* 成為書生的條件（使用者指定，2026-10-17）：平民、讀書識字 5～29。
+ * 被挑中時與答應時各檢查一次。 */
+int can_be_scholar(object ob)
+{
+    int lv;
+
+    if( !ob || ob->query_class() != "commoner" ) return 0;
+    lv = ob->query_skill("literate", 1);
+    return lv >= 5 && lv <= 29;
+}
+
 void create()
 {
     set_name("王懷芝", ({ "wang whaiz", "wang", "whaiz" }) );
@@ -93,8 +104,8 @@ void teach_literate()
 	/* 挑選書生的條件 */
 	// 加個random, 不然每講一句就問 -Dragoon
 	if( interactive(ob) && random(10) > 7 
-	&&  ob->query_class()=="commoner"
-	&&  ob->query_skill("literate") >= 5
+	&&  can_be_scholar(ob)
+	&&  !ob->query_temp("pending/picked_by_whaiz")
 	&&  member_array(ob->query_race(), ({
 		"avatar", "human", "rainner", "malik", "woochan", "jiaojao", "yaksa"
 	    })) != -1
@@ -151,6 +162,8 @@ void pick_student(object ob)
 void cancel_pick(object ob)
 {
     if( ! ob ) return;
+    /* 已經回答過了（pending 已清掉），不再多說。 */
+    if( ! ob->query_temp("pending/picked_by_whaiz") ) return;
 
     ob->delete_temp("pending/picked_by_whaiz");
     if( present(ob) ) {
@@ -163,8 +176,13 @@ void make_new_scholar(object ob)
 {
     if( !ob || !present(ob) || !interactive(ob)) return;
 
+    if( !can_be_scholar(ob) ) {
+	command("say 罷了，這事以後再說吧。");
+	return;
+    }
     ob->set_class("scholar");
     command("smile");
+    command("say 好好念書吧，我看你資質不錯，將來必有成就！");
     tell_object(ob, "( 你成為一位書生 )\n");
 }
 
@@ -178,8 +196,8 @@ void relay_say(object who, string msg)
     // 原本只比對前 2 個位元組（舊 Big5 一字 2 位元組的寫法），所以永遠不會成立。
     foreach(word in ({ "想", "是", "好" })) {
 	if( msg[0..strlen(word)-1] == word ) {
-	    do_chat((: make_new_scholar, who :));
 	    who->delete_temp("pending/picked_by_whaiz");
+	    do_chat((: make_new_scholar, who :));
 	    return;
 	}
     }
