@@ -29,9 +29,9 @@ LONG
         "/obj/medication/boar_berry" : 20,                // 山豬果
         "/obj/medication/dragon_saliva" : 20,             // 龍涎草
         "/obj/alchemist/aquapill" : 20,        // 金液丹
-        "/d/lee/obj/bronze_furnace" : 20,                 // 青銅丹爐
-        "/d/lee/obj/bronze_reactor" : 50,                 // 青銅丹鼎
-        "/d/lee/obj/firewood" : 3000,                     // 松材
+        "/obj/alchemist/heat_furnace" : 20,                 // 青銅丹爐
+        "/obj/alchemist/heat_reactor" : 50,                 // 青銅丹鼎
+        "/obj/alchemist/heat_firewood" : 3000,                     // 松材
     ]));
     set_power("C");
     setup();
