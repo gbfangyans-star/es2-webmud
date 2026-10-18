@@ -24,8 +24,8 @@ void create()
 LONG
     );
     set("merchandise", ([
-        "/obj/drug/black_pill" : 30,                      // 烏心丹
-        "/obj/medication/alchemist/refresh_pill" : 20,    // 金鎖固精丸
+        "/obj/alchemist/black_pill" : 30,                     // 烏心丹
+        "/obj/alchemist/refresh_pill" : 20,    // 金鎖固精丸
         "/custom/item/scroll/blank" : 500,                // 空白符紙
         "/d/lee/obj/firewood" : 2000,                     // 松材
         "/d/lee/obj/salt" : 50,                           // 鹽

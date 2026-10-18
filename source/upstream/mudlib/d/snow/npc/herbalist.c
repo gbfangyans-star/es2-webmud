@@ -22,7 +22,7 @@ void create()
 		"來依然紅光滿面、精神煥發﹐你可以用 list 問他店裡有哪些藥。\n");
 
 	set("merchandise", ([
-		STOCK_MEDICATION("black_pill") : 50,
+		"/obj/alchemist/black_pill" : 50,
 		STOCK_MEDICATION("boar_berry") : 40,
 		STOCK_MEDICATION("wild_ginseng") : 30,
 		STOCK_MEDICATION("dragon_saliva") : 20,

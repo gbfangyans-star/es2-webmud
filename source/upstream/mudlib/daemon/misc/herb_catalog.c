@@ -4,8 +4,8 @@ note: 價格一律由成品檔 base_value / mixture_value 計算，不另存價�
       技能需求一律讀成品檔 requirement，不在此重複。
 ---*/
 
-#define PRODUCT_DIR "/obj/medication/alchemist/"
-#define MIXTURE_DIR "/obj/medication/alchemist/"
+#define PRODUCT_DIR "/obj/alchemist/"
+#define MIXTURE_DIR "/obj/alchemist/"
 
 private string *keys = ({ "black", "lavage", "green", "relax", "aqua",
                           "refresh", "mana", "minor", "major" });
@@ -29,7 +29,7 @@ void create()
 {
     string key;
     seteuid(getuid());
-    sell_files = ([ "/obj/medication/black_pill": "black" ]);
+    sell_files = ([ ]);
     foreach (key in keys) sell_files[PRODUCT_DIR + product_file[key]] = key;
 }
 

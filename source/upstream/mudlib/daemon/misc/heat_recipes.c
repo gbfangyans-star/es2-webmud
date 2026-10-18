@@ -1,6 +1,6 @@
 #include "heat_b.h"
-// v2.1.0：成品改由 /obj/medication/alchemist/ 提供（2026-10-15 使用者決定）。
-#define PRODUCT_DIR "/obj/medication/alchemist/"
+// v2.1.0：成品改由 /obj/alchemist/ 提供（2026-10-15 使用者決定）。
+#define PRODUCT_DIR "/obj/alchemist/"
 private mapping rows;
 void create() { rows = ([
 "black": ({"烏心丹","black pill",80,250,100,150,({({8,25,1})}),PRODUCT_DIR "black_pill"}),
