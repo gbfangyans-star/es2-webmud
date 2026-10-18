@@ -343,9 +343,11 @@ varargs int cast_spell(object me, string spell, object target)
             stages = 3;
             me->delete_temp("taoism/next_storm_three");
         } else {
-            n = random(me->query_ability("spell") + 1);
-            if( skill >= 120 && n > 200 ) stages = 3;
-            else if( skill >= 80 && n > 100 ) stages = 2;
+            // 擲 random(咒文能力 + 咒術等級)：80 以上二重（風符 80 級起）、
+            // 160 以上三重（風符 120 級起）（使用者定案，2026-10-18）。
+            n = random(me->query_ability("spell") + me->query_skill("spells", 1) + 1);
+            if( skill >= 120 && n >= 160 ) stages = 3;
+            else if( skill >= 80 && n >= 80 ) stages = 2;
         }
         message_vision(CYN "$N口中喃喃念著咒文，開始祭起" + spell_title(kind, rank) + "之術 ....\n" NOR,
             me, target, 1);
