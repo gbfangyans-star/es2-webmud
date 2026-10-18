@@ -2,7 +2,7 @@
 #define HB "/daemon/misc/"
 #define HEAT_D HB "heat_d"
 #define HEAT_ITEM "/obj/alchemist/" // 丹爐、丹鼎、松柴、焦灰（2026-10-15 使用者決定）
-#define MIXTURE_DIR "/obj/medication/alchemist/" // 藥方與成品同放 alchemist（2026-10-15 使用者決定）
+#define MIXTURE_DIR "/obj/alchemist/" // 藥方與成品同放 alchemist（2026-10-15 使用者決定）
 #define MIXTURE_WEIGHT 130 // 配方每份重量（2026-10-15 使用者決定 R9；大還丹除外）
 #define MAJOR_MIXTURE_WEIGHT 8000 // 大還丹配方每份重量（2026-10-15 使用者決定 R4）
 #define AROMA "一陣陣奇異的藥香自丹爐中緩緩飄散，初聞帶著些許草木的清苦，細嗅之下卻又透出一絲溫潤甘甜。\n"
