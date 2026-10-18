@@ -27,7 +27,7 @@ LONG
         "/obj/alchemist/black_pill" : 30,                     // 烏心丹
         "/obj/alchemist/refresh_pill" : 20,    // 金鎖固精丸
         "/custom/item/scroll/blank" : 500,                // 空白符紙
-        "/d/lee/obj/firewood" : 2000,                     // 松材
+        "/obj/alchemist/heat_firewood" : 2000,                     // 松材
         "/d/lee/obj/salt" : 50,                           // 鹽
         "/d/lee/obj/sugar" : 30,                          // 糖
     ]));
