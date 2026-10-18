@@ -15,7 +15,7 @@ void create()
      * 先使用現存 canonical object，避免把未知效果硬寫成既定功能。
      */
     set("merchandise", ([
-        "/obj/medication/black_pill" : 50,
+        "/obj/alchemist/black_pill" : 50,
         "/obj/medication/boar_berry" : 40,
         "/obj/alchemist/heat_firewood" : 30,
         "/obj/alchemist/heat_reactor" : 10,
