@@ -34,14 +34,22 @@ int valid_learn(object me)
     return 1;
 }
 
-/* 每級獎勵：武術造詣 等級 × 10；41 級起武學之道 (等級 − 40) × 10。 */
+// 學成：照一般門檻累積到 10 級時 gain，直接練成 10 級。
+int query_entry_level() { return 10; }
+
+void skill_completed(object me, string sk)
+{
+    tell_object(me, HIY "你參透了陰陽奇門步的方位變化﹐身形已能隨陰陽流轉。\n" NOR);
+}
+
+/* 每級獎勵（學成那一級起）：武術造詣 等級 × 10；41 級起武學之道 (等級 − 40) × 10。 */
 void skill_advanced(object me, string sk)
 {
     int lv;
 
     if( !userp(me) ) return;
     lv = me->query_skill("magic steps", 1);
-    if( lv < 1 ) return;
+    if( lv < 10 ) return;
     me->gain_score("martial art", lv * 10);
     if( lv > 40 ) me->gain_score("martial mastery", (lv - 40) * 10);
 }
