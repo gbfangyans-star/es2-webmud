@@ -259,6 +259,24 @@ int strike_kee(object me, object target, string kind, int rank, int damage)
     return damage;
 }
 
+/* 施咒的技能點數（使用者定案，2026-10-19）：每次施咒，基本咒術與該系咒術各自擲
+ * (random(悟性) × random(慧根) + random(慧根)) × (random(咒文重數) + 1)，
+ * 例如三昧真火 × (random(4)+1)、大業火 × (random(3)+1)；不乘停頓回合。
+ * 沒命中只給 1/4、至少 1 點（風符多重催咒只要有一重命中就算命中）。 */
+void spell_skill_gain(object me, string kind, int rank, int wis, int hit)
+{
+    int intel, exp;
+
+    if( !userp(me) ) return;
+    intel = me->query_attr("int");
+    foreach(string sk in ({ "spells", "taoism-" + kind })) {
+        exp = ((intel > 0 ? random(intel) : 0) * (wis > 0 ? random(wis) : 0)
+            + (wis > 0 ? random(wis) : 0)) * (random(rank) + 1);
+        if( !hit && (exp /= 4) < 1 ) exp = 1;
+        if( exp > 0 ) me->improve_skill_exact(sk, exp);
+    }
+}
+
 void award_spell_hit(object me, int amount)
 {
     int gain;
@@ -290,7 +308,7 @@ varargs int cast_spell(object me, string spell, object target)
 {
     string kind;
     object *enemies;
-    int rank, skill, cost, delay, sen, wis, D, power, dealt, stages, i, n, ignore;
+    int rank, skill, cost, delay, sen, wis, D, power, dealt, stages, i, n, ignore, landed;
 
     kind = school();
     if( kind != "fire" && kind != "freeze"
@@ -366,6 +384,7 @@ varargs int cast_spell(object me, string spell, object target)
                 say_line(me, target, miss_line(kind));
                 continue;
             }
+            landed = 1;
             n = elemental_damage(me, target, kind, power, rank == 2);
             n = strike_kee(me, target, kind, rank, n);
             dealt += n;
@@ -379,6 +398,7 @@ varargs int cast_spell(object me, string spell, object target)
             say_line(me, target, "$N順手將餘風收入袖中，衣袂鼓盪不休，彷彿蓄著一股呼之欲出的風勢。");
         }
         if( dealt > 0 ) award_spell_hit(me, dealt);
+        spell_skill_gain(me, kind, rank, wis, landed);
         me->start_busy(delay);
         return 1;
     }
@@ -394,7 +414,9 @@ varargs int cast_spell(object me, string spell, object target)
     ignore = (kind == "fire" && rank == 2) || (kind == "thunder" && rank == 3)
         || (kind == "freeze" && rank == 2);
 
-    if( !spell_hits(me, target, kind, ignore) ) {
+    landed = spell_hits(me, target, kind, ignore);
+    spell_skill_gain(me, kind, rank, wis, landed);
+    if( !landed ) {
         say_line(me, target, miss_line(kind));
         // 無相冰：施法失敗自身停頓 1。
         if( kind == "freeze" && rank == 3 ) delay = 1;
