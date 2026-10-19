@@ -42,12 +42,7 @@ int main(object me, string arg)
     }
 
     notify_fail("看起來" + ob->name() + "不想教你這項技能。\n");
-    if( !ob->acquire_skill(me, skill) ) return 0;
-
-    // 求教成功後立刻結算升級（使用者指示，2026-10-19）：不必等 gain，
-    // 點數夠了當場就升上去，例如學到火術後馬上能施展第一道咒文。
-    me->apply_gain_progression(([ skill: 1 ]));
-    return 1;
+    return ob->acquire_skill(me, skill);
 }
 
 int help()

@@ -91,6 +91,8 @@ int main(object me, string arg)
     _skill = ([]);
     sname = filter_array(keys(skl) + keys(lrn),
         (: undefinedp($3[$1]) ? $3[$1] = $2->query_skill($1) : 0 :), ob, _skill );
+    // 求教後還沒 gain 的 0 級技能也列出來（使用者指示，2026-10-19）：已經學會，只是還是 0 級。
+    sname = filter_array(keys(_skill), (: $2[$1] > 0 || $3[$1] > 0 :), _skill, lrn);
 
     map = ob->query_skill_map();
     if( mapp(map) ) mapped = values(map);
