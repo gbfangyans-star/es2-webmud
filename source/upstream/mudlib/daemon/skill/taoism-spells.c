@@ -325,7 +325,7 @@ varargs int cast_spell(object me, string spell, object target)
 
     rank = spell_rank(kind, spell);
     if( !rank )
-        return notify_fail("此系只有四道咒文，請輸入咒文英文名或 cast 1 至 cast 4。\n");
+        return notify_fail("指令格式﹕cast <咒文名稱> [on <施咒對象>]\n");
     skill = me->query_skill("taoism-" + kind, 1);
     /* 求教後還沒 gain 的 0 級也算學會（使用者指示，2026-10-19），可以施展需求 0 級的第一道咒文。 */
     if( (skill < 1 && me->query_learn("taoism-" + kind) < 1) || skill < spell_level(kind, rank) )
