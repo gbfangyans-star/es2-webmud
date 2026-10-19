@@ -259,6 +259,54 @@ int strike_kee(object me, object target, string kind, int rank, int damage)
     return damage;
 }
 
+/* 領悟新咒文的敘述（使用者定案，2026-10-19）：該系咒術升級、達到下一道咒文的需求時顯示。
+ * 用 taoism/known_<系> 記住已提示到第幾道；第一次（舊角色）以升級前的等級為準，
+ * 不會把以前就會的咒文再提示一次。 */
+string unlock_line(string kind, int rank)
+{
+    mapping lines = ([
+        "fire": ({ "", "你對火術的領悟更深了一層﹐已能引動地底伏火﹐施展「地火」之術。",
+                   "你心火漸旺﹐終於參透了「大業火」的咒訣﹐舉手之間便能焚起熊熊烈焰。",
+                   "你精、氣、神三者相合﹐體內陡然燃起一點真火﹐從此能祭起『三昧真火』。" }),
+        "freeze": ({ "", "你指尖寒意凝聚不散﹐已能以「兆冰」之術抽取敵人的精神。",
+                   "你參透冰無定形之理﹐「無相冰」的咒訣在心中豁然貫通。",
+                   "你周身寒氣層層疊起﹐竟有七重之多﹐從此能施展『七重玄冰』。" }),
+        "storm": ({ "", "你袖底風聲漸烈﹐已能催起「暴風」之術。",
+                   "你御風之術更進一步﹐風中隱含刀鋒﹐「飛戮風」已在掌握之中。",
+                   "你心隨風轉﹐四方氣流盡歸調度﹐終於能祭起『轉輪大風』。" }),
+        "thunder": ({ "", "你掌心隱隱有雷聲滾動﹐已能施展「爆雷」之術。",
+                   "你引雷之術更見精純﹐雷光所至能震人心神﹐「神光雷」已然練成。",
+                   "你參透六卦變化﹐天雷地火皆可為用﹐從此能祭起『六卦熒雷』。" }),
+    ]);
+    return lines[kind][rank-1];
+}
+
+void skill_advanced(object me, string skill)
+{
+    string kind, c;
+    int lv, known, r;
+
+    kind = school();
+    if( !userp(me) || skill != "taoism-" + kind ) return;
+    lv = me->query_skill(skill, 1);
+    known = me->query("taoism/known_" + kind);
+    if( !known ) {
+        known = 1;
+        for( r = 2; r <= 4; r++ )
+            if( spell_level(kind, r) <= lv - 1 ) known = r;
+    }
+    if( kind == "fire" ) c = HIR;
+    else if( kind == "freeze" ) c = HIW;
+    else if( kind == "storm" ) c = HIM;
+    else c = HIY;
+    for( r = known + 1; r <= 4; r++ ) {
+        if( spell_level(kind, r) > lv ) break;
+        tell_object(me, c + unlock_line(kind, r) + "\n" NOR);
+        known = r;
+    }
+    me->set("taoism/known_" + kind, known);
+}
+
 /* 施咒的技能點數（使用者定案，2026-10-19）：
  * 該系咒術（特殊法術）：(random(悟性) × random(慧根) + random(慧根)) × (random(咒文重數) + 1)，
  *   例如三昧真火 × (random(4)+1)、大業火 × (random(3)+1)；不乘停頓回合。
