@@ -259,6 +259,78 @@ int strike_kee(object me, object target, string kind, int rank, int damage)
     return damage;
 }
 
+/* 領悟新咒文的敘述（使用者定案，2026-10-19）：該系咒術升級、達到下一道咒文的需求時顯示。
+ * 用 taoism/known_<系> 記住已提示到第幾道；第一次（舊角色）以升級前的等級為準，
+ * 不會把以前就會的咒文再提示一次。 */
+string unlock_line(string kind, int rank)
+{
+    mapping lines = ([
+        "fire": ({ "", "你對火術的領悟更深了一層﹐已能引動地底伏火﹐施展「地火」之術。",
+                   "你心火漸旺﹐終於參透了「大業火」的咒訣﹐舉手之間便能焚起熊熊烈焰。",
+                   "你精、氣、神三者相合﹐體內陡然燃起一點真火﹐從此能祭起『三昧真火』。" }),
+        "freeze": ({ "", "你指尖寒意凝聚不散﹐已能以「兆冰」之術抽取敵人的精神。",
+                   "你參透冰無定形之理﹐「無相冰」的咒訣在心中豁然貫通。",
+                   "你周身寒氣層層疊起﹐竟有七重之多﹐從此能施展『七重玄冰』。" }),
+        "storm": ({ "", "你袖底風聲漸烈﹐已能催起「暴風」之術。",
+                   "你御風之術更進一步﹐風中隱含刀鋒﹐「飛戮風」已在掌握之中。",
+                   "你心隨風轉﹐四方氣流盡歸調度﹐終於能祭起『轉輪大風』。" }),
+        "thunder": ({ "", "你掌心隱隱有雷聲滾動﹐已能施展「爆雷」之術。",
+                   "你引雷之術更見精純﹐雷光所至能震人心神﹐「神光雷」已然練成。",
+                   "你參透六卦變化﹐天雷地火皆可為用﹐從此能祭起『六卦熒雷』。" }),
+    ]);
+    return lines[kind][rank-1];
+}
+
+void skill_advanced(object me, string skill)
+{
+    string kind, c;
+    int lv, known, r;
+
+    kind = school();
+    if( !userp(me) || skill != "taoism-" + kind ) return;
+    lv = me->query_skill(skill, 1);
+    known = me->query("taoism/known_" + kind);
+    if( !known ) {
+        known = 1;
+        for( r = 2; r <= 4; r++ )
+            if( spell_level(kind, r) <= lv - 1 ) known = r;
+    }
+    if( kind == "fire" ) c = HIR;
+    else if( kind == "freeze" ) c = HIW;
+    else if( kind == "storm" ) c = HIM;
+    else c = HIY;
+    for( r = known + 1; r <= 4; r++ ) {
+        if( spell_level(kind, r) > lv ) break;
+        tell_object(me, c + unlock_line(kind, r) + "\n" NOR);
+        known = r;
+    }
+    me->set("taoism/known_" + kind, known);
+}
+
+/* 施咒的技能點數（使用者定案，2026-10-19）：
+ * 該系咒術（特殊法術）：(random(悟性) × random(慧根) + random(慧根)) × (random(咒文重數) + 1)，
+ *   例如三昧真火 × (random(4)+1)、大業火 × (random(3)+1)；不乘停頓回合。
+ * 基本咒術：智力公式把智力換成慧根，再乘咒文重數加成，
+ *   ((random(慧根)+1) × (random(慧根)+1) + random(慧根)) × (random(咒文重數) + 1)。
+ * 兩者各自擲骰；沒命中只給 1/4、至少 1 點（風符多重催咒只要有一重命中就算命中）。 */
+void spell_skill_gain(object me, string kind, int rank, int wis, int hit)
+{
+    int intel, w, exp;
+
+    if( !userp(me) ) return;
+    intel = me->query_attr("int");
+    w = wis > 0 ? wis : 1;
+
+    exp = ((random(w) + 1) * (random(w) + 1) + random(w)) * (random(rank) + 1);
+    if( !hit && (exp /= 4) < 1 ) exp = 1;
+    me->improve_skill_exact("spells", exp);
+
+    exp = ((intel > 0 ? random(intel) : 0) * (wis > 0 ? random(wis) : 0)
+        + (wis > 0 ? random(wis) : 0)) * (random(rank) + 1);
+    if( !hit && (exp /= 4) < 1 ) exp = 1;
+    if( exp > 0 ) me->improve_skill_exact("taoism-" + kind, exp);
+}
+
 void award_spell_hit(object me, int amount)
 {
     int gain;
@@ -290,7 +362,7 @@ varargs int cast_spell(object me, string spell, object target)
 {
     string kind;
     object *enemies;
-    int rank, skill, cost, delay, sen, wis, D, power, dealt, stages, i, n, ignore;
+    int rank, skill, cost, delay, sen, wis, D, power, dealt, stages, i, n, ignore, landed;
 
     kind = school();
     if( kind != "fire" && kind != "freeze"
@@ -301,9 +373,10 @@ varargs int cast_spell(object me, string spell, object target)
 
     rank = spell_rank(kind, spell);
     if( !rank )
-        return notify_fail("此系只有四道咒文，請輸入咒文英文名或 cast 1 至 cast 4。\n");
+        return notify_fail("指令格式﹕cast <咒文名稱> [on <施咒對象>]\n");
     skill = me->query_skill("taoism-" + kind, 1);
-    if( skill < 1 || skill < spell_level(kind, rank) )
+    /* 求教後還沒 gain 的 0 級也算學會（使用者指示，2026-10-19），可以施展需求 0 級的第一道咒文。 */
+    if( (skill < 1 && me->query_learn("taoism-" + kind) < 1) || skill < spell_level(kind, rank) )
         return notify_fail("你的咒術修為還不足以施展這道咒文。\n");
 
     if( !objectp(target) ) {
@@ -365,6 +438,7 @@ varargs int cast_spell(object me, string spell, object target)
                 say_line(me, target, miss_line(kind));
                 continue;
             }
+            landed = 1;
             n = elemental_damage(me, target, kind, power, rank == 2);
             n = strike_kee(me, target, kind, rank, n);
             dealt += n;
@@ -378,6 +452,7 @@ varargs int cast_spell(object me, string spell, object target)
             say_line(me, target, "$N順手將餘風收入袖中，衣袂鼓盪不休，彷彿蓄著一股呼之欲出的風勢。");
         }
         if( dealt > 0 ) award_spell_hit(me, dealt);
+        spell_skill_gain(me, kind, rank, wis, landed);
         me->start_busy(delay);
         return 1;
     }
@@ -393,7 +468,9 @@ varargs int cast_spell(object me, string spell, object target)
     ignore = (kind == "fire" && rank == 2) || (kind == "thunder" && rank == 3)
         || (kind == "freeze" && rank == 2);
 
-    if( !spell_hits(me, target, kind, ignore) ) {
+    landed = spell_hits(me, target, kind, ignore);
+    spell_skill_gain(me, kind, rank, wis, landed);
+    if( !landed ) {
         say_line(me, target, miss_line(kind));
         // 無相冰：施法失敗自身停頓 1。
         if( kind == "freeze" && rank == 3 ) delay = 1;
