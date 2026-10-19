@@ -81,11 +81,12 @@ string spell_title(string kind, int rank)
     else if( kind == "storm" ) c = HIM;
     else c = HIY;
 
-    if( rank < 4 ) return "「" + c + spell_cname(kind, rank) + CYN "」";
-    if( kind == "fire" ) return HIW "『" HIR " 三 昧 真 火 " HIW "』" CYN;
-    if( kind == "freeze" ) return HIW "『 七 重 玄 冰 』" CYN;
-    if( kind == "thunder" ) return HIY "『 六 卦 熒 雷 』" CYN;
-    return "「" HIM " 轉 輪 大 風 " CYN "」";
+    // 高亮色帶有粗體，換回青色前要先 NOR 清掉，否則後面的「之術 ....」會跟著變亮。
+    if( rank < 4 ) return "「" + c + spell_cname(kind, rank) + NOR CYN "」";
+    if( kind == "fire" ) return HIW "『" HIR " 三 昧 真 火 " HIW "』" NOR CYN;
+    if( kind == "freeze" ) return HIW "『 七 重 玄 冰 』" NOR CYN;
+    if( kind == "thunder" ) return HIY "『 六 卦 熒 雷 』" NOR CYN;
+    return "「" HIM " 轉 輪 大 風 " NOR CYN "」";
 }
 
 /* 各咒文的效果敘述（命中前，空行後顯示）。 */
