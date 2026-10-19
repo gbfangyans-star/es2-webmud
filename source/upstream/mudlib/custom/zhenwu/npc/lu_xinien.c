@@ -17,7 +17,7 @@ void create(){
     set_class("soldier"); set_level(25);
     set("gender","male");
     set("title","徵兵官");
-    set("long", "魯熙年是一個身材微胖的中年武官﹐兩眼瞇成一條線﹐臉上總是露出似笑非笑的古怪表情。魯熙年同時也是振武營負責招募新兵的募兵官，如果你想從軍，可以向他辦理入伍手續。\n");
+    set("long", "魯熙年是一個身材微胖的中年武官﹐兩眼瞇成一條線﹐臉上總是露出似笑非笑的古怪表情。魯熙年同時也是振武營負責招募新兵的募兵官，如果你想從軍，請向他，辦理入伍(enlist)手續。\n");
     set_power("B");
     setup();
     foreach(string sk in taught_skills)
