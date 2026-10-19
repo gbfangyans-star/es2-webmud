@@ -262,7 +262,8 @@ int strike_kee(object me, object target, string kind, int rank, int damage)
 /* 施咒的技能點數（使用者定案，2026-10-19）：
  * 該系咒術（特殊法術）：(random(悟性) × random(慧根) + random(慧根)) × (random(咒文重數) + 1)，
  *   例如三昧真火 × (random(4)+1)、大業火 × (random(3)+1)；不乘停頓回合。
- * 基本咒術：智力公式把智力換成慧根，(random(慧根)+1) × (random(慧根)+1) + random(慧根)。
+ * 基本咒術：智力公式把智力換成慧根，再乘咒文重數加成，
+ *   ((random(慧根)+1) × (random(慧根)+1) + random(慧根)) × (random(咒文重數) + 1)。
  * 兩者各自擲骰；沒命中只給 1/4、至少 1 點（風符多重催咒只要有一重命中就算命中）。 */
 void spell_skill_gain(object me, string kind, int rank, int wis, int hit)
 {
@@ -272,7 +273,7 @@ void spell_skill_gain(object me, string kind, int rank, int wis, int hit)
     intel = me->query_attr("int");
     w = wis > 0 ? wis : 1;
 
-    exp = (random(w) + 1) * (random(w) + 1) + random(w);
+    exp = ((random(w) + 1) * (random(w) + 1) + random(w)) * (random(rank) + 1);
     if( !hit && (exp /= 4) < 1 ) exp = 1;
     me->improve_skill_exact("spells", exp);
 
