@@ -3,9 +3,9 @@
 // 1. 每升到 5 的倍數級，有機會增加慧根：沿用技能成長屬性的規則
 //    （feature/char/skill.c 的 ATTR_GROWTH 表，absorption → wis）。
 // 3. 打坐（zazen，使用者定案，2026-10-19）：和尚才能打坐。每 tick 消耗神
-//    （善想禪要未滿 100：6 − (random(慧根)+1)/8；100 起：10 − (random(慧根)+1)/8，最少 0），
+//    （10 − (random(慧根)+1)/8，最少 0），
 //    每 3 tick 神上限 −1；神低於 10 時出定。每 tick 得 慧根版智力公式 的點數，
-//    每 2 tick 得 (random(慧根)+1)/6 禪定修養，並誦一句心經。
+//    每 2 tick 得 (random(慧根)+1)/6 禪定修養，並在自己畫面顯示一句心經。
 //    100 級時慧根固定 +3（這一級不再擲每 5 級的慧根機率）。
 // 2. 每升到第 sk 級，獲得 sk × 30 點禪定修養（cultivation）與 sk × 30 點佛學修為（buddhology）。
 //    一次升多級時每一級都給。只對玩家生效。
@@ -96,7 +96,7 @@ private void end_zazen(object me, int tired)
 
 int do_zazen(object me)
 {
-    int tick, wis, w, sk, cost, n;
+    int tick, wis, w, cost, n;
 
     if( me->query_stat("sen") < 10 ) {
         end_zazen(me, 1);
@@ -106,9 +106,8 @@ int do_zazen(object me)
     tick = me->add_temp("zazen/tick", 1);
     wis = me->query_attr("wis");
     w = wis > 0 ? wis : 1;
-    sk = me->query_skill("absorption", 1);
 
-    cost = (sk < 100 ? 6 : 10) - (random(w) + 1) / 8;
+    cost = 10 - (random(w) + 1) / 8;
     if( cost > 0 ) me->consume_stat("sen", cost);
     if( tick % 3 == 0 ) me->damage_stat("sen", 1);
 
@@ -116,7 +115,8 @@ int do_zazen(object me)
 
     if( tick % 2 == 0 ) {
         if( (n = (random(w) + 1) / 6) > 0 ) me->gain_score("cultivation", n);
-        message_vision(CYN "$N低聲誦念：「" + SUTRA[(tick / 2 - 1) % sizeof(SUTRA)] + "」\n" NOR, me);
+        // 心經只有打坐的人自己看到（使用者定案，2026-10-19）。
+        tell_object(me, CYN + SUTRA[(tick / 2 - 1) % sizeof(SUTRA)] + "\n" NOR);
     }
 
     if( me->query_stat("sen") < 10 ) {
