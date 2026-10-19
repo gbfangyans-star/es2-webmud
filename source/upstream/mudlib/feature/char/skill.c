@@ -434,6 +434,8 @@ private void roll_attr_growth(string skill, int old_level, int new_level)
 
     for(lv = (last / 5 + 1) * 5; lv <= new_level; lv += 5) {
         this_object()->set("attr_growth/" + skill, lv);
+        // 善想禪要 100 級改為固定慧根 +3，這一級不再擲機率（使用者定案，2026-10-19）。
+        if( skill == "absorption" && lv == 100 ) continue;
         value = query_attr(attr, 1);
         if( value >= ATTR_GROWTH_MAX ) continue;
         // 機率以萬分之一計：基礎% × (50 + lv/2)% × 1.2
