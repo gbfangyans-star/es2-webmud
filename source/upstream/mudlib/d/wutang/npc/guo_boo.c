@@ -68,7 +68,6 @@ int init_apprentice(object me)
         me->set("custom_faction", FACTION);
         do_chat(({
             "郭布摸了摸光禿禿的腦袋﹐咧嘴一笑：好﹐從今天起你就是我朱衣派的弟子了。\n",
-            "郭布說道：火術講究一個「烈」字﹐心火不旺﹐咒火也燒不起來。\n",
         }));
     }
     return 1;
