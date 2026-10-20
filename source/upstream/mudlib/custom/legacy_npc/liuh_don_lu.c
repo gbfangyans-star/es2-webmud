@@ -150,8 +150,8 @@ void teach_essence(object ob, int step)
         break;
     default:
         say_lines(ob, ({
-            "$N長劍出鞘﹐將水雲劍法從頭到尾演示了一遍。",
-            "招式與那小女孩所使一般無二﹐劍意卻已截然不同。",
+            // 一整句；超過一行時在逗號處手動換行。
+            "$N長劍出鞘﹐將水雲劍法從頭到尾演示了一遍﹐\n招式與小女孩所使一般無二﹐劍意卻已截然不同。",
         }));
         ob->set("sayuensword/essence", 1);
         ob->improve_skill_exact("sayuensword essence",
