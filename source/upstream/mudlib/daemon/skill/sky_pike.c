@@ -14,7 +14,7 @@ private void create()
 {
     seteuid(getuid());
 
-    art_id    = "sky pike";
+    art_id    = "sky_pike";
     art_name  = "穹槍訣";
     art_usage = "pike";
     art_desc  = "一套以星空蒼穹為意的槍法，槍尖抖處如滿天星點，"
@@ -48,7 +48,7 @@ private void create()
     mm_minus = 40;
     mm_coef  = 10;
 
-    DAEMON_D->register_skill_daemon("sky pike");
+    DAEMON_D->register_skill_daemon("sky_pike");
     setup();
 }
 
@@ -62,7 +62,7 @@ void skill_advanced(object me, string skill)
 
     ::skill_advanced(me, skill);
     if( !userp(me) ) return;
-    lv = me->query_skill("sky pike", 1);
+    lv = me->query_skill("sky_pike", 1);
     foreach(int step in ({ 100, 140 })) {
         if( lv < step || me->query("sky_pike/str_" + step) ) continue;
         me->set("sky_pike/str_" + step, 1);
@@ -104,7 +104,7 @@ void after_strike(object me, object opponent, object weapon, mapping m, int dama
 {
     if( damage > 0 || !objectp(opponent) || !living(me) ) return;
     if( environment(me) != environment(opponent) ) return;
-    if( me->query_skill("sky pike", 1) < 100 ) return;
+    if( me->query_skill("sky_pike", 1) < 100 ) return;
     if( two_handed(weapon) ) {
         if( random(100) < 10 ) sky_breaker(me, opponent, weapon);
     } else if( random(100) < 20 ) star_rain(me, opponent);
