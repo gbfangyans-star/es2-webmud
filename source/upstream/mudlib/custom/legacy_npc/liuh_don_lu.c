@@ -122,6 +122,13 @@ void win_fight(object ob)
     call_out("teach_essence", 1, ob, 0);
 }
 
+// 每行控制在一行內（約 36 字），依語氣斷句，整句顯示不自動換行。
+private void say_lines(object ob, string *lines)
+{
+    foreach(string line in lines)
+        message_vision(line + "\n", this_object(), ob, 1);
+}
+
 void teach_essence(object ob, int step)
 {
     string who;
@@ -130,21 +137,26 @@ void teach_essence(object ob, int step)
     who = "這位" + ob->rank("respectful");
     switch( step ) {
     case 0:
-        message_vision("$N看著$n方才的劍招﹐搖頭嘆了口氣﹕這套劍法是小女胡亂琢磨出來的﹐"
-            "我原以為她只是鬧著玩﹐也就沒多加理會﹐如今看來﹐只怕要誤了" + who + "的修練。\n",
-            this_object(), ob, 1);
+        say_lines(ob, ({
+            "$N收劍而立﹐望著$n方才的劍路﹐輕輕嘆了口氣。",
+            "$N說道﹕這套劍法﹐是小女閒來胡亂拼湊的玩意兒。",
+            "$N又道﹕老夫只當她孩子心性﹐由著她胡鬧﹐不想竟誤了" + who + "的功夫。",
+        }));
         break;
     case 1:
-        message_vision("$N說道﹕這是我重新整理過的水雲劍法精義﹐就當是與" + who + "切磋交流了。\n",
-            this_object(), ob, 1);
+        say_lines(ob, ({
+            "$N說道﹕這是老夫重新整理的水雲劍法精義﹐就當與" + who + "切磋一場罷。",
+        }));
         break;
     default:
-        message_vision("$N拔劍出鞘﹐將水雲劍法從頭到尾演示了一遍﹐一招一式與小女孩所使的形似而神異。\n",
-            this_object(), ob, 1);
+        say_lines(ob, ({
+            "$N長劍出鞘﹐將水雲劍法從頭到尾演示了一遍。",
+            "招式與那小女孩所使一般無二﹐劍意卻已截然不同。",
+        }));
         ob->set("sayuensword/essence", 1);
         ob->improve_skill_exact("sayuensword essence",
             ob->skill_threshold("sayuensword essence", 1) - ob->query_learn("sayuensword essence"));
-        tell_object(ob, "你學會了水雲劍法精義。\n");
+        tell_object(ob, "你掌握了水雲劍法的精義。\n");
         return;
     }
     call_out("teach_essence", 2, ob, step + 1);
