@@ -107,3 +107,45 @@ int acquire_skill(object me, string skill)
     tell_object(me, "柳東蘆將「" + to_chinese(skill) + "」的入門要訣傳授給你。\n");
     return 1;
 }
+
+// ------------------------------------------------------------------
+// 水雲劍法精義（使用者定案，2026-10-20）：水雲劍法 17 級以上、劍術 enable 水雲劍法，
+// 找柳東蘆比武並輸給他，他會演示自己整理過的精義，玩家直接學會（只發生一次）。
+// ------------------------------------------------------------------
+
+void win_fight(object ob)
+{
+    if( !objectp(ob) || !userp(ob) ) return;
+    if( ob->query("sayuensword/essence") ) return;
+    if( ob->query_skill("sayuensword", 1) < 17 ) return;
+    if( ob->skill_mapped("sword") != "sayuensword" ) return;
+    call_out("teach_essence", 1, ob, 0);
+}
+
+void teach_essence(object ob, int step)
+{
+    string who;
+
+    if( !objectp(ob) || environment(ob) != environment() ) return;
+    who = "這位" + ob->rank("respectful");
+    switch( step ) {
+    case 0:
+        message_vision("$N看著$n方才的劍招﹐搖頭嘆了口氣﹕這套劍法是小女胡亂琢磨出來的﹐"
+            "我原以為她只是鬧著玩﹐也就沒多加理會﹐如今看來﹐只怕要誤了" + who + "的修練。\n",
+            this_object(), ob, 1);
+        break;
+    case 1:
+        message_vision("$N說道﹕這是我重新整理過的水雲劍法精義﹐就當是與" + who + "切磋交流了。\n",
+            this_object(), ob, 1);
+        break;
+    default:
+        message_vision("$N拔劍出鞘﹐將水雲劍法從頭到尾演示了一遍﹐一招一式與小女孩所使的形似而神異。\n",
+            this_object(), ob, 1);
+        ob->set("sayuensword/essence", 1);
+        ob->improve_skill_exact("sayuensword essence",
+            ob->skill_threshold("sayuensword essence", 1) - ob->query_learn("sayuensword essence"));
+        tell_object(ob, "你學會了水雲劍法精義。\n");
+        return;
+    }
+    call_out("teach_essence", 2, ob, step + 1);
+}
