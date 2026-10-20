@@ -137,6 +137,7 @@ int init_apprentice(object me)
         me->set("custom_faction", FACTION);
         do_chat(({
             "梅影風微微頷首，神情稍霽：好，從今日起，你便是我冷梅莊弟子。\n",
+            "梅影風目光一凝，沉聲說道：入我門下，便當勤練不輟，莫要辱沒了冷梅莊的名聲。\n",
         }));
     }
     return 1;

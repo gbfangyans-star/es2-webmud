@@ -68,6 +68,7 @@ int init_apprentice(object me)
         me->set("custom_faction", FACTION);
         do_chat(({
             "郭布摸了摸光禿禿的腦袋﹐咧嘴一笑：好﹐從今天起你就是我朱衣派的弟子了。\n",
+            "郭布雙目微闔﹐掐指推算了半晌﹐才緩緩說道：心火須日日溫養﹐火熄則道散。好生修持﹐莫負了朱衣一脈的香火。\n",
         }));
     }
     return 1;
