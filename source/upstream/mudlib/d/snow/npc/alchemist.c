@@ -1,3 +1,4 @@
+#include <ansi.h>
 // alchemist.c
 
 #include <npc.h>
@@ -99,7 +100,7 @@ int acquire_skill(object ob, string skill)
 		if( !ob->query_learn(skill)
 		&&	ob->query_score("alchemy") >= 1000 ) {
 			say("陳維俠點了點頭，說道：為師這就傳你，聽好了。\n");
-			message_vision("$N將龍圖丹道中的神農之術大要傳授給$n。\n", this_object(), ob);
+			message_vision(CYN + "$N將龍圖丹道中的神農之術大要傳授給$n。\n" NOR, this_object(), ob);
 			ob->improve_skill(skill, random(ob->query_attr("wis")) + 1);
 		}
 		break;
