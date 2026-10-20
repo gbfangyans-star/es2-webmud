@@ -100,7 +100,7 @@ Neolith `HEARTBEAT_INTERVAL` is 2,000,000 microseconds, so 1 tick = one 2-second
 ## 阿修羅 (ashura)
 
 - Race numbers follow the original data: gin/kee/sen 80/80/80, karma 40, 基數 180.
-- Class caps: fighter 60, alchemist 50, taoist 60, soldier 70, thief 50, commoner 1. scholar and monk are -1 (cannot join).
+- Class caps: fighter 70 (raised from 60 by user, 2026-10-20), alchemist 50, taoist 60, soldier 70, thief 50, commoner 1. scholar and monk are -1 (cannot join).
 - Attributes: str 20-25, cor 25-40, int 13-18, spi 14-22, cps 5-10, dex 15-20, con 17-22, wis 13-18.
 - Hidden bonuses: 攻擊能力值 40 (`apply/attack`), 攻勢等級 30 (`apply/intimidate`), 咒術 15 (`apply/spells`, skill level), 陰陽眼 (`apply/vision_of_ghost`).
 - Auto fight: when an ashura player and an NPC first meet (either one walks into the room), `feature/char/attack.c` `init()` calls `COMBAT_D->start_ashura()`. Chance = 100 - cps x 3, minimum 30%. It uses `fight`, not `kill`, on both sides, so the loser only falls unconscious and the player can `halt`. Skipped when the ashura is already fighting, unconscious, net-dead or a ghost, when the NPC is unconscious, a ghost or not visible, and in no_fight rooms. Players are never targeted. It cannot be turned off.
