@@ -14,6 +14,8 @@ inherit F_DBASE;
 
 int wiz_lock_level = WIZ_LOCK_LEVEL;
 
+#define IPLIMIT_MSG "同一處來的俠客已然滿座，請稍候再來。\n"
+
 string *user_race = ({
     "human",
     "avatar",
@@ -143,8 +145,24 @@ private void show_visitor_count() {
     printf ("從 %s 以來累計上線人次：%d 人次。\n", login_date_string(t), cnt);
 }
 
+// realipd 出錯時一律放行，不能因此擋住所有人登入。
+private int ip_can_enter(object ob, string id, object except) {
+    int ok;
+
+    if (catch (ok = REALIP_D->can_enter(ob, id, except)))
+        return 1;
+    return ok;
+}
+
 private void get_id (string arg, object ob) {
     object ppl;
+
+    // 網頁橋接程式在連線一開始送來的真實 IP（見 /adm/daemons/realipd.c），不顯示任何東西。
+    if (arg && arg[0..8] == "@@REALIP ") {
+        catch (REALIP_D->register_line(ob, arg));
+        input_to ("get_id", ob);
+        return;
+    }
 
     // user id will be used as object uid for all objects created by the user.
     // the id string must be converted too all lower case, while objects created by backend are assigned
@@ -197,6 +215,13 @@ private void get_id (string arg, object ob) {
             }
     }
 #endif
+
+    // 同一處來的角色已達上限（重新連線回原本還在世界裡的角色不受影響）。
+    if (!find_body(arg) && !ip_can_enter(ob, arg, 0)) {
+        write (IPLIMIT_MSG);
+        destruct (ob);
+        return;
+    }
 
 #ifdef WIZ_LOCK_LEVEL
     if ((int)wiz_level(arg) < (int)wiz_lock_level) {
@@ -298,7 +323,8 @@ void authorize (object ob) {
             ctime(time()), (string)user->query("id"), query_ip_name(ob) ) );
 
         if (wizhood(ob) == "(admin)") {
-            if ((query_ip_name(ob) != "localhost") && (query_ip_number(ob) != "127.0.0.1")) {
+            // 用連線本身的位址：admin 照舊只能從主機本機（含網頁橋接程式）登入。
+            if ((efun::query_ip_name(ob) != "localhost") && (efun::query_ip_number(ob) != "127.0.0.1")) {
                 write ("安全檢查失敗！強制登出。\n");
                 destruct (user);
                 destruct (ob);
@@ -728,11 +754,20 @@ varargs void enter_world(object ob, object user, int silent) {
     object room;
     string startroom, err;
 
+    // 登入過程中其他角色可能已經先進入世界，進入前再檢查一次。
+    if (!silent && !ip_can_enter(ob, ob->query("id"), user)) {
+        write (IPLIMIT_MSG);
+        destruct (user);
+        destruct (ob);
+        return;
+    }
+
     user->set_link(ob);
     ob->set_body(user);
 
     // finished logon, transfer the interactive user from logon to user body
     exec (user, ob);
+    catch (REALIP_D->mark_body(user));
 
     if (!silent)
         write ("目前權限: " + wizhood(user) + "\n");
@@ -794,6 +829,7 @@ varargs void reconnect (object ob, object user, int silent) {
     user->set_link(ob);
     ob->set_body(user);
     exec(user, ob);
+    catch (REALIP_D->mark_body(user));
 
     user->reconnect();
     IDENT_D->query_userid((string)user->query("id"));   
