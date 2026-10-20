@@ -21,6 +21,7 @@ void create()
                 __DIR__"obj/shovel": 5,
                 "/obj/area/obj/dagger": 10,
                 "/obj/area/obj/shortsword": 5,
+                "/custom/weapon/blade/large_blade": 10,  // 大刀（使用者指定，2026-10-19）
         ]));
 
         set("chat_chance", 5);
