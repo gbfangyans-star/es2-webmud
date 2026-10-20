@@ -1,3 +1,4 @@
+#include <ansi.h>
 // /d/wutang/npc/may_yin_fong.c — 五堂鎮 NPC：冷梅莊莊主 梅影風。
 /*
 CUSTOM NPC (NEW). 設定來源：使用者提供（外觀敘述、裝備、技能、拜師與傳授條件）。
@@ -91,9 +92,9 @@ void wander()
     if( !objectp(env = environment()) ) return;
 
     if( strsrch(base_name(env), AREA_PREFIX) != 0 ) {
-        message_vision("$N身形一晃，轉眼便不見了蹤影。\n", this_object());
+        message_vision(CYN + "$N身形一晃，轉眼便不見了蹤影。\n" NOR, this_object());
         move(HOME_ROOM);
-        message_vision("$N緩步走了過來。\n", this_object());
+        message_vision(CYN + "$N緩步走了過來。\n" NOR, this_object());
         return;
     }
 
@@ -179,6 +180,6 @@ int acquire_skill(object me, string skill)
         return notify_fail("梅影風淡淡說道：入門的要訣已經傳給你了，往後全看你自己。\n");
 
     me->improve_skill_exact(skill, me->skill_threshold(skill, 1) - me->query_learn(skill));
-    tell_object(me, "梅影風將「" + to_chinese(skill) + "」的入門要訣傳授給你。\n");
+    tell_object(me, CYN + "梅影風將「" + to_chinese(skill) + "」的入門要訣傳授給你。\n" NOR);
     return 1;
 }

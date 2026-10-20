@@ -1,3 +1,4 @@
+#include <ansi.h>
 #include <npc.h>
 
 inherit F_SOLDIER;
@@ -74,7 +75,7 @@ void heavy_parry_judge(object me)
     command("say 你戰功彪炳，我便傳你一套我在戰場上領悟的強力格擋之法，望你今後繼續保護百姓。");
     me->delete_temp("mee_pei/heavy_parry_refused");
     me->improve_skill_exact("heavy_parry", 1);
-    tell_object(me, "米沛將強力格擋的要訣傳授給你。\n");
+    tell_object(me, CYN + "米沛將強力格擋的要訣傳授給你。\n" NOR);
 }
 
 int accept_fight()

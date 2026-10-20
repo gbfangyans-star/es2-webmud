@@ -36,7 +36,7 @@ int acquire_skill(object who, string skill)
     command("say 好，這門兵刃底子我教你！");
     who->set_skill(skill, 1);
     who->set_learn(skill, 1);
-    tell_object(who, "魯熙年花了好一番功夫，把「" + to_chinese(skill) + "」的基本招式教給了你。\n");
+    tell_object(who, CYN + "魯熙年花了好一番功夫，把「" + to_chinese(skill) + "」的基本招式教給了你。\n" NOR);
     return 1;
 }
 

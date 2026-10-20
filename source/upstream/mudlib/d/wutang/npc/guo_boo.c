@@ -1,3 +1,4 @@
+#include <ansi.h>
 // /d/wutang/npc/guo_boo.c — 五堂鎮 NPC：朱衣派道士 郭布（依五堂鎮設計表）。
 // 朱衣派師父（使用者定案，2026-10-18）：平民可拜師，拜師後成為「朱衣派弟子」；
 // 角色等級 15 起傳授丹陽神功。
@@ -104,6 +105,6 @@ int acquire_skill(object me, string skill)
         return notify_fail("郭布說道：入門的要訣已經傳給你了﹐往後全看你自己。\n");
 
     me->improve_skill_exact(skill, me->skill_threshold(skill, 1) - me->query_learn(skill));
-    tell_object(me, "郭布將「" + to_chinese(skill) + "」的入門要訣傳授給你。\n");
+    tell_object(me, CYN + "郭布將「" + to_chinese(skill) + "」的入門要訣傳授給你。\n" NOR);
     return 1;
 }
