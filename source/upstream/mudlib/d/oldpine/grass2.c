@@ -31,6 +31,7 @@ LONG
     );
     set("exits", ([
         "northwest" : __DIR__"grass1",
+        "southeast" : "/d/baihua/hillside",   // 百花村（2026-10-20）
     ]));
     set("objects", ([
         __DIR__"npc/wolf" : 3,

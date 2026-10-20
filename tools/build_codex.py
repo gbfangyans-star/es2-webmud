@@ -44,6 +44,22 @@ DIR_AREA = {  # 沒有 map/area 的房間，依目錄給區域名稱
 HIDDEN_DIRS = ['/custom/wizroom/', '/custom/home/']
 # 地圖手動調整（只影響圖鑑顯示）：房間 -> (參考房間, 往東格數, 往南格數)
 MAP_POS = {
+    # 百花村（d/baihua）：依設計表格位（相對於山腰上 F10）。懸崖平台靠 climb／eastup 進出、
+    # 荒野小徑靠 search 進入，自動排版會放錯，全部手動指定。
+    '/d/baihua/platform': ('/d/baihua/hillside', 1, -1),
+    '/d/baihua/cliff': ('/d/baihua/hillside', 1, 0),
+    '/d/baihua/tile_house': ('/d/baihua/hillside', 2, 0),
+    '/d/baihua/stone_road1': ('/d/baihua/hillside', 3, 0),
+    '/d/baihua/cliff_edge': ('/d/baihua/hillside', 4, 0),
+    '/d/baihua/school': ('/d/baihua/hillside', 2, 1),
+    '/d/baihua/stone_road2': ('/d/baihua/hillside', 3, 1),
+    '/d/baihua/wang_home': ('/d/baihua/hillside', 4, 1),
+    '/d/baihua/trail': ('/d/baihua/hillside', 2, 2),
+    '/d/baihua/road1': ('/d/baihua/hillside', 3, 2),
+    '/d/baihua/alley': ('/d/baihua/hillside', 4, 2),
+    '/d/baihua/road2': ('/d/baihua/hillside', 3, 3),
+    '/d/baihua/inn': ('/d/baihua/hillside', 4, 3),
+    '/d/baihua/temple': ('/d/baihua/hillside', 2, 4),
     # 五堂鎮：依設計表格子座標（相對於五堂鎮口 N8）；第四個數字是樓層（客棧二、三樓）。
     # 老松林／迷霧森林（d/oldpine）：依設計表格位，以各區入口為原點。
     '/d/oldpine/clearing_n': ('/d/oldpine/entrance', 8, 1),
