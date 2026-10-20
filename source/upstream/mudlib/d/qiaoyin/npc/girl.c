@@ -1,3 +1,4 @@
+#include <ansi.h>
 // /d/qiaoyin/npc/girl.c — 喬陰縣 NPC：小女孩（依使用者設計表，2026-10-16）。
 // 水雲劍法謎題（使用者定案，2026-10-20）：找她比武（fight）並輸給她，就能拜她為師，
 // 再向她求教水雲劍法與她會的其他技能。拜她為師不限門派、種族、職業，也不影響加入其他門派。
@@ -37,7 +38,7 @@ LONG
 int accept_fight(object ob)
 {
     if( is_fighting() || ob->is_fighting() ) return ::accept_fight(ob);
-    message_vision("$N傲然說道﹕要比武﹐行啊。不過你輸了可要拜我為師喔。\n", this_object());
+    message_vision(CYN + "$N傲然說道﹕要比武﹐行啊。不過你輸了可要拜我為師喔。\n" NOR, this_object());
     return 1;
 }
 
@@ -52,7 +53,7 @@ void win_fight(object ob)
 
 void laugh_at()
 {
-    message_vision("$N拍手笑道﹕哈哈哈﹐你輸了﹗\n", this_object());
+    message_vision(CYN + "$N拍手笑道﹕哈哈哈﹐你輸了﹗\n" NOR, this_object());
 }
 
 // ------------------------------------------------------------------
@@ -76,7 +77,7 @@ int accept_apprentice(object me)
 int init_apprentice(object me)
 {
     if( ::init_apprentice(me) ) {
-        message_vision("$N挺起胸膛﹐得意地說道﹕好﹐從今以後你就是我的徒弟啦﹗\n", this_object());
+        message_vision(CYN + "$N挺起胸膛﹐得意地說道﹕好﹐從今以後你就是我的徒弟啦﹗\n" NOR, this_object());
         // 接著叮嚀兩句（初出茅廬﹐講的都是陳腔濫調），每句隔 2 tick（4 秒）；不影響求教。
         call_out("advise", 4, 0);
     }
@@ -90,7 +91,7 @@ string *ADVICE = ({
 
 void advise(int i)
 {
-    message_vision(ADVICE[i] + "\n", this_object(), 0, 1);   // 整句顯示、不自動換行
+    message_vision(CYN + ADVICE[i] + "\n" NOR, this_object(), 0, 1);   // 整句顯示、不自動換行
     if( i + 1 < sizeof(ADVICE) ) call_out("advise", 4, i + 1);
 }
 
@@ -116,6 +117,6 @@ int acquire_skill(object me, string skill)
         return notify_fail("小女孩說道﹕該教的都教你啦﹐自己好好練吧。\n");
 
     me->improve_skill_exact(skill, me->skill_threshold(skill, 1) - me->query_learn(skill));
-    tell_object(me, "小女孩將「" + to_chinese(skill) + "」的入門要訣傳授給你。\n");
+    tell_object(me, CYN + "小女孩將「" + to_chinese(skill) + "」的入門要訣傳授給你。\n" NOR);
     return 1;
 }

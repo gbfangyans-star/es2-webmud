@@ -1,3 +1,4 @@
+#include <ansi.h>
 // /custom/legacy_npc/liuh_don_lu.c — 舊站 NPC：柳東蘆（Liuh don-lu）。
 /*
 LEGACY NPC. 名稱、英文 ID、敘述、年紀、性別、種族、裝備取自舊站畫面紀錄（DOCUMENTED，
@@ -104,7 +105,7 @@ int acquire_skill(object me, string skill)
         return notify_fail("柳東蘆說道：入門的要訣已經傳給你了，往後全看你自己。\n");
 
     me->improve_skill_exact(skill, me->skill_threshold(skill, 1) - me->query_learn(skill));
-    tell_object(me, "柳東蘆將「" + to_chinese(skill) + "」的入門要訣傳授給你。\n");
+    tell_object(me, CYN + "柳東蘆將「" + to_chinese(skill) + "」的入門要訣傳授給你。\n" NOR);
     return 1;
 }
 
@@ -126,7 +127,7 @@ void win_fight(object ob)
 private void say_lines(object ob, string *lines)
 {
     foreach(string line in lines)
-        message_vision(line + "\n", this_object(), ob, 1);
+        message_vision(CYN + line + "\n" NOR, this_object(), ob, 1);
 }
 
 void teach_essence(object ob, int step)
@@ -151,12 +152,12 @@ void teach_essence(object ob, int step)
     default:
         say_lines(ob, ({
             // 一整句；超過一行時在逗號處手動換行。
-            "$N長劍出鞘﹐將水雲劍法從頭到尾演示了一遍﹐\n招式與小女孩所使一般無二﹐劍意卻已截然不同。",
+            "$N長劍出鞘﹐將水雲劍法從頭到尾演示了一遍﹐\n" CYN "招式與小女孩所使一般無二﹐劍意卻已截然不同。",
         }));
         ob->set("sayuensword/essence", 1);
         ob->improve_skill_exact("sayuensword essence",
             ob->skill_threshold("sayuensword essence", 1) - ob->query_learn("sayuensword essence"));
-        tell_object(ob, "你掌握了水雲劍法的精義。\n");
+        tell_object(ob, CYN + "你掌握了水雲劍法的精義。\n" NOR);
         return;
     }
     call_out("teach_essence", 2, ob, step + 1);
