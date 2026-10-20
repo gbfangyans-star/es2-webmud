@@ -30,3 +30,7 @@ source/upstream/mudlib/log/
 source/upstream/mudlib/logs/
 .local-test/
 localtest-start.log
+
+# 橋接程式與遊戲共用的暗號、同 IP 限制設定（主機各自產生，不放進 git）
+source/upstream/mudlib/adm/etc/bridge_secret
+source/upstream/mudlib/data/iplimit.o
