@@ -70,12 +70,18 @@ gain_score(string course, int xp)
 }
 
 /* CUSTOM A-H RACE RULE: per-race class level cap from race daemon.
- * 已達種族的職業等級上限時傳回 1（不能再升級）。 */
+ * 已達種族的職業等級上限時傳回 1（不能再升級）。
+ * 平民不分種族一律上限 50（使用者定案，2026-10-20）。 */
+#define COMMONER_LEVEL_CAP  50
+
 int at_level_cap()
 {
     int cap;
 
-    cap = RACE_D(query_race())->query("class_level_cap/" + query_class());
+    if( query_class() == "commoner" )
+        cap = COMMONER_LEVEL_CAP;
+    else
+        cap = RACE_D(query_race())->query("class_level_cap/" + query_class());
     return cap != 0 && query_level() >= cap;
 }
 
