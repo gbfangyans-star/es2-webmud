@@ -122,6 +122,9 @@ On level-up, gin / kee / sen maximums grow by base dex / con / spi divided by th
 | 方士 alchemist | 江湖歷練 survive (lv-1)^2x100, 法術道行 magic mastery (lv-16)^2x100, 丹道修養 alchemy (lv-1)^2x100, 法術修為 magic (lv-6)^2x100 | dex/4, con/4, spi/4 |
 | 書生 scholar | 江湖歷練 survive (lv-1)^2x100, 實戰經驗 combat (lv-1)^2x100, 文書能力 literature (lv-1)^2x50, 文學造詣 literature mastery (lv-10)^2x50, 聲望 reputation (lv-10)^2x50 | dex/5, con/3, spi/3 |
 | 和尚 monk | 江湖歷練 survive (lv-1)^2x100, 佛學修為 buddhology (lv-1)^2x100, 禪定修養 cultivation (lv-10)^2x100, 文書能力 literature (lv-10)^2x100, 聲望 reputation (lv-30)^2x100 | dex/6, con/6, spi/6 |
+| 平民 commoner | 江湖歷練 survive (lv-1)^2x100 | none (user decision, 2026-10-20) |
+
+Commoner (user decision, 2026-10-20): may level up on 江湖歷練 alone; the commoner level cap is 50 for every race (`feature/char/score.c` `at_level_cap()`), overriding the `"commoner":1` entries still listed in the race daemons. A commoner who later joins a class keeps the current level.
 
 Soldier and taoist keep their earlier formulas. Joining thief / alchemist / scholar / monk is not implemented yet.
 
