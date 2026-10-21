@@ -32,11 +32,13 @@ int main(object me, string arg)
 	if( stringp(magic = me->skill_mapped("magic")) ) {
 		int ok, spi;
 		ok = (int)SKILL_D(magic)->conjure_magic(me, spl, target);
-		// 施法成功：法術修為、丹道修養各得 random(靈性/6) + 1（使用者定案，2026-10-16）。
+		// 施法成功：法術修為得 random(靈性/6) + 1（使用者定案，2026-10-16）；
+		// 丹道修養只有施展丹道【神農之術】時才給（使用者指示，2026-10-21）。
 		if( ok && userp(me) ) {
 			spi = me->query_attr("spi");
 			me->gain_score("magic", (spi >= 6 ? random(spi / 6) : 0) + 1);
-			me->gain_score("alchemy", (spi >= 6 ? random(spi / 6) : 0) + 1);
+			if( magic == "alchemy-medication" )
+				me->gain_score("alchemy", (spi >= 6 ? random(spi / 6) : 0) + 1);
 		}
 		return ok;
 	}
