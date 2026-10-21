@@ -6,14 +6,6 @@ docs/LEGACY_ROOM_NPC_COMPENDIUM.md）；職業、等級、強度、門派、行�
 舊站區域：未能判定；房間：瓦屋。
 */
 inherit "/custom/legacy_npc/legacy_npc";
-inherit "/feature/npc/vendor";   // F_VENDOR（npc.h 會重複繼承 NPC，所以直接寫路徑）
-
-// 販賣肥遺骨粉與松材（使用者定案，2026-10-21）。
-void init()
-{
-    legacy_npc::init();
-    add_action("do_vendor_list", "list");
-}
 
 void create()
 {
@@ -30,10 +22,6 @@ void create()
         "她. 有她的裝束來看, 不像學武之人, 反到像是到處尋藥之神醫. 她師兄陳度\n"
         "好管閒事, 反倒在藥材的研究上, 比不上默默鑽研的王燕. 由其專注的神貌,\n"
         "似乎正在調理重要的配方.\n");
-    set("merchandise", ([
-        "/obj/food/snake_powder" : 100,              // 肥遺骨粉
-        "/obj/alchemist/heat_firewood" : 5000,       // 松材
-    ]));
     set_power("B");
     setup();
     carry_object("/custom/weapon/dagger/shennong_dagger")->wield();   // 神農匕

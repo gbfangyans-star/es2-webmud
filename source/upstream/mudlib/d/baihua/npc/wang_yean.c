@@ -2,6 +2,14 @@
 
 #include <npc.h>
 inherit F_VILLAGER;
+inherit F_VENDOR;
+
+// 販賣肥遺骨粉與松柴（使用者定案，2026-10-21）。
+void init()
+{
+    ::init();
+    add_action("do_vendor_list", "list");
+}
 
 void create()
 {
@@ -19,6 +27,10 @@ LONG
     set("nickname", "花中菩提");
     // 龍圖丹派（陳度的師妹）。只做門派記號，不顯示稱號（使用者指定）。
     set("custom_faction", "alchemist.longtu");
+    set("merchandise", ([
+        "/obj/food/snake_powder" : 100,              // 肥遺骨粉
+        "/obj/alchemist/heat_firewood" : 5000,       // 松柴
+    ]));
     set_power("B");
     setup();
     carry_object("/custom/weapon/dagger/shennong_dagger")->wield();
