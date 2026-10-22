@@ -23,6 +23,7 @@ varargs int query_attr(string attr, int raw);
 int set_attr(string what, int value);
 varargs void advance_skill(string skill, int amount);
 void apply_restored_skill_progression(string skill);
+int query_personal_skill_cap(string skill);
 
 // implementations
 
@@ -105,6 +106,7 @@ void set_skill(string skill, int val)
 {
     if( val > 200 ) val = 200;
     skills[skill] = val;
+    query_personal_skill_cap(skill);   // 得到技能的當下決定個人上限
     refresh_taoist_spell_mastery(skill);
 }
 
@@ -220,18 +222,34 @@ int restored_skill_threshold(int level)
     return level * level * base;
 }
 
-/* 技能等級上限：預設 200；技能檔有 query_skill_cap(人物) 時照它的設定
+/* 個人技能上限（使用者定案，2026-10-22）：玩家得到一項技能時，隨機決定這項技能的上限
+ * 140、145……200（逢 5，機率平均），記在 skill_cap/<技能>，之後不再改變。
+ * 舊角色已經練過頭的技能，上限設成目前等級（不會掉級）。NPC 不受影響（200）。 */
+int query_personal_skill_cap(string skill)
+{
+    int cap;
+
+    if( !userp(this_object()) ) return 200;
+    if( (cap = this_object()->query("skill_cap/" + skill)) > 0 ) return cap;
+    cap = 140 + random(13) * 5;
+    if( skills[skill] > cap ) cap = skills[skill];
+    this_object()->set("skill_cap/" + skill, cap);
+    return cap;
+}
+
+/* 技能等級上限：個人上限；技能檔有 query_skill_cap(人物) 時取兩者較低的
  * （例如水雲劍法暫時 30，使用者定案，2026-10-20）。 */
 int restored_skill_cap(string skill)
 {
     object daemon;
-    int cap;
+    int cap, own;
 
+    own = query_personal_skill_cap(skill);
     daemon = SKILL_D(skill);
     if( objectp(daemon) && function_exists("query_skill_cap", daemon)
     &&  (cap = call_other(daemon, "query_skill_cap", this_object())) > 0 )
-        return cap < 200 ? cap : 200;
-    return 200;
+        return cap < own ? cap : own;
+    return own;
 }
 
 // 學成等級：技能檔用 query_entry_level() 指定，沒指定的是 1。
@@ -332,6 +350,7 @@ void improve_skill_exact(string skill, int amount)
     if( undefinedp(learned[skill]) ) learned[skill] = amount; else learned[skill] += amount;
     if( undefinedp(skill_gain[skill]) ) skill_gain[skill] = amount; else skill_gain[skill] += amount;
     if( undefinedp(skills[skill]) ) skills[skill] = 0;
+    query_personal_skill_cap(skill);   // 得到技能的當下決定個人上限
 
     daemon = SKILL_D(skill);
     if( objectp(daemon) )
