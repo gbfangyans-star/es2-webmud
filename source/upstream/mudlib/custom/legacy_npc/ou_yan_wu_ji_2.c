@@ -36,7 +36,8 @@ void create()
 
 // ------------------------------------------------------------------
 // 隱風觀師父（使用者定案，2026-10-21）：平民可拜師，但不收夜叉、刑天、厭火、黑齒；拜師後成為道士、隱風觀弟子。
-// 傳授茅山共通法術（docs/martial_arts/茅山_法術.md）。
+// 傳授茅山共通法術（docs/martial_arts/茅山_法術.md）、茅山幻術、遁甲書
+// （docs/martial_arts/隱風觀_茅山幻術與遁甲書.md）。
 // ------------------------------------------------------------------
 
 int accept_info(object ob, string type)
@@ -79,6 +80,12 @@ int acquire_skill(object me, string skill)
     switch( skill ) {
     case "mao-shan magic":
     case "magic":
+    case "taoism of nature":
+    case "spells":
+        break;
+    case "taoism of dunja":
+        // 茅山幻術 90 級、人物等級 30、靈性（不含裝備）30（使用者定案，2026-10-22）。
+        if( !SKILL_D(skill)->valid_learn(me) ) return 0;
         break;
     default:
         return 0;
