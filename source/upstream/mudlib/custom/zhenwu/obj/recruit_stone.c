@@ -39,6 +39,7 @@ int do_enlist(string arg)
 
     me->set_class("soldier");
     me->set("title", "振武軍營軍人");
+    me->set("custom_faction", "soldier.ber");   // 振武軍營門派記號（使用者指示，2026-10-22）
 
     // Only a fresh commoner recruit gets the signature soldier skills. A
     // fighter who enlists already has their own combat background, so they

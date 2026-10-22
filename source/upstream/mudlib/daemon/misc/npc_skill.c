@@ -174,7 +174,7 @@ private mapping sect = ([
             ([ "skill": "mao-shan mysticism", "map": "magic", "level": 1, "req": ([ "taoism of darkness": 100 ]) ]),
         }),
     ]),
-    "taoist.yinfeng": ([
+    "taoist.wind": ([
         "name":        "隱風觀",
         "force":       0,
         "force_level": 0,
