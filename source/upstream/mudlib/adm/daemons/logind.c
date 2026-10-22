@@ -336,6 +336,12 @@ void authorize (object ob) {
         enter_world (ob, user);
         return;
     } else {
+        if (file_size(user->query_save_file()) == -1 && ob->query("reincarnating")) {
+            // 魂飛魄散後還沒轉世就斷線：直接回到選種族（使用者定案，2026-10-22）。
+            destruct (user);
+            show_race_menu (ob);
+            return;
+        }
         if (file_size(user->query_save_file()) == -1) {
             write (cjk_wrap (@NOTICE
 系統找不到您的角色資料。
@@ -824,6 +830,8 @@ varargs void enter_world(object ob, object user, int silent) {
     user->setup();
     increment_visitor_count();
 
+    ob->delete ("reincarnating");   // 已經轉世進入遊戲
+
 #ifdef SAVE_USER
     // save newly created user
     user->save();
@@ -1025,6 +1033,7 @@ void reincarnate (object ob) {
     int cap = (int)link->query("time_aged") / 3600 / 6;
     if (earned > cap) earned = cap;
     if (earned > 0) link->add ("karma", earned);
+    link->set ("reincarnating", 1);   // 轉世完成（進入遊戲）前斷線，重新登入直接選種族
 
 #ifdef	SAVE_USER
     link->save();
