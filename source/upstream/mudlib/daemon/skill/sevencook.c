@@ -39,7 +39,7 @@ private void create()
     /* 學成：累積到 5 級門檻時 gain，直接練成 5 級；學成那一級起每級給武術造詣 等級 × 10。 */
     art_entry        = 5;
     art_entry_reward = 1;
-    art_entry_msg    = "你練成了廚燒七訣﹐柴米油鹽醬醋茶七件事﹐原來件件都是功夫。\n";
+    art_entry_msg    = "你練成了廚燒七訣。\n";
 
     /* 每級武術造詣 等級 × 10；41 級起武學之道 (等級 − 40) × 10。 */
     ma_coef  = 10;
