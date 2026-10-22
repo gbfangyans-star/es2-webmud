@@ -8,6 +8,7 @@ void create() {
         set("produce_param", (["min_heat_power":130,"max_heat_power":150,"min_heat":200,"max_heat":400]));
     }
     set("requirement", (["literate": 5, "alchemy-medication": 5]));
+    set("pill_grade", 2);   // 丹藥階級：一階最高、三階最低（使用者指示 #7，2026-10-23）
     set_amount(1); setup();
 }
 int stuff_ob(object me) {
