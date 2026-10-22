@@ -28,10 +28,13 @@ LONG
         "/obj/alchemist/black_pill" : 30,                // 烏心丹
         "/obj/medication/boar_berry" : 20,                // 山豬果
         "/obj/medication/dragon_saliva" : 20,             // 龍涎草
-        "/obj/alchemist/aquapill" : 20,        // 金液丹
         "/obj/alchemist/heat_furnace" : 20,                 // 青銅丹爐
         "/obj/alchemist/heat_reactor" : 50,                 // 青銅丹鼎
         "/obj/alchemist/heat_firewood" : 3000,                     // 松材
+        "/obj/alchemist/minor_heal_pill" : 50,           // 小還丹
+        "/obj/alchemist/mana_pill" : 50,                 // 醒神丹
+        "/obj/alchemist/aquapill" : 50,                  // 金液丹
+        "/obj/alchemist/refresh_pill" : 50,              // 金鎖固精丸
     ]));
     set_power("C");
     setup();
