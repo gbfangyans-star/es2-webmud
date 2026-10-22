@@ -30,7 +30,7 @@
 　　‧remedy：消耗飲水恢復 gin kee sen 當前值。
 　　‧recover：丹陽神功 30，恢復 gin kee sen 受損的最大值。
 　　‧sun fire：丹陽神功 90，白天採聚純陽之氣，提昇慧根、定力與咒文能力。
-　能力提昇：練成為 10 級，慧根 +2。升級 gin<sk*8 kee<sk*8 sen<sk*15 時，每級提昇 1 點 gin，1 點 kee，3 點 sen。
+　能力提昇：練成為 10 級，慧根 +2。之後每級提昇 1 點 gin，1 點 kee，3 點 sen。
 
 ◎ 火雲奇門步法（eight_steps）
 　技能種類：閃躲
