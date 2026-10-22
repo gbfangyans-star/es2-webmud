@@ -586,6 +586,13 @@ private void show_race_menu (object ob) {
     input_to ("get_race", ob, list);
 }
 
+/* 依英文名（不分大小寫）或中文名找種族。 */
+private string match_race (string arg, string *list) {
+    foreach (string r in list)
+        if (lower_case(arg) == r || arg == to_chinese(r)) return r;
+    return 0;
+}
+
 private void get_race (string arg, object ob, string *list) {
     string race;
 
@@ -597,22 +604,25 @@ private void get_race (string arg, object ob, string *list) {
         return;
     }
     if (arg[0] == '?') {
-        arg = arg[1..];
-        foreach (string r in list)
-            if (arg == r || arg == to_chinese(r)) race = r;
+        // 說明可以查任何可選的種族（人類族除外）。
+        race = match_race(arg[1..], filter(user_race, (: $1 != "avatar" :)));
         if (race) {
             CHAR_D->hint_user_race(race);
             write ("\n");
         } else
-            write ("沒有這個種族。\n");
+            write ("請重新輸入\n");
         write ("您的選擇(用 '? <種族名>' 可查閱說明)﹕");
         input_to ("get_race", ob, list);
         return;
     }
-    foreach (string r in list)
-        if (lower_case(arg) == r || arg == to_chinese(r)) race = r;
+    race = match_race(arg, list);
     if (!race) {
-        write ("沒有這個種族﹐請重新選擇。\n您的選擇(用 '? <種族名>' 可查閱說明)﹕");
+        // 種族存在但不在清單上＝業力不足；其他字串＝輸入錯誤（使用者定案，2026-10-22）。
+        if (match_race(arg, filter(user_race, (: $1 != "avatar" :))))
+            write ("你的業力不足。\n");
+        else
+            write ("請重新輸入\n");
+        write ("您的選擇(用 '? <種族名>' 可查閱說明)﹕");
         input_to ("get_race", ob, list);
         return;
     }
