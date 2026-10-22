@@ -11,7 +11,7 @@ private void create()
 {
     seteuid(getuid());
 
-    art_id    = "lightning axe";
+    art_id    = "soonlight axe";
     art_name  = "迅雷斧法";
     art_usage = "axe";
     art_desc  = "一套以快打快的斧法，斧勢如迅雷疾電，身形起落間連劈帶砍，"
@@ -44,7 +44,7 @@ private void create()
     mm_minus = 40;
     mm_coef  = 10;
 
-    DAEMON_D->register_skill_daemon("lightning axe");
+    DAEMON_D->register_skill_daemon("soonlight axe");
     setup();
 }
 
@@ -56,8 +56,8 @@ int dual_axes(object me)
 {
     return objectp(me->query_temp("weapon/axe"))
         && objectp(me->query_temp("weapon/secondhand axe"))
-        && me->skill_mapped("axe") == "lightning axe"
-        && me->skill_mapped("secondhand axe") == "lightning axe";
+        && me->skill_mapped("axe") == "soonlight axe"
+        && me->skill_mapped("secondhand axe") == "soonlight axe";
 }
 
 /* 連擊「奔雷連斬」：機率 行動力÷3 %（最高 50%），多砍 1 + 行動力÷100 斧；
@@ -87,14 +87,14 @@ void attack_using(object me, object opponent, object weapon)
 
     ::attack_using(me, opponent, weapon);
     if( !objectp(opponent) || !objectp(me) || !living(me) ) return;
-    if( me->query_skill("lightning axe", 1) < 90 || !dual_axes(me) ) return;
+    if( me->query_skill("soonlight axe", 1) < 90 || !dual_axes(me) ) return;
 
     t = time();
-    if( me->query_temp("lightning_axe/round") != t ) {
-        me->set_temp("lightning_axe/round", t);
+    if( me->query_temp("soonlight_axe/round") != t ) {
+        me->set_temp("soonlight_axe/round", t);
         return;
     }
-    me->delete_temp("lightning_axe/round");
+    me->delete_temp("soonlight_axe/round");
     if( environment(me) != environment(opponent) ) return;
     thunder_combo(me, opponent);
 }
