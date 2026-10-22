@@ -29,15 +29,13 @@ void skill_completed(object me, string sk)
         + gender_self(me) + "的竹上經心法已經練成了！\n" NOR);
 }
 
-// U-01：精、氣、神上限各自低於「等級 × 10」時，精 +1、氣 +1、神 +2。不給分數。
+// U-01：每升一級精 +1、氣 +1、神 +2，不再受「等級 × 10」上限限制
+// （配合伺服器「取消所有內功的精氣神成長上限」，使用者定案，2026-10-23）。不給分數。
 void skill_advanced(object me, string sk)
 {
-    int level;
-
-    level = me->query_skill(sk, 1);
-    if( me->query_stat_maximum("gin") < level * 10 ) me->advance_stat("gin", 1);
-    if( me->query_stat_maximum("kee") < level * 10 ) me->advance_stat("kee", 1);
-    if( me->query_stat_maximum("sen") < level * 10 ) me->advance_stat("sen", 2);
+    me->advance_stat("gin", 1);
+    me->advance_stat("kee", 1);
+    me->advance_stat("sen", 2);
 }
 
 // Z-01～Z-05：打坐，每次心跳精 1、氣 1、神 3，神的可用上限 -1。
