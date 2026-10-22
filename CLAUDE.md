@@ -36,6 +36,11 @@
    https://github.com/wolfer168/es2-webmud/compare/main...gbfangyans-star:es2-webmud:claude/confident-carson-v8bs1a
    （分支名稱換成當時的工作分支），同時附上可貼上的標題與說明。
 
+## 名詞（使用者指示，2026-10-21）
+
+- **茅山派道士**指的是幻霧觀、隱風觀、靈雲觀這三個門派。三派各有專長的技能，也有共同可學的技能；
+  共通技能三派都可以跟師父學習，或解謎習得。詳見 `docs/martial_arts/茅山_法術.md`。
+
 ## 工作方式
 
 - 先推演、確認後才製作：設計討論階段只更新文件，使用者確認後才寫程式。

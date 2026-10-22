@@ -5,7 +5,11 @@ docs/LEGACY_ROOM_NPC_COMPENDIUM.md）；職業、等級、強度、門派、行�
 「舊有 NPC 待製作清單」（2026-10-15）。尚未放入地圖。
 舊站區域：茅山、龍安鎮；房間：客棧。
 */
+#include <ansi.h>
+
 inherit "/custom/legacy_npc/legacy_npc";
+
+#define FACTION "taoist.huanwu"
 
 void create()
 {
@@ -27,9 +31,63 @@ void create()
         "方大漠。當他返回天朝以後﹐無法說服他的師兄弟重歸茅山﹐便憤然再返大\n"
         "漠﹐借助他家族在大漠的勢力自創『幻霧觀』。此次不知是為何事﹐竟然又\n"
         "來到天朝境內。\n");
+    set("custom_faction", FACTION);   // 幻霧觀（docs/martial_arts/門派武功對照表.md）
     set_power("A");
     setup();
     carry_object("/custom/armor/cloth/green_robe")->wear();   // 青衣道袍
     carry_object("/custom/weapon/sword/peachwood_sword")->wield();   // 桃木劍
     carry_object("/custom/armor/finger/han_jade_ring")->wear();   // 漢玉戒指
+}
+
+// ------------------------------------------------------------------
+// 幻霧觀師父（使用者定案，2026-10-21）：任何種族的平民都可拜師，拜師後成為道士、幻霧觀弟子。
+// 傳授茅山共通法術（docs/martial_arts/茅山_法術.md）。
+// ------------------------------------------------------------------
+
+int accept_info(object ob, string type)
+{
+    return type == "skills";
+}
+
+int accept_apprentice(object me)
+{
+    if( me->query_class() != "commoner" ) {
+        command("say 你已另有師承﹐貧道不便收你。");
+        return 0;
+    }
+    return 1;
+}
+
+int init_apprentice(object me)
+{
+    if( ::init_apprentice(me) ) {
+        me->set_class("taoist");
+        me->set("title", "幻霧觀弟子");
+        me->set("custom_faction", FACTION);
+        do_chat(({
+            "杜風凌淡淡地點了點頭：好﹐從今以後你便是幻霧觀的弟子。\n",
+            "杜風凌說道：旁人瞧不起的小把戲﹐用得好了一樣能成大事。\n",
+        }));
+    }
+    return 1;
+}
+
+int acquire_skill(object me, string skill)
+{
+    if( me->query("custom_faction") != FACTION ) return 0;
+
+    switch( skill ) {
+    case "mao-shan magic":
+    case "magic":
+        break;
+    default:
+        return 0;
+    }
+
+    if( me->query_learn(skill) >= me->skill_threshold(skill, 1) )
+        return notify_fail("杜風凌說道：入門的要訣已經傳給你了﹐往後全看你自己。\n");
+
+    me->improve_skill_exact(skill, me->skill_threshold(skill, 1) - me->query_learn(skill));
+    tell_object(me, CYN + "杜風凌將「" + to_chinese(skill) + "」的入門要訣傳授給你。\n" NOR);
+    return 1;
 }

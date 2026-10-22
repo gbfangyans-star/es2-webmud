@@ -44,7 +44,7 @@ int main (object me, string arg) {
 
     line = sprintf (HIW "【 %s 】" NOR "%s\n\n", ob->rank(), ob->short(1));
     line += cjk_wrap (sprintf(
-            "%s出生於%s﹐外表是一%s%s歲的%s%s。目前是等級 %d 的%s﹐累積業力共 %d 點。",
+            "%s出生於%s﹐外表是一%s%s歲的%s%s。目前是等級 %d 的%s﹐目前有 %d 點業力。",
                 ob==me ? gender_self (ob) : gender_pronoun (ob),
                 CHINESE_D->chinese_date(),
                 (tmp = ob->query ("unit")) ? tmp : "個",
