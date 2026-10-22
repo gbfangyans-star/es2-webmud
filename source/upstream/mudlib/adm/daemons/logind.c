@@ -613,8 +613,13 @@ private void get_race (string arg, object ob, string *list) {
         // 說明可以查任何可選的種族（人類族除外）。
         race = match_race(arg[1..], filter(user_race, (: $1 != "avatar" :)));
         if (race) {
-            CHAR_D->hint_user_race(race);
-            write ("\n");
+            // 和遊戲裡的 help <種族> 讀同一份檔案（使用者定案，2026-10-22）。
+            string doc = read_file(HELP_DIR + race + ".txt");
+            if (stringp(doc)) write ("\n" + doc + "\n");
+            else {
+                CHAR_D->hint_user_race(race);
+                write ("\n");
+            }
         } else
             write ("請重新輸入\n");
         write ("您的選擇(用 '? <種族名>' 可查閱說明)﹕");
