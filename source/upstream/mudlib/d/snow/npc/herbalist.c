@@ -26,6 +26,10 @@ void create()
 		STOCK_MEDICATION("boar_berry") : 40,
 		STOCK_MEDICATION("wild_ginseng") : 30,
 		STOCK_MEDICATION("dragon_saliva") : 20,
+		"/obj/alchemist/minor_heal_pill" : 50,		   // 小還丹
+		"/obj/alchemist/mana_pill" : 50,				 // 醒神丹
+		"/obj/alchemist/aquapill" : 50,				  // 金液丹
+		"/obj/alchemist/refresh_pill" : 50,		      // 金鎖固精丸
 	]));
 
 	set_power("C");

@@ -22,6 +22,10 @@ void create()
         "/obj/alchemist/heat_furnace" : 5,
         "/d/lee/obj/medicine_bottle" : 20,
         "/d/lee/obj/heaven_dew" : 10,
+        "/obj/alchemist/minor_heal_pill" : 50,           // 小還丹
+        "/obj/alchemist/mana_pill" : 50,                 // 醒神丹
+        "/obj/alchemist/aquapill" : 50,                  // 金液丹
+        "/obj/alchemist/refresh_pill" : 50,              // 金鎖固精丸
     ]));
     set_power("C");
     setup();

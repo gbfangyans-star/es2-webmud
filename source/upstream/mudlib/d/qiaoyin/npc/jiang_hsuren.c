@@ -2,6 +2,7 @@
 
 #include <npc.h>
 inherit F_VILLAGER;
+inherit F_VENDOR;
 
 void create()
 {
@@ -17,9 +18,22 @@ void create()
 龍圖丹派大弟子，對丹道頗有天份，小有成就。但個性輕浮、不務正業，最近似乎捅了甚麼婁子，異常安份。
 LONG
     );
+    // 販售丹藥（使用者指示，2026-10-22）。
+    set("merchandise", ([
+        "/obj/alchemist/minor_heal_pill" : 50,           // 小還丹
+        "/obj/alchemist/mana_pill" : 50,                 // 醒神丹
+        "/obj/alchemist/aquapill" : 50,                  // 金液丹
+        "/obj/alchemist/refresh_pill" : 50,              // 金鎖固精丸
+    ]));
     set_power("A");
     setup();
     carry_object("/obj/cloth")->wear();
+}
+
+void init()
+{
+    ::init();
+    add_action("do_vendor_list", "list");
 }
 
 #define ALCHEMY_FEE 500   // 柴火錢：五百文（等值貨幣、超過都可以）
