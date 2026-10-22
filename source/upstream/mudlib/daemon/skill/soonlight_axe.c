@@ -1,6 +1,6 @@
 /*---
 description: 迅雷斧法（NEW 新版武功寫法）。共通斧法，可用在單手斧與左手斧；六招交替，
-             90 級起雙手持斧時依行動力發出連擊「奔雷連斬」。設計見 docs/martial_arts/共通_迅雷斧法.md。
+             90 級起雙手持斧時依行動力發出連擊。設計見 docs/martial_arts/共通_迅雷斧法.md。
 ---*/
 #include <ansi.h>
 #include "/std/martial_art.h"
@@ -60,7 +60,7 @@ int dual_axes(object me)
         && me->skill_mapped("secondhand axe") == "soonlight axe";
 }
 
-/* 連擊「奔雷連斬」：機率 行動力÷3 %（最高 50%），多砍 1 + 行動力÷100 斧；
+/* 連擊：機率 行動力÷3 %（最高 50%），多砍 1 + 行動力÷100 斧；
  * 傷害與一般招式相同，耗精為一般招式的 120%，自身不停頓。 */
 void thunder_combo(object me, object opponent)
 {
@@ -72,7 +72,7 @@ void thunder_combo(object me, object opponent)
 
     hits = 1 + move / 100;
     axes = ({ me->query_temp("weapon/axe"), me->query_temp("weapon/secondhand axe") });
-    message_vision("\n" HIY "$N雙斧越使越快﹐斧光連成一片﹐一式「奔雷連斬」接連劈向$n﹗\n\n" NOR,
+    message_vision("\n" HIY "$N雙斧越使越快﹐斧光連成一片﹐一斧接一斧地劈向$n﹗\n\n" NOR,
         me, opponent, 1);
     for( i = 0; i < hits; i++ ) {
         if( !objectp(opponent) || !living(me) || environment(me) != environment(opponent) ) break;
