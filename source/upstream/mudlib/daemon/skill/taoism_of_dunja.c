@@ -97,14 +97,14 @@ int do_experience(object me)
     return 1;
 }
 
-/* 天命的批語（使用者提供，2026-10-22），依技能上限。 */
+/* 天命的批語（使用者提供，2026-10-22），依技能上限。
+ * 批語是當面說給對方聽的，稱呼一律用對方職業的尊稱（道長、英雄……，2026-10-23）。 */
 string fate_words(object target, string skill, int cap)
 {
     string sk, who, title;
 
     sk = to_chinese(skill);
-    who = target->name();
-    title = target->query("gender") == "female" ? "姑娘" : "壯士";
+    who = title = target->rank("respectful");
     if( cap >= 200 )
         return sk + "發展可說是無可限量，舉世無匹！老夫行卜多年，以" + who + "的潛力最為驚人！"
             + who + "若是能在此技深入鑽研，日後定能成為一代宗師！";
