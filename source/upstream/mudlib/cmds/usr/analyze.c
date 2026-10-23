@@ -33,7 +33,10 @@ int main(object me, string arg)
     string str;
     mapping apply, weapon;
 
-    if( !arg ) ob = me;
+    // 玩家只能分析自己；巫師可以分析任何人（使用者指定開放給玩家，2026-10-22）。
+    if( !arg || arg == "me" || me->id(arg) ) ob = me;
+    else if( !wizardp(me) )
+        return notify_fail("你只能看透自己的能耐，別人的底細可沒那麼容易摸清。\n");
     else {
         if( !(ob = find_player(arg))
         &&    !(ob = present(arg, environment(me)))
@@ -100,10 +103,12 @@ int main(object me, string arg)
 int help()
 {
     write(@TEXT
-指令格式﹕analyze [<對象>]
+指令格式﹕analyze
 
-這個指令會列出一些有關指定對象的能力值﹐不指定對象時則列出你自己的
-能力值。
+這個指令會列出你自己的各項能力值﹐包括攻擊、防禦、魔力、法力﹐以及
+技能與裝備帶來的修正。
+
+巫師可以用 analyze <對象> 分析其他人物。
 TEXT
     );
     return 1;

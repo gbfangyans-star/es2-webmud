@@ -13,7 +13,10 @@ int do_search(string arg)
 {
     object me = this_player();
 
-    if( arg != "草叢" && arg != "grass" ) return 0;
+    if( !arg || (arg != "草叢" && arg != "grass") ) {
+        write("到處都是比人還高的草叢，仔細找找或許可以找到出路。\n");
+        return 1;
+    }
     if( me->is_busy() || me->is_fighting() )
         return notify_fail("你現在沒有辦法分心找路。\n");
     message_vision("$N撥開比人還高的雜草，仔細地找了一陣，終於發現一條被草掩住的小徑。\n", me);
@@ -31,6 +34,9 @@ LONG
     );
     set("exits", ([
         "northwest" : "/d/oldpine/grass2",
+    ]));
+    set("objects", ([
+        "/d/oldpine/npc/goat" : 3,
     ]));
     set("outdoors", "baihua");
     set("map/area", "百花村");

@@ -12,9 +12,9 @@ mapping skill_flag      = ([]);         // Ultra skill flags.
 string best_skill = "";
 void refresh_taoist_spell_mastery(string skill)
 {
-    if( skill != "spells" && skill != "taoism-fire" && skill != "taoism-freeze"
-    && skill != "taoism-storm" && skill != "taoism-thunder" ) return;
+    // 咒術道行看基本咒術與門派咒術（使用者定案，2026-10-23），由道士職業檔判斷。
     if( this_object()->query_class() != "taoist" ) return;
+    if( !CLASS_D("taoist")->is_spell_school(skill) ) return;
     CLASS_D("taoist")->refresh_spell_mastery(this_object());
 }
 

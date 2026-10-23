@@ -2,9 +2,9 @@
 description: 丹道【神農之術】（alchemy-medication）。龍圖丹派方士的法術類技能，
              安裝在 magic（enable magic with alchemy-medication），以 conjure 施展
              七色印，封住或解開青銅丹鼎。
-design: claude/技能設計/01_神農之術.md（2026-10-15）
+design: docs/martial_arts/龍圖丹派_神農之術.md（2026-10-15；2026-10-22 修改 U-10、U-11）
 note: 0 級即可施展；0～14 級不存在，累積到學成門檻後 gain 直接學成 15 級。
-      升級不增加精、氣、神；31 級起每升一級給法術修為（sk-30)^2*10。
+      升級不增加精、氣、神；法術修為、法術道行只拿系統規則（2026-10-22）。
 ---*/
 
 #include <ansi.h>
@@ -46,15 +46,7 @@ void skill_completed(object me, string sk)
         + gender_self(me) + "對這個法術已經逐漸熟悉。\n");
 }
 
-// U-11：31 級起每升一級給法術修為；不增加精、氣、神。
-void skill_advanced(object me, string sk)
-{
-    int level;
-
-    level = me->query_skill(sk, 1);
-    if( level > 30 )
-        me->gain_score("magic", (level - 30) * (level - 30) * 10);
-}
+// U-11（2026-10-22）：取消 31 級起的法術修為；升級不增加精、氣、神。
 
 // S-32：成功率（靈性＋悟性×2＋技能等級＋10）%，最高 95%。
 int success_chance(object me)
@@ -77,7 +69,8 @@ void reward_success(object me)
     level = me->query_skill(SKILL_ID, 1);
     me->improve_skill(SKILL_ID,
         (spi + (intel * 5 > 0 ? random(intel * 5) : 0)) * 2);
-    me->gain_score("alchemy", 1 + (level > 0 ? random(level) : 0));
+    // U-10（2026-10-22）：1 + random(等級) ÷ 2，無條件捨去。
+    me->gain_score("alchemy", 1 + (level > 0 ? random(level) / 2 : 0));
 }
 
 // U-04、U-10：失敗的經驗與丹道修養。
@@ -127,6 +120,7 @@ int conjure_magic(object me, string spell, object target)
     if( !ok ) {
         tell_object(me, gender_self(me) + "的法術失敗了。\n");
         reward_failure(me);
+        me->set_temp("conjure/failed", 1);
         return 1;
     }
 
