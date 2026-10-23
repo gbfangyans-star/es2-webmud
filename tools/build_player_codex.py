@@ -28,6 +28,7 @@ TEMPLATE = ROOT / 'tools' / 'codex_player_template.html'
 OUT = ROOT / 'web' / 'codex.html'
 FACTION_DOC = ROOT / 'docs' / 'catalog' / '玩家圖鑑_門派.md'
 SKILL_DOC = ROOT / 'docs' / 'catalog' / '玩家圖鑑_技能.md'
+SPELL_DOC = ROOT / 'docs' / 'catalog' / '玩家圖鑑_法術.md'
 SKILL_TABLE = ROOT / 'docs' / 'martial_arts' / '門派武功對照表.md'
 START = '/d/snow/inn_hall'
 
@@ -129,6 +130,23 @@ def load_skill_growth():
         cols = [c.strip() for c in line.strip().strip('|').split('|')]
         if len(cols) == 4 and cols[0] and not cols[0].startswith(('技能代碼', '---')):
             out[cols[0]] = {'entry': cols[1], 'pools': cols[2], 'attrs': cols[3]}
+    return out
+
+
+def load_spells():
+    """玩家圖鑑_法術.md：技能代碼 -> {'note': 共通特性, 'list': [{name, lv, cost, eff, dmg}]}。"""
+    out = {}
+    if not SPELL_DOC.exists():
+        return out
+    for line in bc.read(SPELL_DOC).splitlines():
+        cols = [c.strip() for c in line.strip().strip('|').split('|')]
+        if len(cols) != 6 or not cols[0] or cols[0].startswith(('技能代碼', '---')):
+            continue
+        sk = out.setdefault(cols[0], {'note': '', 'list': []})
+        if cols[1] == '（共通）':
+            sk['note'] = cols[4]
+        else:
+            sk['list'].append({'name': cols[1], 'lv': cols[2], 'cost': cols[3], 'eff': cols[4], 'dmg': cols[5]})
     return out
 
 
@@ -251,6 +269,7 @@ def main(out):
     lineage = skill_lineage()
     growth = attr_growth_table()
     growth_doc = load_skill_growth()
+    spell_doc = load_spells()
     teach_of, book_of = {}, {}
     for nid in npc_rooms:
         for s in extra[nid]['teaches']:
@@ -383,6 +402,7 @@ def main(out):
                                         if growth.get(c) in ATTR_ZH else '')
         out_skills.append({
             'entry': entry, 'poolText': gd.get('pools', ''), 'attrText': attr_text,
+            'spellNote': spell_doc.get(c, {}).get('note', ''), 'spells': spell_doc.get(c, {}).get('list', []),
             'id': ids[c], 'name': s.get('name') or bc.zh(c), 'cat': cat, 'basic': basic,
             'desc': desc,
             'attrs': list(dict.fromkeys(ATTR_ZH.get(a, a) for a in attrs if a in ATTR_ZH)),
