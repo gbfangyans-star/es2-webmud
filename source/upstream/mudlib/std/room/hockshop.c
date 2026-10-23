@@ -72,12 +72,8 @@ int do_value(string arg)
 
     value = ob->query("value");
     if( !value ) printf("%s一文不值。\n", ob->query("name"));
-    if( ob->query("sinister") )
-        printf("%s價值%s。\n但是這種死人身上的倒楣東西當鋪很不願意收。\n"
-            "典當(pawn)或賣斷(sell)只能得到%s。\n",
-            ob->query("name"), value_string(value), value_string(value / 100 ));
-    else 
-        printf("%s價值%s。\n如果你要典當(pawn)﹐可以拿到%s及一張當票。\n如果賣斷(sell)﹐可以拿到%s。\n",
+    // 打倒 NPC 撿來的物品（sinister）與一般物品同價（使用者指定，2026-10-23；原本只給 1%）。
+    printf("%s價值%s。\n如果你要典當(pawn)﹐可以拿到%s及一張當票。\n如果賣斷(sell)﹐可以拿到%s。\n",
             ob->query("name"), value_string(value),
             value_string(value * 60 / 100), value_string(value * 80 / 100));
 
@@ -102,15 +98,7 @@ int do_pawn(string arg)
     message_vision("$N把身上的" + ob->query("name") + "拿出來典當了"
         + value_string(value * 60 / 100) + "﹐換得一張當票。\n", this_player());
 
-    if( ob->query("sinister") ) {
-        int v;
-        message_vision("當鋪朝奉對這種死人身上的倒楣東西很不甘願地收下了 ...\n", this_player());
-        v = value / 100;
-        if( v > 100 ) v = 100;
-        pay_player(this_player(), v);
-    }
-    else
-        pay_player(this_player(), value * 60 / 100);
+    pay_player(this_player(), value * 60 / 100);
 
     ob->move(storage);
     stamp = new(__DIR__"obj/pawn_stamp");
@@ -137,15 +125,8 @@ int sell_item(object ob)
     message_vision("$N把身上的" + ob->query("name") + "賣掉。\n",
         this_player());
 
-    if( ob->query("sinister") ) {
-        int v;
-        message_vision("當鋪朝奉對這種死人身上的倒楣東西很不甘願地收下了 ...\n", this_player());
-        v = value / 100;
-        if( v > 100 ) v = 100;
-        pay_player(this_player(), v);
-    }
-    else
-        pay_player(this_player(), value * 80 / 100);
+    // 打倒 NPC 撿來的物品（sinister）與一般物品同價：賣斷 80%（使用者指定，2026-10-23）。
+    pay_player(this_player(), value * 80 / 100);
 
     ob->delete("sinister");
 
