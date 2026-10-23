@@ -97,13 +97,14 @@ int do_experience(object me)
     return 1;
 }
 
-/* 天命的批語（使用者提供，2026-10-22），依技能上限。 */
+/* 天命的批語（使用者提供，2026-10-22），依技能上限。
+ * 批語是當面說給對方聽的，所以稱對方為「你」（2026-10-23）。 */
 string fate_words(object target, string skill, int cap)
 {
     string sk, who, title;
 
     sk = to_chinese(skill);
-    who = target->name();
+    who = "你";
     title = target->query("gender") == "female" ? "姑娘" : "壯士";
     if( cap >= 200 )
         return sk + "發展可說是無可限量，舉世無匹！老夫行卜多年，以" + who + "的潛力最為驚人！"
