@@ -33,7 +33,7 @@ LONG
         "/obj/alchemist/heat_furnace" : 5,               // 青銅丹爐
         // 煉丹用具依使用者指示 #4（2026-10-23）
     ]));
-    // 江述仁修改紀錄 #4（2026-10-22 執行）：傳授這三項技能。
+    // 江述仁修改紀錄 #4（2026-10-22 執行；docs/martial_arts/龍圖丹派_江述仁修改紀錄.md）：傳授這三項技能。
     set_skill("alchemy-medication", 25);
     set_skill("alchemy-wealth", 35);
     set_skill("zushang", 50);
@@ -72,7 +72,7 @@ int accept_object(object who, object ob)
     return 1;
 }
 
-// 江述仁修改紀錄 #5、#6（2026-10-22 執行）：付過柴火錢的玩家可以學這三項技能，
+// 江述仁修改紀錄 #5、#6（2026-10-22 執行；docs/martial_arts/龍圖丹派_江述仁修改紀錄.md）：付過柴火錢的玩家可以學這三項技能，
 // 每項各自最多學到經驗值 50（不是等級 50）。
 int acquire_skill(object me, string skill)
 {
