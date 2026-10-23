@@ -1,0 +1,22 @@
+龍圖心經 (dragon force)
+
+技能種類：內功
+學習條件：龍圖丹派弟子；基本內功 90、人物等級 30、悟性 30，
+          條件達到後向陳維俠學習。
+安裝：enable force with dragon force
+修練：exert dragon force（打坐修練，會消耗精、氣、神，
+      同時累積基本內功）
+70 級練成。
+
+特殊能力：以錢莊存款轉化丹藥，須先練成，並具備相應的神農之術。
+  exert lavage       清腹丹
+  exert relax        養心丹
+  exert refresh      金鎖固精丸
+  exert mana         醒神丹
+  exert heal         小還丹
+  exert minor heal   小還丹
+  exert major heal   大還丹（160 級起）
+  轉化所需存款隨龍圖心經等級降低；每次轉化一粒，使用後停頓一回合。
+
+能力提昇：練成時慧根 +1；100 級時膂力 +2、慧根 +1。
+          每級神 +1、氣 +1；120 級後每級再加氣 +4、精 +5。

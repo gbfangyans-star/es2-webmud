@@ -24,6 +24,7 @@ LONG
         set("mixture_value", 600);
     }
     set("requirement", (["literate": 15, "alchemy-medication": 55]));
+    set("pill_grade", 2);   // 丹藥階級：一階最高、三階最低（使用者指示 #7，2026-10-23）
     set_amount(1);
     setup();
 }
