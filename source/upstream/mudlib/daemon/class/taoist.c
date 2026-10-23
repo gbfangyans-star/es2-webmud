@@ -64,12 +64,12 @@ int spell_mastery_score(object ob)
 
     /* 咒術道行（使用者定案，2026-10-23）：
      * 只計門派咒術（天師道法四系與茅山咒術），基本咒術不給；
-     * 每一項從第 31 級開始，升到第 sk 級給 (sk − 30)×10，31 級以前不給。
-     * 一項練到 L 級（L ≥ 31）累計 = 5 × (L − 30) × (L − 29)。 */
+     * 每一項從第 31 級開始，升到第 sk 級給 (sk − 30)×30，31 級以前不給。
+     * 一項練到 L 級（L ≥ 31）累計 = 15 × (L − 30) × (L − 29)。 */
     if( !mapp(skills = ob->query_skills()) ) return 0;
     foreach(sk, lv in skills) {
         if( lv < SPELL_MASTERY_FROM || !is_spell_school(sk) ) continue;
-        total += 5 * (lv - SPELL_MASTERY_FROM + 1) * (lv - SPELL_MASTERY_FROM + 2);
+        total += 15 * (lv - SPELL_MASTERY_FROM + 1) * (lv - SPELL_MASTERY_FROM + 2);
     }
     return total;
 }
