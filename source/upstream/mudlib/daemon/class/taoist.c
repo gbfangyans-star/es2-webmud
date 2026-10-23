@@ -42,19 +42,18 @@ void set_next_target(object ob, int cur_lv)
         lv > 11 ? (lv-11)*(lv-11)*100 * coef / 100 : 0);
 }
 
-// 門派咒術：能裝在「咒術」（spells）上的技能，不含基本咒術本身。
-// 天師道法四系（火、冰、風、雷）與茅山咒術（例如茅山幻術）都算；之後新增的門派咒術自動納入。
+// 計入咒術道行的技能：基本咒術（spells），以及能裝在「咒術」上的門派咒術
+// （天師道法四系、茅山咒術等）；之後新增的門派咒術自動納入。
 int is_spell_school(string skill)
 {
     object d;
 
-    if( !stringp(skill) || skill == "spells" ) return 0;
+    if( !stringp(skill) ) return 0;
+    if( skill == "spells" ) return 1;
     d = SKILL_D(skill);
     if( !objectp(d) || !function_exists("valid_enable", d) ) return 0;
     return d->valid_enable("spells") ? 1 : 0;
 }
-
-#define SPELL_MASTERY_FROM  31
 
 int spell_mastery_score(object ob)
 {
@@ -63,13 +62,12 @@ int spell_mastery_score(object ob)
     int lv, total;
 
     /* 咒術道行（使用者定案，2026-10-23）：
-     * 只計門派咒術（天師道法四系與茅山咒術），基本咒術不給；
-     * 每一項從第 31 級開始，升到第 sk 級給 (sk − 30)×30，31 級以前不給。
-     * 一項練到 L 級（L ≥ 31）累計 = 15 × (L − 30) × (L − 29)。 */
+     * 基本咒術與門派咒術（天師道法四系、茅山咒術）都算，從第 1 級開始，
+     * 升到第 sk 級給 sk×30。一項練到 L 級累計 = 15 × L × (L + 1)，各項加總。 */
     if( !mapp(skills = ob->query_skills()) ) return 0;
     foreach(sk, lv in skills) {
-        if( lv < SPELL_MASTERY_FROM || !is_spell_school(sk) ) continue;
-        total += 15 * (lv - SPELL_MASTERY_FROM + 1) * (lv - SPELL_MASTERY_FROM + 2);
+        if( lv < 1 || !is_spell_school(sk) ) continue;
+        total += 15 * lv * (lv + 1);
     }
     return total;
 }
