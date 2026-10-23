@@ -733,7 +733,8 @@ def layout(rooms, ids):
 
 # --------------------------------------------------------------------------- 主程式
 
-def main(out):
+def collect():
+    """掃描 mudlib，傳回圖鑑資料（巫師版與玩家版共用）。"""
     weapons, armors, items, npcs, rooms = [], [], [], {}, {}
     for d in SCAN_DIRS:
         for p in sorted((MUD / d).rglob('*.c')):
@@ -837,6 +838,11 @@ def main(out):
         'counts': {'skills': len(skills), 'weapons': len(weapons), 'armors': len(armors), 'items': len(items),
                    'npcs': len(npcs), 'rooms': len(rooms), 'areas': len(area_list)},
     }
+    return data
+
+
+def main(out):
+    data = collect()
     blob = json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('</', '<\\/')
     html = read(TEMPLATE).replace('/*__CATALOG_DATA__*/null', blob, 1)
     out.parent.mkdir(parents=True, exist_ok=True)

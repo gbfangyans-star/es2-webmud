@@ -77,6 +77,8 @@ for d in login user mail; do
 done
 cd "$APP_DIR/server"
 npm ci --omit=dev
+# 玩家版天朝圖鑑（web/codex.html）
+python3 "$APP_DIR/tools/build_player_codex.py" || echo "（圖鑑產生失敗，之後執行 update.sh 會再產生一次）"
 
 step "6/7 設定開機自動啟動（systemd）"
 sudo tee /etc/systemd/system/es2-mud.service >/dev/null <<EOF
