@@ -283,7 +283,7 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
 
   // ---------------------------------------------------------------- 技能
   function skillSummary(s) {
-    const g = [];
+    const g = ['練成 ' + s.entry];
     if (s.attrs.length) g.push('增長 ' + s.attrs.join('、'));
     if (s.pools.length) g.push('提升' + s.pools.join('、') + '上限');
     return g.join('・');
@@ -297,14 +297,15 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
       [['common', '基本與其他', D.skills.filter(s => !own(s)).length]]);
     const cur = state.sub.skills || 'all';
     const rows = D.skills.filter(s => (cur === 'all' || (cur === 'common' ? !own(s) : own(s) && s.factions[0] === cur)) &&
-        matches([s.name, s.cat, s.desc, s.attrs.join(' '), s.factions.map(f => facById[f].name).join(' ')].join(' ')))
+        matches([s.name, s.cat, s.desc, s.attrs.join(' '), s.attrText, s.poolText, s.factions.map(f => facById[f].name).join(' ')].join(' ')))
       .map(s => row(s.id,
         `<span class="nm">${esc(s.name)}</span><span class="sum">${esc([s.cat, skillSummary(s)].filter(Boolean).join('・'))}</span><span class="num">${esc(s.factions.length === 1 ? facById[s.factions[0]].name : s.factions.length ? '多派' : '')}</span>`,
         () => `<dl class="kv">` +
           (s.cat ? `<dt>分類</dt><dd>${esc(s.cat)}</dd>` : '') +
           (s.desc ? `<dt>說明</dt><dd>${esc(s.desc)}</dd>` : '') +
-          `<dt>修練增長</dt><dd>${s.attrs.length ? esc(s.attrs.join('、')) + '（修練有成時有機會隨之增長）' : '—'}</dd>` +
-          (s.pools.length ? `<dt>精氣神</dt><dd>練成時提升${esc(s.pools.join('、'))}的上限</dd>` : '') +
+          `<dt>練成</dt><dd>${esc(s.entry)}</dd>` +
+          `<dt>精氣神</dt><dd>${s.poolText ? esc(s.poolText) : s.pools.length ? '提升' + esc(s.pools.join('、')) + '的上限' : '—'}</dd>` +
+          `<dt>屬性</dt><dd>${s.attrText ? esc(s.attrText) : s.attrs.length ? esc(s.attrs.join('、')) + '會隨修練增長' : '—'}</dd>` +
           (s.factions.length ? `<dt>門派</dt><dd>${s.factions.map(facLink).join('、')}</dd>` : '') +
           (s.teachers.length ? `<dt>傳授</dt><dd>${s.teachers.map(npcLink).join('、')}</dd>` : '') +
           (s.books.length ? `<dt>書籍</dt><dd>${s.books.map(itemLink).join('、')}</dd>` : '') + `</dl>`));
