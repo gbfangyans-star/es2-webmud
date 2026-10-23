@@ -1,5 +1,10 @@
 // /d/wutang/npc/keeper.c — 五堂鎮 NPC：廟祝（依五堂鎮設計表）。
+//
+// 超渡（使用者指定，2026-10-24）：魂魄狀態的玩家對廟祝說「投胎」，廟祝二次確認；
+// 30 秒內說「確認」，廟祝唸經超渡，玩家魂飛魄散，回到選種族（業力結算同鬼魂再死一次，
+// 見 docs/業力系統.md：CHAR_D->make_mist() → LOGIN_D->reincarnate()）。
 
+#include <ansi.h>
 #include <npc.h>
 inherit F_VILLAGER;
 
@@ -27,4 +32,39 @@ LONG
     set_power("C");
     setup();
     carry_object("/obj/area/obj/cloth")->wear();
+}
+
+#define CONFIRM_TIME 30
+
+private int is_soul(object who)
+{
+    return objectp(who) && userp(who) && who->query("life_form") == "ghost";
+}
+
+void relay_say(object who, string msg)
+{
+    if( !is_soul(who) || !stringp(msg) ) return;
+
+    if( strsrch(msg, "投胎") == 0 ) {
+        who->set_temp("wutang_keeper/reincarnate", time());
+        command("say 施主確定要這樣嗎？施主尚可復生重回陽間。");
+        return;
+    }
+    if( strsrch(msg, "確認") == 0 ) {
+        int asked = who->query_temp("wutang_keeper/reincarnate");
+        if( !asked || time() - asked > CONFIRM_TIME ) return;
+        who->delete_temp("wutang_keeper/reincarnate");
+        call_out("release_soul", 1, who);
+    }
+}
+
+// 唸經超渡：鬼魂消散（訊息同鬼魂再死一次），然後回到選種族。
+void release_soul(object who)
+{
+    if( !is_soul(who) || environment(who) != environment() ) return;
+
+    message_vision("$N開始唸著經文替$n超渡。\n", this_object(), who);
+    tell_object(who, "\n你化做一股輕煙，消失了。\n" HIR "你已經魂飛魄散了！！！\n" NOR);
+    message("vision", who->name() + "化成一陣煙，消失了 ...\n", environment(who), who);
+    CHAR_D->make_mist(who);
 }
