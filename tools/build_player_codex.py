@@ -27,6 +27,8 @@ MUD = bc.MUD
 TEMPLATE = ROOT / 'tools' / 'codex_player_template.html'
 OUT = ROOT / 'web' / 'codex.html'
 FACTION_DOC = ROOT / 'docs' / 'catalog' / '玩家圖鑑_門派.md'
+SKILL_DOC = ROOT / 'docs' / 'catalog' / '玩家圖鑑_技能.md'
+SPELL_DOC = ROOT / 'docs' / 'catalog' / '玩家圖鑑_法術.md'
 SKILL_TABLE = ROOT / 'docs' / 'martial_arts' / '門派武功對照表.md'
 START = '/d/snow/inn_hall'
 
@@ -37,6 +39,11 @@ DIR_ZH = {'north': '北', 'south': '南', 'east': '東', 'west': '西', 'northea
 ATTR_ZH = {'str': '膂力', 'cor': '膽識', 'cps': '定力', 'int': '悟性', 'wis': '慧根', 'spi': '靈性',
            'con': '根骨', 'dex': '機敏', 'kar': '福緣'}
 POOL_ZH = {'gin': '精', 'kee': '氣', 'sen': '神'}
+BASIC_SKILLS = {'force', 'dodge', 'parry', 'unarmed', 'sword', 'blade', 'staff', 'axe', 'dagger', 'pike', 'whip',
+                'blunt', 'needle', 'throwing', 'spells', 'magic', 'literate'}
+USAGE_ZH = {'force': '內功', 'dodge': '閃躲', 'parry': '招架', 'unarmed': '徒手', 'sword': '劍術', 'blade': '刀法',
+            'staff': '杖法', 'axe': '斧術', 'dagger': '錐法', 'pike': '槍法', 'whip': '鞭法', 'blunt': '鎚法',
+            'needle': '針術', 'spells': '咒術', 'magic': '法術'}
 TYPE_ZH = {'martial': '武學', 'magic': '法術', 'spell': '咒術', 'knowledge': '知識', 'skill': '技藝'}
 
 
@@ -112,6 +119,72 @@ def load_factions():
         if len(cols) == 5 and cols[2].startswith('/'):
             rows.append({'name': cols[0], 'cls': cols[1], 'master': cols[2], 'entry': cols[3], 'intro': cols[4]})
     return rows
+
+
+def load_skill_growth():
+    """玩家圖鑑_技能.md：技能代碼 -> {entry, pools, attrs}（成長文字，不含經驗值公式）。"""
+    out = {}
+    if not SKILL_DOC.exists():
+        return out
+    for line in bc.read(SKILL_DOC).splitlines():
+        cols = [c.strip() for c in line.strip().strip('|').split('|')]
+        if len(cols) == 4 and cols[0] and not cols[0].startswith(('技能代碼', '---')):
+            out[cols[0]] = {'entry': cols[1], 'pools': cols[2], 'attrs': cols[3]}
+    return out
+
+
+def load_spells():
+    """玩家圖鑑_法術.md：技能代碼 -> {'note': 共通特性, 'list': [{name, lv, cost, eff, dmg}]}。"""
+    out = {}
+    if not SPELL_DOC.exists():
+        return out
+    for line in bc.read(SPELL_DOC).splitlines():
+        cols = [c.strip() for c in line.strip().strip('|').split('|')]
+        if len(cols) != 6 or not cols[0] or cols[0].startswith(('技能代碼', '---')):
+            continue
+        sk = out.setdefault(cols[0], {'note': '', 'list': []})
+        if cols[1] == '（共通）':
+            sk['note'] = cols[4]
+        else:
+            sk['list'].append({'name': cols[1], 'lv': cols[2], 'cost': cols[3], 'eff': cols[4], 'dmg': cols[5]})
+    return out
+
+
+def entry_level(path):
+    """技能檔指定的學成等級；沒有指定的是 1。"""
+    if not path:
+        return 1
+    code = bc.strip_comments(bc.read(ROOT / path))
+    m = re.search(r'query_entry_level\(\)\s*\{\s*return\s*(\w+)', code) or re.search(r'\bart_entry\s*=\s*(\w+)', code)
+    if m:
+        v = m.group(1)
+        if not v.isdigit():  # #define ENTRY_LEVEL 70
+            d = re.search(r'#define\s+%s\s+(\d+)' % re.escape(v), code)
+            v = d.group(1) if d else '1'
+        return max(1, int(v))
+    # 只是載入入口的技能檔（inherit 本體）：讀本體
+    inh = re.search(r'inherit\s+"(/[^"]+)"', code)
+    if inh:
+        body = MUD / (inh.group(1).lstrip('/') + ('' if inh.group(1).endswith('.c') else '.c'))
+        if body.exists():
+            return entry_level(str(body.relative_to(ROOT)))
+    return 1
+
+
+def skill_usage(path):
+    """技能檔 valid_enable() 允許的第一個基本技能；載入入口檔讀它繼承的本體。"""
+    if not path:
+        return None
+    code = bc.strip_comments(bc.read(ROOT / path))
+    m = re.search(r'usage\s*==\s*"([^"]+)"', bc.func_body(code, 'valid_enable'))
+    if m:
+        return m.group(1)
+    inh = re.search(r'inherit\s+"(/[^"]+)"', code)
+    if inh:
+        body = MUD / (inh.group(1).lstrip('/') + '.c')
+        if body.exists():
+            return skill_usage(str(body.relative_to(ROOT)))
+    return None
 
 
 def attr_growth_table():
@@ -195,6 +268,8 @@ def main(out):
     skill_by_code = {s['code']: s for s in data['skills']}
     lineage = skill_lineage()
     growth = attr_growth_table()
+    growth_doc = load_skill_growth()
+    spell_doc = load_spells()
     teach_of, book_of = {}, {}
     for nid in npc_rooms:
         for s in extra[nid]['teaches']:
@@ -298,7 +373,9 @@ def main(out):
 
     out_skills = []
     for c in skill_codes:
-        s = skill_by_code.get(c, {})
+        s = skill_by_code.get(c) or {}
+        if not s.get('file') and skill_by_code.get(c.replace(' ', '_'), {}).get('file'):
+            s = dict(skill_by_code[c.replace(' ', '_')], name=s.get('name') or bc.zh(c))  # 只有載入入口檔的技能
         attrs, pools = skill_effects(s.get('file'))
         if c in growth:
             attrs = [growth[c]] + attrs
@@ -310,10 +387,23 @@ def main(out):
         if cat == '指令技能':
             cat = '技藝'
         desc = clean_desc(s.get('desc'), s.get('name') or bc.zh(c))
-        if not cat and not lin:
+        basic = c in BASIC_SKILLS or c.startswith(('secondhand ', 'twohanded '))
+        if basic:
             cat = '基本技能'
+        elif not cat:
+            # 沒有登記分類的武功：看它能裝在哪一項基本技能上（例如內功）
+            usage = skill_usage(s.get('file'))
+            cat = USAGE_ZH.get(usage, '') if usage else ''
+        gd = growth_doc.get(c, {})
+        entry = gd.get('entry') or f'{entry_level(s.get("file"))} 級'
+        if re.fullmatch(r'\d+', entry):
+            entry += ' 級'
+        attr_text = gd.get('attrs') or (f'每練到 5 的倍數有機會提升{ATTR_ZH[growth[c]]} 1 點（屬性最高 50）。'
+                                        if growth.get(c) in ATTR_ZH else '')
         out_skills.append({
-            'id': ids[c], 'name': s.get('name') or bc.zh(c), 'cat': cat, 'basic': cat == '基本技能',
+            'entry': entry, 'poolText': gd.get('pools', ''), 'attrText': attr_text,
+            'spellNote': spell_doc.get(c, {}).get('note', ''), 'spells': spell_doc.get(c, {}).get('list', []),
+            'id': ids[c], 'name': s.get('name') or bc.zh(c), 'cat': cat, 'basic': basic,
             'desc': desc,
             'attrs': list(dict.fromkeys(ATTR_ZH.get(a, a) for a in attrs if a in ATTR_ZH)),
             'pools': list(dict.fromkeys(POOL_ZH[p] for p in pools if p in POOL_ZH)),
