@@ -32,14 +32,14 @@
 【 世界功能 】
   world        世界與探索        snowkeep     雪亭
   inn          客棧
-  home_help    私人家園          recall       返回功能
+  home_help    私人家園
 
 【 連線與其他 】
   web          WebMUD            zmud         zMUD
   rules        遊戲基本規則      wizard_help  巫師說明
 
 使用方式：help <主題>
-例如：help newbie、help tiger、help recall
+例如：help newbie、help tiger、help inn
 
 一般指令也可直接查詢，例如：help look、help who、help skills。
 本 HELP 僅整理目前 ES2 WebMUD 已存在或已確認的功能；未完成內容不會自行補寫。

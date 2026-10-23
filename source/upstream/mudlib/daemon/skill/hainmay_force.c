@@ -82,8 +82,7 @@ int do_exercise(object me)
 {
     if( me->query_stat("kee") < 3 || me->query_stat("gin") < 4 ) {
         tell_object(me, "你覺得氣血浮動、精力難繼﹐已無法再運轉寒梅心法。\n");
-        me->interrupt_me(me, "exhausted");
-        return 1;
+        return 0;   // 傳回 0 結束打坐（系統沒有 interrupt_me，舊寫法會一直重複這句；2026-10-23）
     }
 
     me->consume_stat("kee", 2);

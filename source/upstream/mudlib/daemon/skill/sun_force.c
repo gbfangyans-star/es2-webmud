@@ -72,8 +72,7 @@ int do_exercise(object me)
 {
     if( me->query_stat("gin") < 3 || me->query_stat("kee") < 4 || me->query_stat("sen") < 7 ) {
         tell_object(me, "你只覺口乾舌燥、心火虛浮﹐再也運轉不動丹陽真氣。\n");
-        me->interrupt_me(me, "exhausted");
-        return 1;
+        return 0;   // 傳回 0 結束打坐（系統沒有 interrupt_me，舊寫法會一直重複這句；2026-10-23）
     }
 
     me->consume_stat("gin", 2);
