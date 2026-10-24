@@ -552,7 +552,8 @@ function hudPollReady(force=false,allowNoRoom=false){
   // HUD must continue updating during combat even when no classic ">" prompt is emitted.
   // Only hold polling while the newest server text is an interactive login/choice prompt.
   const recent=tail.trim().split('\n').slice(-2).join(' ').slice(-220);
-  if(/請輸入(?:選項|.*數字)|請輸入\s*Y\s*或\s*N|密碼|是否.*[？?]|確定嗎/.test(recent))return false;
+  // 魂飛魄散後重新選種族、性別、名稱時，舊的房間代號還在；不擋的話背景查詢會被當成答案，畫面一直跳「請重新輸入」。
+  if(/請輸入(?:選項|.*數字)|請輸入\s*Y\s*或\s*N|密碼|是否.*[？?]|確定嗎|請重新輸入|您的選擇|種族名|\(Male \/ Female\)|\(Yes \/ No\)|顯示名稱|使用者代號|電子郵件/.test(recent))return false;
   return true;
 }
 function pollHud(force=false,allowNoRoom=false){

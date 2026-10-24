@@ -604,7 +604,8 @@ private void get_race (string arg, object ob, string *list) {
 
     if (!stringp(arg)) arg = "";
     arg = replace_string(arg, " ", "");
-    if (arg == "") {
+    // 網頁背景的狀態查詢（webhud）不是玩家的答案，不要回「請重新輸入」。
+    if (arg == "" || arg == "webhud") {
         write ("您的選擇(用 '? <種族名>' 可查閱說明)﹕");
         input_to ("get_race", ob, list);
         return;
@@ -689,7 +690,7 @@ private void get_gender (string gender, mapping opts, object ob, string race) {
 }
 
 private void get_name (string arg, object ob, object user) {
-    if (!check_legal_name(arg)) {
+    if (arg == "webhud" || !check_legal_name(arg)) {
         write ("您的顯示名稱: ");
         input_to ("get_name", ob, user);
         return;
