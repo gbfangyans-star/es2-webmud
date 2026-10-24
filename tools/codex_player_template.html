@@ -283,6 +283,7 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
 
   // ---------------------------------------------------------------- 技能
   function skillSummary(s) {
+    if (s.help) return s.help.kind || '';
     const g = ['練成 ' + s.entry];
     if (s.attrs.length) g.push('增長 ' + s.attrs.join('、'));
     if (s.pools.length) g.push('提升' + s.pools.join('、') + '上限');
@@ -302,12 +303,17 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
     if (!s.moves || !s.moves.length) return '';
     return `<dt>招式</dt><dd>${s.moves.map(([n, lv]) => esc(n) + (lv > 0 ? `<span class="hint">（${lv} 級）</span>` : '')).join('、')}</dd>`;
   }
-  function specialTable(s) {
-    if (!s.specials || !s.specials.length) return '';
-    const cmd = s.specials.some(x => x.cmd);
-    return `<div><h4 class="hint" style="margin:0 0 4px">絕招與運功</h4><div class="tbl-wrap"><table><thead><tr><th>等級</th><th>名稱</th>${cmd ? '<th>指令</th>' : ''}<th>效果</th></tr></thead><tbody>` +
-      s.specials.map(x => `<tr><td style="white-space:nowrap">${/^\d+$/.test(x.lv) ? esc(x.lv) + ' 級' : esc(x.lv)}</td><td style="white-space:nowrap">${esc(x.name)}</td>` +
-        (cmd ? `<td>${x.cmd ? `<code>${esc(x.cmd)}</code>` : '—'}</td>` : '') + `<td>${esc(x.eff)}</td></tr>`).join('') + `</tbody></table></div></div>`;
+  // 有遊戲說明檔（help）的技能：照說明檔的項目顯示，不另外寫公式
+  function helpBody(s) {
+    const h = s.help;
+    return `<dl class="kv"><dt>技能種類</dt><dd>${esc(h.kind || '—')}</dd><dt>學習條件</dt><dd>${esc(h.cond || '—')}</dd>` +
+      `<dt>任務起始</dt><dd>${esc(h.start || '—')}</dd>` +
+      `<dt>特殊能力</dt><dd>${h.abilities.length ? h.abilities.map(a => '‧' + esc(a)).join('<br>') : '無'}</dd>` +
+      `<dt>能力提昇</dt><dd>${esc(h.gain || '—')}</dd>` +
+      (s.excl ? `<dt>專屬</dt><dd>${esc(s.excl)}</dd>` : '') +
+      (s.factions.length ? `<dt>門派</dt><dd>${s.factions.map(facLink).join('、')}</dd>` : '') +
+      (s.teachers.length ? `<dt>傳授</dt><dd>${s.teachers.map(npcLink).join('、')}</dd>` : '') +
+      (s.books.length ? `<dt>書籍</dt><dd>${s.books.map(itemLink).join('、')}</dd>` : '') + `</dl>`;
   }
   // 右欄：基本技能、某某專屬、門派名稱
   function skillOwner(s) {
@@ -327,8 +333,8 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
     const rows = D.skills.filter(s => (cur === 'all' || (cur === 'basic' ? s.basic : cur === 'common' ? !own(s) && !s.basic : own(s) && s.factions[0] === cur)) &&
         matches([s.name, s.cat, s.desc, s.attrs.join(' '), s.attrText, s.poolText, (s.spells || []).map(x => x.name).join(' '), s.factions.map(f => facById[f].name).join(' ')].join(' ')))
       .map(s => row(s.id,
-        `<span class="nm">${esc(s.name)}</span><span class="sum">${esc([s.cat, skillSummary(s)].filter(Boolean).join('・'))}</span><span class="num">${esc(skillOwner(s))}</span>`,
-        () => `<dl class="kv">` +
+        `<span class="nm">${esc(s.name)}</span><span class="sum">${esc((s.help ? [skillSummary(s)] : [s.cat, skillSummary(s)]).filter(Boolean).join('・'))}</span><span class="num">${esc(skillOwner(s))}</span>`,
+        () => s.help ? helpBody(s) : `<dl class="kv">` +
           (s.cat ? `<dt>分類</dt><dd>${esc(s.cat)}</dd>` : '') +
           (s.desc ? `<dt>說明</dt><dd>${esc(s.desc)}</dd>` : '') + moveList(s) +
           (s.excl ? `<dt>專屬</dt><dd>${esc(s.excl)}</dd>` : '') +
@@ -338,7 +344,7 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
           (s.spellNote ? `<dt>法術特性</dt><dd>${esc(s.spellNote)}</dd>` : '') +
           (s.factions.length ? `<dt>門派</dt><dd>${s.factions.map(facLink).join('、')}</dd>` : '') +
           (s.teachers.length ? `<dt>傳授</dt><dd>${s.teachers.map(npcLink).join('、')}</dd>` : '') +
-          (s.books.length ? `<dt>書籍</dt><dd>${s.books.map(itemLink).join('、')}</dd>` : '') + `</dl>` + specialTable(s) + spellTable(s)));
+          (s.books.length ? `<dt>書籍</dt><dd>${s.books.map(itemLink).join('、')}</dd>` : '') + `</dl>` + spellTable(s)));
     return listShell(subChips('skills', groups), rows, '只列出在江湖上找得到師父或書籍的技能；機緣巧合才學得到的武功，留待各位自行探索。');
   }
 

@@ -29,7 +29,7 @@ OUT = ROOT / 'web' / 'codex.html'
 FACTION_DOC = ROOT / 'docs' / 'catalog' / '玩家圖鑑_門派.md'
 SKILL_DOC = ROOT / 'docs' / 'catalog' / '玩家圖鑑_技能.md'
 SPELL_DOC = ROOT / 'docs' / 'catalog' / '玩家圖鑑_法術.md'
-MOVE_DOC = ROOT / 'docs' / 'catalog' / '玩家圖鑑_招式.md'
+HELP_DIR = MUD / 'docs' / 'help'
 SKILL_TABLE = ROOT / 'docs' / 'martial_arts' / '門派武功對照表.md'
 START = '/d/snow/inn_hall'
 
@@ -156,15 +156,51 @@ def load_spells():
     return out
 
 
-def load_specials():
-    """玩家圖鑑_招式.md：技能代碼 -> [{lv, name, cmd, eff}]（絕招、殺招與運功方式）。"""
+def load_help():
+    """遊戲說明檔（mudlib/docs/help/*.txt）裡的技能段落：技能代碼 -> {kind, cond, start, abilities, gain}。
+
+    格式見 CLAUDE.md「說明檔格式」：每項技能一段「◎ 名稱（id）」，依序寫技能種類、學習條件、
+    任務起始、特殊能力（每項「‧」開頭）、能力提昇。門派說明檔（職業.門派.txt）是精簡版，
+    優先採用；只有技能自己的說明檔（詳細版）時才用它。圖鑑照說明檔的寫法，不另外寫公式。"""
     out = {}
-    if not MOVE_DOC.exists():
+    if not HELP_DIR.exists():
         return out
-    for line in bc.read(MOVE_DOC).splitlines():
-        cols = [c.strip() for c in line.strip().strip('|').split('|')]
-        if len(cols) == 5 and cols[0] and not cols[0].startswith(('技能代碼', '---')):
-            out.setdefault(cols[0], []).append({'lv': cols[1], 'name': cols[2], 'cmd': cols[3], 'eff': cols[4]})
+    files = sorted(HELP_DIR.glob('*.txt'), key=lambda p: '.' not in p.stem)  # 門派說明檔排前面
+    for f in files:
+        cur = None
+        last = None
+        for line in bc.read(f).splitlines():
+            m = re.match(r'^◎\s*(.+?)（([^）]+)）\s*$', line)
+            if m:
+                code = m.group(2).strip()
+                cur = None if code in out else {'kind': '', 'cond': '', 'start': '', 'abilities': [], 'gain': ''}
+                if cur is not None:
+                    out[code] = cur
+                last = None
+                continue
+            if cur is None:
+                continue
+            if not line.strip() or line.startswith(('○', '◎')):
+                if not line.strip():
+                    continue
+                cur = None
+                continue
+            body = line.lstrip('　 ')
+            fm = re.match(r'^(技能種類|學習條件|任務起始|特殊能力|能力提昇)：(.*)$', body)
+            if fm and line.startswith('　') and not line.startswith('　　'):
+                key = {'技能種類': 'kind', '學習條件': 'cond', '任務起始': 'start', '特殊能力': None, '能力提昇': 'gain'}[fm.group(1)]
+                if key:
+                    cur[key] = fm.group(2).strip()
+                last = key
+            elif body.startswith('‧'):
+                item = body[1:].strip()
+                if item != '無':
+                    cur['abilities'].append(item)
+                last = 'abilities'
+            elif last == 'abilities' and cur['abilities']:
+                cur['abilities'][-1] += body.strip()
+            elif last in ('kind', 'cond', 'start', 'gain'):
+                cur[last] += body.strip()
     return out
 
 
@@ -306,7 +342,7 @@ def main(out):
     growth = attr_growth_table()
     growth_doc = load_skill_growth()
     spell_doc = load_spells()
-    special_doc = load_specials()
+    help_doc = load_help()
     teach_of, book_of = {}, {}
     for nid in npc_rooms:
         for s in extra[nid]['teaches']:
@@ -454,7 +490,7 @@ def main(out):
             'attrs': list(dict.fromkeys(ATTR_ZH.get(a, a) for a in attrs if a in ATTR_ZH)),
             'pools': list(dict.fromkeys(POOL_ZH[p] for p in pools if p in POOL_ZH)),
             'teachers': [ids[t] for t in teachers], 'books': [ids[b] for b in book_of.get(c, []) if b in ids],
-            'factions': facs, 'excl': excl, 'moves': moves, 'specials': special_doc.get(c, []),
+            'factions': facs, 'excl': excl, 'moves': moves, 'help': help_doc.get(c),
         })
     # 單一門派的武功依門派排在前面，各派共通的基本功夫與書上學得到的放後面。
     fac_order = {f['id']: i for i, f in enumerate(factions)}
