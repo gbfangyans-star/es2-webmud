@@ -95,6 +95,28 @@ void pay_cost(object me, object scroll, string spell)
 // 重複召喚＝收回舊的、換一批新的。
 // ------------------------------------------------------------------
 
+// 召喚出的犬隻名字可能不同：同名的合在一起數，例如「兩條黃狗和一條白狗」；
+// 只差顏色的（兩種靈獒）也算同名，直接說「三條靈獒」，用第一條的顏色。
+string dog_list(object *dogs)
+{
+    string *kinds = ({}), *parts = ({});
+    mapping num = ([]), shown = ([]);
+    string kind;
+
+    foreach(object dog in dogs) {
+        kind = dog->query_dog_kind();
+        if( undefinedp(num[kind]) ) {
+            kinds += ({ kind });
+            shown[kind] = dog->name();
+        }
+        num[kind]++;
+    }
+    foreach(kind in kinds)
+        parts += ({ ({ "一", "兩", "三" })[num[kind] - 1] + "條" + shown[kind] });
+    if( sizeof(parts) == 1 ) return parts[0];
+    return implode(parts[0..<2], "、") + "和" + parts[<1];
+}
+
 int do_dog(object me, int sk)
 {
     object dog, *dogs;
@@ -118,8 +140,7 @@ int do_dog(object me, int sk)
         dogs += ({ dog });
     }
     me->set_temp("maoshan/dogs", dogs);
-    message_vision("青煙散處竄出" + ({ "一", "兩", "三" })[count - 1] + "條"
-        + dogs[0]->name() + "﹐伏在$N腳邊低聲嗚嗚作響。\n", me, 0, 1);
+    message_vision("青煙散處竄出" + dog_list(dogs) + "﹐伏在$N腳邊低聲嗚嗚作響。\n", me, 0, 1);
     return 1;
 }
 
