@@ -2,7 +2,7 @@
 description: 丹道【神農之術】（alchemy-medication）。龍圖丹派方士的法術類技能，
              安裝在 magic（enable magic with alchemy-medication），以 conjure 施展
              七色印，封住或解開青銅丹鼎。
-design: docs/martial_arts/龍圖丹派_神農之術.md（2026-10-15；2026-10-22 修改 U-10、U-11）
+design: docs/martial_arts/龍圖丹派_神農之術.md（2026-10-15；2026-10-22 修改 U-10、U-11；2026-10-24 印名上色）
 note: 0 級即可施展；0～14 級不存在，累積到學成門檻後 gain 直接學成 15 級。
       升級不增加精、氣、神；法術修為、法術道行只拿系統規則（2026-10-22）。
 ---*/
@@ -24,6 +24,17 @@ private mapping colors = ([
     "yellow": "黃",
     "gray":   "灰",
     "black":  "皂",
+]);
+
+// 印名的顏色（使用者定案，2026-10-24）：({ X印, 散X印 })，散印暗一階；只有印名上色。
+private mapping seal_colors = ([
+    "green":  ({ HIC, CYN }),
+    "white":  ({ HIW, WHT }),
+    "red":    ({ HIR, RED }),
+    "purple": ({ HIM, MAG }),
+    "yellow": ({ HIY, YEL }),
+    "gray":   ({ WHT, HIK }),
+    "black":  ({ HIK, HIK }),
 ]);
 
 void create()
@@ -102,12 +113,14 @@ int conjure_magic(object me, string spell, object target)
         return notify_fail(gender_self(me) + "的「神」不足以施展這個法術。\n");
 
     cname = colors[color];
-    seal_name = (action == "seal" ? "" : "散") + cname + "印";
+    seal_name = seal_colors[color][action == "seal" ? 0 : 1]
+        + (action == "seal" ? "" : "散") + cname + "印" NOR;
 
     // S-30：固定消耗 15 神，失敗照扣。
     me->consume_stat("sen", SEN_COST);
+    // 印名的顏色代碼會被斷行程式算進寬度，這句不自動斷行（整句不到 70 格）。
     message_vision("$N用手在" + target->name() + "上虛畫了一個「" + seal_name
-        + "」，口中念念有詞地祝禱著。\n", me);
+        + "」，口中念念有詞地祝禱著。\n", me, 0, 1);
 
     // S-33：重複封印、錯色解印、解沒有封印的丹鼎，一律算失敗。
     current = target->query_seal();

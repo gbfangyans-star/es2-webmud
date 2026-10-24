@@ -26,13 +26,29 @@ void create()
     setup();
 }
 
-/* 名稱依強度：1～3 黃狗、4～6 黑犬、7～10 靈獒。 */
+/* 名稱依強度，同一階隨機一種，只有名字不同（使用者定案，2026-10-24）：
+ * 1～3 黃狗、白狗、灰狗；4～6 青犬、赤犬；7～10 靈獒（紫紅或青）。 */
 string dog_name(int level)
 {
-    if( level >= 7 ) return "靈獒";
-    if( level >= 4 ) return "黑犬";
-    return "黃狗";
+    string *names, *colors;
+    int i;
+
+    if( level >= 7 ) {
+        names = ({ "靈獒", "靈獒" });
+        colors = ({ MAG, CYN });
+    } else if( level >= 4 ) {
+        names = ({ "青犬", "赤犬" });
+        colors = ({ BLU, RED });
+    } else {
+        names = ({ "黃狗", "白狗", "灰狗" });
+        colors = ({ YEL, HIW, HIK });
+    }
+    i = random(sizeof(names));
+    set("dog_kind", names[i]);      // 不含顏色的名字，召喚敘述合併計數用
+    return colors[i] + names[i] + NOR;
 }
+
+string query_dog_kind() { return query("dog_kind"); }
 
 /* 主人召喚時呼叫：套用野獸強度表，再把精氣神乘 3、野獸技能與傷害加成乘 2。 */
 void set_summon(object who, int level)
