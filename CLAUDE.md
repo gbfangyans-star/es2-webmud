@@ -35,6 +35,10 @@
 2. 再給使用者合併到 wolfer168 的網址，由使用者自己操作，例如：
    https://github.com/wolfer168/es2-webmud/compare/main...gbfangyans-star:es2-webmud:claude/confident-carson-v8bs1a
    （分支名稱換成當時的工作分支），同時附上可貼上的標題與說明。
+3. 最後標明**本次更新是否需要重開**（重開遊戲服務，不是整台主機），並附上主機要執行的指令
+   （使用者指示，2026-10-24）。判斷依據與指令見 `docs/UPDATE_RESTART_GUIDE.md`：
+   需要重開時給 `update.sh`；不需要時給只拉程式的指令，並列出要在遊戲裡 `update` 的檔案、
+   是否要重新產生圖鑑、是否只要玩家按 F5。
 
 ## 名詞（使用者指示，2026-10-21）
 
