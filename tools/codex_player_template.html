@@ -283,6 +283,7 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
 
   // ---------------------------------------------------------------- 技能
   function skillSummary(s) {
+    if (s.help) return s.help.kind || '';
     const g = ['練成 ' + s.entry];
     if (s.attrs.length) g.push('增長 ' + s.attrs.join('、'));
     if (s.pools.length) g.push('提升' + s.pools.join('、') + '上限');
@@ -292,10 +293,34 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
   function spellTable(s) {
     if (!s.spells || !s.spells.length) return '';
     const dmg = s.spells.some(x => x.dmg && x.dmg !== '—');
-    return `<div><h4 class="hint" style="margin:0 0 4px">法術</h4><div class="tbl-wrap"><table><thead><tr><th>法術</th><th>學會</th><th>耗神</th>${dmg ? '<th>傷害</th>' : ''}<th>效果</th></tr></thead><tbody>` +
-      s.spells.map(x => `<tr><td style="white-space:nowrap">${esc(x.name)}</td><td style="white-space:nowrap">${x.lv === '0' ? '一學會' : esc(x.lv) + ' 級'}</td><td class="v">${esc(x.cost || '—')}</td>` +
+    return `<div><h4 class="hint" style="margin:0 0 4px">法術</h4><div class="tbl-wrap"><table><thead><tr><th>法術</th><th>指令</th><th>學會</th><th>耗神</th>${dmg ? '<th>傷害</th>' : ''}<th>效果</th></tr></thead><tbody>` +
+      s.spells.map(x => `<tr><td style="white-space:nowrap">${esc(x.name)}</td><td><code>${esc(x.cmd || '—')}</code></td><td style="white-space:nowrap">${x.lv === '0' ? '一學會' : esc(x.lv) + ' 級'}</td><td class="v">${esc(x.cost || '—')}</td>` +
         (dmg ? `<td style="white-space:nowrap">${esc(x.dmg || '—')}</td>` : '') + `<td>${esc(x.eff)}</td></tr>`).join('') +
       `</tbody></table></div>${dmg ? '<p class="hint" style="margin:4px 0 0">傷害以咒文強度為準。咒文強度 = 慧根² ÷ 10 + 施咒當時的神 ÷ 32 + 0～慧根的隨機值；基本咒術練到 100 級起，再乘以（50 + 咒術等級）%。<br>命中率 = 50% + (咒文技巧 − 對方抗性) × 2%，最低 5%、最高 95%；咒文技巧 = 咒術有效等級 + 咒文能力。</p>' : ''}</div>`;
+  }
+  // 武功的招式（幾級起可用）與絕招、運功方式
+  function moveList(s) {
+    if (!s.moves || !s.moves.length) return '';
+    return `<dt>招式</dt><dd>${s.moves.map(([n, lv]) => esc(n) + (lv > 0 ? `<span class="hint">（${lv} 級）</span>` : '')).join('、')}</dd>`;
+  }
+  // 有遊戲說明檔（help）的技能：照說明檔的項目顯示，不另外寫公式
+  function helpBody(s) {
+    const h = s.help;
+    return `<dl class="kv"><dt>技能種類</dt><dd>${esc(h.kind || '—')}</dd><dt>學習條件</dt><dd>${esc(h.cond || '—')}</dd>` +
+      `<dt>任務起始</dt><dd>${esc(h.start || '—')}</dd>` +
+      `<dt>特殊能力</dt><dd>${h.abilities.length ? h.abilities.map(a => '‧' + esc(a)).join('<br>') : '無'}</dd>` +
+      `<dt>能力提昇</dt><dd>${esc(h.gain || '—')}</dd>` +
+      (s.excl ? `<dt>專屬</dt><dd>${esc(s.excl)}</dd>` : '') +
+      (s.factions.length ? `<dt>門派</dt><dd>${s.factions.map(facLink).join('、')}</dd>` : '') +
+      (s.teachers.length ? `<dt>傳授</dt><dd>${s.teachers.map(npcLink).join('、')}</dd>` : '') +
+      (s.books.length ? `<dt>書籍</dt><dd>${s.books.map(itemLink).join('、')}</dd>` : '') + `</dl>`;
+  }
+  // 右欄：基本技能、某某專屬、門派名稱
+  function skillOwner(s) {
+    if (s.basic) return '基本技能';
+    if (s.excl) return s.excl;
+    if (s.factions.length === 1) return facById[s.factions[0]].name;
+    return s.factions.length ? '多派' : '';
   }
   function renderSkills() {
     // 本門武功：只有一個門派傳授、而且不是基本技能
@@ -303,15 +328,16 @@ svg.map .ud { font-size: 10px; fill: var(--muted); }
     const facs = D.factions.filter(f => D.skills.some(s => own(s) && s.factions[0] === f.id));
     const groups = [['all', '全部', D.skills.length]].concat(
       facs.map(f => [f.id, f.name, D.skills.filter(s => own(s) && s.factions[0] === f.id).length]),
-      [['common', '基本與其他', D.skills.filter(s => !own(s)).length]]);
+      [['basic', '基本技能', D.skills.filter(s => s.basic).length], ['common', '其他', D.skills.filter(s => !own(s) && !s.basic).length]]);
     const cur = state.sub.skills || 'all';
-    const rows = D.skills.filter(s => (cur === 'all' || (cur === 'common' ? !own(s) : own(s) && s.factions[0] === cur)) &&
+    const rows = D.skills.filter(s => (cur === 'all' || (cur === 'basic' ? s.basic : cur === 'common' ? !own(s) && !s.basic : own(s) && s.factions[0] === cur)) &&
         matches([s.name, s.cat, s.desc, s.attrs.join(' '), s.attrText, s.poolText, (s.spells || []).map(x => x.name).join(' '), s.factions.map(f => facById[f].name).join(' ')].join(' ')))
       .map(s => row(s.id,
-        `<span class="nm">${esc(s.name)}</span><span class="sum">${esc([s.cat, skillSummary(s)].filter(Boolean).join('・'))}</span><span class="num">${esc(s.factions.length === 1 ? facById[s.factions[0]].name : s.factions.length ? '多派' : '')}</span>`,
-        () => `<dl class="kv">` +
+        `<span class="nm">${esc(s.name)}</span><span class="sum">${esc((s.help ? [skillSummary(s)] : [s.cat, skillSummary(s)]).filter(Boolean).join('・'))}</span><span class="num">${esc(skillOwner(s))}</span>`,
+        () => s.help ? helpBody(s) : `<dl class="kv">` +
           (s.cat ? `<dt>分類</dt><dd>${esc(s.cat)}</dd>` : '') +
-          (s.desc ? `<dt>說明</dt><dd>${esc(s.desc)}</dd>` : '') +
+          (s.desc ? `<dt>說明</dt><dd>${esc(s.desc)}</dd>` : '') + moveList(s) +
+          (s.excl ? `<dt>專屬</dt><dd>${esc(s.excl)}</dd>` : '') +
           `<dt>練成</dt><dd>${esc(s.entry)}</dd>` +
           `<dt>精氣神</dt><dd>${s.poolText ? esc(s.poolText) : s.pools.length ? '提升' + esc(s.pools.join('、')) + '的上限' : '—'}</dd>` +
           `<dt>屬性</dt><dd>${s.attrText ? esc(s.attrText) : s.attrs.length ? esc(s.attrs.join('、')) + '會隨修練增長' : '—'}</dd>` +

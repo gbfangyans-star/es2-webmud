@@ -29,6 +29,7 @@ OUT = ROOT / 'web' / 'codex.html'
 FACTION_DOC = ROOT / 'docs' / 'catalog' / '玩家圖鑑_門派.md'
 SKILL_DOC = ROOT / 'docs' / 'catalog' / '玩家圖鑑_技能.md'
 SPELL_DOC = ROOT / 'docs' / 'catalog' / '玩家圖鑑_法術.md'
+HELP_DIR = MUD / 'docs' / 'help'
 SKILL_TABLE = ROOT / 'docs' / 'martial_arts' / '門派武功對照表.md'
 START = '/d/snow/inn_hall'
 
@@ -39,8 +40,11 @@ DIR_ZH = {'north': '北', 'south': '南', 'east': '東', 'west': '西', 'northea
 ATTR_ZH = {'str': '膂力', 'cor': '膽識', 'cps': '定力', 'int': '悟性', 'wis': '慧根', 'spi': '靈性',
            'con': '根骨', 'dex': '機敏', 'kar': '福緣'}
 POOL_ZH = {'gin': '精', 'kee': '氣', 'sen': '神'}
+# 基本技能（使用者指示，2026-10-24：左手、雙手兵刃與讀書識字、經脈穴道之學、偷襲暗算技倆、
+# 古文造詣、五行陰陽之學也算基本技能）
 BASIC_SKILLS = {'force', 'dodge', 'parry', 'unarmed', 'sword', 'blade', 'staff', 'axe', 'dagger', 'pike', 'whip',
-                'blunt', 'needle', 'throwing', 'spells', 'magic', 'literate'}
+                'blunt', 'needle', 'throwing', 'spells', 'magic', 'literate', 'kee anatomy', 'backstab',
+                'archaic attainment', 'mysticism'}
 USAGE_ZH = {'force': '內功', 'dodge': '閃躲', 'parry': '招架', 'unarmed': '徒手', 'sword': '劍術', 'blade': '刀法',
             'staff': '杖法', 'axe': '斧術', 'dagger': '錐法', 'pike': '槍法', 'whip': '鞭法', 'blunt': '鎚法',
             'needle': '針術', 'spells': '咒術', 'magic': '法術'}
@@ -128,8 +132,9 @@ def load_skill_growth():
         return out
     for line in bc.read(SKILL_DOC).splitlines():
         cols = [c.strip() for c in line.strip().strip('|').split('|')]
-        if len(cols) == 4 and cols[0] and not cols[0].startswith(('技能代碼', '---')):
-            out[cols[0]] = {'entry': cols[1], 'pools': cols[2], 'attrs': cols[3]}
+        if len(cols) in (4, 5) and cols[0] and not cols[0].startswith(('技能代碼', '---')):
+            out[cols[0]] = {'entry': cols[1], 'pools': cols[2], 'attrs': cols[3],
+                            'owner': cols[4] if len(cols) == 5 else ''}
     return out
 
 
@@ -140,14 +145,81 @@ def load_spells():
         return out
     for line in bc.read(SPELL_DOC).splitlines():
         cols = [c.strip() for c in line.strip().strip('|').split('|')]
-        if len(cols) != 6 or not cols[0] or cols[0].startswith(('技能代碼', '---')):
+        if len(cols) != 7 or not cols[0] or cols[0].startswith(('技能代碼', '---')):
             continue
         sk = out.setdefault(cols[0], {'note': '', 'list': []})
         if cols[1] == '（共通）':
-            sk['note'] = cols[4]
+            sk['note'] = cols[5]
         else:
-            sk['list'].append({'name': cols[1], 'lv': cols[2], 'cost': cols[3], 'eff': cols[4], 'dmg': cols[5]})
+            sk['list'].append({'name': cols[1], 'cmd': cols[2], 'lv': cols[3], 'cost': cols[4], 'eff': cols[5],
+                               'dmg': cols[6]})
     return out
+
+
+def load_help():
+    """遊戲說明檔（mudlib/docs/help/*.txt）裡的技能段落：技能代碼 -> {kind, cond, start, abilities, gain}。
+
+    格式見 CLAUDE.md「說明檔格式」：每項技能一段「◎ 名稱（id）」，依序寫技能種類、學習條件、
+    任務起始、特殊能力（每項「‧」開頭）、能力提昇。門派說明檔（職業.門派.txt）是精簡版，
+    優先採用；只有技能自己的說明檔（詳細版）時才用它。圖鑑照說明檔的寫法，不另外寫公式。"""
+    out = {}
+    if not HELP_DIR.exists():
+        return out
+    files = sorted(HELP_DIR.glob('*.txt'), key=lambda p: '.' not in p.stem)  # 門派說明檔排前面
+    for f in files:
+        cur = None
+        last = None
+        for line in bc.read(f).splitlines():
+            m = re.match(r'^◎\s*(.+?)（([^）]+)）\s*$', line)
+            if m:
+                code = m.group(2).strip()
+                cur = None if code in out else {'kind': '', 'cond': '', 'start': '', 'abilities': [], 'gain': ''}
+                if cur is not None:
+                    out[code] = cur
+                last = None
+                continue
+            if cur is None:
+                continue
+            if not line.strip() or line.startswith(('○', '◎')):
+                if not line.strip():
+                    continue
+                cur = None
+                continue
+            body = line.lstrip('　 ')
+            fm = re.match(r'^(技能種類|學習條件|任務起始|特殊能力|能力提昇)：(.*)$', body)
+            if fm and line.startswith('　') and not line.startswith('　　'):
+                key = {'技能種類': 'kind', '學習條件': 'cond', '任務起始': 'start', '特殊能力': None, '能力提昇': 'gain'}[fm.group(1)]
+                if key:
+                    cur[key] = fm.group(2).strip()
+                last = key
+            elif body.startswith('‧'):
+                item = body[1:].strip()
+                if item != '無':
+                    cur['abilities'].append(item)
+                last = 'abilities'
+            elif last == 'abilities' and cur['abilities']:
+                cur['abilities'][-1] += body.strip()
+            elif last in ('kind', 'cond', 'start', 'gain'):
+                cur[last] += body.strip()
+    return out
+
+
+def art_info(path):
+    """新版武功：招式（名稱、幾級起可用）與給玩家看的簡介 art_desc。"""
+    if not path:
+        return [], ''
+    code = bc.strip_comments(bc.read(ROOT / path))
+    moves = []
+    m = re.search(r'\bmoves\s*=\s*\(\{(.*?)\}\)\s*;', code, re.S)
+    if m:
+        for blk in re.findall(r'\(\[(.*?)\]\)', m.group(1), re.S):
+            name = re.search(r'"name"\s*:\s*"([^"]+)"', blk)
+            lvl = re.search(r'"lvl"\s*:\s*(\d+)', blk)
+            if name:
+                moves.append([name.group(1), int(lvl.group(1)) if lvl else 0])
+    d = re.search(r'\bart_desc\s*=\s*((?:"(?:[^"\\]|\\.)*"\s*\+?\s*)+);', code)
+    desc = ''.join(re.findall(r'"((?:[^"\\]|\\.)*)"', d.group(1))) if d else ''
+    return moves, desc
 
 
 def entry_level(path):
@@ -270,6 +342,7 @@ def main(out):
     growth = attr_growth_table()
     growth_doc = load_skill_growth()
     spell_doc = load_spells()
+    help_doc = load_help()
     teach_of, book_of = {}, {}
     for nid in npc_rooms:
         for s in extra[nid]['teaches']:
@@ -386,7 +459,8 @@ def main(out):
         cat = TYPE_ZH.get(cat, cat)
         if cat == '指令技能':
             cat = '技藝'
-        desc = clean_desc(s.get('desc'), s.get('name') or bc.zh(c))
+        moves, art_desc = art_info(s.get('file'))
+        desc = art_desc or clean_desc(s.get('desc'), s.get('name') or bc.zh(c))
         basic = c in BASIC_SKILLS or c.startswith(('secondhand ', 'twohanded '))
         if basic:
             cat = '基本技能'
@@ -398,6 +472,14 @@ def main(out):
         entry = gd.get('entry') or f'{entry_level(s.get("file"))} 級'
         if re.fullmatch(r'\d+', entry):
             entry += ' 級'
+        # 歸屬：寫門派名稱就歸到那個門派；寫職業名稱則顯示「某某專屬」
+        owner, excl = gd.get('owner', ''), ''
+        if owner:
+            fid = next((f['id'] for f in factions if f['name'] == owner), None)
+            if fid:
+                facs = [fid]
+            else:
+                facs, excl = [], owner + '專屬'
         attr_text = gd.get('attrs') or (f'每練到 5 的倍數有機會提升{ATTR_ZH[growth[c]]} 1 點（屬性最高 50）。'
                                         if growth.get(c) in ATTR_ZH else '')
         out_skills.append({
@@ -408,17 +490,19 @@ def main(out):
             'attrs': list(dict.fromkeys(ATTR_ZH.get(a, a) for a in attrs if a in ATTR_ZH)),
             'pools': list(dict.fromkeys(POOL_ZH[p] for p in pools if p in POOL_ZH)),
             'teachers': [ids[t] for t in teachers], 'books': [ids[b] for b in book_of.get(c, []) if b in ids],
-            'factions': facs,
+            'factions': facs, 'excl': excl, 'moves': moves, 'help': help_doc.get(c),
         })
     # 單一門派的武功依門派排在前面，各派共通的基本功夫與書上學得到的放後面。
     fac_order = {f['id']: i for i, f in enumerate(factions)}
     out_skills.sort(key=lambda s: (s['basic'] or len(s['factions']) != 1, fac_order.get((s['factions'] or [''])[0], 99),
-                                   s['basic'], s['cat'], s['name']))
+                                   s['basic'], not s['excl'], s['cat'], s['name']))
 
     out_factions = []
     for f in factions:
         masters = [ids[f['master']]]
         skills = [ids[s] for s in extra[f['master']]['teaches'] if s in ids]
+        # 歸屬於本門、但不是掌門親傳的武功（例如竹上經心法由大弟子傳授）
+        skills += [k['id'] for k in out_skills if k['factions'] == [f['id']] and k['id'] not in skills]
         out_factions.append({'id': f['id'], 'name': f['name'], 'cls': f['cls'], 'entry': f['entry'], 'intro': f['intro'],
                              'masters': masters, 'members': [k for k, v in out_npcs.items() if v['faction'] == f['id']],
                              'skills': skills})
