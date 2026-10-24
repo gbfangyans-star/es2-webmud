@@ -39,6 +39,15 @@ fi
 # 玩家版天朝圖鑑（web/codex.html）依目前的遊戲內容重新產生；失敗也不影響更新。
 python3 "$APP_DIR/tools/build_player_codex.py" || echo "（圖鑑產生失敗，沿用舊的圖鑑）"
 mkdir -p "$MUD/log/static"   # 自殺、複製物品等事件紀錄要寫在這裡（舊主機可能沒有這個資料夾）
+# 自動安全更新（unattended-upgrades）裝完後，needrestart 會把用到更新程式庫的服務重開；
+# 遊戲與網頁橋接程式不要自動重開（會讓線上玩家斷線），由管理者自己選時間重開。
+if [ -d /etc/needrestart/conf.d ]; then
+    sudo tee /etc/needrestart/conf.d/es2-webmud.conf >/dev/null <<'NREOF'
+# 自動更新後不要自動重開遊戲與網頁橋接程式，由管理者自己選時間重開
+$nrconf{override_rc}{qr(^es2-mud\.service$)} = 0;
+$nrconf{override_rc}{qr(^es2-web\.service$)} = 0;
+NREOF
+fi
 echo "==== 4/4 清除編譯快取並重開 ===="
 rm -rf "$MUD/bin/"*
 sudo systemctl restart es2-mud
