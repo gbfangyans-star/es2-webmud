@@ -610,8 +610,13 @@ private void get_race (string arg, object ob, string *list) {
 
     if (!stringp(arg)) arg = "";
     arg = replace_string(arg, " ", "");
-    // 網頁背景的狀態查詢（webhud）不是玩家的答案，不要回「請重新輸入」。
-    if (arg == "" || arg == "webhud") {
+    // 網頁背景的狀態查詢（webhud）不是玩家的答案：不回「請重新輸入」，也不重印提問
+    // （還沒重新整理的舊網頁會一直送）。
+    if (arg == "webhud") {
+        input_to ("get_race", ob, list);
+        return;
+    }
+    if (arg == "") {
         write ("您的選擇(用 '? <種族名>' 可查閱說明)﹕");
         input_to ("get_race", ob, list);
         return;
@@ -672,6 +677,7 @@ private void get_gender (string gender, mapping opts, object ob, string race) {
             gender = "female";
             break;
         default:
+            if (gender == "webhud") opts["silent"] = 1;   // 網頁背景查詢：不重印提問
             input_to ("get_gender", opts, ob, race);
             return;
     }
@@ -696,7 +702,11 @@ private void get_gender (string gender, mapping opts, object ob, string race) {
 }
 
 private void get_name (string arg, object ob, object user) {
-    if (arg == "webhud" || !check_legal_name(arg)) {
+    if (arg == "webhud") {   // 網頁背景查詢：不重印提問
+        input_to ("get_name", ob, user);
+        return;
+    }
+    if (!check_legal_name(arg)) {
         write ("您的顯示名稱: ");
         input_to ("get_name", ob, user);
         return;
@@ -729,6 +739,7 @@ private void confirm_incarnate (string yn, mapping opts, object ob, object user)
             destruct (ob);
             return;
         default:
+            if (yn == "webhud") opts["silent"] = 1;   // 網頁背景查詢：不重印提問
             input_to ("confirm_incarnate", opts, ob, user);
             return;
     }
