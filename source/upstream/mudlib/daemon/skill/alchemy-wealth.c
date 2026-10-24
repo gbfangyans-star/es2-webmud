@@ -6,6 +6,7 @@ design: docs/martial_arts/龍圖丹派_黃白之術.md（2026-10-22）
 note: 0 級即可施展；1～19 級不存在，累積到門檻後 gain 直接學成 20 級。
       79 級後只累積經驗，達到 90 級的累計值時直接從 79 升到 90 並領悟金咒；
       80～89 級不存在。法術修為、法術道行只拿系統規則，本檔不另外給。
+      施法時同時累積基本法術（magic），失敗得 1/3（U-13，2026-10-24）。
 ---*/
 
 #include <ansi.h>
@@ -111,6 +112,24 @@ int forbidden(object me, object ob)
     return 0;
 }
 
+// U-13（2026-10-24，使用者指示 #12）：施法時同時累積基本法術（magic），照茅山法術的基本法術公式，
+// 層級固定 1：（random(靈性)＋1）×（random(靈性)＋1）＋random(靈性)。
+// 失敗時取 1/3（無條件捨去），最少 1。
+void magic_gain(object me, int failed)
+{
+    int spi, gain;
+
+    if( !userp(me) ) return;
+    spi = me->query_attr("spi");
+    if( spi < 1 ) spi = 1;
+    gain = (random(spi) + 1) * (random(spi) + 1) + random(spi);
+    if( failed ) {
+        gain /= 3;
+        if( gain < 1 ) gain = 1;
+    }
+    me->improve_skill_exact("magic", gain);
+}
+
 // U-03、U-10：成功的經驗與丹道修養。
 void reward_success(object me, int value)
 {
@@ -121,6 +140,7 @@ void reward_success(object me, int value)
     if( level > 0 && gain > level * 100 ) gain = level * 100;
     if( gain > 0 ) me->improve_skill(SKILL_ID, gain);
     me->gain_score("alchemy", 1 + (level > 0 ? random(level) / 2 : 0));
+    magic_gain(me, 0);
 }
 
 // U-04、U-10：失敗的經驗與丹道修養。
@@ -132,6 +152,7 @@ void reward_failure(object me)
     gain = n > 0 ? random(n) : 0;
     if( gain > 0 ) me->improve_skill(SKILL_ID, gain);
     me->gain_score("alchemy", 1);
+    magic_gain(me, 1);
 }
 
 int conjure_magic(object me, string spell, object target)
