@@ -51,6 +51,17 @@ cd ~/es2-webmud && git fetch origin main && git checkout -B main origin/main
 | 玩家版圖鑑（`tools/build_player_codex.py`、`tools/codex_player_template.html`、`docs/catalog/玩家圖鑑_*.md`，或任何遊戲內容變動） | `python3 ~/es2-webmud/tools/build_player_codex.py`，玩家重新整理圖鑑頁 |
 | `server/` | 重開網頁服務：`sudo systemctl restart es2-web` |
 
+## 免重開模式（`update.sh hot`）
+
+不確定這次要不要重開時，先跑：
+```
+bash ~/es2-webmud/deploy/oracle/update.sh hot
+```
+它會備份玩家資料、拉最新程式、重新產生玩家版圖鑑，**不重開、不編譯**，然後依上面的判斷表把改到的檔案分三類列出：
+需要重開的（改跑一般的 `update.sh`）、可在遊戲裡 `update` 的（附可直接貼上的指令）、網頁檔案（玩家按 F5；改到 `server/` 要重開 `es2-web`）。
+若這次含 Neolith 原始碼或 `server/package*` 的變動，hot 會留下記號，之後跑一般的 `update.sh` 會補編譯。
+不加 `hot` 時，`update.sh` 的行為不變。
+
 ## 快速查看這次改了哪些檔案
 
 ```
