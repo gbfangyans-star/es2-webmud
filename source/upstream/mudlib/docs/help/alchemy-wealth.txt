@@ -3,6 +3,7 @@
 　學習條件：付柴火錢後向大師兄江述仁學習
 　任務起始：江述仁
 　安裝：enable magic with alchemy-wealth
+　修練：施法時同時累積基本法術，失敗時較少。
 　特殊能力：
 　　‧銀咒：conjure silver seal on <物品>
 　　　　　　轉化價值 500 文以下的物品。

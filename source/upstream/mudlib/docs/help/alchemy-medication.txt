@@ -3,6 +3,7 @@
 　學習條件：付柴火錢後向大師兄江述仁學習
 　任務起始：江述仁
 　安裝：enable magic with alchemy-medication
+　修練：施法時同時累積基本法術，失敗時較少。
 　特殊能力：
 　　‧七色印：conjure <印> on reactor，封住或解開青銅丹鼎。
 　　　　　　　青印：green seal      散青印：green dispel
