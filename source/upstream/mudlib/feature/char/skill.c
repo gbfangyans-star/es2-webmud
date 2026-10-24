@@ -10,13 +10,6 @@ mapping skill_map       = ([]);         // The links of mapped skill.
 mapping skill_flag      = ([]);         // Ultra skill flags.
 
 string best_skill = "";
-void refresh_taoist_spell_mastery(string skill)
-{
-    // 咒術道行看基本咒術與門派咒術（使用者定案，2026-10-23），由道士職業檔判斷。
-    if( this_object()->query_class() != "taoist" ) return;
-    if( !CLASS_D("taoist")->is_spell_school(skill) ) return;
-    CLASS_D("taoist")->refresh_spell_mastery(this_object());
-}
 
 /* Old Neolith LPC needs inherited function prototypes visible at compile time. */
 varargs int query_attr(string attr, int raw);
@@ -107,7 +100,6 @@ void set_skill(string skill, int val)
     if( val > 200 ) val = 200;
     skills[skill] = val;
     query_personal_skill_cap(skill);   // 得到技能的當下決定個人上限
-    refresh_taoist_spell_mastery(skill);
 }
 
 int set_learn(string skill, int lrn)
@@ -125,7 +117,6 @@ int delete_skill(string skill)
     string s1, s2;
 
     map_delete(skills, skill);
-    refresh_taoist_spell_mastery(skill);
     map_delete(learned, skill);
     foreach(s1, s2 in skill_map)
 	if( s2==skill ) map_delete(skill_map, s1);
@@ -490,6 +481,24 @@ private void magic_mastery_growth(string skill, int old_level, int new_level)
         this_object()->gain_score("magic mastery", lv * 10);
 }
 
+/* 咒術道行（使用者定案，2026-10-24）：比照法術道行，基本咒術（spells）與能裝在咒術上的
+ * 武功（天師道法四系、茅山幻術等）每升到第 sk 級給 sk × 30。一次升多級時每一級都給；
+ * 不限職業，只對玩家生效。 */
+private void spell_mastery_growth(string skill, int old_level, int new_level)
+{
+    object daemon;
+    int lv;
+
+    if( !userp(this_object()) ) return;
+    if( skill != "spells" ) {
+        daemon = SKILL_D(skill);
+        if( !objectp(daemon) || !function_exists("valid_enable", daemon) ) return;
+        if( !daemon->valid_enable("spells") ) return;
+    }
+    for(lv = old_level + 1; lv <= new_level; lv++)
+        this_object()->gain_score("spell mastery", lv * 30);
+}
+
 /* 基本技能升級給武術造詣（NEW）
  *
  * 基本兵器技能（含雙手、副手）、徒手、閃躲、招架，每升到第 sk 級給
@@ -534,11 +543,11 @@ varargs void advance_skill(string skill, int amount)
 
     SKILL_D(skill)->skill_advanced(this_object(), skill);
     magic_mastery_growth(skill, old_level, skills[skill]);
+    spell_mastery_growth(skill, old_level, skills[skill]);
     roll_attr_growth(skill, old_level, skills[skill]);
     basic_skill_martial_art(skill, old_level, skills[skill]);
 
     if( skills[skill] > skills[best_skill] ) best_skill = skill;
-    refresh_taoist_spell_mastery(skill);
 }
 
 // abandon_skill()
