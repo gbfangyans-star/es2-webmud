@@ -29,6 +29,7 @@ LONG
 #define FEE          10000   // 一卦一兩黃金（等值貨幣、多付不找零）
 #define WAIT_SECONDS 60      // 付錢後在原地等候的時間：30 tick（1 tick 約 2 秒）
 #define DUNJA        "taoism of dunja"
+#define TICK         2       // 1 tick 約 2 秒，對話之間的間隔
 
 void init()
 {
@@ -46,8 +47,15 @@ void accept_inquiry(object who, string key)
     t = title_of(who);
     message_vision("$N微笑說道﹕呵呵？這位" + t + "想算命吧，老夫一見到你就知道是有緣人。\n",
         this_object(), who);
-    command("say " + t + "且不用開口，嗯 ... 想問事業？");
-    command("say 這樣吧，就當作和這位" + t + "結個緣，一卦只要一兩黃金，如何？");
+    call_out("say_to", 2 * TICK, who, t + "且不用開口，嗯 ... 想問事業？");
+    call_out("say_to", 3 * TICK, who, "這樣吧，就當作和這位" + t + "結個緣，一卦只要一兩黃金，如何？");
+}
+
+// 延後說的話：對方已離開就不說了。
+void say_to(object who, string msg)
+{
+    if( !objectp(who) || environment(who) != environment() ) return;
+    command("say " + msg);
 }
 
 // 付錢：一兩黃金算一卦。付了之後離開這裡就算放棄；在這裡待太久也作廢。都不退錢。
@@ -66,11 +74,18 @@ int accept_object(object who, object ob)
     }
     token = time();
     who->set_temp("fortune_teller/paid", token);
-    message_vision("$N微笑著向$n點了點頭，問明了$n的生辰八字，拿出一個龜殼和幾枚銅錢，占卜了起來。\n",
-        this_object(), who);
-    command("say 不知" + title_of(who) + "要問(inquire)的是哪方面的事業？");
+    // 等「你拿出…交給算命先生」的訊息先出現，再開始占卜。
+    call_out("start_reading", 0, who, token);
     call_out("fate_timeout", WAIT_SECONDS, who, token);
     return 1;
+}
+
+void start_reading(object who, int token)
+{
+    if( !objectp(who) || who->query_temp("fortune_teller/paid") != token ) return;
+    message_vision("$N微笑著向$n點了點頭，問明了$n的生辰八字，拿出一個龜殼和幾枚銅錢，占卜了起來。\n",
+        this_object(), who);
+    message_vision("$N問道﹕不知" + title_of(who) + "要問(inquire)的是哪方面的事業？\n", this_object());
 }
 
 private void forfeit(object who) { who->delete_temp("fortune_teller/paid"); }
@@ -99,7 +114,7 @@ private string find_skill(object who, string arg)
 int do_inquire(string arg)
 {
     object who = this_player();
-    string sk, words, name, t;
+    string sk, t;
 
     if( !who->query_temp("fortune_teller/paid") ) return 0;
     // 付了錢之後離開這裡就算放棄。
@@ -115,11 +130,19 @@ int do_inquire(string arg)
     }
     forfeit(who);
     message_vision("$N將龜殼中的銅錢搖了搖，灑在桌上，然後掐指算了算。\n", this_object());
+    call_out("tell_fate", 2 * TICK, who, sk, t);
+    return 1;
+}
 
+// 算完了才私下告訴對方（只有對方看得到）。
+void tell_fate(object who, string sk, string t)
+{
+    string words, name;
+
+    if( !objectp(who) ) return;
     // 批語沿用遁甲術「天命」：開頭的「<技能名>發展」改成「<尊稱>在<技能名>上的發展」。
     name = to_chinese(sk);
     words = SKILL_D(DUNJA)->fate_words(who, sk, who->query_personal_skill_cap(sk));
     if( strsrch(words, name) == 0 ) words = words[strlen(name)..];
     tell_object(who, CYN "算命先生告訴你﹕" + t + "在" + name + "上的" + words + "\n" NOR);
-    return 1;
 }
