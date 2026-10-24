@@ -15,3 +15,6 @@ description: Mudlib simul efuns
 
 // This must be after gender.c
 #include "/adm/simul_efun/message.c"
+
+// 用到 message.c 的 tell_object()，放在它後面。
+#include "/adm/simul_efun/webhud.c"

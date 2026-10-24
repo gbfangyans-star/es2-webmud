@@ -583,6 +583,12 @@ private void show_race_menu (object ob) {
         delete_account (ob);
         return;
     }
+    // 魂飛魄散後由這裡重新選種族：這時的 input_to 不會經過 input_prompt()，
+    // 直接通知網頁暫停背景狀態查詢（恢復見 feature/char/message.c 的 write_prompt()）。
+    if (ob->query_temp("webhud/client")) {
+        ob->set_temp("webhud/input_wait", 1);
+        write ("\n@@WEBHUD|INPUT\n");
+    }
     write (sprintf("您現在共有 %d 點業力，可以選擇以下的種族：\n", (int)ob->query("karma")));
     foreach (string race in list) {
         line = to_chinese(race) + " (" + race + ")";
