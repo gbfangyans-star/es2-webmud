@@ -15,15 +15,16 @@ inherit SKILL;
 #define ENTRY_LEVEL 70
 #define MAJOR_LEVEL 160      // 160 級起 exert major heal 轉化大還丹
 
-// 第四章：可轉化的丹藥。exert 功能名 -> ({ 丹藥檔, 神農之術門檻, 消耗的狀態 })
+// 第四章：可轉化的丹藥。exert 功能名 -> ({ 丹藥檔, 消耗的狀態 })
 // 消耗：gin／kee／sen 扣目前的值 5；fatigue 疲勞 +3；空字串不扣。
+// 神農之術門檻不寫在這裡，直接讀丹藥檔的 requirement（與藥鋪相同，2026-10-24）。
 private mapping pills = ([
-    "lavage":     ({ "/obj/alchemist/lavage_pill",     5,   ""        }),
-    "relax":      ({ "/obj/alchemist/relax_pill",      20,  "fatigue" }),
-    "refresh":    ({ "/obj/alchemist/refresh_pill",    50,  "gin"     }),
-    "mana":       ({ "/obj/alchemist/mana_pill",       55,  "sen"     }),
-    "minor heal": ({ "/obj/alchemist/minor_heal_pill", 60,  "kee"     }),
-    "major heal": ({ "/obj/alchemist/major_heal_pill", 120, "kee"     }),
+    "lavage":     ({ "/obj/alchemist/lavage_pill",     ""        }),
+    "relax":      ({ "/obj/alchemist/relax_pill",      "fatigue" }),
+    "refresh":    ({ "/obj/alchemist/refresh_pill",    "gin"     }),
+    "mana":       ({ "/obj/alchemist/mana_pill",       "sen"     }),
+    "minor heal": ({ "/obj/alchemist/minor_heal_pill", "kee"     }),
+    "major heal": ({ "/obj/alchemist/major_heal_pill", "kee"     }),
 ]);
 
 void create()
@@ -141,9 +142,10 @@ string money_string(int amount)
 int make_pill(object me, string func)
 {
     mixed *info;
+    mapping req;
     object pill;
     string stat, pname;
-    int level, price, fatigue;
+    int level, price, fatigue, need;
 
     level = me->query_skill(SKILL_ID, 1);
     if( level < ENTRY_LEVEL )
@@ -162,11 +164,13 @@ int make_pill(object me, string func)
     info = pills[func];
     pname = load_object(info[0])->query("name");
 
-    // G-02：只看神農之術原生等級。
-    if( me->query_skill("alchemy-medication", 1) < info[1] )
+    // G-02：只看神農之術原生等級；門檻讀丹藥檔的 requirement，不看讀書識字。
+    req = load_object(info[0])->query("requirement");
+    need = mapp(req) && intp(req["alchemy-medication"]) ? req["alchemy-medication"] : 0;
+    if( me->query_skill("alchemy-medication", 1) < need )
         return notify_fail(gender_self(me) + "對" + pname + "的藥性所知不足，無法轉化。\n");
 
-    stat = info[2];
+    stat = info[1];
     if( (stat == "gin" || stat == "kee" || stat == "sen") && me->query_stat(stat) < 5 )
         return notify_fail(gender_self(me) + "的" + to_chinese(stat)
             + "不足，無法運起龍圖心經。\n");
