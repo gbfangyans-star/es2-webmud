@@ -215,7 +215,8 @@ do_vendor_list(string arg)
 	return 1;
     }
 
-    // 名稱與價錢欄都以最寬的一項為準對齊（使用者定案，2026-10-23）。
+    // 名稱與價錢欄都以最寬的一項為準對齊（使用者定案，2026-10-23）；
+    // 名稱與「：」之間多空四個半形（2026-10-24）。
     names = map(items, (: $1->short(1) :));
     prices = map(items, (: price_string($1->query("value")) :));
     for( i = 0; i < sizeof(items); i++ ) {
@@ -229,7 +230,7 @@ do_vendor_list(string arg)
 
     list = "";
     for( i = 0; i < sizeof(items); i++ )
-	list += "  " + pad_glyphs(names[i], wide, narrow, 0) + "："
+	list += "  " + pad_glyphs(names[i], wide, narrow, 0) + "    ："
 	    + pad_glyphs(prices[i], pwide, pnarrow, 1) + "\n";
 
     write("你可以購買下列這些東西：\n-------------------------\n" + list);
