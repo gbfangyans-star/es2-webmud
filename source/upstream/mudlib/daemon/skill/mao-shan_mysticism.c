@@ -14,14 +14,30 @@ inherit SKILL;
 string type() { return "magic"; }
 int valid_enable(string usage) { return usage == "magic"; }
 
-/* 受陰魂控制的 NPC（所有施法者共用一份名單），由 guard_puppets() 每 2 秒帶動一次。 */
+/* 受陰魂控制的 NPC（所有施法者共用一份名單），由 guard_puppets() 每 2 秒帶動一次。
+ * 主人記在 NPC 身上（玩家代號），技能檔重新載入時從遊戲中的物件找回名單。 */
 static object *puppets = ({});
+
+/* 主人不在線上（斷線或離線）超過這段時間，傀儡就消散，由原本的房間在重置時重生。
+ * 與房間重置的間隔相同（neolith.conf 的 ResetDuration，目前 15 分鐘）。 */
+#define WAIT_LIMIT 900
+
+void guard_puppets();
 
 private void create()
 {
     seteuid(getuid());
     DAEMON_D->register_skill_daemon("mao-shan mysticism");
     setup();
+    puppets = objects((: clonep($1) && stringp($1->query_temp("mysticism/master_id")) :));
+    if( sizeof(puppets) ) call_out("guard_puppets", 2);
+}
+
+/* 還有傀儡要帶動時不要被清掉。 */
+int clean_up()
+{
+    if( sizeof(filter(puppets, (: objectp($1) :))) ) return 1;
+    return ::clean_up();
 }
 
 /* 學習條件：幻霧觀弟子、茅山奇術 100 級。 */
@@ -206,22 +222,36 @@ int do_collect(object me, object corpse)
 // ------------------------------------------------------------------
 // 通靈之術：陰魂附上 NPC 的身體，讓它保護施法者。
 // 成功：random(奇門術 ÷ 3) > 對方等級；失敗只停頓，少陰符照用、陰魂不扣。
-// 最多控制 奇門術 ÷ 40 + 1 個（最多 6 個）；至死方休，施法者離開遊戲就散去。
+// 最多控制 奇門術 ÷ 40 + 1 個（最多 6 個）；至死方休。
+// 主人斷線或離線（quit）：傀儡留在原地等候，期間別人奪不走；
+// 主人 15 分鐘內回來（斷線連回或重新登入）就繼續跟隨保護；
+// 超過 15 分鐘傀儡消散，由原本的房間在重置時重生（使用者定案，2026-10-25）。
 // ------------------------------------------------------------------
 
-object puppet_master(object ob)
+string puppet_owner(object ob)
 {
-    object master;
+    string id;
 
     if( !objectp(ob) ) return 0;
-    master = ob->query_temp("mysticism/master");
-    return objectp(master) ? master : 0;
+    id = ob->query_temp("mysticism/master_id");
+    return stringp(id) ? id : 0;
+}
+
+/* 主人在線上（連線中）才傳回主人；斷線、離線都算不在。 */
+object online_owner(string id)
+{
+    object who;
+
+    if( !id || !objectp(who = find_player(id)) || !interactive(who) ) return 0;
+    return who;
 }
 
 object *query_puppets(object me)
 {
+    string id = me->query("id");
+
     puppets = filter(puppets, (: objectp($1) :));
-    return filter(puppets, (: puppet_master($1) == $(me) :));
+    return filter(puppets, (: puppet_owner($1) == $(id) :));
 }
 
 int max_puppets(object me)
@@ -244,9 +274,9 @@ int check_slave(object me, object target)
     ||  function_exists("accept_apprentice", target)
     ||  target->query("maoshan_owner") )
         return notify_fail("對方身上似有護持﹐陰魂附不上去。\n");
-    if( puppet_master(target) == me )
+    if( puppet_owner(target) == me->query("id") )
         return notify_fail(target->name() + "早已受你的陰魂驅使。\n");
-    if( puppet_master(target) )
+    if( puppet_owner(target) )
         return notify_fail(target->name() + "身上已附著別人的陰魂﹐奪不過來。\n");
     if( me->query("mysticism/ghosts") < 1 )
         return notify_fail("你袖中沒有可以驅使的陰魂。\n");
@@ -255,17 +285,57 @@ int check_slave(object me, object target)
     return 1;
 }
 
-void release_puppet(object ob)
+/* 主人久候不至：傀儡消散；原本的房間在下次重置時會重生一個。 */
+void vanish_puppet(object ob)
 {
-    if( !objectp(ob) ) return;
-    ob->delete_temp("mysticism/master");
-    ob->set_leader(ob->query_temp("mysticism/old_leader"));
-    ob->delete_temp("mysticism/old_leader");
     if( environment(ob) )
-        message_vision(HIK "$N身子一顫﹐一縷黑氣自頭頂飄散﹐眼神漸漸恢復了清明。\n" NOR, ob);
+        message_vision(HIK "$N身子一軟﹐化作一縷黑氣﹐就此消散無蹤。\n" NOR, ob);
+    puppets -= ({ ob });
+    destruct(ob);
 }
 
-/* 每 2 秒：施法者不在了就散去；跟不上施法者就追過去；施法者在打誰就一起撲上去。 */
+/* 主人不在：原地等候，時間到就消散。順便碰一下所在的房間，免得房間閒置被清掉。 */
+void wait_owner(object ob)
+{
+    int since;
+
+    if( !(since = ob->query_temp("mysticism/absent_since")) )
+        ob->set_temp("mysticism/absent_since", since = time());
+    if( time() - since >= WAIT_LIMIT ) {
+        vanish_puppet(ob);
+        return;
+    }
+    if( environment(ob) ) environment(ob)->query("short");
+}
+
+/* 主人在：跟不上就追過去；主人在打誰就一起撲上去；不打主人與主人的其他傀儡。 */
+void serve_owner(object ob, object master)
+{
+    ob->delete_temp("mysticism/absent_since");
+    if( ob->query_leader() != master ) ob->set_leader(master);
+    if( !living(ob) || !environment(master) ) return;
+
+    foreach(object other in ({ master }) + query_puppets(master)) {
+        if( other == ob ) continue;
+        if( ob->is_fighting(other) ) ob->remove_killer(other);
+        if( other->is_fighting(ob) ) other->remove_killer(ob);
+    }
+    if( environment(master) != environment(ob) ) {
+        if( ob->move(environment(master)) )
+            message_vision(HIK "$N腳步僵直地跟了上來﹐默默站到$n身後。\n" NOR, ob, master);
+        return;
+    }
+    foreach(object enemy in master->query_enemy()) {
+        if( !objectp(enemy) || enemy == ob || environment(enemy) != environment(ob) ) continue;
+        if( puppet_owner(enemy) == master->query("id") ) continue;
+        if( !ob->is_fighting(enemy) ) {
+            ob->kill_ob(enemy);
+            enemy->kill_ob(ob);
+        }
+    }
+}
+
+/* 每 2 秒帶動所有傀儡。 */
 void guard_puppets()
 {
     object master;
@@ -273,32 +343,8 @@ void guard_puppets()
     puppets = filter(puppets, (: objectp($1) :));
     foreach(object ob in puppets) {
         if( !objectp(ob) ) continue;
-        master = puppet_master(ob);
-        if( !master ) {
-            release_puppet(ob);
-            puppets -= ({ ob });
-            continue;
-        }
-        if( !living(ob) || !environment(master) ) continue;
-        // 不對施法者與同一位施法者的其他傀儡出手。
-        foreach(object other in ({ master }) + query_puppets(master)) {
-            if( other == ob ) continue;
-            if( ob->is_fighting(other) ) ob->remove_killer(other);
-            if( other->is_fighting(ob) ) other->remove_killer(ob);
-        }
-        if( environment(master) != environment(ob) ) {
-            if( ob->move(environment(master)) )
-                message_vision(HIK "$N腳步僵直地跟了上來﹐默默站到$n身後。\n" NOR, ob, master);
-            continue;
-        }
-        foreach(object enemy in master->query_enemy()) {
-            if( !objectp(enemy) || enemy == ob || environment(enemy) != environment(ob) ) continue;
-            if( puppet_master(enemy) == master ) continue;
-            if( !ob->is_fighting(enemy) ) {
-                ob->kill_ob(enemy);
-                enemy->kill_ob(ob);
-            }
-        }
+        if( master = online_owner(puppet_owner(ob)) ) serve_owner(ob, master);
+        else wait_owner(ob);
     }
     remove_call_out("guard_puppets");
     if( sizeof(puppets) ) call_out("guard_puppets", 2);
@@ -319,8 +365,7 @@ int do_slave(object me, object target)
     me->add("mysticism/ghosts", -1);
     target->remove_all_killer();
     me->remove_killer(target);
-    target->set_temp("mysticism/master", me);
-    target->set_temp("mysticism/old_leader", target->query_leader());
+    target->set_temp("mysticism/master_id", me->query("id"));
     target->set_leader(me);
     puppets = filter(puppets, (: objectp($1) :)) + ({ target });
     say_line(me, target, "$n渾身一震﹐眼神變得空洞呆滯﹐默默走到$N身後站定。");
@@ -336,7 +381,7 @@ int do_slave(object me, object target)
 
 object find_puppet(object me, object target)
 {
-    if( objectp(target) ) return puppet_master(target) == me ? target : 0;
+    if( objectp(target) ) return puppet_owner(target) == me->query("id") ? target : 0;
     foreach(object ob in query_puppets(me))
         if( environment(ob) == environment(me) ) return ob;
     return 0;
