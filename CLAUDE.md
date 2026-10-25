@@ -27,14 +27,14 @@
 - 撰寫招式、閃避、招架、特效敘述前，先看 `docs/martial_arts/武俠敘述風格指南.md`。
 - 學習使用者提供的武俠文本的語境，但不抄襲原句；指南隨使用者提供的新文本持續補充。
 
-## 開 PR（使用者指示，2026-10-17）
+## 開 PR（使用者指示，2026-10-17；2026-10-24 改為直接開到 wolfer168）
 
 使用者說「開 PR」時：
 
-1. 寫好標題與說明（繁體中文、白話），在 `gbfangyans-star/es2-webmud` 開 PR（工作分支 → main）並直接合併。
-2. 再給使用者合併到 wolfer168 的網址，由使用者自己操作，例如：
-   https://github.com/wolfer168/es2-webmud/compare/main...gbfangyans-star:es2-webmud:claude/confident-carson-v8bs1a
-   （分支名稱換成當時的工作分支），同時附上可貼上的標題與說明。
+1. 寫好標題與說明（繁體中文、白話），直接在 `wolfer168/es2-webmud` 開 PR（工作分支 → main）。
+   不再經過 `gbfangyans-star/es2-webmud`，也不用再給使用者另一個合併網址。
+2. 等自動檢查 `pr-check` 變綠燈才合併（說明見 `docs/CI_AUTO_CHECK.md`）；紅燈就先找出原因修好、
+   推上同一個分支，等重跑變綠燈再合併。合併後給使用者 PR 的網址。
 3. 最後標明**本次更新是否需要重開**（重開遊戲服務，不是整台主機），並附上主機要執行的指令
    （使用者指示，2026-10-24）。判斷依據與指令見 `docs/UPDATE_RESTART_GUIDE.md`：
    需要重開時給 `update.sh`；不需要時給只拉程式的指令，並列出要在遊戲裡 `update` 的檔案、

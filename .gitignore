@@ -22,8 +22,11 @@ __pycache__/
 .pytest_cache/
 
 # Formal player/login data must never be public
-source/upstream/mudlib/data/user/
-source/upstream/mudlib/data/login/
+# (only the .keep placeholders are tracked, so a fresh clone can save characters)
+source/upstream/mudlib/data/user/*
+!source/upstream/mudlib/data/user/.keep
+source/upstream/mudlib/data/login/*
+!source/upstream/mudlib/data/login/.keep
 
 # Runtime-generated data
 source/upstream/mudlib/log/
