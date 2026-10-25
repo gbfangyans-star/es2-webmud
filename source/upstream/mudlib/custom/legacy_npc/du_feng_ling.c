@@ -2,7 +2,8 @@
 /*
 LEGACY NPC. 名稱、英文 ID、敘述、年紀、性別、種族、裝備取自舊站畫面紀錄（DOCUMENTED，
 docs/LEGACY_ROOM_NPC_COMPENDIUM.md）；職業、等級、強度、門派、行為依使用者提供的
-「舊有 NPC 待製作清單」（2026-10-15）。尚未放入地圖。
+「舊有 NPC 待製作清單」（2026-10-15）。
+位置：李家村小旅店（/d/lee/inn，使用者指示，2026-10-25）。
 舊站區域：茅山、龍安鎮；房間：客棧。
 */
 #include <ansi.h>
@@ -41,7 +42,8 @@ void create()
 
 // ------------------------------------------------------------------
 // 幻霧觀師父（使用者定案，2026-10-21）：任何種族的平民都可拜師，拜師後成為道士、幻霧觀弟子。
-// 傳授茅山共通法術（docs/martial_arts/茅山_法術.md）。
+// 傳授茅山共通法術（docs/martial_arts/茅山_法術.md），以及幻霧觀的茅山奇術、奇門術
+// （docs/martial_arts/幻霧觀_茅山奇術與奇門術.md）。
 // ------------------------------------------------------------------
 
 int accept_info(object ob, string type)
@@ -79,6 +81,12 @@ int acquire_skill(object me, string skill)
     switch( skill ) {
     case "mao-shan magic":
     case "magic":
+    case "taoism of darkness":
+    case "spells":
+        break;
+    case "mao-shan mysticism":
+        // 茅山奇術 100 級（使用者定案，2026-10-24）。
+        if( !SKILL_D(skill)->valid_learn(me) ) return 0;
         break;
     default:
         return 0;
