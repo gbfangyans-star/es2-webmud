@@ -3,6 +3,7 @@ description: 當鋪連線的共用倉庫（五堂鎮、李家村、喬陰縣三�
 design: docs/PAWNSHOP_NETWORK.md（2026-10-23）
 note: - 賣斷的物品上架；完全相同的物品疊成一項，清單依每一項第一次進貨的先後排序。
       - 上架最多 MAX_GROUPS 項，滿了從最舊的一項整項丟掉。
+      - 同一項最多上架 MAX_PER_GOODS 件，超過的不上架（賣出的玩家照常拿錢）。
       - 典當的物品（hockshop_pawned）也放在這裡，不上架、不算項數、不會被擠掉，
         任何一間當鋪都能憑當票贖回。
       - 重開伺服器不保留（倉庫只在記憶體中）。
@@ -10,6 +11,7 @@ note: - 賣斷的物品上架；完全相同的物品疊成一項，清單依每
 
 #define STORAGE_FILE "/std/room/hockshop_storage"
 #define MAX_GROUPS   200
+#define MAX_PER_GOODS 10     // 同一項最多上架幾件，超過的不上架（使用者定案，2026-10-25）
 
 static object storage;
 static int seq;
@@ -85,7 +87,7 @@ int add_goods(object ob)
     mixed *groups;
     mapping seen = ([]);
     string key, k;
-    int found;
+    int found, same;
 
     if( !objectp(ob) ) return 0;
     ob->delete("hockshop_pawned");
@@ -105,8 +107,13 @@ int add_goods(object ob)
     foreach(object o in all_inventory(query_storage())) {
         if( is_pawned(o) ) continue;
         k = query_key(o);
-        if( k == key ) found = 1;
+        if( k == key ) { found = 1; same++; }
         seen[k] = 1;
+    }
+    // 這一項已有 MAX_PER_GOODS 件：這一件不上架（賣出的玩家照常拿錢，由當鋪房間處理）。
+    if( same >= MAX_PER_GOODS ) {
+        destruct(ob);
+        return 0;
     }
     if( !found && sizeof(seen) >= MAX_GROUPS ) {
         groups = query_groups();
