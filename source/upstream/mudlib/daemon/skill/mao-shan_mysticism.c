@@ -9,7 +9,7 @@ description: 茅山道法【奇門術】（mao-shan mysticism）。幻霧觀法�
 inherit SKILL;
 
 #define SCROLL  "/custom/item/scroll/yin"
-#define FACTION "taoist.huanwu"
+#define FACTION "taoist.fog"
 
 string type() { return "magic"; }
 int valid_enable(string usage) { return usage == "magic"; }
