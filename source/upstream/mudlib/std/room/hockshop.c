@@ -29,12 +29,11 @@ void init()
 
 string value_string(int value)
 {
-    if( value < 1 ) value = 1;
-    else if( value < 100 )
+    if( value < 1 ) return "不值一文";
+    if( value < 100 )
         return chinese_number(value) + "文錢";
-    else
-        return chinese_number(value/100) + "兩"
-            + (value%100? "又" + chinese_number(value%100) + "文錢": "");
+    return chinese_number(value/100) + "兩"
+        + (value%100? "又" + chinese_number(value%100) + "文錢": "");
 }
 
 void pay_player(object who, int amount)
@@ -67,7 +66,10 @@ int do_value(string arg)
         return notify_fail("這是「錢」﹐你沒見過嗎﹖\n");
 
     value = ob->query("value");
-    if( !value ) printf("%s一文不值。\n", ob->query("name"));
+    if( value < 1 ) {
+        printf("%s一文不值。\n", ob->query("name"));
+        return 1;
+    }
     // 打倒 NPC 撿來的物品（sinister）與一般物品同價（使用者指定，2026-10-23；原本只給 1%）。
     printf("%s價值%s。\n如果你要典當(pawn)﹐可以拿到%s及一張當票。\n如果賣斷(sell)﹐可以拿到%s。\n",
             ob->query("name"), value_string(value),
@@ -87,7 +89,7 @@ int do_pawn(string arg)
     if( ob->query("money_id") )    return notify_fail("你要當「錢」﹖\n");
 
     value = ob->query("value");
-    if( !value ) return notify_fail("這樣東西不值錢。\n");
+    if( value < 1 ) return notify_fail("這樣東西不值錢。\n");
 
     if (ob->query("no_sell")) return notify_fail("這樣東西不能典當。\n");
 
@@ -114,7 +116,7 @@ int sell_item(object ob)
 
     if( ob->query("money_id") )    return notify_fail("你要賣「錢」﹖\n");
     value = ob->query("value");
-    if( !value ) return notify_fail("這樣東西不值錢。\n");
+    if( value < 1 ) return notify_fail("這樣東西不值錢。\n");
 
     if (ob->query("no_sell")) return notify_fail("這樣東西不能賣。\n");
 
@@ -125,7 +127,8 @@ int sell_item(object ob)
     pay_player(this_player(), value * 80 / 100);
 
     ob->delete("sinister");
-    // 上架到共用倉庫（相同物品疊成一項；滿 200 項時從最舊的一項整項丟掉）。
+    // 上架到共用倉庫（相同物品疊成一項；滿 200 項時從最舊的一項整項丟掉；
+    // 同一項已有 10 件的話，這一件不上架，錢照付）。
     HOCKSHOP_D->add_goods(ob);
 
     return 1;
@@ -198,37 +201,62 @@ int do_retrieve(string arg)
 // 一項貨物的單價：疊加的物品是單件價格；本來就是一疊的（饅頭等）是整疊價格。
 int goods_price(object ob) { return (int)ob->query("value") * 2; }
 
+// 一次 write() 最多 8192 個位元組（中文字一個佔 3），清單分段送出，每段留在這個長度以內。
+#define LIST_CHUNK 6000
+
 int do_list(string arg)
 {
     mixed *groups;
     object ob;
-    string msg, count;
-    int i, n;
+    string line, chunk, count;
+    int i, n, shown;
 
     groups = HOCKSHOP_D->query_groups();
-    if( arg ) groups = filter_array(groups, (: $1[0]->id($(arg)) :));
     if( !sizeof(groups) && !wizardp(this_player()) )
         return notify_fail("當鋪裡現在沒有可供出售的貨物。\n");
 
-    msg = "當鋪裡現在有以下貨物出售﹕\n\n";
+    chunk = "當鋪裡現在有以下貨物出售﹕\n\n";
     // 名稱、數量與價格依畫面寬度補空白；價格靠右對齊。
+    // list <名稱> 只列出符合的項目，但編號仍是完整清單上的編號，與 buy <編號> 一致。
     for(i = 0; i < sizeof(groups); i++) {
         ob = groups[i][0];
+        if( arg && !ob->id(arg) ) continue;
         n = sizeof(groups[i]);
         count = n > 1 ? "共 " + n + " " + (ob->query("unit") ? ob->query("unit") : "件") : "";
-        msg += sprintf("     %-5d  %s %s %s\n", i + 1,
+        line = sprintf("     %-5d  %s %s %s\n", i + 1,
             cjk_pad(ob->short(), 40), cjk_pad(count, 10, 1),
             cjk_pad(value_string(goods_price(ob)), 22, 1));
+        if( strlen(chunk) + strlen(line) > LIST_CHUNK ) {
+            write(chunk);
+            chunk = "";
+        }
+        chunk += line;
+        shown++;
     }
+    if( arg && !shown && !wizardp(this_player()) )
+        return notify_fail("當鋪裡現在沒有可供出售的貨物。\n");
     if( wizardp(this_player()) ) {
         object *pawned = HOCKSHOP_D->query_pawned();
-        if( sizeof(pawned) ) {
-            msg += "\n（巫師）典當中的物品﹕\n";
-            foreach(ob in pawned)
-                msg += "            " + ob->short() + "\n";
+        mapping kinds = ([]);
+        string *order = ({}), key;
+
+        // 典當中的物品，相同的合成一行並標數量。
+        foreach(ob in pawned) {
+            key = ob->short();
+            if( undefinedp(kinds[key]) ) { kinds[key] = 0; order += ({ key }); }
+            kinds[key]++;
+        }
+        if( sizeof(order) ) {
+            if( strlen(chunk) > LIST_CHUNK - 200 ) { write(chunk); chunk = ""; }
+            chunk += "\n（巫師）典當中的物品﹕\n";
+            foreach(key in order) {
+                line = "            " + key + (kinds[key] > 1 ? "  共 " + kinds[key] + " 件" : "") + "\n";
+                if( strlen(chunk) + strlen(line) > LIST_CHUNK ) { write(chunk); chunk = ""; }
+                chunk += line;
+            }
         }
     }
-    this_player()->start_more_if_needed(msg);
+    if( strlen(chunk) ) write(chunk);
     return 1;
 }
 
