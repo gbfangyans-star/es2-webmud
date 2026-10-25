@@ -10,7 +10,7 @@ inherit SKILL;
 
 #define SCROLL  "/custom/item/scroll/yin"
 #define SPELLS_D "/daemon/skill/taoism-spells"
-#define FACTION "taoist.huanwu"
+#define FACTION "taoist.fog"
 
 string type() { return "spell"; }
 int valid_enable(string usage) { return usage == "spells"; }

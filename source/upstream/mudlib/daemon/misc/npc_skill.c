@@ -164,7 +164,7 @@ private mapping sect = ([
             ([ "skill": "magic steps", "map": "dodge", "level": 1 ]),
         }),
     ]),
-    "taoist.huanwu": ([
+    "taoist.fog": ([
         "name":        "幻霧觀",
         "force":       0,
         "force_level": 0,
