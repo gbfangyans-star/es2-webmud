@@ -308,11 +308,20 @@ void wait_owner(object ob)
     if( environment(ob) ) environment(ob)->query("short");
 }
 
+/* 開始跟隨與保護主人，敘述照遊戲原有的 follow、guard 指令：
+ * 「$N決定開始跟隨$n一起行動。」；主人另看到「（名字）開始保護你。」（guard_ob() 會顯示）。
+ * 保護用遊戲原有的機制：有人攻擊主人時，傀儡會上前助戰。 */
+void start_serving(object ob, object master)
+{
+    ob->set_leader(master);
+    message_vision("$N決定開始跟隨$n一起行動。\n", ob, master);
+    ob->guard_ob(master);
+}
+
 /* 主人在：跟不上就追過去；主人在打誰就一起撲上去；不打主人與主人的其他傀儡。 */
 void serve_owner(object ob, object master)
 {
     ob->delete_temp("mysticism/absent_since");
-    if( ob->query_leader() != master ) ob->set_leader(master);
     if( !living(ob) || !environment(master) ) return;
 
     foreach(object other in ({ master }) + query_puppets(master)) {
@@ -323,8 +332,11 @@ void serve_owner(object ob, object master)
     if( environment(master) != environment(ob) ) {
         if( ob->move(environment(master)) )
             message_vision(HIK "$N腳步僵直地跟了上來﹐默默站到$n身後。\n" NOR, ob, master);
-        return;
+        else return;
     }
+    // 重新登入的主人是新的人物物件，要重新跟隨與保護（斷線連回則不必）。
+    if( ob->query_leader() != master || ob->query_guarding() != master )
+        start_serving(ob, master);
     foreach(object enemy in master->query_enemy()) {
         if( !objectp(enemy) || enemy == ob || environment(enemy) != environment(ob) ) continue;
         if( puppet_owner(enemy) == master->query("id") ) continue;
@@ -366,9 +378,9 @@ int do_slave(object me, object target)
     target->remove_all_killer();
     me->remove_killer(target);
     target->set_temp("mysticism/master_id", me->query("id"));
-    target->set_leader(me);
     puppets = filter(puppets, (: objectp($1) :)) + ({ target });
     say_line(me, target, "$n渾身一震﹐眼神變得空洞呆滯﹐默默走到$N身後站定。");
+    start_serving(target, me);
     remove_call_out("guard_puppets");
     call_out("guard_puppets", 2);
     return 1;
@@ -401,6 +413,8 @@ int do_devour(object me, object target)
         me->supplement_stat("sen", n);
     }
     puppets -= ({ target });
+    // 只用 remove_guard()：guard_ob(0) 會把「不再保護你了」說兩次。
+    me->remove_guard(target);
     target->remove_all_killer();
     foreach(object ob in all_inventory(target)) {
         if( ob->query("equipped") ) ob->unequip();
