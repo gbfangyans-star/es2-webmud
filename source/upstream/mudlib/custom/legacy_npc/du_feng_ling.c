@@ -57,6 +57,11 @@ int accept_apprentice(object me)
         command("say 你已另有師承﹐貧道不便收你。");
         return 0;
     }
+    // 幻霧觀只收阿修羅、巫首、雨師妾、無腸、夜叉（使用者指示，2026-10-25）。
+    if( member_array(me->query_race(), ({ "ashura", "malik", "rainner", "woochan", "yaksa" })) < 0 ) {
+        command("say 你與本觀的道法無緣﹐還是另尋去處吧。");
+        return 0;
+    }
     return 1;
 }
 
