@@ -56,29 +56,27 @@ private string kind_name(string kind)
     return ([ "awareness": "耳目", "move": "腳力", "element": "元氣" ])[kind];
 }
 
-// 下針與效果敘述：「$n」在扎自己時，下針句換成「自己」、效果句換成「$N」。
+// 下針與效果敘述：$W 換成手上的針；「$n」在扎自己時，下針句換成「自己」、效果句換成「$N」。
 mapping ACTION = ([
-    "fatigue":   ({ "$N在$n足三里、湧泉兩穴各捻入一針。",
+    "fatigue":   ({ "$N拈起$W，在$n足三里、湧泉兩穴各捻入一針。",
                     "$n長長吁了口氣，臉上的倦色淡了幾分。" }),
-    "awareness": ({ "$N捻針刺入$n耳後翳風穴。",
+    "awareness": ({ "$N捻起$W，刺入$n耳後翳風穴。",
                     "$n頓覺耳聰目明，四周一草一木的動靜都清清楚楚。" }),
-    "move":      ({ "$N沿著$n小腿接連扎下三針。",
+    "move":      ({ "$N持著$W，沿著$n小腿接連扎下三針。",
                     "$n只覺一股暖流直通足底，腳步登時輕快了許多。" }),
-    "element":   ({ "$N一針扎進$n掌心勞宮穴。",
+    "element":   ({ "$N將$W一針扎進$n掌心勞宮穴。",
                     "$n掌中隱隱發燙，體內元氣躁動，似乎隨時要破掌而出。" }),
 ]);
 
-/* 比照天師道法：起手 → 下針 → 效果，整句青色；引源針法不取招式名。 */
+/* 比照天師道法的格式：下針 → 效果，整句青色；引源針法不取招式名，沒有起手句。 */
 void show_needle(object me, object target, string kind)
 {
-    string act = ACTION[kind][0], res = ACTION[kind][1];
+    string act = replace_string(ACTION[kind][0], "$W", needle_name(me)), res = ACTION[kind][1];
 
     if( target == me ) {
         act = replace_string(act, "$n", "自己");
         res = replace_string(res, "$n", "$N");
     }
-    needle_line(me, target, "$N拈起銀針，循著經絡細細取穴 ....");
-    needle_blank(me);
     needle_line(me, target, act);
     needle_blank(me);
     needle_line(me, target, res);

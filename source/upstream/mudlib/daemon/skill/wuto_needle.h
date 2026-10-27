@@ -70,3 +70,11 @@ void needle_blank(object me)
 {
     message_vision("\n", me, 0, 1);
 }
+
+// 手上的針（施針指令要求裝備針類武器）；NPC 沒拿針時用「銀針」。
+// 針名可能自帶顏色，後面補回青色。
+string needle_name(object me)
+{
+    object w = me->query_temp("weapon/needle");
+    return objectp(w) ? w->name() + CYN : "銀針";
+}

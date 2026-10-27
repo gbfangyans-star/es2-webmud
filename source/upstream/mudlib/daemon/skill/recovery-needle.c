@@ -34,13 +34,13 @@ void skill_completed(object me, string skill)
         "自身氣血已能收放由心。\n" NOR);
 }
 
-// 回精針扎百會、回氣針扎氣海、回神針扎神庭：({ 下針, 效果 })。
+// 回精針扎百會、回氣針扎氣海、回神針扎神庭：({ 下針, 效果 })；$W 換成手上的針。
 mapping MSG = ([
-    "gin": ({ "$N一針扎進自己頭頂百會穴。",
+    "gin": ({ "$N將$W一針扎進自己頭頂百會穴。",
               "一股清氣自頂門灌下，$N原本昏沉的腦袋清醒了不少。" }),
-    "kee": ({ "$N解開衣襟，在臍下氣海穴緩緩捻入一針。",
+    "kee": ({ "$N解開衣襟，以$W在臍下氣海穴緩緩捻入一針。",
               "$N丹田一暖，紊亂的氣息漸漸平順下來。" }),
-    "sen": ({ "$N以針輕點眉心上方的神庭穴。",
+    "sen": ({ "$N以$W輕點眉心上方的神庭穴。",
               "$N雙目微闔片刻，再睜開時眼神已清明許多。" }),
 ]);
 
@@ -68,10 +68,8 @@ varargs int acupuncture_cauterization(object me, string spl, object target)
     me->supplement_stat("fatigue", 1);
     me->heal_stat(stat, sk / 3);
     me->supplement_stat(stat, sk * 2 / 3);
-    // 比照天師道法：起手 → 下針 → 效果，整句青色；三自回針法不取招式名。
-    needle_line(me, 0, "$N拈起銀針，循著經絡細細取穴 ....");
-    needle_blank(me);
-    needle_line(me, 0, MSG[stat][0]);
+    // 比照天師道法的格式：下針 → 效果，整句青色；三自回針法不取招式名，沒有起手句。
+    needle_line(me, 0, replace_string(MSG[stat][0], "$W", needle_name(me)));
     needle_blank(me);
     needle_line(me, 0, MSG[stat][1]);
 
