@@ -5,7 +5,7 @@ js=(R/'web/app.js').read_text(encoding='utf-8')
 css=(R/'web/styles.css').read_text(encoding='utf-8')
 inputc=(R/'source/upstream/mudlib/feature/user/input.c').read_text(encoding='utf-8')
 assert 'id="landing"' not in html and '進入遊戲' not in html
-assert 'id="localMap"' in html and html.count('空白欄位') == 3
+assert 'id="localMap"' in html and '空白欄位' not in html and '快捷操作' not in html
 assert 'choicePanel' not in html
 assert 'grid-template-columns:repeat(7' in css
 assert 'currentRoomId' in js and 'radius=3' in js
