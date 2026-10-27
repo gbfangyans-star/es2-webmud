@@ -1023,10 +1023,11 @@ function renderLocalMap(){
     const cls=id===currentRoomId?'map-node-current':(boundarySet.has(id)?'map-node-boundary':mapNodeClass(raw));g.setAttribute('class',`map-node ${cls}`);
     // Two-character labels live inside a fixed-size room tile. This prevents labels
     // from colliding with neighbouring rooms and makes every visible room readable.
-    const tileW=34,tileH=22;
+    // 房間格是 1:1 的正方形，兩個字一行、上下左右置中。
+    const tileW=30,tileH=30;
     const r=document.createElementNS(NS,'rect');r.setAttribute('x',x-tileW/2);r.setAttribute('y',y-tileH/2);r.setAttribute('width',tileW);r.setAttribute('height',tileH);r.setAttribute('rx',3);r.setAttribute('class','map-node-rect');g.appendChild(r);
-    if(label){const t=document.createElementNS(NS,'text');t.setAttribute('x',x);t.setAttribute('y',y+4);t.setAttribute('text-anchor','middle');t.setAttribute('class','map-node-label map-node-label-inside');t.textContent=label;g.appendChild(t);}
-    if(id===currentRoomId){const dot=document.createElementNS(NS,'circle');dot.setAttribute('cx',x);dot.setAttribute('cy',y-7);dot.setAttribute('r',2.4);dot.setAttribute('class','map-current-dot');g.appendChild(dot);}svg.appendChild(g);
+    if(label){const t=document.createElementNS(NS,'text');t.setAttribute('x',x);t.setAttribute('y',y);t.setAttribute('text-anchor','middle');t.setAttribute('class','map-node-label map-node-label-inside');t.textContent=label;g.appendChild(t);}
+    if(id===currentRoomId){const dot=document.createElementNS(NS,'circle');dot.setAttribute('cx',x);dot.setAttribute('cy',y-11);dot.setAttribute('r',2.4);dot.setAttribute('class','map-current-dot');g.appendChild(dot);}svg.appendChild(g);
   }
   el.replaceChildren(svg);
   const vertical=(adjacency.get(currentRoomId)||[]).filter(e=>verticalDirs.has(e.direction)||!vec[e.direction]||!sameMapLayer(currentRoomId,e.to));
