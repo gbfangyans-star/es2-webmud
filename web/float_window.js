@@ -1,5 +1,5 @@
 // 浮動視窗（地圖、角色狀態）：左側選單按鈕切換開關，拖曳標題列移動位置；
-// 地圖可拉右下角調整大小，角色狀態大小固定。開關狀態、位置與大小記在瀏覽器。
+// 地圖可拉四個角落調整大小，角色狀態大小固定。開關狀態、位置與大小記在瀏覽器。
 
 let topZ=40;
 // 按到哪個視窗，那個視窗就疊到最上面（聊天視窗也一起排）。
@@ -68,13 +68,44 @@ export function setupFloatWindow({root,openButton,storageKey,resizable=false,def
   head?.addEventListener('pointerup',endDrag);
   head?.addEventListener('pointercancel',endDrag);
 
-  // 拖拉右下角調整大小（CSS resize），停下來後記住。
-  if(resizable&&typeof ResizeObserver==='function'){
-    let resizeTimer=null;
-    new ResizeObserver(()=>{
-      if(root.hidden||drag)return;
-      clearTimeout(resizeTimer);resizeTimer=setTimeout(saveGeometry,300);
-    }).observe(root);
+  // 拖拉四個角落調整大小（對角固定不動），放開後記住。最小尺寸照 CSS 的 min-width／min-height。
+  if(resizable){
+    for(const corner of ['nw','ne','sw','se']){
+      const grip=document.createElement('div');
+      grip.className=`float-resize float-resize-${corner}`;grip.setAttribute('aria-hidden','true');
+      root.appendChild(grip);
+      let rs=null;
+      grip.addEventListener('pointerdown',e=>{
+        if(e.button!==0)return;
+        const r=root.getBoundingClientRect(),cs=getComputedStyle(root);
+        rs={id:e.pointerId,x:e.clientX,y:e.clientY,r,minW:parseFloat(cs.minWidth)||200,minH:parseFloat(cs.minHeight)||150};
+        grip.setPointerCapture(e.pointerId);
+        root.classList.add('is-resizing');
+        e.preventDefault();e.stopPropagation();
+      });
+      grip.addEventListener('pointermove',e=>{
+        if(!rs||e.pointerId!==rs.id)return;
+        const dx=e.clientX-rs.x,dy=e.clientY-rs.y,{r}=rs;
+        let {left,top,width,height}=r;
+        if(corner.includes('e'))width=r.width+dx;
+        if(corner.includes('w'))width=r.width-dx;
+        if(corner.includes('s'))height=r.height+dy;
+        if(corner.includes('n'))height=r.height-dy;
+        width=Math.min(Math.max(rs.minW,width),window.innerWidth);
+        height=Math.min(Math.max(rs.minH,height),window.innerHeight);
+        if(corner.includes('w'))left=r.right-width;
+        if(corner.includes('n'))top=r.bottom-height;
+        root.style.left=Math.max(0,left)+'px';root.style.top=Math.max(0,top)+'px';
+        root.style.width=width+'px';root.style.height=height+'px';
+      });
+      const endResize=e=>{
+        if(!rs||e.pointerId!==rs.id)return;
+        rs=null;root.classList.remove('is-resizing');
+        saveGeometry();
+      };
+      grip.addEventListener('pointerup',endResize);
+      grip.addEventListener('pointercancel',endResize);
+    }
   }
   window.addEventListener('resize',()=>{if(!root.hidden)clampIntoView();});
 

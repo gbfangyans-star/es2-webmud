@@ -961,7 +961,7 @@ function mapNodeClass(raw){return safeMapLabel(raw)?'map-node-special':'map-node
 let mapZoom=1;
 function setMapZoom(next){
   mapZoom=Math.max(.72,Math.min(1.45,next));
-  const svg=document.querySelector('#localMap .topology-svg');if(svg)svg.style.transform=`scale(${mapZoom})`;
+  renderLocalMap();
   const lab=document.querySelector('#mapZoomLabel');if(lab)lab.textContent=`${Math.round(mapZoom*100)}%`;
 }
 const stableWorldPos=new Map();
@@ -984,14 +984,18 @@ function renderLocalMap(){
     return;
   }
   exploredRooms.add(currentRoomId);
-  const meta=mapMeta(currentRoomId),center=stableWorldPos.get(currentRoomId)||[0,0],radius=3;
+  // 房間格子的大小固定（一格 54×46 像素）；地圖視窗拉大就看到更多格，不會把整張圖放大。
+  // 縮放按鈕縮小時同樣多看幾格。
+  const NS='http://www.w3.org/2000/svg',W=Math.max(120,el.clientWidth||360),H=Math.max(100,el.clientHeight||314),cx=W/2,cy=H/2,sx=54,sy=46;
+  const radiusX=Math.ceil(W/2/mapZoom/sx),radiusY=Math.ceil(H/2/mapZoom/sy);
+  const meta=mapMeta(currentRoomId),center=stableWorldPos.get(currentRoomId)||[0,0];
   if(layerHud)layerHud.textContent=`MAP V8 唯讀全圖 ｜ ${meta.area?meta.area+' ｜ ':''}${meta.layer||'地面'}`;
   const areaTitle=document.querySelector('#mapAreaTitle');
   if(areaTitle)areaTitle.textContent=meta.area?` - ${meta.area}`:'';
   const visible=new Map();
   for(const [id,p] of stableWorldPos){
     if(!nodeById.has(id)||!sameMapLayer(currentRoomId,id)||!sameMapArea(currentRoomId,id))continue;
-    const dx=p[0]-center[0],dy=p[1]-center[1];if(Math.abs(dx)<=radius&&Math.abs(dy)<=radius)visible.set(id,[dx,dy]);
+    const dx=p[0]-center[0],dy=p[1]-center[1];if(Math.abs(dx)<=radiusX&&Math.abs(dy)<=radiusY)visible.set(id,[dx,dy]);
   }
   // Cross-area exits (e.g. the snow-town gate that leads into the Zhenwu camp)
   // don't carry a meaningful shared x/y with the current area -- each area is
@@ -1006,7 +1010,6 @@ function renderLocalMap(){
       boundarySet.add(id);boundarySet.add(e.to);
     }
   }
-  const NS='http://www.w3.org/2000/svg',W=360,H=314,cx=W/2,cy=H/2,sx=54,sy=46;
   const svg=document.createElementNS(NS,'svg');svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('class','topology-svg');svg.style.transform=`scale(${mapZoom})`;
   const xy=(id)=>{const p=visible.get(id);return p?[cx+p[0]*sx,cy+p[1]*sy]:null;};
   const edgeSeen=new Set();
@@ -1256,6 +1259,14 @@ document.querySelector('#form')?.addEventListener('click',e=>{
 document.querySelectorAll('[data-cmd]').forEach(b=>b.addEventListener('click',()=>{send(b.dataset.cmd);input.focus();}));
 
 document.querySelector('[data-ui-settings]')?.addEventListener('click',()=>document.querySelector('#uiSettings')?.showModal());
+// 地圖視窗大小改變（拉角落、打開視窗）時重畫，讓看得到的範圍跟著視窗大小走。
+{
+  const mapEl=document.querySelector('#localMap');let mapResizeFrame=0;
+  if(mapEl&&typeof ResizeObserver==='function')new ResizeObserver(()=>{
+    if(mapResizeFrame)return;
+    mapResizeFrame=requestAnimationFrame(()=>{mapResizeFrame=0;renderLocalMap();});
+  }).observe(mapEl);
+}
 document.querySelectorAll('[data-map-action]').forEach(b=>b.addEventListener('click',()=>{
   const a=b.dataset.mapAction;if(a==='in')setMapZoom(mapZoom+.12);else if(a==='out')setMapZoom(mapZoom-.12);else setMapZoom(1);
 }));

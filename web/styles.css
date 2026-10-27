@@ -376,7 +376,7 @@ label{display:block;margin:12px 0 5px;color:#b6c9bb}.form input,.form textarea{w
 .float-head-actions{display:flex;align-items:flex-start;gap:6px}
 .float-close{width:26px;height:26px;padding:0;border-radius:50%;font-size:16px;line-height:1;border-color:#31564a;background:#0b1510;color:#a9c7b1;font-family:inherit}
 .float-body{flex:1;min-height:0;padding:0 11px 11px}
-.map-window{width:400px;height:470px;min-width:260px;min-height:240px;resize:both}
+.map-window{width:400px;height:470px;min-width:260px;min-height:240px}
 .map-body{display:flex;flex-direction:column}
 .map-window .local-map.topology-map{flex:1;height:auto;min-height:120px}
 .map-window .map-toolbar,.map-window .map-legend,.map-window .map-transitions{flex:none}
@@ -384,3 +384,11 @@ label{display:block;margin:12px 0 5px;color:#b6c9bb}.form input,.form textarea{w
 .status-window .side-title{display:flex;align-items:baseline;gap:12px;margin:0}
 .status-window .side-title b{color:#d8bd70}
 .map-window .float-head small{display:block;font-size:11px;color:#789085}
+/* 四個角落的縮放把手 */
+.float-resize{position:absolute;width:14px;height:14px;z-index:2;touch-action:none}
+.float-resize-nw{left:0;top:0;cursor:nwse-resize}
+.float-resize-se{right:0;bottom:0;cursor:nwse-resize}
+.float-resize-ne{right:0;top:0;cursor:nesw-resize}
+.float-resize-sw{left:0;bottom:0;cursor:nesw-resize}
+.float-resize-se::after{content:"";position:absolute;right:3px;bottom:3px;width:7px;height:7px;border-right:2px solid #557866;border-bottom:2px solid #557866}
+.float-window.is-resizing{user-select:none}
