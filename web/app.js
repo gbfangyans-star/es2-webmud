@@ -941,6 +941,12 @@ function safeMapLabel(raw){
   if(!s||s.includes('/')||/^\.?\.?\//.test(s)||/^[/\\]/.test(s)||/^[A-Za-z0-9_.:-]+$/.test(s))return '';
   return s;
 }
+// 地圖格子裡顯示完整房名：兩個字一行，最多四行（八個字）。
+function mapLabelLines(raw){
+  const chars=[...safeMapLabel(raw).replace(/[\s　·・()（）【】\[\]]/g,'')].slice(0,8);
+  const lines=[];for(let i=0;i<chars.length;i+=2)lines.push(chars.slice(i,i+2).join(''));
+  return lines;
+}
 function twoCharMapLabel(raw){
   let s=safeMapLabel(raw);if(!s)return '';
   const rules=[
@@ -984,9 +990,9 @@ function renderLocalMap(){
     return;
   }
   exploredRooms.add(currentRoomId);
-  // 房間格子的大小固定（一格 54×46 像素）；地圖視窗拉大就看到更多格，不會把整張圖放大。
+  // 房間格子的大小固定（格子中心相距 62 像素）；地圖視窗拉大就看到更多格，不會把整張圖放大。
   // 縮放按鈕縮小時同樣多看幾格。
-  const NS='http://www.w3.org/2000/svg',W=Math.max(120,el.clientWidth||360),H=Math.max(100,el.clientHeight||314),cx=W/2,cy=H/2,sx=54,sy=46;
+  const NS='http://www.w3.org/2000/svg',W=Math.max(120,el.clientWidth||360),H=Math.max(100,el.clientHeight||314),cx=W/2,cy=H/2,sx=62,sy=62;
   const radiusX=Math.ceil(W/2/mapZoom/sx),radiusY=Math.ceil(H/2/mapZoom/sy);
   const meta=mapMeta(currentRoomId),center=stableWorldPos.get(currentRoomId)||[0,0];
   if(layerHud)layerHud.textContent=`MAP V8 唯讀全圖 ｜ ${meta.area?meta.area+' ｜ ':''}${meta.layer||'地面'}`;
@@ -1019,14 +1025,18 @@ function renderLocalMap(){
     line.setAttribute('x1',a[0]);line.setAttribute('y1',a[1]);line.setAttribute('x2',b[0]);line.setAttribute('y2',b[1]);line.setAttribute('class','map-edge'+((a[0]!==b[0]&&a[1]!==b[1])?' diagonal':''));svg.appendChild(line);
   }
   for(const [id] of visible){
-    const [x,y]=xy(id),raw=nodeById.get(id)?.label||'',label=twoCharMapLabel(raw),g=document.createElementNS(NS,'g');
+    const [x,y]=xy(id),raw=nodeById.get(id)?.label||'',lines=mapLabelLines(raw),g=document.createElementNS(NS,'g');
     const cls=id===currentRoomId?'map-node-current':(boundarySet.has(id)?'map-node-boundary':mapNodeClass(raw));g.setAttribute('class',`map-node ${cls}`);
-    // Two-character labels live inside a fixed-size room tile. This prevents labels
-    // from colliding with neighbouring rooms and makes every visible room readable.
-    const tileW=34,tileH=22;
-    const r=document.createElementNS(NS,'rect');r.setAttribute('x',x-tileW/2);r.setAttribute('y',y-tileH/2);r.setAttribute('width',tileW);r.setAttribute('height',tileH);r.setAttribute('rx',3);r.setAttribute('class','map-node-rect');g.appendChild(r);
-    if(label){const t=document.createElementNS(NS,'text');t.setAttribute('x',x);t.setAttribute('y',y+4);t.setAttribute('text-anchor','middle');t.setAttribute('class','map-node-label map-node-label-inside');t.textContent=label;g.appendChild(t);}
-    if(id===currentRoomId){const dot=document.createElementNS(NS,'circle');dot.setAttribute('cx',x);dot.setAttribute('cy',y-7);dot.setAttribute('r',2.4);dot.setAttribute('class','map-current-dot');g.appendChild(dot);}svg.appendChild(g);
+    // 房間格是 1:1 的正方形，房名完整顯示：兩個字一行、上下左右置中；
+    // 一、二行（四個字以內）用一般字級，三、四行（五到八個字）字縮小一點，一樣放進同大小的格子。
+    const tile=44,long=lines.length>2,lineH=long?10:14;
+    const r=document.createElementNS(NS,'rect');r.setAttribute('x',x-tile/2);r.setAttribute('y',y-tile/2);r.setAttribute('width',tile);r.setAttribute('height',tile);r.setAttribute('rx',4);r.setAttribute('class','map-node-rect');g.appendChild(r);
+    if(lines.length){
+      const t=document.createElementNS(NS,'text');t.setAttribute('text-anchor','middle');t.setAttribute('class','map-node-label map-node-label-inside'+(long?' map-node-label-long':''));
+      lines.forEach((line,i)=>{const ts=document.createElementNS(NS,'tspan');ts.setAttribute('x',x);ts.setAttribute('y',y+(i-(lines.length-1)/2)*lineH);ts.textContent=line;t.appendChild(ts);});
+      g.appendChild(t);
+    }
+    if(id===currentRoomId){const dot=document.createElementNS(NS,'circle');dot.setAttribute('cx',x);dot.setAttribute('cy',y-tile/2);dot.setAttribute('r',2.6);dot.setAttribute('class','map-current-dot');g.appendChild(dot);}svg.appendChild(g);
   }
   el.replaceChildren(svg);
   const vertical=(adjacency.get(currentRoomId)||[]).filter(e=>verticalDirs.has(e.direction)||!vec[e.direction]||!sameMapLayer(currentRoomId,e.to));

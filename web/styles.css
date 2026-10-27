@@ -250,10 +250,11 @@ label{display:block;margin:12px 0 5px;color:#b6c9bb}.form input,.form textarea{w
 
 .map-node-label-inside{font-size:10px;stroke-width:2px;pointer-events:none}.map-node-current .map-node-label-inside{font-weight:800}
 /* MAP V5: fixed-world tile labels. */
-.map-node-label-inside{font-size:11px!important;font-weight:700!important;stroke:none!important;fill:#dce5df!important;dominant-baseline:middle}
+.map-node-label-inside{font-size:12px!important;font-weight:700!important;stroke:none!important;fill:#dce5df!important;dominant-baseline:central}
 .map-node-current .map-node-label-inside{fill:#ffd95f!important;font-weight:900!important}
 .map-node-special .map-node-label-inside{fill:#8ce1c1!important}
 .map-node-boundary .map-node-label-inside{fill:#c792ea!important}
+.map-node-label-inside.map-node-label-long{font-size:9.5px!important}
 
 /* 角色狀態：版面跟 score 一致。名稱與數字在左、正方形格子在右；食物／飲水／疲勞只顯示文字放在最下面一行，整體寬度以這一行為準。 */
 #scoreHud.hud-grid{display:block}
