@@ -2,6 +2,7 @@ import {SessionRecorder} from './session_recorder.js';
 import {PlayerStateObserver} from './player_state.js';
 import {Automation,setupAutomationUI} from './automation.js';
 import {setupChatWindow} from './chat_window.js';
+import {setupFloatWindow,setupSideSplitter,bringToFront} from './float_window.js';
 import {bgTimeout,clearBg,keepPageAlive} from './bg_timer.js';
 
 const sessionRecorder = new SessionRecorder();
@@ -96,6 +97,30 @@ let chatParseBuffer='';
 const chatWindow=setupChatWindow({
   root:document.getElementById('chatWindow'),
   openButton:document.querySelector('[data-ui-chat]'),
+});
+document.getElementById('chatWindow')?.addEventListener('pointerdown',e=>bringToFront(e.currentTarget));
+// 最右欄是空白區域，用來擺地圖、角色狀態等浮動視窗；訊息欄與它之間的分隔線可左右拖曳。
+setupSideSplitter({shell:document.querySelector('.game-shell'),splitter:document.getElementById('sideSplitter'),storageKey:'es2-side-width-v1'});
+// 第一次打開時，地圖與角色狀態放在最右欄（最右欄被拉到很窄時改靠畫面右邊）。
+function sideArea(){
+  const r=document.querySelector('.game-side')?.getBoundingClientRect();
+  return r&&r.width>=200?{left:r.left+12,width:r.width-24}:{left:window.innerWidth-412,width:400};
+}
+setupFloatWindow({
+  root:document.getElementById('mapWindow'),
+  openButton:document.querySelector('[data-ui-map]'),
+  storageKey:'es2-map-window-v1',resizable:true,defaultOpen:true,
+  defaultGeometry:()=>{const a=sideArea();return {left:a.left,top:12,width:Math.max(300,a.width),height:Math.min(470,window.innerHeight-280)};},
+});
+setupFloatWindow({
+  root:document.getElementById('statusWindow'),
+  openButton:document.querySelector('[data-ui-status]'),
+  storageKey:'es2-status-window-v1',defaultOpen:true,
+  defaultGeometry:()=>{
+    const a=sideArea(),m=document.getElementById('mapWindow');
+    const top=m&&!m.hidden?m.getBoundingClientRect().bottom+10:12;
+    return {left:a.left,top:Math.min(top,window.innerHeight-240)};
+  },
 });
 function extractChatMessage(plain){
   let text=String(plain||'').trim();
@@ -721,13 +746,14 @@ function renderObserved(){
     const cells=Array.from({length:CELLS},(_,i)=>`<i class="hud-cell${i<filled?' filled':i<effCells?'':' gone'}" aria-hidden="true"></i>`).join('');
     vitals.push(`<div class="hud-vital hud-${key}" style="--hud-color:${colors[key]}"><span class="hud-label">${labels[key]}</span><b class="hud-num">${num(v)}</b><div class="hud-cells" role="img" aria-label="${labels[key]} ${pct}%">${cells}</div></div>`);
   }
-  for(const key of ['food','water','fatigue']){
-    const v=parsePairFromState(key);if(!v)continue;
-    needs.push(`<span class="hud-need hud-${key}"><span class="hud-label">${labels[key]}</span><b class="hud-num">${num(v)}</b></span>`);
-  }
+  // 最下面一行跟上面共用欄位：食物的數字靠右對齊精氣神的最大值，疲勞的數字靠右對齊方格的最右邊，飲水在兩者中間。
+  const need=key=>{const v=parsePairFromState(key);return v?`<span class="hud-need hud-${key}"><span class="hud-label">${labels[key]}</span><b class="hud-num">${num(v)}</b></span>`:'';};
+  const food=parsePairFromState('food');
+  const rest=need('water')+need('fatigue');
+  if(food||rest)needs.push(`<div class="hud-vital hud-needs"><span class="hud-label">${food?labels.food:''}</span><b class="hud-num">${food?num(food):''}</b><div class="hud-needs-rest">${rest}</div></div>`);
   const hud=document.querySelector('#scoreHud');
   if(hud&&(vitals.length||needs.length)){
-    const html=`<div class="hud-vitals">${vitals.join('')}</div>${needs.length?`<div class="hud-needs">${needs.join('')}</div>`:''}`;
+    const html=`<div class="hud-vitals">${vitals.join('')}${needs.join('')}</div>`;
     if(html!==lastScoreHudHtml){hud.innerHTML=html;lastScoreHudHtml=html;}
     hud.classList.remove('muted');
   }
@@ -1203,8 +1229,8 @@ document.querySelector('#form')?.addEventListener('submit',e=>{
 // input box just to keep typing. Real controls (buttons, links, other inputs,
 // the settings dialog which lives outside .game-shell) keep their own click
 // behaviour; only non-interactive space redirects focus.
-const commandHotZone=document.querySelector('.game-shell');
-commandHotZone?.addEventListener('click',e=>{
+// 地圖、角色狀態、聊天這些浮動視窗在 .game-shell 外面，也一起算進來。
+function focusCommandFromClick(e){
   if(!input||input.disabled)return;
   const target=e.target instanceof Element?e.target:null;
   if(!target)return;
@@ -1212,7 +1238,8 @@ commandHotZone?.addEventListener('click',e=>{
   const selection=window.getSelection?.();
   if(selection&&String(selection).trim())return;
   try{input.focus({preventScroll:true});}catch(_){input.focus();}
-});
+}
+for(const zone of document.querySelectorAll('.game-shell,#mapWindow,#statusWindow,#chatWindow'))zone.addEventListener('click',focusCommandFromClick);
 
 // The padding/background of the command bar is part of the same hot-zone.  This
 // explicit handler also covers browsers where a form/background click does not
@@ -1263,7 +1290,18 @@ function insertTab(){
   const pos=start+pad.length;input.setSelectionRange(pos,pos);
   repeatArmed=false;historyPrefix=null;hi=history.length;
 }
+// 輸入列按 PageUp／PageDown 翻訊息欄，End 回到最新訊息並繼續跟著捲動。
+function pageTerminal(dir){
+  const line=parseFloat(getComputedStyle(term).lineHeight)||24;
+  term.scrollTop+=dir*Math.max(line,term.clientHeight-line*2);
+}
+function followLatest(){stickToBottom=true;term.scrollTop=term.scrollHeight;autoScrollTop=term.scrollTop;updateScrollLatest();}
 input?.addEventListener('keydown',e=>{
+  if(!e.shiftKey&&!e.ctrlKey&&!e.altKey&&!e.metaKey&&!e.isComposing){
+    if(e.key==='PageUp'){e.preventDefault();pageTerminal(-1);return;}
+    if(e.key==='PageDown'){e.preventDefault();pageTerminal(1);return;}
+    if(e.key==='End'){e.preventDefault();followLatest();return;}
+  }
   if(e.key==='Tab'&&!e.shiftKey&&!e.ctrlKey&&!e.altKey&&!e.metaKey&&!e.isComposing){
     e.preventDefault();insertTab();return;
   }
@@ -1324,4 +1362,4 @@ term?.addEventListener('scroll',()=>{
   if(term.scrollTop!==autoScrollTop)stickToBottom=isNearBottom();
   updateScrollLatest();
 });
-scrollLatest?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();stickToBottom=true;term.scrollTop=term.scrollHeight;autoScrollTop=term.scrollTop;updateScrollLatest();input?.focus();});
+scrollLatest?.addEventListener('click',e=>{e.preventDefault();e.stopPropagation();followLatest();input?.focus();});
