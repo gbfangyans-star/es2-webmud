@@ -100,7 +100,10 @@ const chatWindow=setupChatWindow({
 });
 document.getElementById('chatWindow')?.addEventListener('pointerdown',e=>bringToFront(e.currentTarget));
 // 最右欄是空白區域，用來擺地圖、角色狀態等浮動視窗；訊息欄與它之間的分隔線可左右拖曳。
-setupSideSplitter({shell:document.querySelector('.game-shell'),splitter:document.getElementById('sideSplitter'),storageKey:'es2-side-width-v1'});
+// 訊息欄最窄 = score 最寬的一行（72 個半形字寬）× 125%，加上左右留白；跟著文字大小設定變動（同 styles.css 的 --console-min）。
+const SCORE_COLUMNS=72;
+const consoleMinWidth=()=>(parseFloat(getComputedStyle(term).fontSize)||15)*SCORE_COLUMNS/2*1.25+40;
+const sideSplitter=setupSideSplitter({shell:document.querySelector('.game-shell'),splitter:document.getElementById('sideSplitter'),storageKey:'es2-side-width-v1',minCenter:consoleMinWidth});
 // 第一次打開時，地圖與角色狀態放在最右欄（最右欄被拉到很窄時改靠畫面右邊）。
 function sideArea(){
   const r=document.querySelector('.game-side')?.getBoundingClientRect();
@@ -1257,8 +1260,8 @@ document.querySelectorAll('[data-map-action]').forEach(b=>b.addEventListener('cl
   const a=b.dataset.mapAction;if(a==='in')setMapZoom(mapZoom+.12);else if(a==='out')setMapZoom(mapZoom-.12);else setMapZoom(1);
 }));
 const fontRange=document.querySelector('#terminalFontSize'),fontValue=document.querySelector('#terminalFontValue');
-fontRange?.addEventListener('input',()=>{document.documentElement.style.setProperty('--terminal-font-size',fontRange.value+'px');if(fontValue)fontValue.textContent=fontRange.value+'px';localStorage.setItem('es2-ui-font',fontRange.value);});
-try{const f=localStorage.getItem('es2-ui-font');if(f&&fontRange){fontRange.value=f;document.documentElement.style.setProperty('--terminal-font-size',f+'px');if(fontValue)fontValue.textContent=f+'px';}}catch(_){}
+fontRange?.addEventListener('input',()=>{document.documentElement.style.setProperty('--terminal-font-size',fontRange.value+'px');sideSplitter.refresh();if(fontValue)fontValue.textContent=fontRange.value+'px';localStorage.setItem('es2-ui-font',fontRange.value);});
+try{const f=localStorage.getItem('es2-ui-font');if(f&&fontRange){fontRange.value=f;document.documentElement.style.setProperty('--terminal-font-size',f+'px');sideSplitter.refresh();if(fontValue)fontValue.textContent=f+'px';}}catch(_){}
 
 
 

@@ -97,15 +97,14 @@ export function setupFloatWindow({root,openButton,storageKey,resizable=false,def
 }
 
 // 訊息欄與最右側空白欄之間的分隔線：左右拖曳分配寬度，按兩下恢復預設。
-export function setupSideSplitter({shell,splitter,storageKey,defaultWidth=420}){
-  if(!shell||!splitter)return;
-  const MIN_CENTER=360;
+export function setupSideSplitter({shell,splitter,storageKey,defaultWidth=420,minCenter=()=>360}){
+  if(!shell||!splitter)return {refresh(){}};
   // desired 是玩家拉出來的寬度；視窗變窄時暫時縮小，變回寬時恢復。
   let desired=defaultWidth;
   try{const v=localStorage.getItem(storageKey),w=Number(v);if(v!==null&&Number.isFinite(w)&&w>=0)desired=w;}catch(_){}
   function maxWidth(){
     const nav=shell.querySelector('.game-nav')?.getBoundingClientRect().width||0;
-    return Math.max(0,shell.clientWidth-nav-splitter.offsetWidth-MIN_CENTER);
+    return Math.max(0,shell.clientWidth-nav-splitter.offsetWidth-minCenter());
   }
   function apply(w){
     const width=Math.round(Math.max(0,Math.min(maxWidth(),w)));
@@ -134,4 +133,5 @@ export function setupSideSplitter({shell,splitter,storageKey,defaultWidth=420}){
   splitter.addEventListener('dblclick',()=>{desired=defaultWidth;apply(desired);save();});
   window.addEventListener('resize',()=>apply(desired));
   apply(desired);
+  return {refresh:()=>apply(desired)};
 }

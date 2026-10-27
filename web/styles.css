@@ -197,9 +197,11 @@ label{display:block;margin:12px 0 5px;color:#b6c9bb}.form input,.form textarea{w
   --ui-panel:rgba(8,17,14,.94);
   --ui-line:#29483d;
   --terminal-font-size:15px;
+  /* 訊息欄最窄寬度：score 最寬一行 72 個半形字（36 個字寬）× 125%，加上左右留白 40px。 */
+  --console-min:calc(var(--terminal-font-size) * 45 + 40px);
 }
 .game-app{height:100vh;display:block;background:radial-gradient(circle at 70% 0%,#12211a 0,#080d0b 28%,#050806 72%)}
-.game-shell{height:100vh;min-height:0;display:grid;grid-template-columns:236px minmax(360px,1fr) 6px var(--side-width,420px);background:transparent}
+.game-shell{height:100vh;min-height:0;display:grid;grid-template-columns:236px minmax(var(--console-min),1fr) 6px var(--side-width,420px);background:transparent}
 .game-nav{position:relative;min-height:0;overflow:hidden;border-right:1px solid rgba(224,184,93,.42);background:#090e0c}
 .nav-art{position:absolute;inset:0;background-image:url('/title_bg.png');background-size:auto 100%;background-position:19% center;filter:saturate(.72) brightness(.5);transform:scale(1.04)}
 .nav-shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,5,4,.28),rgba(3,8,6,.62) 28%,rgba(3,8,6,.78) 62%,rgba(3,7,5,.94)),linear-gradient(90deg,rgba(0,0,0,.05),rgba(0,0,0,.54));backdrop-filter:blur(.3px)}
@@ -241,8 +243,8 @@ label{display:block;margin:12px 0 5px;color:#b6c9bb}.form input,.form textarea{w
 .ui-settings{width:min(430px,calc(100vw - 30px));border:1px solid #6d5b2c;border-radius:10px;background:#0a120f;color:#dfe8e3;padding:0;box-shadow:0 24px 80px #000}.ui-settings::backdrop{background:rgba(0,0,0,.72)}.ui-settings form{padding:16px;display:grid;gap:16px}.settings-head{display:flex;justify-content:space-between;align-items:center;color:#e2c46f}.settings-head button{padding:2px 8px}.ui-settings label{display:flex;align-items:center;gap:10px;font-size:12px}.ui-settings input[type=range]{flex:1}.ui-settings p{margin:0;color:#768a7f;font-size:11px}.toggle-line{justify-content:flex-start}
 
 .ui-focus-flash{animation:uiFocusFlash .72s ease}@keyframes uiFocusFlash{0%{box-shadow:0 0 0 0 rgba(238,195,85,.65)}100%{box-shadow:0 0 0 13px rgba(238,195,85,0)}}
-@media(max-width:1450px){.game-shell{grid-template-columns:205px minmax(360px,1fr) 6px var(--side-width,385px)}.nav-content{padding-left:10px;padding-right:10px}.nav-brand strong{font-size:21px}.local-map.topology-map{height:300px;min-height:300px}.center-stack{grid-template-rows:minmax(0,1fr)}}
-@media(max-width:1180px){.game-shell{grid-template-columns:188px minmax(360px,1fr) 6px var(--side-width,350px)}.context-panel{display:none}.center-stack{grid-template-rows:minmax(0,1fr)}.nav-item{height:46px}.nav-brand{padding-bottom:16px}.local-map.topology-map{height:275px;min-height:275px}}
+@media(max-width:1450px){.game-shell{grid-template-columns:205px minmax(var(--console-min),1fr) 6px var(--side-width,385px)}.nav-content{padding-left:10px;padding-right:10px}.nav-brand strong{font-size:21px}.local-map.topology-map{height:300px;min-height:300px}.center-stack{grid-template-rows:minmax(0,1fr)}}
+@media(max-width:1180px){.game-shell{grid-template-columns:188px minmax(var(--console-min),1fr) 6px var(--side-width,350px)}.context-panel{display:none}.center-stack{grid-template-rows:minmax(0,1fr)}.nav-item{height:46px}.nav-brand{padding-bottom:16px}.local-map.topology-map{height:275px;min-height:275px}}
 @media(max-width:900px){.game-body{overflow:auto}.game-app{height:auto;min-height:100vh}.game-shell{height:auto;min-height:100vh;grid-template-columns:78px minmax(0,1fr)}.game-nav{position:sticky;top:0;height:100vh}.nav-brand strong{font-size:17px}.nav-brand span,.nav-brand small,.nav-item span:last-child,.nav-footer small{display:none}.nav-item{grid-template-columns:1fr;padding:0;place-items:center}.nav-icon{width:32px;height:32px}.game-side,.side-splitter{display:none!important}.center-stack{min-height:70vh}.console-panel{min-height:70vh}.side-card{margin:0}}
 @media(max-width:620px){.game-shell{grid-template-columns:58px minmax(0,1fr)}.nav-content{padding:12px 5px}.nav-brand{padding:2px 0 12px}.nav-brand strong{font-size:12px;writing-mode:vertical-rl;display:inline-block}.nav-item{height:42px}.commandbar{margin:0 7px 7px}.console-heading{padding-left:10px;padding-right:10px}#terminal{padding-left:10px;padding-right:10px}.input-mode{display:none}.local-map.topology-map{height:300px;min-height:300px}}
 
