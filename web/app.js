@@ -1290,17 +1290,23 @@ function insertTab(){
   const pos=start+pad.length;input.setSelectionRange(pos,pos);
   repeatArmed=false;historyPrefix=null;hi=history.length;
 }
-// 輸入列按 PageUp／PageDown 翻訊息欄，End 回到最新訊息並繼續跟著捲動。
+// 輸入列按 PageUp／PageDown 翻訊息欄；End 照常把游標移到文字最後面，0.5 秒內連按兩下才回到最新訊息並繼續跟著捲動。
 function pageTerminal(dir){
   const line=parseFloat(getComputedStyle(term).lineHeight)||24;
   term.scrollTop+=dir*Math.max(line,term.clientHeight-line*2);
 }
+let lastEndPress=0;
 function followLatest(){stickToBottom=true;term.scrollTop=term.scrollHeight;autoScrollTop=term.scrollTop;updateScrollLatest();}
 input?.addEventListener('keydown',e=>{
   if(!e.shiftKey&&!e.ctrlKey&&!e.altKey&&!e.metaKey&&!e.isComposing){
     if(e.key==='PageUp'){e.preventDefault();pageTerminal(-1);return;}
     if(e.key==='PageDown'){e.preventDefault();pageTerminal(1);return;}
-    if(e.key==='End'){e.preventDefault();followLatest();return;}
+    if(e.key==='End'&&!e.repeat){
+      const now=Date.now();
+      if(now-lastEndPress<=500){lastEndPress=0;followLatest();}
+      else lastEndPress=now;
+      return;
+    }
   }
   if(e.key==='Tab'&&!e.shiftKey&&!e.ctrlKey&&!e.altKey&&!e.metaKey&&!e.isComposing){
     e.preventDefault();insertTab();return;
