@@ -48,6 +48,7 @@ private string needle_title(string kind)
 int do_amazing(object me, string kind, object target)
 {
     mapping data;
+    string *msg;
     int sk, cost, times;
 
     sk = me->query_skill(SKILL_ID, 1);
@@ -65,27 +66,22 @@ int do_amazing(object me, string kind, object target)
     me->consume_stat("sen", cost);
     times = target == me ? 4 : 1;
 
-    // 起手 → 下針 → 效果。
-    needle_line(me, target, (target == me ? "$N反手拈起一枚長針，使出" : "$N拈起一枚長針，使出")
-        + needle_title(kind) + " ....");
+    // 兩句：下針（帶出手上的針與招名）→ 效果。$W 針名、$T 招名。
+    msg = target == me
+        ? (kind == "armor"
+            ? ({ "$N反手將$W捻入自己頭頂百會穴，正是$T。",
+                 "$N周身筋肉一緊，皮膚隱隱泛起一層暗黃光澤，宛如披上了一重鐵甲。" })
+            : ({ "$N倒轉$W猛然刺入自己頭頂百會穴，一記$T透頂而入。",
+                 "$N雙目驟然泛紅，一股霸道之氣自頭頂直貫四肢，骨節格格作響。" }))
+        : (kind == "armor"
+            ? ({ "$N一按$n頭頂，將$W緩緩捻入百會穴，正是$T。",
+                 "$n只覺一股酸脹自頭頂沉入四肢，筋骨堅凝，彷彿刀劍難傷。" })
+            : ({ "$N手腕一沉，$W疾刺$n頭頂百會穴，一記$T透頂而入。",
+                 "$n渾身一震，氣血翻湧直上，雙拳不自覺地握得格格作響。" }));
+    needle_line(me, target, replace_string(replace_string(msg[0], "$W", needle_name(me)),
+        "$T", needle_title(kind)));
     needle_blank(me);
-    if( target == me ) {
-        needle_line(me, 0, kind == "armor"
-            ? "$N對準自己頭頂百會穴緩緩捻入，長針應手沒入半截。"
-            : "$N對準自己頭頂百會穴猛然一刺，長針應手沒入半截。");
-        needle_blank(me);
-        needle_line(me, 0, kind == "armor"
-            ? "$N周身筋肉一緊，皮膚隱隱泛起一層暗黃光澤，宛如披上了一重鐵甲。"
-            : "$N雙目驟然泛紅，一股霸道之氣自頭頂直貫四肢，骨節格格作響。");
-    } else {
-        needle_line(me, target, kind == "armor"
-            ? "$N一按$n頭頂，長針緩緩捻入百會穴。"
-            : "$N對準$n頭頂百會穴疾刺而下，長針應手沒入半截。");
-        needle_blank(me);
-        needle_line(me, target, kind == "armor"
-            ? "$n只覺一股酸脹自頭頂沉入四肢，筋骨堅凝，彷彿刀劍難傷。"
-            : "$n渾身一震，氣血翻湧直上，雙拳不自覺地握得格格作響。");
-    }
+    needle_line(me, target, msg[1]);
 
     set_needle_effect(target, CND, kind, needle_apply(kind, sk, times), sk);
     needle_gain(me, SKILL_ID);
@@ -99,8 +95,8 @@ int do_self_test(object me)
     if( me->query_stat_effective("kee") <= 2 )
         return notify_fail(gender_self(me) + "的氣血太虛，經不起再扎了。\n");
     me->damage_stat("kee", 2, me);
-    needle_line(me, 0, "$N拈起一枚細針，在自己臂上穴道淺淺試扎了幾下，"
-        "凝神體會針下氣機的流轉。");
+    needle_line(me, 0, replace_string("$N以$W在自己臂上穴道淺淺試扎了幾下，"
+        "凝神體會針下氣機的流轉。", "$W", needle_name(me)));
     needle_gain(me, SKILL_ID);
     me->start_busy(1);
     return 1;

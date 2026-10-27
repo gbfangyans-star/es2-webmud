@@ -42,13 +42,13 @@ mapping NEEDLES = ([
                  "name": "敗敏五針", "color": HIG ]),
 ]);
 
-// 施針敘述：$N 施針者、$n 目標。
+// 下針敘述：$N 施針者、$n 目標、$W 手上的針、$T 招名（各針起手各不相同）。
 mapping STRIKE_MSG = ([
-    "fear":   "$N欺近$n身前，逕自一針扎進$n心口巨闕穴。",
-    "foul":   "$N身形一側，反手一針斜斜刺入$n背後腎俞穴。",
-    "fail":   "$N左手虛按$n肩頭，右手銀針順勢扎進$n臂彎曲池穴。",
-    "fling":  "$N搶到$n身後，一針點向$n腦後風池穴。",
-    "fumble": "$N矮身一探，銀針貼著$n腕底刺入內關穴。",
+    "fear":   "$N欺近$n身前，一招$T將$W扎進$n心口巨闕穴。",
+    "foul":   "$N身形一側，反手以$W斜刺$n背後腎俞穴，正是$T。",
+    "fail":   "$N左手虛按$n肩頭，右手$W順勢使出$T，扎進$n臂彎曲池穴。",
+    "fling":  "$N搶到$n身後，$W點進$n腦後風池穴，這記$T快得無聲無息。",
+    "fumble": "$N矮身一探，$W貼著$n腕底刺入內關穴，好一記$T。",
 ]);
 
 // 中招敘述。
@@ -101,11 +101,9 @@ int do_wuto(object me, string key, object target)
     damage = n["calc"] == "avg" ? (mine + his) / 2 : mine + his;
     if( damage < 1 ) damage = 1;
 
-    // 起手 → 下針 → 中招；只有招名上色（高亮色換回青色前先 NOR）。
-    needle_line(me, target, "$N指間銀針一閃，使出五敗針法「" + n["color"] + n["name"]
-        + NOR CYN "」 ....");
-    needle_blank(me);
-    needle_line(me, target, STRIKE_MSG[key]);
+    // 兩句：下針 → 中招；只有招名上色（高亮色換回青色前先 NOR）。
+    needle_line(me, target, replace_string(replace_string(STRIKE_MSG[key],
+        "$W", needle_name(me)), "$T", "「" + n["color"] + n["name"] + NOR CYN "」"));
     needle_blank(me);
     needle_line(me, target, HIT_MSG[key]);
 
