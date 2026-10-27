@@ -41,7 +41,8 @@ private mapping needle_apply(string kind, int sk, int times)
 
 private string needle_title(string kind)
 {
-    return kind == "armor" ? HIY "『 驚 異 霸 甲 針 』" NOR : HIR "『 驚 異 霸 氣 針 』" NOR;
+    // 高亮色帶有粗體，換回青色前要先 NOR 清掉。
+    return kind == "armor" ? HIY "『 驚 異 霸 甲 針 』" NOR CYN : HIR "『 驚 異 霸 氣 針 』" NOR CYN;
 }
 
 int do_amazing(object me, string kind, object target)
@@ -64,25 +65,27 @@ int do_amazing(object me, string kind, object target)
     me->consume_stat("sen", cost);
     times = target == me ? 4 : 1;
 
-    // 招名字距較寬，自動換行會把它拆開，所以自己分行、不自動換行。
-    if( target == me )
-        message_vision((kind == "armor" ? YEL : RED)
-            + "$N反手拈起一枚長針，對準自己頭頂百會穴"
-            + (kind == "armor" ? "緩緩捻入，\n" : "猛然一刺，\n")
-            + "正是" + needle_title(kind) + (kind == "armor" ? YEL : RED) + "！\n"
-            + (kind == "armor"
-                ? "$N周身筋肉一緊，皮膚隱隱泛起一層暗黃光澤，宛如披上了一重鐵甲。\n"
-                : "$N雙目驟然泛紅，一股霸道之氣自頭頂直貫四肢，骨節格格作響。\n") + NOR,
-            me, 0, 1);
-    else
-        message_vision((kind == "armor" ? YEL : RED)
-            + (kind == "armor" ? "$N捏針在手，一按$n頭頂，長針應手沒入百會穴，\n"
-                               : "$N捏針在手，對準$n頭頂百會穴疾刺而下，\n")
-            + "正是" + needle_title(kind) + (kind == "armor" ? YEL : RED) + "！\n"
-            + (kind == "armor"
-                ? "$n只覺一股酸脹自頭頂沉入四肢，筋骨堅凝，彷彿刀劍難傷。\n"
-                : "$n渾身一震，氣血翻湧直上，雙拳不自覺地握得格格作響。\n") + NOR,
-            me, target, 1);
+    // 起手 → 下針 → 效果。
+    needle_line(me, target, (target == me ? "$N反手拈起一枚長針，使出" : "$N拈起一枚長針，使出")
+        + needle_title(kind) + " ....");
+    needle_blank(me);
+    if( target == me ) {
+        needle_line(me, 0, kind == "armor"
+            ? "$N對準自己頭頂百會穴緩緩捻入，長針應手沒入半截。"
+            : "$N對準自己頭頂百會穴猛然一刺，長針應手沒入半截。");
+        needle_blank(me);
+        needle_line(me, 0, kind == "armor"
+            ? "$N周身筋肉一緊，皮膚隱隱泛起一層暗黃光澤，宛如披上了一重鐵甲。"
+            : "$N雙目驟然泛紅，一股霸道之氣自頭頂直貫四肢，骨節格格作響。");
+    } else {
+        needle_line(me, target, kind == "armor"
+            ? "$N一按$n頭頂，長針緩緩捻入百會穴。"
+            : "$N對準$n頭頂百會穴疾刺而下，長針應手沒入半截。");
+        needle_blank(me);
+        needle_line(me, target, kind == "armor"
+            ? "$n只覺一股酸脹自頭頂沉入四肢，筋骨堅凝，彷彿刀劍難傷。"
+            : "$n渾身一震，氣血翻湧直上，雙拳不自覺地握得格格作響。");
+    }
 
     set_needle_effect(target, CND, kind, needle_apply(kind, sk, times), sk);
     needle_gain(me, SKILL_ID);
@@ -96,8 +99,8 @@ int do_self_test(object me)
     if( me->query_stat_effective("kee") <= 2 )
         return notify_fail(gender_self(me) + "的氣血太虛，經不起再扎了。\n");
     me->damage_stat("kee", 2, me);
-    message_vision("$N拈起一枚細針，在自己臂上穴道淺淺試扎了幾下，"
-        "凝神體會針下氣機的流轉。\n", me);
+    needle_line(me, 0, "$N拈起一枚細針，在自己臂上穴道淺淺試扎了幾下，"
+        "凝神體會針下氣機的流轉。");
     needle_gain(me, SKILL_ID);
     me->start_busy(1);
     return 1;

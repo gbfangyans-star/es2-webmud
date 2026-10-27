@@ -58,3 +58,15 @@ object needle_target(object me, object target)
         return 0;
     return target;
 }
+
+// 敘述格式比照天師道法（taoism-spells.c）：整句青色，只有招式名稱另外上色；
+// 起手、效果、結果之間空一行。招名不要被自動換行拆開，所以不自動換行。
+void needle_line(object me, object target, string msg)
+{
+    message_vision(CYN + msg + NOR "\n", me, target, 1);
+}
+
+void needle_blank(object me)
+{
+    message_vision("\n", me, 0, 1);
+}

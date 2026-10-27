@@ -44,11 +44,11 @@ mapping NEEDLES = ([
 
 // 施針敘述：$N 施針者、$n 目標。
 mapping STRIKE_MSG = ([
-    "fear":   "$N欺近$n身前，指間銀針一閃，逕自扎進$n心口巨闕穴",
-    "foul":   "$N身形一側，反手一針斜斜刺入$n背後腎俞穴",
-    "fail":   "$N左手虛按$n肩頭，右手銀針順勢扎進$n臂彎曲池穴",
-    "fling":  "$N搶到$n身後，一針點向$n腦後風池穴",
-    "fumble": "$N矮身一探，銀針貼著$n腕底刺入內關穴",
+    "fear":   "$N欺近$n身前，逕自一針扎進$n心口巨闕穴。",
+    "foul":   "$N身形一側，反手一針斜斜刺入$n背後腎俞穴。",
+    "fail":   "$N左手虛按$n肩頭，右手銀針順勢扎進$n臂彎曲池穴。",
+    "fling":  "$N搶到$n身後，一針點向$n腦後風池穴。",
+    "fumble": "$N矮身一探，銀針貼著$n腕底刺入內關穴。",
 ]);
 
 // 中招敘述。
@@ -101,9 +101,13 @@ int do_wuto(object me, string key, object target)
     damage = n["calc"] == "avg" ? (mine + his) / 2 : mine + his;
     if( damage < 1 ) damage = 1;
 
-    // 招名不要被自動換行拆開。
-    message_vision(n["color"] + STRIKE_MSG[key] + "，正是「" + n["name"] + "」！\n"
-        + HIT_MSG[key] + "\n" NOR, me, target, 1);
+    // 起手 → 下針 → 中招；只有招名上色（高亮色換回青色前先 NOR）。
+    needle_line(me, target, "$N指間銀針一閃，使出五敗針法「" + n["color"] + n["name"]
+        + NOR CYN "」 ....");
+    needle_blank(me);
+    needle_line(me, target, STRIKE_MSG[key]);
+    needle_blank(me);
+    needle_line(me, target, HIT_MSG[key]);
 
     // W-11：可先出手、必中，進入戰鬥；NPC 會下殺手。
     KILL_CMD->do_kill(me, target);
@@ -123,7 +127,7 @@ int do_wuto(object me, string key, object target)
 
     // W-07：目標停頓 2 回合的機率 50% + sk/8%。
     if( random(100) < 50 + sk / 8 ) {
-        message_vision(n["color"] + "$n身子一僵，一時竟提不起勁來。\n" NOR, me, target);
+        needle_line(me, target, "$n身子一僵，一時竟提不起勁來。");
         target->start_busy(2);
     }
     COMBAT_D->report_status(target);

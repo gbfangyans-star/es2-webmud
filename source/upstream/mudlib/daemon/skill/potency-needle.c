@@ -56,6 +56,34 @@ private string kind_name(string kind)
     return ([ "awareness": "耳目", "move": "腳力", "element": "元氣" ])[kind];
 }
 
+// 下針與效果敘述：「$n」在扎自己時，下針句換成「自己」、效果句換成「$N」。
+mapping ACTION = ([
+    "fatigue":   ({ "$N在$n足三里、湧泉兩穴各捻入一針。",
+                    "$n長長吁了口氣，臉上的倦色淡了幾分。" }),
+    "awareness": ({ "$N捻針刺入$n耳後翳風穴。",
+                    "$n頓覺耳聰目明，四周一草一木的動靜都清清楚楚。" }),
+    "move":      ({ "$N沿著$n小腿接連扎下三針。",
+                    "$n只覺一股暖流直通足底，腳步登時輕快了許多。" }),
+    "element":   ({ "$N一針扎進$n掌心勞宮穴。",
+                    "$n掌中隱隱發燙，體內元氣躁動，似乎隨時要破掌而出。" }),
+]);
+
+/* 比照天師道法：起手 → 下針 → 效果，整句青色；引源針法不取招式名。 */
+void show_needle(object me, object target, string kind)
+{
+    string act = ACTION[kind][0], res = ACTION[kind][1];
+
+    if( target == me ) {
+        act = replace_string(act, "$n", "自己");
+        res = replace_string(res, "$n", "$N");
+    }
+    needle_line(me, target, "$N拈起銀針，循著經絡細細取穴 ....");
+    needle_blank(me);
+    needle_line(me, target, act);
+    needle_blank(me);
+    needle_line(me, target, res);
+}
+
 /* P-01：消耗神 20，緩解疲勞 5+sk/40。 */
 int do_fatigue(object me, object target, int sk)
 {
@@ -72,12 +100,7 @@ int do_fatigue(object me, object target, int sk)
     n = 5 + sk / 40;
     if( n > tired ) n = tired;
     target->consume_stat("fatigue", n, me);
-    if( target == me )
-        message_vision("$N在自己足三里、湧泉兩穴各捻入一針，長長吁了口氣，"
-            "臉上的倦色淡了幾分。\n", me);
-    else
-        message_vision("$N在$n足三里、湧泉兩穴各捻入一針，$n長長吁了口氣，"
-            "臉上的倦色淡了幾分。\n", me, target);
+    show_needle(me, target, "fatigue");
     return 1;
 }
 
@@ -95,19 +118,7 @@ int do_potency(object me, string kind, object target, int sk)
             + "體內被引動的" + kind_name(data["kind"]) + "之力未散，再引另一股只怕經脈承受不住。\n");
 
     me->consume_stat("sen", 10);
-    switch(kind) {
-    case "awareness":
-        message_vision("$N捻針刺入$n耳後翳風穴，$n頓覺耳聰目明，"
-            "四周一草一木的動靜都清清楚楚。\n", me, target);
-        break;
-    case "move":
-        message_vision("$N沿著$n小腿接連扎下三針，$n只覺一股暖流直通足底，"
-            "腳步登時輕快了許多。\n", me, target);
-        break;
-    default:
-        message_vision("$N一針扎進$n掌心勞宮穴，$n掌中隱隱發燙，"
-            "體內元氣躁動，似乎隨時要破掌而出。\n", me, target);
-    }
+    show_needle(me, target, kind);
     // P-06、P-08：持續 sk 個 tick，對自己不加倍。
     set_needle_effect(target, CND, kind, potency_apply(kind, sk), sk);
     return 1;
