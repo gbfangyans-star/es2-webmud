@@ -7,6 +7,11 @@
 #define WUTO_FACTION    "alchemist.wuto"
 #define TICK_SECONDS    2
 
+// 經驗倍數：各技能檔在 include 之前 #define EXP_TIER，沒定義的是 1。
+#ifndef EXP_TIER
+#define EXP_TIER 1
+#endif
+
 int query_threshold_percent() { return 80; }   // C-05：練到 200 級共 800 萬
 int valid_enable(string usage) { return usage == "cauterization"; }
 
@@ -29,12 +34,14 @@ int knows_needle(object me, string skill)
     return me->query_skill(skill, 1) > 0 || me->query_learn(skill) > 0;
 }
 
-// C-04：施針成功，該套針法與針灸之術各得一次系統悟性公式。只對玩家生效。
+// C-04：施針成功，該套針法與針灸之術各得一次系統悟性公式 ×（1～倍數）的隨機數，
+// 比照天師道法的層級倍數（使用者定案，2026-10-28）：驚異二針 2、五敗針法 5、
+// 引源針法與三自回針法 3。兩項各自擲骰。只對玩家生效。
 void needle_gain(object me, string skill)
 {
     if( !userp(me) ) return;
-    me->improve_skill_exact(skill, COMBAT_D->int_formula_exp(me));
-    me->improve_skill_exact("cauterization", COMBAT_D->int_formula_exp(me));
+    me->improve_skill_exact(skill, COMBAT_D->int_formula_exp(me) * (random(EXP_TIER) + 1));
+    me->improve_skill_exact("cauterization", COMBAT_D->int_formula_exp(me) * (random(EXP_TIER) + 1));
 }
 
 // 把 apply 的加成以 condition 掛在目標身上，持續 ticks 個 tick（一 tick 兩秒）。
