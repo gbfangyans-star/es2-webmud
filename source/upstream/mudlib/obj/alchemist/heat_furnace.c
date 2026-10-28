@@ -6,7 +6,7 @@ inherit ITEM;
     "north": "坎", "south": "離", "east": "震", "west": "兌", \
     "northwest": "乾", "southwest": "坤", "northeast": "艮", "southeast": "巽", \
 ])
-#define SET_NO_GET "這座丹爐已穩穩架在地上，得先拆下才搬得動。\n"
+#define SET_NO_GET "這座丹爐已穩穩架在地上，得先請下來才能移動。\n"
 private int burning, fuel_phase, ash_phase;
 private string direction; // 架設的方位（north 等）；0＝沒有架設
 int is_heat_furnace() { return 1; }
@@ -22,7 +22,16 @@ void create()
 {
     set_name("青銅丹爐", ({"bronze furnace", "furnace"}));
     set("unit", "座"); set("value", 10000);
-    set("long", "一座可容納丹鼎與松柴的青銅丹爐。\n");
+    // 描述照使用者提供的原版文字（2026-10-24，保留指令說明，使用者確認）。
+    set("long", @LONG
+這是一個青銅所鑄成的丹爐，是一般方士煉製丹藥時用來燒火粹煉
+的爐子，要用時必須先架設在(setup)地上，講究一些的會築一個丹
+壇，不過只有煉仙丹大藥才需如此，平常只要挖個坑埋住，可以燒
+就行。
+煉丹完畢，記得將丹爐起出(dispose)帶走。
+指令格式：setup <丹爐> toward <方位>
+LONG
+    );
     set_weight(5000); set_max_encumbrance(16000); setup();
     HEAT_D->track_furnace(this_object());
 }

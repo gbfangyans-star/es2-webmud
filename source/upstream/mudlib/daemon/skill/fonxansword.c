@@ -1,6 +1,6 @@
 /*---
 description: 封山劍法（NEW 新版武功寫法）。封山派劍法，可 enable 在劍術與雙手劍，不能 enable 在招架上。
-             特殊招式已製作但先不開放（SPECIALS_OPEN）；越鬥越長已開放。
+             特殊招式已製作但先不開放（SPECIALS_OPEN），柳東蘆例外；越鬥越長已開放。
              攻守兼備、變化多端，爆發不足；招式敘述取自「梅影風 vs 柳東蘆」對戰紀錄。
              設計見 docs/martial_arts/封山派_封山劍法與倒亂七星步法.md。
 ---*/
@@ -12,6 +12,13 @@ inherit "/std/martial_art";
 /* 特殊招式（搶攻、八荒、封字訣、無形劍氣、上弦月／下弦月）已製作但先不開放
  * （使用者定案，2026-10-17）。改成 1 即開放。越鬥越長不受這個開關影響。 */
 #define SPECIALS_OPEN 0
+
+/* 特殊招式是否可用：開關打開，或是設了 fonxan/npc_specials 的 NPC（例如柳東蘆，
+ * 使用者定案，2026-10-28）。 */
+private int specials_open(object me)
+{
+    return SPECIALS_OPEN || (!userp(me) && me->query("fonxan/npc_specials"));
+}
 
 private void create()
 {
@@ -114,7 +121,7 @@ void attack_using(object me, object opponent, object weapon)
     if( !opponent ) return;
     if( !objectp(weapon) ) weapon = 0;
 
-    if( SPECIALS_OPEN ) {
+    if( specials_open(me) ) {
         lv = me->query_skill("fonxansword", 1);
         if( lv >= 100 && random(100) < scaled_chance(me, 20) ) {
             damage = do_bahuang(me, opponent, weapon);
@@ -140,11 +147,11 @@ void after_strike(object me, object opponent, object weapon, mapping m, int dama
 
     /* 越鬥越長：enable 封山派內功時，出劍後 10% × 等級/200，回復精 封山劍法/2（開放中）。 */
     if( me->skill_mapped("force") == "fonxan force" && random(100) < scaled_chance(me, 10) ) {
-        message_vision(HIW "$N的封山劍法配合封山派的正宗心法﹐雖於激烈的惡鬥之中﹐竟是越鬥精力越長！\n" NOR, me);
+        message_vision(HIW "$N的封山劍法配合封山派的正宗心法﹐雖於激烈的惡鬥之中﹐竟是越鬥精力越長！\n" NOR, me, 0, 1);
         me->supplement_stat("gin", lv / 2);
     }
 
-    if( !SPECIALS_OPEN ) return;
+    if( !specials_open(me) ) return;
 
     /* 無形劍氣：封山劍法 150 級起、有 enable 內功；對方停頓中時必定發動。
      * 不能閃躲、格擋，防具照扣；傷害 = 內功等級 × 3/2（舊版劍芒）。 */
