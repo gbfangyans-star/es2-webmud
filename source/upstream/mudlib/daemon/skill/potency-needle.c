@@ -9,6 +9,7 @@ design: docs/martial_arts/武陀灸堂_門派設計.md 第六章（2026-10-27 �
 
 inherit SKILL;
 
+#define EXP_TIER 3   // 經驗倍數 1～3（使用者定案，2026-10-28）
 #include "/daemon/skill/wuto_needle.h"
 
 #define SKILL_ID "potency-needle"

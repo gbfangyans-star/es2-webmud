@@ -8,6 +8,7 @@ design: docs/martial_arts/武陀灸堂_門派設計.md 第五章（2026-10-27 �
 
 inherit SKILL;
 
+#define EXP_TIER 5   // 經驗倍數 1～5（使用者定案，2026-10-28）
 #include "/daemon/skill/wuto_needle.h"
 
 #define SKILL_ID "wuto-needle"
@@ -107,8 +108,10 @@ int do_wuto(object me, string key, object target)
     needle_blank(me);
     needle_line(me, target, HIT_MSG[key]);
 
-    // W-11：可先出手、必中，進入戰鬥；NPC 會下殺手。
-    KILL_CMD->do_kill(me, target);
+    // W-11：可先出手、必中。已經在交手（fight 切磋或 kill 拼命）就維持原本的狀態；
+    // 還沒開打就下針，等於下 kill（使用者定案，2026-10-28），NPC 會下殺手。
+    if( !me->is_fighting(target) )
+        KILL_CMD->do_kill(me, target);
 
     // W-10：扣目前的值。
     foreach(string stat in n["stats"])
