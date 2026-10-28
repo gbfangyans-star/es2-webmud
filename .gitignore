@@ -22,8 +22,11 @@ __pycache__/
 .pytest_cache/
 
 # Formal player/login data must never be public
-source/upstream/mudlib/data/user/
-source/upstream/mudlib/data/login/
+# (only the .keep placeholders are tracked, so a fresh clone can save characters)
+source/upstream/mudlib/data/user/*
+!source/upstream/mudlib/data/user/.keep
+source/upstream/mudlib/data/login/*
+!source/upstream/mudlib/data/login/.keep
 
 # Runtime-generated data
 source/upstream/mudlib/log/
@@ -37,3 +40,13 @@ source/upstream/mudlib/data/iplimit.o
 
 # 玩家版天朝圖鑑：部署時由 tools/build_player_codex.py 產生
 web/codex.html
+
+# Neolith 編譯中間檔（每台機器自己編譯產生，不放進 git）
+# 例外：Windows 單機測試版直接使用 build-vs2022 的 neolith.exe，朋友不必自己編譯，所以保留這一個檔
+source/upstream/neolith/build-linux/
+source/upstream/neolith/build-vs2022/*
+!source/upstream/neolith/build-vs2022/src/
+source/upstream/neolith/build-vs2022/src/*
+!source/upstream/neolith/build-vs2022/src/Release/
+source/upstream/neolith/build-vs2022/src/Release/*
+!source/upstream/neolith/build-vs2022/src/Release/neolith.exe
