@@ -104,8 +104,9 @@ int acquire_skill(object ob, string skill)
         command("say 入門的手法都教給你了，往後要扎得準，得靠你自己多下針。");
         return 1;
     }
+    // 傳授敘述整句顯示、不自動換行（message_vision 第四個參數），比照 acquire 的求教訊息。
     message_vision(CYN "$N抓起$n的手腕，在$n臂上比劃著穴道，將" + to_chinese(skill)
-        + "的入門手法一一傳授給$n。\n" NOR, this_object(), ob);
+        + "的入門手法一一傳授給$n。\n" NOR, this_object(), ob, 1);
     teach_to_cap(ob, skill);
     return 1;
 }
