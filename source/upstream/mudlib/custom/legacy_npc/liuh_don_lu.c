@@ -67,7 +67,7 @@ private void full_heal()
         set_stat_current(what, query_stat_maximum(what));
     }
     add_temp("liuh/full_heal", 1);
-    message_vision(HIW "$N一聲清嘯，精純的封山真氣灌注週身經脈，氣色頓時好了許多。\n" NOR, this_object());
+    message_vision(HIC "$N一聲清嘯，精純的封山真氣灌注週身經脈，氣色頓時好了許多。\n" NOR, this_object());
 }
 
 static void heart_beat()

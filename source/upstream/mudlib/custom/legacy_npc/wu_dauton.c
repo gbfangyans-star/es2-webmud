@@ -70,9 +70,8 @@ private void revive()
         set_stat_current(what, query_stat_maximum(what));
     }
     set_temp("wuto/revived", 1);
-    message_vision(CYN "$N怪笑一聲，反手將" + (objectp(w) ? w->name() + CYN : "銀針")
-        + "扎進自己胸前膻中穴，針尾猶自嗡嗡顫動。\n\n"
-        "$N枯瘦的身軀猛然一挺，灰敗的臉上湧起一片潮紅，竟又精神抖擻起來。\n" NOR,
+    message_vision(HIR "$N怪笑一聲，反手將" + (objectp(w) ? w->name() + HIR : "銀針")
+        + "扎進自己胸前膻中穴，枯瘦的身軀猛然一挺竟又精神抖擻起來。\n" NOR,
         this_object(), 0, 1);
 }
 
