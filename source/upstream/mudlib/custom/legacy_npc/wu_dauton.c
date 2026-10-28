@@ -7,12 +7,18 @@ docs/LEGACY_ROOM_NPC_COMPENDIUM.md）；職業、等級、強度、門派、行�
 （d/snow/square_n.c），在雪亭鎮巡邏（使用者決定，2026-10-27）。
 武陀灸堂師父：收方士徒弟、傳授針灸之術與四套針法，
 設計見 docs/martial_arts/武陀灸堂_門派設計.md 第二章。技能由 NPC 自動技能系統依門派給。
+戰鬥行為（使用者定案，2026-10-28，同文件第九章）：開打即扎自己驚異霸甲針；
+每 tick 40% 依敗膽一針到敗敏五針的順序扎向玩家；精氣神或 HP 低於兩成時刺針續力補滿，每條命一次。
 */
 #include <ansi.h>
 
 inherit "/custom/legacy_npc/legacy_npc";
 
 #define FACTION "alchemist.wuto"
+
+#define WUTO_CHANCE     40      // 每 tick 施展五敗針的機率（%）
+#define REVIVE_RATIO    20      // 精氣神或 HP 低於上限的百分之幾時刺針續力
+string *WUTO_ORDER = ({ "fear", "foul", "fail", "fling", "fumble" });   // 一針到五針
 
 void create()
 {
@@ -41,6 +47,63 @@ void create()
     carry_object("/custom/weapon/needle/bee_needle")->wield();   // 蜂尾針
     carry_object("/custom/armor/finger/tiger_ring")->wear();   // 虎紋戒指
     carry_object("/custom/weapon/needle/needle_of_bone_maggot");   // 附骨之蛆
+}
+
+// ------------------------------------------------------------------
+// 戰鬥行為：霸甲針在身（針力消退就再扎）；五敗針依序扎向玩家，扎中才換下一針；
+// 精氣神或 HP 低於兩成時刺針強行續力，全部補滿，每條命一次。
+// ------------------------------------------------------------------
+
+private int low_stat(string what)
+{
+    int max = query_stat_maximum(what);
+    return max > 0 && query_stat(what) * 100 < max * REVIVE_RATIO;
+}
+
+private void revive()
+{
+    object w = query_temp("weapon/needle");
+
+    foreach( string what in ({ "gin", "kee", "sen", "HP" }) ) {
+        if( query_stat_maximum(what) <= 0 ) continue;
+        set_stat_effective(what, query_stat_maximum(what));
+        set_stat_current(what, query_stat_maximum(what));
+    }
+    set_temp("wuto/revived", 1);
+    message_vision(HIR "$N怪笑一聲，反手將" + (objectp(w) ? w->name() + HIR : "銀針")
+        + "扎進自己胸前膻中穴，枯瘦的身軀猛然一挺竟又精神抖擻起來。\n" NOR,
+        this_object(), 0, 1);
+}
+
+// 五敗針的對象：正在交手、同一個地方、還清醒的玩家。
+private object wuto_target()
+{
+    object *list = filter(query_enemy(), (: objectp($1) && userp($1) && living($1)
+        && environment($1) == environment() :));
+    return sizeof(list) ? list[random(sizeof(list))] : 0;
+}
+
+static void heart_beat()
+{
+    object target;
+    int step;
+
+    ::heart_beat();
+    if( !this_object() || !living(this_object()) || !is_fighting() ) return;
+
+    if( !query_temp("wuto/revived")
+    &&  (low_stat("gin") || low_stat("kee") || low_stat("sen") || low_stat("HP")) )
+        revive();
+
+    if( is_busy() ) return;
+    if( !query_condition("wuto_amazing") ) {
+        SKILL_D("amazing-needle")->do_amazing(this_object(), "armor", this_object());
+        return;
+    }
+    if( random(100) >= WUTO_CHANCE || !objectp(target = wuto_target()) ) return;
+    step = query_temp("wuto/step");
+    if( SKILL_D("wuto-needle")->do_wuto(this_object(), WUTO_ORDER[step], target) )
+        set_temp("wuto/step", (step + 1) % sizeof(WUTO_ORDER));
 }
 
 // M-04：須為平民（尚未入其他門派）才能拜師，與龍圖丹派互斥。

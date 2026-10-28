@@ -3,6 +3,8 @@
 /*
 CUSTOM NPC (NEW). 設定來源：使用者提供（外觀敘述、裝備、技能、拜師與傳授條件）。
 在交叉路口出生，只在五堂鎮內走動。武功見 docs/martial_arts/冷梅莊_劍士武功.md。
+戰鬥行為（使用者定案，2026-10-28）：開打即進入明鏡止水之境；氣或 HP 低於兩成時
+服九轉冰心丹補滿（每次重生最多四次）。
 */
 #include <npc.h>
 #include <command.h>
@@ -18,6 +20,9 @@ inherit F_FIGHTER;
 // 每 2 tick（4 秒）擲一次，10% 機率移動。
 #define WANDER_INTERVAL 4
 #define WANDER_CHANCE   10
+
+#define FULL_HEAL_MAX   4       // 補滿的次數上限（每次重生重新計算）
+#define FULL_HEAL_RATIO 20      // 氣或 HP 低於上限的百分之幾時補滿
 
 void create()
 {
@@ -74,6 +79,39 @@ void create()
     carry_object("/custom/weapon/dagger/dagger_of_frost_edge")->wield("secondhand dagger");
 
     if( clonep() ) call_out("wander", WANDER_INTERVAL);
+}
+
+// ------------------------------------------------------------------
+// 戰鬥行為：明鏡止水（效果結束後再運）；氣或 HP 低於兩成時服九轉冰心丹補滿，最多四次。
+// ------------------------------------------------------------------
+
+private int low_stat(string what)
+{
+    int max = query_stat_maximum(what);
+    return max > 0 && query_stat(what) * 100 < max * FULL_HEAL_RATIO;
+}
+
+private void full_heal()
+{
+    foreach( string what in ({ "kee", "HP" }) ) {
+        if( query_stat_maximum(what) <= 0 ) continue;
+        set_stat_effective(what, query_stat_maximum(what));
+        set_stat_current(what, query_stat_maximum(what));
+    }
+    add_temp("may/full_heal", 1);
+    message_vision(HIG "$N從懷中掏出一粒九轉冰心丹，含入口中吞下。\n" NOR, this_object());
+}
+
+static void heart_beat()
+{
+    ::heart_beat();
+    if( !this_object() || !living(this_object()) || !is_fighting() ) return;
+
+    if( query_temp("may/full_heal") < FULL_HEAL_MAX && (low_stat("kee") || low_stat("HP")) )
+        full_heal();
+
+    if( !query_temp("hainmay/mirror") && !is_busy() )
+        exert_function("mirror");
 }
 
 // ------------------------------------------------------------------
